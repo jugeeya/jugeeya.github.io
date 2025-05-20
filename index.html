@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivals of Aether II Rankings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Rivals of Aether II Rankings</h1>
+            <div class="controls">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Enter Steam ID or Custom URL">
+                    <button id="searchButton">Search</button>
+                    <div class="tooltip">
+                        <span class="tooltip-icon">?</span>
+                        <span class="tooltip-text">To find your Steam ID, you can use www.steamfinder.com to look up
+                            your 64-digit ID. You can also use your Custom URL, which can be set by editing your Steam
+                            Profile.</span>
+                    </div>
+                </div>
+                <div class="leaderboard-container">
+                    <select id="leaderboardSelect" class="leaderboard-select"></select>
+                </div>
+                <button id="refreshButton">Refresh Data</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="stats-container">
+                <div class="player-stats" id="playerStats" style="display: none;">
+                    <h2>Player Stats</h2>
+                    <div class="player-info">
+                        <img id="playerAvatar" src="" alt="Player Avatar">
+                        <div class="player-details">
+                            <h3 id="playerName"></h3>
+                            <p>ELO: <span id="playerElo"></span></p>
+                            <p>Rank: <span id="playerRank"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="distribution-container">
+                    <h2>ELO Distribution</h2>
+                    <canvas id="eloDistribution"></canvas>
+                </div>
+            </div>
+        </main>
+
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p id="loadingText">Loading data...</p>
+                <div class="progress-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+                <p id="progressText">0%</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
