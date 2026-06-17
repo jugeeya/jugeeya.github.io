@@ -21,6 +21,8 @@ const POLL_INTERVAL_MS = 45000;
 
 // State
 let selectedFiles = [];
+let allTags = [];
+let tagSearchQuery = '';
 
 // DOM
 const dropzone = document.getElementById('dropzone');
@@ -161,43 +163,158 @@ async function loadManifest() {
         const res = await fetch(MANIFEST_URL, { cache: 'no-cache' });
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
         const manifest = await res.json();
-        renderTagBrowser(Array.isArray(manifest.tags) ? manifest.tags : []);
+        allTags = Array.isArray(manifest.tags) ? manifest.tags : [];
+        renderTagBrowser();
     } catch (err) {
         console.error('Could not load tag manifest:', err);
+        allTags = [];
         tagBrowser.innerHTML = '<p class="muted">No shared tags yet.</p>';
     }
 }
 
-function renderTagBrowser(tags) {
-    if (!tags.length) {
+function tagDisplayName(tag) {
+    return tag.name || tag.file || 'Untitled tag';
+}
+
+function filteredTags() {
+    const query = tagSearchQuery.trim().toLowerCase();
+    if (!query) return allTags;
+    return allTags.filter(tag => tagDisplayName(tag).toLowerCase().includes(query));
+}
+
+function getSelectedTagFiles() {
+    return [...tagBrowser.querySelectorAll('.tag-checkbox:checked')]
+        .map(cb => cb.value);
+}
+
+function updateDownloadButton() {
+    const btn = tagBrowser.querySelector('#downloadSelected');
+    if (!btn) return;
+    const count = getSelectedTagFiles().length;
+    btn.disabled = count === 0;
+    btn.textContent = count === 0 ? 'Download tags'
+        : count === 1 ? 'Download 1 tag'
+        : `Download ${count} tags`;
+}
+
+function renderTagBrowser() {
+    if (!allTags.length) {
         tagBrowser.innerHTML = '<p class="muted">No shared tags yet — be the first to upload one.</p>';
         return;
     }
 
-    tagBrowser.innerHTML = '';
-    tags.forEach(tag => {
-        const card = document.createElement('div');
-        card.className = 'tag-card';
+    const previouslySelected = new Set(getSelectedTagFiles());
+    const visible = filteredTags();
 
-        const name = document.createElement('div');
-        name.className = 'tag-name';
-        name.textContent = tag.name || tag.file || 'Untitled tag';
+    tagBrowser.innerHTML =
+        '<div class="tag-browser-toolbar">' +
+        '<input type="search" id="tagSearch" class="tag-search" ' +
+        'placeholder="Search tags…" autocomplete="off">' +
+        '<div class="tag-browser-actions">' +
+        '<button type="button" id="selectAllTags" class="linkish">Select all</button>' +
+        '<span class="tag-action-sep">·</span>' +
+        '<button type="button" id="clearTagSelection" class="linkish">Clear</button>' +
+        '<button type="button" id="downloadSelected" disabled>Download tags</button>' +
+        '</div></div>' +
+        '<ul id="tagList" class="tag-list"></ul>';
 
-        const author = document.createElement('div');
-        author.className = 'tag-author';
-        author.textContent = tag.author ? `by ${tag.author}` : 'unknown author';
-
-        const link = document.createElement('a');
-        link.className = 'download';
-        link.href = tag.file ? `data/${tag.file}` : '#';
-        link.textContent = '⬇ Download .r2tag.zip';
-        link.setAttribute('download', '');
-
-        card.appendChild(name);
-        card.appendChild(author);
-        card.appendChild(link);
-        tagBrowser.appendChild(card);
+    const searchInput = tagBrowser.querySelector('#tagSearch');
+    searchInput.value = tagSearchQuery;
+    searchInput.addEventListener('input', () => {
+        tagSearchQuery = searchInput.value;
+        renderTagBrowser();
     });
+
+    const list = tagBrowser.querySelector('#tagList');
+
+    if (!visible.length) {
+        list.innerHTML = '<li class="tag-list-empty muted">No tags match your search.</li>';
+    } else {
+        visible.forEach(tag => {
+            const file = tag.file || '';
+            const li = document.createElement('li');
+            li.className = 'tag-list-item';
+
+            const label = document.createElement('label');
+            label.className = 'tag-list-label';
+
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'tag-checkbox';
+            checkbox.value = file;
+            checkbox.checked = previouslySelected.has(file);
+            checkbox.addEventListener('change', updateDownloadButton);
+
+            const name = document.createElement('span');
+            name.className = 'tag-list-name';
+            name.textContent = tagDisplayName(tag);
+
+            label.appendChild(checkbox);
+            label.appendChild(name);
+            li.appendChild(label);
+            list.appendChild(li);
+        });
+    }
+
+    tagBrowser.querySelector('#selectAllTags').addEventListener('click', () => {
+        tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => { cb.checked = true; });
+        updateDownloadButton();
+    });
+
+    tagBrowser.querySelector('#clearTagSelection').addEventListener('click', () => {
+        tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => { cb.checked = false; });
+        updateDownloadButton();
+    });
+
+    tagBrowser.querySelector('#downloadSelected').addEventListener('click', downloadSelectedTags);
+    updateDownloadButton();
+}
+
+async function downloadSelectedTags() {
+    const files = getSelectedTagFiles();
+    if (!files.length) return;
+
+    const tags = files
+        .map(file => allTags.find(t => t.file === file))
+        .filter(Boolean);
+    if (!tags.length) return;
+
+    const btn = tagBrowser.querySelector('#downloadSelected');
+    const prevText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Downloading…';
+
+    try {
+        if (tags.length === 1) {
+            triggerDownload(`data/${tags[0].file}`, tags[0].file);
+            return;
+        }
+
+        const zip = new JSZip();
+        await Promise.all(tags.map(async (tag) => {
+            const res = await fetch(`data/${tag.file}`);
+            if (!res.ok) throw new Error(`Could not fetch ${tag.file}`);
+            zip.file(tag.file, await res.blob());
+        }));
+
+        const blob = await zip.generateAsync({ type: 'blob' });
+        triggerDownload(URL.createObjectURL(blob), 'r2tags.zip');
+    } catch (err) {
+        console.error('Bulk download failed:', err);
+        alert(`Download failed: ${err.message}`);
+    } finally {
+        btn.disabled = getSelectedTagFiles().length === 0;
+        btn.textContent = prevText;
+        updateDownloadButton();
+    }
+}
+
+function triggerDownload(url, filename) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    if (url.startsWith('blob:')) URL.revokeObjectURL(url);
 }
 
 // ---- Your submissions (track pending PRs) ---------------------------------
