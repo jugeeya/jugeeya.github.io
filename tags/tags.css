@@ -93,7 +93,7 @@ code {
     color: var(--error-color);
 }
 
-.file-list .remove-file {
+.remove-file {
     background: none;
     border: none;
     color: var(--text-secondary);
@@ -102,7 +102,8 @@ code {
     padding: 0;
 }
 
-.file-list .remove-file:hover {
+.remove-file:hover {
+    background: none;
     color: var(--error-color);
 }
 
@@ -190,6 +191,69 @@ button.secondary:hover:not(:disabled) {
 
 .upload-status.success {
     color: var(--success-color);
+}
+
+/* Your submissions */
+.submission-list {
+    list-style: none;
+    margin: 0;
+}
+
+.submission-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.submission-names {
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.submission-meta {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-top: 0.15rem;
+}
+
+.submission-meta a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.submission-meta a:hover {
+    text-decoration: underline;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 0.12rem 0.45rem;
+    border-radius: 6px;
+    vertical-align: middle;
+}
+
+.badge-pending {
+    background-color: #8a6d00;
+    color: #fff;
+}
+
+.badge-published {
+    background-color: var(--success-color);
+    color: #fff;
+}
+
+.badge-closed {
+    background-color: #555;
+    color: #ddd;
 }
 
 /* Tag browser */
