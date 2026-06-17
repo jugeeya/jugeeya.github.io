@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag Sharing · Rivals of Aether II</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="tags.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <a class="back-link" href="../">&larr; Back to home</a>
+
+        <header>
+            <h1>Tag Sharing</h1>
+            <p class="subtitle">Upload and share Rivals II player tags &amp; custom controls</p>
+        </header>
+
+        <main>
+            <!-- Upload ------------------------------------------------------ -->
+            <section class="panel">
+                <h2>Submit a tag</h2>
+                <p class="panel-help">
+                    Drop a <strong>zipped</strong> <code>.r2tag</code> here — right-click your
+                    <code>.r2tag</code> (exported from the Rivals II Tag Tool) and choose
+                    <em>Send to → Compressed (zipped) folder</em>. The zip is only ~20&nbsp;KB. Submitting opens a
+                    pull request that auto-merges once it passes a quick check.
+                </p>
+
+                <div id="dropzone" class="dropzone" tabindex="0" role="button"
+                    aria-label="Choose or drop tag files">
+                    <div class="dropzone-icon">⬆️</div>
+                    <p><strong>Drop files here</strong> or click to browse</p>
+                    <p class="dropzone-hint">.zip containing your .r2tag</p>
+                    <input type="file" id="fileInput" accept=".zip" multiple hidden>
+                </div>
+
+                <ul id="fileList" class="file-list"></ul>
+
+                <div class="author-field">
+                    <label for="authorInput">Your name <span class="optional">(optional, shown as the author)</span></label>
+                    <input type="text" id="authorInput" maxlength="64" placeholder="e.g. jugeeya">
+                </div>
+
+                <div class="upload-actions">
+                    <button id="submitButton" disabled>Submit tags</button>
+                    <button id="clearButton" class="secondary" disabled>Clear</button>
+                </div>
+
+                <p id="uploadStatus" class="upload-status"></p>
+            </section>
+
+            <!-- Browse ------------------------------------------------------ -->
+            <section class="panel">
+                <h2>Shared tags</h2>
+                <p class="panel-help">Tags published to this site. Download a <code>.r2tag</code> and import it
+                    with the Rivals II Tag Tool.</p>
+                <div id="tagBrowser" class="tag-browser">
+                    <p class="muted">Loading…</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Part of the <a href="../">Rivals of Aether II Tools</a> site.</p>
+        </footer>
+    </div>
+
+    <script src="tags.js"></script>
+</body>
+
+</html>

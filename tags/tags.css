@@ -1,0 +1,236 @@
+/* Tag-sharing page styles (layered on top of the shared ../styles.css). */
+
+.panel {
+    background-color: var(--surface-color);
+    padding: 1.75rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.panel h2 {
+    color: var(--primary-color);
+}
+
+.panel-help {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+}
+
+code {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Ubuntu Sans Mono', 'Consolas', monospace;
+    font-size: 0.85em;
+}
+
+/* Dropzone */
+.dropzone {
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.dropzone:hover,
+.dropzone:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: rgba(108, 99, 255, 0.06);
+}
+
+.dropzone.dragover {
+    border-color: var(--primary-color);
+    background-color: rgba(108, 99, 255, 0.12);
+}
+
+.dropzone-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.dropzone-hint {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+/* Selected file list */
+.file-list {
+    list-style: none;
+    margin: 1.25rem 0 0;
+}
+
+.file-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.file-list .file-meta {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.file-list .file-status {
+    font-size: 0.8rem;
+}
+
+.file-list .file-status.ok {
+    color: var(--success-color);
+}
+
+.file-list .file-status.warn {
+    color: var(--error-color);
+}
+
+.file-list .remove-file {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0;
+}
+
+.file-list .remove-file:hover {
+    color: var(--error-color);
+}
+
+/* Buttons */
+button {
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 500;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    font-size: 0.95rem;
+}
+
+button:hover:not(:disabled) {
+    background-color: #5A52E0;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button.secondary {
+    background-color: var(--background-color);
+}
+
+button.secondary:hover:not(:disabled) {
+    background-color: #222;
+}
+
+.author-field {
+    margin-top: 1.25rem;
+}
+
+.author-field label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.author-field .optional {
+    color: #777;
+    font-size: 0.8rem;
+}
+
+.author-field input[type="text"] {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.6rem 0.9rem;
+    border: 2px solid var(--background-color);
+    border-radius: 8px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    font-weight: 300;
+    transition: border-color 0.2s ease;
+}
+
+.author-field input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.upload-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.upload-status {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.upload-status.error {
+    color: var(--error-color);
+}
+
+.upload-status.success {
+    color: var(--success-color);
+}
+
+/* Tag browser */
+.tag-browser {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.tag-card {
+    background-color: var(--background-color);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.tag-card .tag-name {
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+    word-break: break-word;
+}
+
+.tag-card .tag-author {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.tag-card a.download {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.tag-card a.download:hover {
+    text-decoration: underline;
+}
+
+.muted {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}

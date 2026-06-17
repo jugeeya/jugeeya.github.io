@@ -1,6 +1,18 @@
-# Rivals of Aether 2 Rankings
+# Rivals of Aether II Tools
 
-A beautiful web application that displays Rivals of Aether 2 rankings and ELO distribution. The app uses the Steam Community Web API to fetch leaderboard data and player information.
+A small static site of community tools for Rivals of Aether II, hosted on GitHub Pages.
+
+## Site structure
+
+- **`/` (homepage)** — a hub that links to each tool.
+- **`/leaderboard/`** — the Rivals II Rankings app (ELO distribution + player search). Was previously the site root.
+- **`/tags/`** — Tag Sharing: upload/browse `.r2tag` player tags. Scaffold; browsing reads `tags/data/index.json`, uploading needs a backend (see `tags/data/README.md`).
+
+## Rivals II Rankings (`/leaderboard/`)
+
+A web application that displays Rivals of Aether 2 rankings and ELO distribution. The app uses the Steam Community Web API to fetch leaderboard data and player information.
+
+If the newest Steam leaderboard has no entries yet (e.g. a season just rolled over), the app automatically falls back to the most recent leaderboard that does have data instead of showing an error.
 
 ## Features
 

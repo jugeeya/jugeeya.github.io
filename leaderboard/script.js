@@ -121,6 +121,23 @@ const progressText = document.getElementById('progressText');
 const leaderboardSelect = document.getElementById('leaderboardSelect');
 let eloChart = null;
 
+// Metadata for every leaderboard returned by Steam, in the order Steam lists
+// them (oldest first, newest last). Each entry is { id, name, entries }.
+let leaderboardInfo = [];
+
+// Find the most recent leaderboard that actually has entries. Steam can list a
+// brand-new (current season) leaderboard before it has any data; selecting it
+// would yield an empty fetch. We scan from newest (end) to oldest and return
+// the first one with entries > 0, not newer than `maxIndex`.
+function findLatestNonEmptyId(maxIndex = leaderboardInfo.length - 1) {
+    for (let i = Math.min(maxIndex, leaderboardInfo.length - 1); i >= 0; i--) {
+        if (leaderboardInfo[i].entries > 0) {
+            return leaderboardInfo[i].id;
+        }
+    }
+    return null;
+}
+
 // Initialize the application
 async function init() {
     console.log('Initializing application...');
@@ -199,37 +216,49 @@ async function populateLeaderboardDropdown() {
 
     console.log('Found leaderboards:', leaderboards.length);
 
-    // Populate leaderboard select dropdown
+    // Populate leaderboard select dropdown + cache metadata (incl. entry counts).
     leaderboardSelect.innerHTML = '';
+    leaderboardInfo = [];
     leaderboards.forEach(lb => {
         const name = lb.querySelector('name')?.textContent || lb.querySelector('displayName')?.textContent;
         const id = lb.querySelector('lbid')?.textContent;
+        const entries = parseInt(lb.querySelector('entries')?.textContent || '0', 10);
 
         if (name && id) {
+            leaderboardInfo.push({ id, name, entries });
+
             const option = document.createElement('option');
             option.value = id;
-            option.textContent = name;
+            // Flag empty leaderboards so it's clear why they're skipped by default.
+            option.textContent = entries > 0 ? name : `${name} (no data yet)`;
             leaderboardSelect.appendChild(option);
         } else {
             console.warn('Invalid leaderboard entry:', { name, id });
         }
     });
 
-    // Get the selected leaderboard ID (default to latest leaderboard)
-    let selectedLeaderboardId = sessionStorage.getItem(STORAGE_KEYS.SELECTED_LEADERBOARD);
-    if (!selectedLeaderboardId) {
-        // Use the last leaderboard in the list (most recent)
-        selectedLeaderboardId = leaderboards[leaderboards.length - 1].querySelector('lbid')?.textContent;
+    // Determine the default selection. Prefer the stored choice, but only if it
+    // still has data; otherwise fall back to the latest leaderboard that does.
+    const latestNonEmptyId = findLatestNonEmptyId();
+    const storedId = sessionStorage.getItem(STORAGE_KEYS.SELECTED_LEADERBOARD);
+    const storedInfo = leaderboardInfo.find(lb => lb.id === storedId);
+
+    let selectedLeaderboardId;
+    if (storedInfo && storedInfo.entries > 0) {
+        selectedLeaderboardId = storedId;
+    } else {
+        // No (valid) stored choice, or it's empty: hop to the latest with data.
+        selectedLeaderboardId = latestNonEmptyId;
     }
 
-    // Ensure the selected ID exists in the dropdown
-    const selectedOption = Array.from(leaderboardSelect.options).find(opt => opt.value === selectedLeaderboardId);
-    if (!selectedOption) {
-        console.warn('Selected leaderboard ID not found in options, using first available');
-        selectedLeaderboardId = leaderboards[0].querySelector('lbid')?.textContent;
+    // Last resort if literally every leaderboard is empty: keep the newest one
+    // so the UI still has a valid selection (the fetch will simply show zeros).
+    if (!selectedLeaderboardId && leaderboardInfo.length) {
+        selectedLeaderboardId = leaderboardInfo[leaderboardInfo.length - 1].id;
     }
 
     leaderboardSelect.value = selectedLeaderboardId;
+    sessionStorage.setItem(STORAGE_KEYS.SELECTED_LEADERBOARD, selectedLeaderboardId);
     console.log('Selected leaderboard ID:', selectedLeaderboardId);
 }
 
@@ -271,7 +300,7 @@ async function fetchAndStoreData() {
         showLoading('Fetching leaderboard data...');
 
         // Get the selected leaderboard ID
-        const selectedLeaderboardId = leaderboardSelect.value;
+        let selectedLeaderboardId = leaderboardSelect.value;
         if (!selectedLeaderboardId) {
             throw new Error('No leaderboard selected');
         }
@@ -292,15 +321,38 @@ async function fetchAndStoreData() {
         const parser = new DOMParser();
         const leaderboardDoc = parser.parseFromString(leaderboardData, 'text/xml');
 
-        const selectedLeaderboard = Array.from(leaderboardDoc.querySelectorAll('leaderboard')).find(lb =>
+        const allLeaderboards = Array.from(leaderboardDoc.querySelectorAll('leaderboard'));
+        let selectedLeaderboard = allLeaderboards.find(lb =>
             lb.querySelector('lbid')?.textContent === selectedLeaderboardId
         );
         if (!selectedLeaderboard) {
             throw new Error('Selected leaderboard not found');
         }
 
-        const totalEntries = parseInt(selectedLeaderboard.querySelector('entries')?.textContent || '0');
+        let totalEntries = parseInt(selectedLeaderboard.querySelector('entries')?.textContent || '0');
         console.log('Total entries in leaderboard:', totalEntries);
+
+        // If the chosen leaderboard is empty (e.g. a freshly-created season board),
+        // hop to the most recent one that actually has data instead of erroring.
+        if (totalEntries === 0) {
+            const selectedIdx = leaderboardInfo.findIndex(lb => lb.id === selectedLeaderboardId);
+            const fallbackId = findLatestNonEmptyId(
+                selectedIdx >= 0 ? selectedIdx : leaderboardInfo.length - 1
+            );
+
+            if (fallbackId && fallbackId !== selectedLeaderboardId) {
+                console.warn(`Leaderboard ${selectedLeaderboardId} has no data; hopping to ${fallbackId}.`);
+                selectedLeaderboardId = fallbackId;
+                leaderboardSelect.value = fallbackId;
+                sessionStorage.setItem(STORAGE_KEYS.SELECTED_LEADERBOARD, fallbackId);
+
+                selectedLeaderboard = allLeaderboards.find(lb =>
+                    lb.querySelector('lbid')?.textContent === selectedLeaderboardId
+                );
+                totalEntries = parseInt(selectedLeaderboard?.querySelector('entries')?.textContent || '0', 10);
+                console.log('Hopped leaderboard total entries:', totalEntries);
+            }
+        }
 
         // Fetch leaderboard entries with pagination
         console.log('Fetching leaderboard entries...');
