@@ -367,3 +367,206 @@ button.secondary:hover:not(:disabled) {
     color: var(--text-secondary);
     font-size: 0.95rem;
 }
+
+/* start.gg account field (upload) */
+.author-field .required {
+    color: var(--primary-color);
+    font-size: 0.8rem;
+}
+
+.field-hint {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    margin: 0 0 0.5rem;
+}
+
+.sgg-search-wrap {
+    position: relative;
+    max-width: 420px;
+}
+
+.sgg-search-wrap input[type="text"] {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border: 2px solid var(--background-color);
+    border-radius: 8px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    font-weight: 300;
+    transition: border-color 0.2s ease;
+}
+
+.sgg-search-wrap input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.sgg-results {
+    list-style: none;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    max-height: 260px;
+    overflow-y: auto;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.sgg-result {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.55rem 0.85rem;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sgg-result:last-child {
+    border-bottom: none;
+}
+
+.sgg-result:hover {
+    background-color: rgba(108, 99, 255, 0.12);
+}
+
+.sgg-result-tag {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.sgg-result-slug {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-family: 'Ubuntu Sans Mono', 'Consolas', monospace;
+}
+
+.sgg-result-empty {
+    padding: 0.6rem 0.85rem;
+    font-size: 0.85rem;
+}
+
+.sgg-selected {
+    margin-top: 0.6rem;
+}
+
+.sgg-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.7rem;
+    background-color: rgba(108, 99, 255, 0.14);
+    border: 1px solid var(--primary-color);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--text-color);
+}
+
+.sgg-chip a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.sgg-chip a:hover {
+    text-decoration: underline;
+}
+
+.sgg-clear {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0;
+    line-height: 1;
+}
+
+.sgg-clear:hover {
+    background: none;
+    color: var(--error-color);
+}
+
+.upload-status.warn {
+    color: #c9a227;
+}
+
+/* Download-by-bracket */
+.bracket-field {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.bracket-field label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.4rem;
+}
+
+.bracket-row {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.bracket-row input[type="text"] {
+    flex: 1 1 280px;
+    min-width: 0;
+    padding: 0.6rem 0.9rem;
+    border: 2px solid var(--background-color);
+    border-radius: 8px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    font-weight: 300;
+    transition: border-color 0.2s ease;
+}
+
+.bracket-row input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.bracket-status {
+    margin: 0.6rem 0 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    min-height: 1em;
+}
+
+.bracket-status.error { color: var(--error-color); }
+.bracket-status.success { color: var(--success-color); }
+.bracket-status.warn { color: #c9a227; }
+
+/* start.gg link on each browsed tag */
+.tag-list-item {
+    display: flex;
+    align-items: center;
+}
+
+.tag-list-item .tag-list-label {
+    flex: 1 1 auto;
+}
+
+.tag-sgg-link {
+    flex-shrink: 0;
+    margin: 0 0.85rem 0 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.tag-sgg-link:hover {
+    text-decoration: underline;
+}

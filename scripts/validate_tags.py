@@ -29,6 +29,8 @@ AUTHOR_MAX = 64
 ALLOWED_RE = re.compile(r'^tags/data/[^/]+\.(r2tag\.zip|json)$')
 ZIP_RE = re.compile(r'^tags/data/(.+)\.r2tag\.zip$')
 SIDE_RE = re.compile(r'^tags/data/(.+)\.json$')
+SGG_SLUG_RE = re.compile(r'^user/[a-z0-9]+$', re.IGNORECASE)
+SGG_TAG_MAX = 64
 
 
 def fail(msg):
@@ -132,6 +134,19 @@ def validate_sidecar(stem, path):
         fail(f"{path}: 'file' must be '{stem}.r2tag.zip', got {file!r}.")
     if any(ord(c) < 32 for c in name + author):
         fail(f"{path}: 'name'/'author' contain control characters.")
+
+    sgg = data.get("startgg")
+    if sgg is not None:
+        if not isinstance(sgg, dict):
+            fail(f"{path}: 'startgg' must be an object.")
+        slug = sgg.get("slug", "")
+        tag = sgg.get("tag", "")
+        if not isinstance(slug, str) or not SGG_SLUG_RE.match(slug):
+            fail(f"{path}: 'startgg.slug' must look like 'user/<id>', got {slug!r}.")
+        if not isinstance(tag, str) or len(tag) > SGG_TAG_MAX:
+            fail(f"{path}: 'startgg.tag' must be a string up to {SGG_TAG_MAX} chars.")
+        if any(ord(c) < 32 for c in tag):
+            fail(f"{path}: 'startgg.tag' contains control characters.")
 
 
 if __name__ == "__main__":

@@ -17,10 +17,31 @@
 const MAX_ZIP_BYTES = 512 * 1024;
 const MAX_FILES = 10;
 
+// start.gg's website API — unauthenticated, same endpoint the site itself uses.
+const STARTGG_API = 'https://www.start.gg/api/-/gql';
+const STARTGG_HEADERS = {
+  'Content-Type': 'application/json',
+  'client-version': '20',
+  'User-Agent':
+    'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 ' +
+    '(KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36',
+};
+const SLUG_RE = /^user\/[a-z0-9]+$/i;
+
 export default {
   async fetch(request, env) {
     const cors = corsHeaders(env);
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
+
+    const url = new URL(request.url);
+
+    // start.gg lookups are proxied here so the page can query them despite the
+    // start.gg API not sending cross-origin CORS headers. Only a few fixed,
+    // read-only operations are exposed — never an open GraphQL passthrough.
+    if (request.method === 'GET' && url.pathname.startsWith('/startgg/')) {
+      return handleStartgg(env, url, cors);
+    }
+
     if (request.method !== 'POST') return json({ error: 'POST only' }, 405, cors);
 
     let form;
@@ -31,6 +52,11 @@ export default {
     }
 
     const author = (form.get('author') || '').toString().trim().slice(0, 64);
+    const startggSlug = (form.get('startgg_slug') || '').toString().trim().slice(0, 64);
+    const startggTag = (form.get('startgg_tag') || '').toString().trim().slice(0, 64);
+    if (!SLUG_RE.test(startggSlug))
+      return json({ error: 'A start.gg user must be linked (e.g. user/6192f6f1).' }, 400, cors);
+
     const files = form.getAll('tags').filter(f => typeof f === 'object' && f.name);
     if (!files.length) return json({ error: 'No files provided.' }, 400, cors);
     if (files.length > MAX_FILES) return json({ error: `Too many files (max ${MAX_FILES}).` }, 400, cors);
@@ -49,13 +75,101 @@ export default {
 
     try {
       const token = await getInstallationToken(env);
-      const pr = await openPullRequest(env, token, fileData, author);
+      const pr = await openPullRequest(env, token, fileData, author, {
+        slug: startggSlug,
+        tag: startggTag,
+      });
       return json({ ok: true, pr: pr.html_url, number: pr.number }, 200, cors);
     } catch (err) {
       return json({ error: `Could not open PR: ${err.message}` }, 502, cors);
     }
   },
 };
+
+// ---- start.gg proxy -------------------------------------------------------
+
+async function handleStartgg(env, url, cors) {
+  const op = url.pathname.slice('/startgg/'.length);
+  try {
+    if (op === 'search') {
+      const q = (url.searchParams.get('q') || '').trim().slice(0, 64);
+      if (q.length < 2) return json({ players: [] }, 200, cors);
+      const data = await startggGql(
+        `query($q:String!){ players(query:{ perPage:12, filter:{ gamerTag:$q } }){
+           nodes{ gamerTag prefix user{ slug } } } }`,
+        { q }
+      );
+      const seen = new Set();
+      const players = ((data.players && data.players.nodes) || [])
+        .filter(n => n.user && n.user.slug)
+        .map(n => ({ gamerTag: n.gamerTag || '', prefix: n.prefix || '', slug: n.user.slug }))
+        .filter(p => (seen.has(p.slug) ? false : seen.add(p.slug)));
+      return json({ players }, 200, cors);
+    }
+
+    if (op === 'user') {
+      const slug = (url.searchParams.get('slug') || '').trim();
+      if (!SLUG_RE.test(slug)) return json({ error: 'Bad user slug.' }, 400, cors);
+      const data = await startggGql(
+        `query($slug:String!){ user(slug:$slug){ slug player{ gamerTag prefix } } }`,
+        { slug }
+      );
+      const u = data.user;
+      if (!u) return json({ error: 'User not found.' }, 404, cors);
+      return json({
+        slug: u.slug,
+        gamerTag: (u.player && u.player.gamerTag) || '',
+        prefix: (u.player && u.player.prefix) || '',
+      }, 200, cors);
+    }
+
+    if (op === 'event') {
+      const slug = (url.searchParams.get('slug') || '').trim().slice(0, 200);
+      if (!/^tournament\/[^/]+\/event\/[^/]+$/i.test(slug))
+        return json({ error: 'Expected an event slug like tournament/<t>/event/<e>.' }, 400, cors);
+      const entrants = [];
+      let page = 1, totalPages = 1;
+      do {
+        const data = await startggGql(
+          `query($slug:String!,$page:Int!){ event(slug:$slug){ name
+             entrants(query:{ page:$page, perPage:64 }){
+               pageInfo{ totalPages }
+               nodes{ name participants{ gamerTag user{ slug } } } } } }`,
+          { slug, page }
+        );
+        const ev = data.event;
+        if (!ev) return json({ error: 'Event not found.' }, 404, cors);
+        const c = ev.entrants || {};
+        totalPages = (c.pageInfo && c.pageInfo.totalPages) || 1;
+        for (const n of c.nodes || []) {
+          for (const p of n.participants || []) {
+            if (p.user && p.user.slug)
+              entrants.push({ entrant: n.name || '', gamerTag: p.gamerTag || '', slug: p.user.slug });
+          }
+        }
+        if (page === 1) var eventName = ev.name || '';
+        page++;
+      } while (page <= totalPages && page <= 30); // safety cap (~1900 entrants)
+      return json({ event: eventName, entrants }, 200, cors);
+    }
+
+    return json({ error: 'Unknown start.gg operation.' }, 404, cors);
+  } catch (err) {
+    return json({ error: `start.gg lookup failed: ${err.message}` }, 502, cors);
+  }
+}
+
+async function startggGql(query, variables) {
+  const res = await fetch(STARTGG_API, {
+    method: 'POST',
+    headers: STARTGG_HEADERS,
+    body: JSON.stringify({ query, variables }),
+  });
+  if (!res.ok) throw new Error(`start.gg ${res.status}`);
+  const out = await res.json();
+  if (out.errors && out.errors.length) throw new Error('GraphQL error');
+  return out.data || {};
+}
 
 // ---- GitHub App auth ------------------------------------------------------
 
@@ -98,7 +212,7 @@ async function importPrivateKey(pem) {
 
 // ---- Open the PR via the Git Data API -------------------------------------
 
-async function openPullRequest(env, token, fileData, author) {
+async function openPullRequest(env, token, fileData, author, startgg) {
   const owner = env.REPO_OWNER;
   const repo = env.REPO_NAME;
   const base = env.BASE_BRANCH || 'main';
@@ -126,7 +240,13 @@ async function openPullRequest(env, token, fileData, author) {
     tree.push({ path: `tags/data/${stem}.r2tag.zip`, mode: '100644', type: 'blob', sha: zipBlob.sha });
 
     const sidecar = JSON.stringify(
-      { name: displayName, author, file: `${stem}.r2tag.zip`, uploaded: now },
+      {
+        name: displayName,
+        author,
+        file: `${stem}.r2tag.zip`,
+        uploaded: now,
+        ...(startgg && startgg.slug ? { startgg: { slug: startgg.slug, tag: startgg.tag || '' } } : {}),
+      },
       null, 2
     ) + '\n';
     const sideBlob = await gh(env, api('/git/blobs'), {
@@ -195,7 +315,7 @@ async function gh(env, path, { method = 'GET', token, body } = {}) {
 function corsHeaders(env) {
   return {
     'Access-Control-Allow-Origin': env.ALLOWED_ORIGIN || '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   };
 }

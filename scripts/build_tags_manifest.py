@@ -22,12 +22,16 @@ def main():
         with open(path, encoding="utf-8") as f:
             d = json.load(f)
         stem = os.path.basename(path)[:-len(".json")]
-        entries.append({
+        entry = {
             "name": d["name"],
             "author": d.get("author", ""),
             "file": d.get("file", f"{stem}.r2tag.zip"),
             "uploaded": d.get("uploaded"),
-        })
+        }
+        sgg = d.get("startgg")
+        if isinstance(sgg, dict) and sgg.get("slug"):
+            entry["startgg"] = {"slug": sgg["slug"], "tag": sgg.get("tag", "")}
+        entries.append(entry)
 
     # Newest first; fall back to name for stable ordering.
     entries.sort(key=lambda e: (e.get("uploaded") or "", e["name"]), reverse=True)

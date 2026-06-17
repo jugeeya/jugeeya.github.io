@@ -23,6 +23,7 @@ const POLL_INTERVAL_MS = 45000;
 let selectedFiles = [];
 let allTags = [];
 let tagSearchQuery = '';
+let selectedStartgg = null; // { slug, tag } once a start.gg account is chosen
 
 // DOM
 const dropzone = document.getElementById('dropzone');
@@ -35,6 +36,12 @@ const uploadStatus = document.getElementById('uploadStatus');
 const tagBrowser = document.getElementById('tagBrowser');
 const pendingPanel = document.getElementById('pendingPanel');
 const pendingList = document.getElementById('pendingList');
+const sggSearch = document.getElementById('sggSearch');
+const sggResults = document.getElementById('sggResults');
+const sggSelected = document.getElementById('sggSelected');
+const bracketInput = document.getElementById('bracketInput');
+const bracketGo = document.getElementById('bracketGo');
+const bracketStatus = document.getElementById('bracketStatus');
 
 // ---- Helpers --------------------------------------------------------------
 
@@ -100,10 +107,19 @@ function renderFileList() {
         fileListEl.appendChild(li);
     });
 
-    const hasValid = selectedFiles.some(f => validateFile(f).ok);
-    submitButton.disabled = !hasValid;
+    updateSubmitState();
     clearButton.disabled = selectedFiles.length === 0;
     if (selectedFiles.length === 0) setStatus('');
+}
+
+function updateSubmitState() {
+    const hasValid = selectedFiles.some(f => validateFile(f).ok);
+    submitButton.disabled = !hasValid || !selectedStartgg;
+    if (hasValid && !selectedStartgg && !uploadStatus.textContent) {
+        setStatus('Link your start.gg account below to submit.', 'warn');
+    } else if (uploadStatus.classList.contains('warn')) {
+        setStatus('');
+    }
 }
 
 // ---- Submit ---------------------------------------------------------------
@@ -111,6 +127,10 @@ function renderFileList() {
 async function submitTags() {
     const valid = selectedFiles.filter(f => validateFile(f).ok);
     if (valid.length === 0) return;
+    if (!selectedStartgg) {
+        setStatus('Link your start.gg account before submitting.', 'error');
+        return;
+    }
 
     if (!UPLOAD_ENDPOINT) {
         setStatus(
@@ -127,6 +147,8 @@ async function submitTags() {
         const form = new FormData();
         valid.forEach(f => form.append('tags', f, f.name));
         form.append('author', (authorInput?.value || '').trim());
+        form.append('startgg_slug', selectedStartgg.slug);
+        form.append('startgg_tag', selectedStartgg.tag || '');
 
         const res = await fetch(UPLOAD_ENDPOINT, { method: 'POST', body: form });
         const data = await res.json().catch(() => ({}));
@@ -252,6 +274,18 @@ function renderTagBrowser() {
             label.appendChild(checkbox);
             label.appendChild(name);
             li.appendChild(label);
+
+            if (tag.startgg && tag.startgg.slug) {
+                const a = document.createElement('a');
+                a.className = 'tag-sgg-link';
+                a.href = `https://www.start.gg/${tag.startgg.slug}`;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.textContent = tag.startgg.tag ? `@${tag.startgg.tag}` : 'start.gg';
+                a.title = 'View start.gg profile';
+                li.appendChild(a);
+            }
+
             list.appendChild(li);
         });
     }
@@ -435,6 +469,172 @@ function relativeTime(ts) {
 function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, (c) =>
         ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+// ---- start.gg account linking (upload) ------------------------------------
+
+const STARTGG_BASE = UPLOAD_ENDPOINT ? `${UPLOAD_ENDPOINT}/startgg` : null;
+let sggSearchTimer = null;
+let sggSearchSeq = 0; // guard against out-of-order responses
+
+// Pull a `user/xxxx` slug out of a pasted profile URL or raw slug.
+function parseUserSlug(text) {
+    const s = (text || '').trim();
+    const m = s.match(/user\/([a-z0-9]+)/i);
+    return m ? `user/${m[1]}` : null;
+}
+
+function renderStartggSelected() {
+    if (!selectedStartgg) {
+        sggSelected.hidden = true;
+        sggSelected.innerHTML = '';
+        return;
+    }
+    sggSelected.hidden = false;
+    const label = selectedStartgg.tag ? `@${escapeHtml(selectedStartgg.tag)}` : escapeHtml(selectedStartgg.slug);
+    sggSelected.innerHTML =
+        `<span class="sgg-chip">Linked: ` +
+        `<a href="https://www.start.gg/${encodeURI(selectedStartgg.slug)}" target="_blank" rel="noopener">${label}</a>` +
+        `<button type="button" class="sgg-clear" title="Remove">✕</button></span>`;
+    sggSelected.querySelector('.sgg-clear').addEventListener('click', () => {
+        selectedStartgg = null;
+        renderStartggSelected();
+        sggSearch.value = '';
+        updateSubmitState();
+    });
+}
+
+function chooseStartgg(player) {
+    selectedStartgg = { slug: player.slug, tag: player.gamerTag || player.tag || '' };
+    hideSggResults();
+    sggSearch.value = '';
+    renderStartggSelected();
+    updateSubmitState();
+}
+
+function hideSggResults() {
+    sggResults.hidden = true;
+    sggResults.innerHTML = '';
+}
+
+function renderSggResults(players) {
+    if (!players.length) {
+        sggResults.innerHTML = '<li class="sgg-result-empty muted">No start.gg accounts found.</li>';
+        sggResults.hidden = false;
+        return;
+    }
+    sggResults.innerHTML = '';
+    players.forEach(p => {
+        const li = document.createElement('li');
+        li.className = 'sgg-result';
+        const tag = (p.prefix ? `${p.prefix} | ` : '') + (p.gamerTag || '(no tag)');
+        li.innerHTML = `<span class="sgg-result-tag">${escapeHtml(tag)}</span>` +
+            `<span class="sgg-result-slug">${escapeHtml(p.slug)}</span>`;
+        li.addEventListener('click', () => chooseStartgg(p));
+        sggResults.appendChild(li);
+    });
+    sggResults.hidden = false;
+}
+
+async function runSggSearch(query) {
+    if (!STARTGG_BASE) return;
+    const seq = ++sggSearchSeq;
+
+    // A pasted profile URL / slug resolves directly to one account.
+    const slug = parseUserSlug(query);
+    try {
+        if (slug) {
+            const res = await fetch(`${STARTGG_BASE}/user?slug=${encodeURIComponent(slug)}`);
+            const data = await res.json();
+            if (seq !== sggSearchSeq) return;
+            if (!res.ok) { renderSggResults([]); return; }
+            renderSggResults([{ slug: data.slug, gamerTag: data.gamerTag, prefix: data.prefix }]);
+            return;
+        }
+        const res = await fetch(`${STARTGG_BASE}/search?q=${encodeURIComponent(query)}`);
+        const data = await res.json();
+        if (seq !== sggSearchSeq) return;
+        renderSggResults(res.ok ? (data.players || []) : []);
+    } catch {
+        if (seq === sggSearchSeq) renderSggResults([]);
+    }
+}
+
+if (sggSearch) {
+    sggSearch.addEventListener('input', () => {
+        const q = sggSearch.value.trim();
+        clearTimeout(sggSearchTimer);
+        if (q.length < 2) { hideSggResults(); return; }
+        sggSearchTimer = setTimeout(() => runSggSearch(q), 250);
+    });
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.sgg-search-wrap')) hideSggResults();
+    });
+}
+
+// ---- Download by start.gg bracket -----------------------------------------
+
+// Pull `tournament/<t>/event/<e>` out of a start.gg event URL.
+function parseEventSlug(text) {
+    const s = (text || '').trim();
+    const m = s.match(/tournament\/([^/\s?#]+)\/event\/([^/\s?#]+)/i);
+    return m ? `tournament/${m[1]}/event/${m[2]}` : null;
+}
+
+function setBracketStatus(message, kind = '') {
+    bracketStatus.textContent = message;
+    bracketStatus.className = `bracket-status${kind ? ' ' + kind : ''}`;
+}
+
+async function findBracketTags() {
+    if (!STARTGG_BASE) {
+        setBracketStatus('Bracket lookup isn’t connected yet.', 'error');
+        return;
+    }
+    const slug = parseEventSlug(bracketInput.value);
+    if (!slug) {
+        setBracketStatus('That doesn’t look like a start.gg event URL.', 'error');
+        return;
+    }
+
+    bracketGo.disabled = true;
+    setBracketStatus('Looking up entrants…');
+    try {
+        const res = await fetch(`${STARTGG_BASE}/event?slug=${encodeURIComponent(slug)}`);
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || `${res.status}`);
+
+        const slugs = new Set((data.entrants || []).map(e => e.slug));
+        const matches = allTags.filter(t => t.startgg && slugs.has(t.startgg.slug));
+
+        // Select the matching tags in the browser and clear the rest.
+        const matchFiles = new Set(matches.map(t => t.file));
+        tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => {
+            cb.checked = matchFiles.has(cb.value);
+        });
+        updateDownloadButton();
+
+        const evName = data.event ? ` for “${data.event}”` : '';
+        if (!matches.length) {
+            setBracketStatus(
+                `No published tags match the ${slugs.size} linked entrant(s)${evName}.`, 'warn');
+        } else {
+            setBracketStatus(
+                `Selected ${matches.length} tag(s)${evName} — scroll down and click Download.`, 'success');
+            tagBrowser.querySelector('#downloadSelected')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    } catch (err) {
+        setBracketStatus(`Lookup failed: ${err.message}`, 'error');
+    } finally {
+        bracketGo.disabled = false;
+    }
+}
+
+if (bracketGo) {
+    bracketGo.addEventListener('click', findBracketTags);
+    bracketInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); findBracketTags(); }
+    });
 }
 
 // ---- Wire up events -------------------------------------------------------

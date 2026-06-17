@@ -54,12 +54,27 @@ In `../tags/tags.js`, set:
 const UPLOAD_ENDPOINT = 'https://r2tag-broker.<your-subdomain>.workers.dev';
 ```
 
+## start.gg proxy (GET /startgg/*)
+
+Submitting requires linking a start.gg account, and tags can be downloaded by
+bracket. The page can't call start.gg directly (its API sends no cross-origin
+CORS headers), so this Worker proxies a few fixed, read-only lookups — never an
+open GraphQL passthrough:
+
+- `GET /startgg/search?q=<gamerTag>` → `{ players: [{ gamerTag, prefix, slug }] }`
+- `GET /startgg/user?slug=user/<id>` → `{ slug, gamerTag, prefix }`
+- `GET /startgg/event?slug=tournament/<t>/event/<e>` → `{ event, entrants: [{ entrant, gamerTag, slug }] }`
+
+All use start.gg's unauthenticated website endpoint (no API token).
+
 ## How a submission flows
 
-1. Visitor drops a `.r2tag.zip` and submits → POST to this Worker.
-2. Worker checks size / extension / zip magic, then commits
-   `tags/data/<slug>.r2tag.zip` + `tags/data/<slug>.json` (metadata) on a new
-   branch and opens a PR.
+1. Visitor drops a `.r2tag.zip`, links a start.gg account, and submits → POST to
+   this Worker (with `startgg_slug` / `startgg_tag`).
+2. Worker checks size / extension / zip magic and that a valid `user/<id>` slug
+   was supplied, then commits `tags/data/<slug>.r2tag.zip` +
+   `tags/data/<slug>.json` (metadata, including `startgg`) on a new branch and
+   opens a PR.
 3. The Action re-validates authoritatively (path restriction, single real GVAS
    `.r2tag` inside the zip, size caps, sidecar shape), rebuilds
    `tags/data/index.json`, and squash-merges.

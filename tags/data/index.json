@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-06-17T21:32:20Z",
+  "updated": "2026-06-17T22:57:01Z",
   "tags": [
     {
       "name": "KIM",
@@ -18,7 +18,11 @@
       "name": "JUGZ!",
       "author": "jugeeya",
       "file": "jugz-ao44wp.r2tag.zip",
-      "uploaded": "2026-06-17T19:53:03Z"
+      "uploaded": "2026-06-17T19:53:03Z",
+      "startgg": {
+        "slug": "user/6192f6f1",
+        "tag": "jugeeya"
+      }
     }
   ]
 }
