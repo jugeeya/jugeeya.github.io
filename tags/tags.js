@@ -528,8 +528,14 @@ function renderSggResults(players) {
         const li = document.createElement('li');
         li.className = 'sgg-result';
         const tag = (p.prefix ? `${p.prefix} | ` : '') + (p.gamerTag || '(no tag)');
-        li.innerHTML = `<span class="sgg-result-tag">${escapeHtml(tag)}</span>` +
-            `<span class="sgg-result-slug">${escapeHtml(p.slug)}</span>`;
+        const avatar = p.image
+            ? `<img class="sgg-avatar" src="${escapeHtml(p.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">`
+            : `<span class="sgg-avatar sgg-avatar-empty">${escapeHtml((p.gamerTag || '?').slice(0, 1).toUpperCase())}</span>`;
+        li.innerHTML = avatar +
+            `<span class="sgg-result-text">` +
+            `<span class="sgg-result-tag">${escapeHtml(tag)}</span>` +
+            `<span class="sgg-result-slug">${escapeHtml(p.slug)}</span>` +
+            `</span>`;
         li.addEventListener('click', () => chooseStartgg(p));
         sggResults.appendChild(li);
     });

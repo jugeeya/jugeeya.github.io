@@ -95,14 +95,19 @@ async function handleStartgg(env, url, cors) {
       const q = (url.searchParams.get('q') || '').trim().slice(0, 64);
       if (q.length < 2) return json({ players: [] }, 200, cors);
       const data = await startggGql(
-        `query($q:String!){ players(query:{ perPage:12, filter:{ gamerTag:$q } }){
-           nodes{ gamerTag prefix user{ slug } } } }`,
+        `query($q:String!){ players(query:{ perPage:30, filter:{ gamerTag:$q } }){
+           nodes{ gamerTag prefix user{ slug images(type:"profile"){ url } } } } }`,
         { q }
       );
       const seen = new Set();
       const players = ((data.players && data.players.nodes) || [])
         .filter(n => n.user && n.user.slug)
-        .map(n => ({ gamerTag: n.gamerTag || '', prefix: n.prefix || '', slug: n.user.slug }))
+        .map(n => ({
+          gamerTag: n.gamerTag || '',
+          prefix: n.prefix || '',
+          slug: n.user.slug,
+          image: ((n.user.images || [])[0] || {}).url || '',
+        }))
         .filter(p => (seen.has(p.slug) ? false : seen.add(p.slug)));
       return json({ players }, 200, cors);
     }
