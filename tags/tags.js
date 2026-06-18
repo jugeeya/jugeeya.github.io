@@ -219,14 +219,14 @@ function updateDownloadButton() {
         : `Download ${count} tags`;
 }
 
+// Builds the browser chrome (search box, action buttons, list container) once
+// and wires its listeners. The list itself is (re)drawn by renderTagList — so
+// typing in the search box never recreates the input and never drops focus.
 function renderTagBrowser() {
     if (!allTags.length) {
         tagBrowser.innerHTML = '<p class="muted">No shared tags yet — be the first to upload one.</p>';
         return;
     }
-
-    const previouslySelected = new Set(getSelectedTagFiles());
-    const visible = filteredTags();
 
     tagBrowser.innerHTML =
         '<div class="tag-browser-toolbar">' +
@@ -244,10 +244,34 @@ function renderTagBrowser() {
     searchInput.value = tagSearchQuery;
     searchInput.addEventListener('input', () => {
         tagSearchQuery = searchInput.value;
-        renderTagBrowser();
+        renderTagList(); // redraw only the list; keep the search box (and focus)
     });
 
+    tagBrowser.querySelector('#selectAllTags').addEventListener('click', () => {
+        tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => { cb.checked = true; });
+        updateDownloadButton();
+    });
+
+    tagBrowser.querySelector('#clearTagSelection').addEventListener('click', () => {
+        tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => { cb.checked = false; });
+        updateDownloadButton();
+    });
+
+    tagBrowser.querySelector('#downloadSelected').addEventListener('click', downloadSelectedTags);
+
+    renderTagList();
+}
+
+// Redraws just the <ul#tagList> for the current search filter, preserving the
+// selection of any items that remain visible.
+function renderTagList() {
     const list = tagBrowser.querySelector('#tagList');
+    if (!list) return;
+
+    const previouslySelected = new Set(getSelectedTagFiles());
+    const visible = filteredTags();
+
+    list.innerHTML = '';
 
     if (!visible.length) {
         list.innerHTML = '<li class="tag-list-empty muted">No tags match your search.</li>';
@@ -290,17 +314,6 @@ function renderTagBrowser() {
         });
     }
 
-    tagBrowser.querySelector('#selectAllTags').addEventListener('click', () => {
-        tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => { cb.checked = true; });
-        updateDownloadButton();
-    });
-
-    tagBrowser.querySelector('#clearTagSelection').addEventListener('click', () => {
-        tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => { cb.checked = false; });
-        updateDownloadButton();
-    });
-
-    tagBrowser.querySelector('#downloadSelected').addEventListener('click', downloadSelectedTags);
     updateDownloadButton();
 }
 
