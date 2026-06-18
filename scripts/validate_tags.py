@@ -51,39 +51,42 @@ def main():
     if not diff:
         fail("No file changes detected in this PR.")
 
-    zips, sidecars = {}, {}
+    stems = set()
     for line in diff.splitlines():
         parts = line.split("\t")
         status, path = parts[0], parts[-1]
 
-        if status[0] != "A":
-            fail(f"Only new files may be added; '{path}' has status '{status}'. "
-                 "Submissions must not modify or delete existing files.")
+        # Adding a new tag (A) or replacing an existing one in place (M) is
+        # allowed; deletes, renames, and copies are not.
+        if status[0] not in ("A", "M"):
+            fail(f"Only adding or replacing tag files is allowed; '{path}' has status '{status}'. "
+                 "Submissions must not delete or rename existing files.")
         if not ALLOWED_RE.match(path):
             fail(f"'{path}' is outside the allowed set (tags/data/*.r2tag.zip + sidecar).")
         if path == "tags/data/index.json":
             fail("index.json is generated automatically — don't include it in a submission.")
 
-        m = ZIP_RE.match(path)
+        m = ZIP_RE.match(path) or SIDE_RE.match(path)
         if m:
-            zips[m.group(1)] = path
-            continue
-        m = SIDE_RE.match(path)
-        if m:
-            sidecars[m.group(1)] = path
+            stems.add(m.group(1))
 
-    if not zips:
-        fail("No .r2tag.zip files were added.")
-    if set(zips) != set(sidecars):
-        missing = (set(zips) ^ set(sidecars))
-        fail(f"Each .r2tag.zip needs a matching .json sidecar (and vice versa). Mismatch: {sorted(missing)}")
+    if not stems:
+        fail("No tag files (.r2tag.zip + sidecar) were added or changed.")
 
-    for stem, path in zips.items():
-        validate_zip(stem, path)
-    for stem, path in sidecars.items():
-        validate_sidecar(stem, path)
+    # Validate the complete pair on disk for every touched stem. This covers
+    # both a fresh add and a replace where only one half (e.g. the sidecar's
+    # timestamp) changed — the other half is the already-published file.
+    for stem in sorted(stems):
+        zip_path = f"tags/data/{stem}.r2tag.zip"
+        side_path = f"tags/data/{stem}.json"
+        if not os.path.exists(zip_path):
+            fail(f"{stem}: missing '{zip_path}' — each tag needs a .r2tag.zip.")
+        if not os.path.exists(side_path):
+            fail(f"{stem}: missing '{side_path}' — each .r2tag.zip needs a .json sidecar.")
+        validate_zip(stem, zip_path)
+        validate_sidecar(stem, side_path)
 
-    print(f"OK: {len(zips)} tag submission(s) validated.")
+    print(f"OK: {len(stems)} tag submission(s) validated.")
 
 
 def validate_zip(stem, path):
@@ -136,17 +139,16 @@ def validate_sidecar(stem, path):
         fail(f"{path}: 'name'/'author' contain control characters.")
 
     sgg = data.get("startgg")
-    if sgg is not None:
-        if not isinstance(sgg, dict):
-            fail(f"{path}: 'startgg' must be an object.")
-        slug = sgg.get("slug", "")
-        tag = sgg.get("tag", "")
-        if not isinstance(slug, str) or not SGG_SLUG_RE.match(slug):
-            fail(f"{path}: 'startgg.slug' must look like 'user/<id>', got {slug!r}.")
-        if not isinstance(tag, str) or len(tag) > SGG_TAG_MAX:
-            fail(f"{path}: 'startgg.tag' must be a string up to {SGG_TAG_MAX} chars.")
-        if any(ord(c) < 32 for c in tag):
-            fail(f"{path}: 'startgg.tag' contains control characters.")
+    if not isinstance(sgg, dict):
+        fail(f"{path}: 'startgg' is required and must be an object linking a start.gg user.")
+    slug = sgg.get("slug", "")
+    tag = sgg.get("tag", "")
+    if not isinstance(slug, str) or not SGG_SLUG_RE.match(slug):
+        fail(f"{path}: 'startgg.slug' must look like 'user/<id>', got {slug!r}.")
+    if not isinstance(tag, str) or len(tag) > SGG_TAG_MAX:
+        fail(f"{path}: 'startgg.tag' must be a string up to {SGG_TAG_MAX} chars.")
+    if any(ord(c) < 32 for c in tag):
+        fail(f"{path}: 'startgg.tag' contains control characters.")
 
 
 if __name__ == "__main__":

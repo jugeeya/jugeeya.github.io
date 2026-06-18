@@ -227,9 +227,14 @@ async function openPullRequest(env, token, fileData, author, startgg) {
   const tree = [];
   const slugs = [];
 
+  // Deterministic per (tag name, start.gg user) so a re-upload of the same tag
+  // by the same person lands on the same path and replaces it, rather than
+  // piling up duplicates the way a random suffix did.
+  const startggId = (startgg.slug || '').replace(/^user\//i, '');
+
   for (const f of fileData) {
     const displayName = f.name.replace(/(\.r2tag)?\.zip$/i, '');
-    const stem = `${slugify(displayName)}-${rand()}`;
+    const stem = `${slugify(displayName)}-${startggId}`;
     slugs.push(stem);
 
     const zipBlob = await gh(env, api('/git/blobs'), {
@@ -273,7 +278,9 @@ async function openPullRequest(env, token, fileData, author, startgg) {
     },
   });
 
-  const branch = `tag-submit/${slugs[0]}`;
+  // File paths are deterministic, but the branch keeps a random suffix so a
+  // re-upload doesn't collide with a stale/pending branch of the same name.
+  const branch = `tag-submit/${slugs[0]}-${rand()}`;
   await gh(env, api('/git/refs'), {
     token,
     method: 'POST',
