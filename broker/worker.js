@@ -52,17 +52,31 @@ export default {
     }
 
     const author = (form.get('author') || '').toString().trim().slice(0, 64);
-    const startggSlug = (form.get('startgg_slug') || '').toString().trim().slice(0, 64);
-    const startggTag = (form.get('startgg_tag') || '').toString().trim().slice(0, 64);
-    if (!SLUG_RE.test(startggSlug))
-      return json({ error: 'A start.gg user must be linked (e.g. user/6192f6f1).' }, 400, cors);
 
     const files = form.getAll('tags').filter(f => typeof f === 'object' && f.name);
     if (!files.length) return json({ error: 'No files provided.' }, 400, cors);
     if (files.length > MAX_FILES) return json({ error: `Too many files (max ${MAX_FILES}).` }, 400, cors);
 
+    // start.gg links may be given once (applies to every file — the website's
+    // case) or once per file in order (the desktop tool's per-tag case).
+    const rawSlugs = form.getAll('startgg_slug').map(s => s.toString().trim().slice(0, 64));
+    const rawTags = form.getAll('startgg_tag').map(s => s.toString().trim().slice(0, 64));
+    let startggList;
+    if (rawSlugs.length === 1) {
+      startggList = files.map(() => ({ slug: rawSlugs[0], tag: rawTags[0] || '' }));
+    } else if (rawSlugs.length === files.length) {
+      startggList = files.map((_, i) => ({ slug: rawSlugs[i], tag: rawTags[i] || '' }));
+    } else {
+      return json({ error: 'startgg_slug must be given once or once per file.' }, 400, cors);
+    }
+    for (const s of startggList) {
+      if (!SLUG_RE.test(s.slug))
+        return json({ error: 'A start.gg user must be linked (e.g. user/6192f6f1).' }, 400, cors);
+    }
+
     const fileData = [];
-    for (const f of files) {
+    for (let i = 0; i < files.length; i++) {
+      const f = files[i];
       if (!f.name.toLowerCase().endsWith('.zip'))
         return json({ error: `${f.name}: must be a .zip` }, 400, cors);
       const bytes = new Uint8Array(await f.arrayBuffer());
@@ -70,15 +84,12 @@ export default {
         return json({ error: `${f.name}: too large (max ${MAX_ZIP_BYTES} bytes)` }, 400, cors);
       if (bytes[0] !== 0x50 || bytes[1] !== 0x4b) // "PK"
         return json({ error: `${f.name}: not a zip archive` }, 400, cors);
-      fileData.push({ name: f.name, bytes });
+      fileData.push({ name: f.name, bytes, startgg: startggList[i] });
     }
 
     try {
       const token = await getInstallationToken(env);
-      const pr = await openPullRequest(env, token, fileData, author, {
-        slug: startggSlug,
-        tag: startggTag,
-      });
+      const pr = await openPullRequest(env, token, fileData, author);
       return json({ ok: true, pr: pr.html_url, number: pr.number }, 200, cors);
     } catch (err) {
       return json({ error: `Could not open PR: ${err.message}` }, 502, cors);
@@ -217,7 +228,7 @@ async function importPrivateKey(pem) {
 
 // ---- Open the PR via the Git Data API -------------------------------------
 
-async function openPullRequest(env, token, fileData, author, startgg) {
+async function openPullRequest(env, token, fileData, author) {
   const owner = env.REPO_OWNER;
   const repo = env.REPO_NAME;
   const base = env.BASE_BRANCH || 'main';
@@ -232,13 +243,12 @@ async function openPullRequest(env, token, fileData, author, startgg) {
   const tree = [];
   const slugs = [];
 
-  // Deterministic per (tag name, start.gg user) so a re-upload of the same tag
-  // by the same person lands on the same path and replaces it, rather than
-  // piling up duplicates the way a random suffix did.
-  const startggId = (startgg.slug || '').replace(/^user\//i, '');
-
   for (const f of fileData) {
     const displayName = f.name.replace(/(\.r2tag)?\.zip$/i, '');
+    // Deterministic per (tag name, start.gg user) so a re-upload of the same tag
+    // by the same person lands on the same path and replaces it, rather than
+    // piling up duplicates the way a random suffix did.
+    const startggId = (f.startgg.slug || '').replace(/^user\//i, '');
     const stem = `${slugify(displayName)}-${startggId}`;
     slugs.push(stem);
 
@@ -255,7 +265,7 @@ async function openPullRequest(env, token, fileData, author, startgg) {
         author,
         file: `${stem}.r2tag.zip`,
         uploaded: now,
-        ...(startgg && startgg.slug ? { startgg: { slug: startgg.slug, tag: startgg.tag || '' } } : {}),
+        startgg: { slug: f.startgg.slug, tag: f.startgg.tag || '' },
       },
       null, 2
     ) + '\n';
