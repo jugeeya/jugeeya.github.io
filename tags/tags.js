@@ -227,7 +227,18 @@ function tagDisplayName(tag) {
 function filteredTags() {
     const query = tagSearchQuery.trim().toLowerCase();
     if (!query) return allTags;
-    return allTags.filter(tag => tagDisplayName(tag).toLowerCase().includes(query));
+    return allTags.filter(tag => {
+        const sg = tag.startgg || {};
+        // Match the tag name, the author, and the linked start.gg gamer tag /
+        // slug (so you can find tags by start.gg account too).
+        const haystack = [
+            tagDisplayName(tag),
+            tag.author || '',
+            sg.tag || '',
+            sg.slug || '',
+        ].join(' ').toLowerCase();
+        return haystack.includes(query);
+    });
 }
 
 function getSelectedTagFiles() {
@@ -263,7 +274,7 @@ function renderTagBrowser() {
     tagBrowser.innerHTML =
         '<div class="tag-browser-toolbar">' +
         '<input type="search" id="tagSearch" class="tag-search" ' +
-        'placeholder="Search tags…" autocomplete="off">' +
+        'placeholder="Search tags or start.gg…" autocomplete="off">' +
         '<div class="tag-browser-actions">' +
         '<button type="button" id="selectAllTags" class="linkish">Select all</button>' +
         '<span class="tag-action-sep">·</span>' +
