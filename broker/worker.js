@@ -104,11 +104,13 @@ async function handleStartgg(env, url, cors) {
   try {
     if (op === 'search') {
       const q = (url.searchParams.get('q') || '').trim().slice(0, 64);
-      if (q.length < 2) return json({ players: [] }, 200, cors);
+      if (q.length < 2) return json({ players: [], page: 1, totalPages: 1 }, 200, cors);
+      const page = Math.min(100, Math.max(1, parseInt(url.searchParams.get('page') || '1', 10) || 1));
       const data = await startggGql(
-        `query($q:String!){ players(query:{ perPage:30, filter:{ gamerTag:$q } }){
+        `query($q:String!,$page:Int!){ players(query:{ perPage:30, page:$page, filter:{ gamerTag:$q } }){
+           pageInfo{ totalPages }
            nodes{ gamerTag prefix user{ slug images(type:"profile"){ url } } } } }`,
-        { q }
+        { q, page }
       );
       const seen = new Set();
       const players = ((data.players && data.players.nodes) || [])
@@ -120,7 +122,8 @@ async function handleStartgg(env, url, cors) {
           image: ((n.user.images || [])[0] || {}).url || '',
         }))
         .filter(p => (seen.has(p.slug) ? false : seen.add(p.slug)));
-      return json({ players }, 200, cors);
+      const totalPages = (data.players && data.players.pageInfo && data.players.pageInfo.totalPages) || page;
+      return json({ players, page, totalPages }, 200, cors);
     }
 
     if (op === 'user') {

@@ -540,6 +540,14 @@ function createStartggPicker(onChange) {
     let timer = null;
     let seq = 0;
 
+    // Search/pagination state (start.gg returns ~30 per page; we load more as
+    // the dropdown is scrolled, de-duping by slug).
+    let curQuery = '';
+    let page = 1;
+    let totalPages = 1;
+    let loadingMore = false;
+    const seen = new Set();
+
     function render() {
         if (selected) {
             const label = selected.tag ? `@${escapeHtml(selected.tag)}` : escapeHtml(selected.slug);
@@ -561,7 +569,12 @@ function createStartggPicker(onChange) {
             const q = input.value.trim();
             clearTimeout(timer);
             if (q.length < 2) { results.hidden = true; results.innerHTML = ''; return; }
-            timer = setTimeout(() => search(q, results), 250);
+            timer = setTimeout(() => startSearch(q, results), 250);
+        });
+        results.addEventListener('scroll', () => {
+            if (results.scrollTop + results.clientHeight >= results.scrollHeight - 48) {
+                maybeLoadMore(results);
+            }
         });
     }
 
@@ -571,52 +584,91 @@ function createStartggPicker(onChange) {
         onChange && onChange(selected);
     }
 
-    function renderResults(results, players) {
-        if (!players.length) {
+    function makeRow(p) {
+        const li = document.createElement('li');
+        li.className = 'sgg-result';
+        const tag = (p.prefix ? `${p.prefix} | ` : '') + (p.gamerTag || '(no tag)');
+        const avatar = p.image
+            ? `<img class="sgg-avatar" src="${escapeHtml(p.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">`
+            : `<span class="sgg-avatar sgg-avatar-empty">${escapeHtml((p.gamerTag || '?').slice(0, 1).toUpperCase())}</span>`;
+        li.innerHTML = avatar +
+            '<span class="sgg-result-text">' +
+            `<span class="sgg-result-tag">${escapeHtml(tag)}</span>` +
+            `<span class="sgg-result-slug">${escapeHtml(p.slug)}</span></span>`;
+        li.addEventListener('click', () => set({ slug: p.slug, tag: p.gamerTag || '' }));
+        return li;
+    }
+
+    function setLoadingMore(results, on) {
+        const existing = results.querySelector('.sgg-loading');
+        if (on && !existing) {
+            const li = document.createElement('li');
+            li.className = 'sgg-loading muted';
+            li.textContent = 'Loading more…';
+            results.appendChild(li);
+        } else if (!on && existing) {
+            existing.remove();
+        }
+    }
+
+    function appendPlayers(results, players, append) {
+        if (!append) { results.innerHTML = ''; seen.clear(); }
+        const fresh = players.filter(p => p.slug && !seen.has(p.slug));
+        fresh.forEach(p => seen.add(p.slug));
+        if (!append && fresh.length === 0) {
             results.innerHTML = '<li class="sgg-result-empty muted">No start.gg accounts found.</li>';
             results.hidden = false;
             return;
         }
-        results.innerHTML = '';
-        players.forEach(p => {
-            const li = document.createElement('li');
-            li.className = 'sgg-result';
-            const tag = (p.prefix ? `${p.prefix} | ` : '') + (p.gamerTag || '(no tag)');
-            const avatar = p.image
-                ? `<img class="sgg-avatar" src="${escapeHtml(p.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">`
-                : `<span class="sgg-avatar sgg-avatar-empty">${escapeHtml((p.gamerTag || '?').slice(0, 1).toUpperCase())}</span>`;
-            li.innerHTML = avatar +
-                '<span class="sgg-result-text">' +
-                `<span class="sgg-result-tag">${escapeHtml(tag)}</span>` +
-                `<span class="sgg-result-slug">${escapeHtml(p.slug)}</span></span>`;
-            li.addEventListener('click', () => set({ slug: p.slug, tag: p.gamerTag || '' }));
-            results.appendChild(li);
-        });
+        fresh.forEach(p => results.appendChild(makeRow(p)));
         results.hidden = false;
     }
 
-    async function search(query, results) {
+    function startSearch(q, results) {
+        curQuery = q;
+        page = 1;
+        totalPages = 1;
+        seq++;
+        fetchPage(results, false);
+    }
+
+    function maybeLoadMore(results) {
+        if (loadingMore || page >= totalPages || parseUserSlug(curQuery)) return;
+        page += 1;
+        fetchPage(results, true);
+    }
+
+    async function fetchPage(results, append) {
         if (!STARTGG_BASE) return;
-        const mySeq = ++seq;
+        const mySeq = seq;
+        loadingMore = true;
+        if (append) setLoadingMore(results, true);
         let players = [];
+        let tp = totalPages;
         try {
-            const slug = parseUserSlug(query);
+            const slug = parseUserSlug(curQuery);
             if (slug) {
                 const res = await fetch(`${STARTGG_BASE}/user?slug=${encodeURIComponent(slug)}`);
                 const data = await res.json();
                 if (mySeq !== seq) return;
                 players = res.ok ? [{ slug: data.slug, gamerTag: data.gamerTag, prefix: data.prefix, image: data.image }] : [];
+                tp = 1;
             } else {
-                const res = await fetch(`${STARTGG_BASE}/search?q=${encodeURIComponent(query)}`);
+                const res = await fetch(`${STARTGG_BASE}/search?q=${encodeURIComponent(curQuery)}&page=${page}`);
                 const data = await res.json();
                 if (mySeq !== seq) return;
                 players = res.ok ? (data.players || []) : [];
+                tp = (res.ok && data.totalPages) || page;
             }
         } catch {
             if (mySeq !== seq) return;
             players = [];
+        } finally {
+            if (mySeq === seq) { loadingMore = false; setLoadingMore(results, false); }
         }
-        renderResults(results, players);
+        if (mySeq !== seq) return;
+        totalPages = tp;
+        appendPlayers(results, players, append);
     }
 
     render();

@@ -65,7 +65,8 @@ code {
     margin: 1.25rem 0 0;
 }
 
-.file-list li {
+/* Direct children only — must not leak into the nested start.gg dropdown <li>s. */
+.file-list > li {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
@@ -713,4 +714,10 @@ button.secondary:hover:not(:disabled) {
     flex-shrink: 0;
     padding: 0.5rem 0.9rem;
     font-size: 0.85rem;
+}
+
+.sgg-loading {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+    text-align: center;
 }
