@@ -22,10 +22,11 @@ const PENDING_KEY = 'r2tag_pending_submissions'; // localStorage key
 const POLL_INTERVAL_MS = 45000;
 
 // State
+// Each entry is { file, picker } where picker.get() is the tag's own start.gg
+// link ({ slug, tag } | null) — every submitted tag carries its own.
 let selectedFiles = [];
 let allTags = [];
 let tagSearchQuery = '';
-let selectedStartgg = null; // { slug, tag } once a start.gg account is chosen
 
 // DOM
 const dropzone = document.getElementById('dropzone');
@@ -38,9 +39,6 @@ const uploadStatus = document.getElementById('uploadStatus');
 const tagBrowser = document.getElementById('tagBrowser');
 const pendingPanel = document.getElementById('pendingPanel');
 const pendingList = document.getElementById('pendingList');
-const sggSearch = document.getElementById('sggSearch');
-const sggResults = document.getElementById('sggResults');
-const sggSelected = document.getElementById('sggSelected');
 const bracketInput = document.getElementById('bracketInput');
 const bracketGo = document.getElementById('bracketGo');
 const bracketStatus = document.getElementById('bracketStatus');
@@ -82,8 +80,9 @@ function setStatus(message, kind = '') {
 function addFiles(files) {
     for (const file of files) {
         // De-dupe by name + size so dropping twice doesn't stack copies.
-        const dup = selectedFiles.some(f => f.name === file.name && f.size === file.size);
-        if (!dup) selectedFiles.push(file);
+        const dup = selectedFiles.some(e => e.file.name === file.name && e.file.size === file.size);
+        if (dup) continue;
+        selectedFiles.push({ file, picker: createStartggPicker(updateSubmitState) });
     }
     renderFileList();
 }
@@ -96,15 +95,19 @@ function removeFile(index) {
 function renderFileList() {
     fileListEl.innerHTML = '';
 
-    selectedFiles.forEach((file, index) => {
-        const { ok, message } = validateFile(file);
+    selectedFiles.forEach((entry, index) => {
+        const { ok, message } = validateFile(entry.file);
 
         const li = document.createElement('li');
+        li.className = 'file-item';
+
+        const top = document.createElement('div');
+        top.className = 'file-row-top';
 
         const left = document.createElement('div');
         left.innerHTML =
-            `<div>${file.name}</div>` +
-            `<div class="file-meta">${formatBytes(file.size)} · ` +
+            `<div>${escapeHtml(entry.file.name)}</div>` +
+            `<div class="file-meta">${formatBytes(entry.file.size)} · ` +
             `<span class="file-status ${ok ? 'ok' : 'warn'}">${message}</span></div>`;
 
         const remove = document.createElement('button');
@@ -113,8 +116,16 @@ function renderFileList() {
         remove.title = 'Remove';
         remove.addEventListener('click', () => removeFile(index));
 
-        li.appendChild(left);
-        li.appendChild(remove);
+        top.appendChild(left);
+        top.appendChild(remove);
+
+        // Each tag gets its own start.gg picker.
+        const sgg = document.createElement('div');
+        sgg.className = 'file-row-sgg';
+        sgg.appendChild(entry.picker.root);
+
+        li.appendChild(top);
+        li.appendChild(sgg);
         fileListEl.appendChild(li);
     });
 
@@ -124,10 +135,11 @@ function renderFileList() {
 }
 
 function updateSubmitState() {
-    const hasValid = selectedFiles.some(f => validateFile(f).ok);
-    submitButton.disabled = !hasValid || !selectedStartgg;
-    if (hasValid && !selectedStartgg && !uploadStatus.textContent) {
-        setStatus('Link your start.gg account below to submit.', 'warn');
+    const valid = selectedFiles.filter(e => validateFile(e.file).ok);
+    const allLinked = valid.length > 0 && valid.every(e => e.picker.get());
+    submitButton.disabled = !allLinked;
+    if (valid.length > 0 && !allLinked && !uploadStatus.textContent) {
+        setStatus('Link a start.gg account for each tag to submit.', 'warn');
     } else if (uploadStatus.classList.contains('warn')) {
         setStatus('');
     }
@@ -136,10 +148,10 @@ function updateSubmitState() {
 // ---- Submit ---------------------------------------------------------------
 
 async function submitTags() {
-    const valid = selectedFiles.filter(f => validateFile(f).ok);
+    const valid = selectedFiles.filter(e => validateFile(e.file).ok);
     if (valid.length === 0) return;
-    if (!selectedStartgg) {
-        setStatus('Link your start.gg account before submitting.', 'error');
+    if (!valid.every(e => e.picker.get())) {
+        setStatus('Link a start.gg account for each tag before submitting.', 'error');
         return;
     }
 
@@ -156,16 +168,19 @@ async function submitTags() {
     submitButton.disabled = true;
     try {
         const form = new FormData();
-        valid.forEach(f => form.append('tags', f, f.name));
+        valid.forEach(e => {
+            const link = e.picker.get();
+            form.append('tags', e.file, e.file.name);
+            form.append('startgg_slug', link.slug);
+            form.append('startgg_tag', link.tag || '');
+        });
         form.append('author', (authorInput?.value || '').trim());
-        form.append('startgg_slug', selectedStartgg.slug);
-        form.append('startgg_tag', selectedStartgg.tag || '');
 
         const res = await fetch(UPLOAD_ENDPOINT, { method: 'POST', body: form });
         const data = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(data.error || `${res.status} ${res.statusText}`);
 
-        const names = valid.map(f => f.name.replace(/(\.r2tag)?\.zip$/i, ''));
+        const names = valid.map(e => e.file.name.replace(/(\.r2tag)?\.zip$/i, ''));
         if (data.number) {
             recordSubmission({ number: data.number, url: data.pr, names });
         }
@@ -506,8 +521,6 @@ function escapeHtml(s) {
 // ---- start.gg account linking (upload) ------------------------------------
 
 const STARTGG_BASE = UPLOAD_ENDPOINT ? `${UPLOAD_ENDPOINT}/startgg` : null;
-let sggSearchTimer = null;
-let sggSearchSeq = 0; // guard against out-of-order responses
 
 // Pull a `user/xxxx` slug out of a pasted profile URL or raw slug.
 function parseUserSlug(text) {
@@ -516,99 +529,109 @@ function parseUserSlug(text) {
     return m ? `user/${m[1]}` : null;
 }
 
-function renderStartggSelected() {
-    if (!selectedStartgg) {
-        sggSelected.hidden = true;
-        sggSelected.innerHTML = '';
-        return;
-    }
-    sggSelected.hidden = false;
-    const label = selectedStartgg.tag ? `@${escapeHtml(selectedStartgg.tag)}` : escapeHtml(selectedStartgg.slug);
-    sggSelected.innerHTML =
-        `<span class="sgg-chip">Linked: ` +
-        `<a href="https://www.start.gg/${encodeURI(selectedStartgg.slug)}" target="_blank" rel="noopener">${label}</a>` +
-        `<button type="button" class="sgg-clear" title="Remove">✕</button></span>`;
-    sggSelected.querySelector('.sgg-clear').addEventListener('click', () => {
-        selectedStartgg = null;
-        renderStartggSelected();
-        sggSearch.value = '';
-        updateSubmitState();
-    });
-}
+// A self-contained start.gg account picker (search-as-you-type with avatars,
+// or paste a profile URL). One is created per submitted tag, so each tag links
+// its own account. `onChange` fires with the selected { slug, tag } or null.
+// Returns { root, get, set }.
+function createStartggPicker(onChange) {
+    const root = document.createElement('div');
+    root.className = 'sgg-picker';
+    let selected = null;
+    let timer = null;
+    let seq = 0;
 
-function chooseStartgg(player) {
-    selectedStartgg = { slug: player.slug, tag: player.gamerTag || player.tag || '' };
-    hideSggResults();
-    sggSearch.value = '';
-    renderStartggSelected();
-    updateSubmitState();
-}
-
-function hideSggResults() {
-    sggResults.hidden = true;
-    sggResults.innerHTML = '';
-}
-
-function renderSggResults(players) {
-    if (!players.length) {
-        sggResults.innerHTML = '<li class="sgg-result-empty muted">No start.gg accounts found.</li>';
-        sggResults.hidden = false;
-        return;
-    }
-    sggResults.innerHTML = '';
-    players.forEach(p => {
-        const li = document.createElement('li');
-        li.className = 'sgg-result';
-        const tag = (p.prefix ? `${p.prefix} | ` : '') + (p.gamerTag || '(no tag)');
-        const avatar = p.image
-            ? `<img class="sgg-avatar" src="${escapeHtml(p.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">`
-            : `<span class="sgg-avatar sgg-avatar-empty">${escapeHtml((p.gamerTag || '?').slice(0, 1).toUpperCase())}</span>`;
-        li.innerHTML = avatar +
-            `<span class="sgg-result-text">` +
-            `<span class="sgg-result-tag">${escapeHtml(tag)}</span>` +
-            `<span class="sgg-result-slug">${escapeHtml(p.slug)}</span>` +
-            `</span>`;
-        li.addEventListener('click', () => chooseStartgg(p));
-        sggResults.appendChild(li);
-    });
-    sggResults.hidden = false;
-}
-
-async function runSggSearch(query) {
-    if (!STARTGG_BASE) return;
-    const seq = ++sggSearchSeq;
-
-    // A pasted profile URL / slug resolves directly to one account.
-    const slug = parseUserSlug(query);
-    try {
-        if (slug) {
-            const res = await fetch(`${STARTGG_BASE}/user?slug=${encodeURIComponent(slug)}`);
-            const data = await res.json();
-            if (seq !== sggSearchSeq) return;
-            if (!res.ok) { renderSggResults([]); return; }
-            renderSggResults([{ slug: data.slug, gamerTag: data.gamerTag, prefix: data.prefix }]);
+    function render() {
+        if (selected) {
+            const label = selected.tag ? `@${escapeHtml(selected.tag)}` : escapeHtml(selected.slug);
+            root.innerHTML =
+                `<span class="sgg-chip">Linked: ` +
+                `<a href="https://www.start.gg/${encodeURI(selected.slug)}" target="_blank" rel="noopener">${label}</a>` +
+                `<button type="button" class="sgg-clear" title="Remove">✕</button></span>`;
+            root.querySelector('.sgg-clear').addEventListener('click', () => set(null));
             return;
         }
-        const res = await fetch(`${STARTGG_BASE}/search?q=${encodeURIComponent(query)}`);
-        const data = await res.json();
-        if (seq !== sggSearchSeq) return;
-        renderSggResults(res.ok ? (data.players || []) : []);
-    } catch {
-        if (seq === sggSearchSeq) renderSggResults([]);
+        root.innerHTML =
+            '<div class="sgg-search-wrap">' +
+            '<input type="text" class="sgg-input" autocomplete="off" spellcheck="false" ' +
+            'placeholder="Link a start.gg account — search or paste profile URL…">' +
+            '<ul class="sgg-results" hidden></ul></div>';
+        const input = root.querySelector('.sgg-input');
+        const results = root.querySelector('.sgg-results');
+        input.addEventListener('input', () => {
+            const q = input.value.trim();
+            clearTimeout(timer);
+            if (q.length < 2) { results.hidden = true; results.innerHTML = ''; return; }
+            timer = setTimeout(() => search(q, results), 250);
+        });
     }
+
+    function set(v) {
+        selected = v;
+        render();
+        onChange && onChange(selected);
+    }
+
+    function renderResults(results, players) {
+        if (!players.length) {
+            results.innerHTML = '<li class="sgg-result-empty muted">No start.gg accounts found.</li>';
+            results.hidden = false;
+            return;
+        }
+        results.innerHTML = '';
+        players.forEach(p => {
+            const li = document.createElement('li');
+            li.className = 'sgg-result';
+            const tag = (p.prefix ? `${p.prefix} | ` : '') + (p.gamerTag || '(no tag)');
+            const avatar = p.image
+                ? `<img class="sgg-avatar" src="${escapeHtml(p.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">`
+                : `<span class="sgg-avatar sgg-avatar-empty">${escapeHtml((p.gamerTag || '?').slice(0, 1).toUpperCase())}</span>`;
+            li.innerHTML = avatar +
+                '<span class="sgg-result-text">' +
+                `<span class="sgg-result-tag">${escapeHtml(tag)}</span>` +
+                `<span class="sgg-result-slug">${escapeHtml(p.slug)}</span></span>`;
+            li.addEventListener('click', () => set({ slug: p.slug, tag: p.gamerTag || '' }));
+            results.appendChild(li);
+        });
+        results.hidden = false;
+    }
+
+    async function search(query, results) {
+        if (!STARTGG_BASE) return;
+        const mySeq = ++seq;
+        let players = [];
+        try {
+            const slug = parseUserSlug(query);
+            if (slug) {
+                const res = await fetch(`${STARTGG_BASE}/user?slug=${encodeURIComponent(slug)}`);
+                const data = await res.json();
+                if (mySeq !== seq) return;
+                players = res.ok ? [{ slug: data.slug, gamerTag: data.gamerTag, prefix: data.prefix, image: data.image }] : [];
+            } else {
+                const res = await fetch(`${STARTGG_BASE}/search?q=${encodeURIComponent(query)}`);
+                const data = await res.json();
+                if (mySeq !== seq) return;
+                players = res.ok ? (data.players || []) : [];
+            }
+        } catch {
+            if (mySeq !== seq) return;
+            players = [];
+        }
+        renderResults(results, players);
+    }
+
+    render();
+    return { root, get: () => selected, set };
 }
 
-if (sggSearch) {
-    sggSearch.addEventListener('input', () => {
-        const q = sggSearch.value.trim();
-        clearTimeout(sggSearchTimer);
-        if (q.length < 2) { hideSggResults(); return; }
-        sggSearchTimer = setTimeout(() => runSggSearch(q), 250);
+// Close any open results dropdown when clicking outside it.
+document.addEventListener('click', (e) => {
+    document.querySelectorAll('.sgg-picker .sgg-results').forEach(results => {
+        const wrap = results.closest('.sgg-search-wrap');
+        if (!wrap || !wrap.contains(e.target)) {
+            results.hidden = true;
+        }
     });
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.sgg-search-wrap')) hideSggResults();
-    });
-}
+});
 
 // ---- Download by start.gg bracket -----------------------------------------
 

@@ -67,13 +67,34 @@ code {
 
 .file-list li {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.6rem;
     padding: 0.75rem 1rem;
     background-color: var(--background-color);
     border-radius: 8px;
     margin-bottom: 0.5rem;
+}
+
+.file-row-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.file-row-sgg .sgg-search-wrap {
+    max-width: none;
+}
+
+.file-row-sgg .sgg-input {
+    background-color: var(--surface-color);
+    border-color: var(--border-color);
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.file-row-sgg .sgg-chip {
+    margin-top: 0;
 }
 
 .file-list .file-meta {
