@@ -29,8 +29,6 @@ let allTags = [];
 let tagSearchQuery = '';
 
 // DOM
-const dropzone = document.getElementById('dropzone');
-const fileInput = document.getElementById('fileInput');
 const fileListEl = document.getElementById('fileList');
 const authorInput = document.getElementById('authorInput');
 const submitButton = document.getElementById('submitButton');
@@ -45,6 +43,8 @@ const bracketStatus = document.getElementById('bracketStatus');
 const savButton = document.getElementById('savButton');
 const savInput = document.getElementById('savInput');
 const savPanel = document.getElementById('savPanel');
+const copyPathBtn = document.getElementById('copyPathBtn');
+const savePathText = document.getElementById('savePathText');
 const importSavInput = document.getElementById('importSavInput');
 const importOverwrite = document.getElementById('importOverwrite');
 const importStatus = document.getElementById('importStatus');
@@ -745,7 +745,7 @@ function renderSavPanel() {
         `<code>${escapeHtml(loadedSav.name)}</code></div>` +
         `<ul class="tag-list">${items}</ul>` +
         '<div class="upload-actions">' +
-        '<button type="button" id="savAddBtn" disabled>Add to submission ↑</button>' +
+        '<button type="button" id="savAddBtn" disabled>Add to submission ↓</button>' +
         '<button type="button" id="savDownloadBtn" class="secondary" disabled>Download .r2tag</button>' +
         '</div>';
 
@@ -873,38 +873,19 @@ async function importSelectedToSave(savFile) {
 
 // ---- Wire up events -------------------------------------------------------
 
-dropzone.addEventListener('click', () => fileInput.click());
-dropzone.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        fileInput.click();
-    }
-});
-
-fileInput.addEventListener('change', () => {
-    addFiles(Array.from(fileInput.files));
-    fileInput.value = ''; // allow re-selecting the same file
-});
-
-['dragenter', 'dragover'].forEach(evt =>
-    dropzone.addEventListener(evt, (e) => {
-        e.preventDefault();
-        dropzone.classList.add('dragover');
-    })
-);
-
-['dragleave', 'drop'].forEach(evt =>
-    dropzone.addEventListener(evt, (e) => {
-        e.preventDefault();
-        dropzone.classList.remove('dragover');
-    })
-);
-
-dropzone.addEventListener('drop', (e) => {
-    if (e.dataTransfer?.files?.length) {
-        addFiles(Array.from(e.dataTransfer.files));
-    }
-});
+if (copyPathBtn) {
+    copyPathBtn.addEventListener('click', async () => {
+        const path = savePathText.textContent.trim();
+        const prev = copyPathBtn.textContent;
+        try {
+            await navigator.clipboard.writeText(path);
+            copyPathBtn.textContent = 'Copied ✓';
+        } catch {
+            copyPathBtn.textContent = 'Copy failed';
+        }
+        setTimeout(() => { copyPathBtn.textContent = prev; }, 1500);
+    });
+}
 
 submitButton.addEventListener('click', submitTags);
 clearButton.addEventListener('click', () => {
