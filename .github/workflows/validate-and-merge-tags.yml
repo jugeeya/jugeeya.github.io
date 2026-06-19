@@ -1,10 +1,12 @@
 name: Validate and merge tag submissions
 
 # Tag submissions arrive as PRs opened by the broker (a GitHub App) on an
-# in-repo branch under tags/data/**. This workflow checks the PR is benign,
-# rebuilds the manifest, and auto-merges. Because the branch lives in this repo
-# (not a fork), the default token can validate + merge safely. The validation
-# never executes submitted content — it only parses the data files.
+# in-repo branch under tags/data/**, adding only the tag files (zip + sidecar).
+# This workflow checks the PR is benign, auto-merges it, then rebuilds the
+# generated index.json on main. Keeping the manifest off the PR branch means the
+# shared file never causes a merge conflict and we don't race a push against the
+# merge. The default token can validate + merge (the branch is in-repo, not a
+# fork); validation never executes submitted content — it only parses data files.
 
 on:
   pull_request:
@@ -37,22 +39,36 @@ jobs:
             "${{ github.event.pull_request.base.sha }}" \
             "${{ github.event.pull_request.head.sha }}"
 
-      - name: Rebuild manifest
-        run: python3 scripts/build_tags_manifest.py
-
-      - name: Commit manifest if it changed
-        run: |
-          if ! git diff --quiet -- tags/data/index.json; then
-            git config user.name "tag-bot"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add tags/data/index.json
-            git commit -m "Rebuild tag manifest"
-            git push origin "HEAD:${{ github.head_ref }}"
-          fi
-
+      # Submission PRs only add the tag files (zip + sidecar), which have unique
+      # names and never conflict. Merge first, then rebuild index.json on main —
+      # never on the PR branch, so the shared manifest can't cause a conflict and
+      # we don't race a fresh push against the merge.
       - name: Auto-merge
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr merge "${{ github.event.pull_request.number }}" \
-            --squash --delete-branch
+          n="${{ github.event.pull_request.number }}"
+          for attempt in 1 2 3 4 5 6; do
+            if gh pr merge "$n" --squash --delete-branch; then exit 0; fi
+            echo "merge not ready (mergeability still computing?), retrying…"
+            sleep 6
+          done
+          echo "::error::could not merge PR #$n after retries"; exit 1
+
+      - name: Rebuild manifest on main
+        run: |
+          git config user.name "tag-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git checkout -B main origin/main
+            python3 scripts/build_tags_manifest.py
+            if git diff --quiet -- tags/data/index.json; then
+              echo "index.json already up to date"; exit 0
+            fi
+            git add tags/data/index.json
+            git commit -m "Rebuild tag manifest"
+            if git push origin HEAD:main; then exit 0; fi
+            echo "main moved, rebuilding on top and retrying…"; sleep 3
+          done
+          echo "::error::could not update manifest after retries"; exit 1
