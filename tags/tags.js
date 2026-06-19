@@ -588,13 +588,37 @@ function createStartggPicker(onChange) {
         const li = document.createElement('li');
         li.className = 'sgg-result';
         const tag = (p.prefix ? `${p.prefix} | ` : '') + (p.gamerTag || '(no tag)');
-        const avatar = p.image
-            ? `<img class="sgg-avatar" src="${escapeHtml(p.image)}" alt="" loading="lazy" referrerpolicy="no-referrer">`
-            : `<span class="sgg-avatar sgg-avatar-empty">${escapeHtml((p.gamerTag || '?').slice(0, 1).toUpperCase())}</span>`;
-        li.innerHTML = avatar +
-            '<span class="sgg-result-text">' +
+        const initial = (p.gamerTag || '?').slice(0, 1).toUpperCase();
+
+        const letterAvatar = () => {
+            const span = document.createElement('span');
+            span.className = 'sgg-avatar sgg-avatar-empty';
+            span.textContent = initial;
+            return span;
+        };
+
+        let avatar;
+        if (p.image) {
+            avatar = document.createElement('img');
+            avatar.className = 'sgg-avatar';
+            avatar.alt = '';
+            avatar.referrerPolicy = 'no-referrer';
+            // If the image fails (expired/blocked/missing), fall back to the
+            // initial instead of a broken-image icon.
+            avatar.addEventListener('error', () => avatar.replaceWith(letterAvatar()));
+            avatar.src = p.image;
+        } else {
+            avatar = letterAvatar();
+        }
+
+        const text = document.createElement('span');
+        text.className = 'sgg-result-text';
+        text.innerHTML =
             `<span class="sgg-result-tag">${escapeHtml(tag)}</span>` +
-            `<span class="sgg-result-slug">${escapeHtml(p.slug)}</span></span>`;
+            `<span class="sgg-result-slug">${escapeHtml(p.slug)}</span>`;
+
+        li.appendChild(avatar);
+        li.appendChild(text);
         li.addEventListener('click', () => set({ slug: p.slug, tag: p.gamerTag || '' }));
         return li;
     }
