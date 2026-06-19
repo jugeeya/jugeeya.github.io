@@ -11,6 +11,8 @@
 // it's null the page is browse-only and Submit explains it isn't wired up.
 // See broker/README.md for how to stand up the Worker + GitHub App.
 
+import { getTagNames, exportTag, importTags } from './wasm/tagsav.js';
+
 const UPLOAD_ENDPOINT = 'https://r2tag-broker.jdsambasivam.workers.dev';
 const MANIFEST_URL = 'data/index.json';
 const ACCEPTED_EXTENSION = '.zip'; // a zipped .r2tag; contents validated server-side
@@ -42,6 +44,15 @@ const sggSelected = document.getElementById('sggSelected');
 const bracketInput = document.getElementById('bracketInput');
 const bracketGo = document.getElementById('bracketGo');
 const bracketStatus = document.getElementById('bracketStatus');
+const savButton = document.getElementById('savButton');
+const savInput = document.getElementById('savInput');
+const savPanel = document.getElementById('savPanel');
+const importSavInput = document.getElementById('importSavInput');
+const importOverwrite = document.getElementById('importOverwrite');
+const importStatus = document.getElementById('importStatus');
+
+// A loaded .sav: its raw bytes + the custom tag names found in it.
+let loadedSav = null;
 
 // ---- Helpers --------------------------------------------------------------
 
@@ -217,6 +228,12 @@ function updateDownloadButton() {
     btn.textContent = count === 0 ? 'Download tags'
         : count === 1 ? 'Download 1 tag'
         : `Download ${count} tags`;
+
+    const importBtn = tagBrowser.querySelector('#importSelected');
+    if (importBtn) {
+        importBtn.disabled = count === 0;
+        importBtn.textContent = count <= 1 ? 'Import to save' : `Import ${count} to save`;
+    }
 }
 
 // Builds the browser chrome (search box, action buttons, list container) once
@@ -237,6 +254,7 @@ function renderTagBrowser() {
         '<span class="tag-action-sep">·</span>' +
         '<button type="button" id="clearTagSelection" class="linkish">Clear</button>' +
         '<button type="button" id="downloadSelected" disabled>Download tags</button>' +
+        '<button type="button" id="importSelected" class="secondary" disabled>Import to save</button>' +
         '</div></div>' +
         '<ul id="tagList" class="tag-list"></ul>';
 
@@ -258,6 +276,7 @@ function renderTagBrowser() {
     });
 
     tagBrowser.querySelector('#downloadSelected').addEventListener('click', downloadSelectedTags);
+    tagBrowser.querySelector('#importSelected').addEventListener('click', startImportToSave);
 
     renderTagList();
 }
@@ -656,6 +675,179 @@ if (bracketGo) {
     });
 }
 
+// ---- Load a .sav: pick tags to share or download (in-browser) -------------
+
+async function zipR2tag(name, r2tagBytes) {
+    const zip = new JSZip();
+    zip.file(`${name}.r2tag`, r2tagBytes);
+    const blob = await zip.generateAsync({ type: 'blob' });
+    return new File([blob], `${name}.r2tag.zip`, { type: 'application/zip' });
+}
+
+async function loadSavFile(file) {
+    try {
+        const bytes = new Uint8Array(await file.arrayBuffer());
+        const tags = await getTagNames(bytes);
+        loadedSav = { bytes, tags, name: file.name };
+        renderSavPanel();
+    } catch (err) {
+        loadedSav = null;
+        savPanel.hidden = false;
+        savPanel.innerHTML =
+            `<p class="upload-status error">Couldn't read that save: ${escapeHtml(String(err.message || err))}</p>`;
+    }
+}
+
+function getCheckedSavTags() {
+    return [...savPanel.querySelectorAll('.sav-tag-checkbox:checked')].map(cb => cb.value);
+}
+
+function renderSavPanel() {
+    if (!loadedSav) { savPanel.hidden = true; savPanel.innerHTML = ''; return; }
+    savPanel.hidden = false;
+
+    if (!loadedSav.tags.length) {
+        savPanel.innerHTML = `<p class="muted">No custom tags found in ${escapeHtml(loadedSav.name)}.</p>`;
+        return;
+    }
+
+    const items = loadedSav.tags.map(name =>
+        '<li class="tag-list-item"><label class="tag-list-label">' +
+        `<input type="checkbox" class="sav-tag-checkbox tag-checkbox" value="${escapeHtml(name)}">` +
+        `<span class="tag-list-name">${escapeHtml(name)}</span></label></li>`
+    ).join('');
+
+    savPanel.innerHTML =
+        `<div class="sav-tags-head">${loadedSav.tags.length} custom tag(s) in ` +
+        `<code>${escapeHtml(loadedSav.name)}</code></div>` +
+        `<ul class="tag-list">${items}</ul>` +
+        '<div class="upload-actions">' +
+        '<button type="button" id="savAddBtn" disabled>Add to submission ↑</button>' +
+        '<button type="button" id="savDownloadBtn" class="secondary" disabled>Download .r2tag</button>' +
+        '</div>';
+
+    const sync = () => {
+        const n = getCheckedSavTags().length;
+        savPanel.querySelector('#savAddBtn').disabled = n === 0;
+        savPanel.querySelector('#savDownloadBtn').disabled = n === 0;
+    };
+    savPanel.querySelectorAll('.sav-tag-checkbox').forEach(cb => cb.addEventListener('change', sync));
+    savPanel.querySelector('#savAddBtn').addEventListener('click', addSavTagsToSubmission);
+    savPanel.querySelector('#savDownloadBtn').addEventListener('click', downloadSavTags);
+}
+
+// Export the checked tags from the loaded save, zip each, and feed them into the
+// submission list above (so the normal start.gg + submit flow takes over).
+async function addSavTagsToSubmission() {
+    const names = getCheckedSavTags();
+    if (!names.length || !loadedSav) return;
+    const btn = savPanel.querySelector('#savAddBtn');
+    btn.disabled = true;
+    const prev = btn.textContent;
+    btn.textContent = 'Preparing…';
+    try {
+        for (const name of names) {
+            const r2 = await exportTag(loadedSav.bytes, name);
+            addFiles([await zipR2tag(name, r2)]);
+        }
+        setStatus(
+            `Added ${names.length} tag(s) from your save below. Link your start.gg account, then Submit.`,
+            'success'
+        );
+        savPanel.querySelectorAll('.sav-tag-checkbox:checked').forEach(cb => { cb.checked = false; });
+        btn.disabled = true;
+        savPanel.querySelector('#savDownloadBtn').disabled = true;
+    } catch (err) {
+        setStatus(`Couldn't prepare tags: ${err.message || err}`, 'error');
+        btn.disabled = false;
+    } finally {
+        btn.textContent = prev;
+    }
+}
+
+async function downloadSavTags() {
+    const names = getCheckedSavTags();
+    if (!names.length || !loadedSav) return;
+    const btn = savPanel.querySelector('#savDownloadBtn');
+    btn.disabled = true;
+    const prev = btn.textContent;
+    btn.textContent = 'Exporting…';
+    try {
+        if (names.length === 1) {
+            const r2 = await exportTag(loadedSav.bytes, names[0]);
+            triggerDownload(URL.createObjectURL(new Blob([r2])), `${names[0]}.r2tag`);
+        } else {
+            const zip = new JSZip();
+            for (const name of names) {
+                zip.file(`${name}.r2tag`, await exportTag(loadedSav.bytes, name));
+            }
+            const blob = await zip.generateAsync({ type: 'blob' });
+            triggerDownload(URL.createObjectURL(blob), 'r2tags.zip');
+        }
+    } catch (err) {
+        alert(`Export failed: ${err.message || err}`);
+    } finally {
+        btn.disabled = false;
+        btn.textContent = prev;
+    }
+}
+
+// ---- Import shared tags into your .sav (in-browser) -----------------------
+
+let pendingImportFiles = [];
+
+function setImportStatus(message, kind = '') {
+    importStatus.innerHTML = message;
+    importStatus.className = `upload-status${kind ? ' ' + kind : ''}`;
+}
+
+function startImportToSave() {
+    pendingImportFiles = getSelectedTagFiles();
+    if (!pendingImportFiles.length) return;
+    importSavInput.value = '';
+    importSavInput.click();
+}
+
+async function fetchR2tagBytes(file) {
+    const res = await fetch(`data/${file}`);
+    if (!res.ok) throw new Error(`Could not fetch ${file}`);
+    const zip = await JSZip.loadAsync(await res.blob());
+    const entry = Object.values(zip.files).find(
+        f => !f.dir && f.name.toLowerCase().endsWith('.r2tag')
+    );
+    if (!entry) throw new Error(`${file} has no .r2tag inside`);
+    return entry.async('uint8array');
+}
+
+async function importSelectedToSave(savFile) {
+    const files = pendingImportFiles;
+    if (!files.length) return;
+    setImportStatus('Reading your save and the selected tags…');
+    try {
+        const savBytes = new Uint8Array(await savFile.arrayBuffer());
+        const overwrite = !!(importOverwrite && importOverwrite.checked);
+        const items = [];
+        for (const file of files) {
+            items.push({ bytes: await fetchR2tagBytes(file), overwrite });
+        }
+        const rep = await importTags(savBytes, items);
+        triggerDownload(URL.createObjectURL(new Blob([rep.sav])), savFile.name);
+
+        const parts = [];
+        if (rep.imported.length) parts.push(`${rep.imported.length} imported`);
+        if (rep.skipped.length) parts.push(`${rep.skipped.length} skipped (already exist)`);
+        if (rep.incompatible.length) parts.push(`${rep.incompatible.length} incompatible (different game version)`);
+        setImportStatus(
+            `Done — ${parts.join(', ') || 'no changes'}. Downloaded your updated ` +
+            `<strong>${escapeHtml(savFile.name)}</strong>; replace your save file with it ` +
+            `(make a backup first).`,
+            rep.incompatible.length ? 'warn' : 'success'
+        );
+    } catch (err) {
+        setImportStatus(`Import failed: ${err.message || err}`, 'error');
+    }
+}
+
 // ---- Wire up events -------------------------------------------------------
 
 dropzone.addEventListener('click', () => fileInput.click());
@@ -696,6 +888,21 @@ clearButton.addEventListener('click', () => {
     selectedFiles = [];
     renderFileList();
 });
+
+// Load-a-save (submit panel) and import-into-save (browse panel) file inputs.
+if (savButton) {
+    savButton.addEventListener('click', () => savInput.click());
+    savInput.addEventListener('change', () => {
+        if (savInput.files?.length) loadSavFile(savInput.files[0]);
+        savInput.value = '';
+    });
+}
+if (importSavInput) {
+    importSavInput.addEventListener('change', () => {
+        if (importSavInput.files?.length) importSelectedToSave(importSavInput.files[0]);
+        importSavInput.value = '';
+    });
+}
 
 // Init
 renderFileList();

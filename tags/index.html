@@ -39,6 +39,15 @@
                     <input type="file" id="fileInput" accept=".zip" multiple hidden>
                 </div>
 
+                <div class="sav-loader">
+                    <p class="sav-or"><span>or</span></p>
+                    <p class="panel-help">Load your <code>.sav</code> directly and pick tags to share or
+                        download — no desktop tool needed. (Your save is read in your browser and never uploaded.)</p>
+                    <button id="savButton" type="button" class="secondary">Load a .sav file</button>
+                    <input type="file" id="savInput" accept=".sav" hidden>
+                    <div id="savPanel" class="sav-panel" hidden></div>
+                </div>
+
                 <ul id="fileList" class="file-list"></ul>
 
                 <div class="author-field">
@@ -78,8 +87,8 @@
             <!-- Browse ------------------------------------------------------ -->
             <section class="panel">
                 <h2>Shared tags</h2>
-                <p class="panel-help">Tags published to this site. Select one or more, then download and import
-                    with the Rivals II Tag Tool.</p>
+                <p class="panel-help">Tags published to this site. Select one or more, then download them — or
+                    import them straight into your <code>.sav</code> here in the browser.</p>
 
                 <div class="bracket-field">
                     <label for="bracketInput">Download a whole bracket</label>
@@ -96,6 +105,12 @@
                 <div id="tagBrowser" class="tag-browser">
                     <p class="muted">Loading…</p>
                 </div>
+
+                <input type="file" id="importSavInput" accept=".sav" hidden>
+                <label class="import-overwrite">
+                    <input type="checkbox" id="importOverwrite"> Overwrite tags that already exist in my save
+                </label>
+                <p id="importStatus" class="upload-status"></p>
             </section>
         </main>
 
@@ -105,7 +120,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="tags.js"></script>
+    <script type="module" src="tags.js"></script>
 </body>
 
 </html>

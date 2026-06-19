@@ -596,3 +596,69 @@ button.secondary:hover:not(:disabled) {
 .tag-sgg-link:hover {
     text-decoration: underline;
 }
+
+/* Load-a-save (in-browser) */
+.sav-loader {
+    margin-top: 1.5rem;
+}
+
+.sav-or {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 0.75rem;
+}
+
+.sav-or::before,
+.sav-or::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
+    margin: 0 0.75rem;
+}
+
+.sav-panel {
+    margin-top: 0.75rem;
+    padding: 0.85rem 1rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.sav-tags-head {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.sav-panel .tag-list {
+    border: none;
+    background: none;
+    max-height: 200px;
+}
+
+.sav-panel .upload-actions {
+    margin-top: 0.75rem;
+}
+
+.import-overwrite {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.import-overwrite input {
+    accent-color: var(--primary-color);
+}
+
+.upload-status.warn {
+    color: #c9a227;
+}
