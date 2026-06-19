@@ -157,7 +157,7 @@ async function submitTags() {
 
     if (!UPLOAD_ENDPOINT) {
         setStatus(
-            'Submitting isn’t connected yet — this page is a scaffold. ' +
+            'Submitting isn’t connected yet. This page is a scaffold. ' +
             'Set UPLOAD_ENDPOINT in tags.js to your broker Worker to enable it.',
             'error'
         );
@@ -267,14 +267,14 @@ function updateDownloadButton() {
 // typing in the search box never recreates the input and never drops focus.
 function renderTagBrowser() {
     if (!allTags.length) {
-        tagBrowser.innerHTML = '<p class="muted">No shared tags yet — be the first to upload one.</p>';
+        tagBrowser.innerHTML = '<p class="muted">No shared tags yet. Be the first to share one.</p>';
         return;
     }
 
     tagBrowser.innerHTML =
         '<div class="tag-browser-toolbar">' +
         '<input type="search" id="tagSearch" class="tag-search" ' +
-        'placeholder="Search tags or start.gg…" autocomplete="off">' +
+        'placeholder="Search in-game or start.gg tag…" autocomplete="off">' +
         '<div class="tag-browser-actions">' +
         '<button type="button" id="selectAllTags" class="linkish">Select all</button>' +
         '<span class="tag-action-sep">·</span>' +
@@ -572,7 +572,7 @@ function createStartggPicker(onChange) {
         root.innerHTML =
             '<div class="sgg-search-wrap">' +
             '<input type="text" class="sgg-input" autocomplete="off" spellcheck="false" ' +
-            'placeholder="Link a start.gg account — search or paste profile URL…">' +
+            'placeholder="Link a start.gg account: search or paste profile URL…">' +
             '<ul class="sgg-results" hidden></ul></div>';
         const input = root.querySelector('.sgg-input');
         const results = root.querySelector('.sgg-results');
@@ -768,7 +768,7 @@ async function findBracketTags() {
                 `No published tags match the ${slugs.size} linked entrant(s)${evName}.`, 'warn');
         } else {
             setBracketStatus(
-                `Selected ${matches.length} tag(s)${evName} — scroll down and click Download.`, 'success');
+                `Selected ${matches.length} tag(s)${evName}. Scroll down and click Download.`, 'success');
             tagBrowser.querySelector('#downloadSelected')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     } catch (err) {
@@ -948,7 +948,7 @@ async function importSelectedToSave(savFile) {
         if (rep.skipped.length) parts.push(`${rep.skipped.length} skipped (already exist)`);
         if (rep.incompatible.length) parts.push(`${rep.incompatible.length} incompatible (different game version)`);
         setImportStatus(
-            `Done — ${parts.join(', ') || 'no changes'}. Downloaded your updated ` +
+            `Done: ${parts.join(', ') || 'no changes'}. Downloaded your updated ` +
             `<strong>${escapeHtml(savFile.name)}</strong>; replace your save file with it ` +
             `(make a backup first).`,
             rep.incompatible.length ? 'warn' : 'success'
