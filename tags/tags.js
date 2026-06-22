@@ -722,11 +722,15 @@ document.addEventListener('click', (e) => {
 
 // ---- Download by start.gg bracket -----------------------------------------
 
-// Pull `tournament/<t>/event/<e>` out of a start.gg event URL.
-function parseEventSlug(text) {
+// Pull the event slug out of a start.gg URL, plus the phase-group id when the
+// URL points at a single bracket section (…/brackets/<phaseId>/<phaseGroupId>).
+// Returns { slug, phaseGroupId } or null.
+function parseEventTarget(text) {
     const s = (text || '').trim();
     const m = s.match(/tournament\/([^/\s?#]+)\/event\/([^/\s?#]+)/i);
-    return m ? `tournament/${m[1]}/event/${m[2]}` : null;
+    if (!m) return null;
+    const b = s.match(/\/brackets\/\d+\/(\d+)/i);
+    return { slug: `tournament/${m[1]}/event/${m[2]}`, phaseGroupId: b ? b[1] : null };
 }
 
 function setBracketStatus(message, kind = '') {
@@ -739,16 +743,18 @@ async function findBracketTags() {
         setBracketStatus('Bracket lookup isn’t connected yet.', 'error');
         return;
     }
-    const slug = parseEventSlug(bracketInput.value);
-    if (!slug) {
+    const target = parseEventTarget(bracketInput.value);
+    if (!target) {
         setBracketStatus('That doesn’t look like a start.gg event URL.', 'error');
         return;
     }
 
     bracketGo.disabled = true;
-    setBracketStatus('Looking up entrants…');
+    setBracketStatus(target.phaseGroupId ? 'Looking up this bracket section…' : 'Looking up entrants…');
     try {
-        const res = await fetch(`${STARTGG_BASE}/event?slug=${encodeURIComponent(slug)}`);
+        const params = new URLSearchParams({ slug: target.slug });
+        if (target.phaseGroupId) params.set('phaseGroupId', target.phaseGroupId);
+        const res = await fetch(`${STARTGG_BASE}/event?${params}`);
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || `${res.status}`);
 
@@ -762,7 +768,8 @@ async function findBracketTags() {
         });
         updateDownloadButton();
 
-        const evName = data.event ? ` for “${data.event}”` : '';
+        const scope = data.section ? `${data.event || 'event'} — ${data.section}` : data.event;
+        const evName = scope ? ` for “${scope}”` : '';
         if (!matches.length) {
             setBracketStatus(
                 `No published tags match the ${slugs.size} linked entrant(s)${evName}.`, 'warn');

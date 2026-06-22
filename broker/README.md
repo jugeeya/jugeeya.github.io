@@ -64,6 +64,9 @@ open GraphQL passthrough:
 - `GET /startgg/search?q=<gamerTag>` → `{ players: [{ gamerTag, prefix, slug }] }`
 - `GET /startgg/user?slug=user/<id>` → `{ slug, gamerTag, prefix }`
 - `GET /startgg/event?slug=tournament/<t>/event/<e>` → `{ event, entrants: [{ entrant, gamerTag, slug }] }`
+- `GET /startgg/event?phaseGroupId=<id>` → `{ event, section, entrants: [...] }` — only the
+  entrants seeded into a single bracket section (phase group), e.g. when the page is given a
+  `…/brackets/<phaseId>/<phaseGroupId>` URL. Smaller/faster than scanning the whole event.
 
 All use start.gg's unauthenticated website endpoint (no API token).
 
