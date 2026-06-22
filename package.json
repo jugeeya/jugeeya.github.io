@@ -1,0 +1,10 @@
+{
+  "name": "jugeeya-tools-site",
+  "private": true,
+  "type": "module",
+  "description": "Static site (GitHub Pages). package.json only marks .js as ESM for Node-based build tooling under scripts/; the site itself has no build step.",
+  "scripts": {
+    "build:wasm": "cd wasm && cargo build --target wasm32-unknown-unknown --release && wasm-bindgen --target web --out-dir pkg target/wasm32-unknown-unknown/release/r2tag_wasm.wasm && cp pkg/r2tag_wasm.js pkg/r2tag_wasm_bg.wasm ../tags/wasm/",
+    "build:baseline": "node scripts/build_default_baseline.mjs"
+  }
+}

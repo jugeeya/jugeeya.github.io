@@ -11,7 +11,8 @@
 // it's null the page is browse-only and Submit explains it isn't wired up.
 // See broker/README.md for how to stand up the Worker + GitHub App.
 
-import { getTagNames, exportTag, importTags } from './wasm/tagsav.js';
+import { getTagNames, exportTag, importTags, tagJson } from './wasm/tagsav.js';
+import { diffTagRoot, renderDiff } from './tagdiff.js';
 
 const UPLOAD_ENDPOINT = 'https://r2tag-broker.jdsambasivam.workers.dev';
 const MANIFEST_URL = 'data/index.json';
@@ -355,11 +356,50 @@ function renderTagList() {
                 li.appendChild(a);
             }
 
+            // "View changes" expander — shows how this tag differs from default,
+            // if we have a precomputed digest for it.
+            addChangeToggle(li, file);
+
             list.appendChild(li);
         });
     }
 
     updateDownloadButton();
+}
+
+// Adds a "View changes" link to a tag row, toggling a diff-from-default panel
+// inserted just below the row. The tag's .r2tag is fetched and parsed in-browser
+// (via the WASM) on first open, then diffed against the default baseline.
+function addChangeToggle(li, file) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tag-diff-toggle linkish';
+    btn.textContent = 'View changes';
+
+    let panel = null;
+    btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        if (panel) {
+            panel.hidden = !panel.hidden;
+            btn.textContent = panel.hidden ? 'View changes' : 'Hide changes';
+            return;
+        }
+        panel = document.createElement('li');
+        panel.className = 'tag-diff-panel';
+        panel.innerHTML = '<div class="tag-diff-body muted">Loading…</div>';
+        li.after(panel);
+        btn.textContent = 'Hide changes';
+        const body = panel.querySelector('.tag-diff-body');
+        try {
+            const root = await tagJson(await fetchR2tagBytes(file));
+            renderDiff(body, await diffTagRoot(root));
+        } catch (err) {
+            body.classList.remove('muted');
+            body.innerHTML = `<p class="tag-diff-empty muted">Couldn't read this tag (${escapeHtml(String(err.message || err))}).</p>`;
+        }
+    });
+
+    li.appendChild(btn);
 }
 
 async function downloadSelectedTags() {

@@ -11,6 +11,11 @@ import init, {
   export_tag,
   import_tags,
 } from './r2tag_wasm.js';
+// tag_json is newer than some deployed builds — pull it via the namespace so a
+// not-yet-rebuilt .wasm doesn't break this module's import linking (named
+// imports of a missing export are a hard error; a missing namespace key is just
+// undefined, which tagJson() handles).
+import * as _wasmAll from './r2tag_wasm.js';
 
 let ready = null;
 
@@ -38,6 +43,15 @@ export async function saveVersion(bytes) {
 export async function tagNameIn(r2tagBytes) {
   await ensureWasm();
   return tag_name_in(r2tagBytes);
+}
+
+/** Full parsed save tree (the `root` properties) of a .sav/.r2tag -> object. */
+export async function tagJson(bytes) {
+  await ensureWasm();
+  if (typeof _wasmAll.tag_json !== 'function') {
+    throw new Error('this feature needs an updated build; please try again shortly');
+  }
+  return _wasmAll.tag_json(bytes);
 }
 
 /** Produce a one-tag .r2tag (Uint8Array) from a loaded save. */

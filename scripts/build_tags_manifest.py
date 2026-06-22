@@ -19,9 +19,13 @@ def main():
     for path in sorted(glob.glob(os.path.join(DATA_DIR, "*.json"))):
         if os.path.basename(path) == "index.json":
             continue
+        # Only per-tag sidecars (which pair with a <stem>.r2tag.zip) are tags;
+        # skip other data files like control-settings.json / control-defaults.json.
+        stem = os.path.basename(path)[:-len(".json")]
+        if not os.path.exists(os.path.join(DATA_DIR, f"{stem}.r2tag.zip")):
+            continue
         with open(path, encoding="utf-8") as f:
             d = json.load(f)
-        stem = os.path.basename(path)[:-len(".json")]
         entry = {
             "name": d["name"],
             "author": d.get("author", ""),

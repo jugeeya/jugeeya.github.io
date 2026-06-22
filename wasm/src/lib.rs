@@ -86,6 +86,15 @@ pub fn tag_name_in(r2tag: &[u8]) -> Result<String, JsError> {
         .ok_or_else(|| JsError::new("no tag name found in file"))
 }
 
+/// The full parsed save tree as a JS object (the `root` properties). The page
+/// uses this to read a tag's control settings/bindings and diff them against the
+/// default. Reuses the same `serde` serialization as the desktop JSON export.
+#[wasm_bindgen]
+pub fn tag_json(bytes: &[u8]) -> Result<JsValue, JsError> {
+    let save = read_save(bytes)?;
+    serde_wasm_bindgen::to_value(&save.root).map_err(|e| JsError::new(&e.to_string()))
+}
+
 /// Produce a one-tag `.r2tag` (the full save with only `tag_name` retained).
 #[wasm_bindgen]
 pub fn export_tag(sav: &[u8], tag_name: &str) -> Result<Vec<u8>, JsError> {

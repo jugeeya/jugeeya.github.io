@@ -1,0 +1,71 @@
+name: Build WASM
+
+# GitHub Pages serves committed files as-is (no build step), so the compiled
+# WASM artifacts under tags/wasm/ must be committed. This rebuilds them from
+# wasm/ whenever the Rust source changes and commits the result back to the same
+# branch. The commit only touches tags/wasm/** (outside the trigger paths), so
+# it never re-triggers this workflow.
+
+on:
+  push:
+    paths:
+      - 'wasm/src/**'
+      - 'wasm/Cargo.toml'
+      - 'wasm/Cargo.lock'
+      - '.github/workflows/build-wasm.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-wasm-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust (wasm32 target)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin
+            ~/.cargo/registry
+            ~/.cargo/git
+            wasm/target
+          key: wasm-build-${{ runner.os }}-${{ hashFiles('wasm/Cargo.toml') }}
+
+      # wasm-bindgen CLI must match the wasm-bindgen crate pinned in wasm/Cargo.toml.
+      - name: Install wasm-bindgen-cli
+        run: |
+          if ! command -v wasm-bindgen >/dev/null || [ "$(wasm-bindgen --version | awk '{print $2}')" != "0.2.125" ]; then
+            cargo install wasm-bindgen-cli --version 0.2.125 --locked
+          fi
+
+      - name: Build WASM
+        run: |
+          cd wasm
+          cargo build --target wasm32-unknown-unknown --release
+          wasm-bindgen --target web --out-dir pkg \
+            target/wasm32-unknown-unknown/release/r2tag_wasm.wasm
+          cp pkg/r2tag_wasm.js pkg/r2tag_wasm_bg.wasm ../tags/wasm/
+
+      - name: Commit artifacts if changed
+        run: |
+          if git diff --quiet -- tags/wasm/; then
+            echo "WASM artifacts unchanged."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tags/wasm/r2tag_wasm.js tags/wasm/r2tag_wasm_bg.wasm
+          git commit -m "Rebuild WASM artifacts from wasm/ [automated]"
+          git push origin HEAD:${{ github.ref_name }}
