@@ -37,5 +37,11 @@ rustc than this repo's toolchain; the two commands above do the same job.)
 - `get_tag_names(sav)` → custom tag names in a save
 - `save_version(bytes)` → save-format version of a `.sav`/`.r2tag`
 - `tag_name_in(r2tag)` → the tag name inside a `.r2tag`
+- `tag_json(bytes)` → the full parsed save tree as a JS object (used by the tags
+  page to diff a tag's control settings against the default)
 - `export_tag(sav, name)` → one-tag `.r2tag` bytes
 - `import_tags(sav, items)` → merged save bytes + imported/skipped/incompatible
+
+The committed artifacts under `../tags/wasm/` are rebuilt automatically in CI
+(`.github/workflows/build-wasm.yml`) whenever this crate changes, so you normally
+don't need to rebuild by hand.

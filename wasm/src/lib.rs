@@ -86,6 +86,23 @@ pub fn tag_name_in(r2tag: &[u8]) -> Result<String, JsError> {
         .ok_or_else(|| JsError::new("no tag name found in file"))
 }
 
+/// The full parsed save tree as a JS object (the `root` properties). The page
+/// uses this to read a tag's control settings/bindings and diff them against the
+/// default. Reuses the same `serde` serialization as the desktop JSON export.
+#[wasm_bindgen]
+pub fn tag_json(bytes: &[u8]) -> Result<JsValue, JsError> {
+    let save = read_save(bytes)?;
+    // serialize_maps_as_objects: emit plain objects (not JS Maps) so the tree
+    //   matches the serde_json-shaped baseline the page diffs against.
+    // serialize_large_number_types_as_bigints: i64 fields (e.g. LastUsed =
+    //   FDateTime ticks) overflow a JS number; as BigInt they sit untouched in
+    //   the tree (the digest extractor only reads enums/bools/f32s).
+    let ser = serde_wasm_bindgen::Serializer::new()
+        .serialize_maps_as_objects(true)
+        .serialize_large_number_types_as_bigints(true);
+    save.root.serialize(&ser).map_err(|e| JsError::new(&e.to_string()))
+}
+
 /// Produce a one-tag `.r2tag` (the full save with only `tag_name` retained).
 #[wasm_bindgen]
 pub fn export_tag(sav: &[u8], tag_name: &str) -> Result<Vec<u8>, JsError> {

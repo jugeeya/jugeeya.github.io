@@ -1,0 +1,13 @@
+[package]
+name = "tagtool"
+version = "0.1.0"
+edition = "2021"
+description = "Native helper that dumps a Rivals II .sav/.r2tag to JSON, for build-time tooling (tag settings digests)."
+
+[[bin]]
+name = "tagdump"
+path = "src/main.rs"
+
+[dependencies]
+uesave = "0.7.1"
+serde_json = "1"
