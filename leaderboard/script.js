@@ -471,11 +471,11 @@ async function updateEloDistribution() {
                 title: {
                     display: true,
                     text: 'ELO Distribution by Rank',
-                    color: '#FFFFFF',
+                    color: '#f4f3f8',
                     font: {
-                        family: 'Poppins',
+                        family: "'Space Grotesk', 'Inter', sans-serif",
                         size: 16,
-                        weight: '500'
+                        weight: '600'
                     }
                 }
             },
@@ -483,9 +483,9 @@ async function updateEloDistribution() {
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        color: '#B0B0B0',
+                        color: '#a09bb5',
                         font: {
-                            family: 'Poppins'
+                            family: "'Inter', sans-serif"
                         }
                     },
                     grid: {
@@ -494,9 +494,9 @@ async function updateEloDistribution() {
                 },
                 x: {
                     ticks: {
-                        color: '#B0B0B0',
+                        color: '#a09bb5',
                         font: {
-                            family: 'Poppins'
+                            family: "'Inter', sans-serif"
                         }
                     },
                     grid: {

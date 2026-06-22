@@ -22,3 +22,5 @@ __pycache__/
 
 # Cloudflare Wrangler local state
 broker/.wrangler/ 
+# Claude Code local config
+.claude/
