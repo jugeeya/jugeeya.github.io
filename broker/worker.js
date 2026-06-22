@@ -143,6 +143,48 @@ async function handleStartgg(env, url, cors) {
     }
 
     if (op === 'event') {
+      const phaseGroupId = (url.searchParams.get('phaseGroupId') || '').trim();
+
+      // A single bracket section (start.gg phase group): only that section's
+      // entrants are fetched — far smaller than paging the whole event.
+      if (phaseGroupId) {
+        if (!/^\d{1,15}$/.test(phaseGroupId))
+          return json({ error: 'Bad phase group id.' }, 400, cors);
+        const entrants = [];
+        let page = 1, totalPages = 1, eventName = '', section = '';
+        do {
+          const data = await startggGql(
+            `query($id:ID!,$page:Int!){ phaseGroup(id:$id){ displayIdentifier
+               phase{ name event{ name } }
+               seeds(query:{ page:$page, perPage:64 }){
+                 pageInfo{ totalPages }
+                 nodes{ entrant{ name participants{ gamerTag user{ slug } } } } } } }`,
+            { id: phaseGroupId, page }
+          );
+          const pg = data.phaseGroup;
+          if (!pg) return json({ error: 'Bracket section not found.' }, 404, cors);
+          const c = pg.seeds || {};
+          totalPages = (c.pageInfo && c.pageInfo.totalPages) || 1;
+          for (const s of c.nodes || []) {
+            const ent = s.entrant;
+            if (!ent) continue;
+            for (const p of ent.participants || []) {
+              if (p.user && p.user.slug)
+                entrants.push({ entrant: ent.name || '', gamerTag: p.gamerTag || '', slug: p.user.slug });
+            }
+          }
+          if (page === 1) {
+            eventName = (pg.phase && pg.phase.event && pg.phase.event.name) || '';
+            // e.g. "Pool Play (A)" or just "Top 64" — skip a lone "1" group id.
+            const ident = pg.displayIdentifier && pg.displayIdentifier !== '1'
+              ? `(${pg.displayIdentifier})` : '';
+            section = [pg.phase && pg.phase.name, ident].filter(Boolean).join(' ');
+          }
+          page++;
+        } while (page <= totalPages && page <= 30);
+        return json({ event: eventName, section, entrants }, 200, cors);
+      }
+
       const slug = (url.searchParams.get('slug') || '').trim().slice(0, 200);
       if (!/^tournament\/[^/]+\/event\/[^/]+$/i.test(slug))
         return json({ error: 'Expected an event slug like tournament/<t>/event/<e>.' }, 400, cors);
