@@ -1,12 +1,12 @@
 // "What did this tag change from default?" — extracts a compact digest of a
 // tag's control settings/bindings (from the parsed save the WASM hands back) and
-// diffs it against the default baseline in tags/data/control-defaults.json.
+// diffs it against the default baseline in tags/control-defaults.json.
 //
 // extractDigest() is pure and shared: the browser runs it on the WASM's tag_json
 // output, and scripts/build_default_baseline.mjs runs the *same* code (under
 // Node) to regenerate the baseline — so the two can never drift.
 
-const DEFAULTS_URL = 'data/control-defaults.json';
+const DEFAULTS_URL = 'control-defaults.json';
 
 const ENUM_SETTINGS = new Set(['RollSetting', 'RightStickSetting', 'AirParrySetting',
     'AirGrabSetting', 'ItemTossSetting']);

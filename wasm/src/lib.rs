@@ -92,7 +92,11 @@ pub fn tag_name_in(r2tag: &[u8]) -> Result<String, JsError> {
 #[wasm_bindgen]
 pub fn tag_json(bytes: &[u8]) -> Result<JsValue, JsError> {
     let save = read_save(bytes)?;
-    serde_wasm_bindgen::to_value(&save.root).map_err(|e| JsError::new(&e.to_string()))
+    // Tags carry i64 fields (e.g. LastUsed = FDateTime ticks) that overflow a JS
+    // number; serialize large ints as BigInt. They land untouched in the tree —
+    // the page's digest extractor only reads enums/bools/f32s, never these.
+    let ser = serde_wasm_bindgen::Serializer::new().serialize_large_number_types_as_bigints(true);
+    save.root.serialize(&ser).map_err(|e| JsError::new(&e.to_string()))
 }
 
 /// Produce a one-tag `.r2tag` (the full save with only `tag_name` retained).

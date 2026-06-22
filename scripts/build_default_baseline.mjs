@@ -1,5 +1,6 @@
-// Regenerate tags/data/control-defaults.json — the default baseline the tags
-// page diffs against.
+// Regenerate tags/control-defaults.json — the default baseline the tags page
+// diffs against. (It lives in tags/, not tags/data/, so the tag-submission
+// tooling that watches tags/data/** doesn't treat it as a tag.)
 //
 // Lacking a clean default-tag export, the baseline is reconstructed from a known
 // tag (JUGZ) with its author-confirmed customizations reverted to default (see
@@ -94,5 +95,6 @@ function applyOverrides(digest) {
 }
 
 const digest = applyOverrides(extractDigest(baselineRoot()));
-fs.writeFileSync(path.join(DATA, 'control-defaults.json'), JSON.stringify(digest, null, 1) + '\n');
-console.log(`Wrote tags/data/control-defaults.json from ${BASELINE_TAG} (overrides applied).`);
+const outPath = path.join(ROOT, 'tags', 'control-defaults.json');
+fs.writeFileSync(outPath, JSON.stringify(digest, null, 1) + '\n');
+console.log(`Wrote tags/control-defaults.json from ${BASELINE_TAG} (overrides applied).`);
