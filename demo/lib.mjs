@@ -16,7 +16,7 @@ export async function installCinematics(page) {
       #__cursor{position:fixed;z-index:2147483647;width:22px;height:22px;margin:-11px 0 0 -11px;
         border-radius:50%;background:rgba(255,255,255,.95);
         box-shadow:0 0 0 2px rgba(0,0,0,.4),0 3px 10px rgba(0,0,0,.45);
-        pointer-events:none;left:0;top:0;transition:transform .08s ease-out}
+        pointer-events:none;left:0;top:0;opacity:0;transition:transform .08s ease-out,opacity .3s ease}
       #__cursor.click{transform:scale(.6)}
       .__ripple{position:fixed;z-index:2147483646;border:2px solid rgba(132,134,252,.95);border-radius:50%;
         pointer-events:none;width:8px;height:8px;margin:-4px 0 0 -4px;animation:__rip .55s ease-out forwards}
@@ -34,13 +34,19 @@ export async function installCinematics(page) {
     document.documentElement.appendChild(style);
     // Match the page bg so zooming out leaves no white edges.
     document.documentElement.style.background = '#0e0c24';
+    // Opaque cover from the very first paint, so the page never flashes before
+    // the intro. The demo removes it once the title card is up.
+    const boot = document.createElement('div');
+    boot.id = '__boot';
+    boot.style.cssText = 'position:fixed;inset:0;z-index:2147483644;background:#0e0c24';
+    document.documentElement.appendChild(boot);
 
     const cur = document.createElement('div');
     cur.id = '__cursor';
     document.documentElement.appendChild(cur);
 
     window.__cine = {
-      move(x, y) { cur.style.left = x + 'px'; cur.style.top = y + 'px'; },
+      move(x, y) { cur.style.left = x + 'px'; cur.style.top = y + 'px'; cur.style.opacity = '1'; },
       click() {
         cur.classList.add('click');
         setTimeout(() => cur.classList.remove('click'), 130);
@@ -71,24 +77,54 @@ export async function moveCursorTo(page, x, y, steps = 30) {
   pos = { x, y };
 }
 
+// Manually eased window scroll. Always animates (unlike scrollIntoView({smooth}),
+// which becomes an instant jump under prefers-reduced-motion).
+export async function smoothScrollToY(page, y, ms = 600) {
+  await page.evaluate(({ y, ms }) => new Promise((res) => {
+    const start = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const dest = Math.max(0, Math.min(y, max));
+    const dist = dest - start;
+    if (Math.abs(dist) < 2) return res();
+    const t0 = performance.now();
+    const ease = (t) => 1 - Math.pow(1 - t, 3);
+    (function step(now) {
+      const t = Math.min(1, (now - t0) / ms);
+      window.scrollTo(0, start + dist * ease(t));
+      t < 1 ? requestAnimationFrame(step) : res();
+    })(performance.now());
+  }), { y, ms });
+}
+
+// Smooth-scroll an element to the top (block 'start') or middle ('center').
+export async function smoothScrollEl(page, selector, block = 'start', ms = 650) {
+  const dest = await page.evaluate(({ selector, block }) => {
+    const el = document.querySelector(selector);
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    const top = window.scrollY + r.top;
+    return block === 'center' ? top - (window.innerHeight - r.height) / 2 : top - 28;
+  }, { selector, block });
+  if (dest != null) await smoothScrollToY(page, dest, ms);
+}
+
 async function centerOf(page, target) {
   // `target` may be a CSS selector string or a Playwright Locator.
   const loc = (typeof target === 'string' ? page.locator(target) : target).first();
   await loc.waitFor({ state: 'attached' });
-  // Smooth-scroll into view only when it's near/over an edge, so deliberate
-  // framing isn't yanked but off-screen targets still glide in smoothly.
-  const offscreen = await loc.evaluate((el) => {
-    const r = el.getBoundingClientRect();
-    const cy = r.top + r.height / 2;
-    return cy < 90 || cy > window.innerHeight - 90;
-  }).catch(() => true);
-  if (offscreen) {
-    await loc.evaluate((el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
-    await sleep(750);
+  let b = await loc.boundingBox();
+  const vh = page.viewportSize().height;
+  // Eased-scroll into view only when part of it is near/over an edge, so it's
+  // fully visible before the click (Playwright won't then auto-scroll/jump).
+  if (b && (b.y < 70 || b.y + b.height > vh - 70)) {
+    const sy = await page.evaluate(() => window.scrollY);
+    const dest = sy + b.y - Math.max(20, (vh - b.height) / 2);
+    await smoothScrollToY(page, dest, 600);
+    await sleep(120);
+    b = await loc.boundingBox();
   } else {
-    await sleep(150);
+    await sleep(120);
   }
-  const b = await loc.boundingBox();
   if (!b) throw new Error(`no bounding box for ${target}`);
   return { loc, x: b.x + b.width / 2, y: b.y + b.height / 2, box: b };
 }
@@ -153,13 +189,15 @@ export async function setZoom(page, scale, ms = 0) {
   if (ms) await sleep(ms);
 }
 
-// Smooth-scroll an element into view and wait for it to settle.
-export async function smoothScroll(page, target, block = 'center') {
-  await page.evaluate(({ target, block }) => {
-    const el = document.querySelector(target);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block });
-  }, { target, block });
-  await sleep(950);
+// Fade out the title overlay and drop the first-paint boot cover behind it,
+// revealing whatever is staged underneath (e.g. the zoomed-out overview).
+export async function hideTitleCard(page) {
+  await page.evaluate(() => {
+    document.getElementById('__boot')?.remove();
+    const o = document.getElementById('__overlay');
+    if (o) { o.style.opacity = '0'; setTimeout(() => o.remove(), 650); }
+  });
+  await sleep(650);
 }
 
 // Floating label anchored above/below an element.
