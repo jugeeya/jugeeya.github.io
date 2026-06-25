@@ -69,12 +69,13 @@ export async function moveCursorTo(page, x, y, steps = 30) {
   pos = { x, y };
 }
 
-async function centerOf(page, selector) {
-  const loc = page.locator(selector).first();
+async function centerOf(page, target) {
+  // `target` may be a CSS selector string or a Playwright Locator.
+  const loc = (typeof target === 'string' ? page.locator(target) : target).first();
   await loc.scrollIntoViewIfNeeded();
   await sleep(250);
   const b = await loc.boundingBox();
-  if (!b) throw new Error(`no bounding box for ${selector}`);
+  if (!b) throw new Error(`no bounding box for ${target}`);
   return { loc, x: b.x + b.width / 2, y: b.y + b.height / 2, box: b };
 }
 

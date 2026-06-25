@@ -34,21 +34,24 @@ if (!existsSync(SAVE_FILE)) {
   process.exit(1);
 }
 
-// Pull the live published tags so the mocked bracket selects real entries.
-async function publishedSlugs() {
+// The live tag manifest (so the mocked bracket selects real entries, and we can
+// link HYPER to the exact start.gg account it's published under).
+async function loadIndex() {
   try {
     const res = await fetch(`${ORIGIN}/tags/data/index.json`);
-    const data = await res.json();
-    return (data.tags || [])
-      .filter((t) => t.startgg && t.startgg.slug)
-      .map((t) => ({ entrant: t.startgg.tag || t.name, gamerTag: t.startgg.tag || t.name, slug: t.startgg.slug }));
+    return await res.json();
   } catch {
-    return [];
+    return { tags: [] };
   }
 }
 
 const run = async () => {
-  const entrants = await publishedSlugs();
+  const index = await loadIndex();
+  const tags = index.tags || [];
+  const entrants = tags
+    .filter((t) => t.startgg && t.startgg.slug)
+    .map((t) => ({ entrant: t.startgg.tag || t.name, gamerTag: t.startgg.tag || t.name, slug: t.startgg.slug }));
+  const hyper = tags.find((t) => (t.name || '').toUpperCase() === 'HYPER' && t.startgg && t.startgg.slug);
 
   const browser = await chromium.launch();
   const context = await browser.newContext({
@@ -84,24 +87,10 @@ const run = async () => {
     'Rivals II Controls / Tag Sharing',
     'Share your tags and controls, right from the browser', 2800);
 
-  // ── Browse the database ────────────────────────────────────────────────────
-  await page.locator('#tagBrowser').scrollIntoViewIfNeeded();
-  await sleep(500);
-  await showAnnotation(page, '#tagBrowser', 'A shared database of player tags + custom controls', { ms: 2200 });
-  await glideAndType(page, '#tagSearch', 'kim', { perChar: 110 });
-  await sleep(1200);
-  await showAnnotation(page, '#tagSearch', 'Search by in-game tag or start.gg account', { ms: 2000, place: 'top' });
-  await glideAndType(page, '#tagSearch', '', { perChar: 0 });
-  await sleep(800);
+  // The page reads top-to-bottom — submit first, then browse/download — so the
+  // demo follows the same order instead of jumping around.
 
-  // ── Download a whole bracket ───────────────────────────────────────────────
-  await glideAndType(page, '#bracketInput', 'https://www.start.gg/tournament/demo-invitational/event/singles', { perChar: 22 });
-  await glideAndClick(page, '#bracketGo');
-  await sleep(1400);
-  await showAnnotation(page, '#bracketStatus', "Paste a bracket URL to grab every entrant's tag", { ms: 2600 });
-  await sleep(600);
-
-  // ── Load your save (nothing uploaded) ──────────────────────────────────────
+  // ── 1. Load your save (nothing uploaded) ───────────────────────────────────
   await page.locator('#savButton').scrollIntoViewIfNeeded();
   await sleep(400);
   const chooser = page.waitForEvent('filechooser');
@@ -111,37 +100,63 @@ const run = async () => {
   await sleep(700);
   await showAnnotation(page, '#savPanel', 'Read in your browser. Your save is never uploaded.', { ms: 2600, place: 'top' });
 
-  // pick the first tag and stage it for submission
-  await glideAndClick(page, '#savPanel .sav-tag-checkbox >> nth=0');
+  // ── 2. Pick the HYPER tag and stage it ─────────────────────────────────────
+  const hyperSel = '#savPanel .sav-tag-checkbox[value="HYPER"]';
+  const tagSel = (await page.locator(hyperSel).count()) ? hyperSel : '#savPanel .sav-tag-checkbox >> nth=0';
+  await glideAndClick(page, tagSel);
   await sleep(400);
   await glideAndClick(page, '#savPanel #savAddBtn');
   await page.locator('#fileList .sgg-input').first().waitFor();
   await sleep(700);
 
-  // ── Link a start.gg account (live search, real avatars) ────────────────────
+  // ── 3. Link HYPER to HyperFlame's start.gg (live search, real avatars) ─────
   await showAnnotation(page, '#fileList', 'Link each tag to its own start.gg account', { ms: 2400, place: 'top' });
-  await glideAndType(page, '#fileList .sgg-input', 'jugeeya', { perChar: 95 });
+  await glideAndType(page, '#fileList .sgg-input', 'HyperFlame', { perChar: 85 });
   try {
     await page.locator('#fileList .sgg-result').first().waitFor({ timeout: 6000 });
   } catch { /* live search may be slow; continue anyway */ }
   await sleep(900);
-  await glideAndClick(page, '#fileList .sgg-result >> nth=0');
+  // Pick HyperFlame's actual account (the one the published HYPER tag uses),
+  // not just whichever match happens to rank first.
+  let pick = page.locator('#fileList .sgg-result').first();
+  if (hyper) {
+    const match = page.locator('#fileList .sgg-result').filter({ hasText: hyper.startgg.slug });
+    if (await match.count()) pick = match.first();
+  }
+  await glideAndClick(page, pick);
   await sleep(900);
 
-  // ── Submit (mocked) ────────────────────────────────────────────────────────
+  // ── 4. Submit (mocked — no real PR) ────────────────────────────────────────
   await glideAndClick(page, '#submitButton');
   await sleep(1400);
   await showAnnotation(page, '#uploadStatus', 'Submitted! It is now in the database for your TOs.', { ms: 2800, place: 'top' });
   await sleep(600);
 
-  // ── Import a bracket straight into a save ──────────────────────────────────
+  // ── 5. Browse the database ─────────────────────────────────────────────────
+  await page.locator('#tagBrowser').scrollIntoViewIfNeeded();
+  await sleep(500);
+  await showAnnotation(page, '#tagBrowser', 'A shared database of player tags + custom controls', { ms: 2200 });
+  await glideAndType(page, '#tagSearch', 'kim', { perChar: 110 });
+  await sleep(1200);
+  await showAnnotation(page, '#tagSearch', 'Search by in-game tag or start.gg account', { ms: 2000, place: 'top' });
+  await glideAndType(page, '#tagSearch', '', { perChar: 0 });
+  await sleep(800);
+
+  // ── 6. Download a whole bracket ────────────────────────────────────────────
+  await glideAndType(page, '#bracketInput', 'https://www.start.gg/tournament/demo-invitational/event/singles', { perChar: 22 });
+  await glideAndClick(page, '#bracketGo');
+  await sleep(1400);
+  await showAnnotation(page, '#bracketStatus', "Paste a bracket URL to grab every entrant's tag", { ms: 2600 });
+  await sleep(600);
+
+  // ── 7. Import the bracket straight into a save ─────────────────────────────
   await page.locator('#importSelected').scrollIntoViewIfNeeded();
   await sleep(400);
   const chooser2 = page.waitForEvent('filechooser');
   await glideAndClick(page, '#importSelected', { settle: 120 });
   await (await chooser2).setFiles(SAVE_FILE);
   await sleep(1600);
-  await showAnnotation(page, '#importStatus', 'Or import a whole bracket into your own .sav', { ms: 2800, place: 'top' });
+  await showAnnotation(page, '#importStatus', 'Import a whole bracket into your own .sav', { ms: 2800, place: 'top' });
   await sleep(800);
 
   // ── Outro ──────────────────────────────────────────────────────────────────
