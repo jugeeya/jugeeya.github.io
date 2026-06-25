@@ -1,0 +1,14 @@
+{
+  "name": "r2tag-demo",
+  "private": true,
+  "type": "module",
+  "description": "Playwright demo-video recorder for the Rivals II Controls / Tag Sharing tool",
+  "scripts": {
+    "fixture": "node generate-fixture.mjs",
+    "record": "node demo.mjs"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "playwright": "^1.50.0"
+  }
+}
