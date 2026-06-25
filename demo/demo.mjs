@@ -16,7 +16,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import {
   installCinematics, resetCursor, glideAndClick, glideAndType,
-  showTitleCard, showAnnotation, setZoom, smoothScroll, sleep,
+  showTitleCard, showAnnotation, setZoom, sleep,
 } from './lib.mjs';
 
 const TARGET = process.env.TARGET || 'https://jugeeya.github.io/tags/';
@@ -86,17 +86,20 @@ const run = async () => {
   await page.evaluate(([x, y]) => window.__cine && window.__cine.move(x, y), [W / 2, H / 2]);
   await sleep(400);
 
-  // ── Intro: show the whole page, then a clean zoom into the top section ─────
+  // ── Intro: title card, then the whole page, then a clean zoom to the top ───
   await page.evaluate(() => window.scrollTo(0, 0));
-  await setZoom(page, 0.6, 0);     // overview (the page's own header is the title)
-  await sleep(1700);
-  await setZoom(page, 1, 1300);    // smooth zoom into the submit section
+  await setZoom(page, 0.62, 0);    // whole-page overview sits behind the title
+  await showTitleCard(page,
+    'Rivals II Controls / Tag Sharing',
+    'Share your tags and controls, right from the browser', 2400);
+  await sleep(1600);               // hold on the whole-page overview
+  await setZoom(page, 1, 1500);    // smooth zoom into the submit section
   await sleep(700);
 
   // The page reads top-to-bottom: the whole submit flow first, then browse.
+  // (glide/annotate helpers now smooth-scroll their target into view.)
 
   // ── 1. Load your save (nothing uploaded) ───────────────────────────────────
-  await smoothScroll(page, '#savButton', 'center');
   const chooser = page.waitForEvent('filechooser');
   await glideAndClick(page, '#savButton', { settle: 120 });
   await (await chooser).setFiles(SAVE_FILE);
@@ -111,7 +114,6 @@ const run = async () => {
   await sleep(350);
   await glideAndClick(page, '#savPanel #savAddBtn');
   await page.locator('#fileList .sgg-input').first().waitFor();
-  await smoothScroll(page, '#fileList', 'center');
   await sleep(500);
 
   // ── 3. Link HYPER to HyperFlame's start.gg (live search, real avatars) ─────
@@ -131,16 +133,21 @@ const run = async () => {
   await sleep(1000);
 
   // ── 4. Submit (mocked — no real PR) ────────────────────────────────────────
-  await smoothScroll(page, '#submitButton', 'center');
   await glideAndClick(page, '#submitButton');
-  await sleep(1500);
-  await showAnnotation(page, '#uploadStatus', "Submitted — it's now in the shared database below.", { ms: 2600, place: 'top' });
+  await page.locator('#pendingPanel').waitFor({ state: 'visible' }).catch(() => {});
+  await sleep(1200);
+  // Annotate the "Your submissions" panel (the success line auto-clears).
+  await showAnnotation(page, '#pendingPanel', "Submitted — it's now in the shared database below.", { ms: 2600, place: 'top' });
   await sleep(700);
 
   // ── 5. Browse + view a tag's actual control changes ────────────────────────
-  await smoothScroll(page, '#tagBrowser', 'start');
-  await sleep(400);
-  await showAnnotation(page, '#tagBrowser', 'A shared database of tags + custom controls', { ms: 2000 });
+  // Frame the whole Shared-tags section (heading included), not just the list.
+  await page.evaluate(() => {
+    const sec = document.querySelector('#tagBrowser')?.closest('.panel');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  await sleep(1100);
+  await showAnnotation(page, '#tagSearch', 'A shared database of tags + custom controls', { ms: 2000, place: 'top' });
   await glideAndType(page, '#tagSearch', 'Hyper', { perChar: 110 });
   await sleep(1100);
   await glideAndClick(page, '#tagList .tag-diff-toggle');
@@ -149,7 +156,6 @@ const run = async () => {
     const b = document.querySelector('#tagList .tag-diff-panel .tag-diff-body');
     return b && !/Loading/.test(b.textContent);
   }, { timeout: 8000 }).catch(() => {});
-  await smoothScroll(page, '#tagList .tag-diff-panel', 'center');
   await sleep(600);
   await showAnnotation(page, '#tagList .tag-diff-panel', 'See exactly which controls a tag changes', { ms: 2800, place: 'top' });
   await sleep(600);
@@ -157,7 +163,6 @@ const run = async () => {
   await sleep(700);
 
   // ── 6. Download a whole bracket ────────────────────────────────────────────
-  await smoothScroll(page, '#bracketInput', 'center');
   await glideAndType(page, '#bracketInput', 'https://www.start.gg/tournament/demo-invitational/event/singles', { perChar: 22 });
   await glideAndClick(page, '#bracketGo');
   await sleep(1400);
@@ -165,20 +170,15 @@ const run = async () => {
   await sleep(500);
 
   // ── 7. Import the bracket straight into a save ─────────────────────────────
-  await smoothScroll(page, '#importSelected', 'center');
   const chooser2 = page.waitForEvent('filechooser');
   await glideAndClick(page, '#importSelected', { settle: 120 });
   await (await chooser2).setFiles(SAVE_FILE);
   await sleep(1600);
   await showAnnotation(page, '#importStatus', 'Import a whole bracket into your own .sav', { ms: 2600, place: 'top' });
-  await sleep(800);
+  await sleep(900);
 
-  // ── Outro: pull back to the whole page ─────────────────────────────────────
-  await smoothScroll(page, 'header', 'start');
-  await sleep(300);
-  await setZoom(page, 0.6, 1100);
-  await sleep(500);
-  await showTitleCard(page, 'jugeeya.github.io/tags', 'No installs. No uploads. Just share.', 2600);
+  // ── Outro: title card that holds to the end (no second overview) ───────────
+  await showTitleCard(page, 'jugeeya.github.io/tags', 'No installs. No uploads. Just share.', 2400, { stay: true });
 
   await page.close();
   await context.close();

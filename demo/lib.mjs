@@ -74,8 +74,20 @@ export async function moveCursorTo(page, x, y, steps = 30) {
 async function centerOf(page, target) {
   // `target` may be a CSS selector string or a Playwright Locator.
   const loc = (typeof target === 'string' ? page.locator(target) : target).first();
-  await loc.scrollIntoViewIfNeeded();
-  await sleep(250);
+  await loc.waitFor({ state: 'attached' });
+  // Smooth-scroll into view only when it's near/over an edge, so deliberate
+  // framing isn't yanked but off-screen targets still glide in smoothly.
+  const offscreen = await loc.evaluate((el) => {
+    const r = el.getBoundingClientRect();
+    const cy = r.top + r.height / 2;
+    return cy < 90 || cy > window.innerHeight - 90;
+  }).catch(() => true);
+  if (offscreen) {
+    await loc.evaluate((el) => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+    await sleep(750);
+  } else {
+    await sleep(150);
+  }
   const b = await loc.boundingBox();
   if (!b) throw new Error(`no bounding box for ${target}`);
   return { loc, x: b.x + b.width / 2, y: b.y + b.height / 2, box: b };
@@ -105,7 +117,8 @@ export async function glideAndType(page, selector, text, { perChar = 65, clear =
 
 // Full-screen title/outro card with fade in/out. Uses inline styles + a forced
 // reflow so the fade-in reliably triggers (a bare rAF sometimes didn't).
-export async function showTitleCard(page, title, subtitle = '', ms = 2600) {
+// `stay: true` leaves it up (no fade-out) so the video can end on it.
+export async function showTitleCard(page, title, subtitle = '', ms = 2600, { stay = false } = {}) {
   await page.evaluate(({ t, s }) => {
     let o = document.getElementById('__overlay');
     if (!o) { o = document.createElement('div'); o.id = '__overlay'; document.documentElement.appendChild(o); }
@@ -120,6 +133,7 @@ export async function showTitleCard(page, title, subtitle = '', ms = 2600) {
     o.style.opacity = '1';
   }, { t: title, s: subtitle });
   await sleep(ms);
+  if (stay) return;           // leave it up (e.g. final outro)
   await page.evaluate(() => {
     const o = document.getElementById('__overlay');
     if (o) { o.style.opacity = '0'; setTimeout(() => o.remove(), 650); }
