@@ -15,8 +15,8 @@ import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import {
-  installCinematics, resetCursor, moveCursorTo, glideAndClick, glideAndType,
-  showTitleCard, showAnnotation, sleep,
+  installCinematics, resetCursor, glideAndClick, glideAndType,
+  showTitleCard, showAnnotation, setZoom, smoothScroll, sleep,
 } from './lib.mjs';
 
 const TARGET = process.env.TARGET || 'https://jugeeya.github.io/tags/';
@@ -77,90 +77,108 @@ const run = async () => {
   page.on('download', (d) => d.saveAs(path.join(VIDEO_DIR, 'demo-import.sav')).catch(() => {}));
 
   await installCinematics(page);
-  await page.goto(TARGET, { waitUntil: 'networkidle' });
+  // Dark the initial blank page so the load shows no white flash.
+  await page.evaluate(() => { document.documentElement.style.background = '#0e0c24'; }).catch(() => {});
+  await page.goto(TARGET, { waitUntil: 'domcontentloaded' });
+  await page.locator('#savButton').waitFor();
+  await page.locator('#tagBrowser .tag-list-item').first().waitFor({ timeout: 15000 }).catch(() => {});
   resetCursor(W / 2, H / 2);
   await page.evaluate(([x, y]) => window.__cine && window.__cine.move(x, y), [W / 2, H / 2]);
-  await sleep(600);
+  await sleep(400);
 
-  // ── Title ────────────────────────────────────────────────────────────────
-  await showTitleCard(page,
-    'Rivals II Controls / Tag Sharing',
-    'Share your tags and controls, right from the browser', 2800);
+  // ── Intro: show the whole page, then a clean zoom into the top section ─────
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await setZoom(page, 0.6, 0);     // overview (the page's own header is the title)
+  await sleep(1700);
+  await setZoom(page, 1, 1300);    // smooth zoom into the submit section
+  await sleep(700);
 
-  // The page reads top-to-bottom — submit first, then browse/download — so the
-  // demo follows the same order instead of jumping around.
+  // The page reads top-to-bottom: the whole submit flow first, then browse.
 
   // ── 1. Load your save (nothing uploaded) ───────────────────────────────────
-  await page.locator('#savButton').scrollIntoViewIfNeeded();
-  await sleep(400);
+  await smoothScroll(page, '#savButton', 'center');
   const chooser = page.waitForEvent('filechooser');
   await glideAndClick(page, '#savButton', { settle: 120 });
   await (await chooser).setFiles(SAVE_FILE);
   await page.locator('#savPanel .sav-tag-checkbox').first().waitFor();
   await sleep(700);
-  await showAnnotation(page, '#savPanel', 'Read in your browser. Your save is never uploaded.', { ms: 2600, place: 'top' });
+  await showAnnotation(page, '#savPanel', 'Read in your browser. Your save is never uploaded.', { ms: 2400, place: 'top' });
 
   // ── 2. Pick the HYPER tag and stage it ─────────────────────────────────────
   const hyperSel = '#savPanel .sav-tag-checkbox[value="HYPER"]';
   const tagSel = (await page.locator(hyperSel).count()) ? hyperSel : '#savPanel .sav-tag-checkbox >> nth=0';
   await glideAndClick(page, tagSel);
-  await sleep(400);
+  await sleep(350);
   await glideAndClick(page, '#savPanel #savAddBtn');
   await page.locator('#fileList .sgg-input').first().waitFor();
-  await sleep(700);
+  await smoothScroll(page, '#fileList', 'center');
+  await sleep(500);
 
   // ── 3. Link HYPER to HyperFlame's start.gg (live search, real avatars) ─────
-  await showAnnotation(page, '#fileList', 'Link each tag to its own start.gg account', { ms: 2400, place: 'top' });
+  await showAnnotation(page, '#fileList', 'Link each tag to its own start.gg account', { ms: 2200, place: 'top' });
   await glideAndType(page, '#fileList .sgg-input', 'HyperFlame', { perChar: 85 });
   try {
     await page.locator('#fileList .sgg-result').first().waitFor({ timeout: 6000 });
   } catch { /* live search may be slow; continue anyway */ }
   await sleep(900);
-  // Pick HyperFlame's actual account (the one the published HYPER tag uses),
-  // not just whichever match happens to rank first.
+  // Pick HyperFlame's actual account (the one the published HYPER tag uses).
   let pick = page.locator('#fileList .sgg-result').first();
   if (hyper) {
     const match = page.locator('#fileList .sgg-result').filter({ hasText: hyper.startgg.slug });
     if (await match.count()) pick = match.first();
   }
   await glideAndClick(page, pick);
-  await sleep(900);
+  await sleep(1000);
 
   // ── 4. Submit (mocked — no real PR) ────────────────────────────────────────
+  await smoothScroll(page, '#submitButton', 'center');
   await glideAndClick(page, '#submitButton');
-  await sleep(1400);
-  await showAnnotation(page, '#uploadStatus', 'Submitted! It is now in the database for your TOs.', { ms: 2800, place: 'top' });
-  await sleep(600);
+  await sleep(1500);
+  await showAnnotation(page, '#uploadStatus', "Submitted — it's now in the shared database below.", { ms: 2600, place: 'top' });
+  await sleep(700);
 
-  // ── 5. Browse the database ─────────────────────────────────────────────────
-  await page.locator('#tagBrowser').scrollIntoViewIfNeeded();
-  await sleep(500);
-  await showAnnotation(page, '#tagBrowser', 'A shared database of player tags + custom controls', { ms: 2200 });
-  await glideAndType(page, '#tagSearch', 'kim', { perChar: 110 });
-  await sleep(1200);
-  await showAnnotation(page, '#tagSearch', 'Search by in-game tag or start.gg account', { ms: 2000, place: 'top' });
-  await glideAndType(page, '#tagSearch', '', { perChar: 0 });
-  await sleep(800);
+  // ── 5. Browse + view a tag's actual control changes ────────────────────────
+  await smoothScroll(page, '#tagBrowser', 'start');
+  await sleep(400);
+  await showAnnotation(page, '#tagBrowser', 'A shared database of tags + custom controls', { ms: 2000 });
+  await glideAndType(page, '#tagSearch', 'Hyper', { perChar: 110 });
+  await sleep(1100);
+  await glideAndClick(page, '#tagList .tag-diff-toggle');
+  await page.locator('#tagList .tag-diff-panel .tag-diff-body').waitFor();
+  await page.waitForFunction(() => {
+    const b = document.querySelector('#tagList .tag-diff-panel .tag-diff-body');
+    return b && !/Loading/.test(b.textContent);
+  }, { timeout: 8000 }).catch(() => {});
+  await smoothScroll(page, '#tagList .tag-diff-panel', 'center');
+  await sleep(600);
+  await showAnnotation(page, '#tagList .tag-diff-panel', 'See exactly which controls a tag changes', { ms: 2800, place: 'top' });
+  await sleep(600);
+  await glideAndType(page, '#tagSearch', '', { perChar: 0 }); // clear → all tags again
+  await sleep(700);
 
   // ── 6. Download a whole bracket ────────────────────────────────────────────
+  await smoothScroll(page, '#bracketInput', 'center');
   await glideAndType(page, '#bracketInput', 'https://www.start.gg/tournament/demo-invitational/event/singles', { perChar: 22 });
   await glideAndClick(page, '#bracketGo');
   await sleep(1400);
-  await showAnnotation(page, '#bracketStatus', "Paste a bracket URL to grab every entrant's tag", { ms: 2600 });
-  await sleep(600);
+  await showAnnotation(page, '#bracketStatus', "Paste a bracket URL to grab every entrant's tag", { ms: 2400 });
+  await sleep(500);
 
   // ── 7. Import the bracket straight into a save ─────────────────────────────
-  await page.locator('#importSelected').scrollIntoViewIfNeeded();
-  await sleep(400);
+  await smoothScroll(page, '#importSelected', 'center');
   const chooser2 = page.waitForEvent('filechooser');
   await glideAndClick(page, '#importSelected', { settle: 120 });
   await (await chooser2).setFiles(SAVE_FILE);
   await sleep(1600);
-  await showAnnotation(page, '#importStatus', 'Import a whole bracket into your own .sav', { ms: 2800, place: 'top' });
+  await showAnnotation(page, '#importStatus', 'Import a whole bracket into your own .sav', { ms: 2600, place: 'top' });
   await sleep(800);
 
-  // ── Outro ──────────────────────────────────────────────────────────────────
-  await showTitleCard(page, 'jugeeya.github.io/tags', 'No installs. No uploads. Just share.', 2800);
+  // ── Outro: pull back to the whole page ─────────────────────────────────────
+  await smoothScroll(page, 'header', 'start');
+  await sleep(300);
+  await setZoom(page, 0.6, 1100);
+  await sleep(500);
+  await showTitleCard(page, 'jugeeya.github.io/tags', 'No installs. No uploads. Just share.', 2600);
 
   await page.close();
   await context.close();

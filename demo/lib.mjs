@@ -32,6 +32,8 @@ export async function installCinematics(page) {
     const style = document.createElement('style');
     style.textContent = css;
     document.documentElement.appendChild(style);
+    // Match the page bg so zooming out leaves no white edges.
+    document.documentElement.style.background = '#0e0c24';
 
     const cur = document.createElement('div');
     cur.id = '__cursor';
@@ -101,21 +103,49 @@ export async function glideAndType(page, selector, text, { perChar = 65, clear =
   }
 }
 
-// Full-screen title/outro card with fade in/out.
+// Full-screen title/outro card with fade in/out. Uses inline styles + a forced
+// reflow so the fade-in reliably triggers (a bare rAF sometimes didn't).
 export async function showTitleCard(page, title, subtitle = '', ms = 2600) {
   await page.evaluate(({ t, s }) => {
-    const o = document.createElement('div');
-    o.id = '__overlay';
-    o.innerHTML = `<div><div class="t">${t}</div><div class="s">${s}</div></div>`;
-    document.documentElement.appendChild(o);
-    requestAnimationFrame(() => (o.style.opacity = '1'));
+    let o = document.getElementById('__overlay');
+    if (!o) { o = document.createElement('div'); o.id = '__overlay'; document.documentElement.appendChild(o); }
+    o.style.cssText =
+      'position:fixed;inset:0;z-index:2147483645;display:flex;align-items:center;justify-content:center;' +
+      "background:radial-gradient(circle at 50% 38%,#211b54,#0e0c24);color:#fff;text-align:center;" +
+      "font-family:'Space Grotesk','Inter',system-ui,sans-serif;opacity:0;transition:opacity .55s ease";
+    o.innerHTML =
+      `<div><div style="font-size:3.1rem;font-weight:700;margin:0 0 .6rem">${t}</div>` +
+      `<div style="font-size:1.3rem;color:#bdb9ee;font-weight:300">${s}</div></div>`;
+    void o.offsetWidth;       // force reflow so the opacity transition runs
+    o.style.opacity = '1';
   }, { t: title, s: subtitle });
   await sleep(ms);
   await page.evaluate(() => {
     const o = document.getElementById('__overlay');
-    if (o) { o.style.opacity = '0'; setTimeout(() => o.remove(), 700); }
+    if (o) { o.style.opacity = '0'; setTimeout(() => o.remove(), 650); }
   });
-  await sleep(700);
+  await sleep(650);
+}
+
+// Smoothly scale the page (cinematic zoom). scale=1 clears the transform.
+// Only used between interactions, so cursor/click coordinates stay accurate.
+export async function setZoom(page, scale, ms = 0) {
+  await page.evaluate(({ scale, ms }) => {
+    const b = document.body;
+    b.style.transformOrigin = 'top center';
+    b.style.transition = ms ? `transform ${ms}ms cubic-bezier(.4,0,.2,1)` : 'none';
+    b.style.transform = scale === 1 ? 'none' : `scale(${scale})`;
+  }, { scale, ms });
+  if (ms) await sleep(ms);
+}
+
+// Smooth-scroll an element into view and wait for it to settle.
+export async function smoothScroll(page, target, block = 'center') {
+  await page.evaluate(({ target, block }) => {
+    const el = document.querySelector(target);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block });
+  }, { target, block });
+  await sleep(950);
 }
 
 // Floating label anchored above/below an element.
