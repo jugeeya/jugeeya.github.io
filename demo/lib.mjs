@@ -9,14 +9,26 @@ let pos = { x: 0, y: 0 };
 export function resetCursor(x, y) { pos = { x, y }; }
 
 // Inject the fake cursor + overlay styles. Runs on every navigation.
+//
+// At document_start (when addInitScript runs) `document.documentElement` is still
+// null, so we can't append yet — we watch for <html> via a MutationObserver and
+// run setup the instant it's inserted, which is still before the body paints.
 export async function installCinematics(page) {
   await page.addInitScript(() => {
+    if (window.__cineInstalled) return;
+    window.__cineInstalled = true;
+    const setup = () => {
     if (window.__cine) return;
     const css = `
+      /* Hide the page from its first paint so it never flashes before the intro.
+         This is a class on <html> (not a child element), so the HTML parser can't
+         drop it the way it drops a stray <div>. The demo adds .__lit to reveal. */
+      html:not(.__lit) body{visibility:hidden !important}
       #__cursor{position:fixed;z-index:2147483647;width:22px;height:22px;margin:-11px 0 0 -11px;
         border-radius:50%;background:rgba(255,255,255,.95);
         box-shadow:0 0 0 2px rgba(0,0,0,.4),0 3px 10px rgba(0,0,0,.45);
-        pointer-events:none;left:0;top:0;opacity:0;transition:transform .08s ease-out,opacity .3s ease}
+        pointer-events:none;left:0;top:0;opacity:0;
+        transition:left .34s cubic-bezier(.33,1,.68,1),top .34s cubic-bezier(.33,1,.68,1),transform .1s ease-out,opacity .3s ease}
       #__cursor.click{transform:scale(.6)}
       .__ripple{position:fixed;z-index:2147483646;border:2px solid rgba(132,134,252,.95);border-radius:50%;
         pointer-events:none;width:8px;height:8px;margin:-4px 0 0 -4px;animation:__rip .55s ease-out forwards}
@@ -32,14 +44,8 @@ export async function installCinematics(page) {
     const style = document.createElement('style');
     style.textContent = css;
     document.documentElement.appendChild(style);
-    // Match the page bg so zooming out leaves no white edges.
+    // Match the page bg so the hidden-body load and zoom-out leave no white edges.
     document.documentElement.style.background = '#0e0c24';
-    // Opaque cover from the very first paint, so the page never flashes before
-    // the intro. The demo removes it once the title card is up.
-    const boot = document.createElement('div');
-    boot.id = '__boot';
-    boot.style.cssText = 'position:fixed;inset:0;z-index:2147483644;background:#0e0c24';
-    document.documentElement.appendChild(boot);
 
     const cur = document.createElement('div');
     cur.id = '__cursor';
@@ -58,22 +64,23 @@ export async function installCinematics(page) {
         setTimeout(() => r.remove(), 580);
       },
     };
+    };
+    if (document.documentElement) setup();
+    else {
+      const obs = new MutationObserver(() => {
+        if (document.documentElement) { obs.disconnect(); setup(); }
+      });
+      obs.observe(document, { childList: true });
+    }
   });
 }
 
-const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-
-// Glide the (real + fake) cursor to a point with easing.
-export async function moveCursorTo(page, x, y, steps = 30) {
-  const sx = pos.x, sy = pos.y;
-  for (let i = 1; i <= steps; i++) {
-    const t = easeOutCubic(i / steps);
-    const cx = sx + (x - sx) * t;
-    const cy = sy + (y - sy) * t;
-    await page.mouse.move(cx, cy);
-    await page.evaluate(([X, Y]) => window.__cine && window.__cine.move(X, Y), [cx, cy]);
-    await sleep(11);
-  }
+// Glide the cursor to a point. The fake cursor eases via a CSS transition (one
+// round-trip, not 30); the real mouse moves for hover state.
+export async function moveCursorTo(page, x, y, ms = 340) {
+  await page.mouse.move(x, y, { steps: 6 });
+  await page.evaluate(([X, Y]) => window.__cine && window.__cine.move(X, Y), [x, y]);
+  await sleep(ms);
   pos = { x, y };
 }
 
@@ -130,7 +137,7 @@ async function centerOf(page, target) {
 }
 
 // Glide to an element and click it.
-export async function glideAndClick(page, selector, { settle = 180 } = {}) {
+export async function glideAndClick(page, selector, { settle = 110 } = {}) {
   const { loc, x, y } = await centerOf(page, selector);
   await moveCursorTo(page, x, y);
   await page.evaluate(() => window.__cine && window.__cine.click());
@@ -139,15 +146,16 @@ export async function glideAndClick(page, selector, { settle = 180 } = {}) {
 }
 
 // Glide to a field, focus it, and type the text one character at a time.
-export async function glideAndType(page, selector, text, { perChar = 65, clear = true } = {}) {
+export async function glideAndType(page, selector, text, { perChar = 60, clear = true } = {}) {
   const { loc, x, y } = await centerOf(page, selector);
   await moveCursorTo(page, x, y);
   await page.evaluate(() => window.__cine && window.__cine.click());
   await loc.click();
   if (clear) await loc.fill('');
+  await sleep(40);
   for (const ch of text) {
     await page.keyboard.type(ch);
-    await sleep(perChar + Math.random() * 45);
+    await sleep(perChar + Math.random() * 40);
   }
 }
 
@@ -189,11 +197,16 @@ export async function setZoom(page, scale, ms = 0) {
   if (ms) await sleep(ms);
 }
 
-// Fade out the title overlay and drop the first-paint boot cover behind it,
-// revealing whatever is staged underneath (e.g. the zoomed-out overview).
+// Reveal the page body (hidden from first paint by installCinematics' CSS).
+// Call this while the title card still covers, so the reveal isn't visible.
+export async function revealPage(page) {
+  await page.evaluate(() => document.documentElement.classList.add('__lit'));
+}
+
+// Fade out the title overlay, revealing whatever is staged underneath (e.g. the
+// zoomed-out overview). The page body must already be revealed via revealPage.
 export async function hideTitleCard(page) {
   await page.evaluate(() => {
-    document.getElementById('__boot')?.remove();
     const o = document.getElementById('__overlay');
     if (o) { o.style.opacity = '0'; setTimeout(() => o.remove(), 650); }
   });

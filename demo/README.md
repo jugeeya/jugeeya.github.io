@@ -41,12 +41,15 @@ site is recommended.
 
 ## Convert to MP4 (+ optional music)
 
+`-ss 0.5` trims the unavoidable blank first frame (the recording starts at page
+creation, before anything can paint). `node demo.mjs` prints a ready-to-run line.
+
 ```sh
 # basic
-ffmpeg -i videos/<hash>.webm -vf "fps=30,scale=1280:720" -c:v libx264 -pix_fmt yuv420p -crf 20 demo.mp4
+ffmpeg -ss 0.5 -i videos/<hash>.webm -vf "fps=30,scale=1280:720" -c:v libx264 -pix_fmt yuv420p -crf 20 demo.mp4
 
 # with a music bed: fade in 2s, 15% volume, fade out over the last 3s
-ffmpeg -i videos/<hash>.webm -i music.mp3 \
+ffmpeg -ss 0.5 -i videos/<hash>.webm -i music.mp3 \
   -filter_complex "[1:a]afade=t=in:st=0:d=2,volume=0.15,afade=t=out:st=DURATION-3:d=3[a]" \
   -map 0:v -map "[a]" -shortest -c:v libx264 -pix_fmt yuv420p -crf 20 demo.mp4
 ```
