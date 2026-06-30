@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jugeeya · Rivals of Aether II Tools</title>
+    <title>jugeeya.github.io · community tools</title>
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -16,38 +16,88 @@
 </head>
 
 <body>
+    <nav class="site-nav" id="siteNav">
+        <div class="nav-inner">
+            <a class="nav-brand" href="/">jugeeya<span class="dim">.github.io</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="navMenu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#rivals">Rivals of Aether II</a></li>
+                <li><a href="#smash">Smash Ultimate</a></li>
+                <li><a href="https://github.com/jugeeya/jugeeya.github.io">GitHub ↗</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <header>
-            <h1>Rivals of Aether II Tools</h1>
+            <h1>jugeeya.github.io</h1>
             <p class="subtitle">A small collection of community tools by jugeeya</p>
         </header>
 
         <main>
-            <div class="card-grid">
-                <a class="card" href="leaderboard/">
-                    <div class="card-icon">📊</div>
-                    <h3>Rivals Leaderboard</h3>
-                    <p>Live ELO distribution and rankings pulled from the Steam leaderboards, with player search.</p>
-                </a>
+            <section class="section" id="rivals">
+                <h2>Rivals of Aether II</h2>
+                <div class="card-grid">
+                    <a class="card" href="leaderboard/">
+                        <div class="card-icon">📊</div>
+                        <h3>Rivals Leaderboard</h3>
+                        <p>Live ELO distribution and rankings pulled from the Steam leaderboards, with player search.</p>
+                    </a>
 
-                <a class="card" href="tags/">
-                    <div class="card-icon">🎮</div>
-                    <h3>Tag Sharing</h3>
-                    <p>Upload and share Rivals II player tags &amp; custom controls so you can import them at any setup.</p>
-                </a>
+                    <a class="card" href="tags/">
+                        <div class="card-icon">🎮</div>
+                        <h3>Tag Sharing</h3>
+                        <p>Upload and share Rivals II player tags &amp; custom controls so you can import them at any setup.</p>
+                    </a>
+                </div>
+            </section>
 
-                <a class="card" href="https://jugeeya.github.io/training-modpack-metrics/">
-                    <div class="card-icon">📈</div>
-                    <h3>Training Modpack Stats</h3>
-                    <p>Daily unique devices and sessions for the Ultimate Training Modpack (Smash Ultimate), aggregated from in-mod analytics.</p>
-                </a>
-            </div>
+            <section class="section" id="smash">
+                <h2>Super Smash Bros. Ultimate</h2>
+                <div class="card-grid">
+                    <a class="card" href="https://jugeeya.github.io/training-modpack-metrics/">
+                        <div class="card-icon">📈</div>
+                        <h3>Training Modpack Stats</h3>
+                        <p>Daily unique devices and sessions for the Ultimate Training Modpack, aggregated from in-mod analytics.</p>
+                    </a>
+                </div>
+            </section>
         </main>
 
         <footer>
             <p>Open source on <a href="https://github.com/jugeeya/jugeeya.github.io">GitHub</a>.</p>
         </footer>
     </div>
+
+    <script>
+        (function () {
+            const nav = document.getElementById('siteNav');
+            const toggle = document.getElementById('navToggle');
+            const menu = document.getElementById('navMenu');
+
+            function setOpen(open) {
+                nav.classList.toggle('open', open);
+                toggle.setAttribute('aria-expanded', String(open));
+            }
+
+            toggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                setOpen(!nav.classList.contains('open'));
+            });
+            menu.addEventListener('click', function (e) {
+                if (e.target.closest('a')) setOpen(false);
+            });
+            document.addEventListener('click', function (e) {
+                if (!nav.contains(e.target)) setOpen(false);
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') setOpen(false);
+            });
+        })();
+    </script>
 </body>
 
 </html>

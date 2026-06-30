@@ -93,6 +93,130 @@ h2 {
     margin-bottom: 1rem;
 }
 
+/* Sticky top bar with brand + hamburger menu (homepage) */
+.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(14, 13, 20, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-inner {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0.85rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand {
+    font-family: var(--font-mono);
+    font-size: 1.02rem;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.nav-brand .dim {
+    color: var(--text-secondary);
+}
+
+.nav-toggle {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--surface-color);
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-toggle:hover {
+    border-color: var(--primary-color);
+    background: var(--surface-hover);
+}
+
+.nav-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: var(--text-color);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.site-nav.open .nav-toggle span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.site-nav.open .nav-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+.site-nav.open .nav-toggle span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 2rem;
+    min-width: 220px;
+    list-style: none;
+    background: var(--surface-2);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    box-shadow: var(--shadow-card);
+    padding: 0.5rem;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.site-nav.open .nav-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 0.6rem 0.8rem;
+    border-radius: 9px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.nav-menu a:hover {
+    background: var(--primary-soft);
+    color: var(--primary-color);
+}
+
+/* Stacked content sections on the homepage */
+.section {
+    margin-bottom: 3rem;
+    scroll-margin-top: 84px;
+}
+
+.section>h2 {
+    margin-bottom: 1.25rem;
+}
+
 /* Card grid used by the homepage hub */
 .card-grid {
     display: grid;
@@ -229,5 +353,13 @@ footer a:hover {
 
     header {
         margin: 1.5rem 0 2.5rem;
+    }
+
+    .nav-inner {
+        padding: 0.7rem 1.25rem;
+    }
+
+    .nav-menu {
+        right: 1.25rem;
     }
 }
