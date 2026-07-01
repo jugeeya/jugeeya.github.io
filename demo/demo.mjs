@@ -27,14 +27,15 @@ const LIVE = ORIGIN === 'https://jugeeya.github.io';
 const SAVE_FILE = process.env.SAVE_FILE
   || fileURLToPath(new URL('./fixtures/demo-save.sav', import.meta.url));
 const VIDEO_DIR = fileURLToPath(new URL('./videos', import.meta.url));
-const W = 1280, H = 720;
-// Render at 2x and record at the full device resolution (2560x1440), then let
-// ffmpeg downscale — capturing above the delivery size is what keeps text crisp
-// and avoids the blocky look of recording natively at 720p.
+// Playwright records the viewport at CSS-pixel resolution and only ever scales
+// *down* to fit recordVideo.size, so a Full-HD viewport is what makes the video
+// actually 1080p (a bigger recordVideo.size than the viewport just adds gray
+// borders). deviceScaleFactor 2 supersamples the render so text stays crisp.
+const W = 1920, H = 1080;
 const DSF = 2;
-// Content is scaled up so text stays legible when the 16:9 video is shown small
-// on a phone.
-const ZOOM = 1.25;
+// Content is scaled up so it reads well in-frame and when the video is small on
+// a phone. Clears the 1920px frame edges (the site's container is ~1000px).
+const ZOOM = 1.5;
 const BROKER = 'https://r2tag-broker.jdsambasivam.workers.dev';
 
 // A tiny inline avatar for mocked start.gg results (no network needed).
@@ -84,8 +85,8 @@ const run = async () => {
     deviceScaleFactor: DSF,
     acceptDownloads: true,
     reducedMotion: 'no-preference', // keep CSS transitions/animations alive
-    // Record at native device resolution (viewport x DSF) for a crisp capture.
-    recordVideo: { dir: VIDEO_DIR, size: { width: W * DSF, height: H * DSF } },
+    // Record at the viewport size (a larger size would only add gray borders).
+    recordVideo: { dir: VIDEO_DIR, size: { width: W, height: H } },
   });
   const page = await context.newPage();
 
