@@ -73,15 +73,17 @@ jobs:
             -vf "fps=30,scale=1920:1080:flags=lanczos" \
             -c:v libx264 -preset slow -pix_fmt yuv420p -crf 20 -movflags +faststart \
             demo.mp4
+          # A poster frame (~3s in, past the intro card) for the click-to-play embed.
+          ffmpeg -y -ss 3 -i demo.mp4 -frames:v 1 -q:v 3 demo-poster.jpg
 
-      - name: Commit the video if it changed
+      - name: Publish video + poster to the 'demo' release
+        working-directory: demo
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add demo/demo.mp4
-          if git diff --staged --quiet; then
-            echo "No demo video change."
-          else
-            git commit -m "chore: update demo video"
-            git push
-          fi
+          # Keep the video out of git history: store it as a rolling release
+          # asset at a stable URL (releases/download/demo/demo.mp4).
+          gh release view demo >/dev/null 2>&1 || \
+            gh release create demo --title "Demo video (latest)" \
+              --notes "Auto-updated walkthrough of the tag-sharing tool. Managed by record-demo.yml."
+          gh release upload demo demo.mp4 demo-poster.jpg --clobber

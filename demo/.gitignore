@@ -2,5 +2,7 @@ node_modules/
 videos/
 fixtures/
 demo.webm
-# demo.mp4 is the committed, canonical demo video (produced by CI or `npm run
-# record` + ffmpeg), so it is intentionally tracked.
+# The video is published as a GitHub release asset (not committed), so keep the
+# local build artifacts out of git.
+demo.mp4
+demo-poster.jpg

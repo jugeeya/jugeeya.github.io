@@ -128,6 +128,9 @@ const run = async () => {
     try { delete window.showSaveFilePicker; } catch { /* ignore */ }
   });
   await page.goto(TARGET, { waitUntil: 'domcontentloaded' });
+  // Hide the page's own embedded demo video so the recording never shows a
+  // picture-in-picture of itself.
+  await page.addStyleTag({ content: '.demo-video { display: none !important; }' }).catch(() => {});
 
   // ── Intro: the page body is hidden from first paint (installCinematics CSS),
   // so it never flashes. We raise the title card, load + stage the page behind

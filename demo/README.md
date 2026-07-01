@@ -58,13 +58,24 @@ ffmpeg -ss 0.5 -i videos/<hash>.webm -i music.mp3 \
 
 ## Continuous recording (CI)
 
-`.github/workflows/record-demo.yml` re-records and commits `demo/demo.mp4`
-whenever the tool's source changes (`index.html`, `styles.css`, `tags/*.{html,js,css}`,
+`.github/workflows/record-demo.yml` re-records the demo whenever the tool's
+source changes (`index.html`, `styles.css`, `tags/*.{html,js,css}`,
 `tags/wasm/**`, or `demo/*.mjs`). It serves the repo and records that local copy
 (`TARGET=http://localhost:8000/tags/`), so the video reflects the just-pushed
 code without waiting for a Pages deploy. When the target isn't the live site,
 `demo.mjs` mocks the start.gg search/avatars so the recording stays deterministic
-and offline. `demo/demo.mp4` is the committed, canonical video.
+and offline (it also hides the page's own embedded video so the recording never
+films itself).
+
+To keep the multi-MB video out of git history, CI publishes `demo.mp4` and a
+`demo-poster.jpg` as assets on a rolling **`demo` release**, at stable URLs:
+
+```
+https://github.com/jugeeya/jugeeya.github.io/releases/download/demo/demo.mp4
+https://github.com/jugeeya/jugeeya.github.io/releases/download/demo/demo-poster.jpg
+```
+
+The tags page embeds those URLs (click-to-play).
 
 ## Tuning
 
