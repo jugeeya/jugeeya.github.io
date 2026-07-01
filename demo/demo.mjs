@@ -33,9 +33,10 @@ const VIDEO_DIR = fileURLToPath(new URL('./videos', import.meta.url));
 // borders). deviceScaleFactor 2 supersamples the render so text stays crisp.
 const W = 1920, H = 1080;
 const DSF = 2;
-// Content is scaled up so it reads well in-frame and when the video is small on
-// a phone. Clears the 1920px frame edges (the site's container is ~1000px).
-const ZOOM = 1.5;
+// Content is scaled up so it nearly fills the 1920px frame (the site's ~1000px
+// container leaves only a thin margin at this scale) — big and legible, and it
+// reads well when the video is shown small on a phone.
+const ZOOM = 1.9;
 const BROKER = 'https://r2tag-broker.jdsambasivam.workers.dev';
 
 // A tiny inline avatar for mocked start.gg results (no network needed).
