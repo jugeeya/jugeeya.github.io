@@ -67,10 +67,11 @@ jobs:
           set -e
           webm=$(ls -t videos/*.webm | head -1)
           echo "Converting $webm -> demo.mp4"
-          # -ss 0.5 trims the unavoidable blank first frame.
+          # -ss 0.5 trims the unavoidable blank first frame. The source is a 2x
+          # (2560x1440) capture; downscale to crisp 1080p with lanczos.
           ffmpeg -y -ss 0.5 -i "$webm" \
-            -vf "fps=30,scale=1280:720:flags=lanczos" \
-            -c:v libx264 -pix_fmt yuv420p -crf 20 -movflags +faststart \
+            -vf "fps=30,scale=1920:1080:flags=lanczos" \
+            -c:v libx264 -preset slow -pix_fmt yuv420p -crf 20 -movflags +faststart \
             demo.mp4
 
       - name: Commit the video if it changed

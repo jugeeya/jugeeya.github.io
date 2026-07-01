@@ -28,9 +28,13 @@ const SAVE_FILE = process.env.SAVE_FILE
   || fileURLToPath(new URL('./fixtures/demo-save.sav', import.meta.url));
 const VIDEO_DIR = fileURLToPath(new URL('./videos', import.meta.url));
 const W = 1280, H = 720;
-// Content is scaled up a touch so text stays legible when the 16:9 video is
-// shown small on a phone.
-const ZOOM = 1.2;
+// Render at 2x and record at the full device resolution (2560x1440), then let
+// ffmpeg downscale — capturing above the delivery size is what keeps text crisp
+// and avoids the blocky look of recording natively at 720p.
+const DSF = 2;
+// Content is scaled up so text stays legible when the 16:9 video is shown small
+// on a phone.
+const ZOOM = 1.25;
 const BROKER = 'https://r2tag-broker.jdsambasivam.workers.dev';
 
 // A tiny inline avatar for mocked start.gg results (no network needed).
@@ -77,10 +81,11 @@ const run = async () => {
   const browser = await chromium.launch();
   const context = await browser.newContext({
     viewport: { width: W, height: H },
-    deviceScaleFactor: 2,
+    deviceScaleFactor: DSF,
     acceptDownloads: true,
     reducedMotion: 'no-preference', // keep CSS transitions/animations alive
-    recordVideo: { dir: VIDEO_DIR, size: { width: W, height: H } },
+    // Record at native device resolution (viewport x DSF) for a crisp capture.
+    recordVideo: { dir: VIDEO_DIR, size: { width: W * DSF, height: H * DSF } },
   });
   const page = await context.newPage();
 
@@ -235,8 +240,9 @@ const run = async () => {
   // -ss 0.5 trims the unavoidable first-frame blank (the video records from
   // page creation, before anything can paint).
   console.log(`\n✅ Recorded: ${video}\n` +
-    `Convert + add music (optional):\n` +
-    `   ffmpeg -ss 0.5 -i "${video}" -vf "fps=30,scale=${W}:${H}" -c:v libx264 -pix_fmt yuv420p -crf 20 demo.mp4\n`);
+    `Convert (downscale the 2x capture to crisp 1080p):\n` +
+    `   ffmpeg -ss 0.5 -i "${video}" -vf "fps=30,scale=1920:1080:flags=lanczos" ` +
+    `-c:v libx264 -preset slow -pix_fmt yuv420p -crf 20 -movflags +faststart demo.mp4\n`);
 };
 
 run().catch((e) => { console.error(e); process.exit(1); });

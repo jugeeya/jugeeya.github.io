@@ -694,6 +694,19 @@ button.secondary:hover:not(:disabled) {
     color: #c9a227;
 }
 
+/* Embedded demo walkthrough (under the page subtitle) */
+.demo-video {
+    display: block;
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 16 / 9;
+    margin: 1.75rem auto 0;
+    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-card);
+    background: #0e0c24;
+}
+
 /* Save-path hint (submit panel) */
 .save-path-hint {
     margin: 0 0 1.25rem;
