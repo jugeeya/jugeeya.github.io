@@ -280,8 +280,8 @@ function renderTagBrowser() {
         '<button type="button" id="selectAllTags" class="linkish">Select all</button>' +
         '<span class="tag-action-sep">·</span>' +
         '<button type="button" id="clearTagSelection" class="linkish">Clear</button>' +
-        '<button type="button" id="downloadSelected" disabled>Download tags</button>' +
-        '<button type="button" id="importSelected" class="secondary" disabled>Import to save</button>' +
+        '<button type="button" id="importSelected" disabled>Import to save</button>' +
+        '<button type="button" id="downloadSelected" class="secondary" disabled>Download tags</button>' +
         '</div></div>' +
         '<ul id="tagList" class="tag-list"></ul>';
 
@@ -958,9 +958,31 @@ function setImportStatus(message, kind = '') {
     importStatus.className = `upload-status${kind ? ' ' + kind : ''}`;
 }
 
-function startImportToSave() {
+async function startImportToSave() {
     pendingImportFiles = getSelectedTagFiles();
     if (!pendingImportFiles.length) return;
+
+    // Preferred path: open the real .sav via the File System Access API so we
+    // can write the merged result straight back, overwriting it in place — no
+    // trip through the Downloads folder.
+    if (window.showOpenFilePicker) {
+        let handle = null;
+        try {
+            [handle] = await window.showOpenFilePicker({
+                multiple: false,
+                types: [{
+                    description: 'Rivals II save',
+                    accept: { 'application/octet-stream': ['.sav'] },
+                }],
+            });
+        } catch (err) {
+            if (err && err.name === 'AbortError') return; // user cancelled
+            handle = null; // any other error: fall back to the download flow
+        }
+        if (handle) { await importIntoHandle(handle); return; }
+    }
+
+    // Fallback for browsers without the File System Access API: pick + download.
     importSavInput.value = '';
     importSavInput.click();
 }
@@ -976,26 +998,56 @@ async function fetchR2tagBytes(file) {
     return entry.async('uint8array');
 }
 
+// Merge the currently selected shared tags into the given save bytes.
+async function mergeSelectedTags(savBytes) {
+    const overwrite = !!(importOverwrite && importOverwrite.checked);
+    const items = [];
+    for (const file of pendingImportFiles) {
+        items.push({ bytes: await fetchR2tagBytes(file), overwrite });
+    }
+    return importTags(savBytes, items);
+}
+
+function importSummary(rep) {
+    const parts = [];
+    if (rep.imported.length) parts.push(`${rep.imported.length} imported`);
+    if (rep.skipped.length) parts.push(`${rep.skipped.length} skipped (already exist)`);
+    if (rep.incompatible.length) parts.push(`${rep.incompatible.length} incompatible (different game version)`);
+    return parts.join(', ') || 'no changes';
+}
+
+// Preferred flow: overwrite the opened .sav in place via its file handle.
+async function importIntoHandle(handle) {
+    if (!pendingImportFiles.length) return;
+    setImportStatus('Reading your save and the selected tags…');
+    try {
+        const file = await handle.getFile();
+        const savBytes = new Uint8Array(await file.arrayBuffer());
+        const rep = await mergeSelectedTags(savBytes);
+        const writable = await handle.createWritable();
+        await writable.write(rep.sav);
+        await writable.close();
+        setImportStatus(
+            `Done: ${importSummary(rep)}. Saved back to ` +
+            `<strong>${escapeHtml(file.name)}</strong> in place (overwritten). ` +
+            `Keep a backup if this is your only copy.`,
+            rep.incompatible.length ? 'warn' : 'success'
+        );
+    } catch (err) {
+        setImportStatus(`Import failed: ${err.message || err}`, 'error');
+    }
+}
+
+// Fallback flow: read the picked file, merge, and download the updated save.
 async function importSelectedToSave(savFile) {
-    const files = pendingImportFiles;
-    if (!files.length) return;
+    if (!pendingImportFiles.length) return;
     setImportStatus('Reading your save and the selected tags…');
     try {
         const savBytes = new Uint8Array(await savFile.arrayBuffer());
-        const overwrite = !!(importOverwrite && importOverwrite.checked);
-        const items = [];
-        for (const file of files) {
-            items.push({ bytes: await fetchR2tagBytes(file), overwrite });
-        }
-        const rep = await importTags(savBytes, items);
+        const rep = await mergeSelectedTags(savBytes);
         triggerDownload(URL.createObjectURL(new Blob([rep.sav])), savFile.name);
-
-        const parts = [];
-        if (rep.imported.length) parts.push(`${rep.imported.length} imported`);
-        if (rep.skipped.length) parts.push(`${rep.skipped.length} skipped (already exist)`);
-        if (rep.incompatible.length) parts.push(`${rep.incompatible.length} incompatible (different game version)`);
         setImportStatus(
-            `Done: ${parts.join(', ') || 'no changes'}. Downloaded your updated ` +
+            `Done: ${importSummary(rep)}. Downloaded your updated ` +
             `<strong>${escapeHtml(savFile.name)}</strong>; replace your save file with it ` +
             `(make a backup first).`,
             rep.incompatible.length ? 'warn' : 'success'
@@ -1006,6 +1058,38 @@ async function importSelectedToSave(savFile) {
 }
 
 // ---- Wire up events -------------------------------------------------------
+
+// Save-path platform switcher (Windows / Steam Deck). The Steam Deck location
+// is the fixed Proton prefix under the user's home folder.
+const SAVE_PATHS = {
+    windows: {
+        path: '%LOCALAPPDATA%\\Rivals2\\Saved\\SaveGames\\Rivals2_PlayerTagSaveSlot.sav',
+        intro: 'On Windows your save is here (under <code>C:\\Users\\&lt;you&gt;\\AppData\\Local</code>):',
+        tip: 'Tip: paste this into the file picker\'s <em>File name</em> box and hit Open to jump straight to it.',
+    },
+    deck: {
+        path: '~/.local/share/Steam/steamapps/compatdata/217000/pfx/drive_c/users/steamuser/AppData/Local/Rivals2/Saved/SaveGames/Rivals2_PlayerTagSaveSlot.sav',
+        intro: 'On Steam Deck (Proton) your save is under your home folder:',
+        tip: 'Tip: in the file picker press <kbd>Ctrl</kbd>+<kbd>L</kbd> and paste this path. You may need to show hidden files (<kbd>Ctrl</kbd>+<kbd>H</kbd>).',
+    },
+};
+
+const savePathIntro = document.getElementById('savePathIntro');
+const savePathTip = document.getElementById('savePathTip');
+const pathOsButtons = document.querySelectorAll('.path-os-btn');
+
+function setSavePathOs(os) {
+    const data = SAVE_PATHS[os];
+    if (!data) return;
+    savePathText.textContent = data.path;
+    if (savePathIntro) savePathIntro.innerHTML = data.intro;
+    if (savePathTip) savePathTip.innerHTML = data.tip;
+    pathOsButtons.forEach(btn => btn.classList.toggle('is-active', btn.dataset.os === os));
+}
+
+pathOsButtons.forEach(btn => {
+    btn.addEventListener('click', () => setSavePathOs(btn.dataset.os));
+});
 
 if (copyPathBtn) {
     copyPathBtn.addEventListener('click', async () => {

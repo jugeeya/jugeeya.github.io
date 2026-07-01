@@ -699,6 +699,43 @@ button.secondary:hover:not(:disabled) {
     margin: 0 0 1.25rem;
 }
 
+/* Windows / Steam Deck segmented switcher */
+.path-os-switch {
+    display: inline-flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    margin: 0 0 0.6rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 9px;
+}
+
+.path-os-btn {
+    padding: 0.35rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background-image: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 6px;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.path-os-btn:hover:not(:disabled) {
+    transform: none;
+    box-shadow: none;
+    color: var(--text-color);
+}
+
+.path-os-btn.is-active,
+.path-os-btn.is-active:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
 .save-path-row {
     display: flex;
     align-items: center;

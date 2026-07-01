@@ -36,13 +36,17 @@
                 </p>
 
                 <div class="save-path-hint">
-                    <p class="field-hint">On Windows your save is here (under
+                    <div class="path-os-switch" role="group" aria-label="Platform">
+                        <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
+                        <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
+                    </div>
+                    <p class="field-hint" id="savePathIntro">On Windows your save is here (under
                         <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
                     <div class="save-path-row">
                         <code id="savePathText">%LOCALAPPDATA%\Rivals2\Saved\SaveGames\Rivals2_PlayerTagSaveSlot.sav</code>
                         <button type="button" id="copyPathBtn" class="secondary">Copy path</button>
                     </div>
-                    <p class="field-hint">Tip: paste this into the file picker's <em>File name</em> box and hit
+                    <p class="field-hint" id="savePathTip">Tip: paste this into the file picker's <em>File name</em> box and hit
                         Open to jump straight to it.</p>
                 </div>
 
@@ -103,7 +107,7 @@
 
                 <input type="file" id="importSavInput" accept=".sav" hidden>
                 <label class="import-overwrite">
-                    <input type="checkbox" id="importOverwrite"> Overwrite tags that already exist in my save
+                    <input type="checkbox" id="importOverwrite" checked> Overwrite tags that already exist in my save
                 </label>
                 <p id="importStatus" class="upload-status"></p>
             </section>
