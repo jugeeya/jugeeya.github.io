@@ -1016,42 +1016,97 @@ function importSummary(rep) {
     return parts.join(', ') || 'no changes';
 }
 
-// Preferred flow: overwrite the opened .sav in place via its file handle.
+// Deliver the finished save bytes. Prefers the File System Access "Save As"
+// picker (a real location chooser with the filename pre-filled); where that API
+// is unavailable there is no way for a web page to force the OS save dialog, so
+// it falls back to a normal download (the filename is suggested; the folder and
+// whether a prompt appears are up to the browser's own settings).
+// Returns 'picked' | 'downloaded' | 'cancelled'.
+async function saveOutput(bytes, filename) {
+    if (window.showSaveFilePicker) {
+        try {
+            const handle = await window.showSaveFilePicker({
+                suggestedName: filename,
+                types: [{
+                    description: 'Rivals II save',
+                    accept: { 'application/octet-stream': ['.sav'] },
+                }],
+            });
+            const writable = await handle.createWritable();
+            await writable.write(bytes);
+            await writable.close();
+            return 'picked';
+        } catch (err) {
+            if (err && err.name === 'AbortError') return 'cancelled';
+            // any other error: fall through to a normal download
+        }
+    }
+    triggerDownload(URL.createObjectURL(new Blob([bytes])), filename);
+    return 'downloaded';
+}
+
+// Reports where the finished save ended up, given a saveOutput() result.
+function deliveredStatus(rep, how, filename) {
+    if (how === 'picked') {
+        return setImportStatus(
+            `Done: ${importSummary(rep)}. Saved to the location you chose as ` +
+            `<strong>${escapeHtml(filename)}</strong> (make a backup first).`,
+            rep.incompatible.length ? 'warn' : 'success'
+        );
+    }
+    setImportStatus(
+        `Done: ${importSummary(rep)}. Downloaded <strong>${escapeHtml(filename)}</strong> ` +
+        `to your browser's downloads folder — replace your save file with it ` +
+        `(make a backup first). Tip: enable “always ask where to save files” in your ` +
+        `browser settings to choose the location.`,
+        rep.incompatible.length ? 'warn' : 'success'
+    );
+}
+
+// Preferred flow: overwrite the opened .sav in place via its file handle. If the
+// in-place write fails (e.g. permission), fall back to a Save As / download.
 async function importIntoHandle(handle) {
     if (!pendingImportFiles.length) return;
     setImportStatus('Reading your save and the selected tags…');
+    let rep = null;
+    let name = 'Rivals2_PlayerTagSaveSlot.sav';
     try {
         const file = await handle.getFile();
+        name = file.name;
         const savBytes = new Uint8Array(await file.arrayBuffer());
-        const rep = await mergeSelectedTags(savBytes);
+        rep = await mergeSelectedTags(savBytes);
         const writable = await handle.createWritable();
         await writable.write(rep.sav);
         await writable.close();
         setImportStatus(
             `Done: ${importSummary(rep)}. Saved back to ` +
-            `<strong>${escapeHtml(file.name)}</strong> in place (overwritten). ` +
+            `<strong>${escapeHtml(name)}</strong> in place (overwritten). ` +
             `Keep a backup if this is your only copy.`,
             rep.incompatible.length ? 'warn' : 'success'
         );
     } catch (err) {
-        setImportStatus(`Import failed: ${err.message || err}`, 'error');
+        if (!rep) { // failed before/at merge — nothing produced
+            setImportStatus(`Import failed: ${err.message || err}`, 'error');
+            return;
+        }
+        // Merge succeeded but the in-place write didn't — offer Save As/download.
+        const how = await saveOutput(rep.sav, name);
+        if (how === 'cancelled') { setImportStatus('Save cancelled — nothing was written.'); return; }
+        deliveredStatus(rep, how, name);
     }
 }
 
-// Fallback flow: read the picked file, merge, and download the updated save.
+// Fallback flow (no open picker): read the picked file, merge, and save the
+// result via the Save As picker where available, otherwise download it.
 async function importSelectedToSave(savFile) {
     if (!pendingImportFiles.length) return;
     setImportStatus('Reading your save and the selected tags…');
     try {
         const savBytes = new Uint8Array(await savFile.arrayBuffer());
         const rep = await mergeSelectedTags(savBytes);
-        triggerDownload(URL.createObjectURL(new Blob([rep.sav])), savFile.name);
-        setImportStatus(
-            `Done: ${importSummary(rep)}. Downloaded your updated ` +
-            `<strong>${escapeHtml(savFile.name)}</strong>; replace your save file with it ` +
-            `(make a backup first).`,
-            rep.incompatible.length ? 'warn' : 'success'
-        );
+        const how = await saveOutput(rep.sav, savFile.name);
+        if (how === 'cancelled') { setImportStatus('Save cancelled — nothing was written.'); return; }
+        deliveredStatus(rep, how, savFile.name);
     } catch (err) {
         setImportStatus(`Import failed: ${err.message || err}`, 'error');
     }
