@@ -1,0 +1,86 @@
+name: Record demo video
+
+# Re-records demo/demo.mp4 whenever the tool's source changes, and commits the
+# fresh video. Records a locally-served copy of the just-pushed code (start.gg
+# is mocked in demo.mjs when the target isn't the live site), so the video
+# reflects the new code without waiting for a Pages deploy.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "styles.css"
+      - "tags/*.html"
+      - "tags/*.js"
+      - "tags/*.css"
+      - "tags/wasm/**"
+      - "demo/*.mjs"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Only keep the newest recording in flight; superseded pushes cancel.
+concurrency:
+  group: record-demo
+  cancel-in-progress: true
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install demo dependencies
+        working-directory: demo
+        run: npm install
+
+      - name: Install Playwright Chromium
+        working-directory: demo
+        run: npx playwright install --with-deps chromium
+
+      - name: Build fixture and record (against a local copy)
+        working-directory: demo
+        run: |
+          set -e
+          # Serve the repo so the demo drives the freshly-pushed code.
+          (cd .. && python3 -m http.server 8000 >/tmp/httpd.log 2>&1 &)
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:8000/tags/ >/dev/null && break
+            sleep 1
+          done
+          ORIGIN=http://localhost:8000 node generate-fixture.mjs
+          TARGET=http://localhost:8000/tags/ node demo.mjs
+
+      - name: Convert WebM to MP4
+        working-directory: demo
+        run: |
+          set -e
+          webm=$(ls -t videos/*.webm | head -1)
+          echo "Converting $webm -> demo.mp4"
+          # -ss 0.5 trims the unavoidable blank first frame.
+          ffmpeg -y -ss 0.5 -i "$webm" \
+            -vf "fps=30,scale=1280:720:flags=lanczos" \
+            -c:v libx264 -pix_fmt yuv420p -crf 20 -movflags +faststart \
+            demo.mp4
+
+      - name: Commit the video if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add demo/demo.mp4
+          if git diff --staged --quiet; then
+            echo "No demo video change."
+          else
+            git commit -m "chore: update demo video"
+            git push
+          fi

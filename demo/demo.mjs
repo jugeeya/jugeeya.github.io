@@ -21,11 +21,24 @@ import {
 
 const TARGET = process.env.TARGET || 'https://jugeeya.github.io/tags/';
 const ORIGIN = new URL(TARGET).origin;
+// When not driving the real site (e.g. CI records a locally-served copy), the
+// start.gg endpoints are mocked so the recording is deterministic and offline.
+const LIVE = ORIGIN === 'https://jugeeya.github.io';
 const SAVE_FILE = process.env.SAVE_FILE
   || fileURLToPath(new URL('./fixtures/demo-save.sav', import.meta.url));
 const VIDEO_DIR = fileURLToPath(new URL('./videos', import.meta.url));
 const W = 1280, H = 720;
+// Content is scaled up a touch so text stays legible when the 16:9 video is
+// shown small on a phone.
+const ZOOM = 1.2;
 const BROKER = 'https://r2tag-broker.jdsambasivam.workers.dev';
+
+// A tiny inline avatar for mocked start.gg results (no network needed).
+const MOCK_AVATAR = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">' +
+  '<circle cx="32" cy="32" r="32" fill="#6c63ff"/>' +
+  '<text x="32" y="43" font-size="30" fill="#fff" text-anchor="middle" ' +
+  'font-family="sans-serif">H</text></svg>');
 
 if (!existsSync(SAVE_FILE)) {
   console.error(`\nNo save file at: ${SAVE_FILE}\n` +
@@ -83,9 +96,32 @@ const run = async () => {
     }
     return route.continue();
   });
+
+  // Offline recording (e.g. CI against a local copy): mock the start.gg search
+  // so linking HYPER to HyperFlame's account works without the live broker.
+  if (!LIVE) {
+    const hyperSlug = (hyper && hyper.startgg && hyper.startgg.slug) || 'user/8ada046a';
+    const mockPlayers = [
+      { slug: hyperSlug, gamerTag: 'HyperFlame', prefix: '', image: MOCK_AVATAR },
+      { slug: 'user/hypernova', gamerTag: 'HyperNova', prefix: 'RA', image: MOCK_AVATAR },
+      { slug: 'user/hyperion', gamerTag: 'Hyperion', prefix: '', image: MOCK_AVATAR },
+    ];
+    await page.route('**/startgg/search*', (route) =>
+      route.fulfill({ json: { players: mockPlayers, totalPages: 1 } }));
+    await page.route('**/startgg/user*', (route) =>
+      route.fulfill({ json: mockPlayers[0] }));
+  }
+
   page.on('download', (d) => d.saveAs(path.join(VIDEO_DIR, 'demo-import.sav')).catch(() => {}));
 
   await installCinematics(page);
+  // Force the classic file-input + download path for import: the File System
+  // Access pickers are native dialogs Playwright can't script, so the demo
+  // drives the fallback (which produces a downloadable .sav).
+  await page.addInitScript(() => {
+    try { delete window.showOpenFilePicker; } catch { /* ignore */ }
+    try { delete window.showSaveFilePicker; } catch { /* ignore */ }
+  });
   await page.goto(TARGET, { waitUntil: 'domcontentloaded' });
 
   // ── Intro: the page body is hidden from first paint (installCinematics CSS),
@@ -104,7 +140,7 @@ const run = async () => {
   await sleep(1500);               // hold the title
   await hideTitleCard(page);       // reveal the whole-page overview
   await sleep(900);
-  await setZoom(page, 1, 1300);    // clean zoom into the submit section
+  await setZoom(page, ZOOM, 1300);  // clean zoom into the submit section
   await sleep(400);
 
   // The page reads top-to-bottom: the whole submit flow first, then browse.
@@ -189,10 +225,7 @@ const run = async () => {
   await (await chooser2).setFiles(SAVE_UPLOAD);
   await sleep(1100);
   await showAnnotation(page, '#importStatus', 'Import a whole bracket into your own .sav', { ms: 1900, place: 'top' });
-  await sleep(600);
-
-  // ── Outro: title card that holds to the end (no second overview) ───────────
-  await showTitleCard(page, 'jugeeya.github.io/tags', 'No installs. No uploads. Just share.', 2200, { stay: true });
+  await sleep(1100);               // brief hold on the final state (no outro card)
 
   await page.close();
   await context.close();

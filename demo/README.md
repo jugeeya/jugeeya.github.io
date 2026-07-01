@@ -56,6 +56,16 @@ ffmpeg -ss 0.5 -i videos/<hash>.webm -i music.mp3 \
 
 (Replace `DURATION` with the video length in seconds.)
 
+## Continuous recording (CI)
+
+`.github/workflows/record-demo.yml` re-records and commits `demo/demo.mp4`
+whenever the tool's source changes (`index.html`, `styles.css`, `tags/*.{html,js,css}`,
+`tags/wasm/**`, or `demo/*.mjs`). It serves the repo and records that local copy
+(`TARGET=http://localhost:8000/tags/`), so the video reflects the just-pushed
+code without waiting for a Pages deploy. When the target isn't the live site,
+`demo.mjs` mocks the start.gg search/avatars so the recording stays deterministic
+and offline. `demo/demo.mp4` is the committed, canonical video.
+
 ## Tuning
 
 - Pacing/typing speed: tweak `perChar`, `sleep(...)`, and annotation `ms` in
