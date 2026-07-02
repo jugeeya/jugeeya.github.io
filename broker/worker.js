@@ -347,17 +347,32 @@ async function openPullRequest(env, token, fileData, author) {
     body: { ref: `refs/heads/${branch}`, sha: commit.sha },
   });
 
-  return gh(env, api('/pulls'), {
-    token,
-    method: 'POST',
-    body: {
-      title: `Tag submission${author ? ` from ${author}` : ''}`,
-      head: branch,
-      base,
-      body: 'Automated tag submission from the website. Auto-merges if it passes validation.',
-    },
-  });
+  const prBody = {
+    title: `Tag submission${author ? ` from ${author}` : ''}`,
+    head: branch,
+    base,
+    body: 'Automated tag submission from the website. Auto-merges if it passes validation.',
+  };
+  try {
+    return await gh(env, api('/pulls'), { token, method: 'POST', body: prBody });
+  } catch (err) {
+    // GitHub's POST /pulls sometimes returns 504/502 even though the PR was
+    // actually created — the write lands but the response times out (PR creation
+    // is heavy). Reporting that as a failure is a false negative (the user saw
+    // "Submission failed" for a PR that opened and merged). The branch is unique,
+    // so check whether a PR now exists on it and return that instead.
+    for (let attempt = 0; attempt < 3; attempt++) {
+      await sleep(1000);
+      const existing = await gh(
+        env, api(`/pulls?head=${owner}:${branch}&state=all&per_page=1`), { token }
+      ).catch(() => null);
+      if (Array.isArray(existing) && existing.length) return existing[0];
+    }
+    throw err;
+  }
 }
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // ---- Small helpers --------------------------------------------------------
 
