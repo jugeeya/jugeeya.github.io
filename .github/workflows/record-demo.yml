@@ -67,8 +67,8 @@ jobs:
           set -e
           webm=$(ls -t videos/*.webm | head -1)
           echo "Converting $webm -> demo.mp4"
-          # -ss 0.5 trims the unavoidable blank first frame. The source is a 2x
-          # (2560x1440) capture; downscale to crisp 1080p with lanczos.
+          # -ss 0.5 trims the unavoidable blank first frame. The source is a
+          # native 1920x1080 capture (supersampled via deviceScaleFactor 2).
           ffmpeg -y -ss 0.5 -i "$webm" \
             -vf "fps=30,scale=1920:1080:flags=lanczos" \
             -c:v libx264 -preset slow -pix_fmt yuv420p -crf 20 -movflags +faststart \
@@ -80,10 +80,26 @@ jobs:
         working-directory: demo
         env:
           GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
         run: |
+          set -e
           # Keep the video out of git history: store it as a rolling release
           # asset at a stable URL (releases/download/demo/demo.mp4).
           gh release view demo >/dev/null 2>&1 || \
             gh release create demo --title "Demo video (latest)" \
               --notes "Auto-updated walkthrough of the tag-sharing tool. Managed by record-demo.yml."
-          gh release upload demo demo.mp4 demo-poster.jpg --clobber
+          rid=$(gh release view demo --json databaseId -q .databaseId)
+          # Upload with an explicit content type. `gh release upload` defaults to
+          # application/octet-stream, which iOS Safari won't play in <video> —
+          # video/mp4 is required for mobile playback.
+          publish() {
+            name="$1"; ctype="$2"
+            gh release delete-asset demo "$name" --yes 2>/dev/null || true
+            curl -fsS -X POST \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Content-Type: ${ctype}" \
+              --data-binary @"${name}" \
+              "https://uploads.github.com/repos/${REPO}/releases/${rid}/assets?name=${name}" >/dev/null
+          }
+          publish demo.mp4 video/mp4
+          publish demo-poster.jpg image/jpeg
