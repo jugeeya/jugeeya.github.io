@@ -1,0 +1,39 @@
+name: Deploy broker
+
+# Deploys the Cloudflare Worker in broker/ whenever it changes (or on demand).
+# Requires a CLOUDFLARE_API_TOKEN repo secret (create one from the "Edit
+# Cloudflare Workers" API-token template). The job self-skips until that secret
+# exists, so it never fails just because it isn't configured yet.
+#
+# The Worker's own secrets (GITHUB_APP_ID, GITHUB_APP_PRIVATE_KEY,
+# GITHUB_INSTALLATION_ID) live in Cloudflare and persist across deploys —
+# `wrangler deploy` only updates the code and the vars in wrangler.toml.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "broker/**"
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HAS_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
+    steps:
+      - name: Note when unconfigured
+        if: env.HAS_TOKEN != 'true'
+        run: echo "CLOUDFLARE_API_TOKEN is not set — skipping deploy. Add it in repo Settings → Secrets to enable."
+
+      - name: Checkout repository
+        if: env.HAS_TOKEN == 'true'
+        uses: actions/checkout@v4
+
+      - name: Deploy Worker
+        if: env.HAS_TOKEN == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # Optional: only needed if your token maps to more than one account.
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: broker
