@@ -46,6 +46,15 @@ wrangler secret put GITHUB_APP_PRIVATE_KEY   # contents of app-key-pkcs8.pem
 Adjust `ALLOWED_ORIGIN` / `REPO_OWNER` / `REPO_NAME` / `BASE_BRANCH` in
 `wrangler.toml` if needed.
 
+### Auto-deploy from CI (optional)
+
+`.github/workflows/deploy-broker.yml` runs `wrangler deploy` on every change to
+`broker/**` (and on manual dispatch). Add a `CLOUDFLARE_API_TOKEN` repo secret
+(from the "Edit Cloudflare Workers" API-token template) to enable it — the job
+self-skips until that secret exists. The Worker's own secrets (`GITHUB_APP_ID`,
+`GITHUB_APP_PRIVATE_KEY`, `GITHUB_INSTALLATION_ID`) persist in Cloudflare across
+deploys, so CI only needs the API token.
+
 ## 3. Point the website at it
 
 In `../tags/tags.js`, set:
