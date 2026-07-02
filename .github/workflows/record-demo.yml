@@ -4,16 +4,14 @@ name: Record demo video
 # fresh video. Records a locally-served copy of the just-pushed code (start.gg
 # is mocked in demo.mjs when the target isn't the live site), so the video
 # reflects the new code without waiting for a Pages deploy.
+# Re-records only when the recorder itself changes, plus manual runs — the
+# committed video adds ~7MB to history per recording, so this stays deliberate
+# rather than firing on every tool tweak. Run it by hand (Actions → Run workflow)
+# to refresh the video after a UI change you want reflected.
 on:
   push:
     branches: [main]
     paths:
-      - "index.html"
-      - "styles.css"
-      - "tags/*.html"
-      - "tags/*.js"
-      - "tags/*.css"
-      - "tags/wasm/**"
       - "demo/*.mjs"
   workflow_dispatch: {}
 
@@ -76,30 +74,14 @@ jobs:
           # A poster frame (~3s in, past the intro card) for the click-to-play embed.
           ffmpeg -y -ss 3 -i demo.mp4 -frames:v 1 -q:v 3 demo-poster.jpg
 
-      - name: Publish video + poster to the 'demo' release
-        working-directory: demo
-        env:
-          GH_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
+      - name: Commit the video + poster if they changed
         run: |
-          set -e
-          # Keep the video out of git history: store it as a rolling release
-          # asset at a stable URL (releases/download/demo/demo.mp4).
-          gh release view demo >/dev/null 2>&1 || \
-            gh release create demo --title "Demo video (latest)" \
-              --notes "Auto-updated walkthrough of the tag-sharing tool. Managed by record-demo.yml."
-          rid=$(gh release view demo --json databaseId -q .databaseId)
-          # Upload with an explicit content type. `gh release upload` defaults to
-          # application/octet-stream, which iOS Safari won't play in <video> —
-          # video/mp4 is required for mobile playback.
-          publish() {
-            name="$1"; ctype="$2"
-            gh release delete-asset demo "$name" --yes 2>/dev/null || true
-            curl -fsS -X POST \
-              -H "Authorization: Bearer ${GH_TOKEN}" \
-              -H "Content-Type: ${ctype}" \
-              --data-binary @"${name}" \
-              "https://uploads.github.com/repos/${REPO}/releases/${rid}/assets?name=${name}" >/dev/null
-          }
-          publish demo.mp4 video/mp4
-          publish demo-poster.jpg image/jpeg
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add demo/demo.mp4 demo/demo-poster.jpg
+          if git diff --staged --quiet; then
+            echo "No demo change."
+          else
+            git commit -m "chore: update demo video"
+            git push
+          fi

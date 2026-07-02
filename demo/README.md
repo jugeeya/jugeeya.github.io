@@ -58,24 +58,22 @@ ffmpeg -ss 0.5 -i videos/<hash>.webm -i music.mp3 \
 
 ## Continuous recording (CI)
 
-`.github/workflows/record-demo.yml` re-records the demo whenever the tool's
-source changes (`index.html`, `styles.css`, `tags/*.{html,js,css}`,
-`tags/wasm/**`, or `demo/*.mjs`). It serves the repo and records that local copy
-(`TARGET=http://localhost:8000/tags/`), so the video reflects the just-pushed
-code without waiting for a Pages deploy. When the target isn't the live site,
-`demo.mjs` mocks the start.gg search/avatars so the recording stays deterministic
-and offline (it also hides the page's own embedded video so the recording never
-films itself).
+`.github/workflows/record-demo.yml` re-records the demo when the recorder
+(`demo/*.mjs`) changes, or on a manual **Run workflow**. It serves the repo and
+records that local copy (`TARGET=http://localhost:8000/tags/`) so the video
+reflects the current code without waiting for a Pages deploy. When the target
+isn't the live site, `demo.mjs` mocks the start.gg search/avatars so the
+recording stays deterministic and offline (it also hides the page's own embedded
+video so the recording never films itself), then commits `demo/demo.mp4` and
+`demo/demo-poster.jpg`.
 
-To keep the multi-MB video out of git history, CI publishes `demo.mp4` and a
-`demo-poster.jpg` as assets on a rolling **`demo` release**, at stable URLs:
-
-```
-https://github.com/jugeeya/jugeeya.github.io/releases/download/demo/demo.mp4
-https://github.com/jugeeya/jugeeya.github.io/releases/download/demo/demo-poster.jpg
-```
-
-The tags page embeds those URLs (click-to-play).
+The video and poster are **committed** so GitHub Pages serves them as `video/mp4`
+(with range support), which is what lets the embed play inline on mobile —
+release-asset downloads are forced to `application/octet-stream` + `attachment`,
+which iOS Safari won't play in `<video>`. Because each recording adds ~7MB to
+history, the trigger is deliberately narrow (recorder changes + manual runs)
+rather than firing on every UI tweak; run it by hand to refresh after a UI change
+you want reflected.
 
 ## Tuning
 

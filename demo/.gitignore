@@ -2,7 +2,5 @@ node_modules/
 videos/
 fixtures/
 demo.webm
-# The video is published as a GitHub release asset (not committed), so keep the
-# local build artifacts out of git.
-demo.mp4
-demo-poster.jpg
+# demo.mp4 and demo-poster.jpg are committed (served by GitHub Pages as
+# video/mp4 with range support so the embed plays inline on mobile).
