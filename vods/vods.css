@@ -1,107 +1,41 @@
-/* VOD splitter — self-contained (reuses design tokens from ../styles.css). */
+/* VOD splitter — page-specific layout on top of the shared MD3 system
+   (buttons, inputs, cards come from ../styles.css). */
 
+/* MD3 filled card = a numbered step panel */
 .panel {
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-soft);
+    background-color: var(--md-surface-container-low);
+    border-radius: var(--md-corner-lg);
     padding: 1.75rem;
     margin-bottom: 1.5rem;
 }
 
 .panel h2 {
-    margin-bottom: 0.4rem;
+    margin-bottom: 1rem;
 }
 
 .panel-help {
-    color: var(--text-secondary);
+    color: var(--md-on-surface-variant);
     font-size: 0.95rem;
     margin-bottom: 1.25rem;
 }
 
 .muted {
-    color: var(--text-secondary);
+    color: var(--md-on-surface-variant);
 }
 
 .optional {
-    color: var(--text-secondary);
+    color: var(--md-on-surface-variant);
     font-weight: 400;
     font-size: 0.85em;
 }
 
-/* Buttons */
-button {
-    padding: 0.6rem 1.2rem;
-    border: none;
-    border-radius: 10px;
-    background-image: linear-gradient(135deg, var(--primary-color), var(--primary-strong));
-    color: #fff;
-    font-weight: 600;
-    font-family: var(--font-family);
-    font-size: 0.92rem;
-    cursor: pointer;
-    box-shadow: 0 6px 16px -8px rgba(108, 92, 255, 0.7);
-    transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-}
-
-button:hover:not(:disabled) {
-    transform: translateY(-1px);
-}
-
-button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-button.secondary {
-    background-image: none;
-    background-color: var(--surface-2);
-    border: 1px solid var(--border-color);
-    box-shadow: none;
-}
-
-button.linkish {
-    background: none;
-    border: none;
-    box-shadow: none;
-    color: var(--primary-color);
-    padding: 0.2rem 0.3rem;
-    font-size: 0.9rem;
-}
-
-button.linkish:hover:not(:disabled) {
-    text-decoration: underline;
-    transform: none;
-}
-
-/* Inputs */
-input[type="text"],
-input[type="datetime-local"],
-input[type="number"],
-select {
-    background-color: var(--background-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    color: var(--text-color);
-    font-family: var(--font-family);
-    font-size: 0.92rem;
-    padding: 0.55rem 0.7rem;
-}
-
-input:focus,
-select:focus {
-    outline: none;
-    border-color: var(--primary-color);
-}
-
 label {
-    color: var(--text-color);
+    color: var(--md-on-surface);
     font-size: 0.9rem;
 }
 
 .field-hint {
-    color: var(--text-secondary);
+    color: var(--md-on-surface-variant);
     font-size: 0.82rem;
     margin-top: 0.35rem;
 }
@@ -110,12 +44,12 @@ label {
     margin-top: 1rem;
     font-size: 0.9rem;
     min-height: 1.2em;
-    color: var(--text-secondary);
+    color: var(--md-on-surface-variant);
 }
 
-.upload-status.success { color: var(--success-color); }
-.upload-status.error { color: var(--error-color); }
-.upload-status.warn { color: #c9a227; }
+.upload-status.success { color: var(--md-success); }
+.upload-status.error { color: var(--md-error); }
+.upload-status.warn { color: #e6c34d; }
 
 /* VOD loader */
 .vod-loader {
@@ -161,12 +95,12 @@ label {
 .sets-status {
     margin-top: 0.6rem;
     font-size: 0.88rem;
-    color: var(--text-secondary);
+    color: var(--md-on-surface-variant);
     min-height: 1.1em;
 }
 
-.sets-status.success { color: var(--success-color); }
-.sets-status.error { color: var(--error-color); }
+.sets-status.success { color: var(--md-success); }
+.sets-status.error { color: var(--md-error); }
 
 .station-field {
     margin-top: 1.25rem;
@@ -177,7 +111,7 @@ label {
 }
 
 .pad-field {
-    color: var(--text-secondary);
+    color: var(--md-on-surface-variant);
     font-size: 0.85rem;
 }
 
@@ -199,7 +133,7 @@ label {
 }
 
 .tag-action-sep {
-    color: var(--border-color);
+    color: var(--md-outline-variant);
 }
 
 .clip-row {
@@ -212,16 +146,16 @@ label {
     gap: 0.6rem 0.85rem;
     align-items: center;
     padding: 1rem 0;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--md-outline-variant);
 }
 
 .clip-include { grid-area: include; }
-.clip-include input { accent-color: var(--primary-color); width: 18px; height: 18px; }
+.clip-include input { accent-color: var(--md-primary); width: 18px; height: 18px; }
 
 .clip-name {
     grid-area: name;
     width: 100%;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .clip-times {
@@ -230,7 +164,7 @@ label {
     align-items: center;
     gap: 0.85rem;
     flex-wrap: wrap;
-    color: var(--text-secondary);
+    color: var(--md-on-surface-variant);
     font-size: 0.85rem;
 }
 
@@ -242,7 +176,7 @@ label {
 
 .clip-dur {
     font-family: var(--font-mono);
-    color: var(--text-color);
+    color: var(--md-on-surface);
 }
 
 .clip-frames {
@@ -263,8 +197,8 @@ label {
     aspect-ratio: 16 / 9;
     object-fit: cover;
     background: #000;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
+    border-radius: var(--md-corner-sm);
+    border: 1px solid var(--md-outline-variant);
 }
 
 .clip-frames img.loading {
@@ -272,7 +206,7 @@ label {
 }
 
 .clip-frames figcaption {
-    color: var(--text-secondary);
+    color: var(--md-on-surface-variant);
     font-size: 0.78rem;
     text-align: center;
     margin-top: 0.25rem;
@@ -282,7 +216,9 @@ label {
     width: 100%;
     height: 8px;
     margin-top: 0.85rem;
-    accent-color: var(--primary-color);
+    accent-color: var(--md-primary);
+    border-radius: var(--md-corner-full);
+    overflow: hidden;
 }
 
 @media (min-width: 720px) {
