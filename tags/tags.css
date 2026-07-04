@@ -830,12 +830,19 @@ code {
 }
 
 @media (max-width: 560px) {
+    /* Compact two-row layout: the setting name on top, then the change
+       (from → to) grouped on one line below — twice the density of stacking
+       all four on their own lines. */
     .tag-diff-list li {
-        grid-template-columns: 1fr;
-        gap: 0.1rem;
+        grid-template-columns: auto auto 1fr;
+        grid-template-areas:
+            "key key key"
+            "from arrow to";
+        gap: 0.05rem 0.4rem;
     }
 
-    .tag-diff-arrow {
-        justify-self: start;
-    }
+    .tag-diff-key { grid-area: key; }
+    .tag-diff-from { grid-area: from; }
+    .tag-diff-arrow { grid-area: arrow; justify-self: start; }
+    .tag-diff-to { grid-area: to; justify-self: start; }
 }

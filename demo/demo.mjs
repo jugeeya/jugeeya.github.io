@@ -136,7 +136,7 @@ const run = async () => {
 
   // ── Intro: the page body is hidden from first paint (installCinematics CSS),
   // so it never flashes. We raise the title card, load + stage the page behind
-  // it, reveal the whole-page overview, then zoom into the top ────────────────
+  // it already zoomed into the submit section, then fade the card away ────────
   await showTitleCard(page,
     'Rivals II Controls / Tag Sharing',
     'Share your tags and controls, right from the browser', 0, { stay: true });
@@ -144,14 +144,12 @@ const run = async () => {
   await page.locator('#savButton').waitFor({ state: 'attached' });
   await page.locator('#tagBrowser .tag-list-item').first().waitFor({ state: 'attached', timeout: 15000 }).catch(() => {});
   await page.evaluate(() => window.scrollTo(0, 0)).catch(() => {});
-  await setZoom(page, 0.62, 0);    // overview scale, staged behind the title
+  await setZoom(page, ZOOM, 0);    // start already zoomed into the submit section
   await revealPage(page);          // un-hide the body (still covered by the card)
   resetCursor(W / 2, H / 2);       // cursor stays hidden until the first glide
   await sleep(1500);               // hold the title
-  await hideTitleCard(page);       // reveal the whole-page overview
-  await sleep(900);
-  await setZoom(page, ZOOM, 1300);  // clean zoom into the submit section
-  await sleep(400);
+  await hideTitleCard(page);       // fade the card away onto the zoomed-in page
+  await sleep(500);
 
   // The page reads top-to-bottom: the whole submit flow first, then browse.
   // (glide/annotate helpers now smooth-scroll their target into view.)
