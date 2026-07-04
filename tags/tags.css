@@ -1,13 +1,10 @@
 /* Tag-sharing page styles (layered on top of the shared ../styles.css). */
 
 .panel {
-    background-color: var(--surface-color);
-    background-image: linear-gradient(160deg, rgba(255, 255, 255, 0.03), transparent 55%);
+    background-color: var(--md-surface-container-low);
     padding: 1.85rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-card);
-    margin-bottom: 2rem;
+    border-radius: var(--md-corner-lg);
+    margin-bottom: 1.5rem;
 }
 
 .panel h2 {
@@ -131,43 +128,7 @@ code {
     color: var(--error-color);
 }
 
-/* Buttons */
-button {
-    padding: 0.7rem 1.4rem;
-    border: none;
-    border-radius: 10px;
-    background-image: linear-gradient(135deg, var(--primary-color), var(--primary-strong));
-    color: #fff;
-    font-weight: 600;
-    font-family: var(--font-family);
-    cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-    font-size: 0.92rem;
-    box-shadow: 0 6px 16px -8px rgba(108, 92, 255, 0.7);
-}
-
-button:hover:not(:disabled) {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 22px -8px rgba(108, 92, 255, 0.8);
-}
-
-button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-button.secondary {
-    background-image: none;
-    background-color: var(--surface-2);
-    border: 1px solid var(--border-color);
-    box-shadow: none;
-}
-
-button.secondary:hover:not(:disabled) {
-    background-color: var(--surface-hover);
-    transform: translateY(-1px);
-}
+/* Buttons come from the shared MD3 system in ../styles.css. */
 
 .author-field {
     margin-top: 1.25rem;
