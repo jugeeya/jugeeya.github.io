@@ -65,6 +65,11 @@
     box-sizing: border-box;
 }
 
+html {
+    background-color: var(--md-surface);
+    color-scheme: dark;
+}
+
 body {
     font-family: var(--font-family);
     background-color: var(--md-surface);
@@ -72,6 +77,7 @@ body {
     line-height: 1.5;
     font-weight: 400;
     min-height: 100vh;
+    min-height: 100dvh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
