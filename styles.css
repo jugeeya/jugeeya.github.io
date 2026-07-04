@@ -95,10 +95,17 @@
    overriding the primary role; buttons, links, focus rings, the accent bar,
    the hero glow and heading all follow automatically. (Leaderboard = violet
    = the default, so it needs no override.) */
+/* The old --primary-* aliases are declared on :root, so their var(--md-*)
+   references are resolved there (to violet) and inherit down already baked —
+   overriding --md-primary alone can't reach them. Re-declare the primary
+   family here so page CSS that still uses the aliases follows the accent. */
 .accent-cyan {
     --md-primary: var(--accent-cyan);
     --md-on-primary: #00363f;
     --md-primary-container: #164e5a;
+    --primary-color: var(--accent-cyan);
+    --primary-strong: #164e5a;
+    --primary-soft: color-mix(in srgb, var(--accent-cyan) 12%, transparent);
     --accent-gradient: linear-gradient(115deg, var(--accent-cyan), #6fb9cd);
     --h1-tint: #d7f1f8;
 }
@@ -107,6 +114,9 @@
     --md-primary: var(--accent-pink);
     --md-on-primary: #5a1030;
     --md-primary-container: #7a2447;
+    --primary-color: var(--accent-pink);
+    --primary-strong: #7a2447;
+    --primary-soft: color-mix(in srgb, var(--accent-pink) 12%, transparent);
     --accent-gradient: linear-gradient(115deg, var(--accent-pink), #ff8fb3);
     --h1-tint: #ffe0ea;
 }
