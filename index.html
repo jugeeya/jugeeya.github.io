@@ -105,6 +105,18 @@
                 if (e.key === 'Escape') setOpen(false);
             });
         })();
+
+        // Cursor-following spotlight on each card.
+        (function () {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            document.querySelectorAll('.card').forEach(function (card) {
+                card.addEventListener('pointermove', function (e) {
+                    const r = card.getBoundingClientRect();
+                    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+                    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+                });
+            });
+        })();
     </script>
 </body>
 

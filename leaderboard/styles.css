@@ -31,6 +31,11 @@
     --md-dur-short: 0.18s;
     --md-dur-med: 0.3s;
 
+    --accent-violet: #cfbcff;
+    --accent-cyan: #8fd3e8;
+    --accent-pink: #ffb0cd;
+    --accent-amber: #f4c66b;
+
     /* aliases */
     --primary-color: var(--md-primary);
     --primary-strong: var(--md-primary-container);
@@ -70,6 +75,28 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+}
+
+/* Ambient aurora — drifting colored light behind everything */
+body::before {
+    content: '';
+    position: fixed;
+    inset: -20%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(38% 44% at 12% 8%, color-mix(in srgb, var(--accent-violet) 30%, transparent), transparent 62%),
+        radial-gradient(42% 42% at 88% 16%, color-mix(in srgb, var(--accent-cyan) 24%, transparent), transparent 60%),
+        radial-gradient(46% 48% at 78% 88%, color-mix(in srgb, var(--accent-pink) 22%, transparent), transparent 62%),
+        radial-gradient(40% 42% at 20% 92%, color-mix(in srgb, var(--accent-amber) 15%, transparent), transparent 60%);
+    filter: blur(24px) saturate(120%);
+    animation: aurora-drift 26s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(0, -2.5%, 0) scale(1.08); }
+    100% { transform: translate3d(1.5%, 1.5%, 0) scale(1.04); }
 }
 
 .container {
@@ -232,10 +259,14 @@ button:active {
 /* MD3 filled cards with depth */
 .player-stats,
 .distribution-container {
-    background: linear-gradient(158deg, var(--md-surface-container-high) 0%, var(--md-surface-container) 100%);
+    background: linear-gradient(158deg,
+        color-mix(in srgb, var(--md-surface-container-high) 82%, transparent) 0%,
+        color-mix(in srgb, var(--md-surface-container) 68%, transparent) 100%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    backdrop-filter: blur(14px) saturate(130%);
     padding: 1.75rem;
     border-radius: var(--md-corner-lg);
-    border: 1px solid var(--md-outline-variant);
+    border: 1px solid color-mix(in srgb, var(--md-on-surface) 10%, transparent);
     box-shadow: var(--md-elev-1);
     transition: box-shadow var(--md-dur-med) var(--md-ease-emphasized),
         transform var(--md-dur-med) var(--md-ease-emphasized),

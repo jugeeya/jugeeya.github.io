@@ -60,6 +60,12 @@
     /* ---- Elevation glow (colored, for hover depth) ---- */
     --md-glow: 0 8px 28px -6px color-mix(in srgb, var(--md-primary) 45%, transparent);
 
+    /* ---- Accent palette (used to tint cards individually + the aurora) ---- */
+    --accent-violet: #cfbcff;
+    --accent-cyan: #8fd3e8;
+    --accent-pink: #ffb0cd;
+    --accent-amber: #f4c66b;
+
     /* ---- Back-compat aliases (old names → MD3 roles) ---- */
     --primary-color: var(--md-primary);
     --primary-strong: var(--md-primary-container);
@@ -102,6 +108,28 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+/* Ambient aurora — drifting colored light behind everything */
+body::before {
+    content: '';
+    position: fixed;
+    inset: -20%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(38% 44% at 12% 8%, color-mix(in srgb, var(--accent-violet) 30%, transparent), transparent 62%),
+        radial-gradient(42% 42% at 88% 16%, color-mix(in srgb, var(--accent-cyan) 24%, transparent), transparent 60%),
+        radial-gradient(46% 48% at 78% 88%, color-mix(in srgb, var(--accent-pink) 22%, transparent), transparent 62%),
+        radial-gradient(40% 42% at 20% 92%, color-mix(in srgb, var(--accent-amber) 15%, transparent), transparent 60%);
+    filter: blur(24px) saturate(120%);
+    animation: aurora-drift 26s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(0, -2.5%, 0) scale(1.08); }
+    100% { transform: translate3d(1.5%, 1.5%, 0) scale(1.04); }
+}
+
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -113,8 +141,10 @@ body {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: var(--md-surface-container);
-    border-bottom: 1px solid var(--md-outline-variant);
+    background: color-mix(in srgb, var(--md-surface-container) 72%, transparent);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid color-mix(in srgb, var(--md-on-surface) 8%, transparent);
 }
 
 .nav-inner {
@@ -232,8 +262,25 @@ body {
 
 /* ---- Typography ---------------------------------------------------------- */
 header {
+    position: relative;
     text-align: center;
     margin: 2.5rem 0 3rem;
+}
+
+/* Soft glow pooled behind the hero title */
+header::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    width: min(560px, 90%);
+    height: 220px;
+    transform: translateX(-50%);
+    background: radial-gradient(closest-side,
+        color-mix(in srgb, var(--md-primary) 22%, transparent), transparent);
+    filter: blur(20px);
+    z-index: -1;
+    pointer-events: none;
 }
 
 h1 {
@@ -297,17 +344,24 @@ h2 {
     gap: 1rem;
 }
 
-/* MD3 filled card with a state layer, icon chip + elevation/lift on hover */
+/* Frosted-glass card. Each card carries its own --card-accent (assigned by
+   position below); the icon chip, glow, title and cursor spotlight all use it.
+   --mx/--my are updated by JS to track the pointer for the spotlight. */
 .card {
+    --card-accent: var(--accent-violet);
+    --mx: 50%;
+    --my: 0%;
     position: relative;
     display: block;
     background:
         linear-gradient(158deg,
-            var(--md-surface-container-high) 0%,
-            var(--md-surface-container) 100%);
+            color-mix(in srgb, var(--md-surface-container-high) 82%, transparent) 0%,
+            color-mix(in srgb, var(--md-surface-container) 68%, transparent) 100%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    backdrop-filter: blur(14px) saturate(130%);
     padding: 1.6rem;
     border-radius: var(--md-corner-lg);
-    border: 1px solid var(--md-outline-variant);
+    border: 1px solid color-mix(in srgb, var(--md-on-surface) 10%, transparent);
     text-decoration: none;
     color: var(--md-on-surface);
     overflow: hidden;
@@ -317,39 +371,39 @@ h2 {
         border-color var(--md-dur-med) var(--md-ease-emphasized);
 }
 
-/* State layer */
+/* Accent hairline along the top edge */
 .card::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: var(--md-primary);
-    opacity: 0;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--card-accent), transparent);
+    opacity: 0.55;
     transition: opacity var(--md-dur-med) var(--md-ease-standard);
     pointer-events: none;
 }
 
-/* Soft radial glow that blooms from the top-left on hover */
+/* Cursor-following spotlight in the card's accent color */
 .card::after {
     content: '';
     position: absolute;
-    top: -40%;
-    left: -20%;
-    width: 60%;
-    height: 90%;
-    background: radial-gradient(circle, color-mix(in srgb, var(--md-primary) 22%, transparent), transparent 70%);
+    inset: 0;
+    background: radial-gradient(220px circle at var(--mx) var(--my),
+        color-mix(in srgb, var(--card-accent) 28%, transparent), transparent 60%);
     opacity: 0;
     transition: opacity var(--md-dur-med) var(--md-ease-standard);
     pointer-events: none;
 }
 
 .card:hover {
-    box-shadow: var(--md-elev-3), var(--md-glow);
+    box-shadow: var(--md-elev-3),
+        0 10px 34px -8px color-mix(in srgb, var(--card-accent) 55%, transparent);
     transform: translateY(-6px);
-    border-color: color-mix(in srgb, var(--md-primary) 45%, transparent);
+    border-color: color-mix(in srgb, var(--card-accent) 55%, transparent);
 }
 
 .card:hover::before {
-    opacity: var(--md-state-hover);
+    opacity: 1;
 }
 
 .card:hover::after {
@@ -360,9 +414,16 @@ h2 {
     transform: translateY(-2px);
 }
 
+/* Per-card accent assignment (cycles violet → cyan → pink → amber) */
+.card-grid .card:nth-child(4n+1) { --card-accent: var(--accent-violet); }
+.card-grid .card:nth-child(4n+2) { --card-accent: var(--accent-cyan); }
+.card-grid .card:nth-child(4n+3) { --card-accent: var(--accent-pink); }
+.card-grid .card:nth-child(4n+4) { --card-accent: var(--accent-amber); }
+
 /* Icon chip */
 .card .card-icon {
     position: relative;
+    z-index: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -370,18 +431,21 @@ h2 {
     height: 52px;
     margin-bottom: 1.1rem;
     border-radius: var(--md-corner-md);
-    background: color-mix(in srgb, var(--md-primary) 16%, transparent);
-    color: var(--md-primary);
+    background: color-mix(in srgb, var(--card-accent) 18%, transparent);
+    color: var(--card-accent);
     line-height: 1;
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--card-accent) 30%, transparent);
     transition: background-color var(--md-dur-med) var(--md-ease-standard),
         color var(--md-dur-med) var(--md-ease-standard),
+        box-shadow var(--md-dur-med) var(--md-ease-standard),
         transform var(--md-dur-med) var(--md-ease-spring);
 }
 
 .card:hover .card-icon {
-    background: var(--md-primary);
-    color: var(--md-on-primary);
-    transform: scale(1.08) rotate(-5deg);
+    background: var(--card-accent);
+    color: #16131c;
+    box-shadow: 0 6px 18px -4px color-mix(in srgb, var(--card-accent) 65%, transparent);
+    transform: scale(1.1) rotate(-6deg);
 }
 
 .card .card-icon .material-symbols-outlined {
@@ -390,6 +454,8 @@ h2 {
 }
 
 .card h3 {
+    position: relative;
+    z-index: 1;
     font-family: var(--font-display);
     font-size: 1.3rem;
     font-weight: 600;
@@ -404,7 +470,7 @@ h2 {
     content: '→';
     display: inline-block;
     margin-left: 0.4rem;
-    color: var(--md-primary);
+    color: var(--card-accent);
     opacity: 0;
     transform: translateX(-6px);
     transition: opacity var(--md-dur-med) var(--md-ease-standard),
@@ -412,7 +478,7 @@ h2 {
 }
 
 .card:hover h3 {
-    color: var(--md-primary);
+    color: var(--card-accent);
 }
 
 .card:hover h3::after {
@@ -421,9 +487,10 @@ h2 {
 }
 
 .card p {
+    position: relative;
+    z-index: 1;
     color: var(--md-on-surface-variant);
     font-size: 0.9rem;
-    position: relative;
 }
 
 /* ---- Reusable MD3 components (buttons, text fields) ----------------------- */
