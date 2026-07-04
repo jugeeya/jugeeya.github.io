@@ -272,6 +272,15 @@ h2 {
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
 }
 
+.card .card-icon .material-symbols-outlined {
+    font-size: 2.6rem;
+    line-height: 1;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
 .card h3 {
     font-family: var(--font-display);
     font-size: 1.35rem;

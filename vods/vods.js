@@ -224,7 +224,7 @@ function outName(clip, i) {
 function renderClips() {
   const list = $('clipList');
   if (!clips.length) {
-    list.innerHTML = '<p class="muted">No clips yet — build them from start.gg above, or add one by hand.</p>';
+    list.innerHTML = '<p class="muted">No clips yet. Build them from start.gg above, or add one by hand.</p>';
     return;
   }
   list.innerHTML = '';

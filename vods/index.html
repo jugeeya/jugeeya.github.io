@@ -31,10 +31,6 @@
             <!-- 1. VOD ------------------------------------------------------- -->
             <section class="panel">
                 <h2>1. Load the VOD</h2>
-                <p class="panel-help">
-                    Pick the local recording. It stays on your machine — nothing is uploaded.
-                    Everything (previews and the actual cutting) runs in your browser.
-                </p>
                 <div class="vod-loader">
                     <button id="vodButton" type="button">Choose video file…</button>
                     <span id="vodInfo" class="vod-info muted">No file loaded.</span>
@@ -79,11 +75,6 @@
             <!-- 3. Clips ----------------------------------------------------- -->
             <section class="panel">
                 <h2>3. Review &amp; cut</h2>
-                <p class="panel-help">
-                    Check each clip's start/end frame before cutting. Times are editable — nudge them
-                    and re-preview. Cutting uses stream copy (<code>-c copy</code>), so it's fast and
-                    lossless, and lands on the nearest keyframe.
-                </p>
                 <div class="clip-toolbar">
                     <button type="button" id="addClip" class="linkish">+ Add clip</button>
                     <span class="tag-action-sep">·</span>
@@ -93,7 +84,7 @@
                     <button type="button" id="scriptBtn" class="secondary" disabled>Copy ffmpeg commands</button>
                 </div>
                 <div id="clipList" class="clip-list">
-                    <p class="muted">No clips yet — build them from start.gg above, or add one by hand.</p>
+                    <p class="muted">No clips yet. Build them from start.gg above, or add one by hand.</p>
                 </div>
                 <p id="splitStatus" class="upload-status"></p>
                 <progress id="splitProgress" value="0" max="1" hidden></progress>
