@@ -47,8 +47,18 @@
 
     /* ---- Type ---- */
     --font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    --font-display: var(--font-family);
+    --font-display: 'Space Grotesk', 'Roboto', system-ui, sans-serif;
     --font-mono: 'Roboto Mono', 'JetBrains Mono', 'Consolas', monospace;
+
+    /* ---- Motion (MD3 easing + durations) ---- */
+    --md-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --md-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+    --md-ease-spring: cubic-bezier(0.34, 1.4, 0.5, 1);
+    --md-dur-short: 0.18s;
+    --md-dur-med: 0.3s;
+
+    /* ---- Elevation glow (colored, for hover depth) ---- */
+    --md-glow: 0 8px 28px -6px color-mix(in srgb, var(--md-primary) 45%, transparent);
 
     /* ---- Back-compat aliases (old names → MD3 roles) ---- */
     --primary-color: var(--md-primary);
@@ -228,11 +238,22 @@ header {
 
 h1 {
     font-family: var(--font-display);
-    font-size: clamp(2.25rem, 5vw, 3.25rem);
-    font-weight: 500;
-    line-height: 1.12;
-    letter-spacing: -0.5px;
+    font-size: clamp(2.4rem, 5.5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1px;
     color: var(--md-primary);
+    background: linear-gradient(120deg, var(--md-primary) 0%, var(--md-tertiary) 55%, var(--md-primary) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: sheen 8s ease-in-out infinite;
+}
+
+@keyframes sheen {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
 }
 
 .subtitle {
@@ -244,11 +265,24 @@ h1 {
 
 h2 {
     font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 500;
-    letter-spacing: 0;
-    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    margin-bottom: 1.25rem;
     color: var(--md-on-surface);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+/* Accent bar before section titles */
+.section > h2::before {
+    content: '';
+    width: 4px;
+    height: 1.4rem;
+    border-radius: var(--md-corner-full);
+    background: var(--accent-gradient);
+    flex: none;
 }
 
 /* ---- Sections + cards ---------------------------------------------------- */
@@ -263,60 +297,133 @@ h2 {
     gap: 1rem;
 }
 
-/* MD3 filled card with a state layer + elevation on hover */
+/* MD3 filled card with a state layer, icon chip + elevation/lift on hover */
 .card {
     position: relative;
     display: block;
-    background-color: var(--md-surface-container-high);
-    padding: 1.5rem;
-    border-radius: var(--md-corner-md);
+    background:
+        linear-gradient(158deg,
+            var(--md-surface-container-high) 0%,
+            var(--md-surface-container) 100%);
+    padding: 1.6rem;
+    border-radius: var(--md-corner-lg);
+    border: 1px solid var(--md-outline-variant);
     text-decoration: none;
     color: var(--md-on-surface);
     overflow: hidden;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    box-shadow: var(--md-elev-1);
+    transition: box-shadow var(--md-dur-med) var(--md-ease-emphasized),
+        transform var(--md-dur-med) var(--md-ease-emphasized),
+        border-color var(--md-dur-med) var(--md-ease-emphasized);
 }
 
+/* State layer */
 .card::before {
     content: '';
     position: absolute;
     inset: 0;
     background: var(--md-primary);
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity var(--md-dur-med) var(--md-ease-standard);
+    pointer-events: none;
+}
+
+/* Soft radial glow that blooms from the top-left on hover */
+.card::after {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -20%;
+    width: 60%;
+    height: 90%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--md-primary) 22%, transparent), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--md-dur-med) var(--md-ease-standard);
     pointer-events: none;
 }
 
 .card:hover {
-    box-shadow: var(--md-elev-2);
-    transform: translateY(-2px);
+    box-shadow: var(--md-elev-3), var(--md-glow);
+    transform: translateY(-6px);
+    border-color: color-mix(in srgb, var(--md-primary) 45%, transparent);
 }
 
 .card:hover::before {
     opacity: var(--md-state-hover);
 }
 
+.card:hover::after {
+    opacity: 1;
+}
+
+.card:active {
+    transform: translateY(-2px);
+}
+
+/* Icon chip */
 .card .card-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 1.1rem;
+    border-radius: var(--md-corner-md);
+    background: color-mix(in srgb, var(--md-primary) 16%, transparent);
     color: var(--md-primary);
-    margin-bottom: 0.85rem;
     line-height: 1;
+    transition: background-color var(--md-dur-med) var(--md-ease-standard),
+        color var(--md-dur-med) var(--md-ease-standard),
+        transform var(--md-dur-med) var(--md-ease-spring);
+}
+
+.card:hover .card-icon {
+    background: var(--md-primary);
+    color: var(--md-on-primary);
+    transform: scale(1.08) rotate(-5deg);
 }
 
 .card .card-icon .material-symbols-outlined {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     line-height: 1;
 }
 
 .card h3 {
     font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
     color: var(--md-on-surface);
     margin-bottom: 0.5rem;
+    transition: color var(--md-dur-short) var(--md-ease-standard);
+}
+
+/* Arrow that slides in on hover */
+.card h3::after {
+    content: '→';
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: var(--md-primary);
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity var(--md-dur-med) var(--md-ease-standard),
+        transform var(--md-dur-med) var(--md-ease-spring);
+}
+
+.card:hover h3 {
+    color: var(--md-primary);
+}
+
+.card:hover h3::after {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .card p {
     color: var(--md-on-surface-variant);
     font-size: 0.9rem;
+    position: relative;
 }
 
 /* ---- Reusable MD3 components (buttons, text fields) ----------------------- */
@@ -339,7 +446,8 @@ button,
     letter-spacing: 0.1px;
     cursor: pointer;
     overflow: hidden;
-    transition: box-shadow 0.15s ease;
+    transition: box-shadow var(--md-dur-short) var(--md-ease-standard),
+        transform var(--md-dur-short) var(--md-ease-spring);
 }
 
 button::before,
@@ -349,15 +457,20 @@ button::before,
     inset: 0;
     background: currentColor;
     opacity: 0;
-    transition: opacity 0.15s ease;
+    transition: opacity var(--md-dur-short) var(--md-ease-standard);
 }
 
 button:hover:not(:disabled) {
-    box-shadow: var(--md-elev-1);
+    box-shadow: var(--md-elev-2);
+    transform: translateY(-2px);
 }
 
 button:hover:not(:disabled)::before {
     opacity: var(--md-state-hover);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
 }
 
 button:active:not(:disabled)::before {
@@ -432,6 +545,11 @@ input::placeholder {
 
 .back-link:hover {
     color: var(--md-primary);
+    transform: translateX(-3px);
+}
+
+.back-link {
+    transition: color 0.2s ease, transform var(--md-dur-med) var(--md-ease-spring);
 }
 
 footer {
@@ -451,6 +569,31 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Staggered card entrance. `backwards` fill hides the pre-delay flash but
+   reverts to base styles once done, so the hover-lift transform still works. */
+@keyframes card-in {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-grid .card {
+    animation: card-in 0.5s var(--md-ease-emphasized) backwards;
+}
+
+.card-grid .card:nth-child(2) { animation-delay: 0.07s; }
+.card-grid .card:nth-child(3) { animation-delay: 0.14s; }
+.card-grid .card:nth-child(4) { animation-delay: 0.21s; }
+.card-grid .card:nth-child(5) { animation-delay: 0.28s; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 @media (max-width: 768px) {
