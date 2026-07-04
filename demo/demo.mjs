@@ -42,8 +42,8 @@ const BROKER = 'https://r2tag-broker.jdsambasivam.workers.dev';
 // A tiny inline avatar for mocked start.gg results (no network needed).
 const MOCK_AVATAR = 'data:image/svg+xml;utf8,' + encodeURIComponent(
   '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">' +
-  '<circle cx="32" cy="32" r="32" fill="#6c63ff"/>' +
-  '<text x="32" y="43" font-size="30" fill="#fff" text-anchor="middle" ' +
+  '<circle cx="32" cy="32" r="32" fill="#8fd3e8"/>' +
+  '<text x="32" y="43" font-size="30" fill="#06323b" text-anchor="middle" ' +
   'font-family="sans-serif">H</text></svg>');
 
 if (!existsSync(SAVE_FILE)) {

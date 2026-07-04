@@ -309,6 +309,11 @@ code {
     font-size: 0.82rem;
     font-weight: 500;
     white-space: nowrap;
+    transition: color var(--md-dur-short, 0.18s) ease;
+}
+
+.tag-selected-count.is-zero {
+    color: var(--text-secondary);
 }
 
 /* Anchor the action buttons to the right so the count chip toggling on/off

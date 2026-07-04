@@ -260,8 +260,9 @@ function updateDownloadButton() {
 
     const countEl = tagBrowser.querySelector('#tagSelectedCount');
     if (countEl) {
-        countEl.textContent = count ? `${count} selected` : '';
-        countEl.hidden = count === 0;
+        // Always present (so nothing shifts as it toggles); dimmed at zero.
+        countEl.textContent = `${count} selected`;
+        countEl.classList.toggle('is-zero', count === 0);
     }
 }
 
@@ -282,7 +283,7 @@ function renderTagBrowser() {
         '<button type="button" id="selectAllTags" class="linkish">Select all</button>' +
         '<span class="tag-action-sep">·</span>' +
         '<button type="button" id="clearTagSelection" class="linkish">Clear</button>' +
-        '<span id="tagSelectedCount" class="tag-selected-count" hidden></span>' +
+        '<span id="tagSelectedCount" class="tag-selected-count is-zero">0 selected</span>' +
         '<button type="button" id="importSelected" disabled>Import to save</button>' +
         '<button type="button" id="downloadSelected" class="secondary" disabled>Download tags</button>' +
         '</div></div>' +

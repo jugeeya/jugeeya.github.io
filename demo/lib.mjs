@@ -30,22 +30,23 @@ export async function installCinematics(page) {
         pointer-events:none;left:0;top:0;opacity:0;
         transition:left .34s cubic-bezier(.33,1,.68,1),top .34s cubic-bezier(.33,1,.68,1),transform .1s ease-out,opacity .3s ease}
       #__cursor.click{transform:scale(.6)}
-      .__ripple{position:fixed;z-index:2147483646;border:2px solid rgba(132,134,252,.95);border-radius:50%;
+      .__ripple{position:fixed;z-index:2147483646;border:2px solid rgba(143,211,232,.95);border-radius:50%;
         pointer-events:none;width:8px;height:8px;margin:-4px 0 0 -4px;animation:__rip .55s ease-out forwards}
       @keyframes __rip{to{width:64px;height:64px;margin:-32px 0 0 -32px;opacity:0}}
       #__overlay{position:fixed;inset:0;z-index:2147483640;display:flex;align-items:center;justify-content:center;
-        background:radial-gradient(circle at 50% 38%,#211b54,#0e0c24);color:#fff;text-align:center;
-        font-family:'Poppins',system-ui,sans-serif;opacity:0;transition:opacity .6s ease}
+        background:radial-gradient(circle at 50% 38%,#0d3038,#08181c);color:#fff;text-align:center;
+        font-family:'Space Grotesk','Poppins',system-ui,sans-serif;opacity:0;transition:opacity .6s ease}
       #__overlay .t{font-size:3.1rem;font-weight:700;margin:0 0 .6rem;letter-spacing:.01em}
-      #__overlay .s{font-size:1.3rem;color:#bdb9ee;font-weight:300}
-      .__note{position:fixed;z-index:2147483641;background:rgba(108,99,255,.97);color:#fff;
-        padding:.55rem .85rem;border-radius:10px;font-family:'Poppins',system-ui,sans-serif;font-size:.98rem;
-        line-height:1.25;box-shadow:0 8px 24px rgba(0,0,0,.45);opacity:0;transition:opacity .35s ease;max-width:340px}`;
+      #__overlay .s{font-size:1.3rem;color:#a9d6e2;font-weight:300}
+      .__note{position:fixed;z-index:2147483641;background:#8fd3e8;color:#06323b;
+        padding:1.05rem 1.6rem;border-radius:16px;font-family:'Space Grotesk','Poppins',system-ui,sans-serif;
+        font-size:2.15rem;font-weight:600;letter-spacing:-.01em;
+        line-height:1.3;box-shadow:0 14px 40px rgba(0,0,0,.55);opacity:0;transition:opacity .35s ease;max-width:760px}`;
     const style = document.createElement('style');
     style.textContent = css;
     document.documentElement.appendChild(style);
     // Match the page bg so the hidden-body load and zoom-out leave no white edges.
-    document.documentElement.style.background = '#0e0c24';
+    document.documentElement.style.background = '#141218';
 
     const cur = document.createElement('div');
     cur.id = '__cursor';
@@ -168,11 +169,11 @@ export async function showTitleCard(page, title, subtitle = '', ms = 2600, { sta
     if (!o) { o = document.createElement('div'); o.id = '__overlay'; document.documentElement.appendChild(o); }
     o.style.cssText =
       'position:fixed;inset:0;z-index:2147483645;display:flex;align-items:center;justify-content:center;' +
-      "background:radial-gradient(circle at 50% 38%,#211b54,#0e0c24);color:#fff;text-align:center;" +
+      "background:radial-gradient(circle at 50% 38%,#0d3038,#08181c);color:#fff;text-align:center;" +
       "font-family:'Space Grotesk','Inter',system-ui,sans-serif;opacity:0;transition:opacity .55s ease";
     o.innerHTML =
       `<div><div style="font-size:3.1rem;font-weight:700;margin:0 0 .6rem">${t}</div>` +
-      `<div style="font-size:1.3rem;color:#bdb9ee;font-weight:300">${s}</div></div>`;
+      `<div style="font-size:1.3rem;color:#a9d6e2;font-weight:300">${s}</div></div>`;
     void o.offsetWidth;       // force reflow so the opacity transition runs
     o.style.opacity = '1';
   }, { t: title, s: subtitle });

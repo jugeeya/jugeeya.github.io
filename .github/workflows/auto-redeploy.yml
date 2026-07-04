@@ -1,0 +1,49 @@
+name: Auto-retry Pages deploy
+
+# GitHub's managed "pages build and deployment" occasionally fails at the deploy
+# step with a transient "Deployment failed, try again later" even though the
+# build succeeded (their backend has intermittent bad spells). This watches for
+# that specific failure and re-runs the failed deploy after a short wait, a
+# bounded number of times, so those stalls self-heal without a manual nudge.
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    types: [completed]
+
+permissions:
+  actions: write
+
+jobs:
+  retry:
+    # Only for failed main-branch deploys, and stop after several attempts so a
+    # genuinely broken build can't loop forever.
+    if: >-
+      github.event.workflow_run.conclusion == 'failure' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      github.event.workflow_run.run_attempt < 10
+    runs-on: ubuntu-latest
+    steps:
+      - name: Re-run the deploy if the build passed but the deploy stalled
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+        run: |
+          set -euo pipefail
+          echo "Deploy run $RUN_ID failed (attempt $ATTEMPT); inspecting jobs."
+          jobs=$(gh api "repos/$REPO/actions/runs/$RUN_ID/jobs" \
+            --jq '[.jobs[] | {name, conclusion}]')
+          echo "$jobs"
+          build_ok=$(echo "$jobs" | jq -r 'any(.[]; .name=="build" and .conclusion=="success")')
+          deploy_failed=$(echo "$jobs" | jq -r 'any(.[]; .name=="deploy" and .conclusion=="failure")')
+          if [ "$build_ok" != "true" ] || [ "$deploy_failed" != "true" ]; then
+            echo "Not a transient deploy stall (build_ok=$build_ok deploy_failed=$deploy_failed); leaving it."
+            exit 0
+          fi
+          # Give the Pages backend time to recover, then re-run just the deploy.
+          # Each re-run that fails re-fires this workflow, so it keeps trying
+          # (with the attempt cap above) until the backend is healthy again.
+          sleep 120
+          echo "Re-running failed jobs for run $RUN_ID."
+          gh api -X POST "repos/$REPO/actions/runs/$RUN_ID/rerun-failed-jobs"
