@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>start.gg VOD Splitter</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="vods.css">
+    <!-- ffmpeg.wasm (UMD globals: FFmpegWASM / FFmpegUtil). Single-threaded core,
+         so no cross-origin isolation is needed. Loaded lazily on first split. -->
+</head>
+
+<body>
+    <div class="container">
+        <a class="back-link" href="../">&larr; Back to home</a>
+
+        <header>
+            <h1>start.gg VOD Splitter</h1>
+            <p class="subtitle">Split a tournament VOD into per-set clips, right in your browser</p>
+        </header>
+
+        <main>
+            <!-- 1. VOD ------------------------------------------------------- -->
+            <section class="panel">
+                <h2>1. Load the VOD</h2>
+                <p class="panel-help">
+                    Pick the local recording. It stays on your machine — nothing is uploaded.
+                    Everything (previews and the actual cutting) runs in your browser.
+                </p>
+                <div class="vod-loader">
+                    <button id="vodButton" type="button">Choose video file…</button>
+                    <span id="vodInfo" class="vod-info muted">No file loaded.</span>
+                    <input type="file" id="vodInput" accept="video/*,.mkv,.mp4,.mov,.flv,.ts" hidden>
+                </div>
+                <div class="rec-start">
+                    <label for="recStart">Recording start time
+                        <span class="optional">(when the file started recording)</span></label>
+                    <div class="rec-start-row">
+                        <input type="datetime-local" id="recStart" step="1">
+                        <span id="recStartHint" class="field-hint"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Sets ------------------------------------------------------ -->
+            <section class="panel">
+                <h2>2. Get the sets</h2>
+                <p class="panel-help">
+                    Paste a start.gg event to pull its completed sets and their times, then pick the
+                    station this VOD recorded. Or skip this and add clips by hand below.
+                </p>
+                <div class="sgg-field">
+                    <label for="eventInput">start.gg event URL or slug</label>
+                    <div class="sgg-row">
+                        <input type="text" id="eventInput" autocomplete="off" spellcheck="false"
+                            placeholder="https://www.start.gg/tournament/…/event/…">
+                        <button type="button" id="fetchSets" class="secondary">Fetch sets</button>
+                    </div>
+                    <p id="setsStatus" class="sets-status"></p>
+                </div>
+                <div id="stationField" class="station-field" hidden>
+                    <label for="stationSelect">Station</label>
+                    <select id="stationSelect"></select>
+                    <label class="pad-field">Pad each clip
+                        <input type="number" id="padPre" value="5" min="0" max="120"> s before /
+                        <input type="number" id="padPost" value="8" min="0" max="120"> s after</label>
+                    <button type="button" id="buildClips" class="secondary">Build clips →</button>
+                </div>
+            </section>
+
+            <!-- 3. Clips ----------------------------------------------------- -->
+            <section class="panel">
+                <h2>3. Review &amp; cut</h2>
+                <p class="panel-help">
+                    Check each clip's start/end frame before cutting. Times are editable — nudge them
+                    and re-preview. Cutting uses stream copy (<code>-c copy</code>), so it's fast and
+                    lossless, and lands on the nearest keyframe.
+                </p>
+                <div class="clip-toolbar">
+                    <button type="button" id="addClip" class="linkish">+ Add clip</button>
+                    <span class="tag-action-sep">·</span>
+                    <button type="button" id="clearClips" class="linkish">Clear</button>
+                    <span class="clip-spacer"></span>
+                    <button type="button" id="splitBtn" disabled>Split in browser</button>
+                    <button type="button" id="scriptBtn" class="secondary" disabled>Copy ffmpeg commands</button>
+                </div>
+                <div id="clipList" class="clip-list">
+                    <p class="muted">No clips yet — build them from start.gg above, or add one by hand.</p>
+                </div>
+                <p id="splitStatus" class="upload-status"></p>
+                <progress id="splitProgress" value="0" max="1" hidden></progress>
+            </section>
+        </main>
+
+        <footer>
+            <p>Inspired by
+                <a href="https://github.com/CGuadagnino/startgg-vod-splitter">CGuadagnino/startgg-vod-splitter</a>.
+                Part of the <a href="../">jugeeya.github.io</a> tools.</p>
+        </footer>
+    </div>
+
+    <!-- hidden video/canvas used to grab preview frames from the local file -->
+    <video id="scrubber" preload="metadata" muted playsinline crossorigin="anonymous" hidden></video>
+    <canvas id="grabber" hidden></canvas>
+
+    <script type="module" src="vods.js"></script>
+</body>
+
+</html>

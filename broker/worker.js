@@ -214,6 +214,46 @@ async function handleStartgg(env, url, cors) {
       return json({ event: eventName, entrants }, 200, cors);
     }
 
+    if (op === 'sets') {
+      // Completed sets for an event, with their start/end times and station —
+      // used by the VOD splitter to compute per-set clip boundaries.
+      const slug = (url.searchParams.get('slug') || '').trim().slice(0, 200);
+      if (!/^tournament\/[^/]+\/event\/[^/]+$/i.test(slug))
+        return json({ error: 'Expected an event slug like tournament/<t>/event/<e>.' }, 400, cors);
+      const setsOut = [];
+      let page = 1, totalPages = 1, eventName = '';
+      do {
+        const data = await startggGql(
+          `query($slug:String!,$page:Int!){ event(slug:$slug){ name
+             sets(page:$page, perPage:50, sortType:STANDARD, filters:{ state:[3] }){
+               pageInfo{ totalPages }
+               nodes{ id startedAt completedAt fullRoundText
+                 station{ number } slots{ entrant{ name } } } } } }`,
+          { slug, page }
+        );
+        const ev = data.event;
+        if (!ev) return json({ error: 'Event not found.' }, 404, cors);
+        const c = ev.sets || {};
+        totalPages = (c.pageInfo && c.pageInfo.totalPages) || 1;
+        for (const n of c.nodes || []) {
+          if (!n.startedAt || !n.completedAt) continue;
+          const names = (n.slots || [])
+            .map((s) => s.entrant && s.entrant.name).filter(Boolean);
+          const label = [n.fullRoundText, names.join(' vs ')].filter(Boolean).join(': ');
+          setsOut.push({
+            id: n.id,
+            startedAt: n.startedAt,
+            completedAt: n.completedAt,
+            station: n.station ? n.station.number : null,
+            name: label || `Set ${n.id}`,
+          });
+        }
+        if (page === 1) eventName = ev.name || '';
+        page++;
+      } while (page <= totalPages && page <= 40); // safety cap
+      return json({ event: eventName, sets: setsOut }, 200, cors);
+    }
+
     return json({ error: 'Unknown start.gg operation.' }, 404, cors);
   } catch (err) {
     return json({ error: `start.gg lookup failed: ${err.message}` }, 502, cors);
