@@ -85,6 +85,30 @@
     --accent-gradient: linear-gradient(115deg, var(--md-primary), var(--md-tertiary));
     --shadow-soft: var(--md-elev-1);
     --shadow-card: var(--md-elev-2);
+
+    /* lighter tint used as the middle stop of the hero heading gradient */
+    --h1-tint: var(--md-tertiary);
+}
+
+/* ---- Per-page accent theming --------------------------------------------- */
+/* Each tool page adopts the color of its card on the landing page by
+   overriding the primary role; buttons, links, focus rings, the accent bar,
+   the hero glow and heading all follow automatically. (Leaderboard = violet
+   = the default, so it needs no override.) */
+.accent-cyan {
+    --md-primary: var(--accent-cyan);
+    --md-on-primary: #00363f;
+    --md-primary-container: #164e5a;
+    --accent-gradient: linear-gradient(115deg, var(--accent-cyan), #6fb9cd);
+    --h1-tint: #d7f1f8;
+}
+
+.accent-pink {
+    --md-primary: var(--accent-pink);
+    --md-on-primary: #5a1030;
+    --md-primary-container: #7a2447;
+    --accent-gradient: linear-gradient(115deg, var(--accent-pink), #ff8fb3);
+    --h1-tint: #ffe0ea;
 }
 
 * {
@@ -290,7 +314,7 @@ h1 {
     line-height: 1.1;
     letter-spacing: -1px;
     color: var(--md-primary);
-    background: linear-gradient(120deg, var(--md-primary) 0%, var(--md-tertiary) 55%, var(--md-primary) 100%);
+    background: linear-gradient(120deg, var(--md-primary) 0%, var(--h1-tint) 55%, var(--md-primary) 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
