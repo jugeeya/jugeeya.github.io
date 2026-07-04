@@ -302,6 +302,24 @@ code {
     user-select: none;
 }
 
+/* Running selection count — sits by the selection controls so the Import /
+   Download buttons keep a fixed label (and width) as the count changes. */
+.tag-selected-count {
+    color: var(--primary-color);
+    font-size: 0.82rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Anchor the action buttons to the right so the count chip toggling on/off
+   doesn't shove them around. Only when it's a single row — on narrow screens
+   the buttons wrap to their own line and auto-margin would zig-zag them. */
+@media (min-width: 561px) {
+    .tag-browser-actions #importSelected {
+        margin-left: auto;
+    }
+}
+
 .tag-browser-actions #downloadSelected {
     margin-left: 0.25rem;
     padding: 0.5rem 1rem;
@@ -766,6 +784,61 @@ code {
     padding: 0.85rem 1rem 1rem;
     background-color: color-mix(in srgb, var(--md-primary) 5%, transparent);
     border-bottom: 1px solid var(--border-color);
+    animation: box-in var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease);
+}
+
+/* The change list scrolls inside the panel rather than pushing the whole tag
+   list around when a tag has a lot of changes. */
+.tag-diff-body {
+    max-height: 260px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ---- Entrance animations for boxes that appear ---------------------------- */
+@keyframes box-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.submission-item,
+#tagList {
+    animation: box-in var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease) backwards;
+}
+
+/* Panels toggled via [hidden]: fade + slide in on first show. @starting-style
+   is progressively enhanced — browsers without it just show the panel. */
+#pendingPanel,
+.sav-panel {
+    transition:
+        opacity var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease),
+        transform var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease);
+}
+
+#pendingPanel:not([hidden]),
+.sav-panel:not([hidden]) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@starting-style {
+    #pendingPanel:not([hidden]),
+    .sav-panel:not([hidden]) {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tag-diff-panel,
+    .submission-item,
+    #tagList,
+    #pendingPanel,
+    .sav-panel {
+        animation: none;
+        transition: none;
+    }
 }
 
 .tag-diff-group-title {

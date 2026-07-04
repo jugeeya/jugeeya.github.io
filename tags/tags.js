@@ -251,15 +251,17 @@ function updateDownloadButton() {
     const btn = tagBrowser.querySelector('#downloadSelected');
     if (!btn) return;
     const count = getSelectedTagFiles().length;
+    // Keep the button labels fixed so they don't resize as the count changes;
+    // the running count lives in its own chip next to the selection controls.
     btn.disabled = count === 0;
-    btn.textContent = count === 0 ? 'Download tags'
-        : count === 1 ? 'Download 1 tag'
-        : `Download ${count} tags`;
 
     const importBtn = tagBrowser.querySelector('#importSelected');
-    if (importBtn) {
-        importBtn.disabled = count === 0;
-        importBtn.textContent = count <= 1 ? 'Import to save' : `Import ${count} to save`;
+    if (importBtn) importBtn.disabled = count === 0;
+
+    const countEl = tagBrowser.querySelector('#tagSelectedCount');
+    if (countEl) {
+        countEl.textContent = count ? `${count} selected` : '';
+        countEl.hidden = count === 0;
     }
 }
 
@@ -280,6 +282,7 @@ function renderTagBrowser() {
         '<button type="button" id="selectAllTags" class="linkish">Select all</button>' +
         '<span class="tag-action-sep">·</span>' +
         '<button type="button" id="clearTagSelection" class="linkish">Clear</button>' +
+        '<span id="tagSelectedCount" class="tag-selected-count" hidden></span>' +
         '<button type="button" id="importSelected" disabled>Import to save</button>' +
         '<button type="button" id="downloadSelected" class="secondary" disabled>Download tags</button>' +
         '</div></div>' +
