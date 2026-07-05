@@ -221,14 +221,17 @@ async function handleStartgg(env, url, cors) {
       if (!/^tournament\/[^/]+\/event\/[^/]+$/i.test(slug))
         return json({ error: 'Expected an event slug like tournament/<t>/event/<e>.' }, 400, cors);
       const setsOut = [];
-      let page = 1, totalPages = 1, eventName = '';
+      let page = 1, totalPages = 1, eventName = '', tournamentName = '';
       do {
         const data = await startggGql(
           `query($slug:String!,$page:Int!){ event(slug:$slug){ name
+             tournament{ name }
              sets(page:$page, perPage:50, sortType:STANDARD, filters:{ state:[3] }){
                pageInfo{ totalPages }
                nodes{ id startedAt completedAt fullRoundText
-                 station{ number } slots{ entrant{ name } } } } } }`,
+                 station{ number }
+                 slots{ entrant{ name } }
+                 games{ selections{ entrant{ id name } character{ name } } } } } } }`,
           { slug, page }
         );
         const ev = data.event;
@@ -237,21 +240,40 @@ async function handleStartgg(env, url, cors) {
         totalPages = (c.pageInfo && c.pageInfo.totalPages) || 1;
         for (const n of c.nodes || []) {
           if (!n.startedAt || !n.completedAt) continue;
-          const names = (n.slots || [])
-            .map((s) => s.entrant && s.entrant.name).filter(Boolean);
-          const label = [n.fullRoundText, names.join(' vs ')].filter(Boolean).join(': ');
+          // Player + character pairs from the first game's selections (as the
+          // original app does); fall back to slot entrant names for sets that
+          // have no games reported (e.g. DQs), so at least the names survive.
+          const players = [];
+          const seen = new Set();
+          const sels = (n.games && n.games[0] && n.games[0].selections) || [];
+          for (const sel of sels) {
+            const nm = sel.entrant && sel.entrant.name;
+            if (!nm || seen.has(nm)) continue;
+            seen.add(nm);
+            players.push({ name: nm, character: (sel.character && sel.character.name) || null });
+          }
+          if (!players.length) {
+            for (const s of n.slots || []) {
+              const nm = s.entrant && s.entrant.name;
+              if (nm) players.push({ name: nm, character: null });
+            }
+          }
           setsOut.push({
             id: n.id,
             startedAt: n.startedAt,
             completedAt: n.completedAt,
             station: n.station ? n.station.number : null,
-            name: label || `Set ${n.id}`,
+            fullRoundText: n.fullRoundText || '',
+            players,
           });
         }
-        if (page === 1) eventName = ev.name || '';
+        if (page === 1) {
+          eventName = ev.name || '';
+          tournamentName = (ev.tournament && ev.tournament.name) || '';
+        }
         page++;
       } while (page <= totalPages && page <= 40); // safety cap
-      return json({ event: eventName, sets: setsOut }, 200, cors);
+      return json({ event: eventName, tournament: tournamentName, sets: setsOut }, 200, cors);
     }
 
     return json({ error: 'Unknown start.gg operation.' }, 404, cors);

@@ -168,6 +168,8 @@ $('fetchSets').addEventListener('click', async () => {
       for (const n of stations) sel.appendChild(new Option(`Station ${n} (${sets.filter((s) => s.station === n).length} sets)`, n));
     }
     sel.appendChild(new Option(`All stations (${sets.length} sets)`, ''));
+    $('tourneyName').value = data.tournament || '';
+    $('tourneyField').hidden = false;
     $('stationField').hidden = false;
     status.textContent = `${data.event || 'Event'}: ${sets.length} completed set(s).`;
     status.className = 'sets-status success';
@@ -179,10 +181,25 @@ $('fetchSets').addEventListener('click', async () => {
   }
 });
 
+// Set title, matching CGuadagnino/startgg-vod-splitter exactly:
+//   [Tournament] Player1 (Char1) vs. Player2 (Char2) - Full Round Text
+// Characters come from the first game's selections; the [Tournament] prefix and
+// the " - Round" suffix are only added when present.
+function setLabel(s) {
+  const parts = (s.players || []).map((p) => (p.character ? `${p.name} (${p.character})` : p.name));
+  return parts.length ? parts.join(' vs. ') : `Set ${s.id}`;
+}
+function setTitle(s, tournament) {
+  let title = tournament ? `[${tournament}] ${setLabel(s)}` : setLabel(s);
+  if (s.fullRoundText) title = `${title} - ${s.fullRoundText}`;
+  return title;
+}
+
 $('buildClips').addEventListener('click', () => {
   const rec = recStartEpoch();
   if (rec == null) { setSplitStatus('Set the recording start time first.', 'error'); return; }
   const station = $('stationSelect').value;
+  const tournament = $('tourneyName').value.trim();
   const pre = Number($('padPre').value) || 0;
   const post = Number($('padPost').value) || 0;
   const chosen = sets
@@ -197,7 +214,7 @@ $('buildClips').addEventListener('click', () => {
     if (end <= 0 || (vodDuration && start >= vodDuration)) continue;
     built.push({
       id: nextId++,
-      name: s.name || `Set ${s.id}`,
+      name: setTitle(s, tournament),
       start: Math.max(0, start),
       end: vodDuration ? Math.min(end, vodDuration) : end,
     });
@@ -213,12 +230,13 @@ $('buildClips').addEventListener('click', () => {
 });
 
 // ---- Clip list ------------------------------------------------------------
+// Same sanitize + ".mp4" output naming as the original app (no index prefix):
+// unsafe chars → "_", whitespace collapsed, capped at 120 chars.
 function sanitizeName(name) {
-  return name.replace(/[<>:"/\\|?*\x00-\x1f]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 120) || 'clip';
+  return name.replace(/[<>:"/\\|?*]/g, '_').replace(/\s+/g, ' ').trim().slice(0, 120) || 'clip';
 }
-function outName(clip, i) {
-  const ext = (vodFile?.name.match(/\.[a-z0-9]+$/i) || ['.mp4'])[0];
-  return `${String(i + 1).padStart(2, '0')} - ${sanitizeName(clip.name)}${ext}`;
+function outName(clip) {
+  return `${sanitizeName(clip.name)}.mp4`;
 }
 
 function renderClips() {
@@ -289,8 +307,8 @@ function buildScript(kind) {
   const inp = vodFile ? vodFile.name : 'INPUT.mkv';
   const q = (s) => `"${s.replace(/"/g, '\\"')}"`;
   const lines = includedClips().length ? includedClips() : clips;
-  const cmds = lines.map((c, i) =>
-    `ffmpeg -y -ss ${ffTime(c.start)} -i ${q(inp)} -t ${ffTime(Math.max(0, c.end - c.start))} -c copy ${q(outName(c, i))}`
+  const cmds = lines.map((c) =>
+    `ffmpeg -y -ss ${ffTime(c.start)} -i ${q(inp)} -t ${ffTime(Math.max(0, c.end - c.start))} -c copy ${q(outName(c))}`
   );
   if (kind === 'bat') return ['@echo off', ...cmds, 'echo Done.'].join('\r\n') + '\r\n';
   return ['#!/bin/sh', 'set -e', ...cmds, 'echo Done.'].join('\n') + '\n';
@@ -357,7 +375,7 @@ $('splitBtn').addEventListener('click', async () => {
 
     for (let i = 0; i < chosen.length; i++) {
       const c = chosen[i];
-      const out = outName(c, i);
+      const out = outName(c);
       setSplitStatus(`Cutting ${i + 1}/${chosen.length}: ${out}`);
       window.__clipProgress = 0;
       await ff.exec(['-y', '-ss', ffTime(c.start), '-i', input, '-t', ffTime(Math.max(0.1, c.end - c.start)), '-c', 'copy', '-avoid_negative_ts', 'make_zero', out]);

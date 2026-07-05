@@ -67,10 +67,20 @@ label {
 
 .rec-start label,
 .sgg-field label,
+.tourney-field label,
 .station-field > label {
     display: block;
     margin-bottom: 0.4rem;
     font-weight: 500;
+}
+
+.tourney-field {
+    margin-top: 1.25rem;
+}
+
+.tourney-field input {
+    width: 100%;
+    max-width: 420px;
 }
 
 .rec-start-row {
