@@ -213,7 +213,8 @@ body::before {
     color: var(--md-on-surface-variant);
 }
 
-/* Hamburger = MD3 icon button (circular state layer) */
+/* Hamburger = MD3 icon button (circular state layer) — not a primary button,
+   so it opts out of the button glow/lift. */
 .nav-toggle {
     position: relative;
     width: 40px;
@@ -227,7 +228,13 @@ body::before {
     align-items: center;
     justify-content: center;
     gap: 5px;
+    box-shadow: none;
     transition: background-color 0.15s ease;
+}
+
+.nav-toggle:hover:not(:disabled) {
+    box-shadow: none;
+    transform: none;
 }
 
 .nav-toggle::before {
@@ -555,7 +562,11 @@ button,
     letter-spacing: 0.1px;
     cursor: pointer;
     overflow: hidden;
-    transition: box-shadow var(--md-dur-short) var(--md-ease-standard),
+    /* Primary buttons carry a soft colored glow (the "Glow" study). */
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--md-primary) 32%, transparent),
+        0 6px 20px -5px color-mix(in srgb, var(--md-primary) 52%, transparent);
+    transition: box-shadow var(--md-dur-med) var(--md-ease-standard),
+        background-color var(--md-dur-short) var(--md-ease-standard),
         transform var(--md-dur-short) var(--md-ease-spring);
 }
 
@@ -570,8 +581,9 @@ button::before,
 }
 
 button:hover:not(:disabled) {
-    box-shadow: var(--md-elev-2);
-    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px var(--md-primary),
+        0 8px 30px -3px color-mix(in srgb, var(--md-primary) 80%, transparent);
+    transform: translateY(-1px);
 }
 
 button:hover:not(:disabled)::before {
@@ -593,22 +605,38 @@ button:disabled {
     box-shadow: none;
 }
 
+/* Secondary = tonal: a dimmed accent-container fill (the "Tonal" study). */
 button.secondary {
-    background-color: transparent;
+    background-color: var(--md-primary-container);
     color: var(--md-primary);
-    border: 1px solid var(--md-outline);
+    border: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+button.secondary:hover:not(:disabled) {
+    background-color: color-mix(in srgb, var(--md-primary-container) 74%, var(--md-primary));
+    box-shadow: var(--md-elev-1);
+    transform: translateY(-1px);
 }
 
 button.secondary:disabled {
-    background: transparent;
-    border-color: color-mix(in srgb, var(--md-on-surface) 12%, transparent);
+    background-color: color-mix(in srgb, var(--md-on-surface) 8%, transparent);
+    border: none;
     color: color-mix(in srgb, var(--md-on-surface) 38%, transparent);
+    box-shadow: none;
 }
 
+/* Text button: flat, no glow or lift. */
 button.linkish {
     background: transparent;
     color: var(--md-primary);
     padding: 0.5rem 0.75rem;
+    box-shadow: none;
+}
+
+button.linkish:hover:not(:disabled) {
+    box-shadow: none;
+    transform: none;
 }
 
 /* Text fields (outlined) */

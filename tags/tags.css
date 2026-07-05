@@ -121,11 +121,14 @@ code {
     cursor: pointer;
     font-size: 1.1rem;
     padding: 0;
+    box-shadow: none;
 }
 
-.remove-file:hover {
+.remove-file:hover:not(:disabled) {
     background: none;
     color: var(--error-color);
+    box-shadow: none;
+    transform: none;
 }
 
 /* Buttons come from the shared MD3 system in ../styles.css. */
@@ -527,11 +530,14 @@ code {
     font-size: 0.95rem;
     padding: 0;
     line-height: 1;
+    box-shadow: none;
 }
 
-.sgg-clear:hover {
+.sgg-clear:hover:not(:disabled) {
     background: none;
     color: var(--error-color);
+    box-shadow: none;
+    transform: none;
 }
 
 .upload-status.warn {
