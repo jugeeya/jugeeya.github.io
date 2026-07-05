@@ -133,6 +133,9 @@ html {
        bare black band above/below the content. */
     background-color: var(--md-surface);
     color-scheme: dark;
+    /* No rubber-band overscroll — it looked off now that the gutter is themed
+       rather than black. */
+    overscroll-behavior: none;
 }
 
 body {
