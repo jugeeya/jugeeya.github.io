@@ -173,7 +173,7 @@ body::before {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 2rem 1.5rem 3rem;
 }
@@ -191,7 +191,7 @@ body::before {
 
 .nav-inner {
     position: relative;
-    max-width: 1000px;
+    max-width: 1180px;
     margin: 0 auto;
     min-height: 64px;
     padding: 0 1.5rem;
@@ -359,6 +359,36 @@ h1 {
     margin-top: 0.75rem;
 }
 
+/* ---- Tool-page hero header ------------------------------------------------- */
+/* Tool pages (those with a "back to home" link) get a left-aligned hero that
+   anchors to the content edge and spans the full width, with a hairline that
+   uses the horizontal room — instead of a small centered block adrift in a wide
+   desktop viewport. The hub keeps its centered landing header (it has no back
+   link, so this selector doesn't touch it). */
+.back-link + header {
+    text-align: left;
+    margin: 0.25rem 0 2.5rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--md-outline-variant);
+}
+
+.back-link + header::before {
+    left: 0;
+    transform: none;
+    width: min(680px, 100%);
+    top: -35%;
+}
+
+.back-link + header h1 {
+    font-size: clamp(2.4rem, 4.8vw, 4rem);
+}
+
+.back-link + header .subtitle {
+    margin-top: 0.85rem;
+    max-width: 60ch;
+    font-size: 1.15rem;
+}
+
 h2 {
     font-family: var(--font-display);
     font-size: 1.6rem;
@@ -389,8 +419,11 @@ h2 {
 
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1rem;
+    /* Cap the track width so a section with a single card doesn't stretch it
+       into one huge sparse band on desktop; the row stays centered. */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 360px));
+    justify-content: center;
+    gap: 1.25rem;
 }
 
 /* Frosted-glass card. Each card carries its own --card-accent (assigned by

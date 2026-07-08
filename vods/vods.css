@@ -19,6 +19,29 @@
     margin-bottom: 1.25rem;
 }
 
+/* ---- Desktop layout ------------------------------------------------------- */
+/* On mobile the three steps stack top-to-bottom (fine). On desktop that leaves
+   the two short setup steps — "Load the VOD" and "Get the sets" — as sparse
+   full-width bands, so pair them side by side and give the whole width to the
+   "Review & cut" workspace beneath. */
+@media (min-width: 1024px) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        align-items: start;
+    }
+
+    main > .panel {
+        margin-bottom: 0;
+    }
+
+    main > .panel:nth-child(1) { grid-column: 1; }
+    main > .panel:nth-child(2) { grid-column: 2; }
+    /* The review/cut workspace (and anything after it) spans the full width. */
+    main > .panel:nth-child(n+3) { grid-column: 1 / -1; }
+}
+
 .muted {
     color: var(--md-on-surface-variant);
 }

@@ -7,6 +7,62 @@
     margin-bottom: 1.5rem;
 }
 
+/* ---- Desktop layout ------------------------------------------------------- */
+/* On mobile the tool is a single top-to-bottom column (submit → browse), which
+   reads fine. On desktop that same column is narrow and sparse in a wide
+   viewport, so widen the shell and lay the two halves side by side: the submit
+   flow (+ your submissions) on the left, the shared-tag database on the right. */
+@media (min-width: 1024px) {
+    .container-wide {
+        max-width: 1240px;
+    }
+
+    /* Hero: title + subtitle on the left, the walkthrough video beside it on the
+       right, so the header fills the width instead of floating in the centre. */
+    .back-link + header {
+        display: flex;
+        align-items: center;
+        gap: 2.75rem;
+    }
+
+    .hero-text {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    /* More specific than the base `.demo-video` (which sits lower in the file
+       and would otherwise re-cap the width). */
+    .back-link + header .demo-video {
+        flex: 0 1 46%;
+        width: 46%;
+        max-width: none;
+        margin: 0;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 1.5rem;
+        align-items: start;
+    }
+
+    main > .panel {
+        margin-bottom: 0;
+    }
+
+    /* Left column: submit, then submissions beneath it. */
+    main > .panel:first-of-type { grid-column: 1; grid-row: 1; }
+    #pendingPanel { grid-column: 1; grid-row: 2; }
+
+    /* Right column: the shared-tag database, spanning both left-column rows so
+       it sits alongside the whole submit stack. */
+    main > .panel:last-child { grid-column: 2; grid-row: 1 / span 2; }
+
+    /* The shared list can breathe with the extra vertical room a tall column
+       affords. */
+    .tag-list { max-height: 460px; }
+}
+
 .panel h2 {
     color: var(--text-color);
 }
