@@ -29,7 +29,9 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
-        align-items: start;
+        /* stretch (not start) so the two setup steps share a height and read as
+           a balanced pair, rather than one short card next to a tall one. */
+        align-items: stretch;
     }
 
     main > .panel {
@@ -139,17 +141,43 @@ label {
     margin-top: 1.25rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.6rem 1rem;
     flex-wrap: wrap;
 }
 
+.station-field > label[for="stationSelect"] {
+    margin: 0;
+}
+
+#stationSelect {
+    min-width: 11rem;
+}
+
+/* "Pad each clip [5] s before / [8] s after" — lay the label text and the two
+   number fields out as inline-flex so the small boxes sit centered on the text
+   instead of looming over it. */
 .pad-field {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     color: var(--md-on-surface-variant);
     font-size: 0.85rem;
 }
 
 .pad-field input {
-    width: 4.5rem;
+    width: 3rem;
+    padding: 0.4rem 0.4rem;
+    text-align: center;
+    font-size: 0.9rem;
+    /* Drop the number spinners — they make a two-digit field look bulky. */
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.pad-field input::-webkit-inner-spin-button,
+.pad-field input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Clip list */
