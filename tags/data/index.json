@@ -1,7 +1,17 @@
 {
   "version": 1,
-  "updated": "2026-07-02T17:02:43Z",
+  "updated": "2026-07-08T06:32:59Z",
   "tags": [
+    {
+      "name": "JUGZ!",
+      "author": "",
+      "file": "jugz-6192f6f1.r2tag.zip",
+      "uploaded": "2026-07-08T06:32:43Z",
+      "startgg": {
+        "slug": "user/6192f6f1",
+        "tag": "jugeeya"
+      }
+    },
     {
       "name": "KIM",
       "author": "kimchi",
@@ -10,16 +20,6 @@
       "startgg": {
         "slug": "user/e85def91",
         "tag": "Kimchi"
-      }
-    },
-    {
-      "name": "JUGZ!",
-      "author": "",
-      "file": "jugz-6192f6f1.r2tag.zip",
-      "uploaded": "2026-07-01T18:43:26Z",
-      "startgg": {
-        "slug": "user/6192f6f1",
-        "tag": "jugeeya"
       }
     },
     {
