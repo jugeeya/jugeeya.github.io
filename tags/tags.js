@@ -1,11 +1,17 @@
 // Tag-sharing page.
 //
+// The page is organized as two guided flows, both shown at once (the overview
+// cards up top just jump to the matching section):
+//   - Share your tag        (players): load .sav → select tags + link start.gg → submit
+//   - Install tags to setup (TOs):     pick tags (bracket URL or by hand) → merge
+//     into a setup's .sav → put the downloaded save back
+//
 // Browsing reads a static manifest (data/index.json) served by GitHub Pages.
 //
 // Submitting sends the selected .r2tag.zip file(s) to a broker (a small
 // Cloudflare Worker) which opens a pull request on the repo via a GitHub App.
 // A GitHub Action then validates the PR and auto-merges it if it's benign, at
-// which point the tag appears in the browse list below.
+// which point the tag appears in the browse list.
 //
 // Set UPLOAD_ENDPOINT to your deployed Worker URL to turn submitting on. While
 // it's null the page is browse-only and Submit explains it isn't wired up.
@@ -16,34 +22,47 @@ import { diffTagRoot, renderDiff } from './tagdiff.js';
 
 const UPLOAD_ENDPOINT = 'https://r2tag-broker.jdsambasivam.workers.dev';
 const MANIFEST_URL = 'data/index.json';
-const ACCEPTED_EXTENSION = '.zip'; // a zipped .r2tag; contents validated server-side
-const MAX_FILE_BYTES = 512 * 1024; // a zipped tag is ~20 KB; this is generous
 const REPO = 'jugeeya/jugeeya.github.io';      // for polling public PR status
 const PENDING_KEY = 'r2tag_pending_submissions'; // localStorage key
 const POLL_INTERVAL_MS = 45000;
 
 // State
-// Each entry is { file, picker } where picker.get() is the tag's own start.gg
-// link ({ slug, tag } | null) — every submitted tag carries its own.
-let selectedFiles = [];
+// Each share entry is one selected tag from the loaded save:
+// { name, file (zipped .r2tag), picker } — picker.get() is the tag's start.gg
+// link ({ slug, tag } | null); every submitted tag carries its own.
+let shareEntries = [];
 let allTags = [];
 let tagSearchQuery = '';
 
-// DOM
-const fileListEl = document.getElementById('fileList');
+// DOM — flows (both are always visible; the overview cards are plain anchor
+// links to #shareFlow / #getFlow, so no JS is needed for those)
+const shareStep1 = document.getElementById('shareStep1');
+const shareStep2 = document.getElementById('shareStep2');
+const shareStep3 = document.getElementById('shareStep3');
+const getStep2 = document.getElementById('getStep2');
+const getStep3 = document.getElementById('getStep3');
+
+// DOM — share flow
+const savButton = document.getElementById('savButton');
+const savInput = document.getElementById('savInput');
+const savLoadStatus = document.getElementById('savLoadStatus');
+const shareLoadedNote = document.getElementById('shareLoadedNote');
+const shareTagList = document.getElementById('shareTagList');
+const shareDownloadBtn = document.getElementById('shareDownloadBtn');
 const authorInput = document.getElementById('authorInput');
 const submitButton = document.getElementById('submitButton');
 const clearButton = document.getElementById('clearButton');
 const uploadStatus = document.getElementById('uploadStatus');
-const tagBrowser = document.getElementById('tagBrowser');
+
+// DOM — submissions + get flow
 const pendingPanel = document.getElementById('pendingPanel');
 const pendingList = document.getElementById('pendingList');
+const tagBrowser = document.getElementById('tagBrowser');
 const bracketInput = document.getElementById('bracketInput');
 const bracketGo = document.getElementById('bracketGo');
 const bracketStatus = document.getElementById('bracketStatus');
-const savButton = document.getElementById('savButton');
-const savInput = document.getElementById('savInput');
-const savPanel = document.getElementById('savPanel');
+const importSelectedBtn = document.getElementById('importSelected');
+const downloadSelectedBtn = document.getElementById('downloadSelected');
 const importSavInput = document.getElementById('importSavInput');
 const importOverwrite = document.getElementById('importOverwrite');
 const importStatus = document.getElementById('importStatus');
@@ -51,106 +70,217 @@ const importStatus = document.getElementById('importStatus');
 // A loaded .sav: its raw bytes + the custom tag names found in it.
 let loadedSav = null;
 
-// ---- Helpers --------------------------------------------------------------
+// ---- Step states ------------------------------------------------------------
 
-function formatBytes(bytes) {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+// A step is 'locked' (dimmed, body hidden), 'active' (usable) or 'done'
+// (usable, with a check in place of its number).
+function setStepState(stepEl, state) {
+    if (!stepEl) return;
+    stepEl.classList.toggle('is-locked', state === 'locked');
+    stepEl.classList.toggle('is-active', state === 'active');
+    stepEl.classList.toggle('is-done', state === 'done');
 }
 
-function validateFile(file) {
-    if (!file.name.toLowerCase().endsWith(ACCEPTED_EXTENSION)) {
-        return { ok: false, message: `Must be a ${ACCEPTED_EXTENSION}` };
-    }
-    if (file.size > MAX_FILE_BYTES) {
-        return { ok: false, message: `Too large (${formatBytes(file.size)})` };
-    }
-    return { ok: true, message: 'Ready' };
-}
+// ---- Helpers ----------------------------------------------------------------
 
 function setStatus(message, kind = '') {
     uploadStatus.innerHTML = message;
     uploadStatus.className = `upload-status${kind ? ' ' + kind : ''}`;
 }
 
-// ---- File selection -------------------------------------------------------
+function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
 
-function addFiles(files) {
-    for (const file of files) {
-        // De-dupe by name + size so dropping twice doesn't stack copies.
-        const dup = selectedFiles.some(e => e.file.name === file.name && e.file.size === file.size);
-        if (dup) continue;
-        selectedFiles.push({ file, picker: createStartggPicker(updateSubmitState) });
+function triggerDownload(url, filename) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    if (url.startsWith('blob:')) URL.revokeObjectURL(url);
+}
+
+// ---- Share flow: load a .sav ------------------------------------------------
+
+async function zipR2tag(name, r2tagBytes) {
+    const zip = new JSZip();
+    zip.file(`${name}.r2tag`, r2tagBytes);
+    const blob = await zip.generateAsync({ type: 'blob' });
+    return new File([blob], `${name}.r2tag.zip`, { type: 'application/zip' });
+}
+
+async function loadSavFile(file) {
+    savLoadStatus.textContent = '';
+    savLoadStatus.className = 'upload-status';
+    try {
+        const bytes = new Uint8Array(await file.arrayBuffer());
+        const tags = await getTagNames(bytes);
+        loadedSav = { bytes, tags, name: file.name };
+        resetShareSelection();
+        renderShareTagList();
+
+        setStepState(shareStep1, 'done');
+        savButton.textContent = 'Load a different save file';
+        shareLoadedNote.hidden = false;
+        shareLoadedNote.innerHTML =
+            `Loaded <code>${escapeHtml(file.name)}</code>. ` +
+            (tags.length
+                ? `Found <strong>${tags.length}</strong> custom tag(s).`
+                : 'No custom tags found in it.');
+        setStepState(shareStep2, 'active');
+    } catch (err) {
+        loadedSav = null;
+        resetShareSelection();
+        renderShareTagList();
+        setStepState(shareStep1, 'active');
+        shareLoadedNote.hidden = true;
+        savLoadStatus.textContent = `Couldn't read that save: ${err.message || err}`;
+        savLoadStatus.className = 'upload-status error';
+        setStepState(shareStep2, 'locked');
     }
-    renderFileList();
 }
 
-function removeFile(index) {
-    selectedFiles.splice(index, 1);
-    renderFileList();
-}
-
-function renderFileList() {
-    fileListEl.innerHTML = '';
-
-    selectedFiles.forEach((entry, index) => {
-        const { ok, message } = validateFile(entry.file);
-
-        const li = document.createElement('li');
-        li.className = 'file-item';
-
-        const top = document.createElement('div');
-        top.className = 'file-row-top';
-
-        const left = document.createElement('div');
-        left.innerHTML =
-            `<div>${escapeHtml(entry.file.name)}</div>` +
-            `<div class="file-meta">${formatBytes(entry.file.size)} · ` +
-            `<span class="file-status ${ok ? 'ok' : 'warn'}">${message}</span></div>`;
-
-        const remove = document.createElement('button');
-        remove.className = 'remove-file';
-        remove.textContent = '✕';
-        remove.title = 'Remove';
-        remove.addEventListener('click', () => removeFile(index));
-
-        top.appendChild(left);
-        top.appendChild(remove);
-
-        // Each tag gets its own start.gg picker.
-        const sgg = document.createElement('div');
-        sgg.className = 'file-row-sgg';
-        sgg.appendChild(entry.picker.root);
-
-        li.appendChild(top);
-        li.appendChild(sgg);
-        fileListEl.appendChild(li);
-    });
-
+function resetShareSelection() {
+    shareEntries = [];
     updateSubmitState();
-    clearButton.disabled = selectedFiles.length === 0;
-    if (selectedFiles.length === 0) setStatus('');
+}
+
+function renderShareTagList() {
+    shareTagList.innerHTML = '';
+    if (!loadedSav || !loadedSav.tags.length) {
+        if (loadedSav) {
+            shareTagList.innerHTML =
+                `<li class="tag-list-empty muted">No custom tags found in ${escapeHtml(loadedSav.name)}. ` +
+                'Create a tag in-game first, then reload the save.</li>';
+        }
+        return;
+    }
+
+    for (const name of loadedSav.tags) {
+        const li = document.createElement('li');
+        li.className = 'share-tag-item';
+
+        const label = document.createElement('label');
+        label.className = 'tag-list-label';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'tag-checkbox share-tag-checkbox';
+        checkbox.value = name;
+
+        const nameEl = document.createElement('span');
+        nameEl.className = 'tag-list-name';
+        nameEl.textContent = name;
+
+        label.appendChild(checkbox);
+        label.appendChild(nameEl);
+
+        const sggSlot = document.createElement('div');
+        sggSlot.className = 'share-tag-sgg';
+        sggSlot.hidden = true;
+
+        checkbox.addEventListener('change', () => toggleShareTag(name, checkbox, li, sggSlot));
+
+        li.appendChild(label);
+        li.appendChild(sggSlot);
+        shareTagList.appendChild(li);
+    }
+}
+
+// Selecting a tag exports it from the save (in-browser via WASM), zips it and
+// reveals its own start.gg picker right on the row. Deselecting removes it.
+async function toggleShareTag(name, checkbox, row, sggSlot) {
+    if (checkbox.checked) {
+        checkbox.disabled = true;
+        row.classList.add('is-busy');
+        try {
+            const r2 = await exportTag(loadedSav.bytes, name);
+            const file = await zipR2tag(name, r2);
+            const picker = createStartggPicker(updateSubmitState);
+            shareEntries.push({ name, file, picker });
+            sggSlot.innerHTML = '';
+            sggSlot.appendChild(picker.root);
+            sggSlot.hidden = false;
+            row.classList.add('is-selected');
+        } catch (err) {
+            checkbox.checked = false;
+            setStatus(`Couldn't read “${escapeHtml(name)}” from the save: ${escapeHtml(String(err.message || err))}`, 'error');
+        } finally {
+            checkbox.disabled = false;
+            row.classList.remove('is-busy');
+        }
+    } else {
+        shareEntries = shareEntries.filter(e => e.name !== name);
+        sggSlot.hidden = true;
+        sggSlot.innerHTML = '';
+        row.classList.remove('is-selected');
+    }
+    updateSubmitState();
 }
 
 function updateSubmitState() {
-    const valid = selectedFiles.filter(e => validateFile(e.file).ok);
-    const allLinked = valid.length > 0 && valid.every(e => e.picker.get());
+    const n = shareEntries.length;
+    const allLinked = n > 0 && shareEntries.every(e => e.picker.get());
     submitButton.disabled = !allLinked;
-    if (valid.length > 0 && !allLinked && !uploadStatus.textContent) {
-        setStatus('Link a start.gg account for each tag to submit.', 'warn');
+    clearButton.disabled = n === 0;
+    if (shareDownloadBtn) shareDownloadBtn.disabled = n === 0;
+
+    setStepState(shareStep3, n > 0 ? 'active' : 'locked');
+
+    if (n > 0 && !allLinked) {
+        setStatus('Link a start.gg account to each selected tag, then submit.', 'warn');
     } else if (uploadStatus.classList.contains('warn')) {
         setStatus('');
     }
 }
 
-// ---- Submit ---------------------------------------------------------------
+function clearShareSelection() {
+    shareEntries = [];
+    shareTagList.querySelectorAll('.share-tag-checkbox').forEach(cb => { cb.checked = false; });
+    shareTagList.querySelectorAll('.share-tag-sgg').forEach(slot => {
+        slot.hidden = true;
+        slot.innerHTML = '';
+    });
+    shareTagList.querySelectorAll('.share-tag-item').forEach(li => li.classList.remove('is-selected'));
+    updateSubmitState();
+    setStatus('');
+}
+
+// "Just want the files?" — export the selected tags as raw .r2tag downloads
+// (single file, or one zip of them all), without submitting anything.
+async function downloadShareTags() {
+    const names = shareEntries.map(e => e.name);
+    if (!names.length || !loadedSav) return;
+    shareDownloadBtn.disabled = true;
+    const prev = shareDownloadBtn.textContent;
+    shareDownloadBtn.textContent = 'Exporting…';
+    try {
+        if (names.length === 1) {
+            const r2 = await exportTag(loadedSav.bytes, names[0]);
+            triggerDownload(URL.createObjectURL(new Blob([r2])), `${names[0]}.r2tag`);
+        } else {
+            const zip = new JSZip();
+            for (const name of names) {
+                zip.file(`${name}.r2tag`, await exportTag(loadedSav.bytes, name));
+            }
+            const blob = await zip.generateAsync({ type: 'blob' });
+            triggerDownload(URL.createObjectURL(blob), 'r2tags.zip');
+        }
+    } catch (err) {
+        setStatus(`Export failed: ${escapeHtml(String(err.message || err))}`, 'error');
+    } finally {
+        shareDownloadBtn.disabled = shareEntries.length === 0;
+        shareDownloadBtn.textContent = prev;
+    }
+}
+
+// ---- Share flow: submit -----------------------------------------------------
 
 async function submitTags() {
-    const valid = selectedFiles.filter(e => validateFile(e.file).ok);
-    if (valid.length === 0) return;
-    if (!valid.every(e => e.picker.get())) {
-        setStatus('Link a start.gg account for each tag before submitting.', 'error');
+    if (!shareEntries.length) return;
+    if (!shareEntries.every(e => e.picker.get())) {
+        setStatus('Link a start.gg account to each selected tag before submitting.', 'error');
         return;
     }
 
@@ -167,7 +297,7 @@ async function submitTags() {
     submitButton.disabled = true;
     try {
         const form = new FormData();
-        valid.forEach(e => {
+        shareEntries.forEach(e => {
             const link = e.picker.get();
             form.append('tags', e.file, e.file.name);
             form.append('startgg_slug', link.slug);
@@ -179,7 +309,8 @@ async function submitTags() {
         const data = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(data.error || `${res.status} ${res.statusText}`);
 
-        const names = valid.map(e => e.file.name.replace(/(\.r2tag)?\.zip$/i, ''));
+        const count = shareEntries.length;
+        const names = shareEntries.map(e => e.name);
         if (data.number) {
             recordSubmission({ number: data.number, url: data.pr, names });
         }
@@ -187,23 +318,22 @@ async function submitTags() {
         const prLink = data.pr
             ? ` <a href="${data.pr}" target="_blank" rel="noopener">PR #${data.number}</a>`
             : '';
+        clearShareSelection();
         setStatus(
-            `Submitted ${valid.length} tag(s).${prLink} Tracking it under “Your submissions” below.`,
+            `Submitted ${count} tag(s).${prLink} Tracking it under “Your submissions” below.`,
             'success'
         );
-        selectedFiles = [];
-        renderFileList();
         // Poll the PR so the status updates from “In review” to “Published”.
         refreshPendingStatuses();
     } catch (err) {
         console.error('Submission failed:', err);
         setStatus(`Submission failed: ${err.message}`, 'error');
     } finally {
-        submitButton.disabled = false;
+        updateSubmitState();
     }
 }
 
-// ---- Browse shared tags ---------------------------------------------------
+// ---- Get flow: browse shared tags ------------------------------------------
 
 async function loadManifest() {
     try {
@@ -246,15 +376,17 @@ function getSelectedTagFiles() {
 }
 
 function updateDownloadButton() {
-    const btn = tagBrowser.querySelector('#downloadSelected');
-    if (!btn) return;
     const count = getSelectedTagFiles().length;
     // Keep the button labels fixed so they don't resize as the count changes;
     // the running count lives in its own chip next to the selection controls.
-    btn.disabled = count === 0;
+    downloadSelectedBtn.disabled = count === 0;
+    importSelectedBtn.disabled = count === 0;
 
-    const importBtn = tagBrowser.querySelector('#importSelected');
-    if (importBtn) importBtn.disabled = count === 0;
+    // Step 2 opens up as soon as there's something to merge. Step 3 stays put
+    // once revealed (the download the user needs to move doesn't un-happen).
+    if (!getStep2.classList.contains('is-done')) {
+        setStepState(getStep2, count > 0 ? 'active' : 'locked');
+    }
 
     const countEl = tagBrowser.querySelector('#tagSelectedCount');
     if (countEl) {
@@ -264,9 +396,9 @@ function updateDownloadButton() {
     }
 }
 
-// Builds the browser chrome (search box, action buttons, list container) once
-// and wires its listeners. The list itself is (re)drawn by renderTagList — so
-// typing in the search box never recreates the input and never drops focus.
+// Builds the browser chrome (search box, selection controls, list container)
+// once and wires its listeners. The list itself is (re)drawn by renderTagList —
+// so typing in the search box never recreates the input and never drops focus.
 function renderTagBrowser() {
     if (!allTags.length) {
         tagBrowser.innerHTML = '<p class="muted">No shared tags yet. Be the first to share one.</p>';
@@ -282,8 +414,6 @@ function renderTagBrowser() {
         '<span class="tag-action-sep">·</span>' +
         '<button type="button" id="clearTagSelection" class="linkish">Clear</button>' +
         '<span id="tagSelectedCount" class="tag-selected-count is-zero">0 selected</span>' +
-        '<button type="button" id="importSelected" disabled>Import to save</button>' +
-        '<button type="button" id="downloadSelected" class="secondary" disabled>Download tags</button>' +
         '</div></div>' +
         '<ul id="tagList" class="tag-list"></ul>';
 
@@ -303,9 +433,6 @@ function renderTagBrowser() {
         tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => { cb.checked = false; });
         updateDownloadButton();
     });
-
-    tagBrowser.querySelector('#downloadSelected').addEventListener('click', downloadSelectedTags);
-    tagBrowser.querySelector('#importSelected').addEventListener('click', startImportToSave);
 
     renderTagList();
 }
@@ -413,7 +540,7 @@ async function downloadSelectedTags() {
         .filter(Boolean);
     if (!tags.length) return;
 
-    const btn = tagBrowser.querySelector('#downloadSelected');
+    const btn = downloadSelectedBtn;
     const prevText = btn.textContent;
     btn.disabled = true;
     btn.textContent = 'Downloading…';
@@ -441,14 +568,6 @@ async function downloadSelectedTags() {
         btn.textContent = prevText;
         updateDownloadButton();
     }
-}
-
-function triggerDownload(url, filename) {
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.click();
-    if (url.startsWith('blob:')) URL.revokeObjectURL(url);
 }
 
 // ---- Your submissions (track pending PRs) ---------------------------------
@@ -566,12 +685,7 @@ function relativeTime(ts) {
     return `${Math.floor(h / 24)}d ago`;
 }
 
-function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, (c) =>
-        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
-
-// ---- start.gg account linking (upload) ------------------------------------
+// ---- start.gg account linking (share flow) ----------------------------------
 
 const STARTGG_BASE = UPLOAD_ENDPOINT ? `${UPLOAD_ENDPOINT}/startgg` : null;
 
@@ -583,7 +697,7 @@ function parseUserSlug(text) {
 }
 
 // A self-contained start.gg account picker (search-as-you-type with avatars,
-// or paste a profile URL). One is created per submitted tag, so each tag links
+// or paste a profile URL). One is created per selected tag, so each tag links
 // its own account. `onChange` fires with the selected { slug, tag } or null.
 // Returns { root, get, set }.
 function createStartggPicker(onChange) {
@@ -762,7 +876,7 @@ document.addEventListener('click', (e) => {
     });
 });
 
-// ---- Download by start.gg bracket -----------------------------------------
+// ---- Get flow: select by start.gg bracket -----------------------------------
 
 // Pull the event slug out of a start.gg URL, plus the phase-group id when the
 // URL points at a single bracket section (…/brackets/<phaseId>/<phaseGroupId>).
@@ -817,8 +931,8 @@ async function findBracketTags() {
                 `No published tags match the ${slugs.size} linked entrant(s)${evName}.`, 'warn');
         } else {
             setBracketStatus(
-                `Selected ${matches.length} tag(s)${evName}. Scroll down and click Download.`, 'success');
-            tagBrowser.querySelector('#downloadSelected')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                `Selected ${matches.length} tag(s)${evName}. Continue with step 2 below.`, 'success');
+            getStep2.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     } catch (err) {
         setBracketStatus(`Lookup failed: ${err.message}`, 'error');
@@ -834,124 +948,7 @@ if (bracketGo) {
     });
 }
 
-// ---- Load a .sav: pick tags to share or download (in-browser) -------------
-
-async function zipR2tag(name, r2tagBytes) {
-    const zip = new JSZip();
-    zip.file(`${name}.r2tag`, r2tagBytes);
-    const blob = await zip.generateAsync({ type: 'blob' });
-    return new File([blob], `${name}.r2tag.zip`, { type: 'application/zip' });
-}
-
-async function loadSavFile(file) {
-    try {
-        const bytes = new Uint8Array(await file.arrayBuffer());
-        const tags = await getTagNames(bytes);
-        loadedSav = { bytes, tags, name: file.name };
-        renderSavPanel();
-    } catch (err) {
-        loadedSav = null;
-        savPanel.hidden = false;
-        savPanel.innerHTML =
-            `<p class="upload-status error">Couldn't read that save: ${escapeHtml(String(err.message || err))}</p>`;
-    }
-}
-
-function getCheckedSavTags() {
-    return [...savPanel.querySelectorAll('.sav-tag-checkbox:checked')].map(cb => cb.value);
-}
-
-function renderSavPanel() {
-    if (!loadedSav) { savPanel.hidden = true; savPanel.innerHTML = ''; return; }
-    savPanel.hidden = false;
-
-    if (!loadedSav.tags.length) {
-        savPanel.innerHTML = `<p class="muted">No custom tags found in ${escapeHtml(loadedSav.name)}.</p>`;
-        return;
-    }
-
-    const items = loadedSav.tags.map(name =>
-        '<li class="tag-list-item"><label class="tag-list-label">' +
-        `<input type="checkbox" class="sav-tag-checkbox tag-checkbox" value="${escapeHtml(name)}">` +
-        `<span class="tag-list-name">${escapeHtml(name)}</span></label></li>`
-    ).join('');
-
-    savPanel.innerHTML =
-        `<div class="sav-tags-head">${loadedSav.tags.length} custom tag(s) in ` +
-        `<code>${escapeHtml(loadedSav.name)}</code></div>` +
-        `<ul class="tag-list">${items}</ul>` +
-        '<div class="upload-actions">' +
-        '<button type="button" id="savAddBtn" disabled>Add to submission ↓</button>' +
-        '<button type="button" id="savDownloadBtn" class="secondary" disabled>Download .r2tag</button>' +
-        '</div>';
-
-    const sync = () => {
-        const n = getCheckedSavTags().length;
-        savPanel.querySelector('#savAddBtn').disabled = n === 0;
-        savPanel.querySelector('#savDownloadBtn').disabled = n === 0;
-    };
-    savPanel.querySelectorAll('.sav-tag-checkbox').forEach(cb => cb.addEventListener('change', sync));
-    savPanel.querySelector('#savAddBtn').addEventListener('click', addSavTagsToSubmission);
-    savPanel.querySelector('#savDownloadBtn').addEventListener('click', downloadSavTags);
-}
-
-// Export the checked tags from the loaded save, zip each, and feed them into the
-// submission list above (so the normal start.gg + submit flow takes over).
-async function addSavTagsToSubmission() {
-    const names = getCheckedSavTags();
-    if (!names.length || !loadedSav) return;
-    const btn = savPanel.querySelector('#savAddBtn');
-    btn.disabled = true;
-    const prev = btn.textContent;
-    btn.textContent = 'Preparing…';
-    try {
-        for (const name of names) {
-            const r2 = await exportTag(loadedSav.bytes, name);
-            addFiles([await zipR2tag(name, r2)]);
-        }
-        setStatus(
-            `Added ${names.length} tag(s) from your save below. Link your start.gg account, then Submit.`,
-            'success'
-        );
-        savPanel.querySelectorAll('.sav-tag-checkbox:checked').forEach(cb => { cb.checked = false; });
-        btn.disabled = true;
-        savPanel.querySelector('#savDownloadBtn').disabled = true;
-    } catch (err) {
-        setStatus(`Couldn't prepare tags: ${err.message || err}`, 'error');
-        btn.disabled = false;
-    } finally {
-        btn.textContent = prev;
-    }
-}
-
-async function downloadSavTags() {
-    const names = getCheckedSavTags();
-    if (!names.length || !loadedSav) return;
-    const btn = savPanel.querySelector('#savDownloadBtn');
-    btn.disabled = true;
-    const prev = btn.textContent;
-    btn.textContent = 'Exporting…';
-    try {
-        if (names.length === 1) {
-            const r2 = await exportTag(loadedSav.bytes, names[0]);
-            triggerDownload(URL.createObjectURL(new Blob([r2])), `${names[0]}.r2tag`);
-        } else {
-            const zip = new JSZip();
-            for (const name of names) {
-                zip.file(`${name}.r2tag`, await exportTag(loadedSav.bytes, name));
-            }
-            const blob = await zip.generateAsync({ type: 'blob' });
-            triggerDownload(URL.createObjectURL(blob), 'r2tags.zip');
-        }
-    } catch (err) {
-        alert(`Export failed: ${err.message || err}`);
-    } finally {
-        btn.disabled = false;
-        btn.textContent = prev;
-    }
-}
-
-// ---- Import shared tags into your .sav (in-browser) -----------------------
+// ---- Get flow: merge shared tags into a .sav (in-browser) --------------------
 
 let pendingImportFiles = [];
 
@@ -1004,23 +1001,21 @@ function importSummary(rep) {
 // Deliver the finished save bytes as a download. We can't write straight back to
 // the save folder: it sits under %LOCALAPPDATA%, which the File System Access
 // "Save As" picker blocks just like the open picker, so there's no reliable
-// in-browser "save in place" for this tool. Returns 'downloaded'.
+// in-browser "save in place" for this tool.
 function saveOutput(bytes, filename) {
     triggerDownload(URL.createObjectURL(new Blob([bytes])), filename);
-    return 'downloaded';
 }
 
-// Reports where the finished save ended up (always a download for this tool) and
-// reveals the "where to put it back" folder hint beneath the status line.
+// Reports the merge result and unlocks step 3 (put the downloaded save back).
 function deliveredStatus(rep, filename) {
     setImportStatus(
         `Done: ${importSummary(rep)}. Downloaded <strong>${escapeHtml(filename)}</strong>. ` +
-        `Move it into your save folder, replacing the old file (back it up first) — ` +
-        `the folder path is just below.`,
+        `Step 3 below shows where to put it.`,
         rep.incompatible.length ? 'warn' : 'success'
     );
-    const hint = document.getElementById('importPathHint');
-    if (hint) hint.hidden = false;
+    setStepState(getStep2, 'done');
+    setStepState(getStep3, 'active');
+    getStep3.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 // Read the picked .sav, merge the selected tags in, and download the result.
@@ -1041,10 +1036,10 @@ async function importSelectedToSave(savFile) {
 
 // Save-path platform switcher (Windows / Steam Deck). The Steam Deck location
 // is the fixed Proton prefix under the user's home folder. Two flavours per OS:
-// the full file path (submit flow — paste into the Open dialog) and the folder
-// (import flow — paste into Explorer, then drop the downloaded save in). The
-// switcher is shared: any .save-path-hint on the page (there are two) updates
-// together, keyed by its data-path-kind ("file" or "folder").
+// the full file path (load a save — paste into the Open dialog) and the folder
+// (put the merged save back — paste into Explorer, then drop the download in).
+// The switcher is shared: any .save-path-hint on the page (there are two)
+// updates together, keyed by its data-path-kind ("file" or "folder").
 const SAVE_PATHS = {
     windows: {
         file: {
@@ -1120,14 +1115,12 @@ document.querySelectorAll('.copy-path-btn').forEach(btn => {
 });
 
 submitButton.addEventListener('click', submitTags);
-clearButton.addEventListener('click', () => {
-    selectedFiles = [];
-    renderFileList();
-});
+clearButton.addEventListener('click', clearShareSelection);
+if (shareDownloadBtn) shareDownloadBtn.addEventListener('click', downloadShareTags);
 
-// Guided save-file modal. Both "Load a .sav file" and "Import to save" open it:
-// it shows the save path to copy, then a Choose-file button that opens the real
-// (classic) file picker for the matching input.
+// Guided save-file modal. Both "Load my save file" and "Merge into a save file"
+// open it: it shows the save path to copy, then a Choose-file button that opens
+// the real (classic) file picker for the matching input.
 const saveModal = document.getElementById('saveModal');
 const saveModalTitle = document.getElementById('saveModalTitle');
 const saveModalChoose = document.getElementById('saveModalChoose');
@@ -1136,7 +1129,7 @@ let saveModalMode = 'load'; // 'load' | 'import'
 
 function openSaveModal(mode) {
     saveModalMode = mode;
-    saveModalTitle.textContent = mode === 'import' ? 'Import into your save' : 'Load your save file';
+    saveModalTitle.textContent = mode === 'import' ? 'Merge into your save' : 'Load your save file';
     saveModalChoose.textContent = mode === 'import' ? 'Choose save file…' : 'Choose file…';
     clearCopyFeedback(saveModal);   // fresh "Copied" state each open
     saveModal.hidden = false;
@@ -1165,7 +1158,7 @@ if (saveModal) {
     });
 }
 
-// Load-a-save (submit panel) and import-into-save (browse panel) file inputs.
+// Load-a-save (share flow) and merge-into-save (get flow) file inputs.
 if (savButton) {
     savButton.addEventListener('click', () => openSaveModal('load'));
     savInput.addEventListener('change', () => {
@@ -1173,6 +1166,8 @@ if (savButton) {
         savInput.value = '';
     });
 }
+importSelectedBtn.addEventListener('click', startImportToSave);
+downloadSelectedBtn.addEventListener('click', downloadSelectedTags);
 if (importSavInput) {
     importSavInput.addEventListener('change', () => {
         if (importSavInput.files?.length) importSelectedToSave(importSavInput.files[0]);
@@ -1181,10 +1176,10 @@ if (importSavInput) {
 }
 
 // Init
-renderFileList();
 loadManifest();
 renderPending();
 refreshPendingStatuses();
+updateSubmitState();
 // While anything is still in review, re-check its PR periodically.
 setInterval(() => {
     if (loadPending().some(r => r.status === 'pending')) refreshPendingStatuses();

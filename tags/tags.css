@@ -7,11 +7,13 @@
     margin-bottom: 1.5rem;
 }
 
-/* ---- Desktop layout ------------------------------------------------------- */
-/* On mobile the tool is a single top-to-bottom column (submit → browse), which
-   reads fine. On desktop that same column is narrow and sparse in a wide
-   viewport, so widen the shell and lay the two halves side by side: the submit
-   flow (+ your submissions) on the left, the shared-tag database on the right. */
+/* Both flows are always on the page (no either/or chooser), so on narrow
+   viewports it's one guided column read top to bottom. */
+main {
+    max-width: 920px;
+    margin: 0 auto;
+}
+
 @media (min-width: 1024px) {
     .container-wide {
         max-width: 1240px;
@@ -39,28 +41,19 @@
         margin: 0;
     }
 
+    /* On desktop, both flows fit side by side: Share (+ its submissions list)
+       on the left, Install on the right. */
     main {
+        max-width: none;
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         gap: 1.5rem;
         align-items: start;
     }
 
-    main > .panel {
-        margin-bottom: 0;
-    }
-
-    /* Left column: submit, then submissions beneath it. */
-    main > .panel:first-of-type { grid-column: 1; grid-row: 1; }
-    #pendingPanel { grid-column: 1; grid-row: 2; }
-
-    /* Right column: the shared-tag database, spanning both left-column rows so
-       it sits alongside the whole submit stack. */
-    main > .panel:last-child { grid-column: 2; grid-row: 1 / span 2; }
-
-    /* The shared list can breathe with the extra vertical room a tall column
-       affords. */
-    .tag-list { max-height: 460px; }
+    #shareFlow { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+    #pendingPanel { grid-column: 1; grid-row: 2; margin-bottom: 0; }
+    #getFlow { grid-column: 2; grid-row: 1 / span 2; margin-bottom: 0; }
 }
 
 .panel h2 {
@@ -81,93 +74,228 @@ code {
     font-size: 0.85em;
 }
 
-/* Dropzone */
-.dropzone {
-    border: 2px dashed var(--border-color);
-    border-radius: 12px;
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
-}
+/* ---- Flow header (icon + title + one-line subtitle) ----------------------- */
 
-.dropzone:hover,
-.dropzone:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    background-color: color-mix(in srgb, var(--md-primary) 6%, transparent);
-}
-
-.dropzone.dragover {
-    border-color: var(--primary-color);
-    background-color: color-mix(in srgb, var(--md-primary) 12%, transparent);
-}
-
-.dropzone-icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.dropzone-hint {
-    color: var(--text-secondary);
-    font-size: 0.85rem;
-    margin-top: 0.25rem;
-}
-
-/* Selected file list */
-.file-list {
-    list-style: none;
-    margin: 1.25rem 0 0;
-}
-
-/* Direct children only — must not leak into the nested start.gg dropdown <li>s. */
-.file-list > li {
+.flow-head {
     display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    padding: 0.75rem 1rem;
-    background-color: var(--background-color);
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.file-row-top {
+.flow-icon {
+    display: flex;
+    flex-shrink: 0;
+    color: var(--primary-color);
+}
+
+.flow-icon svg {
+    width: 1.9rem;
+    height: 1.9rem;
+    fill: currentColor;
+}
+
+.flow-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin-top: 0.35rem;
+}
+
+/* ---- Guided steps ---------------------------------------------------------- */
+
+.flow-title {
+    margin-bottom: 0;
+}
+
+.steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.step {
+    position: relative;
+    padding: 0 0 1.9rem 3rem;
+}
+
+.step:last-child {
+    padding-bottom: 0;
+}
+
+/* Vertical connector between the numbered dots. */
+.step::before {
+    content: '';
+    position: absolute;
+    left: 0.95rem;
+    top: 2.1rem;
+    bottom: 0.25rem;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.step:last-child::before {
+    display: none;
+}
+
+.step-num {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--md-surface-container-high);
+    border: 2px solid var(--border-color);
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color var(--md-dur-short, 0.18s) ease,
+        border-color var(--md-dur-short, 0.18s) ease,
+        color var(--md-dur-short, 0.18s) ease;
 }
 
-.file-row-sgg .sgg-search-wrap {
+.step.is-active > .step-head .step-num {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--md-on-primary);
+}
+
+.step.is-done > .step-head .step-num {
+    background-color: transparent;
+    border-color: var(--success-color);
+    color: var(--success-color);
+}
+
+/* Swap the number for a check once the step is done. */
+.step.is-done > .step-head .step-num::before {
+    content: '✓';
+    position: absolute;
+}
+
+.step.is-done > .step-head .step-num {
+    font-size: 0;           /* hide the number under the check */
+}
+
+.step.is-done > .step-head .step-num::before {
+    font-size: 1rem;
+}
+
+.step-head {
+    display: flex;
+    align-items: center;
+    min-height: 2rem;
+}
+
+.step-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.step-body {
+    margin-top: 0.75rem;
+}
+
+/* Locked steps show only their dimmed title — the roadmap without the noise. */
+.step.is-locked {
+    opacity: 0.45;
+}
+
+.step.is-locked .step-body {
+    display: none;
+}
+
+.step-help {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+    max-width: 62ch;
+}
+
+.step-done-note {
+    margin: 0.9rem 0 0;
+    font-size: 0.9rem;
+    color: var(--success-color);
+}
+
+/* Reveal animation when a step unlocks. */
+.step-body {
+    animation: box-in var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease);
+}
+
+/* "or pick tags by hand" divider between bracket lookup and manual browse. */
+.or-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 1.25rem 0 1rem;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--border-color);
+    margin: 0 0.75rem;
+}
+
+/* ---- Share flow: tag list from the loaded save ----------------------------- */
+
+/* Unlike the browse list, this one never scroll-caps: the start.gg dropdown
+   opens inside a row and must not be clipped. (Doubled class beats the later
+   .tag-list max-height rule.) */
+.share-tag-list.share-tag-list {
+    max-height: none;
+    overflow: visible;
+    margin-bottom: 0.25rem;
+}
+
+.share-tag-item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.share-tag-item:last-child {
+    border-bottom: none;
+}
+
+.share-tag-item.is-busy {
+    opacity: 0.6;
+}
+
+/* Selected rows open up to hold their own start.gg picker. */
+.share-tag-sgg {
+    padding: 0 0.85rem 0.85rem 2.5rem;
+}
+
+.share-tag-sgg .sgg-search-wrap {
     max-width: none;
 }
 
-.file-row-sgg .sgg-input {
+.share-tag-sgg .sgg-input {
     background-color: var(--surface-color);
     border-color: var(--border-color);
     font-size: 0.9rem;
     padding: 0.5rem 0.75rem;
 }
 
-.file-row-sgg .sgg-chip {
-    margin-top: 0;
+.share-tag-item.is-selected {
+    background-color: color-mix(in srgb, var(--md-primary) 5%, transparent);
 }
 
-.file-list .file-meta {
-    color: var(--text-secondary);
+.share-download-btn {
+    margin-top: 0.9rem;
+    padding-left: 0;
     font-size: 0.85rem;
-}
-
-.file-list .file-status {
-    font-size: 0.8rem;
-}
-
-.file-list .file-status.ok {
-    color: var(--success-color);
-}
-
-.file-list .file-status.warn {
-    color: var(--error-color);
 }
 
 .remove-file {
@@ -228,6 +356,7 @@ code {
     display: flex;
     gap: 0.75rem;
     margin-top: 1.25rem;
+    flex-wrap: wrap;
 }
 
 .upload-status {
@@ -242,6 +371,10 @@ code {
 
 .upload-status.success {
     color: var(--success-color);
+}
+
+.upload-status.warn {
+    color: #c9a227;
 }
 
 /* Your submissions */
@@ -361,8 +494,8 @@ code {
     user-select: none;
 }
 
-/* Running selection count — sits by the selection controls so the Import /
-   Download buttons keep a fixed label (and width) as the count changes. */
+/* Running selection count — the Merge / Download buttons in step 2 keep fixed
+   labels (and widths); the count lives here by the selection controls. */
 .tag-selected-count {
     color: var(--primary-color);
     font-size: 0.82rem;
@@ -373,21 +506,6 @@ code {
 
 .tag-selected-count.is-zero {
     color: var(--text-secondary);
-}
-
-/* Anchor the action buttons to the right so the count chip toggling on/off
-   doesn't shove them around. Only when it's a single row — on narrow screens
-   the buttons wrap to their own line and auto-margin would zig-zag them. */
-@media (min-width: 561px) {
-    .tag-browser-actions #importSelected {
-        margin-left: auto;
-    }
-}
-
-.tag-browser-actions #downloadSelected {
-    margin-left: 0.25rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
 }
 
 .tag-list {
@@ -442,18 +560,13 @@ code {
     font-size: 0.95rem;
 }
 
-/* start.gg account field (upload) */
-.author-field .required {
-    color: var(--primary-color);
-    font-size: 0.8rem;
-}
-
 .field-hint {
     color: var(--text-secondary);
     font-size: 0.82rem;
     margin: 0 0 0.5rem;
 }
 
+/* start.gg account picker */
 .sgg-search-wrap {
     position: relative;
     max-width: 420px;
@@ -552,10 +665,6 @@ code {
     font-size: 0.85rem;
 }
 
-.sgg-selected {
-    margin-top: 0.6rem;
-}
-
 .sgg-chip {
     display: inline-flex;
     align-items: center;
@@ -596,22 +705,19 @@ code {
     transform: none;
 }
 
-.upload-status.warn {
-    color: #c9a227;
+.sgg-loading {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+    text-align: center;
 }
 
 /* Download-by-bracket */
-.bracket-field {
-    margin-bottom: 1.25rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
 .bracket-field label {
     display: block;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
 }
 
 .bracket-row {
@@ -674,59 +780,10 @@ code {
     text-decoration: underline;
 }
 
-/* Load-a-save (in-browser) */
-.sav-loader {
-    margin-top: 1.5rem;
-}
-
-.sav-or {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin: 0 0 0.75rem;
-}
-
-.sav-or::before,
-.sav-or::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid var(--border-color);
-    margin: 0 0.75rem;
-}
-
-.sav-panel {
-    margin-top: 0.75rem;
-    padding: 0.85rem 1rem;
-    background-color: var(--background-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-}
-
-.sav-tags-head {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.5rem;
-}
-
-.sav-panel .tag-list {
-    border: none;
-    background: none;
-    max-height: 200px;
-}
-
-.sav-panel .upload-actions {
-    margin-top: 0.75rem;
-}
-
 .import-overwrite {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1rem;
     font-size: 0.85rem;
     color: var(--text-secondary);
     cursor: pointer;
@@ -736,11 +793,7 @@ code {
     accent-color: var(--primary-color);
 }
 
-.upload-status.warn {
-    color: #c9a227;
-}
-
-/* Embedded demo walkthrough (under the page subtitle) */
+/* Embedded demo walkthrough (in the hero) */
 .demo-video {
     display: block;
     width: 100%;
@@ -753,24 +806,9 @@ code {
     background: var(--md-surface-container-lowest, #0f0d13);
 }
 
-/* Save-path hint (submit panel) */
+/* Save-path hint (modal + step 3 of the get flow) */
 .save-path-hint {
-    margin: 0 0 1.25rem;
-}
-
-/* Save-path hint in the browse/import panel: separated from the status line
-   above and framed as "where the downloaded save goes". */
-.import-path-hint {
-    margin: 1.25rem 0 0;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--border-color);
-}
-
-.save-path-heading {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin: 0 0 0.5rem;
+    margin: 0;
 }
 
 /* ---- Guided save-file modal ----------------------------------------------- */
@@ -859,11 +897,6 @@ body.modal-open { overflow: hidden; }
     margin: 0 0 0.6rem;
 }
 
-/* The path hint sits flush inside a step (its own margin would double the gap). */
-.modal .save-path-hint {
-    margin: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
     .modal-backdrop,
     .modal { animation: none; }
@@ -946,12 +979,6 @@ body.modal-open { overflow: hidden; }
     color: var(--error-color);
 }
 
-.sgg-loading {
-    padding: 0.5rem 0.85rem;
-    font-size: 0.8rem;
-    text-align: center;
-}
-
 /* "View changes" (diff from default) */
 .tag-diff-toggle.linkish {
     flex-shrink: 0;
@@ -1002,21 +1029,21 @@ body.modal-open { overflow: hidden; }
 /* Panels toggled via [hidden]: fade + slide in on first show. @starting-style
    is progressively enhanced — browsers without it just show the panel. */
 #pendingPanel,
-.sav-panel {
+.flow {
     transition:
         opacity var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease),
         transform var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease);
 }
 
 #pendingPanel:not([hidden]),
-.sav-panel:not([hidden]) {
+.flow:not([hidden]) {
     opacity: 1;
     transform: translateY(0);
 }
 
 @starting-style {
     #pendingPanel:not([hidden]),
-    .sav-panel:not([hidden]) {
+    .flow:not([hidden]) {
         opacity: 0;
         transform: translateY(10px);
     }
@@ -1027,7 +1054,8 @@ body.modal-open { overflow: hidden; }
     .submission-item,
     #tagList,
     #pendingPanel,
-    .sav-panel {
+    .flow,
+    .step-body {
         animation: none;
         transition: none;
     }

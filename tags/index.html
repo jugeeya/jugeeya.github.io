@@ -23,7 +23,9 @@
         <header>
             <div class="hero-text">
                 <h1>Rivals II Controls / Tag Sharing</h1>
-                <p class="subtitle">Upload and share Rivals II player tags &amp; custom controls</p>
+                <p class="subtitle">A shared database of Rivals II player tags &amp; custom controls.
+                    Add your tag once and tournaments load every entrant's tag onto their setups in a
+                    few clicks.</p>
             </div>
             <video class="demo-video" controls playsinline preload="none"
                 poster="../demo/demo-poster.jpg"
@@ -32,96 +34,167 @@
         </header>
 
         <main>
-            <!-- Upload ------------------------------------------------------ -->
-            <section class="panel">
-                <h2>Submit a tag</h2>
-                <p class="panel-help">
-                    Load your Rivals II save file, pick the tags you want to share, and link each to a
-                    start.gg account. Your save is read in your browser and <strong>never uploaded</strong>;
-                    submitting adds to the tag database for download by your TOs in the section below.
-                </p>
-
-                <div class="sav-loader">
-                    <button id="savButton" type="button">Load a .sav file</button>
-                    <input type="file" id="savInput" accept=".sav" hidden>
-                    <div id="savPanel" class="sav-panel" hidden></div>
+            <!-- Share flow --------------------------------------------------- -->
+            <section class="panel flow" id="shareFlow">
+                <div class="flow-head">
+                    <span class="flow-icon" aria-hidden="true">
+                        <svg viewBox="0 -960 960 960"><path d="M440-320v-326L336-542l-56-58 200-200 200 200-56 58-104-104v326h-80ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </span>
+                    <div>
+                        <h2 class="flow-title">Share your tag</h2>
+                        <p class="flow-subtitle">Add your tag to the shared database so tournaments can
+                            pre-load it!</p>
+                    </div>
                 </div>
+                <ol class="steps">
+                    <li class="step is-active" id="shareStep1">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">1</span>
+                            <h3 class="step-title">Load your save file</h3>
+                        </div>
+                        <div class="step-body">
+                            <p class="step-help">Your tags live in your Rivals II save. It's read right
+                                here in your browser and <strong>never uploaded</strong>.</p>
+                            <button id="savButton" type="button">Load my save file</button>
+                            <input type="file" id="savInput" accept=".sav" hidden>
+                            <p class="step-done-note" id="shareLoadedNote" hidden></p>
+                            <p id="savLoadStatus" class="upload-status"></p>
+                        </div>
+                    </li>
 
-                <ul id="fileList" class="file-list"></ul>
+                    <li class="step is-locked" id="shareStep2">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">2</span>
+                            <h3 class="step-title">Pick tags to share</h3>
+                        </div>
+                        <div class="step-body">
+                            <p class="step-help">Select each tag you want to share, then link it to the
+                                player's <strong>start.gg account</strong>. That's how tournaments find it
+                                by bracket. Search a gamer tag or paste a profile URL.</p>
+                            <ul id="shareTagList" class="tag-list share-tag-list"></ul>
+                            <div class="author-field">
+                                <label for="authorInput">Your name <span class="optional">(optional, shown as the author)</span></label>
+                                <input type="text" id="authorInput" maxlength="64" placeholder="e.g. jugeeya">
+                            </div>
+                            <button type="button" id="shareDownloadBtn" class="linkish share-download-btn" disabled>
+                                Just want the files? Download selected tags as .r2tag</button>
+                        </div>
+                    </li>
 
-                <div class="author-field">
-                    <label for="authorInput">Your name <span class="optional">(optional, shown as the author)</span></label>
-                    <input type="text" id="authorInput" maxlength="64" placeholder="e.g. jugeeya">
-                </div>
-
-                <p class="field-hint startgg-note">Each tag needs a <strong>start.gg account</strong> linked
-                    (right on its row above). Search a gamer tag or paste a profile URL; this is what lets a
-                    tag be pulled by bracket.</p>
-
-                <div class="upload-actions">
-                    <button id="submitButton" disabled>Submit tags</button>
-                    <button id="clearButton" class="secondary" disabled>Clear</button>
-                </div>
-
-                <p id="uploadStatus" class="upload-status"></p>
+                    <li class="step is-locked" id="shareStep3">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">3</span>
+                            <h3 class="step-title">Submit to the database</h3>
+                        </div>
+                        <div class="step-body">
+                            <p class="step-help">Your tag is checked automatically and usually goes live in
+                                about a minute. You can track it under "Your submissions" below.</p>
+                            <div class="upload-actions">
+                                <button id="submitButton" disabled>Submit tags</button>
+                                <button id="clearButton" class="secondary" disabled>Clear selection</button>
+                            </div>
+                            <p id="uploadStatus" class="upload-status"></p>
+                        </div>
+                    </li>
+                </ol>
             </section>
 
             <!-- Your submissions -------------------------------------------- -->
             <section class="panel" id="pendingPanel" hidden>
                 <h2>Your submissions</h2>
-                <p class="panel-help">Tags you've submitted from this browser. Each one goes live once its
-                    pull request passes validation and merges.</p>
+                <p class="panel-help">Tags you've submitted from this browser. Each one goes live once it
+                    passes validation.</p>
                 <ul id="pendingList" class="submission-list"></ul>
             </section>
 
-            <!-- Browse ------------------------------------------------------ -->
-            <section class="panel">
-                <h2>Shared tags</h2>
-                <p class="panel-help">Tags published to this site. Select one or more, then download them, or
-                    import them straight into your <code>.sav</code> here in the browser.</p>
-
-                <div class="bracket-field">
-                    <label for="bracketInput">Download a whole bracket</label>
-                    <p class="field-hint">Paste a start.gg event URL: every published tag belonging to an
-                        entrant gets selected below.</p>
-                    <div class="bracket-row">
-                        <input type="text" id="bracketInput" autocomplete="off" spellcheck="false"
-                            placeholder="https://www.start.gg/tournament/…/event/…">
-                        <button type="button" id="bracketGo" class="secondary">Find tags</button>
+            <!-- Get / tournament flow ---------------------------------------- -->
+            <section class="panel flow" id="getFlow">
+                <div class="flow-head">
+                    <span class="flow-icon" aria-hidden="true">
+                        <svg viewBox="0 -960 960 960"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </span>
+                    <div>
+                        <h2 class="flow-title">Install tags to your setup</h2>
+                        <p class="flow-subtitle">For TOs &amp; setup owners. Grab your entrants' tags and
+                            merge them into a setup's save file.</p>
                     </div>
-                    <p id="bracketStatus" class="bracket-status"></p>
                 </div>
+                <ol class="steps">
+                    <li class="step is-active" id="getStep1">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">1</span>
+                            <h3 class="step-title">Pick the tags you need</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="bracket-field">
+                                <label for="bracketInput">Running a bracket? Paste your start.gg event URL</label>
+                                <p class="field-hint">Every entrant with a published tag gets selected for you
+                                    automatically.</p>
+                                <div class="bracket-row">
+                                    <input type="text" id="bracketInput" autocomplete="off" spellcheck="false"
+                                        placeholder="https://www.start.gg/tournament/…/event/…">
+                                    <button type="button" id="bracketGo" class="secondary">Find tags</button>
+                                </div>
+                                <p id="bracketStatus" class="bracket-status"></p>
+                            </div>
 
-                <div id="tagBrowser" class="tag-browser">
-                    <p class="muted">Loading…</p>
-                </div>
+                            <p class="or-divider">or pick tags by hand</p>
 
-                <input type="file" id="importSavInput" accept=".sav" hidden>
-                <label class="import-overwrite">
-                    <input type="checkbox" id="importOverwrite" checked> Overwrite tags that already exist in my save
-                </label>
-                <p id="importStatus" class="upload-status"></p>
+                            <div id="tagBrowser" class="tag-browser">
+                                <p class="muted">Loading…</p>
+                            </div>
+                        </div>
+                    </li>
 
-                <div class="save-path-hint import-path-hint" data-path-kind="folder" id="importPathHint" hidden>
-                    <p class="save-path-heading">Where to put the imported save back</p>
-                    <p class="field-hint"><strong>Import to save</strong> hands you the merged file as a download —
-                        browsers can't overwrite the save in place. When your browser asks where to save, pick the
-                        folder below and save it over the old file (back it up first). If your browser adds a
-                        <code>(1)</code> to the name, delete it so it replaces the original.</p>
-                    <div class="path-os-switch" role="group" aria-label="Platform">
-                        <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
-                        <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
-                    </div>
-                    <p class="field-hint save-path-intro">On Windows the save folder is here (under
-                        <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
-                    <div class="save-path-row">
-                        <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
-                        <button type="button" class="secondary copy-path-btn">Copy folder path</button>
-                        <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
-                    </div>
-                    <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar, then replace
-                        <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.</p>
-                </div>
+                    <li class="step is-locked" id="getStep2">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">2</span>
+                            <h3 class="step-title">Merge them into the setup's save file</h3>
+                        </div>
+                        <div class="step-body">
+                            <p class="step-help">Load the save file from the setup you're updating. The
+                                selected tags are merged into it right here in your browser, and the updated
+                                save comes back as a download.</p>
+                            <label class="import-overwrite">
+                                <input type="checkbox" id="importOverwrite" checked>
+                                Overwrite tags that already exist in the save
+                            </label>
+                            <div class="upload-actions">
+                                <button type="button" id="importSelected" disabled>Merge into a save file…</button>
+                                <button type="button" id="downloadSelected" class="secondary" disabled>Just download the tag files</button>
+                            </div>
+                            <input type="file" id="importSavInput" accept=".sav" hidden>
+                            <p id="importStatus" class="upload-status"></p>
+                        </div>
+                    </li>
+
+                    <li class="step is-locked" id="getStep3">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">3</span>
+                            <h3 class="step-title">Put the updated save back</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="save-path-hint" data-path-kind="folder" id="importPathHint">
+                                <p class="field-hint">Browsers can't overwrite the save in place, so the merged
+                                    file arrived as a download. Move it into the save folder below, replacing the
+                                    old file.</p>
+                                <div class="path-os-switch" role="group" aria-label="Platform">
+                                    <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
+                                    <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
+                                </div>
+                                <p class="field-hint save-path-intro">On Windows the save folder is here (under
+                                    <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
+                                <div class="save-path-row">
+                                    <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
+                                    <button type="button" class="secondary copy-path-btn">Copy folder path</button>
+                                    <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
+                                </div>
+                                <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar, then replace
+                                    <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
             </section>
         </main>
 
@@ -130,7 +203,7 @@
         </footer>
     </div>
 
-    <!-- Guided save-file modal, shared by "Load a .sav file" and "Import to save". -->
+    <!-- Guided save-file modal, shared by "Load my save file" and "Merge into a save file". -->
     <div class="modal-backdrop" id="saveModal" hidden>
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="saveModalTitle">
             <button type="button" class="modal-close" id="saveModalClose" aria-label="Close">&times;</button>
