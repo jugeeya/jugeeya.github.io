@@ -86,6 +86,7 @@ const run = async () => {
     deviceScaleFactor: DSF,
     acceptDownloads: true,
     reducedMotion: 'no-preference', // keep CSS transitions/animations alive
+    permissions: ['clipboard-write'], // so the modal's "Copy path" shows "Copied ✓"
     // Record at the viewport size (a larger size would only add gray borders).
     recordVideo: { dir: VIDEO_DIR, size: { width: W, height: H } },
   });
@@ -130,9 +131,21 @@ const run = async () => {
     try { delete window.showSaveFilePicker; } catch { /* ignore */ }
   });
   await page.goto(TARGET, { waitUntil: 'domcontentloaded' });
-  // Hide the page's own embedded demo video so the recording never shows a
-  // picture-in-picture of itself.
-  await page.addStyleTag({ content: '.demo-video { display: none !important; }' }).catch(() => {});
+  // Recording-only overrides:
+  //  - hide the page's own embedded demo video (no picture-in-picture of itself);
+  //  - force the single, centered column the walkthrough is built around. The
+  //    live desktop layout is a wide two-column grid, but the demo zooms in hard
+  //    (transform: scale) about the top-centre, which would push a side column
+  //    off-screen — so collapse to one narrower column that stays fully on-frame.
+  await page.addStyleTag({ content: `
+    .demo-video { display: none !important; }
+    @media (min-width: 1024px) {
+      .container-wide { max-width: 900px !important; }
+      main { display: block !important; }
+      main > .panel { grid-column: auto !important; grid-row: auto !important; margin: 0 0 1.5rem !important; }
+      .back-link + header { display: block !important; }
+    }
+  ` }).catch(() => {});
 
   // ── Intro: the page body is hidden from first paint (installCinematics CSS),
   // so it never flashes. We raise the title card, load + stage the page behind
@@ -154,9 +167,14 @@ const run = async () => {
   // The page reads top-to-bottom: the whole submit flow first, then browse.
   // (glide/annotate helpers now smooth-scroll their target into view.)
 
-  // ── 1. Load your save (nothing uploaded) ───────────────────────────────────
-  const chooser = page.waitForEvent('filechooser');
+  // ── 1. Load your save — through the guided modal (copy path → choose file) ──
   await glideAndClick(page, '#savButton', { settle: 120 });
+  await page.locator('#saveModal').waitFor({ state: 'visible' });
+  await sleep(550);
+  await glideAndClick(page, '#saveModal .copy-path-btn', { settle: 150 }); // step 1
+  await sleep(750);
+  const chooser = page.waitForEvent('filechooser');
+  await glideAndClick(page, '#saveModalChoose', { settle: 150 });          // step 2
   await (await chooser).setFiles(SAVE_UPLOAD);
   await page.locator('#savPanel .sav-tag-checkbox').first().waitFor();
   await sleep(300);
@@ -227,9 +245,14 @@ const run = async () => {
   await showAnnotation(page, '#bracketStatus', "Paste a bracket URL to grab every entrant's tag", { ms: 1800 });
   await sleep(350);
 
-  // ── 7. Import the bracket straight into a save ─────────────────────────────
-  const chooser2 = page.waitForEvent('filechooser');
+  // ── 7. Import the bracket straight into a save (same guided modal) ─────────
   await glideAndClick(page, '#importSelected', { settle: 120 });
+  await page.locator('#saveModal').waitFor({ state: 'visible' });
+  await sleep(500);
+  await glideAndClick(page, '#saveModal .copy-path-btn', { settle: 150 });
+  await sleep(650);
+  const chooser2 = page.waitForEvent('filechooser');
+  await glideAndClick(page, '#saveModalChoose', { settle: 150 });
   await (await chooser2).setFiles(SAVE_UPLOAD);
   await sleep(1100);
   await showAnnotation(page, '#importStatus', 'Import a whole bracket into your own .sav', { ms: 1900, place: 'top' });
