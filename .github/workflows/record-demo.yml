@@ -65,11 +65,21 @@ jobs:
           set -e
           webm=$(ls -t videos/*.webm | head -1)
           echo "Converting $webm -> demo.mp4"
-          # -ss 0.5 trims the unavoidable blank first frame. The source is a
-          # native 1920x1080 capture (supersampled via deviceScaleFactor 2).
+          # -ss 0.5 trims the unavoidable blank first frame. Playwright's
+          # built-in recorder hard-caps capture at a real 25fps (not
+          # configurable), which reads a little choppy/grainy on its own, so:
+          #   - hqdn3d lightly denoises before anything else touches the frame;
+          #   - minterpolate (mi_mode=blend) doubles it to a genuine 50fps by
+          #     blending real neighboring frames — much cheaper than motion-
+          #     compensated modes (mi_mode=mci took >5min and never finished
+          #     on a 60s clip; blend takes ~20s) and produces no visible
+          #     ghosting on this content (slow eased cursor glides, mostly
+          #     static UI) — verified by eye on extracted frames;
+          #   - scale+lanczos is a no-op at capture's native 1920x1080 but
+          #     kept in case that ever changes.
           ffmpeg -y -ss 0.5 -i "$webm" \
-            -vf "fps=30,scale=1920:1080:flags=lanczos" \
-            -c:v libx264 -preset slow -pix_fmt yuv420p -crf 20 -movflags +faststart \
+            -vf "hqdn3d=1.2:1.0:6:4,minterpolate=fps=50:mi_mode=blend,scale=1920:1080:flags=lanczos" \
+            -c:v libx264 -preset slow -pix_fmt yuv420p -crf 18 -movflags +faststart \
             demo.mp4
           # Poster = the intro title card (fully shown from ~0.1s to ~1s in).
           ffmpeg -y -ss 0.8 -i demo.mp4 -frames:v 1 -q:v 3 demo-poster.jpg

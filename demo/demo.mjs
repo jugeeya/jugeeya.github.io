@@ -141,8 +141,8 @@ const run = async () => {
     .demo-video { display: none !important; }
     @media (min-width: 1024px) {
       .container-wide { max-width: 900px !important; }
-      main { display: block !important; }
-      main > .panel { grid-column: auto !important; grid-row: auto !important; margin: 0 0 1.5rem !important; }
+      main { display: block !important; max-width: 900px !important; }
+      #shareFlow, #pendingPanel, #getFlow { grid-column: auto !important; grid-row: auto !important; margin: 0 0 1.5rem !important; }
       .back-link + header { display: block !important; }
     }
   ` }).catch(() => {});
@@ -176,30 +176,29 @@ const run = async () => {
   const chooser = page.waitForEvent('filechooser');
   await glideAndClick(page, '#saveModalChoose', { settle: 150 });          // step 2
   await (await chooser).setFiles(SAVE_UPLOAD);
-  await page.locator('#savPanel .sav-tag-checkbox').first().waitFor();
+  await page.locator('#shareTagList .share-tag-checkbox').first().waitFor();
   await sleep(300);
-  await showAnnotation(page, '#savPanel', 'Read in your browser. Your save is never uploaded.', { ms: 1500, place: 'top' });
+  await showAnnotation(page, '#shareLoadedNote', 'Read in your browser. Your save is never uploaded.', { ms: 1500, place: 'top' });
 
-  // ── 2. Pick the HYPER tag and stage it ─────────────────────────────────────
-  const hyperSel = '#savPanel .sav-tag-checkbox[value="HYPER"]';
-  const tagSel = (await page.locator(hyperSel).count()) ? hyperSel : '#savPanel .sav-tag-checkbox >> nth=0';
+  // ── 2. Select the HYPER tag — exports it and reveals its own start.gg picker
+  //      inline on the row (no separate "add to submission" step anymore) ─────
+  const hyperSel = '#shareTagList .share-tag-checkbox[value="HYPER"]';
+  const tagSel = (await page.locator(hyperSel).count()) ? hyperSel : '#shareTagList .share-tag-checkbox >> nth=0';
   await glideAndClick(page, tagSel, { settle: 70 });
-  await sleep(90);
-  await glideAndClick(page, '#savPanel #savAddBtn', { settle: 70 });
-  await page.locator('#fileList .sgg-input').first().waitFor();
+  await page.locator('.share-tag-item.is-selected .sgg-input').waitFor({ timeout: 8000 });
   await sleep(180);
 
   // ── 3. Link HYPER to HyperFlame's start.gg (live search, real avatars) ─────
-  await showAnnotation(page, '#fileList', 'Link each tag to its own start.gg account', { ms: 1100, place: 'top' });
-  await glideAndType(page, '#fileList .sgg-input', 'HyperFlame', { perChar: 55 });
+  await showAnnotation(page, '.share-tag-item.is-selected', 'Link each tag to its own start.gg account', { ms: 1100, place: 'top' });
+  await glideAndType(page, '.share-tag-item.is-selected .sgg-input', 'HyperFlame', { perChar: 55 });
   try {
-    await page.locator('#fileList .sgg-result').first().waitFor({ timeout: 6000 });
+    await page.locator('.share-tag-item.is-selected .sgg-result').first().waitFor({ timeout: 6000 });
   } catch { /* live search may be slow; continue anyway */ }
   await sleep(650);
   // Pick HyperFlame's actual account (the one the published HYPER tag uses).
-  let pick = page.locator('#fileList .sgg-result').first();
+  let pick = page.locator('.share-tag-item.is-selected .sgg-result').first();
   if (hyper) {
-    const match = page.locator('#fileList .sgg-result').filter({ hasText: hyper.startgg.slug });
+    const match = page.locator('.share-tag-item.is-selected .sgg-result').filter({ hasText: hyper.startgg.slug });
     if (await match.count()) pick = match.first();
   }
   await glideAndClick(page, pick);
@@ -264,11 +263,13 @@ const run = async () => {
 
   const video = await page.video()?.path();
   // -ss 0.5 trims the unavoidable first-frame blank (the video records from
-  // page creation, before anything can paint).
+  // page creation, before anything can paint). Playwright's recorder is
+  // capped at a real 25fps, so denoise + blend-interpolate to 50fps before
+  // the final encode (see record-demo.yml for why blend, not mci).
   console.log(`\n✅ Recorded: ${video}\n` +
-    `Convert (downscale the 2x capture to crisp 1080p):\n` +
-    `   ffmpeg -ss 0.5 -i "${video}" -vf "fps=30,scale=1920:1080:flags=lanczos" ` +
-    `-c:v libx264 -preset slow -pix_fmt yuv420p -crf 20 -movflags +faststart demo.mp4\n`);
+    `Convert (denoise + interpolate to a real 50fps, crisp 1080p):\n` +
+    `   ffmpeg -ss 0.5 -i "${video}" -vf "hqdn3d=1.2:1.0:6:4,minterpolate=fps=50:mi_mode=blend,scale=1920:1080:flags=lanczos" ` +
+    `-c:v libx264 -preset slow -pix_fmt yuv420p -crf 18 -movflags +faststart demo.mp4\n`);
 };
 
 run().catch((e) => { console.error(e); process.exit(1); });
