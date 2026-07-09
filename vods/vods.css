@@ -160,8 +160,10 @@ label {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    color: var(--md-on-surface-variant);
+    /* Match the weight/colour of the other field labels (Station, start.gg URL). */
+    color: var(--md-on-surface);
     font-size: 0.85rem;
+    font-weight: 500;
 }
 
 .pad-field input {
