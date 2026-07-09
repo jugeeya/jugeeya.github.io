@@ -1,7 +1,17 @@
 {
   "version": 1,
-  "updated": "2026-07-08T06:32:59Z",
+  "updated": "2026-07-09T20:09:47Z",
   "tags": [
+    {
+      "name": "BOX",
+      "author": "Spyker",
+      "file": "box-000adab7.r2tag.zip",
+      "uploaded": "2026-07-09T20:09:25Z",
+      "startgg": {
+        "slug": "user/000adab7",
+        "tag": "Spyker"
+      }
+    },
     {
       "name": "JUGZ!",
       "author": "",
