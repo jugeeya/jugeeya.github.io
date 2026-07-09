@@ -44,8 +44,6 @@ const bracketStatus = document.getElementById('bracketStatus');
 const savButton = document.getElementById('savButton');
 const savInput = document.getElementById('savInput');
 const savPanel = document.getElementById('savPanel');
-const copyPathBtn = document.getElementById('copyPathBtn');
-const savePathText = document.getElementById('savePathText');
 const importSavInput = document.getElementById('importSavInput');
 const importOverwrite = document.getElementById('importOverwrite');
 const importStatus = document.getElementById('importStatus');
@@ -1017,10 +1015,9 @@ function saveOutput(bytes, filename) {
 // Reports where the finished save ended up (always a download for this tool).
 function deliveredStatus(rep, filename) {
     setImportStatus(
-        `Done: ${importSummary(rep)}. Downloaded <strong>${escapeHtml(filename)}</strong> ` +
-        `to your browser's downloads folder — replace your save file with it ` +
-        `(make a backup first). Tip: enable “always ask where to save files” in your ` +
-        `browser settings to choose the location.`,
+        `Done: ${importSummary(rep)}. Downloaded <strong>${escapeHtml(filename)}</strong>. ` +
+        `Move it into your save folder, replacing the old file (back it up first) — ` +
+        `the folder path is just below.`,
         rep.incompatible.length ? 'warn' : 'success'
     );
 }
@@ -1042,50 +1039,72 @@ async function importSelectedToSave(savFile) {
 // ---- Wire up events -------------------------------------------------------
 
 // Save-path platform switcher (Windows / Steam Deck). The Steam Deck location
-// is the fixed Proton prefix under the user's home folder.
+// is the fixed Proton prefix under the user's home folder. Two flavours per OS:
+// the full file path (submit flow — paste into the Open dialog) and the folder
+// (import flow — paste into Explorer, then drop the downloaded save in). The
+// switcher is shared: any .save-path-hint on the page (there are two) updates
+// together, keyed by its data-path-kind ("file" or "folder").
 const SAVE_PATHS = {
     windows: {
-        path: '%LOCALAPPDATA%\\Rivals2\\Saved\\SaveGames\\Rivals2_PlayerTagSaveSlot.sav',
-        intro: 'On Windows your save is here (under <code>C:\\Users\\&lt;you&gt;\\AppData\\Local</code>):',
-        tip: 'Tip: paste this into the file picker\'s <em>File name</em> box and hit Open to jump straight to it.',
+        file: {
+            path: '%LOCALAPPDATA%\\Rivals2\\Saved\\SaveGames\\Rivals2_PlayerTagSaveSlot.sav',
+            intro: 'On Windows your save is here (under <code>C:\\Users\\&lt;you&gt;\\AppData\\Local</code>):',
+            tip: 'Tip: paste this into the file picker\'s <em>File name</em> box and hit Open to jump straight to it.',
+        },
+        folder: {
+            path: '%LOCALAPPDATA%\\Rivals2\\Saved\\SaveGames',
+            intro: 'On Windows the save folder is here (under <code>C:\\Users\\&lt;you&gt;\\AppData\\Local</code>):',
+            tip: 'Tip: paste this into Explorer\'s address bar, then replace <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.',
+        },
     },
     deck: {
-        path: '~/.local/share/Steam/steamapps/compatdata/217000/pfx/drive_c/users/steamuser/AppData/Local/Rivals2/Saved/SaveGames/Rivals2_PlayerTagSaveSlot.sav',
-        intro: 'On Steam Deck (Proton) your save is under your home folder:',
-        tip: 'Tip: in the file picker press <kbd>Ctrl</kbd>+<kbd>L</kbd> and paste this path. You may need to show hidden files (<kbd>Ctrl</kbd>+<kbd>H</kbd>).',
+        file: {
+            path: '~/.local/share/Steam/steamapps/compatdata/217000/pfx/drive_c/users/steamuser/AppData/Local/Rivals2/Saved/SaveGames/Rivals2_PlayerTagSaveSlot.sav',
+            intro: 'On Steam Deck (Proton) your save is under your home folder:',
+            tip: 'Tip: in the file picker press <kbd>Ctrl</kbd>+<kbd>L</kbd> and paste this path. You may need to show hidden files (<kbd>Ctrl</kbd>+<kbd>H</kbd>).',
+        },
+        folder: {
+            path: '~/.local/share/Steam/steamapps/compatdata/217000/pfx/drive_c/users/steamuser/AppData/Local/Rivals2/Saved/SaveGames',
+            intro: 'On Steam Deck (Proton) the save folder is under your home folder:',
+            tip: 'Tip: open this folder (file manager ▸ <kbd>Ctrl</kbd>+<kbd>L</kbd>, paste) and replace the old <code>.sav</code> with the one you just downloaded. You may need to show hidden files (<kbd>Ctrl</kbd>+<kbd>H</kbd>).',
+        },
     },
 };
 
-const savePathIntro = document.getElementById('savePathIntro');
-const savePathTip = document.getElementById('savePathTip');
-const pathOsButtons = document.querySelectorAll('.path-os-btn');
-
 function setSavePathOs(os) {
-    const data = SAVE_PATHS[os];
-    if (!data) return;
-    savePathText.textContent = data.path;
-    if (savePathIntro) savePathIntro.innerHTML = data.intro;
-    if (savePathTip) savePathTip.innerHTML = data.tip;
-    pathOsButtons.forEach(btn => btn.classList.toggle('is-active', btn.dataset.os === os));
+    if (!SAVE_PATHS[os]) return;
+    document.querySelectorAll('.save-path-hint').forEach(hint => {
+        const kind = hint.dataset.pathKind === 'folder' ? 'folder' : 'file';
+        const data = SAVE_PATHS[os][kind];
+        const textEl = hint.querySelector('.save-path-text');
+        const introEl = hint.querySelector('.save-path-intro');
+        const tipEl = hint.querySelector('.save-path-tip');
+        if (textEl) textEl.textContent = data.path;
+        if (introEl) introEl.innerHTML = data.intro;
+        if (tipEl) tipEl.innerHTML = data.tip;
+        hint.querySelectorAll('.path-os-btn').forEach(btn =>
+            btn.classList.toggle('is-active', btn.dataset.os === os));
+    });
 }
 
-pathOsButtons.forEach(btn => {
+document.querySelectorAll('.path-os-btn').forEach(btn => {
     btn.addEventListener('click', () => setSavePathOs(btn.dataset.os));
 });
 
-if (copyPathBtn) {
-    copyPathBtn.addEventListener('click', async () => {
-        const path = savePathText.textContent.trim();
-        const prev = copyPathBtn.textContent;
+document.querySelectorAll('.copy-path-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const hint = btn.closest('.save-path-hint');
+        const path = hint?.querySelector('.save-path-text')?.textContent.trim() || '';
+        const prev = btn.textContent;
         try {
             await navigator.clipboard.writeText(path);
-            copyPathBtn.textContent = 'Copied ✓';
+            btn.textContent = 'Copied ✓';
         } catch {
-            copyPathBtn.textContent = 'Copy failed';
+            btn.textContent = 'Copy failed';
         }
-        setTimeout(() => { copyPathBtn.textContent = prev; }, 1500);
+        setTimeout(() => { btn.textContent = prev; }, 1500);
     });
-}
+});
 
 submitButton.addEventListener('click', submitTags);
 clearButton.addEventListener('click', () => {

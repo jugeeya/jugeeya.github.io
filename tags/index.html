@@ -41,18 +41,18 @@
                     submitting adds to the tag database for download by your TOs in the section below.
                 </p>
 
-                <div class="save-path-hint">
+                <div class="save-path-hint" data-path-kind="file">
                     <div class="path-os-switch" role="group" aria-label="Platform">
                         <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
                         <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
                     </div>
-                    <p class="field-hint" id="savePathIntro">On Windows your save is here (under
+                    <p class="field-hint save-path-intro">On Windows your save is here (under
                         <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
                     <div class="save-path-row">
-                        <code id="savePathText">%LOCALAPPDATA%\Rivals2\Saved\SaveGames\Rivals2_PlayerTagSaveSlot.sav</code>
-                        <button type="button" id="copyPathBtn" class="secondary">Copy path</button>
+                        <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames\Rivals2_PlayerTagSaveSlot.sav</code>
+                        <button type="button" class="secondary copy-path-btn">Copy path</button>
                     </div>
-                    <p class="field-hint" id="savePathTip">Tip: paste this into the file picker's <em>File name</em> box and hit
+                    <p class="field-hint save-path-tip">Tip: paste this into the file picker's <em>File name</em> box and hit
                         Open to jump straight to it.</p>
                 </div>
 
@@ -116,6 +116,25 @@
                     <input type="checkbox" id="importOverwrite" checked> Overwrite tags that already exist in my save
                 </label>
                 <p id="importStatus" class="upload-status"></p>
+
+                <div class="save-path-hint import-path-hint" data-path-kind="folder">
+                    <p class="save-path-heading">Where to put the imported save back</p>
+                    <p class="field-hint">Browsers can't write into the Rivals save folder directly, so
+                        <strong>Import to save</strong> hands you the merged file as a download. Drop it into your
+                        save folder, replacing the old one (back it up first).</p>
+                    <div class="path-os-switch" role="group" aria-label="Platform">
+                        <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
+                        <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
+                    </div>
+                    <p class="field-hint save-path-intro">On Windows the save folder is here (under
+                        <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
+                    <div class="save-path-row">
+                        <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
+                        <button type="button" class="secondary copy-path-btn">Copy folder path</button>
+                    </div>
+                    <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar, then replace
+                        <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.</p>
+                </div>
             </section>
         </main>
 
