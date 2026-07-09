@@ -27,9 +27,10 @@ const PENDING_KEY = 'r2tag_pending_submissions'; // localStorage key
 const POLL_INTERVAL_MS = 45000;
 
 // State
-// Each share entry is one selected tag from the loaded save:
-// { name, file (zipped .r2tag), picker } — picker.get() is the tag's start.gg
-// link ({ slug, tag } | null); every submitted tag carries its own.
+// Each share entry is one selected tag from the loaded save: { name, picker } —
+// picker.get() is the tag's start.gg link ({ slug, tag } | null); every
+// submitted tag carries its own. The tag is exported from the save (a whole-
+// file WASM parse) lazily at Submit, not on selection, so ticking stays instant.
 let shareEntries = [];
 let allTags = [];
 let tagSearchQuery = '';
@@ -188,28 +189,17 @@ function renderShareTagList() {
     }
 }
 
-// Selecting a tag exports it from the save (in-browser via WASM), zips it and
-// reveals its own start.gg picker right on the row. Deselecting removes it.
-async function toggleShareTag(name, checkbox, row, sggSlot) {
+// Selecting a tag just reveals its own start.gg picker on the row — instant,
+// with no WASM work. The tag's actual export + zip is deferred to submitTags()
+// so ticking a box never stalls on parsing a large save. Deselecting removes it.
+function toggleShareTag(name, checkbox, row, sggSlot) {
     if (checkbox.checked) {
-        checkbox.disabled = true;
-        row.classList.add('is-busy');
-        try {
-            const r2 = await exportTag(loadedSav.bytes, name);
-            const file = await zipR2tag(name, r2);
-            const picker = createStartggPicker(updateSubmitState);
-            shareEntries.push({ name, file, picker });
-            sggSlot.innerHTML = '';
-            sggSlot.appendChild(picker.root);
-            sggSlot.hidden = false;
-            row.classList.add('is-selected');
-        } catch (err) {
-            checkbox.checked = false;
-            setStatus(`Couldn't read “${escapeHtml(name)}” from the save: ${escapeHtml(String(err.message || err))}`, 'error');
-        } finally {
-            checkbox.disabled = false;
-            row.classList.remove('is-busy');
-        }
+        const picker = createStartggPicker(updateSubmitState);
+        shareEntries.push({ name, picker });
+        sggSlot.innerHTML = '';
+        sggSlot.appendChild(picker.root);
+        sggSlot.hidden = false;
+        row.classList.add('is-selected');
     } else {
         shareEntries = shareEntries.filter(e => e.name !== name);
         sggSlot.hidden = true;
@@ -293,13 +283,22 @@ async function submitTags() {
         return;
     }
 
-    setStatus('Submitting…');
     submitButton.disabled = true;
     try {
+        // Export + zip each selected tag now (deferred from selection so ticking
+        // stayed instant). This is the whole-save WASM parse, once per tag.
+        setStatus('Preparing tags…');
+        const prepared = [];
+        for (const e of shareEntries) {
+            const r2 = await exportTag(loadedSav.bytes, e.name);
+            const file = await zipR2tag(e.name, r2);
+            prepared.push({ file, link: e.picker.get() });
+        }
+
+        setStatus('Submitting…');
         const form = new FormData();
-        shareEntries.forEach(e => {
-            const link = e.picker.get();
-            form.append('tags', e.file, e.file.name);
+        prepared.forEach(({ file, link }) => {
+            form.append('tags', file, file.name);
             form.append('startgg_slug', link.slug);
             form.append('startgg_tag', link.tag || '');
         });

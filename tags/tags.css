@@ -266,10 +266,6 @@ code {
     border-bottom: none;
 }
 
-.share-tag-item.is-busy {
-    opacity: 0.6;
-}
-
 /* Selected rows open up to hold their own start.gg picker. */
 .share-tag-sgg {
     padding: 0 0.85rem 0.85rem 2.5rem;
