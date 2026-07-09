@@ -1,11 +1,11 @@
-# Demo video recorder
+# Hero screenshots
 
-Records a polished walkthrough of the Rivals II Controls / Tag Sharing tool with
-Playwright — a fake cursor that glides with easing, natural typing, title cards,
-and annotations — then you convert WebM → MP4 with ffmpeg.
+Generates the clickable screenshot gallery shown in the tags page hero
+(`tags/shots/*.png`) by driving the real UI with Playwright and capturing the
+viewport at a phone-ish width, 3× scale, for retina-crisp stills.
 
-Approach borrowed from
-[Generating demo videos with Playwright](https://justin.abrah.ms/blog/2026-02-12-generating-demo-videos-with-playwright.html).
+(This used to record a walkthrough video; a few crisp screenshots proved far
+more reliable and read better as a hero, so the video was retired.)
 
 ## Setup
 
@@ -17,67 +17,30 @@ npm run fixture                     # builds fixtures/demo-save.sav from publish
 ```
 
 `npm run fixture` reuses the site's committed WASM to merge a few published tags
-into a multi-tag save the demo can load. Alternatively, skip it and point at your
-own save: `SAVE_FILE=/path/to/Rivals2_PlayerTagSaveSlot.sav`.
+into a multi-tag save the screenshots can load. Alternatively, skip it and point
+at your own save: `SAVE_FILE=/path/to/Rivals2_PlayerTagSaveSlot.sav`.
 
-## Record
+## Generate
 
 ```sh
-npm run record
-# -> ✅ Recorded: videos/<hash>.webm  (+ a suggested ffmpeg command)
+npm run shots
+# -> ✅ Screenshots in ../tags/shots/
 ```
 
 By default it drives the **live** site (`https://jugeeya.github.io/tags/`) so the
-start.gg search and tag database are real. Two requests are mocked so the demo is
-deterministic and harmless:
+start.gg lookup and tag database are real. Everything with side effects is
+mocked so it's deterministic and harmless:
 
-- the **bracket lookup** returns the currently-published tags as "entrants" (so
-  they all get selected), and
-- the **submit POST** is faked — *no real pull request is opened*.
+- **start.gg** search / user lookup return a fixed player (with an inline avatar),
+- the **bracket lookup** and **submit POST** are faked — *no real pull request is
+  opened*.
 
-Override the target with `TARGET=...`, but note a local copy can't reach the
-broker/start.gg (CORS allows only the `jugeeya.github.io` origin), so the live
-site is recommended.
+Override the target with `TARGET=http://localhost:8848/tags/` to shoot a local
+copy (mocks make this work fully offline).
 
-## Convert to MP4 (+ optional music)
+## Automation
 
-`-ss 0.5` trims the unavoidable blank first frame (the recording starts at page
-creation, before anything can paint). `node demo.mjs` prints a ready-to-run line.
-
-```sh
-# basic
-ffmpeg -ss 0.5 -i videos/<hash>.webm -vf "fps=30,scale=1280:720" -c:v libx264 -pix_fmt yuv420p -crf 20 demo.mp4
-
-# with a music bed: fade in 2s, 15% volume, fade out over the last 3s
-ffmpeg -ss 0.5 -i videos/<hash>.webm -i music.mp3 \
-  -filter_complex "[1:a]afade=t=in:st=0:d=2,volume=0.15,afade=t=out:st=DURATION-3:d=3[a]" \
-  -map 0:v -map "[a]" -shortest -c:v libx264 -pix_fmt yuv420p -crf 20 demo.mp4
-```
-
-(Replace `DURATION` with the video length in seconds.)
-
-## Continuous recording (CI)
-
-`.github/workflows/record-demo.yml` re-records the demo when the recorder
-(`demo/*.mjs`) changes, or on a manual **Run workflow**. It serves the repo and
-records that local copy (`TARGET=http://localhost:8000/tags/`) so the video
-reflects the current code without waiting for a Pages deploy. When the target
-isn't the live site, `demo.mjs` mocks the start.gg search/avatars so the
-recording stays deterministic and offline (it also hides the page's own embedded
-video so the recording never films itself), then commits `demo/demo.mp4` and
-`demo/demo-poster.jpg`.
-
-The video and poster are **committed** so GitHub Pages serves them as `video/mp4`
-(with range support), which is what lets the embed play inline on mobile —
-release-asset downloads are forced to `application/octet-stream` + `attachment`,
-which iOS Safari won't play in `<video>`. Because each recording adds ~7MB to
-history, the trigger is deliberately narrow (recorder changes + manual runs)
-rather than firing on every UI tweak; run it by hand to refresh after a UI change
-you want reflected.
-
-## Tuning
-
-- Pacing/typing speed: tweak `perChar`, `sleep(...)`, and annotation `ms` in
-  `demo.mjs`; cursor easing/steps live in `lib.mjs`.
-- Resolution: `W`/`H` and `deviceScaleFactor` in `demo.mjs` (2× gives crisp text).
-- Add/remove scenes by editing the clearly-sectioned blocks in `demo.mjs`.
+`.github/workflows/screenshots.yml` regenerates and commits the screenshots when
+the generator (`demo/shots.mjs`) or the tags UI (`tags/index.html`, `tags.css`,
+`tags.js`) changes, and on manual dispatch — so the gallery never drifts out of
+sync with the live UI.

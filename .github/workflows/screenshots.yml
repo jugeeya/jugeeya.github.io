@@ -1,0 +1,69 @@
+name: Generate hero screenshots
+
+# Regenerates tags/shots/*.png (the clickable gallery in the tags page hero) and
+# commits them. Runs a locally-served copy of the just-pushed code (start.gg is
+# mocked in shots.mjs), so the shots reflect the current UI without waiting for a
+# Pages deploy. Triggers when the generator or the tags UI changes, plus manual
+# runs (Actions -> Run workflow).
+on:
+  push:
+    branches: [main]
+    paths:
+      - "demo/shots.mjs"
+      - "tags/index.html"
+      - "tags/tags.css"
+      - "tags/tags.js"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+# Only keep the newest run in flight; superseded pushes cancel.
+concurrency:
+  group: screenshots
+  cancel-in-progress: true
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install demo dependencies
+        working-directory: demo
+        run: npm install
+
+      - name: Install Playwright Chromium
+        working-directory: demo
+        run: npx playwright install --with-deps chromium
+
+      - name: Generate screenshots (against a local copy)
+        working-directory: demo
+        run: |
+          set -e
+          # Serve the repo so the shots capture the freshly-pushed UI.
+          (cd .. && python3 -m http.server 8000 >/tmp/httpd.log 2>&1 &)
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:8000/tags/ >/dev/null && break
+            sleep 1
+          done
+          ORIGIN=http://localhost:8000 node generate-fixture.mjs
+          TARGET=http://localhost:8000/tags/ node shots.mjs
+
+      - name: Commit the screenshots if they changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tags/shots/*.png
+          if git diff --staged --quiet; then
+            echo "No screenshot change."
+          else
+            git commit -m "chore: update hero screenshots"
+            git push
+          fi

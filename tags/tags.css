@@ -32,12 +32,10 @@ main {
         min-width: 0;
     }
 
-    /* More specific than the base `.demo-video` (which sits lower in the file
-       and would otherwise re-cap the width). */
-    .back-link + header .demo-video {
+    /* The hero screenshot gallery sits beside the title, filling the right ~46%. */
+    .back-link + header .demo-gallery {
         flex: 0 1 46%;
         width: 46%;
-        max-width: none;
         margin: 0;
     }
 
@@ -793,17 +791,117 @@ code {
     accent-color: var(--primary-color);
 }
 
-/* Embedded demo walkthrough (in the hero) */
-.demo-video {
+/* ---- Hero screenshot gallery + lightbox ----------------------------------- */
+/* Two clickable screenshot cards teasing the two flows. Each shows the top of
+   its (tall, portrait) shot cropped into a card; clicking opens the full image
+   in a lightbox. */
+.demo-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    width: 100%;
+    max-width: 620px;
+    margin: 1.75rem auto 0;
+}
+
+.shot {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background: var(--md-surface-container-lowest, #0f0d13);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: zoom-in;
+    box-shadow: var(--shadow-card);
+    transition: border-color var(--md-dur-short, 0.18s) ease,
+        transform var(--md-dur-short, 0.18s) ease,
+        box-shadow var(--md-dur-short, 0.18s) ease;
+}
+
+.shot:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: var(--md-glow);
+}
+
+.shot img {
     display: block;
     width: 100%;
-    max-width: 760px;
-    aspect-ratio: 16 / 9;
-    margin: 1.75rem auto 0;
+    height: 300px;
+    object-fit: cover;
+    object-position: top center;
+    /* A soft fade at the bottom hints the shot continues (click to see more). */
+    -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent);
+    mask-image: linear-gradient(to bottom, #000 78%, transparent);
+}
+
+.shot-caption {
+    padding: 0.6rem 0.85rem 0.75rem;
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: left;
+}
+
+@media (max-width: 460px) {
+    .shot img { height: 240px; }
+    .shot-caption { font-size: 0.85rem; }
+}
+
+/* Lightbox: full screenshot on a dimmed backdrop, scrollable if taller than
+   the viewport (these shots are long). */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 120;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 2.5rem 1.25rem;
+    background: color-mix(in srgb, #000 72%, transparent);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    animation: modal-fade var(--md-dur-med, 0.3s) var(--md-ease-standard, ease);
+}
+
+.lightbox[hidden] { display: none; }
+
+.lightbox-img {
+    width: min(440px, 100%);
+    height: auto;
     border-radius: 14px;
     border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-card);
-    background: var(--md-surface-container-lowest, #0f0d13);
+    box-shadow: var(--md-elev-3);
+    margin: auto;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 1rem;
+    right: 1.1rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 0;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: #fff;
+    background: color-mix(in srgb, #000 45%, transparent);
+    box-shadow: none;
+    border-radius: var(--md-corner-full);
+}
+
+.lightbox-close:hover:not(:disabled) {
+    background: color-mix(in srgb, #000 65%, transparent);
+    box-shadow: none;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lightbox { animation: none; }
 }
 
 /* Save-path hint (modal + step 3 of the get flow) */

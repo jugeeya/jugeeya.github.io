@@ -1175,6 +1175,40 @@ if (importSavInput) {
     });
 }
 
+// ---- Hero screenshot lightbox ---------------------------------------------
+
+const lightbox = document.getElementById('lightbox');
+if (lightbox) {
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    const openLightbox = (src, alt) => {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        lightbox.hidden = false;
+        document.body.classList.add('modal-open');
+        lightboxClose.focus();
+    };
+    const closeLightbox = () => {
+        lightbox.hidden = true;
+        lightboxImg.src = '';
+        document.body.classList.remove('modal-open');
+    };
+
+    document.querySelectorAll('.shot').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const img = btn.querySelector('img');
+            openLightbox(btn.dataset.full || img?.src, img?.alt);
+        });
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+    // Click the backdrop (anywhere that isn't the image) to dismiss.
+    lightbox.addEventListener('click', (e) => { if (e.target !== lightboxImg) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+    });
+}
+
 // Init
 loadManifest();
 renderPending();

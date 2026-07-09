@@ -27,10 +27,18 @@
                     Add your tag once and tournaments load every entrant's tag onto their setups in a
                     few clicks.</p>
             </div>
-            <video class="demo-video" controls playsinline preload="none"
-                poster="../demo/demo-poster.jpg"
-                src="../demo/demo.mp4"
-                aria-label="Walkthrough of the Rivals II tag sharing tool"></video>
+            <div class="demo-gallery" aria-label="Screenshots of the tag sharing tool">
+                <button type="button" class="shot" data-full="shots/share.png">
+                    <img src="shots/share.png" loading="lazy"
+                        alt="Share your tag: load your Rivals II save, pick the tags to share, and link each to a start.gg account">
+                    <span class="shot-caption">Share your tag</span>
+                </button>
+                <button type="button" class="shot" data-full="shots/install.png">
+                    <img src="shots/install.png" loading="lazy"
+                        alt="Install tags to your setup: pick the tags you need, preview their control changes, and merge them into a save file">
+                    <span class="shot-caption">Install tags to a setup</span>
+                </button>
+            </div>
         </header>
 
         <main>
@@ -233,6 +241,12 @@
                 </li>
             </ol>
         </div>
+    </div>
+
+    <!-- Lightbox for the hero screenshots (opened from .shot buttons). -->
+    <div class="lightbox" id="lightbox" hidden>
+        <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
