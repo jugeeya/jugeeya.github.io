@@ -932,6 +932,20 @@ body.modal-open { overflow: hidden; }
     font-size: 0.85rem;
 }
 
+/* Persistent "Copied ✓" note beside the copy button (the button label stays). */
+.copy-feedback {
+    flex-shrink: 0;
+    align-self: center;
+    color: var(--success-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.copy-feedback.is-error {
+    color: var(--error-color);
+}
+
 .sgg-loading {
     padding: 0.5rem 0.85rem;
     font-size: 0.8rem;

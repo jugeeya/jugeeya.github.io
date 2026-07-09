@@ -1085,6 +1085,18 @@ function setSavePathOs(os) {
         if (tipEl) tipEl.innerHTML = data.tip;
         hint.querySelectorAll('.path-os-btn').forEach(btn =>
             btn.classList.toggle('is-active', btn.dataset.os === os));
+        // The copied path is now stale — clear any "Copied" note.
+        clearCopyFeedback(hint);
+    });
+}
+
+// The "Copied ✓" note sits beside the copy button and stays until the path
+// changes (kept visible so the confirmation doesn't flash away, per feedback).
+function clearCopyFeedback(scope) {
+    (scope || document).querySelectorAll('.copy-feedback').forEach(fb => {
+        fb.hidden = true;
+        fb.textContent = '';
+        fb.classList.remove('is-error');
     });
 }
 
@@ -1096,14 +1108,14 @@ document.querySelectorAll('.copy-path-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
         const hint = btn.closest('.save-path-hint');
         const path = hint?.querySelector('.save-path-text')?.textContent.trim() || '';
-        const prev = btn.textContent;
+        const fb = hint?.querySelector('.copy-feedback');
+        // Keep the button label put; show a persistent note beside it instead.
         try {
             await navigator.clipboard.writeText(path);
-            btn.textContent = 'Copied ✓';
+            if (fb) { fb.textContent = 'Copied ✓'; fb.classList.remove('is-error'); fb.hidden = false; }
         } catch {
-            btn.textContent = 'Copy failed';
+            if (fb) { fb.textContent = 'Copy failed'; fb.classList.add('is-error'); fb.hidden = false; }
         }
-        setTimeout(() => { btn.textContent = prev; }, 1500);
     });
 });
 
@@ -1126,6 +1138,7 @@ function openSaveModal(mode) {
     saveModalMode = mode;
     saveModalTitle.textContent = mode === 'import' ? 'Import into your save' : 'Load your save file';
     saveModalChoose.textContent = mode === 'import' ? 'Choose save file…' : 'Choose file…';
+    clearCopyFeedback(saveModal);   // fresh "Copied" state each open
     saveModal.hidden = false;
     document.body.classList.add('modal-open');
     // Focus the copy button (step 1) so keyboard users land inside the dialog.

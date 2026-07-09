@@ -104,9 +104,10 @@
 
                 <div class="save-path-hint import-path-hint" data-path-kind="folder" id="importPathHint" hidden>
                     <p class="save-path-heading">Where to put the imported save back</p>
-                    <p class="field-hint">Browsers can't write into the Rivals save folder directly, so
-                        <strong>Import to save</strong> hands you the merged file as a download. Drop it into your
-                        save folder, replacing the old one (back it up first).</p>
+                    <p class="field-hint"><strong>Import to save</strong> hands you the merged file as a download —
+                        browsers can't overwrite the save in place. When your browser asks where to save, pick the
+                        folder below and save it over the old file (back it up first). If your browser adds a
+                        <code>(1)</code> to the name, delete it so it replaces the original.</p>
                     <div class="path-os-switch" role="group" aria-label="Platform">
                         <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
                         <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
@@ -116,6 +117,7 @@
                     <div class="save-path-row">
                         <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
                         <button type="button" class="secondary copy-path-btn">Copy folder path</button>
+                        <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
                     </div>
                     <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar, then replace
                         <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.</p>
@@ -146,6 +148,7 @@
                         <div class="save-path-row">
                             <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames\Rivals2_PlayerTagSaveSlot.sav</code>
                             <button type="button" class="secondary copy-path-btn">Copy path</button>
+                            <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
                         </div>
                         <p class="field-hint save-path-tip">Tip: paste this into the file picker's <em>File name</em>
                             box and hit Open to jump straight to it.</p>
