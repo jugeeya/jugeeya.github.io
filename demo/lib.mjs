@@ -54,6 +54,13 @@ export async function installCinematics(page) {
 
     window.__cine = {
       move(x, y) { cur.style.left = x + 'px'; cur.style.top = y + 'px'; cur.style.opacity = '1'; },
+      // Fades the cursor out rather than leaving it sitting at a stale
+      // position. Used whenever the page is about to scroll without a
+      // matching moveCursorTo() to follow (see centerOf / showAnnotation) --
+      // #__cursor is position:fixed, so a scroll moves the page underneath
+      // it while it stays put, visually pointing at whatever content
+      // happens to land there instead of its real (pre-scroll) target.
+      hide() { cur.style.opacity = '0'; },
       click() {
         cur.classList.add('click');
         setTimeout(() => cur.classList.remove('click'), 130);
@@ -125,6 +132,12 @@ async function centerOf(page, target) {
   // Eased-scroll into view only when part of it is near/over an edge, so it's
   // fully visible before the click (Playwright won't then auto-scroll/jump).
   if (b && (b.y < 70 || b.y + b.height > vh - 70)) {
+    // The fake cursor is position:fixed and only moves when told to -- left
+    // showing during a scroll, it stays at its old screen coordinates while
+    // the page slides underneath it, visibly "pointing" at whatever content
+    // now happens to be there. Hide it for the scroll; callers that go on to
+    // moveCursorTo() (glideAndClick/glideAndType) fade it back in there.
+    await page.evaluate(() => window.__cine && window.__cine.hide());
     const sy = await page.evaluate(() => window.scrollY);
     const dest = sy + b.y - Math.max(20, (vh - b.height) / 2);
     await smoothScrollToY(page, dest, 600);
@@ -214,24 +227,26 @@ export async function hideTitleCard(page) {
   await sleep(650);
 }
 
-// Floating label anchored above/below an element.
-export async function showAnnotation(page, selector, text, { ms = 2200, place = 'top' } = {}) {
-  const { box } = await centerOf(page, selector);
-  await page.evaluate(({ box, text, place }) => {
+// Floating caption pinned to a fixed corner of the frame -- not positioned
+// relative to the target, so it never has to dodge its own edge-clamping and
+// never covers the very thing it's describing. Still scrolls the target into
+// view first (via centerOf) so viewers can see what's being discussed, then
+// hides the fake cursor: this is a narration beat, not an interaction, and
+// leaving the cursor at wherever it last was (now possibly scrolled past)
+// would visibly point at the wrong thing for the whole caption duration.
+export async function showAnnotation(page, selector, text, { ms = 2200 } = {}) {
+  await centerOf(page, selector);
+  await page.evaluate(() => window.__cine && window.__cine.hide());
+  await page.evaluate((text) => {
     const n = document.createElement('div');
     n.className = '__note';
     n.textContent = text;
     document.documentElement.appendChild(n);
-    const nb = n.getBoundingClientRect();
-    let x = box.x + box.width / 2 - nb.width / 2;
-    let y = place === 'top' ? box.y - nb.height - 14 : box.y + box.height + 14;
-    x = Math.max(10, Math.min(x, window.innerWidth - nb.width - 10));
-    y = Math.max(10, y);
-    n.style.left = x + 'px';
-    n.style.top = y + 'px';
+    n.style.top = '90px';
+    n.style.right = '60px';
     requestAnimationFrame(() => (n.style.opacity = '1'));
     window.__lastNote = n;
-  }, { box, text, place });
+  }, text);
   await sleep(ms);
   await page.evaluate(() => {
     const n = window.__lastNote;

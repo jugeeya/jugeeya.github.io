@@ -210,7 +210,7 @@ const run = async () => {
   await (await chooser).setFiles(SAVE_UPLOAD);
   await page.locator('#shareTagList .share-tag-checkbox').first().waitFor();
   await sleep(300);
-  await showAnnotation(page, '#shareLoadedNote', 'Read in your browser. Your save is never uploaded.', { ms: 1500, place: 'top' });
+  await showAnnotation(page, '#shareLoadedNote', 'Read in your browser. Your save is never uploaded.', { ms: 1500 });
 
   // ── 2. Select the HYPER tag — exports it and reveals its own start.gg picker
   //      inline on the row (no separate "add to submission" step anymore) ─────
@@ -221,7 +221,7 @@ const run = async () => {
   await sleep(180);
 
   // ── 3. Link HYPER to HyperFlame's start.gg (live search, real avatars) ─────
-  await showAnnotation(page, '.share-tag-item.is-selected', 'Link each tag to its own start.gg account', { ms: 1100, place: 'top' });
+  await showAnnotation(page, '.share-tag-item.is-selected', 'Link each tag to its own start.gg account', { ms: 1100 });
   await glideAndType(page, '.share-tag-item.is-selected .sgg-input', 'HyperFlame', { perChar: 55 });
   try {
     await page.locator('.share-tag-item.is-selected .sgg-result').first().waitFor({ timeout: 6000 });
@@ -241,7 +241,7 @@ const run = async () => {
   await page.locator('#pendingPanel').waitFor({ state: 'visible' }).catch(() => {});
   await sleep(750);
   // Annotate the "Your submissions" panel (the success line auto-clears).
-  await showAnnotation(page, '#pendingPanel', "Submitted — it's now in the shared database below.", { ms: 1900, place: 'top' });
+  await showAnnotation(page, '#pendingPanel', "Submitted — it's now in the shared database below.", { ms: 1900 });
   await sleep(400);
 
   // ── 5. Browse + view a tag's actual control changes ────────────────────────
@@ -254,7 +254,7 @@ const run = async () => {
     if (dest != null) await smoothScrollToY(page, dest, 750);
   }
   await sleep(350);
-  await showAnnotation(page, '#tagSearch', 'A shared database of tags + custom controls', { ms: 1600, place: 'top' });
+  await showAnnotation(page, '#tagSearch', 'A shared database of tags + custom controls', { ms: 1600 });
   await glideAndType(page, '#tagSearch', 'Hyper', { perChar: 95 });
   await sleep(700);
   await glideAndClick(page, '#tagList .tag-diff-toggle');
@@ -264,7 +264,7 @@ const run = async () => {
     return b && !/Loading/.test(b.textContent);
   }, { timeout: 8000 }).catch(() => {});
   await sleep(400);
-  await showAnnotation(page, '#tagList .tag-diff-panel', 'See exactly which controls a tag changes', { ms: 2000, place: 'top' });
+  await showAnnotation(page, '#tagList .tag-diff-panel', 'See exactly which controls a tag changes', { ms: 2000 });
   await sleep(400);
   await glideAndType(page, '#tagSearch', '', { perChar: 0 }); // clear → all tags again
   await sleep(450);
@@ -286,7 +286,7 @@ const run = async () => {
   await glideAndClick(page, '#saveModalChoose', { settle: 150 });
   await (await chooser2).setFiles(SAVE_UPLOAD);
   await sleep(1100);
-  await showAnnotation(page, '#importStatus', 'Import a whole bracket into your own .sav', { ms: 1900, place: 'top' });
+  await showAnnotation(page, '#importStatus', 'Import a whole bracket into your own .sav', { ms: 1900 });
   await sleep(1100);               // brief hold on the final state (no outro card)
 
   // stop() flushes the (fast, ultrafast-h264) first pass; our denoise +
