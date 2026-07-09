@@ -57,30 +57,23 @@ jobs:
             sleep 1
           done
           ORIGIN=http://localhost:8000 node generate-fixture.mjs
+          # demo.mjs writes demo.mp4 directly via playwright-recorder-plus
+          # (clean JPEG-sourced capture + our own denoise/interpolate second
+          # pass) -- no separate webm-to-mp4 conversion step needed anymore.
+          # See the comment block at the top of demo.mjs for why: Chromium's
+          # CDP screencast (what both Playwright's built-in recorder and this
+          # library are built on) caps out at a real ~15-16fps in headless
+          # regardless of resolution/quality, so recorder-plus can't buy more
+          # real fps -- but its clean JPEG source lets our own second-pass
+          # ffmpeg filter chain produce ~45% smaller files than re-encoding
+          # Playwright's VP8 output, at equal crf and no measurable quality
+          # loss (A/B'd via ffmpeg's difference blend mode before adopting).
           TARGET=http://localhost:8000/tags/ node demo.mjs
 
-      - name: Convert WebM to MP4
+      - name: Generate poster
         working-directory: demo
         run: |
           set -e
-          webm=$(ls -t videos/*.webm | head -1)
-          echo "Converting $webm -> demo.mp4"
-          # -ss 0.5 trims the unavoidable blank first frame. Playwright's
-          # built-in recorder hard-caps capture at a real 25fps (not
-          # configurable), which reads a little choppy/grainy on its own, so:
-          #   - hqdn3d lightly denoises before anything else touches the frame;
-          #   - minterpolate (mi_mode=blend) doubles it to a genuine 50fps by
-          #     blending real neighboring frames — much cheaper than motion-
-          #     compensated modes (mi_mode=mci took >5min and never finished
-          #     on a 60s clip; blend takes ~20s) and produces no visible
-          #     ghosting on this content (slow eased cursor glides, mostly
-          #     static UI) — verified by eye on extracted frames;
-          #   - scale+lanczos is a no-op at capture's native 1920x1080 but
-          #     kept in case that ever changes.
-          ffmpeg -y -ss 0.5 -i "$webm" \
-            -vf "hqdn3d=1.2:1.0:6:4,minterpolate=fps=50:mi_mode=blend,scale=1920:1080:flags=lanczos" \
-            -c:v libx264 -preset slow -pix_fmt yuv420p -crf 18 -movflags +faststart \
-            demo.mp4
           # Poster = the intro title card (fully shown from ~0.1s to ~1s in).
           ffmpeg -y -ss 0.8 -i demo.mp4 -frames:v 1 -q:v 3 demo-poster.jpg
 

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "fflate": "^0.8.2",
-    "playwright": "^1.50.0"
+    "playwright": "^1.50.0",
+    "playwright-recorder-plus": "^0.1.3"
   }
 }
