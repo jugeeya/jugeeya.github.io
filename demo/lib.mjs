@@ -4,7 +4,13 @@
 
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-// Tracked cursor position (the demo drives a single page).
+// How long the fake cursor's CSS left/top transition takes (must match the
+// `.34s` in the #__cursor rule below): callers wait this out so the dot has
+// visibly arrived before the click fires.
+const GLIDE_MS = 340;
+
+// Tracked cursor position (kept for API compatibility; the cursor itself now
+// follows real pointer events, so this is only a bookkeeping value).
 let pos = { x: 0, y: 0 };
 export function resetCursor(x, y) { pos = { x, y }; }
 
@@ -24,6 +30,11 @@ export async function installCinematics(page) {
          This is a class on <html> (not a child element), so the HTML parser can't
          drop it the way it drops a stray <div>. The demo adds .__lit to reveal. */
       html:not(.__lit) body{visibility:hidden !important}
+      /* Opaque dark curtain over everything from the first paint until reveal.
+         Not a title card (no text) -- just prevents the white browser default
+         from flashing while the page loads + stages. revealPage fades it out. */
+      #__curtain{position:fixed;inset:0;background:#141218;z-index:2147483640;
+        opacity:1;transition:opacity .55s ease;pointer-events:none}
       #__cursor{position:fixed;z-index:2147483647;width:22px;height:22px;margin:-11px 0 0 -11px;
         border-radius:50%;background:rgba(255,255,255,.95);
         box-shadow:0 0 0 2px rgba(0,0,0,.4),0 3px 10px rgba(0,0,0,.45);
@@ -48,29 +59,52 @@ export async function installCinematics(page) {
     // Match the page bg so the hidden-body load and zoom-out leave no white edges.
     document.documentElement.style.background = '#141218';
 
+    const curtain = document.createElement('div');
+    curtain.id = '__curtain';
+    document.documentElement.appendChild(curtain);
+
     const cur = document.createElement('div');
     cur.id = '__cursor';
+    // Start centred (still hidden) so the first reveal eases from mid-screen
+    // rather than flying in from the top-left corner (0,0).
+    cur.style.left = (window.innerWidth / 2) + 'px';
+    cur.style.top = (window.innerHeight / 2) + 'px';
     document.documentElement.appendChild(cur);
 
+    // Slave the fake cursor to the REAL pointer. Playwright's mouse actions
+    // (hover / click / mouse.move) dispatch trusted mousemove events whose
+    // clientX/clientY are the exact viewport point it is acting on, so binding
+    // the cursor's left/top to those makes it correct *by construction* -- it
+    // can no longer drift from where clicks actually land, whether the cause is
+    // the zoom transform, a scroll, or a mid-animation layout shift. The CSS
+    // transition on left/top turns each jump into a smooth glide. #__cursor is
+    // fixed and lives on <html> (outside the scaled <body>), so clientX maps
+    // straight to its left with no transform correction needed.
+    window.addEventListener('mousemove', (e) => {
+      cur.style.left = e.clientX + 'px';
+      cur.style.top = e.clientY + 'px';
+      cur.style.opacity = '1';
+    }, true);
+    // Ripple + press-shrink on the real mousedown, so click feedback fires
+    // exactly when and where Playwright presses (including click()'s own
+    // internal press) rather than at a separately-tracked guess.
+    window.addEventListener('mousedown', () => {
+      cur.classList.add('click');
+      setTimeout(() => cur.classList.remove('click'), 130);
+      const r = document.createElement('div');
+      r.className = '__ripple';
+      r.style.left = cur.style.left;
+      r.style.top = cur.style.top;
+      document.documentElement.appendChild(r);
+      setTimeout(() => r.remove(), 580);
+    }, true);
+
     window.__cine = {
-      move(x, y) { cur.style.left = x + 'px'; cur.style.top = y + 'px'; cur.style.opacity = '1'; },
-      // Fades the cursor out rather than leaving it sitting at a stale
-      // position. Used whenever the page is about to scroll without a
-      // matching moveCursorTo() to follow (see centerOf / showAnnotation) --
-      // #__cursor is position:fixed, so a scroll moves the page underneath
-      // it while it stays put, visually pointing at whatever content
-      // happens to land there instead of its real (pre-scroll) target.
+      // Fade the cursor out for beats where the pointer isn't moving but the
+      // page is (a scroll, or an annotation): a fixed cursor would otherwise
+      // sit frozen mid-screen, appearing to point at whatever scrolled under
+      // it. The next real mouse move fades it back in at the right spot.
       hide() { cur.style.opacity = '0'; },
-      click() {
-        cur.classList.add('click');
-        setTimeout(() => cur.classList.remove('click'), 130);
-        const r = document.createElement('div');
-        r.className = '__ripple';
-        r.style.left = cur.style.left;
-        r.style.top = cur.style.top;
-        document.documentElement.appendChild(r);
-        setTimeout(() => r.remove(), 580);
-      },
     };
     };
     if (document.documentElement) setup();
@@ -83,11 +117,12 @@ export async function installCinematics(page) {
   });
 }
 
-// Glide the cursor to a point. The fake cursor eases via a CSS transition (one
-// round-trip, not 30); the real mouse moves for hover state.
-export async function moveCursorTo(page, x, y, ms = 340) {
+// Glide the real pointer to a raw viewport point (the fake cursor follows via
+// the mousemove listener). Rarely needed directly now that glideAndClick /
+// glideAndType target elements through Playwright; kept for the odd free-form
+// move.
+export async function moveCursorTo(page, x, y, ms = GLIDE_MS) {
   await page.mouse.move(x, y, { steps: 6 });
-  await page.evaluate(([X, Y]) => window.__cine && window.__cine.move(X, Y), [x, y]);
   await sleep(ms);
   pos = { x, y };
 }
@@ -150,20 +185,24 @@ async function centerOf(page, target) {
   return { loc, x: b.x + b.width / 2, y: b.y + b.height / 2, box: b };
 }
 
-// Glide to an element and click it.
+// Glide to an element and click it. Positioning is delegated entirely to
+// Playwright: hover() moves the real pointer to the element's true, actionable
+// centre -- auto-waiting for it to be visible AND stable (not mid-animation),
+// which is exactly the guarantee the old measure-then-place approach lacked --
+// and the fake cursor follows via the mousemove listener. We then wait out the
+// visible glide before click() presses at that same spot.
 export async function glideAndClick(page, selector, { settle = 110 } = {}) {
-  const { loc, x, y } = await centerOf(page, selector);
-  await moveCursorTo(page, x, y);
-  await page.evaluate(() => window.__cine && window.__cine.click());
-  await sleep(settle);
+  const { loc } = await centerOf(page, selector);
+  await loc.hover();
+  await sleep(GLIDE_MS + settle);
   await loc.click();
 }
 
 // Glide to a field, focus it, and type the text one character at a time.
 export async function glideAndType(page, selector, text, { perChar = 60, clear = true } = {}) {
-  const { loc, x, y } = await centerOf(page, selector);
-  await moveCursorTo(page, x, y);
-  await page.evaluate(() => window.__cine && window.__cine.click());
+  const { loc } = await centerOf(page, selector);
+  await loc.hover();
+  await sleep(GLIDE_MS);
   await loc.click();
   if (clear) await loc.fill('');
   await sleep(40);
@@ -211,10 +250,16 @@ export async function setZoom(page, scale, ms = 0) {
   if (ms) await sleep(ms);
 }
 
-// Reveal the page body (hidden from first paint by installCinematics' CSS).
-// Call this while the title card still covers, so the reveal isn't visible.
+// Reveal the fully-staged page: un-hide the body and fade the dark curtain
+// out over it, so the tool appears with a clean fade rather than a pop (and
+// never a white flash). Resolves once the fade has finished.
 export async function revealPage(page) {
-  await page.evaluate(() => document.documentElement.classList.add('__lit'));
+  await page.evaluate(() => {
+    document.documentElement.classList.add('__lit');
+    const c = document.getElementById('__curtain');
+    if (c) { c.style.opacity = '0'; setTimeout(() => c.remove(), 600); }
+  });
+  await sleep(600);
 }
 
 // Fade out the title overlay, revealing whatever is staged underneath (e.g. the

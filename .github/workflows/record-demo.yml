@@ -74,8 +74,9 @@ jobs:
         working-directory: demo
         run: |
           set -e
-          # Poster = the intro title card (fully shown from ~0.1s to ~1s in).
-          ffmpeg -y -ss 0.8 -i demo.mp4 -frames:v 1 -q:v 3 demo-poster.jpg
+          # Poster = the revealed submit section just after the opening fade
+          # (the intro dark curtain has lifted by ~2.5s, before the first click).
+          ffmpeg -y -ss 2.5 -i demo.mp4 -frames:v 1 -q:v 3 demo-poster.jpg
 
       - name: Commit the video + poster if they changed
         run: |

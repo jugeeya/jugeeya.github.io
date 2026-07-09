@@ -31,7 +31,7 @@ import { existsSync, readFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import {
   installCinematics, resetCursor, glideAndClick, glideAndType,
-  showTitleCard, hideTitleCard, revealPage, showAnnotation, setZoom, smoothScrollToY, sleep,
+  revealPage, showAnnotation, setZoom, smoothScrollToY, sleep,
 } from './lib.mjs';
 
 const TARGET = process.env.TARGET || 'https://jugeeya.github.io/tags/';
@@ -109,6 +109,11 @@ const run = async () => {
     permissions: ['clipboard-write'], // so the modal's "Copy path" shows "Copied ✓"
   });
   const page = await context.newPage();
+  // Dark the initial about:blank so the recorder's very first frames (captured
+  // before the site has loaded) aren't the browser's white default. Once the
+  // real page loads, installCinematics' curtain + html background keep it dark
+  // through staging until revealPage fades in.
+  await page.evaluate(() => { document.documentElement.style.background = '#141218'; }).catch(() => {});
 
   // Attach before navigating (per playwright-recorder-plus's own quick-start
   // ordering) so nothing repaints before the screencast is listening. Second
@@ -180,21 +185,15 @@ const run = async () => {
   ` }).catch(() => {});
 
   // ── Intro: the page body is hidden from first paint (installCinematics CSS),
-  // so it never flashes. We raise the title card, load + stage the page behind
-  // it already zoomed into the submit section, then fade the card away ────────
-  await showTitleCard(page,
-    'Rivals II Controls / Tag Sharing',
-    'Share your tags and controls, right from the browser', 0, { stay: true });
-  // Load + stage the page behind the title card (body still hidden).
+  // so nothing flashes while we stage it. Load, scroll to top, zoom into the
+  // submit section, then reveal — no title card, straight into the tool. ──────
   await page.locator('#savButton').waitFor({ state: 'attached' });
   await page.locator('#tagBrowser .tag-list-item').first().waitFor({ state: 'attached', timeout: 15000 }).catch(() => {});
   await page.evaluate(() => window.scrollTo(0, 0)).catch(() => {});
   await setZoom(page, ZOOM, 0);    // start already zoomed into the submit section
-  await revealPage(page);          // un-hide the body (still covered by the card)
+  await revealPage(page);          // un-hide the fully-staged page
   resetCursor(W / 2, H / 2);       // cursor stays hidden until the first glide
-  await sleep(1500);               // hold the title
-  await hideTitleCard(page);       // fade the card away onto the zoomed-in page
-  await sleep(500);
+  await sleep(900);                // brief hold on the opening frame
 
   // The page reads top-to-bottom: the whole submit flow first, then browse.
   // (glide/annotate helpers now smooth-scroll their target into view.)
@@ -299,8 +298,8 @@ const run = async () => {
   const result = await recorder.finalized;
 
   console.log(`\n✅ Recorded: ${result.path} (${result.frameCount} pass-1 frames, incl. CFR padding)\n` +
-    `Generate the poster (first fully-shown title-card frame):\n` +
-    `   ffmpeg -y -ss 0.8 -i demo.mp4 -frames:v 1 -q:v 3 demo-poster.jpg\n`);
+    `Generate the poster (revealed page, just after the opening fade):\n` +
+    `   ffmpeg -y -ss 2.5 -i demo.mp4 -frames:v 1 -q:v 3 demo-poster.jpg\n`);
 };
 
 run().catch((e) => { console.error(e); process.exit(1); });
