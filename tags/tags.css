@@ -773,6 +773,102 @@ code {
     margin: 0 0 0.5rem;
 }
 
+/* ---- Guided save-file modal ----------------------------------------------- */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: color-mix(in srgb, #000 58%, transparent);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    animation: modal-fade var(--md-dur-med, 0.3s) var(--md-ease-standard, ease);
+}
+
+.modal-backdrop[hidden] { display: none; }
+
+body.modal-open { overflow: hidden; }
+
+.modal {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    max-height: calc(100dvh - 3rem);
+    overflow-y: auto;
+    background: var(--md-surface-container-high);
+    border: 1px solid var(--border-color);
+    border-radius: var(--md-corner-lg);
+    padding: 1.75rem;
+    box-shadow: var(--md-elev-3);
+    animation: modal-pop var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease);
+}
+
+@keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-pop {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+}
+
+.modal-title {
+    font-size: 1.4rem;
+    margin: 0 0 1.4rem;
+    padding-right: 2rem;    /* clear the close button */
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    font-size: 1.4rem;
+    line-height: 1;
+    background: none;
+    color: var(--text-secondary);
+    box-shadow: none;
+    border-radius: var(--md-corner-full);
+}
+
+.modal-close:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--md-on-surface) 8%, transparent);
+    color: var(--text-color);
+    box-shadow: none;
+    transform: none;
+}
+
+.modal-steps {
+    margin: 0;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-steps > li::marker {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.modal-step-label {
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0 0 0.6rem;
+}
+
+/* The path hint sits flush inside a step (its own margin would double the gap). */
+.modal .save-path-hint {
+    margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal-backdrop,
+    .modal { animation: none; }
+}
+
 /* Windows / Steam Deck segmented switcher */
 .path-os-switch {
     display: inline-flex;

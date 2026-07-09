@@ -964,14 +964,12 @@ function startImportToSave() {
     pendingImportFiles = getSelectedTagFiles();
     if (!pendingImportFiles.length) return;
 
-    // Always read through a classic <input type=file>. The tempting alternative,
-    // the File System Access API (showOpenFilePicker), can't be used here: the
-    // Rivals save lives under %LOCALAPPDATA% (…\AppData\Local\Rivals2\…), a
-    // folder Chromium hard-blocks from that API ("this folder contains system
-    // files"). A plain file input has no such restriction, and the merged result
-    // is delivered as a download the user drops back into the save folder.
-    importSavInput.value = '';
-    importSavInput.click();
+    // Open the guided modal (copy path → choose file). The actual read goes
+    // through a classic <input type=file>: the File System Access API can't be
+    // used here because the Rivals save lives under %LOCALAPPDATA%, a folder
+    // Chromium hard-blocks ("this folder contains system files"). The merged
+    // result is delivered as a download the user drops back into the folder.
+    openSaveModal('import');
 }
 
 async function fetchR2tagBytes(file) {
@@ -1012,7 +1010,8 @@ function saveOutput(bytes, filename) {
     return 'downloaded';
 }
 
-// Reports where the finished save ended up (always a download for this tool).
+// Reports where the finished save ended up (always a download for this tool) and
+// reveals the "where to put it back" folder hint beneath the status line.
 function deliveredStatus(rep, filename) {
     setImportStatus(
         `Done: ${importSummary(rep)}. Downloaded <strong>${escapeHtml(filename)}</strong>. ` +
@@ -1020,6 +1019,8 @@ function deliveredStatus(rep, filename) {
         `the folder path is just below.`,
         rep.incompatible.length ? 'warn' : 'success'
     );
+    const hint = document.getElementById('importPathHint');
+    if (hint) hint.hidden = false;
 }
 
 // Read the picked .sav, merge the selected tags in, and download the result.
@@ -1112,9 +1113,48 @@ clearButton.addEventListener('click', () => {
     renderFileList();
 });
 
+// Guided save-file modal. Both "Load a .sav file" and "Import to save" open it:
+// it shows the save path to copy, then a Choose-file button that opens the real
+// (classic) file picker for the matching input.
+const saveModal = document.getElementById('saveModal');
+const saveModalTitle = document.getElementById('saveModalTitle');
+const saveModalChoose = document.getElementById('saveModalChoose');
+const saveModalClose = document.getElementById('saveModalClose');
+let saveModalMode = 'load'; // 'load' | 'import'
+
+function openSaveModal(mode) {
+    saveModalMode = mode;
+    saveModalTitle.textContent = mode === 'import' ? 'Import into your save' : 'Load your save file';
+    saveModalChoose.textContent = mode === 'import' ? 'Choose save file…' : 'Choose file…';
+    saveModal.hidden = false;
+    document.body.classList.add('modal-open');
+    // Focus the copy button (step 1) so keyboard users land inside the dialog.
+    saveModal.querySelector('.copy-path-btn')?.focus();
+}
+
+function closeSaveModal() {
+    saveModal.hidden = true;
+    document.body.classList.remove('modal-open');
+}
+
+if (saveModal) {
+    saveModalChoose.addEventListener('click', () => {
+        const input = saveModalMode === 'import' ? importSavInput : savInput;
+        input.value = '';
+        input.click();          // the native picker takes over from here
+        closeSaveModal();
+    });
+    saveModalClose.addEventListener('click', closeSaveModal);
+    // Click the backdrop (outside the dialog) to dismiss.
+    saveModal.addEventListener('click', (e) => { if (e.target === saveModal) closeSaveModal(); });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !saveModal.hidden) closeSaveModal();
+    });
+}
+
 // Load-a-save (submit panel) and import-into-save (browse panel) file inputs.
 if (savButton) {
-    savButton.addEventListener('click', () => savInput.click());
+    savButton.addEventListener('click', () => openSaveModal('load'));
     savInput.addEventListener('change', () => {
         if (savInput.files?.length) loadSavFile(savInput.files[0]);
         savInput.value = '';

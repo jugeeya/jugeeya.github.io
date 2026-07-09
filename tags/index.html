@@ -41,21 +41,6 @@
                     submitting adds to the tag database for download by your TOs in the section below.
                 </p>
 
-                <div class="save-path-hint" data-path-kind="file">
-                    <div class="path-os-switch" role="group" aria-label="Platform">
-                        <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
-                        <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
-                    </div>
-                    <p class="field-hint save-path-intro">On Windows your save is here (under
-                        <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
-                    <div class="save-path-row">
-                        <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames\Rivals2_PlayerTagSaveSlot.sav</code>
-                        <button type="button" class="secondary copy-path-btn">Copy path</button>
-                    </div>
-                    <p class="field-hint save-path-tip">Tip: paste this into the file picker's <em>File name</em> box and hit
-                        Open to jump straight to it.</p>
-                </div>
-
                 <div class="sav-loader">
                     <button id="savButton" type="button">Load a .sav file</button>
                     <input type="file" id="savInput" accept=".sav" hidden>
@@ -117,7 +102,7 @@
                 </label>
                 <p id="importStatus" class="upload-status"></p>
 
-                <div class="save-path-hint import-path-hint" data-path-kind="folder">
+                <div class="save-path-hint import-path-hint" data-path-kind="folder" id="importPathHint" hidden>
                     <p class="save-path-heading">Where to put the imported save back</p>
                     <p class="field-hint">Browsers can't write into the Rivals save folder directly, so
                         <strong>Import to save</strong> hands you the merged file as a download. Drop it into your
@@ -141,6 +126,37 @@
         <footer>
             <p>Part of the <a href="../">Rivals of Aether II Tools</a> site.</p>
         </footer>
+    </div>
+
+    <!-- Guided save-file modal, shared by "Load a .sav file" and "Import to save". -->
+    <div class="modal-backdrop" id="saveModal" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="saveModalTitle">
+            <button type="button" class="modal-close" id="saveModalClose" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="saveModalTitle">Load your save file</h2>
+            <ol class="modal-steps">
+                <li>
+                    <p class="modal-step-label">Copy this path</p>
+                    <div class="save-path-hint" data-path-kind="file">
+                        <div class="path-os-switch" role="group" aria-label="Platform">
+                            <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
+                            <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
+                        </div>
+                        <p class="field-hint save-path-intro">On Windows your save is here (under
+                            <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
+                        <div class="save-path-row">
+                            <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames\Rivals2_PlayerTagSaveSlot.sav</code>
+                            <button type="button" class="secondary copy-path-btn">Copy path</button>
+                        </div>
+                        <p class="field-hint save-path-tip">Tip: paste this into the file picker's <em>File name</em>
+                            box and hit Open to jump straight to it.</p>
+                    </div>
+                </li>
+                <li>
+                    <p class="modal-step-label">Choose your save file</p>
+                    <button type="button" id="saveModalChoose">Choose file…</button>
+                </li>
+            </ol>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
