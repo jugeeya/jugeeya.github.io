@@ -30,71 +30,90 @@
         </header>
 
         <main>
-            <!-- 1. VOD ------------------------------------------------------- -->
             <section class="panel">
-                <h2>1. Load the VOD</h2>
-                <div class="vod-loader">
-                    <button id="vodButton" type="button">Choose video file…</button>
-                    <span id="vodInfo" class="vod-info muted">No file loaded.</span>
-                    <input type="file" id="vodInput" accept="video/*,.mkv,.mp4,.mov,.flv,.ts" hidden>
-                </div>
-                <div class="rec-start">
-                    <label for="recStart">Recording start time
-                        <span class="optional">(when the file started recording)</span></label>
-                    <div class="rec-start-row">
-                        <input type="datetime-local" id="recStart" step="1">
-                        <span id="recStartHint" class="field-hint"></span>
-                    </div>
-                </div>
-            </section>
+                <ol class="steps">
+                    <!-- 1. VOD --------------------------------------------------- -->
+                    <li class="step is-active" id="vodStep1">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">1</span>
+                            <h3 class="step-title">Load the VOD</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="vod-loader">
+                                <button id="vodButton" type="button">Choose video file…</button>
+                                <span id="vodInfo" class="vod-info muted">No file loaded.</span>
+                                <input type="file" id="vodInput" accept="video/*,.mkv,.mp4,.mov,.flv,.ts" hidden>
+                            </div>
+                            <div class="rec-start">
+                                <label for="recStart">Recording start time
+                                    <span class="optional">(when the file started recording)</span></label>
+                                <div class="rec-start-row">
+                                    <input type="datetime-local" id="recStart" step="1">
+                                    <span id="recStartHint" class="field-hint"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
 
-            <!-- 2. Sets ------------------------------------------------------ -->
-            <section class="panel">
-                <h2>2. Get the sets</h2>
-                <p class="panel-help">
-                    Paste a start.gg event to pull its completed sets and their times, then pick the
-                    station this VOD recorded. Or skip this and add clips by hand below.
-                </p>
-                <div class="sgg-field">
-                    <label for="eventInput">start.gg event URL or slug</label>
-                    <div class="sgg-row">
-                        <input type="text" id="eventInput" autocomplete="off" spellcheck="false"
-                            placeholder="https://www.start.gg/tournament/…/event/…">
-                        <button type="button" id="fetchSets" class="secondary">Fetch sets</button>
-                    </div>
-                    <p id="setsStatus" class="sets-status"></p>
-                </div>
-                <div id="tourneyField" class="tourney-field" hidden>
-                    <label for="tourneyName">Tournament name
-                        <span class="optional">(used at the start of each clip's filename)</span></label>
-                    <input type="text" id="tourneyName" autocomplete="off" placeholder="e.g. Genesis 9">
-                </div>
-                <div id="stationField" class="station-field" hidden>
-                    <label for="stationSelect">Station</label>
-                    <select id="stationSelect"></select>
-                    <label class="pad-field">Pad each clip
-                        <input type="number" id="padPre" value="5" min="0" max="120"> s before /
-                        <input type="number" id="padPost" value="8" min="0" max="120"> s after</label>
-                    <button type="button" id="buildClips" class="secondary">Build clips →</button>
-                </div>
-            </section>
+                    <!-- 2. Sets ---------------------------------------------------- -->
+                    <li class="step is-locked" id="vodStep2">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">2</span>
+                            <h3 class="step-title">Get the sets</h3>
+                        </div>
+                        <div class="step-body">
+                            <p class="step-help">
+                                Paste a start.gg event to pull its completed sets and their times, then pick the
+                                station this VOD recorded. Or skip this and add clips by hand below.
+                            </p>
+                            <div class="sgg-field">
+                                <label for="eventInput">start.gg event URL or slug</label>
+                                <div class="sgg-row">
+                                    <input type="text" id="eventInput" autocomplete="off" spellcheck="false"
+                                        placeholder="https://www.start.gg/tournament/…/event/…">
+                                    <button type="button" id="fetchSets" class="secondary">Fetch sets</button>
+                                </div>
+                                <p id="setsStatus" class="sets-status"></p>
+                            </div>
+                            <div id="tourneyField" class="tourney-field" hidden>
+                                <label for="tourneyName">Tournament name
+                                    <span class="optional">(used at the start of each clip's filename)</span></label>
+                                <input type="text" id="tourneyName" autocomplete="off" placeholder="e.g. Genesis 9">
+                            </div>
+                            <div id="stationField" class="station-field" hidden>
+                                <label for="stationSelect">Station</label>
+                                <select id="stationSelect"></select>
+                                <label class="pad-field">Pad each clip
+                                    <input type="number" id="padPre" value="5" min="0" max="120"> s before /
+                                    <input type="number" id="padPost" value="8" min="0" max="120"> s after</label>
+                                <button type="button" id="buildClips" class="secondary">Build clips →</button>
+                            </div>
+                        </div>
+                    </li>
 
-            <!-- 3. Clips ----------------------------------------------------- -->
-            <section class="panel">
-                <h2>3. Review &amp; cut</h2>
-                <div class="clip-toolbar">
-                    <button type="button" id="addClip" class="linkish">+ Add clip</button>
-                    <span class="tag-action-sep">·</span>
-                    <button type="button" id="clearClips" class="linkish">Clear</button>
-                    <span class="clip-spacer"></span>
-                    <button type="button" id="splitBtn" disabled>Split in browser</button>
-                    <button type="button" id="scriptBtn" class="secondary" disabled>Copy ffmpeg commands</button>
-                </div>
-                <div id="clipList" class="clip-list">
-                    <p class="muted">No clips yet. Build them from start.gg above, or add one by hand.</p>
-                </div>
-                <p id="splitStatus" class="upload-status"></p>
-                <progress id="splitProgress" value="0" max="1" hidden></progress>
+                    <!-- 3. Clips ---------------------------------------------------- -->
+                    <li class="step is-locked" id="vodStep3">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">3</span>
+                            <h3 class="step-title">Review &amp; cut</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="clip-toolbar">
+                                <button type="button" id="addClip" class="linkish">+ Add clip</button>
+                                <span class="tag-action-sep">·</span>
+                                <button type="button" id="clearClips" class="linkish">Clear</button>
+                                <span class="clip-spacer"></span>
+                                <button type="button" id="splitBtn" disabled>Split in browser</button>
+                                <button type="button" id="scriptBtn" class="secondary" disabled>Copy ffmpeg commands</button>
+                            </div>
+                            <div id="clipList" class="clip-list">
+                                <p class="muted">No clips yet. Build them from start.gg above, or add one by hand.</p>
+                            </div>
+                            <p id="splitStatus" class="upload-status"></p>
+                            <progress id="splitProgress" value="0" max="1" hidden></progress>
+                        </div>
+                    </li>
+                </ol>
             </section>
         </main>
 

@@ -70,9 +70,25 @@ function recStartEpoch() {
   return isNaN(t) ? null : t / 1000;
 }
 
+// ---- Step states ------------------------------------------------------------
+// A step is 'locked' (dimmed, body hidden), 'active' (usable) or 'done' (usable,
+// its number swapped for a check) — the shared .step/.step-num component from
+// ../styles.css, same convention as the tags page.
+function setStepState(step, state) {
+  if (!step) return;
+  step.classList.toggle('is-locked', state === 'locked');
+  step.classList.toggle('is-active', state === 'active');
+  step.classList.toggle('is-done', state === 'done');
+}
+
 // ---- Load the VOD ---------------------------------------------------------
 function loadVod(file) {
   vodFile = file;
+  // Get sets / Review & cut both just need a VOD loaded (not each other —
+  // "Get the sets" is explicitly skippable), so they unlock together here.
+  setStepState($('vodStep1'), 'done');
+  setStepState($('vodStep2'), 'active');
+  setStepState($('vodStep3'), 'active');
   if (vodUrl) URL.revokeObjectURL(vodUrl);
   vodUrl = URL.createObjectURL(file);
   scrubber.src = vodUrl;

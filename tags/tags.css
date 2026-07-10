@@ -72,160 +72,8 @@ code {
     font-size: 0.85em;
 }
 
-/* ---- Flow header (icon + title + one-line subtitle) ----------------------- */
-
-.flow-head {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.flow-icon {
-    display: flex;
-    flex-shrink: 0;
-    color: var(--primary-color);
-}
-
-.flow-icon svg {
-    width: 1.9rem;
-    height: 1.9rem;
-    fill: currentColor;
-}
-
-.flow-subtitle {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.45;
-    margin-top: 0.35rem;
-}
-
-/* ---- Guided steps ---------------------------------------------------------- */
-
-.flow-title {
-    margin-bottom: 0;
-}
-
-.steps {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.step {
-    position: relative;
-    padding: 0 0 1.9rem 3rem;
-}
-
-.step:last-child {
-    padding-bottom: 0;
-}
-
-/* Vertical connector between the numbered dots. */
-.step::before {
-    content: '';
-    position: absolute;
-    left: 0.95rem;
-    top: 2.1rem;
-    bottom: 0.25rem;
-    width: 2px;
-    background-color: var(--border-color);
-}
-
-.step:last-child::before {
-    display: none;
-}
-
-.step-num {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: var(--md-surface-container-high);
-    border: 2px solid var(--border-color);
-    color: var(--text-secondary);
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: background-color var(--md-dur-short, 0.18s) ease,
-        border-color var(--md-dur-short, 0.18s) ease,
-        color var(--md-dur-short, 0.18s) ease;
-}
-
-.step.is-active > .step-head .step-num {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: var(--md-on-primary);
-}
-
-.step.is-done > .step-head .step-num {
-    background-color: transparent;
-    border-color: var(--success-color);
-    color: var(--success-color);
-}
-
-/* Swap the number for a check once the step is done. */
-.step.is-done > .step-head .step-num::before {
-    content: '✓';
-    position: absolute;
-}
-
-.step.is-done > .step-head .step-num {
-    font-size: 0;           /* hide the number under the check */
-}
-
-.step.is-done > .step-head .step-num::before {
-    font-size: 1rem;
-}
-
-.step-head {
-    display: flex;
-    align-items: center;
-    min-height: 2rem;
-}
-
-.step-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin: 0;
-}
-
-.step-body {
-    margin-top: 0.75rem;
-}
-
-/* Locked steps show only their dimmed title — the roadmap without the noise. */
-.step.is-locked {
-    opacity: 0.45;
-}
-
-.step.is-locked .step-body {
-    display: none;
-}
-
-.step-help {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin: 0 0 1rem;
-    max-width: 62ch;
-}
-
-.step-done-note {
-    margin: 0.9rem 0 0;
-    font-size: 0.9rem;
-    color: var(--success-color);
-}
-
-/* Reveal animation when a step unlocks. */
-.step-body {
-    animation: box-in var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease);
-}
+/* Flow header + guided steps (.flow-head, .steps, .step, .step-num, etc.) now
+   live in ../styles.css, shared with the vods page's step flow. */
 
 /* "or pick tags by hand" divider between bracket lookup and manual browse. */
 .or-divider {
@@ -1105,10 +953,7 @@ body.modal-open { overflow: hidden; }
 }
 
 /* ---- Entrance animations for boxes that appear ---------------------------- */
-@keyframes box-in {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* @keyframes box-in lives in ../styles.css (shared with .step-body). */
 
 .submission-item,
 #tagList {
@@ -1143,8 +988,7 @@ body.modal-open { overflow: hidden; }
     .submission-item,
     #tagList,
     #pendingPanel,
-    .flow,
-    .step-body {
+    .flow {
         animation: none;
         transition: none;
     }

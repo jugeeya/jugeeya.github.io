@@ -1,7 +1,9 @@
-/* VOD splitter — page-specific layout on top of the shared MD3 system
-   (buttons, inputs, cards come from ../styles.css). */
+/* VOD splitter — page-specific layout on top of the shared MD3 system (buttons,
+   inputs, cards, and the guided .flow-head/.steps/.step component all come
+   from ../styles.css). One linear flow (load → get sets → review & cut), so
+   unlike the tags page there's no need for a flow-head: the page's own <h1> +
+   subtitle already introduce it. */
 
-/* MD3 filled card = a numbered step panel */
 .panel {
     background-color: var(--md-surface-container-low);
     border-radius: var(--md-corner-lg);
@@ -9,39 +11,11 @@
     margin-bottom: 1.5rem;
 }
 
-.panel h2 {
-    margin-bottom: 1rem;
-}
-
-.panel-help {
-    color: var(--md-on-surface-variant);
-    font-size: 0.95rem;
-    margin-bottom: 1.25rem;
-}
-
-/* ---- Desktop layout ------------------------------------------------------- */
-/* On mobile the three steps stack top-to-bottom (fine). On desktop that leaves
-   the two short setup steps — "Load the VOD" and "Get the sets" — as sparse
-   full-width bands, so pair them side by side and give the whole width to the
-   "Review & cut" workspace beneath. */
-@media (min-width: 1024px) {
-    main {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
-        /* stretch (not start) so the two setup steps share a height and read as
-           a balanced pair, rather than one short card next to a tall one. */
-        align-items: stretch;
-    }
-
-    main > .panel {
-        margin-bottom: 0;
-    }
-
-    main > .panel:nth-child(1) { grid-column: 1; }
-    main > .panel:nth-child(2) { grid-column: 2; }
-    /* The review/cut workspace (and anything after it) spans the full width. */
-    main > .panel:nth-child(n+3) { grid-column: 1 / -1; }
+/* A single guided column reads better at a comfortable line length than
+   stretched across the full container, same as the tags page. */
+main {
+    max-width: 920px;
+    margin: 0 auto;
 }
 
 .muted {
