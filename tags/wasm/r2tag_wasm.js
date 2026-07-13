@@ -38,15 +38,16 @@ export function get_tag_names(sav) {
 }
 
 /**
- * Merge tags from `.r2tag` byte buffers into `sav`, honoring per-item overwrite,
- * and return the new save bytes plus what happened to each tag. Cross-version
- * tags are rejected as incompatible (same rule as the desktop tool).
+ * Merge tags from `.r2tag` byte buffers into `sav`, honoring per-item overwrite
+ * and optional rename, and return the new save bytes plus what happened to
+ * each tag. Cross-version tags are rejected as incompatible (same rule as the
+ * desktop tool).
  *
- * Result order: the save's first tag (typically the setup's own) is left
- * exactly where it is and is never overwritten, even by a same-named import —
- * installing entrants' tags shouldn't touch a setup owner's personal one.
- * Installed tags land directly after it; every other tag already in the save
- * follows, in its original relative order.
+ * Result order: the save's first tag (typically the setup's own) always
+ * stays in slot 0 — a same-named import still overwrites its content (subject
+ * to `overwrite`, like any other existing tag), it just never gets displaced
+ * from the front. Installed tags land directly after it; every other tag
+ * already in the save follows, in its original relative order.
  * @param {Uint8Array} sav
  * @param {any} items
  * @returns {any}
