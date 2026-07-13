@@ -6,7 +6,7 @@ A small static site of community tools for Rivals of Aether II, hosted on GitHub
 
 - **`/` (homepage)** — a hub that links to each tool.
 - **`/leaderboard/`** — the Rivals II Rankings app (ELO distribution + player search). Was previously the site root.
-- **`/tags/`** — Tag Sharing: upload/browse `.r2tag` player tags. Scaffold; browsing reads `tags/data/index.json`, uploading needs a backend (see `tags/data/README.md`).
+- **`/tags/`** — Tag Sharing: upload/browse `.r2tag` player tags. Scaffold; browsing reads `tags/data/index.json`, uploading needs a backend (see `tags/data/README.md`). The install flow also accepts local `.r2tag` files/folders, and "Download offline installer" assembles a single self-contained HTML file (from `tags/offline-template.html`, with the CSS, JSZip, and the wasm inlined) that merges tag files into a save with no internet.
 
 ## Rivals II Rankings (`/leaderboard/`)
 

@@ -149,6 +149,22 @@
                             <div id="tagBrowser" class="tag-browser">
                                 <p class="muted">Loading…</p>
                             </div>
+
+                            <p class="or-divider">or upload tag files</p>
+
+                            <div class="tag-upload">
+                                <p class="field-hint">Already have <code>.r2tag</code> files (from
+                                    "Just download the tag files", or shared directly)? Add them here —
+                                    they merge into the save in step 2 along with anything selected above.</p>
+                                <div class="tag-upload-actions">
+                                    <button type="button" id="uploadTagsBtn" class="secondary">Choose tag files…</button>
+                                    <button type="button" id="uploadFolderBtn" class="secondary">Choose a folder…</button>
+                                </div>
+                                <input type="file" id="uploadTagsInput" accept=".r2tag,.zip" multiple hidden>
+                                <input type="file" id="uploadFolderInput" webkitdirectory hidden>
+                                <ul id="localTagList" class="tag-list local-tag-list" hidden></ul>
+                                <p id="uploadTagsStatus" class="upload-status"></p>
+                            </div>
                         </div>
                     </li>
 
@@ -201,6 +217,18 @@
                         </div>
                     </li>
                 </ol>
+
+                <div class="offline-callout">
+                    <div class="offline-callout-text">
+                        <strong>Running setups somewhere without internet?</strong>
+                        <p class="field-hint">Grab the offline installer: a single HTML file that merges
+                            <code>.r2tag</code> files into a save entirely on the machine — no connection
+                            needed. Download your entrants' tag files above while you're online, take both
+                            to the venue, and open the installer in any browser.</p>
+                    </div>
+                    <button type="button" id="offlineDownloadBtn" class="secondary">Download offline installer</button>
+                    <p id="offlineStatus" class="upload-status"></p>
+                </div>
             </section>
         </main>
 
@@ -247,7 +275,7 @@
         <img class="lightbox-img" id="lightboxImg" src="" alt="">
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="vendor/jszip.min.js"></script>
     <script type="module" src="tags.js"></script>
 </body>
 
