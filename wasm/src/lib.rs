@@ -28,6 +28,16 @@ fn tag_name_of(sv: &StructValue) -> Option<&str> {
     None
 }
 
+/// Overwrite a tag's `TagName` property in place — used to disambiguate two
+/// installed tags that happen to share a name (see `ImportItem::rename`).
+fn set_tag_name(sv: &mut StructValue, new_name: &str) {
+    if let StructValue::Struct(props) = sv {
+        props
+            .0
+            .insert(PropertyKey::from("TagName"), Property::Str(new_name.to_string()));
+    }
+}
+
 fn save_version_of(save: &Save) -> Option<i32> {
     match save.root.properties.0.get(&PropertyKey::from("SaveVersion")) {
         Some(Property::Int(v)) => Some(*v),
@@ -116,6 +126,12 @@ struct ImportItem {
     #[serde(with = "serde_bytes")]
     bytes: Vec<u8>,
     overwrite: bool,
+    /// Optional replacement for this tag's in-save name. Lets the caller
+    /// disambiguate two tags being installed together that happen to share a
+    /// name (e.g. rename each to its linked start.gg handle) so both land in
+    /// the save instead of one silently overwriting the other.
+    #[serde(default)]
+    rename: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -127,9 +143,16 @@ struct ImportReport {
     incompatible: Vec<String>,
 }
 
-/// Merge tags from `.r2tag` byte buffers into `sav`, honoring per-item overwrite,
-/// and return the new save bytes plus what happened to each tag. Cross-version
-/// tags are rejected as incompatible (same rule as the desktop tool).
+/// Merge tags from `.r2tag` byte buffers into `sav`, honoring per-item overwrite
+/// and optional rename, and return the new save bytes plus what happened to
+/// each tag. Cross-version tags are rejected as incompatible (same rule as the
+/// desktop tool).
+///
+/// Result order: the save's first tag (typically the setup's own) always
+/// stays in slot 0 — a same-named import still overwrites its content (subject
+/// to `overwrite`, like any other existing tag), it just never gets displaced
+/// from the front. Installed tags land directly after it; every other tag
+/// already in the save follows, in its original relative order.
 #[wasm_bindgen]
 pub fn import_tags(sav: &[u8], items: JsValue) -> Result<JsValue, JsError> {
     let items: Vec<ImportItem> =
@@ -152,6 +175,18 @@ pub fn import_tags(sav: &[u8], items: JsValue) -> Result<JsValue, JsError> {
 
     {
         let dest_structs = tags_array_mut(&mut dest)?;
+
+        // Pull the first tag out on its own: it always ends up back in slot 0
+        // at the end, whether or not it gets overwritten along the way.
+        let mut first: Option<StructValue> = if dest_structs.is_empty() {
+            None
+        } else {
+            Some(dest_structs.remove(0))
+        };
+        let protected_name = first.as_ref().and_then(tag_name_of).map(str::to_string);
+        let mut tail: Vec<StructValue> = std::mem::take(dest_structs);
+        let mut installed: Vec<StructValue> = Vec::new();
+
         for item in items {
             let src = read_save(&item.bytes)?;
             for (path, tag) in src.schemas.schemas() {
@@ -159,7 +194,7 @@ pub fn import_tags(sav: &[u8], items: JsValue) -> Result<JsValue, JsError> {
             }
             let src_version = save_version_of(&src);
             let src_structs = tags_array(&src)?;
-            let (tag_sv, name) = match src_structs
+            let (tag_sv, orig_name) = match src_structs
                 .iter()
                 .find_map(|sv| tag_name_of(sv).map(|n| (sv, n.to_string())))
             {
@@ -169,25 +204,71 @@ pub fn import_tags(sav: &[u8], items: JsValue) -> Result<JsValue, JsError> {
 
             // Reject cross-version tags — writing them would corrupt the save.
             if src_version.is_none() || src_version != dest_version {
-                incompatible.push(name);
+                incompatible.push(orig_name);
                 continue;
             }
 
-            let existing = dest_structs
+            // A caller-supplied rename (e.g. to disambiguate two tags being
+            // installed together under the same name) is baked into the
+            // clone's TagName up front, so every lookup below sees the final
+            // name this tag will be stored under.
+            let mut tag_sv = tag_sv.clone();
+            let name = match &item.rename {
+                Some(new_name) if new_name != &orig_name => {
+                    set_tag_name(&mut tag_sv, new_name);
+                    new_name.clone()
+                }
+                _ => orig_name,
+            };
+
+            // The first tag can still be overwritten by a same-named import,
+            // but it never leaves slot 0 — the replacement takes its place
+            // there instead of moving into the installed block.
+            if protected_name.as_deref() == Some(name.as_str()) {
+                if item.overwrite {
+                    first = Some(tag_sv);
+                    imported.push(name);
+                } else {
+                    skipped.push(name);
+                }
+                continue;
+            }
+
+            // A name can collide with something already placed in this batch
+            // (two installed tags sharing a name — the save can only hold one
+            // per name) or with a tag further back in the save. Either way,
+            // "overwrite" governs whether the newer one wins; when it does,
+            // the surviving copy ends up in the installed block, not the tail.
+            let in_batch = installed
                 .iter()
                 .position(|sv| tag_name_of(sv) == Some(name.as_str()));
-            if existing.is_some() && !item.overwrite {
-                skipped.push(name);
-                continue;
-            }
+            let in_tail = tail
+                .iter()
+                .position(|sv| tag_name_of(sv) == Some(name.as_str()));
 
-            let cloned = tag_sv.clone();
-            match existing {
-                Some(pos) => dest_structs[pos] = cloned,
-                None => dest_structs.push(cloned),
+            if in_batch.is_some() || in_tail.is_some() {
+                if !item.overwrite {
+                    skipped.push(name);
+                    continue;
+                }
+                match in_batch {
+                    Some(pos) => installed[pos] = tag_sv,
+                    None => {
+                        tail.remove(in_tail.unwrap());
+                        installed.push(tag_sv);
+                    }
+                }
+            } else {
+                installed.push(tag_sv);
             }
             imported.push(name);
         }
+
+        if let Some(f) = first.take() {
+            dest_structs.push(f);
+        }
+        dest_structs.append(&mut installed);
+        dest_structs.append(&mut tail);
     }
 
     for (path, tag) in merged_schemas {

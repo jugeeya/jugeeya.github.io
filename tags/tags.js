@@ -1027,16 +1027,49 @@ async function fetchR2tagBytes(file) {
     return entry.async('uint8array');
 }
 
+// Two different entrants can end up with the same in-game tag name by pure
+// coincidence (it's just whatever text they typed, unrelated to their start.gg
+// account). Left alone, the save can only hold one tag per name, so the second
+// one would silently overwrite (or get skipped behind) the first. When we know
+// a start.gg handle for a colliding tag — every tag pulled from the shared
+// database does — rename it to that handle so both land in the save instead
+// of one disappearing. Tags without a known handle (local uploads) fall back
+// to the plain overwrite/skip behavior; mutates `pending` in place, adding a
+// `rename` to any item it disambiguates.
+function assignRenamesForCollisions(pending) {
+    const byName = new Map();
+    for (const p of pending) {
+        if (!p.name) continue;
+        if (!byName.has(p.name)) byName.set(p.name, []);
+        byName.get(p.name).push(p);
+    }
+    for (const group of byName.values()) {
+        if (group.length < 2) continue;
+        for (const p of group) {
+            if (p.startggTag && p.startggTag !== p.name) p.rename = p.startggTag;
+        }
+    }
+}
+
 // Merge the currently selected tags (shared + uploaded) into the given save bytes.
 async function mergeSelectedTags(savBytes) {
     const overwrite = !!(importOverwrite && importOverwrite.checked);
-    const items = [];
+
+    const pending = [];
     for (const file of pendingImportFiles) {
-        items.push({ bytes: await fetchR2tagBytes(file), overwrite });
+        const tag = allTags.find(t => t.file === file);
+        pending.push({
+            bytes: await fetchR2tagBytes(file),
+            name: tag ? tag.name : null,
+            startggTag: tag && tag.startgg ? tag.startgg.tag : null,
+        });
     }
     for (const t of pendingImportLocal) {
-        items.push({ bytes: t.bytes, overwrite });
+        pending.push({ bytes: t.bytes, name: t.name, startggTag: null });
     }
+    assignRenamesForCollisions(pending);
+
+    const items = pending.map(p => ({ bytes: p.bytes, overwrite, rename: p.rename }));
     return importTags(savBytes, items);
 }
 

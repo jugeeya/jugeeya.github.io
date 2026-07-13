@@ -61,9 +61,14 @@ export async function exportTag(savBytes, tagName) {
 }
 
 /**
- * Merge .r2tag tags into a save.
+ * Merge .r2tag tags into a save. The save's first tag always stays in slot 0
+ * (a same-named item still overwrites its content, subject to `overwrite`, it
+ * just never moves); everything installed lands directly after it, then every
+ * other pre-existing tag, in its original order. An item's `rename`, if given,
+ * replaces its in-save TagName — used to keep two same-named tags installed
+ * together from colliding (e.g. rename to each one's start.gg handle).
  * @param {Uint8Array} savBytes destination save
- * @param {{bytes: Uint8Array, overwrite: boolean}[]} items tags to merge
+ * @param {{bytes: Uint8Array, overwrite: boolean, rename?: string}[]} items tags to merge
  * @returns {{sav: Uint8Array, imported: string[], skipped: string[], incompatible: string[]}}
  */
 export async function importTags(savBytes, items) {
