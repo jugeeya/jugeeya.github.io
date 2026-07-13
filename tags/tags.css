@@ -95,6 +95,71 @@ code {
     margin: 0 0.75rem;
 }
 
+/* ---- "or upload tag files": local .r2tag files added to the selection ------ */
+
+.tag-upload-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+}
+
+.local-tag-list {
+    margin-top: 0.75rem;
+}
+
+.local-tag-item .tag-list-label {
+    /* Room for the ✕ remove button sitting at the row's right edge. */
+    padding-right: 0.5rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.local-tag-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.local-tag-row .remove-file {
+    margin-right: 0.85rem;
+}
+
+/* The source file the tag came from, dimmed next to the tag name. */
+.local-tag-file {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    word-break: break-word;
+}
+
+/* ---- Offline installer callout (bottom of the install panel) --------------- */
+
+.offline-callout {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.offline-callout .field-hint {
+    margin: 0.35rem 0 0.9rem;
+}
+
+/* Small "offline" chip in the generated installer's title. */
+.offline-badge {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
 /* ---- Share flow: tag list from the loaded save ----------------------------- */
 
 /* Unlike the browse list, this one never scroll-caps: the start.gg dropdown

@@ -3,10 +3,16 @@
 // The page is organized as two guided flows, both shown at once (the overview
 // cards up top just jump to the matching section):
 //   - Share your tag        (players): load .sav → select tags + link start.gg → submit
-//   - Install tags to setup (TOs):     pick tags (bracket URL or by hand) → merge
-//     into a setup's .sav → put the downloaded save back
+//   - Install tags to setup (TOs):     pick tags (bracket URL, by hand, or upload
+//     .r2tag files you already have) → merge into a setup's .sav → put the
+//     downloaded save back
 //
 // Browsing reads a static manifest (data/index.json) served by GitHub Pages.
+//
+// The install panel also offers a "Download offline installer" button: it
+// assembles a single self-contained HTML file (offline-template.html + this
+// site's CSS + JSZip + the wasm, base64-inlined) that does the install-from-
+// files flow with no internet at all. See buildOfflineInstaller below.
 //
 // Submitting sends the selected .r2tag.zip file(s) to a broker (a small
 // Cloudflare Worker) which opens a pull request on the repo via a GitHub App.
@@ -17,8 +23,9 @@
 // it's null the page is browse-only and Submit explains it isn't wired up.
 // See broker/README.md for how to stand up the Worker + GitHub App.
 
-import { getTagNames, exportTag, importTags, tagJson } from './wasm/tagsav.js';
+import { getTagNames, exportTag, importTags, tagJson, tagNameIn } from './wasm/tagsav.js';
 import { diffTagRoot, renderDiff } from './tagdiff.js';
+import { readTagFiles } from './taglocal.js';
 
 const UPLOAD_ENDPOINT = 'https://r2tag-broker.jdsambasivam.workers.dev';
 const MANIFEST_URL = 'data/index.json';
@@ -34,6 +41,12 @@ const POLL_INTERVAL_MS = 45000;
 let shareEntries = [];
 let allTags = [];
 let tagSearchQuery = '';
+
+// Local tags added via "or upload tag files" — .r2tag files the user already
+// has on disk. They join the remote selection in the merge/download actions.
+// Each entry: { id, name (in-save tag name), fileName, bytes, selected }.
+let localTags = [];
+let nextLocalId = 1;
 
 // DOM — flows (both are always visible; the overview cards are plain anchor
 // links to #shareFlow / #getFlow, so no JS is needed for those)
@@ -67,6 +80,16 @@ const downloadSelectedBtn = document.getElementById('downloadSelected');
 const importSavInput = document.getElementById('importSavInput');
 const importOverwrite = document.getElementById('importOverwrite');
 const importStatus = document.getElementById('importStatus');
+
+// DOM — "or upload tag files" + offline installer
+const uploadTagsBtn = document.getElementById('uploadTagsBtn');
+const uploadFolderBtn = document.getElementById('uploadFolderBtn');
+const uploadTagsInput = document.getElementById('uploadTagsInput');
+const uploadFolderInput = document.getElementById('uploadFolderInput');
+const localTagList = document.getElementById('localTagList');
+const uploadTagsStatus = document.getElementById('uploadTagsStatus');
+const offlineDownloadBtn = document.getElementById('offlineDownloadBtn');
+const offlineStatus = document.getElementById('offlineStatus');
 
 // A loaded .sav: its raw bytes + the custom tag names found in it.
 let loadedSav = null;
@@ -374,8 +397,14 @@ function getSelectedTagFiles() {
         .map(cb => cb.value);
 }
 
+function getSelectedLocalTags() {
+    return localTags.filter(t => t.selected);
+}
+
 function updateDownloadButton() {
-    const count = getSelectedTagFiles().length;
+    // Uploaded local tags count toward the same selection: they feed the same
+    // merge/download buttons in step 2.
+    const count = getSelectedTagFiles().length + getSelectedLocalTags().length;
     // Keep the button labels fixed so they don't resize as the count changes;
     // the running count lives in its own chip next to the selection controls.
     downloadSelectedBtn.disabled = count === 0;
@@ -532,12 +561,12 @@ function addChangeToggle(li, file) {
 
 async function downloadSelectedTags() {
     const files = getSelectedTagFiles();
-    if (!files.length) return;
+    const local = getSelectedLocalTags();
 
     const tags = files
         .map(file => allTags.find(t => t.file === file))
         .filter(Boolean);
-    if (!tags.length) return;
+    if (!tags.length && !local.length) return;
 
     const btn = downloadSelectedBtn;
     const prevText = btn.textContent;
@@ -545,17 +574,34 @@ async function downloadSelectedTags() {
     btn.textContent = 'Downloading…';
 
     try {
-        if (tags.length === 1) {
+        if (tags.length === 1 && !local.length) {
             triggerDownload(`data/${tags[0].file}`, tags[0].file);
+            return;
+        }
+        if (!tags.length && local.length === 1) {
+            triggerDownload(URL.createObjectURL(new Blob([local[0].bytes])),
+                `${local[0].name}.r2tag`);
             return;
         }
 
         const zip = new JSZip();
+        const used = new Set();
+        const uniqueName = (name) => {
+            let candidate = name;
+            for (let i = 2; used.has(candidate); i++) {
+                candidate = name.replace(/(\.[^.]+(\.zip)?)$/, ` (${i})$1`);
+            }
+            used.add(candidate);
+            return candidate;
+        };
         await Promise.all(tags.map(async (tag) => {
             const res = await fetch(`data/${tag.file}`);
             if (!res.ok) throw new Error(`Could not fetch ${tag.file}`);
-            zip.file(tag.file, await res.blob());
+            zip.file(uniqueName(tag.file), await res.blob());
         }));
+        for (const t of local) {
+            zip.file(uniqueName(`${t.name}.r2tag`), t.bytes);
+        }
 
         const blob = await zip.generateAsync({ type: 'blob' });
         triggerDownload(URL.createObjectURL(blob), 'r2tags.zip');
@@ -563,7 +609,7 @@ async function downloadSelectedTags() {
         console.error('Bulk download failed:', err);
         alert(`Download failed: ${err.message}`);
     } finally {
-        btn.disabled = getSelectedTagFiles().length === 0;
+        btn.disabled = getSelectedTagFiles().length + getSelectedLocalTags().length === 0;
         btn.textContent = prevText;
         updateDownloadButton();
     }
@@ -949,7 +995,8 @@ if (bracketGo) {
 
 // ---- Get flow: merge shared tags into a .sav (in-browser) --------------------
 
-let pendingImportFiles = [];
+let pendingImportFiles = [];   // remote tags (manifest filenames, fetched at merge)
+let pendingImportLocal = [];   // uploaded tags (bytes already in memory)
 
 function setImportStatus(message, kind = '') {
     importStatus.innerHTML = message;
@@ -958,7 +1005,8 @@ function setImportStatus(message, kind = '') {
 
 function startImportToSave() {
     pendingImportFiles = getSelectedTagFiles();
-    if (!pendingImportFiles.length) return;
+    pendingImportLocal = getSelectedLocalTags();
+    if (!pendingImportFiles.length && !pendingImportLocal.length) return;
 
     // Open the guided modal (copy path → choose file). The actual read goes
     // through a classic <input type=file>: the File System Access API can't be
@@ -979,12 +1027,15 @@ async function fetchR2tagBytes(file) {
     return entry.async('uint8array');
 }
 
-// Merge the currently selected shared tags into the given save bytes.
+// Merge the currently selected tags (shared + uploaded) into the given save bytes.
 async function mergeSelectedTags(savBytes) {
     const overwrite = !!(importOverwrite && importOverwrite.checked);
     const items = [];
     for (const file of pendingImportFiles) {
         items.push({ bytes: await fetchR2tagBytes(file), overwrite });
+    }
+    for (const t of pendingImportLocal) {
+        items.push({ bytes: t.bytes, overwrite });
     }
     return importTags(savBytes, items);
 }
@@ -1019,7 +1070,7 @@ function deliveredStatus(rep, filename) {
 
 // Read the picked .sav, merge the selected tags in, and download the result.
 async function importSelectedToSave(savFile) {
-    if (!pendingImportFiles.length) return;
+    if (!pendingImportFiles.length && !pendingImportLocal.length) return;
     setImportStatus('Reading your save and the selected tags…');
     try {
         const savBytes = new Uint8Array(await savFile.arrayBuffer());
@@ -1030,6 +1081,205 @@ async function importSelectedToSave(savFile) {
         setImportStatus(`Import failed: ${err.message || err}`, 'error');
     }
 }
+
+// ---- Get flow: "or upload tag files" ----------------------------------------
+// .r2tag / .r2tag.zip files (or a folder of them) the user already has on disk.
+// They show up in their own list under the upload buttons and join the remote
+// selection for the merge/download actions in step 2.
+
+function setUploadTagsStatus(message, kind = '') {
+    uploadTagsStatus.innerHTML = message;
+    uploadTagsStatus.className = `upload-status${kind ? ' ' + kind : ''}`;
+}
+
+function renderLocalTagList() {
+    localTagList.innerHTML = '';
+    localTagList.hidden = !localTags.length;
+
+    for (const entry of localTags) {
+        const li = document.createElement('li');
+        li.className = 'tag-list-item local-tag-item';
+
+        const row = document.createElement('div');
+        row.className = 'local-tag-row';
+
+        const label = document.createElement('label');
+        label.className = 'tag-list-label';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        // .tag-checkbox is styling only here: the remote browser's select-all/
+        // clear/count plumbing queries within #tagBrowser, and this list is
+        // outside it.
+        checkbox.className = 'tag-checkbox local-tag-checkbox';
+        checkbox.checked = entry.selected;
+        checkbox.addEventListener('change', () => {
+            entry.selected = checkbox.checked;
+            updateDownloadButton();
+        });
+
+        const name = document.createElement('span');
+        name.className = 'tag-list-name';
+        name.textContent = entry.name;
+
+        const from = document.createElement('span');
+        from.className = 'local-tag-file';
+        from.textContent = `from ${entry.fileName}`;
+
+        label.appendChild(checkbox);
+        label.appendChild(name);
+        label.appendChild(from);
+
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'remove-file';
+        remove.textContent = '✕';
+        remove.title = 'Remove';
+        remove.addEventListener('click', () => {
+            localTags = localTags.filter(t => t.id !== entry.id);
+            renderLocalTagList();
+            updateDownloadButton();
+        });
+
+        row.appendChild(label);
+        row.appendChild(remove);
+        li.appendChild(row);
+        localTagList.appendChild(li);
+    }
+}
+
+async function addLocalTagFiles(fileList) {
+    const files = [...(fileList || [])];
+    if (!files.length) return;
+    setUploadTagsStatus('Reading tag files…');
+    try {
+        const { tags, errors } = await readTagFiles(files, { tagNameIn, JSZip });
+
+        let added = 0;
+        for (const t of tags) {
+            // Re-uploading a tag with the same in-save name replaces it (the
+            // save can only hold one tag per name anyway).
+            const existing = localTags.find(e => e.name === t.name);
+            if (existing) {
+                existing.fileName = t.fileName;
+                existing.bytes = t.bytes;
+                existing.selected = true;
+            } else {
+                localTags.push({ id: nextLocalId++, selected: true, ...t });
+            }
+            added++;
+        }
+        renderLocalTagList();
+        updateDownloadButton();
+
+        const parts = [];
+        if (added) parts.push(`Added ${added} tag(s) — selected below, ready for step 2.`);
+        if (errors.length) {
+            parts.push(`Couldn't read ${errors.length} file(s): ` +
+                errors.slice(0, 3).map(e => escapeHtml(e.fileName)).join(', ') +
+                (errors.length > 3 ? '…' : '') + '.');
+        }
+        if (!parts.length) parts.push('No .r2tag files found in that selection.');
+        setUploadTagsStatus(parts.join(' '), errors.length ? 'warn' : (added ? 'success' : ''));
+    } catch (err) {
+        setUploadTagsStatus(
+            `Couldn't read those files: ${escapeHtml(String(err.message || err))}`, 'error');
+    }
+}
+
+if (uploadTagsBtn) {
+    uploadTagsBtn.addEventListener('click', () => { uploadTagsInput.value = ''; uploadTagsInput.click(); });
+    uploadFolderBtn.addEventListener('click', () => { uploadFolderInput.value = ''; uploadFolderInput.click(); });
+    uploadTagsInput.addEventListener('change', () => addLocalTagFiles(uploadTagsInput.files));
+    uploadFolderInput.addEventListener('change', () => addLocalTagFiles(uploadFolderInput.files));
+}
+
+// ---- Offline installer download ----------------------------------------------
+// Assembles a single self-contained HTML file (offline-template.html with this
+// site's CSS, JSZip, the wasm glue and the wasm itself base64-inlined) that runs
+// the install-from-files flow from a plain file:// open, no internet needed.
+// Built client-side from the same assets this page is running, so it's always
+// in sync with what's deployed.
+
+function setOfflineStatus(message, kind = '') {
+    offlineStatus.innerHTML = message;
+    offlineStatus.className = `upload-status${kind ? ' ' + kind : ''}`;
+}
+
+function bytesToBase64(bytes) {
+    let bin = '';
+    const chunk = 0x8000;   // keep String.fromCharCode's argument list bounded
+    for (let i = 0; i < bytes.length; i += chunk) {
+        bin += String.fromCharCode(...bytes.subarray(i, i + chunk));
+    }
+    return btoa(bin);
+}
+
+// Turn an ES module into plain script text: the offline page inlines everything
+// into one <script type="module">, so exports must go. Handles the two shapes
+// our modules use — `export [async] function` declarations and a trailing
+// `export { ... }` list (wasm-bindgen's `export { initSync, __wbg_init as
+// default }`).
+function stripModuleExports(src) {
+    return src
+        .replace(/^export (async )?function /gm, '$1function ')
+        .replace(/^export \{[^}]*\};?.*$/gm, '');
+}
+
+async function fetchAsset(url, binary = false) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Could not fetch ${url} (${res.status})`);
+    return binary ? res.arrayBuffer() : res.text();
+}
+
+async function buildOfflineInstaller() {
+    const [template, stylesCss, tagsCss, jszipJs, glueJs, taglocalJs, wasmBuf] =
+        await Promise.all([
+            fetchAsset('offline-template.html'),
+            fetchAsset('../styles.css'),
+            fetchAsset('tags.css'),
+            fetchAsset('vendor/jszip.min.js'),
+            fetchAsset('wasm/r2tag_wasm.js'),
+            fetchAsset('taglocal.js'),
+            fetchAsset('wasm/r2tag_wasm_bg.wasm', true),
+        ]);
+
+    // split/join instead of String.replace: the payloads contain `$` sequences
+    // that replace() would mangle, and some appear more than once.
+    const fill = (html, token, value) => html.split(token).join(value);
+
+    let out = template;
+    out = fill(out, '/*__STYLES_CSS__*/', stylesCss);
+    out = fill(out, '/*__TAGS_CSS__*/', tagsCss);
+    out = fill(out, '/*__JSZIP_JS__*/', jszipJs);
+    out = fill(out, '/*__WASM_GLUE_JS__*/', stripModuleExports(glueJs));
+    out = fill(out, '/*__TAGLOCAL_JS__*/', stripModuleExports(taglocalJs));
+    out = fill(out, '__WASM_BASE64__', bytesToBase64(new Uint8Array(wasmBuf)));
+    out = fill(out, '__GENERATED_AT__', new Date().toISOString().slice(0, 10));
+    return out;
+}
+
+async function downloadOfflineInstaller() {
+    offlineDownloadBtn.disabled = true;
+    setOfflineStatus('Building the offline installer…');
+    try {
+        const html = await buildOfflineInstaller();
+        const filename = 'rivals2-tag-installer-offline.html';
+        triggerDownload(
+            URL.createObjectURL(new Blob([html], { type: 'text/html' })), filename);
+        setOfflineStatus(
+            `Downloaded <strong>${filename}</strong>. Copy it to the offline machine ` +
+            'along with your .r2tag files and open it in any browser.', 'success');
+    } catch (err) {
+        console.error('Offline installer build failed:', err);
+        setOfflineStatus(
+            `Couldn't build the installer: ${escapeHtml(String(err.message || err))}`, 'error');
+    } finally {
+        offlineDownloadBtn.disabled = false;
+    }
+}
+
+if (offlineDownloadBtn) offlineDownloadBtn.addEventListener('click', downloadOfflineInstaller);
 
 // ---- Wire up events -------------------------------------------------------
 

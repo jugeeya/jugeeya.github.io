@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<!--
+  Template for the downloadable OFFLINE tag installer.
+
+  This file is not meant to be opened directly: the tags page fetches it when
+  "Download offline installer" is clicked and fills in the placeholder tokens
+  (see buildOfflineInstaller in tags.js), producing a single self-contained
+  HTML file that works from a plain file:// double-click with no internet.
+  The tokens are double-underscore-wrapped names — STYLES_CSS and TAGS_CSS
+  (the two stylesheets), JSZIP_JS (vendor/jszip.min.js), WASM_GLUE_JS
+  (wasm/r2tag_wasm.js with its export statements stripped), TAGLOCAL_JS
+  (taglocal.js, likewise stripped), WASM_BASE64 (the .wasm, base64) and
+  GENERATED_AT (build date). This comment deliberately avoids spelling any
+  token out exactly, so the substitution can't also fire in here.
+
+  Everything is inlined (no external <script src>/<link>/fetch) because
+  browsers block module and wasm fetches from file:// pages.
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rivals II Tag Installer (offline)</title>
+    <style>
+/*__STYLES_CSS__*/
+/*__TAGS_CSS__*/
+
+/* Offline overrides: this page has a single flow, so drop the two-column
+   desktop grid the tags page lays its two flows out in and keep one
+   comfortable centered column. */
+main {
+    display: block !important;
+    max-width: 820px !important;
+    margin: 0 auto;
+}
+    </style>
+</head>
+
+<body class="accent-cyan">
+    <div class="container container-wide">
+        <header>
+            <div class="hero-text">
+                <h1>Rivals II Tag Installer <span class="offline-badge">offline</span></h1>
+                <p class="subtitle">Merge <code>.r2tag</code> control/tag files into a setup's
+                    Rivals II save. Everything runs inside this page — no internet needed.
+                    Generated __GENERATED_AT__ from
+                    <a href="https://jugeeya.github.io/tags/">jugeeya.github.io/tags</a>.</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="panel flow">
+                <div class="flow-head">
+                    <span class="flow-icon" aria-hidden="true">
+                        <svg viewBox="0 -960 960 960"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
+                    </span>
+                    <div>
+                        <h2 class="flow-title">Install tags to this setup</h2>
+                        <p class="flow-subtitle">Add the tag files you brought, merge them into the
+                            setup's save file, and put the save back.</p>
+                    </div>
+                </div>
+                <p id="initError" class="upload-status error" hidden></p>
+                <ol class="steps">
+                    <li class="step is-active" id="addStep">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">1</span>
+                            <h3 class="step-title">Add your tag files</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="tag-upload">
+                                <p class="field-hint">Pick the <code>.r2tag</code> /
+                                    <code>.r2tag.zip</code> files you downloaded from the tag sharing
+                                    site (or a whole folder of them).</p>
+                                <div class="tag-upload-actions">
+                                    <button type="button" id="uploadTagsBtn">Choose tag files…</button>
+                                    <button type="button" id="uploadFolderBtn" class="secondary">Choose a folder…</button>
+                                </div>
+                                <input type="file" id="uploadTagsInput" accept=".r2tag,.zip" multiple hidden>
+                                <input type="file" id="uploadFolderInput" webkitdirectory hidden>
+                                <ul id="localTagList" class="tag-list local-tag-list" hidden></ul>
+                                <p id="uploadTagsStatus" class="upload-status"></p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="step is-locked" id="mergeStep">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">2</span>
+                            <h3 class="step-title">Merge them into the setup's save file</h3>
+                        </div>
+                        <div class="step-body">
+                            <p class="step-help">Load the save file from this setup. The tags above are
+                                merged into it right here, and the updated save comes back as a
+                                download.</p>
+                            <div class="save-path-hint" data-path-kind="file">
+                                <div class="path-os-switch" role="group" aria-label="Platform">
+                                    <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
+                                    <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
+                                </div>
+                                <p class="field-hint save-path-intro">On Windows the save is here (under
+                                    <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
+                                <div class="save-path-row">
+                                    <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames\Rivals2_PlayerTagSaveSlot.sav</code>
+                                    <button type="button" class="secondary copy-path-btn">Copy path</button>
+                                    <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
+                                </div>
+                                <p class="field-hint save-path-tip">Tip: paste this into the file picker's
+                                    <em>File name</em> box and hit Open to jump straight to it.</p>
+                            </div>
+                            <label class="import-overwrite">
+                                <input type="checkbox" id="importOverwrite" checked>
+                                Overwrite tags that already exist in the save
+                            </label>
+                            <div class="upload-actions">
+                                <button type="button" id="mergeButton" disabled>Merge into a save file…</button>
+                            </div>
+                            <input type="file" id="mergeSavInput" accept=".sav" hidden>
+                            <p id="mergeStatus" class="upload-status"></p>
+                        </div>
+                    </li>
+
+                    <li class="step is-locked" id="backStep">
+                        <div class="step-head">
+                            <span class="step-num" aria-hidden="true">3</span>
+                            <h3 class="step-title">Put the updated save back</h3>
+                        </div>
+                        <div class="step-body">
+                            <div class="save-path-hint" data-path-kind="folder">
+                                <p class="field-hint">Browsers can't overwrite the save in place, so the
+                                    merged file arrived as a download. Move it into the save folder below,
+                                    replacing the old file.</p>
+                                <div class="path-os-switch" role="group" aria-label="Platform">
+                                    <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
+                                    <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
+                                </div>
+                                <p class="field-hint save-path-intro">On Windows the save folder is here (under
+                                    <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
+                                <div class="save-path-row">
+                                    <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
+                                    <button type="button" class="secondary copy-path-btn">Copy folder path</button>
+                                    <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
+                                </div>
+                                <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar, then replace
+                                    <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+        </main>
+
+        <footer>
+            <p>Offline copy of the installer from the
+                <a href="https://jugeeya.github.io/tags/">Rivals II Controls / Tag Sharing</a> site.
+                Visit it online to browse the shared tag database or share your own tag.</p>
+        </footer>
+    </div>
+
+    <script>
+/*__JSZIP_JS__*/
+    </script>
+    <script type="module">
+'use strict';
+
+// ---- Inlined WASM glue (r2tag_wasm.js with its export statements stripped) --
+/*__WASM_GLUE_JS__*/
+
+// ---- Inlined shared tag-file reader (taglocal.js, exports stripped) ---------
+/*__TAGLOCAL_JS__*/
+
+// ---- Offline installer app ---------------------------------------------------
+
+const WASM_B64 = '__WASM_BASE64__';
+
+function bytesFromBase64(b64) {
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return bytes;
+}
+
+const initError = document.getElementById('initError');
+
+// Instantiate the embedded wasm straight from bytes: file:// pages can't
+// fetch(), so the usual URL path through __wbg_init is off the table.
+const wasmReady = __wbg_init({ module_or_path: bytesFromBase64(WASM_B64) })
+    .catch(err => {
+        initError.hidden = false;
+        initError.textContent =
+            `This installer couldn't start (${err && err.message || err}). ` +
+            'Try re-downloading it from the tag sharing site.';
+        throw err;
+    });
+
+const addStep = document.getElementById('addStep');
+const mergeStep = document.getElementById('mergeStep');
+const backStep = document.getElementById('backStep');
+
+const uploadTagsBtn = document.getElementById('uploadTagsBtn');
+const uploadFolderBtn = document.getElementById('uploadFolderBtn');
+const uploadTagsInput = document.getElementById('uploadTagsInput');
+const uploadFolderInput = document.getElementById('uploadFolderInput');
+const localTagList = document.getElementById('localTagList');
+const uploadTagsStatus = document.getElementById('uploadTagsStatus');
+
+const mergeButton = document.getElementById('mergeButton');
+const mergeSavInput = document.getElementById('mergeSavInput');
+const mergeStatus = document.getElementById('mergeStatus');
+const importOverwrite = document.getElementById('importOverwrite');
+
+function setStepState(stepEl, state) {
+    stepEl.classList.toggle('is-locked', state === 'locked');
+    stepEl.classList.toggle('is-active', state === 'active');
+    stepEl.classList.toggle('is-done', state === 'done');
+}
+
+function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function triggerDownload(url, filename) {
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function setUploadStatus(message, kind = '') {
+    uploadTagsStatus.innerHTML = message;
+    uploadTagsStatus.className = `upload-status${kind ? ' ' + kind : ''}`;
+}
+
+function setMergeStatus(message, kind = '') {
+    mergeStatus.innerHTML = message;
+    mergeStatus.className = `upload-status${kind ? ' ' + kind : ''}`;
+}
+
+// ---- Step 1: add tag files ---------------------------------------------------
+
+let localTags = [];   // { id, name, fileName, bytes, selected }
+let nextLocalId = 1;
+
+function selectedLocalTags() {
+    return localTags.filter(t => t.selected);
+}
+
+function updateMergeState() {
+    const count = selectedLocalTags().length;
+    mergeButton.disabled = count === 0;
+    if (!mergeStep.classList.contains('is-done')) {
+        setStepState(mergeStep, count > 0 ? 'active' : 'locked');
+    }
+    if (localTags.length) setStepState(addStep, 'done');
+    else setStepState(addStep, 'active');
+}
+
+function renderLocalTagList() {
+    localTagList.innerHTML = '';
+    localTagList.hidden = !localTags.length;
+    for (const entry of localTags) {
+        const li = document.createElement('li');
+        li.className = 'tag-list-item local-tag-item';
+
+        const row = document.createElement('div');
+        row.className = 'local-tag-row';
+
+        const label = document.createElement('label');
+        label.className = 'tag-list-label';
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'tag-checkbox';
+        checkbox.checked = entry.selected;
+        checkbox.addEventListener('change', () => {
+            entry.selected = checkbox.checked;
+            updateMergeState();
+        });
+
+        const name = document.createElement('span');
+        name.className = 'tag-list-name';
+        name.textContent = entry.name;
+
+        const from = document.createElement('span');
+        from.className = 'local-tag-file';
+        from.textContent = `from ${entry.fileName}`;
+
+        label.appendChild(checkbox);
+        label.appendChild(name);
+        label.appendChild(from);
+
+        const remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'remove-file';
+        remove.textContent = '✕';
+        remove.title = 'Remove';
+        remove.addEventListener('click', () => {
+            localTags = localTags.filter(t => t.id !== entry.id);
+            renderLocalTagList();
+            updateMergeState();
+        });
+
+        row.appendChild(label);
+        row.appendChild(remove);
+        li.appendChild(row);
+        localTagList.appendChild(li);
+    }
+}
+
+async function addTagFiles(fileList) {
+    const files = [...fileList];
+    if (!files.length) return;
+    setUploadStatus('Reading tag files…');
+    try {
+        await wasmReady;
+        const { tags, errors } = await readTagFiles(files, {
+            tagNameIn: (bytes) => tag_name_in(bytes),
+            JSZip,
+        });
+        let added = 0;
+        for (const t of tags) {
+            const existing = localTags.find(e => e.name === t.name);
+            if (existing) {
+                existing.fileName = t.fileName;
+                existing.bytes = t.bytes;
+                existing.selected = true;
+            } else {
+                localTags.push({ id: nextLocalId++, selected: true, ...t });
+            }
+            added++;
+        }
+        renderLocalTagList();
+        updateMergeState();
+
+        const parts = [];
+        if (added) parts.push(`Added ${added} tag(s).`);
+        if (errors.length) {
+            parts.push(`Couldn't read ${errors.length} file(s): ` +
+                errors.slice(0, 3).map(e => escapeHtml(e.fileName)).join(', ') +
+                (errors.length > 3 ? '…' : ''));
+        }
+        if (!parts.length) parts.push('No .r2tag files found in that selection.');
+        setUploadStatus(parts.join(' '), errors.length ? 'warn' : (added ? 'success' : ''));
+    } catch (err) {
+        setUploadStatus(`Couldn't read those files: ${escapeHtml(String(err && err.message || err))}`, 'error');
+    }
+}
+
+uploadTagsBtn.addEventListener('click', () => { uploadTagsInput.value = ''; uploadTagsInput.click(); });
+uploadFolderBtn.addEventListener('click', () => { uploadFolderInput.value = ''; uploadFolderInput.click(); });
+uploadTagsInput.addEventListener('change', () => addTagFiles(uploadTagsInput.files));
+uploadFolderInput.addEventListener('change', () => addTagFiles(uploadFolderInput.files));
+
+// ---- Step 2: merge into a save -----------------------------------------------
+
+function importSummary(rep) {
+    const parts = [];
+    if (rep.imported.length) parts.push(`${rep.imported.length} imported`);
+    if (rep.skipped.length) parts.push(`${rep.skipped.length} skipped (already exist)`);
+    if (rep.incompatible.length) parts.push(`${rep.incompatible.length} incompatible (different game version)`);
+    return parts.join(', ') || 'no changes';
+}
+
+mergeButton.addEventListener('click', () => { mergeSavInput.value = ''; mergeSavInput.click(); });
+
+mergeSavInput.addEventListener('change', async () => {
+    const file = mergeSavInput.files && mergeSavInput.files[0];
+    if (!file) return;
+    const overwrite = importOverwrite.checked;
+    const items = selectedLocalTags().map(t => ({ bytes: t.bytes, overwrite }));
+    if (!items.length) return;
+    setMergeStatus('Reading your save and merging tags…');
+    try {
+        await wasmReady;
+        const savBytes = new Uint8Array(await file.arrayBuffer());
+        const rep = import_tags(savBytes, items);
+        triggerDownload(URL.createObjectURL(new Blob([rep.sav])), file.name);
+        setMergeStatus(
+            `Done: ${importSummary(rep)}. Downloaded <strong>${escapeHtml(file.name)}</strong>. ` +
+            'Step 3 below shows where to put it.',
+            rep.incompatible.length ? 'warn' : 'success'
+        );
+        setStepState(mergeStep, 'done');
+        setStepState(backStep, 'active');
+        backStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+        setMergeStatus(`Merge failed: ${escapeHtml(String(err && err.message || err))}`, 'error');
+    }
+});
+
+// ---- Save-path hints (Windows / Steam Deck switcher + copy buttons) ----------
+
+const SAVE_PATHS = {
+    windows: {
+        file: {
+            path: '%LOCALAPPDATA%\\Rivals2\\Saved\\SaveGames\\Rivals2_PlayerTagSaveSlot.sav',
+            intro: 'On Windows the save is here (under <code>C:\\Users\\&lt;you&gt;\\AppData\\Local</code>):',
+            tip: 'Tip: paste this into the file picker\'s <em>File name</em> box and hit Open to jump straight to it.',
+        },
+        folder: {
+            path: '%LOCALAPPDATA%\\Rivals2\\Saved\\SaveGames',
+            intro: 'On Windows the save folder is here (under <code>C:\\Users\\&lt;you&gt;\\AppData\\Local</code>):',
+            tip: 'Tip: paste this into Explorer\'s address bar, then replace <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.',
+        },
+    },
+    deck: {
+        file: {
+            path: '~/.local/share/Steam/steamapps/compatdata/217000/pfx/drive_c/users/steamuser/AppData/Local/Rivals2/Saved/SaveGames/Rivals2_PlayerTagSaveSlot.sav',
+            intro: 'On Steam Deck (Proton) the save is under your home folder:',
+            tip: 'Tip: in the file picker press <kbd>Ctrl</kbd>+<kbd>L</kbd> and paste this path. You may need to show hidden files (<kbd>Ctrl</kbd>+<kbd>H</kbd>).',
+        },
+        folder: {
+            path: '~/.local/share/Steam/steamapps/compatdata/217000/pfx/drive_c/users/steamuser/AppData/Local/Rivals2/Saved/SaveGames',
+            intro: 'On Steam Deck (Proton) the save folder is under your home folder:',
+            tip: 'Tip: open this folder (file manager ▸ <kbd>Ctrl</kbd>+<kbd>L</kbd>, paste) and replace the old <code>.sav</code> with the one you just downloaded. You may need to show hidden files (<kbd>Ctrl</kbd>+<kbd>H</kbd>).',
+        },
+    },
+};
+
+function clearCopyFeedback(scope) {
+    (scope || document).querySelectorAll('.copy-feedback').forEach(fb => {
+        fb.hidden = true;
+        fb.textContent = '';
+        fb.classList.remove('is-error');
+    });
+}
+
+function setSavePathOs(os) {
+    if (!SAVE_PATHS[os]) return;
+    document.querySelectorAll('.save-path-hint').forEach(hint => {
+        const kind = hint.dataset.pathKind === 'folder' ? 'folder' : 'file';
+        const data = SAVE_PATHS[os][kind];
+        const textEl = hint.querySelector('.save-path-text');
+        const introEl = hint.querySelector('.save-path-intro');
+        const tipEl = hint.querySelector('.save-path-tip');
+        if (textEl) textEl.textContent = data.path;
+        if (introEl) introEl.innerHTML = data.intro;
+        if (tipEl) tipEl.innerHTML = data.tip;
+        hint.querySelectorAll('.path-os-btn').forEach(btn =>
+            btn.classList.toggle('is-active', btn.dataset.os === os));
+        clearCopyFeedback(hint);
+    });
+}
+
+document.querySelectorAll('.path-os-btn').forEach(btn => {
+    btn.addEventListener('click', () => setSavePathOs(btn.dataset.os));
+});
+
+document.querySelectorAll('.copy-path-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const hint = btn.closest('.save-path-hint');
+        const path = hint?.querySelector('.save-path-text')?.textContent.trim() || '';
+        const fb = hint?.querySelector('.copy-feedback');
+        try {
+            await navigator.clipboard.writeText(path);
+            if (fb) { fb.textContent = 'Copied ✓'; fb.classList.remove('is-error'); fb.hidden = false; }
+        } catch {
+            // file:// pages sometimes lack clipboard access — select the text
+            // so a manual Ctrl+C still works.
+            const range = document.createRange();
+            const textEl = hint?.querySelector('.save-path-text');
+            if (textEl) {
+                range.selectNodeContents(textEl);
+                const sel = getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+            if (fb) { fb.textContent = 'Press Ctrl+C to copy'; fb.classList.add('is-error'); fb.hidden = false; }
+        }
+    });
+});
+
+updateMergeState();
+    </script>
+</body>
+
+</html>
