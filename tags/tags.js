@@ -581,26 +581,50 @@ function renderTagList() {
     updateDownloadButton();
 }
 
-// Adds a small "Copy link" button that puts a ?tag=<slug> deep link to this
-// tag on the clipboard (the slug is the manifest filename minus .r2tag.zip).
+// Material Symbols glyphs for the copy-link icon button (fill inherits
+// currentColor, same convention as the flow icons in index.html).
+const LINK_ICON_PATH =
+    'M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 ' +
+    '35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 ' +
+    '85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 ' +
+    '141.5T680-280H520Z';
+const CHECK_ICON_PATH = 'M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z';
+
+// Adds an icon-only "Copy link" button that puts a ?tag=<slug> deep link to
+// this tag on the clipboard (the slug is the manifest filename minus
+// .r2tag.zip). On success the link glyph swaps to a check for a moment; the
+// button's box never changes size, so the row doesn't shift.
 function addCopyLinkButton(actions, file) {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'tag-copy-link linkish';
-    btn.textContent = 'Copy link';
+    btn.className = 'tag-copy-link';
     btn.setAttribute('aria-label', 'Copy link to this tag');
+    btn.title = 'Copy link';
+    btn.innerHTML =
+        `<svg viewBox="0 -960 960 960" aria-hidden="true"><path d="${LINK_ICON_PATH}"/></svg>`;
+    const glyph = btn.querySelector('path');
     let timer = null;
     btn.addEventListener('click', async () => {
         const slug = file.replace(/\.r2tag\.zip$/i, '');
         const url = `${location.origin}${location.pathname}?tag=${encodeURIComponent(slug)}`;
+        let ok = true;
         try {
             await navigator.clipboard.writeText(url);
-            btn.textContent = 'Copied ✓';
         } catch {
-            btn.textContent = 'Copy failed';
+            ok = false;
         }
+        if (ok) glyph.setAttribute('d', CHECK_ICON_PATH);
+        btn.classList.toggle('is-copied', ok);
+        const feedback = ok ? 'Copied ✓' : 'Copy failed';
+        btn.title = feedback;
+        btn.setAttribute('aria-label', feedback);
         clearTimeout(timer);
-        timer = setTimeout(() => { btn.textContent = 'Copy link'; }, 1500);
+        timer = setTimeout(() => {
+            glyph.setAttribute('d', LINK_ICON_PATH);
+            btn.classList.remove('is-copied');
+            btn.title = 'Copy link';
+            btn.setAttribute('aria-label', 'Copy link to this tag');
+        }, 1500);
     });
     actions.appendChild(btn);
 }
@@ -635,6 +659,10 @@ function handleTagDeepLink() {
         row.scrollIntoView({ block: 'center' });
         row.classList.add('tag-link-highlight');
         setTimeout(() => row.classList.remove('tag-link-highlight'), 2200);
+        // A deep link means "look at this tag" — open its diff panel too, as
+        // if the visitor had clicked "View changes" themselves.
+        const toggle = row.querySelector('.tag-diff-toggle');
+        if (toggle) toggle.click();
     }
 }
 

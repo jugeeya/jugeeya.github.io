@@ -1027,24 +1027,40 @@ body.modal-open { overflow: hidden; }
     text-decoration: underline;
 }
 
-/* "Copy link" — a shareable deep link to the row's tag, styled to sit beside
-   "View changes". */
-.tag-copy-link.linkish {
+/* "Copy link" — an icon-only button (Material "link" glyph) that puts a
+   shareable deep link to the row's tag on the clipboard. Sits beside
+   "View changes"; a fixed square box (comfortable ~32px tap target) so the
+   glyph can swap to a check on copy without any layout shift. */
+.tag-copy-link {
     flex-shrink: 0;
-    margin: 0 0.85rem 0 0.25rem;
-    padding: 0.25rem 0.4rem;
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.5rem 0 0;
+    padding: 0.4rem;
     background: none;
     box-shadow: none;
-    color: var(--primary-color);
-    font-size: 0.8rem;
-    font-weight: 500;
-    white-space: nowrap;
+    color: var(--text-secondary);
+    border-radius: var(--md-corner-full, 999px);
 }
 
-.tag-copy-link.linkish:hover:not(:disabled) {
-    background: none;
+.tag-copy-link svg {
+    display: block;
+    width: 1.05em;
+    height: 1.05em;
+    fill: currentColor;
+}
+
+.tag-copy-link:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--md-primary) 10%, transparent);
+    box-shadow: none;
     transform: none;
-    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+/* Brief post-copy state: check glyph in the success color. */
+.tag-copy-link.is-copied,
+.tag-copy-link.is-copied:hover:not(:disabled) {
+    color: var(--success-color);
 }
 
 /* Deep-linked row (?tag=…): a fading flash so the row the link meant stands
@@ -1133,6 +1149,8 @@ body.modal-open { overflow: hidden; }
         grid-template-columns: 2rem minmax(0, 1fr);
         column-gap: 0.5rem;
         align-items: center;
+        /* Anchor for the absolutely-placed copy-link icon (below). */
+        position: relative;
     }
 
     #tagList .tag-list-item > .tag-list-label {
@@ -1155,11 +1173,21 @@ body.modal-open { overflow: hidden; }
         text-overflow: ellipsis;
     }
 
-    #tagList .tag-row-actions > .tag-diff-toggle.linkish,
-    #tagList .tag-row-actions > .tag-copy-link.linkish {
+    #tagList .tag-row-actions > .tag-diff-toggle.linkish {
         margin: 0;
         padding-left: 0;
         padding-right: 0;
+    }
+
+    /* The icon button rarely fits after the start.gg link + "View changes"
+       at 390px, and a lone icon wrapped to its own line looks orphaned.
+       Pin it to the row's top-right instead, beside the tag name — it keeps
+       its full ~32px tap target without adding any height to the row. */
+    #tagList .tag-row-actions > .tag-copy-link {
+        position: absolute;
+        top: 0.3rem;
+        right: 0.5rem;
+        margin: 0;
     }
 
     /* Uploaded-file rows: "from <file>" drops under the name, indented to the
