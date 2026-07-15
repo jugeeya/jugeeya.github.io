@@ -86,7 +86,11 @@ All use start.gg's unauthenticated website endpoint (no API token).
 2. Worker checks size / extension / zip magic and that a valid `user/<id>` slug
    was supplied, then commits `tags/data/<slug>.r2tag.zip` +
    `tags/data/<slug>.json` (metadata, including `startgg`) on a new branch and
-   opens a PR.
+   opens a PR. The `<slug>` is deterministic per (tag name, start.gg user), so
+   resubmitting the same tag is an **update**: it replaces the published pair in
+   place instead of piling up duplicates. The Action only allows such a
+   replacement when the sidecar's `startgg.slug` matches the published one — a
+   submission can never overwrite another player's tag.
 3. The Action re-validates authoritatively (path restriction, single real GVAS
    `.r2tag` inside the zip, size caps, sidecar shape), rebuilds
    `tags/data/index.json`, and squash-merges.

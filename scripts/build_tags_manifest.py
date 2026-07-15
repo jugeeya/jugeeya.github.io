@@ -37,6 +37,23 @@ def main():
             entry["startgg"] = {"slug": sgg["slug"], "tag": sgg.get("tag", "")}
         entries.append(entry)
 
+    # Belt-and-braces guard: a resubmission by the same player replaces its
+    # files in place (deterministic stem), so duplicates shouldn't exist — but
+    # if multiple sidecars ever share the same identity (startgg.slug, name),
+    # only the newest `uploaded` makes it into the manifest.
+    newest = {}
+    for entry in entries:
+        sgg = entry.get("startgg")
+        if not sgg:
+            # No start.gg identity to collide on; keep as-is (unique key).
+            newest[("file", entry["file"])] = entry
+            continue
+        key = (sgg["slug"].lower(), entry["name"])
+        prev = newest.get(key)
+        if prev is None or (entry.get("uploaded") or "") > (prev.get("uploaded") or ""):
+            newest[key] = entry
+    entries = list(newest.values())
+
     # Newest first; fall back to name for stable ordering.
     entries.sort(key=lambda e: (e.get("uploaded") or "", e["name"]), reverse=True)
 

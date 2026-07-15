@@ -1,7 +1,8 @@
 name: Validate and merge tag submissions
 
 # Tag submissions arrive as PRs opened by the broker (a GitHub App) on an
-# in-repo branch under tags/data/**, adding only the tag files (zip + sidecar).
+# in-repo branch under tags/data/**, adding or updating only the tag files
+# (zip + sidecar; a resubmission by the same player replaces its pair in place).
 # This workflow checks the PR is benign, auto-merges it, then rebuilds the
 # generated index.json on main. Keeping the manifest off the PR branch means the
 # shared file never causes a merge conflict and we don't race a push against the
@@ -39,8 +40,9 @@ jobs:
             "${{ github.event.pull_request.base.sha }}" \
             "${{ github.event.pull_request.head.sha }}"
 
-      # Submission PRs only add the tag files (zip + sidecar), which have unique
-      # names and never conflict. Merge first, then rebuild index.json on main —
+      # Submission PRs only add or update the tag files (zip + sidecar), whose
+      # names are unique per (player, tag name) and never conflict across
+      # players. Merge first, then rebuild index.json on main —
       # never on the PR branch, so the shared manifest can't cause a conflict and
       # we don't race a fresh push against the merge.
       - name: Auto-merge
