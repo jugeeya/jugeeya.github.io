@@ -60,3 +60,66 @@ export async function readTagFiles(files, deps) {
 
     return { tags, errors, ignored };
 }
+
+/**
+ * Collect the File objects out of a drag-and-drop DataTransfer, descending
+ * into dropped folders where the browser exposes them (webkitGetAsEntry).
+ * Must be called synchronously from the drop handler — a DataTransfer's items
+ * are only readable during the event. Falls back to dataTransfer.files when
+ * the entry API isn't available. Depth and file count are capped so a stray
+ * drop of an enormous tree can't wedge the page.
+ * @param {DataTransfer} dataTransfer
+ * @returns {Promise<File[]>}
+ */
+export async function filesFromDataTransfer(dataTransfer) {
+    const MAX_DEPTH = 8;
+    const MAX_FILES = 2000;
+    const out = [];
+    const entries = [];
+
+    // Synchronous part: snapshot entries/files before the event goes stale.
+    const items = dataTransfer && dataTransfer.items;
+    if (items) {
+        for (let i = 0; i < items.length; i++) {
+            const item = items[i];
+            if (item.kind !== 'file') continue;
+            const entry = item.webkitGetAsEntry ? item.webkitGetAsEntry() : null;
+            if (entry) {
+                entries.push(entry);
+            } else {
+                const f = item.getAsFile && item.getAsFile();
+                if (f) out.push(f);
+            }
+        }
+    }
+    if (!entries.length && !out.length) {
+        return [...((dataTransfer && dataTransfer.files) || [])];
+    }
+
+    async function walk(entry, depth) {
+        if (out.length >= MAX_FILES) return;
+        if (entry.isFile) {
+            const file = await new Promise((resolve) =>
+                entry.file(resolve, () => resolve(null)));
+            if (file) out.push(file);
+        } else if (entry.isDirectory && depth < MAX_DEPTH) {
+            const reader = entry.createReader();
+            // readEntries returns results in batches; keep reading until empty.
+            for (;;) {
+                const batch = await new Promise((resolve) =>
+                    reader.readEntries(resolve, () => resolve([])));
+                if (!batch.length) break;
+                for (const child of batch) {
+                    await walk(child, depth + 1);
+                    if (out.length >= MAX_FILES) return;
+                }
+            }
+        }
+    }
+
+    for (const entry of entries) {
+        await walk(entry, 0);
+        if (out.length >= MAX_FILES) break;
+    }
+    return out;
+}

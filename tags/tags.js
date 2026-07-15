@@ -25,7 +25,7 @@
 
 import { getTagNames, exportTag, importTags, tagJson, tagNameIn } from './wasm/tagsav.js';
 import { diffTagRoot, renderDiff } from './tagdiff.js';
-import { readTagFiles } from './taglocal.js';
+import { readTagFiles, filesFromDataTransfer } from './taglocal.js';
 
 const UPLOAD_ENDPOINT = 'https://r2tag-broker.jdsambasivam.workers.dev';
 const MANIFEST_URL = 'data/index.json';
@@ -41,6 +41,19 @@ const POLL_INTERVAL_MS = 45000;
 let shareEntries = [];
 let allTags = [];
 let tagSearchQuery = '';
+
+// Remote-tag selection, keyed by manifest filename. The Set (not the DOM) is
+// the source of truth: search filtering re-renders rows, and a checkbox that
+// isn't rendered right now must not lose its checked state. It can also hold
+// selections beyond the render cap (the bracket flow selects unrendered rows).
+const selectedTagFiles = new Set();
+
+// Cap on rendered browse rows — the manifest can outgrow what one <ul> can
+// comfortably hold; selection still works past the cap via selectedTagFiles.
+const RENDER_CAP = 200;
+
+// ?tag=<slug> deep link: handled once, after the first manifest load.
+let deepLinkHandled = false;
 
 // Local tags added via "or upload tag files" — .r2tag files the user already
 // has on disk. They join the remote selection in the merge/download actions.
@@ -75,6 +88,7 @@ const tagBrowser = document.getElementById('tagBrowser');
 const bracketInput = document.getElementById('bracketInput');
 const bracketGo = document.getElementById('bracketGo');
 const bracketStatus = document.getElementById('bracketStatus');
+const bracketMisses = document.getElementById('bracketMisses');
 const importSelectedBtn = document.getElementById('importSelected');
 const downloadSelectedBtn = document.getElementById('downloadSelected');
 const importSavInput = document.getElementById('importSavInput');
@@ -364,6 +378,7 @@ async function loadManifest() {
         const manifest = await res.json();
         allTags = Array.isArray(manifest.tags) ? manifest.tags : [];
         renderTagBrowser();
+        handleTagDeepLink();
     } catch (err) {
         console.error('Could not load tag manifest:', err);
         allTags = [];
@@ -393,8 +408,9 @@ function filteredTags() {
 }
 
 function getSelectedTagFiles() {
-    return [...tagBrowser.querySelectorAll('.tag-checkbox:checked')]
-        .map(cb => cb.value);
+    // Read from the Set, dropping anything that vanished from the manifest
+    // (e.g. a tag replaced between a selection and a manifest refresh).
+    return allTags.filter(t => selectedTagFiles.has(t.file)).map(t => t.file);
 }
 
 function getSelectedLocalTags() {
@@ -437,6 +453,7 @@ function renderTagBrowser() {
         '<div class="tag-browser-toolbar">' +
         '<input type="search" id="tagSearch" class="tag-search" ' +
         'placeholder="Search in-game or start.gg tag…" autocomplete="off">' +
+        '<span id="tagCount" class="tag-count"></span>' +
         '<div class="tag-browser-actions">' +
         '<button type="button" id="selectAllTags" class="linkish">Select all</button>' +
         '<span class="tag-action-sep">·</span>' +
@@ -447,19 +464,28 @@ function renderTagBrowser() {
 
     const searchInput = tagBrowser.querySelector('#tagSearch');
     searchInput.value = tagSearchQuery;
+    let searchTimer = null;
     searchInput.addEventListener('input', () => {
-        tagSearchQuery = searchInput.value;
-        renderTagList(); // redraw only the list; keep the search box (and focus)
+        // Debounced: on a large manifest each keystroke would otherwise redraw
+        // the whole list. Only the list is redrawn, so focus never drops.
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+            tagSearchQuery = searchInput.value;
+            renderTagList();
+        }, 150);
     });
 
+    // "Select all" means all *currently filtered* tags (searching first, then
+    // selecting all, builds up a selection across searches); "Clear" drops
+    // everything, filtered or not.
     tagBrowser.querySelector('#selectAllTags').addEventListener('click', () => {
-        tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => { cb.checked = true; });
-        updateDownloadButton();
+        filteredTags().forEach(t => { if (t.file) selectedTagFiles.add(t.file); });
+        renderTagList();
     });
 
     tagBrowser.querySelector('#clearTagSelection').addEventListener('click', () => {
-        tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => { cb.checked = false; });
-        updateDownloadButton();
+        selectedTagFiles.clear();
+        renderTagList();
     });
 
     renderTagList();
@@ -471,18 +497,27 @@ function renderTagList() {
     const list = tagBrowser.querySelector('#tagList');
     if (!list) return;
 
-    const previouslySelected = new Set(getSelectedTagFiles());
     const visible = filteredTags();
+
+    // Keep the toolbar count in step with the filter.
+    const countEl = tagBrowser.querySelector('#tagCount');
+    if (countEl) {
+        countEl.textContent = tagSearchQuery.trim()
+            ? `${visible.length} of ${allTags.length} match`
+            : `${allTags.length} tags shared`;
+    }
 
     list.innerHTML = '';
 
     if (!visible.length) {
         list.innerHTML = '<li class="tag-list-empty muted">No tags match your search.</li>';
     } else {
-        visible.forEach(tag => {
+        const shown = visible.slice(0, RENDER_CAP);
+        shown.forEach(tag => {
             const file = tag.file || '';
             const li = document.createElement('li');
             li.className = 'tag-list-item';
+            li.dataset.file = file;
 
             const label = document.createElement('label');
             label.className = 'tag-list-label';
@@ -491,8 +526,12 @@ function renderTagList() {
             checkbox.type = 'checkbox';
             checkbox.className = 'tag-checkbox';
             checkbox.value = file;
-            checkbox.checked = previouslySelected.has(file);
-            checkbox.addEventListener('change', updateDownloadButton);
+            checkbox.checked = selectedTagFiles.has(file);
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) selectedTagFiles.add(file);
+                else selectedTagFiles.delete(file);
+                updateDownloadButton();
+            });
 
             const name = document.createElement('span');
             name.className = 'tag-list-name';
@@ -502,6 +541,12 @@ function renderTagList() {
             label.appendChild(name);
             li.appendChild(label);
 
+            // Row actions (start.gg link, "View changes", "Copy link") share a
+            // container: inline after the name on desktop, and a wrappable
+            // second line under it on phones.
+            const actions = document.createElement('div');
+            actions.className = 'tag-row-actions';
+
             if (tag.startgg && tag.startgg.slug) {
                 const a = document.createElement('a');
                 a.className = 'tag-sgg-link';
@@ -510,24 +555,94 @@ function renderTagList() {
                 a.rel = 'noopener';
                 a.textContent = tag.startgg.tag ? `@${tag.startgg.tag}` : 'start.gg';
                 a.title = 'View start.gg profile';
-                li.appendChild(a);
+                actions.appendChild(a);
             }
 
             // "View changes" expander — shows how this tag differs from default,
             // if we have a precomputed digest for it.
-            addChangeToggle(li, file);
+            addChangeToggle(li, actions, file);
 
+            // "Copy link" — a shareable URL that jumps straight to this tag.
+            addCopyLinkButton(actions, file);
+
+            li.appendChild(actions);
             list.appendChild(li);
         });
+
+        if (visible.length > shown.length) {
+            const footer = document.createElement('li');
+            footer.className = 'tag-list-footer muted';
+            footer.textContent =
+                `Showing ${shown.length} of ${visible.length} matches — search to narrow.`;
+            list.appendChild(footer);
+        }
     }
 
     updateDownloadButton();
 }
 
-// Adds a "View changes" link to a tag row, toggling a diff-from-default panel
-// inserted just below the row. The tag's .r2tag is fetched and parsed in-browser
-// (via the WASM) on first open, then diffed against the default baseline.
-function addChangeToggle(li, file) {
+// Adds a small "Copy link" button that puts a ?tag=<slug> deep link to this
+// tag on the clipboard (the slug is the manifest filename minus .r2tag.zip).
+function addCopyLinkButton(actions, file) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tag-copy-link linkish';
+    btn.textContent = 'Copy link';
+    btn.setAttribute('aria-label', 'Copy link to this tag');
+    let timer = null;
+    btn.addEventListener('click', async () => {
+        const slug = file.replace(/\.r2tag\.zip$/i, '');
+        const url = `${location.origin}${location.pathname}?tag=${encodeURIComponent(slug)}`;
+        try {
+            await navigator.clipboard.writeText(url);
+            btn.textContent = 'Copied ✓';
+        } catch {
+            btn.textContent = 'Copy failed';
+        }
+        clearTimeout(timer);
+        timer = setTimeout(() => { btn.textContent = 'Copy link'; }, 1500);
+    });
+    actions.appendChild(btn);
+}
+
+// Honor a ?tag=<slug> deep link once the manifest is in: surface the matching
+// tag (set the search so it's rendered even past the cap), scroll to it and
+// flash a highlight so it's obvious which row the link meant.
+function handleTagDeepLink() {
+    if (deepLinkHandled) return;
+    deepLinkHandled = true;
+    const slug = new URLSearchParams(location.search).get('tag');
+    if (!slug) return;
+
+    const tag = allTags.find(t =>
+        (t.file || '').replace(/\.r2tag\.zip$/i, '') === slug);
+    if (!tag) {
+        const note = document.createElement('p');
+        note.className = 'muted tag-link-note';
+        note.textContent = 'That shared tag wasn’t found — it may have been replaced.';
+        tagBrowser.prepend(note);
+        return;
+    }
+
+    tagSearchQuery = tagDisplayName(tag);
+    const searchInput = tagBrowser.querySelector('#tagSearch');
+    if (searchInput) searchInput.value = tagSearchQuery;
+    renderTagList();
+
+    const row = tagBrowser.querySelector(
+        `.tag-list-item[data-file="${CSS.escape(tag.file)}"]`);
+    if (row) {
+        row.scrollIntoView({ block: 'center' });
+        row.classList.add('tag-link-highlight');
+        setTimeout(() => row.classList.remove('tag-link-highlight'), 2200);
+    }
+}
+
+// Adds a "View changes" link to a tag row's actions, toggling a diff-from-
+// default panel inserted just below the row. The tag's .r2tag is fetched and
+// parsed in-browser (via the WASM) on first open, then diffed against the
+// default baseline.
+function addChangeToggle(li, actions, file) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'tag-diff-toggle linkish';
@@ -556,7 +671,7 @@ function addChangeToggle(li, file) {
         }
     });
 
-    li.appendChild(btn);
+    actions.appendChild(btn);
 }
 
 async function downloadSelectedTags() {
@@ -951,6 +1066,7 @@ async function findBracketTags() {
     }
 
     bracketGo.disabled = true;
+    renderBracketMisses([]);   // stale misses from a previous lookup
     setBracketStatus(target.phaseGroupId ? 'Looking up this bracket section…' : 'Looking up entrants…');
     try {
         const params = new URLSearchParams({ slug: target.slug });
@@ -959,15 +1075,27 @@ async function findBracketTags() {
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || `${res.status}`);
 
-        const slugs = new Set((data.entrants || []).map(e => e.slug));
+        const entrants = data.entrants || [];
+        const slugs = new Set(entrants.map(e => e.slug));
         const matches = allTags.filter(t => t.startgg && slugs.has(t.startgg.slug));
 
-        // Select the matching tags in the browser and clear the rest.
-        const matchFiles = new Set(matches.map(t => t.file));
-        tagBrowser.querySelectorAll('.tag-checkbox').forEach(cb => {
-            cb.checked = matchFiles.has(cb.value);
+        // Replace the browse selection with the matching tags (this may select
+        // rows beyond the render cap; the Set carries them regardless).
+        selectedTagFiles.clear();
+        matches.forEach(t => { if (t.file) selectedTagFiles.add(t.file); });
+        renderTagList();
+
+        // Entrants whose linked start.gg account has no published tag —
+        // useful as a "who should I chase down" list for the TO.
+        const taggedSlugs = new Set(
+            allTags.filter(t => t.startgg && t.startgg.slug).map(t => t.startgg.slug));
+        const seen = new Set();
+        const missing = entrants.filter(e => {
+            if (!e.slug || seen.has(e.slug)) return false;
+            seen.add(e.slug);
+            return !taggedSlugs.has(e.slug);
         });
-        updateDownloadButton();
+        renderBracketMisses(missing);
 
         const scope = data.section ? `${data.event || 'event'} — ${data.section}` : data.event;
         const evName = scope ? ` for “${scope}”` : '';
@@ -984,6 +1112,54 @@ async function findBracketTags() {
     } finally {
         bracketGo.disabled = false;
     }
+}
+
+// A quiet, collapsed list of the bracket's entrants who have no published tag
+// (linked start.gg accounts only — that's all the broker can see). Replaced on
+// every lookup; hidden when everyone's covered.
+function renderBracketMisses(missing) {
+    if (!bracketMisses) return;
+    bracketMisses.innerHTML = '';
+    if (!missing.length) return;
+
+    const names = missing.map(e => e.gamerTag || e.entrant || e.slug);
+    const namesText = names.join(', ');
+
+    const details = document.createElement('details');
+    details.className = 'bracket-misses';
+
+    const summary = document.createElement('summary');
+    summary.textContent =
+        `${missing.length} entrant${missing.length === 1 ? '' : 's'} without a published tag`;
+    details.appendChild(summary);
+
+    const body = document.createElement('div');
+    body.className = 'bracket-misses-body';
+
+    const list = document.createElement('span');
+    list.className = 'bracket-misses-list';
+    list.textContent = namesText;
+    body.appendChild(list);
+
+    const copyBtn = document.createElement('button');
+    copyBtn.type = 'button';
+    copyBtn.className = 'bracket-misses-copy linkish';
+    copyBtn.textContent = 'Copy list';
+    let timer = null;
+    copyBtn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(namesText);
+            copyBtn.textContent = 'Copied ✓';
+        } catch {
+            copyBtn.textContent = 'Copy failed';
+        }
+        clearTimeout(timer);
+        timer = setTimeout(() => { copyBtn.textContent = 'Copy list'; }, 1500);
+    });
+    body.appendChild(copyBtn);
+
+    details.appendChild(body);
+    bracketMisses.appendChild(details);
 }
 
 if (bracketGo) {
@@ -1226,6 +1402,78 @@ if (uploadTagsBtn) {
     uploadTagsInput.addEventListener('change', () => addLocalTagFiles(uploadTagsInput.files));
     uploadFolderInput.addEventListener('change', () => addLocalTagFiles(uploadFolderInput.files));
 }
+
+// ---- Drag & drop --------------------------------------------------------------
+// Three drop targets: tag files onto the "or upload tag files" block, a .sav
+// onto the share flow's step 1, and a .sav onto the install flow's step 2
+// (which merges the current selection straight into it, skipping the modal).
+
+// Keep a stray drop anywhere else from making the browser navigate to the file.
+document.addEventListener('dragover', (e) => e.preventDefault());
+document.addEventListener('drop', (e) => e.preventDefault());
+
+// dragenter/dragleave fire for every child the cursor crosses, so a plain
+// add/remove of the class flickers; a depth counter keeps it steady.
+function makeDropZone(el, onFiles) {
+    if (!el) return;
+    let depth = 0;
+    el.addEventListener('dragenter', (e) => {
+        e.preventDefault();
+        depth++;
+        el.classList.add('is-dragover');
+    });
+    el.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    });
+    el.addEventListener('dragleave', () => {
+        depth = Math.max(0, depth - 1);
+        if (!depth) el.classList.remove('is-dragover');
+    });
+    el.addEventListener('drop', (e) => {
+        e.preventDefault();
+        depth = 0;
+        el.classList.remove('is-dragover');
+        // Called synchronously: a DataTransfer is only readable during the event.
+        filesFromDataTransfer(e.dataTransfer).then(onFiles);
+    });
+}
+
+function firstSavIn(files) {
+    return files.find(f => f.name.toLowerCase().endsWith('.sav')) || null;
+}
+
+// Tag files / folders → the local-tag list (same path as the pickers).
+makeDropZone(document.querySelector('.tag-upload'), (files) => {
+    if (files.length) addLocalTagFiles(files);
+});
+
+// Share flow step 1: drop your .sav instead of clicking through the modal.
+makeDropZone(shareStep1 && shareStep1.querySelector('.step-body'), (files) => {
+    const sav = firstSavIn(files);
+    if (sav) {
+        loadSavFile(sav);
+    } else if (files.length) {
+        savLoadStatus.textContent = 'Drop your .sav save file here (that\'s the one your tags live in).';
+        savLoadStatus.className = 'upload-status';
+    }
+});
+
+// Install flow step 2: drop the setup's .sav to merge the selection into it.
+makeDropZone(getStep2 && getStep2.querySelector('.step-body'), (files) => {
+    const sav = firstSavIn(files);
+    if (!sav) {
+        if (files.length) setImportStatus('Drop the setup\'s .sav file here to merge the selected tags into it.');
+        return;
+    }
+    pendingImportFiles = getSelectedTagFiles();
+    pendingImportLocal = getSelectedLocalTags();
+    if (!pendingImportFiles.length && !pendingImportLocal.length) {
+        setImportStatus('Pick some tags in step 1 first, then drop the save here.');
+        return;
+    }
+    importSelectedToSave(sav);
+});
 
 // ---- Offline installer download ----------------------------------------------
 // Assembles a single self-contained HTML file (offline-template.html with this

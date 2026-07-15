@@ -403,6 +403,16 @@ code {
     user-select: none;
 }
 
+/* Total / filtered count beside the search box ("7 tags shared" or
+   "2 of 7 match"). Styled like the .tag-selected-count chip, but always dim —
+   it's context, not state. Nowrap so the toolbar wraps it as one unit. */
+.tag-count {
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
 /* Running selection count — the Merge / Download buttons in step 2 keep fixed
    labels (and widths); the count lives here by the selection controls. */
 .tag-selected-count {
@@ -437,6 +447,13 @@ code {
 
 .tag-list-empty {
     padding: 0.75rem 1rem;
+}
+
+/* Non-interactive footer row when the render cap trims the list. */
+.tag-list-footer {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.82rem;
+    text-align: center;
 }
 
 .tag-list-label {
@@ -673,6 +690,16 @@ code {
 
 .tag-list-item .tag-list-label {
     flex: 1 1 auto;
+}
+
+/* Row actions (start.gg link / "View changes" / "Copy link"): inline after
+   the name on desktop; the phone layout turns this into a wrappable second
+   line under the name. */
+.tag-row-actions {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: 0;
 }
 
 .tag-sgg-link {
@@ -1000,19 +1027,110 @@ body.modal-open { overflow: hidden; }
     text-decoration: underline;
 }
 
+/* "Copy link" — a shareable deep link to the row's tag, styled to sit beside
+   "View changes". */
+.tag-copy-link.linkish {
+    flex-shrink: 0;
+    margin: 0 0.85rem 0 0.25rem;
+    padding: 0.25rem 0.4rem;
+    background: none;
+    box-shadow: none;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.tag-copy-link.linkish:hover:not(:disabled) {
+    background: none;
+    transform: none;
+    text-decoration: underline;
+}
+
+/* Deep-linked row (?tag=…): a fading flash so the row the link meant stands
+   out inside the list. */
+@keyframes tag-link-flash {
+    from {
+        box-shadow: inset 0 0 0 2px var(--primary-color);
+        background-color: color-mix(in srgb, var(--md-primary) 14%, transparent);
+    }
+    to {
+        box-shadow: inset 0 0 0 2px transparent;
+        background-color: transparent;
+    }
+}
+
+.tag-list-item.tag-link-highlight {
+    animation: tag-link-flash 2s ease;
+}
+
+/* ---- Bracket lookup: entrants without a published tag ---------------------- */
+/* Deliberately quiet — it's a collapsed footnote under the lookup status. */
+.bracket-misses {
+    margin: 0.5rem 0 0;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.bracket-misses summary {
+    cursor: pointer;
+    user-select: none;
+    width: fit-content;
+}
+
+.bracket-misses summary:hover {
+    color: var(--text-color);
+}
+
+.bracket-misses-body {
+    margin: 0.35rem 0 0 1.05rem;   /* clear the disclosure triangle */
+}
+
+.bracket-misses-list {
+    word-break: break-word;
+}
+
+.bracket-misses-copy.linkish {
+    margin-left: 0.5rem;
+    padding: 0.1rem 0.3rem;
+    background: none;
+    box-shadow: none;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.bracket-misses-copy.linkish:hover:not(:disabled) {
+    background: none;
+    transform: none;
+    text-decoration: underline;
+}
+
+/* ---- Drag & drop targets --------------------------------------------------- */
+/* Dashed accent outline while a drag hovers a drop target (the .sav steps and
+   the tag-file upload block). */
+.is-dragover {
+    outline: 2px dashed var(--primary-color);
+    outline-offset: 4px;
+    border-radius: 8px;
+    background-color: color-mix(in srgb, var(--md-primary) 6%, transparent);
+}
+
 /* Phones: the nowrap start.gg / "View changes" columns squeeze the name column
    until break-word splits even a short name letter-by-letter. Stack each row
    instead: checkbox + name across the top, the links on a second line under
    the name text. */
 @media (max-width: 600px) {
-    /* Spacer + link + toggle grid: spacer (2rem) + column gap (0.5rem) lines
-       the second row up with the name text (label padding 0.85rem + checkbox
-       1rem + gap 0.65rem = 2.5rem). The toggle track sizes to its nowrap
-       min-content, so an unusually long start.gg handle ellipsizes in its own
-       track instead of shoving the toggle off the row. */
+    /* Spacer + actions grid: spacer (2rem) + column gap (0.5rem) lines the
+       second row up with the name text (label padding 0.85rem + checkbox
+       1rem + gap 0.65rem = 2.5rem). The actions themselves wrap as a flex
+       line — three items (start.gg link, "View changes", "Copy link") don't
+       always fit one row at 390px, and a wrapped item starts back at the
+       same indent instead of overflowing the list box sideways. */
     #tagList .tag-list-item {
         display: grid;
-        grid-template-columns: 2rem minmax(0, max-content) 1fr;
+        grid-template-columns: 2rem minmax(0, 1fr);
         column-gap: 0.5rem;
         align-items: center;
     }
@@ -1022,26 +1140,26 @@ body.modal-open { overflow: hidden; }
         padding-bottom: 0.15rem;
     }
 
-    #tagList .tag-list-item > .tag-sgg-link {
+    #tagList .tag-list-item > .tag-row-actions {
         grid-column: 2;
-        margin: 0 0 0.5rem;
+        flex-wrap: wrap;
+        column-gap: 0.9rem;
+        row-gap: 0.15rem;
+        margin: 0 0 0.45rem;
+    }
+
+    #tagList .tag-row-actions > .tag-sgg-link {
+        margin: 0;
+        max-width: 100%;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
-    #tagList .tag-list-item > .tag-diff-toggle.linkish {
-        grid-column: 3;
-        justify-self: start;
-        margin: 0 0 0.3rem;
-        padding-left: 0.25rem;
-        padding-right: 0.25rem;
-    }
-
-    /* Rows without a start.gg link: pull the toggle back so it leads the
-       second line (skipping the empty link track's extra column gap). */
-    #tagList .tag-list-item > .tag-list-label + .tag-diff-toggle.linkish {
-        grid-column: 2 / -1;
-        margin-left: -0.25rem;    /* own padding, so the text hits the indent */
+    #tagList .tag-row-actions > .tag-diff-toggle.linkish,
+    #tagList .tag-row-actions > .tag-copy-link.linkish {
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     /* Uploaded-file rows: "from <file>" drops under the name, indented to the

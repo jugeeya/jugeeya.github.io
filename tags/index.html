@@ -60,7 +60,8 @@
                         </div>
                         <div class="step-body">
                             <p class="step-help">Your tags live in your Rivals II save. It's read right
-                                here in your browser and <strong>never uploaded</strong>.</p>
+                                here in your browser and <strong>never uploaded</strong>.
+                                <span class="muted">(or drag &amp; drop your <code>.sav</code> here)</span></p>
                             <button id="savButton" type="button">Load my save file</button>
                             <input type="file" id="savInput" accept=".sav" hidden>
                             <p class="step-done-note" id="shareLoadedNote" hidden></p>
@@ -142,6 +143,7 @@
                                     <button type="button" id="bracketGo" class="secondary">Find tags</button>
                                 </div>
                                 <p id="bracketStatus" class="bracket-status"></p>
+                                <div id="bracketMisses"></div>
                             </div>
 
                             <p class="or-divider">or pick tags by hand</p>
@@ -154,7 +156,8 @@
 
                             <div class="tag-upload">
                                 <p class="field-hint">For if you already have <code>.r2tag</code> files
-                                    (from "Just download the tag files", or shared directly).</p>
+                                    (from "Just download the tag files", or shared directly). Drag &amp;
+                                    drop works too.</p>
                                 <div class="tag-upload-actions">
                                     <button type="button" id="uploadTagsBtn" class="secondary">Choose tag files…</button>
                                     <button type="button" id="uploadFolderBtn" class="secondary">Choose a folder…</button>
@@ -175,7 +178,8 @@
                         <div class="step-body">
                             <p class="step-help">Load the save file from the setup you're updating. The
                                 selected tags are merged into it right here in your browser, and the updated
-                                save comes back as a download.</p>
+                                save comes back as a download.
+                                <span class="muted">(or drag &amp; drop the <code>.sav</code> here)</span></p>
                             <label class="import-overwrite">
                                 <input type="checkbox" id="importOverwrite" checked>
                                 Overwrite tags that already exist in the save

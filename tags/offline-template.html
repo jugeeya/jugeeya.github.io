@@ -72,7 +72,7 @@ main {
                             <div class="tag-upload">
                                 <p class="field-hint">Pick the <code>.r2tag</code> /
                                     <code>.r2tag.zip</code> files you downloaded from the tag sharing
-                                    site (or a whole folder of them).</p>
+                                    site (or a whole folder of them). Drag &amp; drop works too.</p>
                                 <div class="tag-upload-actions">
                                     <button type="button" id="uploadTagsBtn">Choose tag files…</button>
                                     <button type="button" id="uploadFolderBtn" class="secondary">Choose a folder…</button>
@@ -93,7 +93,8 @@ main {
                         <div class="step-body">
                             <p class="step-help">Load the save file from this setup. The tags above are
                                 merged into it right here, and the updated save comes back as a
-                                download.</p>
+                                download.
+                                <span class="muted">(or drag &amp; drop the <code>.sav</code> here)</span></p>
                             <div class="save-path-hint" data-path-kind="file">
                                 <div class="path-os-switch" role="group" aria-label="Platform">
                                     <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
@@ -366,9 +367,7 @@ function importSummary(rep) {
 
 mergeButton.addEventListener('click', () => { mergeSavInput.value = ''; mergeSavInput.click(); });
 
-mergeSavInput.addEventListener('change', async () => {
-    const file = mergeSavInput.files && mergeSavInput.files[0];
-    if (!file) return;
+async function mergeIntoSave(file) {
     const overwrite = importOverwrite.checked;
     const items = selectedLocalTags().map(t => ({ bytes: t.bytes, overwrite }));
     if (!items.length) return;
@@ -389,6 +388,62 @@ mergeSavInput.addEventListener('change', async () => {
     } catch (err) {
         setMergeStatus(`Merge failed: ${escapeHtml(String(err && err.message || err))}`, 'error');
     }
+}
+
+mergeSavInput.addEventListener('change', () => {
+    const file = mergeSavInput.files && mergeSavInput.files[0];
+    if (file) mergeIntoSave(file);
+});
+
+// ---- Drag & drop ---------------------------------------------------------------
+// Tag files onto step 1, the setup's .sav onto step 2 — same handlers as the
+// pickers. filesFromDataTransfer comes inlined from taglocal.js.
+
+document.addEventListener('dragover', (e) => e.preventDefault());
+document.addEventListener('drop', (e) => e.preventDefault());
+
+// dragenter/dragleave fire per child element; the depth counter keeps the
+// highlight from flickering as the cursor crosses children.
+function makeDropZone(el, onFiles) {
+    if (!el) return;
+    let depth = 0;
+    el.addEventListener('dragenter', (e) => {
+        e.preventDefault();
+        depth++;
+        el.classList.add('is-dragover');
+    });
+    el.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+    });
+    el.addEventListener('dragleave', () => {
+        depth = Math.max(0, depth - 1);
+        if (!depth) el.classList.remove('is-dragover');
+    });
+    el.addEventListener('drop', (e) => {
+        e.preventDefault();
+        depth = 0;
+        el.classList.remove('is-dragover');
+        // Called synchronously: a DataTransfer is only readable during the event.
+        filesFromDataTransfer(e.dataTransfer).then(onFiles);
+    });
+}
+
+makeDropZone(document.querySelector('.tag-upload'), (files) => {
+    if (files.length) addTagFiles(files);
+});
+
+makeDropZone(mergeStep.querySelector('.step-body'), (files) => {
+    const sav = files.find(f => f.name.toLowerCase().endsWith('.sav'));
+    if (!sav) {
+        if (files.length) setMergeStatus('Drop the setup\'s .sav file here to merge the tags into it.');
+        return;
+    }
+    if (!selectedLocalTags().length) {
+        setMergeStatus('Add some tag files in step 1 first, then drop the save here.');
+        return;
+    }
+    mergeIntoSave(sav);
 });
 
 // ---- Save-path hints (Windows / Steam Deck switcher + copy buttons) ----------
