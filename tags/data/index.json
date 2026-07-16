@@ -1,7 +1,17 @@
 {
   "version": 1,
-  "updated": "2026-07-14T22:05:53Z",
+  "updated": "2026-07-16T21:54:38Z",
   "tags": [
+    {
+      "name": "ALVRG",
+      "author": "JuanSolo",
+      "file": "alvrg-ea2886ed.r2tag.zip",
+      "uploaded": "2026-07-16T21:54:22Z",
+      "startgg": {
+        "slug": "user/ea2886ed",
+        "tag": "JuanSolo"
+      }
+    },
     {
       "name": "WIZ",
       "author": "",
