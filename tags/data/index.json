@@ -1,7 +1,17 @@
 {
   "version": 1,
-  "updated": "2026-07-17T18:48:11Z",
+  "updated": "2026-07-17T19:18:13Z",
   "tags": [
+    {
+      "name": "JOULE",
+      "author": "Joule Thief",
+      "file": "joule-97d57999.r2tag.zip",
+      "uploaded": "2026-07-17T19:17:56Z",
+      "startgg": {
+        "slug": "user/97d57999",
+        "tag": "Joule Thief"
+      }
+    },
     {
       "name": "STPAT",
       "author": "SaintPat",
