@@ -1,7 +1,17 @@
 {
   "version": 1,
-  "updated": "2026-07-18T17:27:52Z",
+  "updated": "2026-07-18T20:23:54Z",
   "tags": [
+    {
+      "name": "LOOM",
+      "author": "loom",
+      "file": "loom-74c453c9.r2tag.zip",
+      "uploaded": "2026-07-18T20:23:34Z",
+      "startgg": {
+        "slug": "user/74c453c9",
+        "tag": "loom"
+      }
+    },
     {
       "name": "ALTN",
       "author": "Altonp",
