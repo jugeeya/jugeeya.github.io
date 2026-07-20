@@ -907,25 +907,13 @@ body.modal-open { overflow: hidden; }
     transform: none;
 }
 
-/* Post-merge ("delivered") modal body: a lead line, the path hint, a replace
-   note, and a dismiss action. (The save-file modal uses .modal-steps instead.) */
-.modal-lead {
-    color: var(--text-color);
-    line-height: 1.5;
-    margin: 0 0 1.1rem;
-}
-
+/* Post-merge ("delivered") modal: a short "replace, don't open" note under the
+   step-2 Download button. The modal itself uses .modal-steps (shared below). */
 .modal-note {
     color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.5;
-    margin: 1rem 0 0;
-}
-
-.modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1.35rem;
+    margin: 0.75rem 0 0;
 }
 
 .modal-steps {

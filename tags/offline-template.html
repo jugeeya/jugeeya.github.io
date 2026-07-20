@@ -166,28 +166,31 @@ main {
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="deliveredModalTitle">
             <button type="button" class="modal-close" id="deliveredModalClose" aria-label="Close">&times;</button>
             <h2 class="modal-title" id="deliveredModalTitle">Merged. One step left. No need to open this file.</h2>
-            <p class="modal-lead">The file that just downloaded <strong>is your setup's new save</strong>.
-                Put it in the save folder, replacing the old one.</p>
-            <div class="save-path-hint" data-path-kind="folder">
-                <div class="path-os-switch" role="group" aria-label="Platform">
-                    <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
-                    <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
-                </div>
-                <p class="field-hint save-path-intro">On Windows the save folder is here (under
-                    <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
-                <div class="save-path-row">
-                    <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
-                    <button type="button" class="secondary copy-path-btn">Copy folder path</button>
-                    <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
-                </div>
-                <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar, then replace
-                    <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.</p>
-            </div>
-            <p class="modal-note">When your computer asks whether to replace the existing file, choose
-                <strong>Replace</strong> — that's the new tag data going in.</p>
-            <div class="modal-actions">
-                <button type="button" id="deliveredModalDone">Got it</button>
-            </div>
+            <ol class="modal-steps">
+                <li>
+                    <p class="modal-step-label">Open your save folder</p>
+                    <div class="save-path-hint" data-path-kind="folder">
+                        <div class="path-os-switch" role="group" aria-label="Platform">
+                            <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
+                            <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
+                        </div>
+                        <p class="field-hint save-path-intro">On Windows the save folder is here (under
+                            <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
+                        <div class="save-path-row">
+                            <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
+                            <button type="button" class="secondary copy-path-btn">Copy folder path</button>
+                            <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
+                        </div>
+                        <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar to open it.</p>
+                    </div>
+                </li>
+                <li>
+                    <p class="modal-step-label">Download your new save and drop it into that folder</p>
+                    <button type="button" id="deliveredDownloadBtn">Download updated save</button>
+                    <p class="modal-note">It replaces the old <code>Rivals2_PlayerTagSaveSlot.sav</code> —
+                        choose <strong>Replace</strong> when your computer asks. No need to open it.</p>
+                </li>
+            </ol>
         </div>
     </div>
 
@@ -408,10 +411,12 @@ async function mergeIntoSave(file) {
         await wasmReady;
         const savBytes = new Uint8Array(await file.arrayBuffer());
         const rep = import_tags(savBytes, items);
-        triggerDownload(URL.createObjectURL(new Blob([rep.sav])), file.name);
+        // Hold the bytes; the modal's Download button (or its close-fallback)
+        // fires the download so it never races the modal opening.
+        pendingDownload = { bytes: rep.sav, filename: file.name };
         setMergeStatus(
-            `Done: ${importSummary(rep)}. Downloaded <strong>${escapeHtml(file.name)}</strong>. ` +
-            'Step 3 below shows where to put it.',
+            `Merged ${importSummary(rep)}. Download your updated save from the popup, ` +
+            'then drop it into the save folder.',
             rep.incompatible.length ? 'warn' : 'success'
         );
         setStepState(mergeStep, 'done');
@@ -423,28 +428,48 @@ async function mergeIntoSave(file) {
     }
 }
 
-// Post-merge modal: catch the "open the download" instinct before the user acts
-// on it. Step 3 stays revealed underneath for anyone who dismisses it.
+// Post-merge modal: opens before any download so "don't open this — it replaces
+// your save" lands, and the download is a deliberate step-2 click instead of a
+// picker racing the modal. Step 3 stays revealed underneath.
 const deliveredModal = document.getElementById('deliveredModal');
 const deliveredModalClose = document.getElementById('deliveredModalClose');
-const deliveredModalDone = document.getElementById('deliveredModalDone');
+const deliveredDownloadBtn = document.getElementById('deliveredDownloadBtn');
+let pendingDownload = null;
+let deliveredDownloaded = false;
+
+function runDeliveredDownload() {
+    if (deliveredDownloaded || !pendingDownload) return;
+    deliveredDownloaded = true;
+    triggerDownload(URL.createObjectURL(new Blob([pendingDownload.bytes])), pendingDownload.filename);
+    if (deliveredDownloadBtn) {
+        deliveredDownloadBtn.textContent = 'Downloaded ✓';
+        deliveredDownloadBtn.disabled = true;
+    }
+}
 
 function openDeliveredModal() {
     if (!deliveredModal) return;
+    deliveredDownloaded = false;
+    if (deliveredDownloadBtn) {
+        deliveredDownloadBtn.textContent = 'Download updated save';
+        deliveredDownloadBtn.disabled = false;
+    }
     clearCopyFeedback(deliveredModal);
     deliveredModal.hidden = false;
     document.body.classList.add('modal-open');
-    deliveredModalDone && deliveredModalDone.focus();
+    deliveredDownloadBtn && deliveredDownloadBtn.focus();
 }
 
+// Closing without pressing Download still delivers the file (fallback).
 function closeDeliveredModal() {
     if (!deliveredModal) return;
+    runDeliveredDownload();
     deliveredModal.hidden = true;
     document.body.classList.remove('modal-open');
 }
 
 if (deliveredModal) {
-    deliveredModalDone.addEventListener('click', closeDeliveredModal);
+    deliveredDownloadBtn.addEventListener('click', runDeliveredDownload);
     deliveredModalClose.addEventListener('click', closeDeliveredModal);
     deliveredModal.addEventListener('click', (e) => { if (e.target === deliveredModal) closeDeliveredModal(); });
     document.addEventListener('keydown', (e) => {

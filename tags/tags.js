@@ -1293,29 +1293,37 @@ function saveOutput(bytes, filename) {
     triggerDownload(URL.createObjectURL(new Blob([bytes])), filename);
 }
 
-// Reports the merge result and unlocks step 3 (put the downloaded save back).
+// The merged save is held here between the merge and the user actually asking
+// for it. We deliberately DON'T auto-download on merge: an automatic download
+// pops the browser's save/download UI at the same instant the modal appears, so
+// the two compete for attention. Instead the modal's step-2 button triggers it,
+// and closing the modal without pressing it downloads anyway (fallback below),
+// so the file is never lost and the picker never races the modal.
+let pendingDownload = null;
+
+// Reports the merge result, unlocks step 3, and opens the guided modal. The
+// download itself waits for the modal's Download button (runDeliveredDownload).
 function deliveredStatus(rep, filename) {
+    pendingDownload = { bytes: rep.sav, filename };
     setImportStatus(
-        `Done: ${importSummary(rep)}. Downloaded <strong>${escapeHtml(filename)}</strong>. ` +
-        `Step 3 below shows where to put it.`,
+        `Merged ${importSummary(rep)}. Download your updated save from the popup, ` +
+        `then drop it into the save folder.`,
         rep.incompatible.length ? 'warn' : 'success'
     );
     setStepState(getStep2, 'done');
     setStepState(getStep3, 'active');
     getStep3.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    // Intercept the "open the download" instinct at the moment it forms; step 3
-    // stays revealed underneath for anyone who dismisses the modal.
     openDeliveredModal();
 }
 
-// Read the picked .sav, merge the selected tags in, and download the result.
+// Read the picked .sav and merge the selected tags in. The download is deferred
+// to the modal so it doesn't fire simultaneously with the modal opening.
 async function importSelectedToSave(savFile) {
     if (!pendingImportFiles.length && !pendingImportLocal.length) return;
     setImportStatus('Reading your save and the selected tags…');
     try {
         const savBytes = new Uint8Array(await savFile.arrayBuffer());
         const rep = await mergeSelectedTags(savBytes);
-        saveOutput(rep.sav, savFile.name);
         deliveredStatus(rep, savFile.name);
     } catch (err) {
         setImportStatus(`Import failed: ${err.message || err}`, 'error');
@@ -1719,29 +1727,50 @@ if (saveModal) {
     });
 }
 
-// Post-merge modal (see deliveredStatus): shown the moment the merged save
-// downloads, so "don't open this — it replaces your save" lands before the user
-// acts on the browser's download shelf.
+// Post-merge modal (see deliveredStatus): opens the moment a merge finishes,
+// BEFORE any download, so "don't open this — it replaces your save" lands and
+// the download (step 2) is a deliberate click rather than a surprise picker.
 const deliveredModal = document.getElementById('deliveredModal');
 const deliveredModalClose = document.getElementById('deliveredModalClose');
-const deliveredModalDone = document.getElementById('deliveredModalDone');
+const deliveredDownloadBtn = document.getElementById('deliveredDownloadBtn');
+let deliveredDownloaded = false;
+
+// Fire the actual download for the merged save held in pendingDownload. Guarded
+// so it only happens once per merge (button click or close-fallback).
+function runDeliveredDownload() {
+    if (deliveredDownloaded || !pendingDownload) return;
+    deliveredDownloaded = true;
+    saveOutput(pendingDownload.bytes, pendingDownload.filename);
+    if (deliveredDownloadBtn) {
+        deliveredDownloadBtn.textContent = 'Downloaded ✓';
+        deliveredDownloadBtn.disabled = true;
+    }
+}
 
 function openDeliveredModal() {
     if (!deliveredModal) return;
+    deliveredDownloaded = false;
+    if (deliveredDownloadBtn) {
+        deliveredDownloadBtn.textContent = 'Download updated save';
+        deliveredDownloadBtn.disabled = false;
+    }
     clearCopyFeedback(deliveredModal);
     deliveredModal.hidden = false;
     document.body.classList.add('modal-open');
-    deliveredModalDone?.focus();
+    deliveredDownloadBtn?.focus();
 }
 
+// Closing without pressing Download still delivers the file — the picker just
+// fires now (after an explicit dismiss) instead of racing the modal's opening.
 function closeDeliveredModal() {
     if (!deliveredModal) return;
+    runDeliveredDownload();
     deliveredModal.hidden = true;
     document.body.classList.remove('modal-open');
 }
 
 if (deliveredModal) {
-    deliveredModalDone.addEventListener('click', closeDeliveredModal);
+    deliveredDownloadBtn.addEventListener('click', runDeliveredDownload);
     deliveredModalClose.addEventListener('click', closeDeliveredModal);
     deliveredModal.addEventListener('click', (e) => { if (e.target === deliveredModal) closeDeliveredModal(); });
     document.addEventListener('keydown', (e) => {

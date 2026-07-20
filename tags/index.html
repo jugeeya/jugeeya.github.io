@@ -281,28 +281,31 @@
         <div class="modal" role="dialog" aria-modal="true" aria-labelledby="deliveredModalTitle">
             <button type="button" class="modal-close" id="deliveredModalClose" aria-label="Close">&times;</button>
             <h2 class="modal-title" id="deliveredModalTitle">Merged. One step left. No need to open this file.</h2>
-            <p class="modal-lead">The file that just downloaded <strong>is your setup's new save</strong>.
-                Put it in the save folder, replacing the old one.</p>
-            <div class="save-path-hint" data-path-kind="folder">
-                <div class="path-os-switch" role="group" aria-label="Platform">
-                    <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
-                    <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
-                </div>
-                <p class="field-hint save-path-intro">On Windows the save folder is here (under
-                    <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
-                <div class="save-path-row">
-                    <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
-                    <button type="button" class="secondary copy-path-btn">Copy folder path</button>
-                    <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
-                </div>
-                <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar, then replace
-                    <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.</p>
-            </div>
-            <p class="modal-note">When your computer asks whether to replace the existing file, choose
-                <strong>Replace</strong> — that's the new tag data going in.</p>
-            <div class="modal-actions">
-                <button type="button" id="deliveredModalDone">Got it</button>
-            </div>
+            <ol class="modal-steps">
+                <li>
+                    <p class="modal-step-label">Open your save folder</p>
+                    <div class="save-path-hint" data-path-kind="folder">
+                        <div class="path-os-switch" role="group" aria-label="Platform">
+                            <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
+                            <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
+                        </div>
+                        <p class="field-hint save-path-intro">On Windows the save folder is here (under
+                            <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
+                        <div class="save-path-row">
+                            <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
+                            <button type="button" class="secondary copy-path-btn">Copy folder path</button>
+                            <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
+                        </div>
+                        <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar to open it.</p>
+                    </div>
+                </li>
+                <li>
+                    <p class="modal-step-label">Download your new save and drop it into that folder</p>
+                    <button type="button" id="deliveredDownloadBtn">Download updated save</button>
+                    <p class="modal-note">It replaces the old <code>Rivals2_PlayerTagSaveSlot.sav</code> —
+                        choose <strong>Replace</strong> when your computer asks. No need to open it.</p>
+                </li>
+            </ol>
         </div>
     </div>
 
