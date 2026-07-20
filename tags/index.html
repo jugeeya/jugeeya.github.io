@@ -200,9 +200,10 @@
                         </div>
                         <div class="step-body">
                             <div class="save-path-hint" data-path-kind="folder" id="importPathHint">
-                                <p class="field-hint">Browsers can't overwrite the save in place, so the merged
-                                    file arrived as a download. Move it into the save folder below, replacing the
-                                    old file.</p>
+                                <p class="field-hint"><strong>No need to open the file you just
+                                    downloaded</strong> — it's your setup's new save. Put it in the save folder
+                                    below, replacing the old one. When your computer asks to replace the existing
+                                    file, choose <strong>Replace</strong>.</p>
                                 <div class="path-os-switch" role="group" aria-label="Platform">
                                     <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
                                     <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
@@ -269,6 +270,39 @@
                     <button type="button" id="saveModalChoose">Choose file…</button>
                 </li>
             </ol>
+        </div>
+    </div>
+
+    <!-- Post-merge modal. Fires the instant a merged save downloads, to catch the
+         "I should open this file" instinct (the browser's download shelf even offers
+         an Open button) before it happens. Its folder path stays in sync with step 3's
+         via the shared .save-path-hint / .path-os-btn / .copy-path-btn handlers. -->
+    <div class="modal-backdrop" id="deliveredModal" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="deliveredModalTitle">
+            <button type="button" class="modal-close" id="deliveredModalClose" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="deliveredModalTitle">Merged. One step left. No need to open this file.</h2>
+            <p class="modal-lead">The file that just downloaded <strong>is your setup's new save</strong>.
+                Put it in the save folder, replacing the old one.</p>
+            <div class="save-path-hint" data-path-kind="folder">
+                <div class="path-os-switch" role="group" aria-label="Platform">
+                    <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
+                    <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
+                </div>
+                <p class="field-hint save-path-intro">On Windows the save folder is here (under
+                    <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
+                <div class="save-path-row">
+                    <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
+                    <button type="button" class="secondary copy-path-btn">Copy folder path</button>
+                    <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
+                </div>
+                <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar, then replace
+                    <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.</p>
+            </div>
+            <p class="modal-note">When your computer asks whether to replace the existing file, choose
+                <strong>Replace</strong> — that's the new tag data going in.</p>
+            <div class="modal-actions">
+                <button type="button" id="deliveredModalDone">Got it</button>
+            </div>
         </div>
     </div>
 

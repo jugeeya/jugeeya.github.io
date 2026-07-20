@@ -1303,6 +1303,9 @@ function deliveredStatus(rep, filename) {
     setStepState(getStep2, 'done');
     setStepState(getStep3, 'active');
     getStep3.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Intercept the "open the download" instinct at the moment it forms; step 3
+    // stays revealed underneath for anyone who dismisses the modal.
+    openDeliveredModal();
 }
 
 // Read the picked .sav, merge the selected tags in, and download the result.
@@ -1713,6 +1716,36 @@ if (saveModal) {
     saveModal.addEventListener('click', (e) => { if (e.target === saveModal) closeSaveModal(); });
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && !saveModal.hidden) closeSaveModal();
+    });
+}
+
+// Post-merge modal (see deliveredStatus): shown the moment the merged save
+// downloads, so "don't open this — it replaces your save" lands before the user
+// acts on the browser's download shelf.
+const deliveredModal = document.getElementById('deliveredModal');
+const deliveredModalClose = document.getElementById('deliveredModalClose');
+const deliveredModalDone = document.getElementById('deliveredModalDone');
+
+function openDeliveredModal() {
+    if (!deliveredModal) return;
+    clearCopyFeedback(deliveredModal);
+    deliveredModal.hidden = false;
+    document.body.classList.add('modal-open');
+    deliveredModalDone?.focus();
+}
+
+function closeDeliveredModal() {
+    if (!deliveredModal) return;
+    deliveredModal.hidden = true;
+    document.body.classList.remove('modal-open');
+}
+
+if (deliveredModal) {
+    deliveredModalDone.addEventListener('click', closeDeliveredModal);
+    deliveredModalClose.addEventListener('click', closeDeliveredModal);
+    deliveredModal.addEventListener('click', (e) => { if (e.target === deliveredModal) closeDeliveredModal(); });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !deliveredModal.hidden) closeDeliveredModal();
     });
 }
 

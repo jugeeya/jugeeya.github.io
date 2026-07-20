@@ -129,9 +129,10 @@ main {
                         </div>
                         <div class="step-body">
                             <div class="save-path-hint" data-path-kind="folder">
-                                <p class="field-hint">Browsers can't overwrite the save in place, so the
-                                    merged file arrived as a download. Move it into the save folder below,
-                                    replacing the old file.</p>
+                                <p class="field-hint"><strong>No need to open the file you just
+                                    downloaded</strong> — it's your setup's new save. Put it in the save folder
+                                    below, replacing the old one. When your computer asks to replace the existing
+                                    file, choose <strong>Replace</strong>.</p>
                                 <div class="path-os-switch" role="group" aria-label="Platform">
                                     <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
                                     <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
@@ -157,6 +158,37 @@ main {
                 <a href="https://jugeeya.github.io/tags/">Rivals II Controls / Tag Sharing</a> site.
                 Visit it online to browse the shared tag database or share your own tag.</p>
         </footer>
+    </div>
+
+    <!-- Post-merge modal: same as the online page — shown the instant the merged
+         save downloads so "don't open this, it replaces your save" lands first. -->
+    <div class="modal-backdrop" id="deliveredModal" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="deliveredModalTitle">
+            <button type="button" class="modal-close" id="deliveredModalClose" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="deliveredModalTitle">Merged. One step left. No need to open this file.</h2>
+            <p class="modal-lead">The file that just downloaded <strong>is your setup's new save</strong>.
+                Put it in the save folder, replacing the old one.</p>
+            <div class="save-path-hint" data-path-kind="folder">
+                <div class="path-os-switch" role="group" aria-label="Platform">
+                    <button type="button" class="path-os-btn is-active" data-os="windows">Windows</button>
+                    <button type="button" class="path-os-btn" data-os="deck">Steam Deck</button>
+                </div>
+                <p class="field-hint save-path-intro">On Windows the save folder is here (under
+                    <code>C:\Users\&lt;you&gt;\AppData\Local</code>):</p>
+                <div class="save-path-row">
+                    <code class="save-path-text">%LOCALAPPDATA%\Rivals2\Saved\SaveGames</code>
+                    <button type="button" class="secondary copy-path-btn">Copy folder path</button>
+                    <span class="copy-feedback" role="status" aria-live="polite" hidden></span>
+                </div>
+                <p class="field-hint save-path-tip">Tip: paste this into Explorer's address bar, then replace
+                    <code>Rivals2_PlayerTagSaveSlot.sav</code> with the file you just downloaded.</p>
+            </div>
+            <p class="modal-note">When your computer asks whether to replace the existing file, choose
+                <strong>Replace</strong> — that's the new tag data going in.</p>
+            <div class="modal-actions">
+                <button type="button" id="deliveredModalDone">Got it</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -385,9 +417,39 @@ async function mergeIntoSave(file) {
         setStepState(mergeStep, 'done');
         setStepState(backStep, 'active');
         backStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        openDeliveredModal();
     } catch (err) {
         setMergeStatus(`Merge failed: ${escapeHtml(String(err && err.message || err))}`, 'error');
     }
+}
+
+// Post-merge modal: catch the "open the download" instinct before the user acts
+// on it. Step 3 stays revealed underneath for anyone who dismisses it.
+const deliveredModal = document.getElementById('deliveredModal');
+const deliveredModalClose = document.getElementById('deliveredModalClose');
+const deliveredModalDone = document.getElementById('deliveredModalDone');
+
+function openDeliveredModal() {
+    if (!deliveredModal) return;
+    clearCopyFeedback(deliveredModal);
+    deliveredModal.hidden = false;
+    document.body.classList.add('modal-open');
+    deliveredModalDone && deliveredModalDone.focus();
+}
+
+function closeDeliveredModal() {
+    if (!deliveredModal) return;
+    deliveredModal.hidden = true;
+    document.body.classList.remove('modal-open');
+}
+
+if (deliveredModal) {
+    deliveredModalDone.addEventListener('click', closeDeliveredModal);
+    deliveredModalClose.addEventListener('click', closeDeliveredModal);
+    deliveredModal.addEventListener('click', (e) => { if (e.target === deliveredModal) closeDeliveredModal(); });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !deliveredModal.hidden) closeDeliveredModal();
+    });
 }
 
 mergeSavInput.addEventListener('change', () => {
