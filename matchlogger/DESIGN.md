@@ -283,7 +283,9 @@ Everything is in this one repo (`jugeeya.github.io`):
 
 - **`matchlogger/ue4ss/`** — the UE4SS mod + minimal profile (drop-in install
   for a game PC).
-- **`matchlogger/sender/`** — the headless per-station sender *(to be built)*.
+- **`matchlogger/sender/`** — the headless per-station sender ✅ *(built:
+  `station_sender.py`, stdlib-only, forwards `sets/*.json` and
+  `current.json` to the broker with the station stamped on)*.
 - **`matchlogger/` page** (`index.html` + `matchlogger.js/.css`) — the operator
   web console, a static page alongside `../vods/` sharing `../styles.css`
   *(to be built)*.
@@ -294,8 +296,9 @@ Everything is in this one repo (`jugeeya.github.io`):
 ## Phasing
 
 - **Phase 0 — sender + console skeleton.** Headless station sender (watch →
-  POST) and a static console page reading a stub `/matchlogger/event`;
-  aggregated "sets today across stations" table. Unblocks everything.
+  POST) ✅ and the mod's `current.json`/epoch output ✅; still to do: a static
+  console page reading a stub `/matchlogger/event` with the aggregated "sets
+  today across stations" table.
 - **Phase 1 — ingest + Discord notify.** `/matchlogger/ingest` stores sets and
   posts to Discord on set end. Read-only w.r.t. start.gg.
 - **Phase 2 — live tracking + confirm-report.** `current.json` mod addition +

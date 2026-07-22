@@ -154,6 +154,19 @@ local function WriteJsonFile(filepath, tbl)
     return false
 end
 
+-- Live "now playing" state, overwritten at each hook so the companion agent
+-- (and, through it, the broker's station lookup) can react while a set is in
+-- progress. Station identity is deliberately NOT written here — the mod stays
+-- tournament-agnostic and the sender stamps the station on its way out.
+--   state: "set_start" | "match_start" | "set_open" | "idle"
+local function WriteCurrent(state, extra)
+    local cur = { state = state, epoch = NowEpoch() }
+    if extra then
+        for k, v in pairs(extra) do cur[k] = v end
+    end
+    WriteJsonFile(OUTPUT_DIR .. "/current.json", cur)
+end
+
 -- ---------------------------------------------------------------------------
 -- Set finalization
 -- ---------------------------------------------------------------------------
@@ -186,8 +199,10 @@ local function FinalizeSet(complete)
         setId = CurrentSet.id,
         complete = complete,                 -- false if interrupted before the deciding game
         startTime = CurrentSet.startIso,     -- character select entered (nil if mod loaded mid-set)
+        startEpoch = CurrentSet.startEpoch,  -- epoch seconds, for joining with start.gg / the VOD splitter
         firstMatchStartTime = CurrentSet.firstMatchStartIso,
         endTime = NowIso(),
+        endEpoch = endEpoch,
         durationSeconds = CurrentSet.startEpoch and (endEpoch - CurrentSet.startEpoch) or nil,
         winsRequired = CurrentSet.winsRequired,
         matchCount = #CurrentSet.matches,
@@ -205,6 +220,7 @@ local function FinalizeSet(complete)
         tostring(CurrentSet.id), #CurrentSet.matches, tostring(complete)))
 
     CurrentSet = nil
+    WriteCurrent("idle")
 end
 
 -- ---------------------------------------------------------------------------
@@ -228,6 +244,9 @@ NotifyOnNewObject("/Script/Rivals2.CharacterSelectScreenWidget", function()
         matches = {},
     }
     Log("[MatchLogger] Set started (id=" .. CurrentSet.id .. ")")
+    -- Heartbeat: a set just started at this machine → the agent asks the broker
+    -- who start.gg has at this station, pre-binding the two entrants.
+    WriteCurrent("set_start", { setId = CurrentSet.id, startEpoch = CurrentSet.startEpoch })
 end)
 
 -- ---------------------------------------------------------------------------
@@ -252,6 +271,7 @@ NotifyOnNewObject("/Script/Rivals2.VersusScreenWidget", function()
     if not CurrentSet.firstMatchStartIso then
         CurrentSet.firstMatchStartIso = CurrentSet.pendingMatchStartIso
     end
+    WriteCurrent("match_start", { setId = CurrentSet.id, matchIndex = #CurrentSet.matches + 1 })
 end)
 
 -- ---------------------------------------------------------------------------
@@ -320,7 +340,9 @@ function LogFromResultsWidget(widget)
     local matchRecord = {
         index = #CurrentSet.matches + 1,
         startTime = CurrentSet.pendingMatchStartIso,
+        startEpoch = startEpoch,
         endTime = matchEndIso,
+        endEpoch = matchEndEpoch,
         durationSeconds = startEpoch and (matchEndEpoch - startEpoch) or nil,
         playerCount = playerCount,
         players = players,
@@ -340,9 +362,12 @@ function LogFromResultsWidget(widget)
     WriteJsonFile(OUTPUT_DIR .. "/" .. NowStamp() .. ".json", matchReport)
     Log("[MatchLogger] === END RESULTS ===")
 
-    -- If this game decided the set, write the set file and reset.
+    -- If this game decided the set, write the set file and reset; otherwise the
+    -- set is still open (another game coming), so report that in the heartbeat.
     if isLastInSet == true then
-        FinalizeSet(true)
+        FinalizeSet(true)          -- writes the "idle" heartbeat itself
+    else
+        WriteCurrent("set_open", { setId = CurrentSet.id, matchCount = #CurrentSet.matches })
     end
 end
 
@@ -417,3 +442,6 @@ function ObjectToJson(obj, indent)
     if #parts == 0 then return "{}" end
     return "{\n" .. table.concat(parts, ",\n") .. "\n" .. string.rep(" ", indent) .. "}"
 end
+
+-- Start life idle so the companion agent always has a current.json to read.
+WriteCurrent("idle")
