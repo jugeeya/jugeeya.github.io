@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatchLogger Console</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="matchlogger.css">
+</head>
+
+<body class="accent-cyan">
+    <div class="container">
+        <a class="back-link" href="../">&larr; Back to home</a>
+
+        <header>
+            <h1>MatchLogger Console</h1>
+            <p class="subtitle">Live per-station set results across a tournament</p>
+        </header>
+
+        <main>
+            <section class="panel">
+                <div class="ml-config">
+                    <div class="sgg-field">
+                        <label for="eventInput">start.gg event URL or slug</label>
+                        <div class="sgg-row">
+                            <input type="text" id="eventInput" autocomplete="off" spellcheck="false"
+                                placeholder="https://www.start.gg/tournament/…/event/…">
+                            <button type="button" id="connectBtn">Connect</button>
+                        </div>
+                        <p id="status" class="ml-status"></p>
+                    </div>
+                    <details class="ml-advanced">
+                        <summary>Advanced</summary>
+                        <label for="brokerInput">Broker URL</label>
+                        <input type="text" id="brokerInput" autocomplete="off" spellcheck="false">
+                        <div class="ml-advanced-actions">
+                            <button type="button" id="demoBtn" class="linkish">Load demo data</button>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <section class="panel" id="stationsPanel" hidden>
+                <div class="panel-head">
+                    <h3>Now playing</h3>
+                    <span id="liveDot" class="live-dot" title="Auto-refreshing"></span>
+                </div>
+                <div id="stations" class="stations"></div>
+            </section>
+
+            <section class="panel" id="setsPanel" hidden>
+                <div class="panel-head">
+                    <h3>Sets today</h3>
+                    <span id="setCount" class="muted"></span>
+                </div>
+                <div class="table-scroll">
+                    <table class="sets-table">
+                        <thead>
+                            <tr>
+                                <th>Stn</th>
+                                <th>Time</th>
+                                <th>Players</th>
+                                <th>Score</th>
+                                <th>Round</th>
+                                <th>Winner (start.gg)</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="setsBody"></tbody>
+                    </table>
+                </div>
+                <p class="ml-foot muted">
+                    Reporting to start.gg is not enabled yet — it needs authenticated
+                    write access on the broker. Until then this console aggregates and
+                    matches; the operator confirms elsewhere. See
+                    <a href="DESIGN.md">DESIGN.md</a>.
+                </p>
+            </section>
+        </main>
+
+        <footer>
+            <p>Part of the <a href="../">jugeeya.github.io</a> tools. See the
+                <a href="DESIGN.md">MatchLogger design</a>.</p>
+        </footer>
+    </div>
+
+    <script type="module" src="matchlogger.js"></script>
+</body>
+
+</html>

@@ -76,8 +76,44 @@ open GraphQL passthrough:
 - `GET /startgg/event?phaseGroupId=<id>` → `{ event, section, entrants: [...] }` — only the
   entrants seeded into a single bracket section (phase group), e.g. when the page is given a
   `…/brackets/<phaseId>/<phaseGroupId>` URL. Smaller/faster than scanning the whole event.
+- `GET /startgg/sets?slug=tournament/<t>/event/<e>` → completed sets with times/station (the VOD splitter).
+- `GET /startgg/station?slug=…&station=<n>` → the not-yet-completed set currently at a station:
+  `{ found, setId, state, fullRoundText, entrants: [{ id, name }] }`. Powers the MatchLogger
+  console's "now playing" and the ingest pre-binding.
 
 All use start.gg's unauthenticated website endpoint (no API token).
+
+## MatchLogger aggregation (`/matchlogger/*`)
+
+Stations running the [MatchLogger](../matchlogger/) mod + sender push their
+results here; the operator [console](../matchlogger/) reads them back across
+every station. Storage is a KV namespace where **each writer owns its own
+keys** (`ml:cur:<slug>:<station>`, `ml:set:<slug>:<station>:<setId>`), so
+concurrent stations never clobber each other (KV has no transactions).
+Everything expires after 24h.
+
+- `POST /matchlogger/current` `{ slug, station, current }` — a station's live
+  heartbeat. On `current.state === "set_start"` the Worker looks up the
+  station's start.gg entrants and caches them for pre-binding.
+- `POST /matchlogger/ingest` `{ slug, station, set }` — a finished set. Matches
+  it to the station's start.gg set, computes a candidate winner + confidence,
+  stores it, and (if configured) posts a Discord notification. **Read-only with
+  respect to the bracket.**
+- `GET /matchlogger/event?slug=…` — the aggregated whole-event view the console
+  renders: `{ slug, stations: {…}, sets: […] }`.
+
+Setup:
+
+```sh
+wrangler kv namespace create MATCHLOGGER   # paste the id into wrangler.toml
+wrangler secret put DISCORD_WEBHOOK_URL     # optional: set-complete pings
+```
+
+**Reporting to start.gg is not implemented here.** The read path uses start.gg's
+unauthenticated website API; writing a bracket result (`reportBracketSet`) needs
+authenticated access (an official API token as a Worker secret, or a logged-in
+cookie). Until that's added, the flow is notify + aggregate + match; a human
+confirms. See [`../matchlogger/DESIGN.md`](../matchlogger/DESIGN.md).
 
 ## How a submission flows
 

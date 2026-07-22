@@ -287,10 +287,14 @@ Everything is in this one repo (`jugeeya.github.io`):
   `station_sender.py`, stdlib-only, forwards `sets/*.json` and
   `current.json` to the broker with the station stamped on)*.
 - **`matchlogger/` page** (`index.html` + `matchlogger.js/.css`) — the operator
-  web console, a static page alongside `../vods/` sharing `../styles.css`
-  *(to be built)*.
-- **`../broker/worker.js`** — the new `/matchlogger/*` and `/startgg/station`
-  endpoints, the aggregation store, and the Discord interactions.
+  web console, a static page alongside `../vods/` sharing `../styles.css` ✅
+  *(built: live "now playing" per station + a sets-today table; reads
+  `/matchlogger/event`; reporting button present but disabled pending write
+  access)*.
+- **`../broker/worker.js`** — the `/matchlogger/*` and `/startgg/station`
+  endpoints + KV aggregation store ✅ *(built; Discord notify optional via
+  `DISCORD_WEBHOOK_URL`)*. The `/matchlogger/report` write path is still
+  pending start.gg auth.
 - **`matchlogger/DESIGN.md`** — this document.
 
 ## Phasing
@@ -300,11 +304,11 @@ Everything is in this one repo (`jugeeya.github.io`):
   console page reading a stub `/matchlogger/event` with the aggregated "sets
   today across stations" table.
 - **Phase 1 — ingest + Discord notify.** `/matchlogger/ingest` stores sets and
-  posts to Discord on set end. Read-only w.r.t. start.gg.
-- **Phase 2 — live tracking + confirm-report.** `current.json` mod addition +
-  `/matchlogger/current` heartbeat + `/startgg/station` pre-binding; real
-  names/round in the console and Discord; one-click report from either surface
-  and the `/report` slash command.
+  posts to Discord on set end ✅. Read-only w.r.t. start.gg.
+- **Phase 2 — live tracking + confirm-report.** `current.json` mod addition ✅ +
+  `/matchlogger/current` heartbeat ✅ + `/startgg/station` pre-binding ✅; real
+  names/round in the console ✅. Still to do: the operator **report** action
+  (needs the write path below) and the Discord `/report` slash command.
 - **Phase 3 — guarded auto-report + timing export.** Auto-report only on
   unambiguous identity; `/matchlogger/sets` timing export for the splitter.
 

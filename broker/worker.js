@@ -27,6 +27,7 @@ const STARTGG_HEADERS = {
     '(KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36',
 };
 const SLUG_RE = /^user\/[a-z0-9]+$/i;
+const EVENT_SLUG_RE = /^tournament\/[^/]+\/event\/[^/]+$/i;
 
 export default {
   async fetch(request, env) {
@@ -34,6 +35,13 @@ export default {
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
 
     const url = new URL(request.url);
+
+    // MatchLogger aggregation: stations POST their sets/heartbeats here, the
+    // operator console GETs the whole-event view. (Both GET and POST, so it's
+    // routed before the multipart tag-submission handling below.)
+    if (url.pathname.startsWith('/matchlogger/')) {
+      return handleMatchlogger(request, env, url, cors);
+    }
 
     // start.gg lookups are proxied here so the page can query them despite the
     // start.gg API not sending cross-origin CORS headers. Only a few fixed,
@@ -276,11 +284,238 @@ async function handleStartgg(env, url, cors) {
       return json({ event: eventName, tournament: tournamentName, sets: setsOut }, 200, cors);
     }
 
+    if (op === 'station') {
+      // The set currently at a station (for live "now playing" + pre-binding).
+      const slug = (url.searchParams.get('slug') || '').trim().slice(0, 200);
+      if (!EVENT_SLUG_RE.test(slug))
+        return json({ error: 'Expected an event slug like tournament/<t>/event/<e>.' }, 400, cors);
+      const station = parseInt(url.searchParams.get('station') || '', 10);
+      if (!Number.isInteger(station)) return json({ error: 'Bad station number.' }, 400, cors);
+      const s = await fetchStationSet(slug, station);
+      return json(s || { found: false }, 200, cors);
+    }
+
     return json({ error: 'Unknown start.gg operation.' }, 404, cors);
   } catch (err) {
     return json({ error: `start.gg lookup failed: ${err.message}` }, 502, cors);
   }
 }
+
+// The not-yet-completed set currently assigned to a station, with its two
+// entrants. start.gg's set filters don't reliably support filtering by station
+// number, so we fetch the event's active sets and match the station locally.
+// Read-only; used both by GET /startgg/station and the ingest pre-binding.
+async function fetchStationSet(slug, station) {
+  const data = await startggGql(
+    `query($slug:String!){ event(slug:$slug){
+       sets(page:1, perPage:60, sortType:STANDARD, filters:{ state:[1,2,6] }){
+         nodes{ id state fullRoundText station{ number }
+           slots{ entrant{ id name } } } } } }`,
+    { slug }
+  );
+  const nodes = (data.event && data.event.sets && data.event.sets.nodes) || [];
+  const hit = nodes.find(n => n.station && Number(n.station.number) === Number(station));
+  if (!hit) return null;
+  const entrants = (hit.slots || [])
+    .map(s => s.entrant).filter(Boolean)
+    .map(e => ({ id: e.id, name: e.name || '' }));
+  return {
+    found: true,
+    setId: hit.id,
+    state: hit.state,
+    fullRoundText: hit.fullRoundText || '',
+    entrants,
+  };
+}
+
+// ---- MatchLogger aggregation ---------------------------------------------
+//
+// Each writer owns its own KV keys so concurrent stations never lose each
+// other's writes (KV has no transactions):
+//   ml:cur:<slug>:<station>          - latest heartbeat for a station
+//   ml:set:<slug>:<station>:<setId>  - one finished set
+// Everything expires after 24h so an event cleans itself up.
+
+async function handleMatchlogger(request, env, url, cors) {
+  const kv = env.MATCHLOGGER;
+  if (!kv)
+    return json({ error: 'MatchLogger storage not configured (bind a KV namespace named MATCHLOGGER).' }, 503, cors);
+
+  const op = url.pathname.slice('/matchlogger/'.length);
+
+  if (request.method === 'GET' && op === 'event') {
+    const slug = (url.searchParams.get('slug') || '').trim().slice(0, 200);
+    if (!EVENT_SLUG_RE.test(slug)) return json({ error: 'Expected an event slug.' }, 400, cors);
+    return json(await buildEventView(kv, slug), 200, cors);
+  }
+
+  if (request.method === 'POST' && (op === 'current' || op === 'ingest')) {
+    let body;
+    try { body = await request.json(); } catch { return json({ error: 'Expected a JSON body.' }, 400, cors); }
+    const slug = (body.slug || '').toString().trim().slice(0, 200);
+    const station = Number(body.station);
+    if (!EVENT_SLUG_RE.test(slug)) return json({ error: 'Bad or missing event slug.' }, 400, cors);
+    if (!Number.isInteger(station) || station < 0 || station > 100000)
+      return json({ error: 'Bad or missing station.' }, 400, cors);
+    return op === 'current'
+      ? handleCurrent(kv, env, slug, station, body.current, cors)
+      : handleIngest(kv, env, slug, station, body.set, cors);
+  }
+
+  return json({ error: 'Unknown MatchLogger operation.' }, 404, cors);
+}
+
+async function handleCurrent(kv, env, slug, station, current, cors) {
+  current = (current && typeof current === 'object') ? current : {};
+  const rec = { station, current, updatedAt: nowSec() };
+  // A set just started at this station → pre-bind the two start.gg entrants now,
+  // so the eventual ingest can name a winner with far less ambiguity. Best
+  // effort: a start.gg hiccup must not fail the heartbeat.
+  if (current.state === 'set_start') {
+    try { rec.startgg = await fetchStationSet(slug, station); }
+    catch (e) { rec.startggError = String((e && e.message) || e); }
+  }
+  await kv.put(curKey(slug, station), JSON.stringify(rec), { expirationTtl: 86400 });
+  return json({ ok: true, startgg: rec.startgg || null }, 200, cors);
+}
+
+async function handleIngest(kv, env, slug, station, set, cors) {
+  if (!set || typeof set !== 'object') return json({ error: 'Missing set.' }, 400, cors);
+  const setId = sanitizeId(set.setId) || String(nowSec());
+
+  // Prefer the entrants pre-bound at set start; otherwise look them up now.
+  let entrants = null, matchedSetId = null, fullRoundText = null;
+  const curRaw = await kv.get(curKey(slug, station));
+  if (curRaw) {
+    try {
+      const c = JSON.parse(curRaw);
+      if (c.startgg && c.startgg.entrants) {
+        entrants = c.startgg.entrants;
+        matchedSetId = c.startgg.setId || null;
+        fullRoundText = c.startgg.fullRoundText || null;
+      }
+    } catch { /* ignore a corrupt heartbeat */ }
+  }
+  if (!entrants) {
+    try {
+      const s = await fetchStationSet(slug, station);
+      if (s) { entrants = s.entrants; matchedSetId = s.setId; fullRoundText = s.fullRoundText; }
+    } catch { /* best effort */ }
+  }
+
+  const { candidateWinnerEntrantId, confidence } = matchWinner(set, entrants);
+  const record = {
+    id: setId,
+    station,
+    ingestedAt: nowSec(),
+    set: summarizeSet(set),
+    matchedStartggSetId: matchedSetId,
+    fullRoundText: fullRoundText || null,
+    entrants: entrants || null,
+    candidateWinnerEntrantId,
+    confidence,
+    status: matchedSetId ? 'matched' : 'recorded',
+  };
+  await kv.put(setKey(slug, station, setId), JSON.stringify(record), { expirationTtl: 86400 });
+  try { await notifyDiscord(env, record); } catch { /* notifications are best effort */ }
+  return json({ ok: true, record }, 200, cors);
+}
+
+async function buildEventView(kv, slug) {
+  const stations = {};
+  const sets = [];
+  for (const k of await listAll(kv, curPrefix(slug))) {
+    const v = await kv.get(k);
+    if (!v) continue;
+    try {
+      const r = JSON.parse(v);
+      stations[r.station] = { current: r.current, startgg: r.startgg || null, updatedAt: r.updatedAt };
+    } catch { /* skip */ }
+  }
+  for (const k of await listAll(kv, setPrefix(slug))) {
+    const v = await kv.get(k);
+    if (!v) continue;
+    try { sets.push(JSON.parse(v)); } catch { /* skip */ }
+  }
+  sets.sort((a, b) => (a.ingestedAt || 0) - (b.ingestedAt || 0));
+  return { slug, stations, sets };
+}
+
+async function listAll(kv, prefix) {
+  const names = [];
+  let cursor;
+  do {
+    const page = await kv.list({ prefix, cursor });
+    for (const k of page.keys || []) names.push(k.name);
+    cursor = page.list_complete ? null : page.cursor;
+  } while (cursor);
+  return names;
+}
+
+// Best-effort winner match: line the game's winner name up against the two
+// pre-bound start.gg entrants. In-game names rarely equal start.gg tags
+// exactly, so an unsure result is expected — the operator confirms.
+function matchWinner(set, entrants) {
+  if (!entrants || !entrants.length || !set || !set.winnerName)
+    return { candidateWinnerEntrantId: null, confidence: 'none' };
+  const norm = (s) => String(s || '').toLowerCase().replace(/\s+/g, '').trim();
+  const w = norm(set.winnerName);
+  let exact = null, partial = null;
+  for (const e of entrants) {
+    const n = norm(e.name);
+    if (!n) continue;
+    if (n === w) exact = e;
+    else if (n.includes(w) || w.includes(n)) partial = partial || e;
+  }
+  if (exact) return { candidateWinnerEntrantId: exact.id, confidence: 'high' };
+  if (partial) return { candidateWinnerEntrantId: partial.id, confidence: 'low' };
+  return { candidateWinnerEntrantId: null, confidence: 'none' };
+}
+
+function summarizeSet(set) {
+  const players = Array.isArray(set.players)
+    ? set.players.map(p => ({ slot: p.slot, name: p.name, character: p.character, wins: p.wins }))
+    : [];
+  return {
+    setId: set.setId ?? null,
+    complete: !!set.complete,
+    startEpoch: set.startEpoch ?? null,
+    endEpoch: set.endEpoch ?? null,
+    durationSeconds: set.durationSeconds ?? null,
+    winsRequired: set.winsRequired ?? null,
+    matchCount: set.matchCount ?? (Array.isArray(set.matches) ? set.matches.length : null),
+    winnerSlot: set.winnerSlot ?? null,
+    winnerName: set.winnerName ?? null,
+    winnerCharacter: set.winnerCharacter ?? null,
+    players,
+  };
+}
+
+async function notifyDiscord(env, record) {
+  const wh = env.DISCORD_WEBHOOK_URL;
+  if (!wh) return; // not configured → no-op
+  const s = record.set;
+  const score = (s.players || []).map(p => p.wins).filter(w => w != null).join('–');
+  const who = record.confidence !== 'none' && record.candidateWinnerEntrantId
+    ? 'matched to a start.gg entrant — confirm to report'
+    : 'needs an operator to pick the winner';
+  const content =
+    `**Station ${record.station}** — set complete` +
+    (record.fullRoundText ? ` (${record.fullRoundText})` : '') +
+    `\nScore ${score || '?'} · winner **${s.winnerName || '?'}** (${s.winnerCharacter || '?'}) · ${who}`;
+  await fetch(wh, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content }),
+  });
+}
+
+const nowSec = () => Math.floor(Date.now() / 1000);
+const sanitizeId = (s) => String(s || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 64);
+const curKey = (slug, station) => `ml:cur:${slug}:${station}`;
+const setKey = (slug, station, setId) => `ml:set:${slug}:${station}:${setId}`;
+const curPrefix = (slug) => `ml:cur:${slug}:`;
+const setPrefix = (slug) => `ml:set:${slug}:`;
 
 async function startggGql(query, variables) {
   const res = await fetch(STARTGG_API, {
