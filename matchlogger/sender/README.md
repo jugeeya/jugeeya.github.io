@@ -43,6 +43,7 @@ the config file, so the same config can be shared across stations with only
 | `--once`    | One pass then exit (testing, or a scheduled task).           |
 | `--poll N`  | Seconds between passes (default 2).                          |
 | `--state F` | State-file path (default `<dir>/.station-sender-state.json`). |
+| `--key K`   | Station key — only needed if the broker has `STATION_KEY` set. |
 
 ## What it does and doesn't touch
 

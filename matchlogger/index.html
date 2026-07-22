@@ -37,6 +37,12 @@
                         </div>
                         <p id="status" class="ml-status"></p>
                     </div>
+                    <div class="ml-passcode">
+                        <label for="passcodeInput">Operator passcode
+                            <span class="optional">(only needed to report results)</span></label>
+                        <input type="password" id="passcodeInput" autocomplete="off"
+                            placeholder="leave blank if you're only viewing">
+                    </div>
                     <details class="ml-advanced">
                         <summary>Advanced</summary>
                         <label for="brokerInput">Broker URL</label>
@@ -79,10 +85,9 @@
                     </table>
                 </div>
                 <p class="ml-foot muted">
-                    Reporting to start.gg is not enabled yet — it needs authenticated
-                    write access on the broker. Until then this console aggregates and
-                    matches; the operator confirms elsewhere. See
-                    <a href="DESIGN.md">DESIGN.md</a>.
+                    Reporting needs the operator passcode above, and the broker must have
+                    start.gg write access configured. Reporting is only offered for sets
+                    matched to a start.gg set. See <a href="DESIGN.md">DESIGN.md</a>.
                 </p>
             </section>
         </main>

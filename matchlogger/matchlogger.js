@@ -14,6 +14,8 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) =>
 
 let timer = null;
 let demoMode = false;
+let pickerOpen = false; // pause re-render while the operator is choosing a winner
+const setsById = {}; // "station:id" -> record, for the report picker
 
 // ---- config persistence ---------------------------------------------------
 const LS_SLUG = 'ml.slug';
@@ -94,15 +96,19 @@ function renderStations(stations) {
 
 function renderSets(sets) {
   const body = $('setsBody');
+  // Don't clobber an open winner-picker mid-interaction (poll runs every 5s).
+  if (pickerOpen) return;
   const rows = (sets || []).slice().reverse(); // most recent first for the operator
   $('setsPanel').hidden = false;
   $('setCount').textContent = rows.length ? `${rows.length} set${rows.length === 1 ? '' : 's'}` : '';
+  for (const k of Object.keys(setsById)) delete setsById[k];
   if (!rows.length) {
     body.innerHTML = `<tr><td colspan="8" class="empty">No sets recorded yet.</td></tr>`;
     return;
   }
 
   body.innerHTML = rows.map((r) => {
+    setsById[`${r.station}:${r.id}`] = r;
     const s = r.set || {};
     const score = (s.players || []).map((p) => p.wins).filter((w) => w != null).join('–');
     const conf = r.confidence || 'none';
@@ -110,7 +116,15 @@ function renderSets(sets) {
       ? `<span class="conf ${esc(conf)}" title="match confidence: ${esc(conf)}">${esc(entrantName(r))}</span>`
       : `<span class="conf none">unmatched</span>`;
     const status = r.status || 'recorded';
-    const reportDisabled = 'disabled title="start.gg reporting not enabled yet"';
+    const canReport = r.matchedStartggSetId && (r.entrants || []).length && status !== 'reported';
+    let action;
+    if (status === 'reported') {
+      action = `<span class="conf high">✓ reported</span>`;
+    } else if (canReport) {
+      action = `<button class="secondary report-btn" data-key="${esc(r.station)}:${esc(r.id)}">Report</button>`;
+    } else {
+      action = `<button class="secondary report-btn" disabled title="${r.matchedStartggSetId ? 'no entrants to pick from' : 'not matched to a start.gg set'}">Report</button>`;
+    }
     return `
       <tr>
         <td class="stn-cell">${esc(r.station)}</td>
@@ -120,9 +134,68 @@ function renderSets(sets) {
         <td>${esc(r.fullRoundText || '—')}</td>
         <td>${winnerCell}</td>
         <td><span class="pill ${esc(status)}">${esc(status)}</span></td>
-        <td><button class="secondary report-btn" ${reportDisabled}>Report</button></td>
+        <td class="action-cell">${action}</td>
       </tr>`;
   }).join('');
+}
+
+// ---- reporting ------------------------------------------------------------
+// Report is delegated off #setsBody (which is re-rendered on each poll), so the
+// handler survives re-renders. Clicking Report opens an inline winner picker
+// (also lets the operator correct a wrong/low-confidence auto-match).
+function openPicker(cell, rec) {
+  if (!$('passcodeInput').value.trim()) {
+    setStatus('Enter the operator passcode first (top of the page).', 'error');
+    $('passcodeInput').focus();
+    return;
+  }
+  pickerOpen = true;
+  cell._rec = rec; // the element persists across the innerHTML swap
+  const btns = (rec.entrants || []).map((e) =>
+    `<button class="secondary pick-entrant" data-entrant="${esc(e.id)}">${esc(e.name || 'entrant')}</button>`).join(' ');
+  cell.innerHTML = `<span class="report-pick">win: ${btns}
+    <button class="linkish pick-cancel" title="cancel">✕</button></span>`;
+}
+
+async function doReport(rec, winnerEntrantId) {
+  pickerOpen = false; // we're committing → let the next render refresh the row
+  setStatus('Reporting…');
+  try {
+    const res = await fetch(`${brokerUrl()}/matchlogger/report`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        slug: parseEventSlug($('eventInput').value),
+        station: rec.station,
+        setId: rec.id,
+        winnerEntrantId,
+        passcode: $('passcodeInput').value,
+      }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+    setStatus('Reported to start.gg.', 'success');
+    refresh();
+  } catch (e) {
+    setStatus(`Report failed: ${e.message}`, 'error');
+    refresh(); // restore the row
+  }
+}
+
+function onSetsClick(ev) {
+  const reportBtn = ev.target.closest('.report-btn');
+  if (reportBtn && !reportBtn.disabled) {
+    const rec = setsById[reportBtn.dataset.key];
+    if (rec) openPicker(reportBtn.closest('.action-cell'), rec);
+    return;
+  }
+  const pick = ev.target.closest('.pick-entrant');
+  if (pick) {
+    const cell = pick.closest('.action-cell');
+    if (cell && cell._rec) doReport(cell._rec, pick.dataset.entrant);
+    return;
+  }
+  if (ev.target.closest('.pick-cancel')) { pickerOpen = false; refresh(); }
 }
 
 function entrantName(r) {
@@ -193,9 +266,14 @@ function loadDemo() {
 $('brokerInput').value = localStorage.getItem(LS_BROKER) || DEFAULT_BROKER;
 const savedSlug = localStorage.getItem(LS_SLUG);
 if (savedSlug) $('eventInput').value = savedSlug;
+// Passcode is sensitive → sessionStorage only (cleared when the tab closes).
+$('passcodeInput').value = sessionStorage.getItem('ml.passcode') || '';
+$('passcodeInput').addEventListener('change', () =>
+  sessionStorage.setItem('ml.passcode', $('passcodeInput').value));
 
 $('connectBtn').addEventListener('click', connect);
 $('eventInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') connect(); });
 $('demoBtn').addEventListener('click', loadDemo);
+$('setsBody').addEventListener('click', onSetsClick);
 
 if (savedSlug) connect();

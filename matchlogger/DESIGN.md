@@ -221,9 +221,22 @@ no local server, runs on any satellite PC, laptop, or phone. It reads
 - **Stations panel:** one live "now playing" card per station from the
   heartbeats — "Station 3: [A] vs [B] — Winners R2".
 - **Sets-today table across all stations:** columns for station, time, players
-  (character), score, matched start.gg round, and **status**. Ambiguous rows
-  expose *confirm winner*, *fix entrant mapping*, *report to start.gg* — each
-  a call to `/matchlogger/report`.
+  (character), score, matched start.gg round, and **status**. Matched rows
+  expose **Report**, which opens an inline winner picker (so a wrong/low-confidence
+  auto-match can be corrected) and calls `/matchlogger/report` with the
+  operator passcode. Reporting is offered only for sets matched to a start.gg
+  set; the button is disabled otherwise.
+
+### Reporting is passcode-gated
+
+The start.gg token lives only in the Worker, but a public Worker URL means the
+report *action* needs its own gate or anyone could write to the bracket. So the
+operator enters a **passcode** (`OPERATOR_KEY` on the Worker, kept in the
+browser's sessionStorage) that accompanies every report; the Worker verifies it
+(constant-time) before doing anything. The actual bracket write additionally
+needs `STARTGG_TOKEN` — so reporting degrades cleanly: no `OPERATOR_KEY` → 503,
+wrong passcode → 401, right passcode but no token → 501. See
+[`../broker/README.md`](../broker/README.md#why-reporting-is-gated).
 
 ## Operator surface 2 — Discord
 
@@ -291,10 +304,10 @@ Everything is in this one repo (`jugeeya.github.io`):
   *(built: live "now playing" per station + a sets-today table; reads
   `/matchlogger/event`; reporting button present but disabled pending write
   access)*.
-- **`../broker/worker.js`** — the `/matchlogger/*` and `/startgg/station`
-  endpoints + KV aggregation store ✅ *(built; Discord notify optional via
-  `DISCORD_WEBHOOK_URL`)*. The `/matchlogger/report` write path is still
-  pending start.gg auth.
+- **`../broker/worker.js`** — the `/matchlogger/*` (incl. passcode-gated
+  `/report`) and `/startgg/station` endpoints + KV aggregation store ✅
+  *(built; Discord notify optional via `DISCORD_WEBHOOK_URL`)*. The bracket
+  write inside `/report` activates once `STARTGG_TOKEN` is set.
 - **`matchlogger/DESIGN.md`** — this document.
 
 ## Phasing
@@ -307,8 +320,9 @@ Everything is in this one repo (`jugeeya.github.io`):
   posts to Discord on set end ✅. Read-only w.r.t. start.gg.
 - **Phase 2 — live tracking + confirm-report.** `current.json` mod addition ✅ +
   `/matchlogger/current` heartbeat ✅ + `/startgg/station` pre-binding ✅; real
-  names/round in the console ✅. Still to do: the operator **report** action
-  (needs the write path below) and the Discord `/report` slash command.
+  names/round in the console ✅; passcode-gated operator **report** action with
+  a winner picker ✅ (the bracket write itself activates once `STARTGG_TOKEN` is
+  set). Still to do: the Discord `/report` slash command.
 - **Phase 3 — guarded auto-report + timing export.** Auto-report only on
   unambiguous identity; `/matchlogger/sets` timing export for the splitter.
 

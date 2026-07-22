@@ -349,17 +349,29 @@ async function handleMatchlogger(request, env, url, cors) {
     return json(await buildEventView(kv, slug), 200, cors);
   }
 
-  if (request.method === 'POST' && (op === 'current' || op === 'ingest')) {
+  if (request.method === 'POST') {
     let body;
     try { body = await request.json(); } catch { return json({ error: 'Expected a JSON body.' }, 400, cors); }
     const slug = (body.slug || '').toString().trim().slice(0, 200);
-    const station = Number(body.station);
     if (!EVENT_SLUG_RE.test(slug)) return json({ error: 'Bad or missing event slug.' }, 400, cors);
-    if (!Number.isInteger(station) || station < 0 || station > 100000)
-      return json({ error: 'Bad or missing station.' }, 400, cors);
-    return op === 'current'
-      ? handleCurrent(kv, env, slug, station, body.current, cors)
-      : handleIngest(kv, env, slug, station, body.set, cors);
+
+    // Reporting to start.gg is the one privileged, externally-visible action, so
+    // it's gated by an operator passcode (separate from the start.gg token,
+    // which never leaves the Worker). See handleReport.
+    if (op === 'report') return handleReport(kv, env, slug, body, cors);
+
+    if (op === 'current' || op === 'ingest') {
+      const station = Number(body.station);
+      if (!Number.isInteger(station) || station < 0 || station > 100000)
+        return json({ error: 'Bad or missing station.' }, 400, cors);
+      // Optional station key: only enforced if STATION_KEY is set on the Worker,
+      // so the default deployment stays zero-config. Prevents view-pollution.
+      if (env.STATION_KEY && body.key !== env.STATION_KEY)
+        return json({ error: 'Bad station key.' }, 401, cors);
+      return op === 'current'
+        ? handleCurrent(kv, env, slug, station, body.current, cors)
+        : handleIngest(kv, env, slug, station, body.set, cors);
+    }
   }
 
   return json({ error: 'Unknown MatchLogger operation.' }, 404, cors);
@@ -419,6 +431,72 @@ async function handleIngest(kv, env, slug, station, set, cors) {
   await kv.put(setKey(slug, station, setId), JSON.stringify(record), { expirationTtl: 86400 });
   try { await notifyDiscord(env, record); } catch { /* notifications are best effort */ }
   return json({ ok: true, record }, 200, cors);
+}
+
+// Report a set's winner to start.gg. Gated by an operator passcode: the
+// start.gg token authorizes Worker→start.gg, the passcode authorizes
+// client→Worker, so an open Worker URL can't be used to write to a bracket.
+async function handleReport(kv, env, slug, body, cors) {
+  if (!env.OPERATOR_KEY)
+    return json({ error: 'Reporting is not enabled (set OPERATOR_KEY on the broker).' }, 503, cors);
+  if (!constantTimeEqual(String(body.passcode || ''), env.OPERATOR_KEY))
+    return json({ error: 'Wrong operator passcode.' }, 401, cors);
+
+  const station = Number(body.station);
+  const setId = sanitizeId(body.setId);
+  const winnerEntrantId = String(body.winnerEntrantId || '');
+  if (!Number.isInteger(station) || !setId) return json({ error: 'Bad station or setId.' }, 400, cors);
+  if (!winnerEntrantId) return json({ error: 'Missing winnerEntrantId.' }, 400, cors);
+
+  const key = setKey(slug, station, setId);
+  const raw = await kv.get(key);
+  if (!raw) return json({ error: 'Set not found.' }, 404, cors);
+  let rec;
+  try { rec = JSON.parse(raw); } catch { return json({ error: 'Corrupt set record.' }, 500, cors); }
+  if (!rec.matchedStartggSetId)
+    return json({ error: 'This set is not matched to a start.gg set.' }, 409, cors);
+  if (rec.entrants && rec.entrants.length && !rec.entrants.some(e => e.id === winnerEntrantId))
+    return json({ error: 'winnerEntrantId is not one of this set\'s entrants.' }, 400, cors);
+
+  // Passcode is valid and the request is well-formed. The actual bracket write
+  // needs an authenticated start.gg token; until one is provisioned we stop
+  // here (the gate is real, the write is just not wired yet).
+  if (!env.STARTGG_TOKEN)
+    return json({ error: 'start.gg write access is not configured (set STARTGG_TOKEN on the broker).' }, 501, cors);
+
+  try {
+    await reportBracketSet(env, rec.matchedStartggSetId, winnerEntrantId);
+  } catch (e) {
+    return json({ error: `start.gg report failed: ${(e && e.message) || e}` }, 502, cors);
+  }
+  rec.status = 'reported';
+  rec.reportedAt = nowSec();
+  rec.reportedWinnerEntrantId = winnerEntrantId;
+  await kv.put(key, JSON.stringify(rec), { expirationTtl: 86400 });
+  return json({ ok: true, record: rec }, 200, cors);
+}
+
+// Uses start.gg's authenticated API (not the website endpoint used for reads).
+async function reportBracketSet(env, startggSetId, winnerEntrantId) {
+  const res = await fetch('https://api.start.gg/gql/alpha', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${env.STARTGG_TOKEN}` },
+    body: JSON.stringify({
+      query: `mutation($setId:ID!,$winnerId:ID!){ reportBracketSet(setId:$setId, winnerId:$winnerId){ id state } }`,
+      variables: { setId: startggSetId, winnerId: winnerEntrantId },
+    }),
+  });
+  if (!res.ok) throw new Error(`start.gg ${res.status}`);
+  const out = await res.json();
+  if (out.errors && out.errors.length) throw new Error(out.errors[0].message || 'GraphQL error');
+  return out.data;
+}
+
+function constantTimeEqual(a, b) {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
 }
 
 async function buildEventView(kv, slug) {

@@ -20,3 +20,6 @@ id = "REPLACE_WITH_KV_NAMESPACE_ID"
 #   wrangler secret put GITHUB_APP_PRIVATE_KEY     # PKCS#8 PEM (see README)
 #   wrangler secret put GITHUB_INSTALLATION_ID
 #   wrangler secret put DISCORD_WEBHOOK_URL        # optional: set-complete pings
+#   wrangler secret put OPERATOR_KEY               # passcode gating start.gg reporting
+#   wrangler secret put STARTGG_TOKEN              # start.gg API token (enables the bracket write)
+#   wrangler secret put STATION_KEY                # optional: lock ingest to your stations

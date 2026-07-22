@@ -50,6 +50,15 @@ main {
 .ml-status.success { color: var(--md-success); }
 .ml-status.error { color: var(--md-error); }
 
+.ml-passcode { margin-top: 1rem; }
+.ml-passcode input { width: 100%; max-width: 340px; }
+.optional { color: var(--md-on-surface-variant); font-weight: 400; font-size: 0.85em; }
+
+/* Inline winner picker (shown when Report is clicked) */
+.report-pick { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-size: 0.82rem; }
+.report-pick .pick-entrant { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
+.report-pick .pick-cancel { padding: 0.2rem 0.4rem; }
+
 .ml-advanced {
     margin-top: 1.25rem;
     border-top: 1px solid var(--md-outline-variant);

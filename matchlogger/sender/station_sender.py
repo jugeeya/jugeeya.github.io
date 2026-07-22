@@ -67,10 +67,11 @@ def read_json(path):
 
 
 class Sender:
-    def __init__(self, broker, slug, station, out_dir, state_path, dry_run):
+    def __init__(self, broker, slug, station, out_dir, state_path, dry_run, key=None):
         self.broker = broker.rstrip("/")
         self.slug = slug
         self.station = station
+        self.key = key or None  # only needed if the broker has STATION_KEY set
         self.out_dir = Path(out_dir)
         self.sets_dir = self.out_dir / "sets"
         self.current_path = self.out_dir / "current.json"
@@ -98,6 +99,14 @@ class Sender:
             tmp.replace(self.state_path)
         except OSError as e:
             log(f"could not write state {self.state_path}: {e}")
+
+    # -- work helpers -------------------------------------------------------
+    def _payload(self, extra):
+        p = {"slug": self.slug, "station": self.station}
+        if self.key:
+            p["key"] = self.key
+        p.update(extra)
+        return p
 
     # -- network ------------------------------------------------------------
     def _post(self, endpoint, payload):
@@ -131,11 +140,7 @@ class Sender:
             body = read_json(path)
             if body is None:
                 continue  # partial write; try again next pass
-            ok = self._post("/matchlogger/ingest", {
-                "slug": self.slug,
-                "station": self.station,
-                "set": body,
-            })
+            ok = self._post("/matchlogger/ingest", self._payload({"set": body}))
             if ok:
                 log(f"ingested {path.name}")
                 self.state["sent_sets"].append(path.name)
@@ -151,11 +156,7 @@ class Sender:
         body = read_json(self.current_path)
         if body is None:
             return
-        ok = self._post("/matchlogger/current", {
-            "slug": self.slug,
-            "station": self.station,
-            "current": body,
-        })
+        ok = self._post("/matchlogger/current", self._payload({"current": body}))
         if ok:
             log(f"heartbeat: {body.get('state', '?')}")
             self.state["current_hash"] = digest
@@ -175,6 +176,7 @@ def build_sender(cfg):
     return Sender(
         broker=cfg["broker"], slug=cfg["slug"], station=cfg["station"],
         out_dir=cfg["dir"], state_path=state_path, dry_run=cfg.get("dry_run", False),
+        key=cfg.get("key"),
     )
 
 
@@ -186,13 +188,14 @@ def main(argv=None):
     p.add_argument("--dir", help="MatchLogger output folder (contains sets/ and current.json)")
     p.add_argument("--poll", type=float, default=2.0)
     p.add_argument("--state", help="state file path (default: <dir>/.station-sender-state.json)")
+    p.add_argument("--key", help="station key (only if the broker has STATION_KEY set)")
     p.add_argument("--config", help="JSON config file; flags override it")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--once", action="store_true", help="run one pass and exit")
     args = p.parse_args(argv)
 
     cfg = load_config(args.config)
-    for key in ("broker", "slug", "station", "dir", "state"):
+    for key in ("broker", "slug", "station", "dir", "state", "key"):
         val = getattr(args, key)
         if val is not None:
             cfg[key] = val

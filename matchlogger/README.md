@@ -19,6 +19,8 @@ and the tooling to tie it into a live tournament (start.gg + the
 ## Status
 
 Built: the mod, the sender, the broker endpoints (`/matchlogger/*`,
-`/startgg/station`, KV-backed), and the console. Not yet built: reporting to
-start.gg (needs authenticated write access on the broker) and the Discord
-`/report` slash command. See the phasing section of `DESIGN.md`.
+`/startgg/station`, KV-backed), the console, and passcode-gated reporting
+(operator enters a passcode; the Worker verifies it before writing). The actual
+start.gg bracket write activates once the broker has a `STARTGG_TOKEN`. Not yet
+built: the Discord `/report` slash command. See the phasing section of
+`DESIGN.md`.

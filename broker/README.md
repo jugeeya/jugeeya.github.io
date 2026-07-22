@@ -101,19 +101,39 @@ Everything expires after 24h.
   respect to the bracket.**
 - `GET /matchlogger/event?slug=…` — the aggregated whole-event view the console
   renders: `{ slug, stations: {…}, sets: […] }`.
+- `POST /matchlogger/report` `{ slug, station, setId, winnerEntrantId, passcode }`
+  — report a matched set's winner to start.gg. **Gated by an operator passcode**
+  (see below).
 
 Setup:
 
 ```sh
 wrangler kv namespace create MATCHLOGGER   # paste the id into wrangler.toml
 wrangler secret put DISCORD_WEBHOOK_URL     # optional: set-complete pings
+wrangler secret put OPERATOR_KEY            # required to enable reporting (the passcode)
+wrangler secret put STARTGG_TOKEN           # start.gg API token; enables the actual bracket write
+wrangler secret put STATION_KEY             # optional: reject ingest/current without this key
 ```
 
-**Reporting to start.gg is not implemented here.** The read path uses start.gg's
-unauthenticated website API; writing a bracket result (`reportBracketSet`) needs
-authenticated access (an official API token as a Worker secret, or a logged-in
-cookie). Until that's added, the flow is notify + aggregate + match; a human
-confirms. See [`../matchlogger/DESIGN.md`](../matchlogger/DESIGN.md).
+### Why reporting is gated
+
+The start.gg token authorizes Worker→start.gg, but the Worker URL is public, so
+the *action* needs its own gate or anyone could POST `/matchlogger/report` and
+write to your bracket (a "confused deputy"). So the operator supplies a
+**passcode** (`OPERATOR_KEY`) with each report; the Worker checks it
+(constant-time) before doing anything. Two-stage by design:
+
+- `OPERATOR_KEY` unset → reporting disabled (503).
+- Passcode wrong → 401.
+- Passcode right but `STARTGG_TOKEN` unset → 501 (gate passes, the write isn't
+  wired yet — so you can turn on the passcode UI before wiring the token).
+- Both set → the winner is reported via start.gg's **authenticated** API
+  (`api.start.gg/gql/alpha`), separate from the website API used for reads.
+
+`STATION_KEY` is an optional, symmetric guard for `ingest`/`current`: if set, a
+matching `key` must accompany those POSTs (the station sender's `--key`), which
+stops strangers polluting your aggregated view. Left unset, those stay open
+(low stakes — self-cleaning after 24h).
 
 ## How a submission flows
 
