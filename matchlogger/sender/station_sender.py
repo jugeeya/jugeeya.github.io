@@ -11,11 +11,13 @@ the broker, stamping this machine's station number on the way out:
 This is the core every station PC runs; station_widget.py wraps it with a
 Settings/Log window. This file is the no-window variant — same behavior, run
 from a terminal or a scheduled task instead. It DOES hold one secret — the
-shared key below — since submitting an ingest can trigger the broker to
-auto-report a winner to start.gg on the spot; it's the same value as the
-broker's OPERATOR_KEY, not a separate lower-stakes one. The start.gg token
-itself still never leaves the broker. Standard library only (no pip
-installs) so it freezes cleanly into an .exe later.
+shared key below — since the running-score push (matchlogger/live) writes to
+start.gg automatically, no human involved; it's the same value as the
+broker's OPERATOR_KEY, not a separate lower-stakes one. It does NOT let this
+station finalize a set on its own — naming a winner always requires an
+explicit click in the console or Discord. The start.gg token itself still
+never leaves the broker. Standard library only (no pip installs) so it
+freezes cleanly into an .exe later.
 
 Usage:
   python station_sender.py --broker https://r2tag-broker.jdsambasivam.workers.dev \

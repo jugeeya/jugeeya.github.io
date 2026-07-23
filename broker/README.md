@@ -96,25 +96,24 @@ Everything expires after 24h.
   live heartbeat. On `current.state === "set_start"` the Worker looks up the
   station's start.gg entrants and caches them for pre-binding.
 - `POST /matchlogger/ingest` `{ slug, station, key, set }` — a finished set.
-  Matches it to the station's start.gg set, computes a candidate winner +
-  confidence, and **auto-reports it to start.gg immediately** whenever there's
-  any candidate at all (exact *or* fuzzy name match — see "Auto-report policy"
-  below), no human click needed. Posts a Discord notification reflecting the
-  outcome, if configured.
+  Matches it to the station's start.gg set and computes a candidate winner +
+  confidence purely to pre-fill the console's winner-picker and Discord's
+  suggested button. **Never calls `reportBracketSet` itself** — see "Reporting
+  is always a manual click" below. Posts a Discord notification either way.
 - `POST /matchlogger/live` `{ slug, station, key, set }` — a running
   (in-progress) set. Pushes the games-so-far to start.gg's **live** score via
   `markSetInProgress` + `updateBracketSet`, which records the per-game score +
   characters **without finalizing or advancing** the bracket (confirmed
-  empirically). Players are mapped to entrants by name; if they can't be
-  mapped confidently it stores but skips the start.gg push (never publishes a
-  guessed live score).
+  empirically). This is the one write that happens with no human involved.
+  Players are mapped to entrants by name; if they can't be mapped confidently
+  it stores but skips the start.gg push (never publishes a guessed live score).
 - `GET /matchlogger/event?slug=…` — the aggregated whole-event view the console
   renders: `{ slug, stations: {…}, sets: […] }`.
 - `POST /matchlogger/report` `{ slug, station, setId, winnerEntrantId, passcode }`
-  — manual report/correction, for whatever auto-report on ingest couldn't
-  resolve (see below) or reported wrong. Sends per-game `gameData` the same way
-  ingest's auto-report does. **Gated by the same shared key**, sent here as
-  `passcode`.
+  — the **only** path that ever finalizes a set. Always an explicit human
+  action (console winner-picker or Discord), regardless of match confidence.
+  Sends per-game `gameData` derived from the mod's logged games. **Gated by the
+  shared key**, sent here as `passcode`.
 
 Setup:
 
@@ -134,34 +133,27 @@ configured, the Worker refuses all of these (503); with one configured, every
 station's sender must carry the matching value (its `key` config field / the
 widget's Settings) or its submissions are rejected (401).
 
-This is a deliberate tradeoff, not an oversight: because `ingest` can itself
-trigger `/report`'s bracket-writing mutation (see below), the key that
-authorizes a station to submit a set **is** the same credential that can
-advance your live bracket — it just does so automatically rather than through
-a second explicit action. Every station PC's plaintext `config.json` therefore
-holds bracket-write power, not just telemetry-submission power. The
-alternative — auto-reporting purely server-side, using the Worker's own
-`STARTGG_TOKEN` with no client key involved in the report decision at all — is
-possible and avoids that exposure, but was decided against in favor of one
-key everywhere.
+This is a deliberate tradeoff, not an oversight: `/matchlogger/live` — which
+every station calls automatically, no human involved — does push a real (if
+non-advancing) write to start.gg, so the key every station PC's plaintext
+config holds authorizes *some* bracket writes on its own. It does **not** let
+a station finalize a set: `ingest` never calls `reportBracketSet`, only
+`/report` does, and that's always an explicit human action regardless of match
+confidence. The alternative — a station-only key with no report-adjacent
+capability at all — avoids even that smaller exposure and was the original
+recommendation, but was decided against in favor of one key everywhere.
 
-### Auto-report policy
+### Reporting is always a manual click
 
 `ingest` calls `matchWinner()` to line the set's declared winner up against the
-station's two pre-bound start.gg entrants:
-
-- **`high`** (exact name match) or **`low`** (fuzzy/partial match) — either one
-  has a candidate entrant, so the set is **reported to start.gg immediately**,
-  full per-game score + characters included. No confirmation step.
-- **`none`** (the winner name didn't overlap with either entrant at all) —
-  there is no candidate to guess from, so this one case always falls back to
-  the manual `/report` path (console winner-picker or Discord `/report`),
-  regardless of the policy above. That's a data-availability gap, not a
-  confidence threshold that could be turned up further.
-
-A failed auto-report attempt (start.gg hiccup, etc.) doesn't fail the ingest
-call — it's noted on the stored record (`autoReportError`) and surfaced in the
-Discord ping / console so it can be retried manually.
+station's two pre-bound start.gg entrants, returning `high` (exact match),
+`low` (fuzzy/partial match), or `none` (no overlap at all). This confidence
+only decides what the console's winner-picker pre-selects and what Discord
+suggests — **it never triggers a report on its own, at any confidence level.**
+Naming a winner is the one action that advances the bracket, so it always
+requires the operator to click Report (or use `/report` in Discord), same as
+`none`-confidence sets. Reporting a wrong score to a live bracket is worse
+than not reporting, so the system fails toward pinging a human every time.
 
 ## How a submission flows
 

@@ -71,7 +71,7 @@
                     <div class="ml-passcode">
                         <label for="passcodeInput">Shared key
                             <span class="optional">(same as the broker's OPERATOR_KEY — only needed to
-                                correct a set that couldn't auto-report)</span></label>
+                                click Report below)</span></label>
                         <input type="password" id="passcodeInput" autocomplete="off"
                             placeholder="leave blank if you're only viewing">
                     </div>
@@ -117,9 +117,10 @@
                     </table>
                 </div>
                 <p class="ml-foot muted">
-                    Most sets report themselves the moment they're matched — no click needed.
-                    The Report button only shows up for the rare set with no start.gg name match
-                    at all, or a failed auto-report; it needs the shared key above.
+                    Per-game score and characters stream to start.gg automatically as each set is
+                    played. Reporting the final winner is always a manual click here (or in
+                    Discord) — it needs the shared key above. The suggested winner is a
+                    best-effort name match; double-check it before confirming.
                     See <a href="DESIGN.md">DESIGN.md</a>.
                 </p>
             </section>

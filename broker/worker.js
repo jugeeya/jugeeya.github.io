@@ -366,9 +366,10 @@ async function handleMatchlogger(request, env, url, cors) {
         return json({ error: 'Bad or missing station.' }, 400, cors);
       // Station submissions use the SAME shared secret as the operator passcode
       // (one key, not two) and it's mandatory, not optional: every station PC's
-      // config holds it, since ingest can itself trigger an auto-report (see
-      // handleIngest) — the key that lets a station submit a set is therefore
-      // also effectively a bracket-write credential, not just a telemetry one.
+      // config holds it. Ingest/current never finalize anything (that stays a
+      // human action via handleReport), but /live does push non-advancing
+      // score updates to start.gg on its own — so this key still authorizes a
+      // real (if non-advancing) bracket write, not just telemetry submission.
       if (!env.OPERATOR_KEY)
         return json({ error: 'Broker not configured (set OPERATOR_KEY).' }, 503, cors);
       if (!constantTimeEqual(String(body.key || ''), env.OPERATOR_KEY))
@@ -434,22 +435,13 @@ async function handleIngest(kv, env, slug, station, set, cors) {
     status: matchedSetId ? 'matched' : 'recorded',
   };
 
-  // Auto-report: MatchLogger reports to start.gg the moment it has ANY
-  // candidate entrant to name as winner — 'high' (exact name match) and 'low'
-  // (fuzzy/partial match) both qualify, no human click needed. Only 'none'
-  // (the winner name didn't overlap with either entrant at all) has nothing to
-  // guess from and is left for a manual pick via the console/Discord — that's
-  // a data-availability gap, not a confidence policy. Best effort: a failure
-  // here is noted on the record, not surfaced as an ingest failure.
-  if (candidateWinnerEntrantId && matchedSetId && env.STARTGG_TOKEN) {
-    try {
-      await doReport(kv, env, slug, record, candidateWinnerEntrantId);
-      record.reportedBy = 'auto';
-    } catch (e) {
-      record.autoReportError = String((e && e.message) || e);
-    }
-  }
-
+  // Ingest never finalizes a set itself — matching + storing + notifying only.
+  // The candidateWinnerEntrantId/confidence computed above just pre-fills the
+  // console's winner-picker and Discord's suggested button; an actual bracket
+  // write (reportBracketSet) only ever happens through the explicit, human
+  // /matchlogger/report action, regardless of confidence. (Per-game live
+  // score/characters DO go out automatically — that's /matchlogger/live,
+  // which never sets a winner and so can't advance the bracket on its own.)
   await kv.put(setKey(slug, station, setId), JSON.stringify(record), { expirationTtl: 86400 });
   try { await notifyDiscord(env, record); } catch { /* notifications are best effort */ }
   return json({ ok: true, record }, 200, cors);
@@ -457,9 +449,10 @@ async function handleIngest(kv, env, slug, station, set, cors) {
 
 // Live, non-advancing update from a station as a set is played: store the
 // running set and push its games-so-far to start.gg's live score via
-// updateBracketSet, which never sets a winner — so this specific call can't
-// advance the bracket even though the shared key that gated it can (via
-// ingest's auto-report).
+// updateBracketSet, which never sets a winner — so this is the one write the
+// shared key authorizes on its own, with no human involved, and it can't
+// advance the bracket. Finalizing (setting a winner) always needs an explicit
+// /matchlogger/report call instead.
 async function handleLive(kv, env, slug, station, set, cors) {
   if (!set || typeof set !== 'object') return json({ error: 'Missing set.' }, 400, cors);
   const setId = sanitizeId(set.setId) || String(nowSec());
@@ -509,9 +502,9 @@ async function handleLive(kv, env, slug, station, set, cors) {
 }
 
 // Builds per-game data (score + characters) for the given winner and calls
-// reportBracketSet, mutating `rec` to reflect the outcome. Shared by the
-// automatic path (handleIngest, right after a set is matched) and the manual
-// path (handleReport, for the residual case where nothing could be guessed).
+// reportBracketSet, mutating `rec` to reflect the outcome. Used by
+// handleReport — the only path that ever finalizes a set; ingest merely
+// computes a candidate winner for this to use once a human confirms it.
 // Throws on a start.gg failure — callers decide how to surface that.
 async function doReport(kv, env, slug, rec, winnerEntrantId) {
   // Build per-game data when every game's winner maps to an entrant; otherwise
@@ -534,12 +527,12 @@ async function doReport(kv, env, slug, rec, winnerEntrantId) {
   rec.reportedGames = gameData ? gameData.length : 0;
 }
 
-// Manual report to start.gg — the residual path for whatever auto-report (in
-// handleIngest) couldn't resolve on its own: no candidate entrant at all
-// ('none' confidence), or a failed auto-report attempt. Gated by the same
-// shared key as station submissions (passed here as `passcode`): the start.gg
-// token authorizes Worker→start.gg, this key authorizes client→Worker, so an
-// open Worker URL can't be used to write to a bracket by itself.
+// Report a set's winner to start.gg — the only path that ever finalizes a
+// set. Always an explicit human action (console/Discord), regardless of how
+// confident ingest's candidate winner was. Gated by the same shared key as
+// station submissions (passed here as `passcode`): the start.gg token
+// authorizes Worker→start.gg, this key authorizes client→Worker, so an open
+// Worker URL can't be used to write to a bracket by itself.
 async function handleReport(kv, env, slug, body, cors) {
   if (!env.OPERATOR_KEY)
     return json({ error: 'Reporting is not enabled (set OPERATOR_KEY on the broker).' }, 503, cors);
@@ -782,18 +775,26 @@ function deriveGames(set) {
   });
 }
 
+function entrantNameFor(record) {
+  const e = (record.entrants || []).find(x => String(x.id) === String(record.candidateWinnerEntrantId));
+  return (e && e.name) || record.candidateWinnerEntrantId || '?';
+}
+
 async function notifyDiscord(env, record) {
   const wh = env.DISCORD_WEBHOOK_URL;
   if (!wh) return; // not configured → no-op
   const s = record.set;
   const score = (s.players || []).map(p => p.wins).filter(w => w != null).join('–');
+  // Ingest never finalizes on its own — this always needs a human to confirm
+  // via the console or /report, so the message tells them how confident the
+  // suggested winner is rather than claiming anything already happened.
   let who;
-  if (record.status === 'reported') {
-    who = 'reported to start.gg automatically ✅';
-  } else if (record.autoReportError) {
-    who = `auto-report failed (${record.autoReportError}) — needs a manual report`;
+  if (record.confidence === 'high') {
+    who = `matched to **${entrantNameFor(record)}** — confirm to report`;
+  } else if (record.confidence === 'low') {
+    who = `possibly **${entrantNameFor(record)}** (fuzzy match) — check before reporting`;
   } else {
-    who = 'no start.gg match — needs an operator to pick the winner';
+    who = 'no start.gg name match — needs an operator to pick the winner';
   }
   const content =
     `**Station ${record.station}** — set complete` +

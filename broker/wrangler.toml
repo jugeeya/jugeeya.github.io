@@ -26,4 +26,6 @@ id = "e194066950bf4238a3827b5e154e46cb"
 #                                                    # use. Every station's config must carry
 #                                                    # this same value.
 #   wrangler secret put STARTGG_TOKEN               # start.gg API token (enables the bracket write,
-#                                                    # including MatchLogger's auto-report on ingest)
+#                                                    # including MatchLogger's automatic live score
+#                                                    # push; finalizing a set is always a manual
+#                                                    # /matchlogger/report call, never automatic)

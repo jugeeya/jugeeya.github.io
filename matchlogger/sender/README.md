@@ -65,10 +65,13 @@ writes. Command-line flags override the config file, so the same config can be
 shared across stations with only `--station N` differing.
 
 `--key` is required — it's the same value as the broker's `OPERATOR_KEY`
-secret, not a separate one. Submitting a set can trigger the broker to
-auto-report a winner to start.gg on the spot (see the console's report
-behavior below), so this key is a bracket-write credential, not just a
-submission password — treat it accordingly.
+secret, not a separate one. Every set this sender submits gets its running
+per-game score pushed to start.gg automatically (no human involved), so this
+key is a real bracket-write credential, not just a submission password —
+treat it accordingly. It does **not** let this station finalize a set on its
+own: naming a winner always requires an explicit click in the console or
+Discord (see the console's report behavior below), regardless of how
+confident the match is.
 
 ### Useful flags
 
