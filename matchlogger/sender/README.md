@@ -50,7 +50,7 @@ line. In the packaged zip this file lives in `_internal/` — `cd` there first.
 python station_sender.py \
   --broker https://r2tag-broker.jdsambasivam.workers.dev \
   --slug   tournament/your-tournament/event/your-event \
-  --station 3 \
+  --station 3 --key "<same value as the broker's OPERATOR_KEY secret>" \
   --dir    "C:/Program Files (x86)/Steam/steamapps/common/RivalsofAether2/Rivals2/Binaries/Win64/MatchLogger"
 ```
 
@@ -64,6 +64,12 @@ See [`config.example.json`](config.example.json) — the same file the widget
 writes. Command-line flags override the config file, so the same config can be
 shared across stations with only `--station N` differing.
 
+`--key` is required — it's the same value as the broker's `OPERATOR_KEY`
+secret, not a separate one. Submitting a set can trigger the broker to
+auto-report a winner to start.gg on the spot (see the console's report
+behavior below), so this key is a bracket-write credential, not just a
+submission password — treat it accordingly.
+
 ### Useful flags
 
 | Flag        | Effect                                                        |
@@ -72,7 +78,7 @@ shared across stations with only `--station N` differing.
 | `--once`    | One pass then exit (testing, or a scheduled task).           |
 | `--poll N`  | Seconds between passes (default 2).                          |
 | `--state F` | State-file path (default `<dir>/.station-sender-state.json`). |
-| `--key K`   | Station key — only needed if the broker has `STATION_KEY` set. |
+| `--key K`   | **Required.** Same value as the broker's `OPERATOR_KEY` secret. |
 
 ## Corner widget
 
@@ -82,9 +88,9 @@ It shows live status (a green/red dot + the last action) and has two
 collapsible panels:
 
 - **Settings** — every sender option (broker, event slug, station number,
-  MatchLogger folder, optional station key), written back to `config.json` on
-  Save. Opens automatically when anything required is missing, so a fresh
-  install configures itself entirely in the widget.
+  MatchLogger folder, and the shared key — required), written back to
+  `config.json` on Save. Opens automatically when anything required is
+  missing, so a fresh install configures itself entirely in the widget.
 - **Log** — the sender's recent log lines (the same ones the headless sender
   prints), so you never need a terminal to see what it's doing.
 
@@ -109,5 +115,7 @@ keeps running); the tray menu restores or quits it.
   re-send.
 - **Resilient.** Network failures are retried on the next pass; a set file
   that's still being written (unparseable) is simply picked up once complete.
-- **No secrets.** Only the broker URL, event slug, and station number — all
-  non-sensitive. start.gg and Discord credentials live in the broker.
+- **Does hold one secret.** The shared key (same value as the broker's
+  `OPERATOR_KEY`) — treat `config.json` as sensitive, not just as settings.
+  The start.gg token and Discord credentials themselves still never leave the
+  broker; the shared key only authorizes talking to it.

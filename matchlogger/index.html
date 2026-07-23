@@ -69,8 +69,9 @@
                         <p id="status" class="ml-status"></p>
                     </div>
                     <div class="ml-passcode">
-                        <label for="passcodeInput">Operator passcode
-                            <span class="optional">(only needed to report results)</span></label>
+                        <label for="passcodeInput">Shared key
+                            <span class="optional">(same as the broker's OPERATOR_KEY — only needed to
+                                correct a set that couldn't auto-report)</span></label>
                         <input type="password" id="passcodeInput" autocomplete="off"
                             placeholder="leave blank if you're only viewing">
                     </div>
@@ -116,9 +117,10 @@
                     </table>
                 </div>
                 <p class="ml-foot muted">
-                    Reporting needs the operator passcode above, and the broker must have
-                    start.gg write access configured. Reporting is only offered for sets
-                    matched to a start.gg set. See <a href="DESIGN.md">DESIGN.md</a>.
+                    Most sets report themselves the moment they're matched — no click needed.
+                    The Report button only shows up for the rare set with no start.gg name match
+                    at all, or a failed auto-report; it needs the shared key above.
+                    See <a href="DESIGN.md">DESIGN.md</a>.
                 </p>
             </section>
         </main>

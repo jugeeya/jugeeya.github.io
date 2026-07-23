@@ -119,12 +119,16 @@ function renderSets(sets) {
     const canReport = r.matchedStartggSetId && (r.entrants || []).length && status !== 'reported';
     let action;
     if (status === 'reported') {
-      action = `<span class="conf high">✓ reported</span>`;
+      action = r.reportedBy === 'auto'
+        ? `<span class="conf high">✓ auto-reported</span>`
+        : `<span class="conf high">✓ reported</span>`;
     } else if (canReport) {
-      action = `<button class="secondary report-btn" data-key="${esc(r.station)}:${esc(r.id)}">Report</button>`;
+      const title = r.autoReportError ? `auto-report failed: ${r.autoReportError}` : '';
+      action = `<button class="secondary report-btn" data-key="${esc(r.station)}:${esc(r.id)}" title="${esc(title)}">Report</button>`;
     } else {
       action = `<button class="secondary report-btn" disabled title="${r.matchedStartggSetId ? 'no entrants to pick from' : 'not matched to a start.gg set'}">Report</button>`;
     }
+    const pillLabel = status === 'reported' && r.reportedBy === 'auto' ? 'auto-reported' : status;
     return `
       <tr>
         <td class="stn-cell">${esc(r.station)}</td>
@@ -133,7 +137,7 @@ function renderSets(sets) {
         <td class="score">${esc(score || '—')}</td>
         <td>${esc(r.fullRoundText || '—')}</td>
         <td>${winnerCell}</td>
-        <td><span class="pill ${esc(status)}">${esc(status)}</span></td>
+        <td><span class="pill ${esc(status)}">${esc(pillLabel)}</span></td>
         <td class="action-cell">${action}</td>
       </tr>`;
   }).join('');
@@ -251,7 +255,7 @@ function loadDemo() {
   renderSets([
     { station: 3, ingestedAt: now - 300, matchedStartggSetId: '111', fullRoundText: 'Winners Round 1',
       entrants: [{ id: 'E1', name: 'Alice' }, { id: 'E2', name: 'Bob' }],
-      candidateWinnerEntrantId: 'E1', confidence: 'high', status: 'matched',
+      candidateWinnerEntrantId: 'E1', confidence: 'high', status: 'reported', reportedBy: 'auto',
       set: { endEpoch: now - 300, winnerName: 'Alice', winnerCharacter: 'clairen',
              players: [{ name: 'Alice', character: 'clairen', wins: 3 }, { name: 'Bob', character: 'zetterburn', wins: 1 }] } },
     { station: 5, ingestedAt: now - 120, matchedStartggSetId: null, fullRoundText: null,
@@ -303,9 +307,11 @@ const INSTALL = {
         <code>station_sender.py</code> from inside <code>_internal/</code> directly.)</li>
       <li>First run, the widget opens its <strong>Settings</strong> panel: fill in the
         broker URL, this event's start.gg slug, <strong>this station's number</strong>,
-        and the <code>MatchLogger</code> output folder next to the game exe (e.g.
-        <code>…/Rivals2/Binaries/Win64/MatchLogger</code>), then hit Save — it's stored
-        for next launch, no config file editing needed.</li>
+        the <code>MatchLogger</code> output folder next to the game exe (e.g.
+        <code>…/Rivals2/Binaries/Win64/MatchLogger</code>), and the <strong>shared
+        key</strong> (get this from whoever set up the event — it's required, not
+        optional), then hit Save — it's stored for next launch, no config file
+        editing needed.</li>
       <li>Closing the widget sends it to the system tray — it keeps running. Right-click
         the tray icon to reopen or quit it.</li>`,
     download: { href: 'dist/rivals-station-reporter.zip', label: 'Download Rivals Station Reporter (.zip)' },

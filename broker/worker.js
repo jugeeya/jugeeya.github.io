@@ -364,11 +364,15 @@ async function handleMatchlogger(request, env, url, cors) {
       const station = Number(body.station);
       if (!Number.isInteger(station) || station < 0 || station > 100000)
         return json({ error: 'Bad or missing station.' }, 400, cors);
-      // Optional station key: only enforced if STATION_KEY is set on the Worker,
-      // so the default deployment stays zero-config. Gates the station-side
-      // writes (including live updates, which are non-advancing).
-      if (env.STATION_KEY && body.key !== env.STATION_KEY)
-        return json({ error: 'Bad station key.' }, 401, cors);
+      // Station submissions use the SAME shared secret as the operator passcode
+      // (one key, not two) and it's mandatory, not optional: every station PC's
+      // config holds it, since ingest can itself trigger an auto-report (see
+      // handleIngest) — the key that lets a station submit a set is therefore
+      // also effectively a bracket-write credential, not just a telemetry one.
+      if (!env.OPERATOR_KEY)
+        return json({ error: 'Broker not configured (set OPERATOR_KEY).' }, 503, cors);
+      if (!constantTimeEqual(String(body.key || ''), env.OPERATOR_KEY))
+        return json({ error: 'Bad key.' }, 401, cors);
       if (op === 'current') return handleCurrent(kv, env, slug, station, body.current, cors);
       if (op === 'ingest') return handleIngest(kv, env, slug, station, body.set, cors);
       return handleLive(kv, env, slug, station, body.set, cors);
@@ -429,14 +433,33 @@ async function handleIngest(kv, env, slug, station, set, cors) {
     confidence,
     status: matchedSetId ? 'matched' : 'recorded',
   };
+
+  // Auto-report: MatchLogger reports to start.gg the moment it has ANY
+  // candidate entrant to name as winner — 'high' (exact name match) and 'low'
+  // (fuzzy/partial match) both qualify, no human click needed. Only 'none'
+  // (the winner name didn't overlap with either entrant at all) has nothing to
+  // guess from and is left for a manual pick via the console/Discord — that's
+  // a data-availability gap, not a confidence policy. Best effort: a failure
+  // here is noted on the record, not surfaced as an ingest failure.
+  if (candidateWinnerEntrantId && matchedSetId && env.STARTGG_TOKEN) {
+    try {
+      await doReport(kv, env, slug, record, candidateWinnerEntrantId);
+      record.reportedBy = 'auto';
+    } catch (e) {
+      record.autoReportError = String((e && e.message) || e);
+    }
+  }
+
   await kv.put(setKey(slug, station, setId), JSON.stringify(record), { expirationTtl: 86400 });
   try { await notifyDiscord(env, record); } catch { /* notifications are best effort */ }
   return json({ ok: true, record }, 200, cors);
 }
 
 // Live, non-advancing update from a station as a set is played: store the
-// running set and push its games-so-far to start.gg's live score. Gated by the
-// station key (not the operator passcode) since it never advances the bracket.
+// running set and push its games-so-far to start.gg's live score via
+// updateBracketSet, which never sets a winner — so this specific call can't
+// advance the bracket even though the shared key that gated it can (via
+// ingest's auto-report).
 async function handleLive(kv, env, slug, station, set, cors) {
   if (!set || typeof set !== 'object') return json({ error: 'Missing set.' }, 400, cors);
   const setId = sanitizeId(set.setId) || String(nowSec());
@@ -485,9 +508,38 @@ async function handleLive(kv, env, slug, station, set, cors) {
   return json({ ok: true, live, games, reason }, 200, cors);
 }
 
-// Report a set's winner to start.gg. Gated by an operator passcode: the
-// start.gg token authorizes Worker→start.gg, the passcode authorizes
-// client→Worker, so an open Worker URL can't be used to write to a bracket.
+// Builds per-game data (score + characters) for the given winner and calls
+// reportBracketSet, mutating `rec` to reflect the outcome. Shared by the
+// automatic path (handleIngest, right after a set is matched) and the manual
+// path (handleReport, for the residual case where nothing could be guessed).
+// Throws on a start.gg failure — callers decide how to surface that.
+async function doReport(kv, env, slug, rec, winnerEntrantId) {
+  // Build per-game data when every game's winner maps to an entrant; otherwise
+  // fall back to a winner-only report so a partial mapping never produces a
+  // wrong set score.
+  let gameData = null;
+  try {
+    const slotMap = mapSlotsToEntrants(rec, winnerEntrantId);
+    if (slotMap) {
+      const charMap = await getCharacterMap(env, kv, slug).catch(() => ({}));
+      const gd = gameDataFromGames(rec.set.games || [], slotMap, charMap);
+      if (gd.length && gd.every(g => g.winnerId)) gameData = gd; // all games attributed
+    }
+  } catch { /* best effort — fall back to winner-only */ }
+
+  await reportBracketSet(env, rec.matchedStartggSetId, winnerEntrantId, gameData);
+  rec.status = 'reported';
+  rec.reportedAt = nowSec();
+  rec.reportedWinnerEntrantId = winnerEntrantId;
+  rec.reportedGames = gameData ? gameData.length : 0;
+}
+
+// Manual report to start.gg — the residual path for whatever auto-report (in
+// handleIngest) couldn't resolve on its own: no candidate entrant at all
+// ('none' confidence), or a failed auto-report attempt. Gated by the same
+// shared key as station submissions (passed here as `passcode`): the start.gg
+// token authorizes Worker→start.gg, this key authorizes client→Worker, so an
+// open Worker URL can't be used to write to a bracket by itself.
 async function handleReport(kv, env, slug, body, cors) {
   if (!env.OPERATOR_KEY)
     return json({ error: 'Reporting is not enabled (set OPERATOR_KEY on the broker).' }, 503, cors);
@@ -512,34 +564,18 @@ async function handleReport(kv, env, slug, body, cors) {
   if (rec.entrants && rec.entrants.length && !rec.entrants.some(e => String(e.id) === winnerEntrantId))
     return json({ error: 'winnerEntrantId is not one of this set\'s entrants.' }, 400, cors);
 
-  // Passcode is valid and the request is well-formed. The actual bracket write
+  // Key is valid and the request is well-formed. The actual bracket write
   // needs an authenticated start.gg token; until one is provisioned we stop
   // here (the gate is real, the write is just not wired yet).
   if (!env.STARTGG_TOKEN)
     return json({ error: 'start.gg write access is not configured (set STARTGG_TOKEN on the broker).' }, 501, cors);
 
-  // Build per-game data (score + characters) when we can map every game's
-  // winner to an entrant; otherwise fall back to a winner-only report so a
-  // partial mapping never produces a wrong set score.
-  let gameData = null;
   try {
-    const slotMap = mapSlotsToEntrants(rec, winnerEntrantId);
-    if (slotMap) {
-      const charMap = await getCharacterMap(env, kv, slug).catch(() => ({}));
-      const gd = gameDataFromGames(rec.set.games || [], slotMap, charMap);
-      if (gd.length && gd.every(g => g.winnerId)) gameData = gd; // all games attributed
-    }
-  } catch { /* best effort — fall back to winner-only */ }
-
-  try {
-    await reportBracketSet(env, rec.matchedStartggSetId, winnerEntrantId, gameData);
+    await doReport(kv, env, slug, rec, winnerEntrantId);
   } catch (e) {
     return json({ error: `start.gg report failed: ${(e && e.message) || e}` }, 502, cors);
   }
-  rec.status = 'reported';
-  rec.reportedAt = nowSec();
-  rec.reportedWinnerEntrantId = winnerEntrantId;
-  rec.reportedGames = gameData ? gameData.length : 0;
+  rec.reportedBy = 'operator';
   await kv.put(key, JSON.stringify(rec), { expirationTtl: 86400 });
   return json({ ok: true, record: rec, gamesReported: rec.reportedGames }, 200, cors);
 }
@@ -751,9 +787,14 @@ async function notifyDiscord(env, record) {
   if (!wh) return; // not configured → no-op
   const s = record.set;
   const score = (s.players || []).map(p => p.wins).filter(w => w != null).join('–');
-  const who = record.confidence !== 'none' && record.candidateWinnerEntrantId
-    ? 'matched to a start.gg entrant — confirm to report'
-    : 'needs an operator to pick the winner';
+  let who;
+  if (record.status === 'reported') {
+    who = 'reported to start.gg automatically ✅';
+  } else if (record.autoReportError) {
+    who = `auto-report failed (${record.autoReportError}) — needs a manual report`;
+  } else {
+    who = 'no start.gg match — needs an operator to pick the winner';
+  }
   const content =
     `**Station ${record.station}** — set complete` +
     (record.fullRoundText ? ` (${record.fullRoundText})` : '') +

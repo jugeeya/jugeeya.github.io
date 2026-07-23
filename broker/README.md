@@ -92,59 +92,76 @@ keys** (`ml:cur:<slug>:<station>`, `ml:set:<slug>:<station>:<setId>`), so
 concurrent stations never clobber each other (KV has no transactions).
 Everything expires after 24h.
 
-- `POST /matchlogger/current` `{ slug, station, current }` — a station's live
-  heartbeat. On `current.state === "set_start"` the Worker looks up the
+- `POST /matchlogger/current` `{ slug, station, key, current }` — a station's
+  live heartbeat. On `current.state === "set_start"` the Worker looks up the
   station's start.gg entrants and caches them for pre-binding.
-- `POST /matchlogger/ingest` `{ slug, station, set }` — a finished set. Matches
-  it to the station's start.gg set, computes a candidate winner + confidence,
-  stores it, and (if configured) posts a Discord notification. **Read-only with
-  respect to the bracket.**
-- `POST /matchlogger/live` `{ slug, station, set }` — a running (in-progress)
-  set. Pushes the games-so-far to start.gg's **live** score via
+- `POST /matchlogger/ingest` `{ slug, station, key, set }` — a finished set.
+  Matches it to the station's start.gg set, computes a candidate winner +
+  confidence, and **auto-reports it to start.gg immediately** whenever there's
+  any candidate at all (exact *or* fuzzy name match — see "Auto-report policy"
+  below), no human click needed. Posts a Discord notification reflecting the
+  outcome, if configured.
+- `POST /matchlogger/live` `{ slug, station, key, set }` — a running
+  (in-progress) set. Pushes the games-so-far to start.gg's **live** score via
   `markSetInProgress` + `updateBracketSet`, which records the per-game score +
-  characters **without finalizing or advancing** the bracket. Station-side
-  (station-key gated), players mapped to entrants by name; if they can't be
+  characters **without finalizing or advancing** the bracket (confirmed
+  empirically). Players are mapped to entrants by name; if they can't be
   mapped confidently it stores but skips the start.gg push (never publishes a
-  guessed live score). Finalizing stays the operator's passcode-gated
-  `/report`.
+  guessed live score).
 - `GET /matchlogger/event?slug=…` — the aggregated whole-event view the console
   renders: `{ slug, stations: {…}, sets: […] }`.
 - `POST /matchlogger/report` `{ slug, station, setId, winnerEntrantId, passcode }`
-  — report a matched set to start.gg. Sends per-game `gameData` (each game's
-  winner + character selections, derived from the mod's logged games and mapped
-  to start.gg character ids) so the full score is recorded; falls back to a
-  winner-only report if any game can't be attributed. **Gated by an operator
-  passcode** (see below).
+  — manual report/correction, for whatever auto-report on ingest couldn't
+  resolve (see below) or reported wrong. Sends per-game `gameData` the same way
+  ingest's auto-report does. **Gated by the same shared key**, sent here as
+  `passcode`.
 
 Setup:
 
 ```sh
 wrangler kv namespace create MATCHLOGGER   # paste the id into wrangler.toml
 wrangler secret put DISCORD_WEBHOOK_URL     # optional: set-complete pings
-wrangler secret put OPERATOR_KEY            # required to enable reporting (the passcode)
+wrangler secret put OPERATOR_KEY            # REQUIRED — the one shared key (see below)
 wrangler secret put STARTGG_TOKEN           # start.gg API token; enables the actual bracket write
-wrangler secret put STATION_KEY             # optional: reject ingest/current without this key
 ```
 
-### Why reporting is gated
+### One shared key, mandatory
 
-The start.gg token authorizes Worker→start.gg, but the Worker URL is public, so
-the *action* needs its own gate or anyone could POST `/matchlogger/report` and
-write to your bracket (a "confused deputy"). So the operator supplies a
-**passcode** (`OPERATOR_KEY`) with each report; the Worker checks it
-(constant-time) before doing anything. Two-stage by design:
+`current`/`ingest`/`live` and the manual `/report` all check the request
+against the **same** secret, `OPERATOR_KEY` — there's no separate lower-stakes
+"station key" anymore. It's mandatory, not optional: with no `OPERATOR_KEY`
+configured, the Worker refuses all of these (503); with one configured, every
+station's sender must carry the matching value (its `key` config field / the
+widget's Settings) or its submissions are rejected (401).
 
-- `OPERATOR_KEY` unset → reporting disabled (503).
-- Passcode wrong → 401.
-- Passcode right but `STARTGG_TOKEN` unset → 501 (gate passes, the write isn't
-  wired yet — so you can turn on the passcode UI before wiring the token).
-- Both set → the winner is reported via start.gg's **authenticated** API
-  (`api.start.gg/gql/alpha`), separate from the website API used for reads.
+This is a deliberate tradeoff, not an oversight: because `ingest` can itself
+trigger `/report`'s bracket-writing mutation (see below), the key that
+authorizes a station to submit a set **is** the same credential that can
+advance your live bracket — it just does so automatically rather than through
+a second explicit action. Every station PC's plaintext `config.json` therefore
+holds bracket-write power, not just telemetry-submission power. The
+alternative — auto-reporting purely server-side, using the Worker's own
+`STARTGG_TOKEN` with no client key involved in the report decision at all — is
+possible and avoids that exposure, but was decided against in favor of one
+key everywhere.
 
-`STATION_KEY` is an optional, symmetric guard for `ingest`/`current`: if set, a
-matching `key` must accompany those POSTs (the station sender's `--key`), which
-stops strangers polluting your aggregated view. Left unset, those stay open
-(low stakes — self-cleaning after 24h).
+### Auto-report policy
+
+`ingest` calls `matchWinner()` to line the set's declared winner up against the
+station's two pre-bound start.gg entrants:
+
+- **`high`** (exact name match) or **`low`** (fuzzy/partial match) — either one
+  has a candidate entrant, so the set is **reported to start.gg immediately**,
+  full per-game score + characters included. No confirmation step.
+- **`none`** (the winner name didn't overlap with either entrant at all) —
+  there is no candidate to guess from, so this one case always falls back to
+  the manual `/report` path (console winner-picker or Discord `/report`),
+  regardless of the policy above. That's a data-availability gap, not a
+  confidence threshold that could be turned up further.
+
+A failed auto-report attempt (start.gg hiccup, etc.) doesn't fail the ingest
+call — it's noted on the stored record (`autoReportError`) and surfaced in the
+Discord ping / console so it can be retried manually.
 
 ## How a submission flows
 

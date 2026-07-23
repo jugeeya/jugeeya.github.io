@@ -29,12 +29,15 @@ the MatchLogger the same two coordinates the rest of the system uses.
 
 At a real event every station needs to report, but nobody needs a dedicated
 admin machine. So **every station PC runs the sender** (usually as the corner
-widget, which is where its station number gets set), the broker is the
-**aggregation hub**, and the operator administrates the bracket on **start.gg
-itself**. The hosted web console and Discord are **optional views** on the
-broker's aggregated state — a debug console for checking what the pipeline is
-doing, and one-click confirms for reporting — not something the event depends
-on.
+widget, which is where its station number gets set), and the broker is the
+**aggregation hub** — which also auto-reports each set to start.gg the moment
+it has a candidate winner, so the bracket usually advances with no human
+action at all. The operator only needs to step in for whatever that couldn't
+resolve on its own (or to administrate the bracket on start.gg directly, as
+always). The hosted web console and Discord are **optional views** on the
+broker's aggregated state for exactly that — a debug console for checking what
+the pipeline is doing, plus a correction path for the residual cases — not
+something the event depends on.
 
 ```mermaid
 flowchart LR
@@ -45,7 +48,7 @@ flowchart LR
         Game -->|writes| Files
         Sender -->|watches| Files
     end
-    Broker["r2tag-broker (Cloudflare Worker)<br/>aggregation store + start.gg token"]
+    Broker["r2tag-broker (Cloudflare Worker)<br/>aggregation store + start.gg token<br/>auto-reports on ingest"]
     subgraph OPS["Optional operator views — all stations at once"]
         Console["Web console on jugeeya.github.io<br/>(debug view — any laptop / phone)"]
         Discord["Discord bot<br/>(confirm buttons + /report)"]
@@ -53,9 +56,9 @@ flowchart LR
     StartGG["start.gg API"]
     Splitter["VOD splitter (browser)"]
 
-    Sender -->|"POST /matchlogger/ingest (station N)"| Broker
-    Broker <--> StartGG
-    Console <-->|"read sets · confirm report"| Broker
+    Sender -->|"POST /matchlogger/ingest (station N, shared key)"| Broker
+    Broker <-->|"read + auto-report"| StartGG
+    Console <-->|"read sets · correct/report"| Broker
     Discord <-->|"interactions"| Broker
     Broker -->|"/startgg/sets (existing)"| Splitter
 ```
@@ -184,25 +187,28 @@ Existing:
 
 New:
 
-- `POST /matchlogger/current` → body `{ slug, station, current }`. Records the
-  heartbeat; on a `set_start`, looks up `/startgg/station` and caches the
-  entrants for pre-binding.
+- `POST /matchlogger/current` → body `{ slug, station, key, current }`.
+  Records the heartbeat; on a `set_start`, looks up `/startgg/station` and
+  caches the entrants for pre-binding.
 - `GET /startgg/station?slug=…&station=N` → the set called/in progress at
   station N: `{ setId, fullRoundText, state, entrants:[{id, name, seed}] }`.
-- `POST /matchlogger/ingest` → body `{ slug, station, set }`. Stores the set,
-  matches it (station + time window, using the pre-bound entrants), computes a
-  candidate winner + confidence, fires the Discord notification. **Read-only
-  with respect to the bracket.**
+- `POST /matchlogger/ingest` → body `{ slug, station, key, set }`. Stores the
+  set, matches it (station + time window, using the pre-bound entrants),
+  computes a candidate winner + confidence, and **auto-reports it to start.gg
+  immediately** whenever there's any candidate at all (see "Identity matching"
+  below) — this endpoint *does* write to the bracket, not just aggregate.
+  Fires the Discord notification reflecting the outcome.
 - `GET /matchlogger/event?slug=…` → the aggregated whole-event view above,
   for the web console (and an SSE variant for live updates).
-- `POST /matchlogger/report` → body `{ slug, setId, winnerEntrantId,
-  gameData? }`. Calls start.gg's `reportBracketSet` mutation. Invoked from an
-  explicit operator action on either surface (or auto, guarded — see below).
-  **Requires start.gg write access (see below).**
+- `POST /matchlogger/report` → body `{ slug, setId, winnerEntrantId, passcode
+  }`. Calls start.gg's `reportBracketSet` mutation directly — the manual path
+  for whatever ingest's auto-report couldn't resolve on its own, or reported
+  wrong. **Requires start.gg write access (see below).**
 - `POST /discord/interactions` → Discord's interaction webhook: handles the
   confirm/report buttons and the manual `/report` slash command.
 
-Discord credentials stay server-side in the Worker.
+Discord credentials stay server-side in the Worker. `key` and `passcode` above
+are the same shared secret — see "One shared key" below.
 
 ### Reporting to start.gg needs write access
 
@@ -233,39 +239,55 @@ updates) and shows:
 - **Stations panel:** one live "now playing" card per station from the
   heartbeats — "Station 3: [A] vs [B] — Winners R2".
 - **Sets-today table across all stations:** columns for station, time, players
-  (character), score, matched start.gg round, and **status**. Matched rows
-  expose **Report**, which opens an inline winner picker (so a wrong/low-confidence
-  auto-match can be corrected) and calls `/matchlogger/report` with the
-  operator passcode. Reporting is offered only for sets matched to a start.gg
-  set; the button is disabled otherwise.
+  (character), score, matched start.gg round, and **status**. Most matched sets
+  will already show `reported` here — ingest auto-reports them. Unreported
+  rows (the `none`-confidence case, or a failed auto-report) expose **Report**,
+  which opens an inline winner picker and calls `/matchlogger/report` with the
+  shared key.
 
-### Reporting is passcode-gated
+### One shared key, mandatory
 
-The start.gg token lives only in the Worker, but a public Worker URL means the
-report *action* needs its own gate or anyone could write to the bracket. So the
-operator enters a **passcode** (`OPERATOR_KEY` on the Worker, kept in the
-browser's sessionStorage) that accompanies every report; the Worker verifies it
-(constant-time) before doing anything. The actual bracket write additionally
-needs `STARTGG_TOKEN` — so reporting degrades cleanly: no `OPERATOR_KEY` → 503,
-wrong passcode → 401, right passcode but no token → 501. See
-[`../broker/README.md`](../broker/README.md#why-reporting-is-gated).
+The start.gg token lives only in the Worker, but a public Worker URL means
+writing to the bracket needs its own gate or anyone could trigger it. That gate
+is a single secret, `OPERATOR_KEY` — used both as the `key` every station
+sender must send (mandatory; ingest/current/live all reject requests without
+it) and as the `passcode` the console/Discord send for a manual `/report`.
+There is deliberately no separate, lower-stakes "station key" anymore.
+
+This is a real tradeoff, made explicitly: because `/matchlogger/ingest` can
+itself trigger a bracket-advancing write (see "Identity matching" below), the
+key every station PC's plaintext config holds **is** a bracket-write
+credential, not just a submission password. The alternative — the broker
+auto-reporting purely server-side using its own `STARTGG_TOKEN`, with no
+client-supplied key involved in that decision at all — avoids that exposure
+and was the original recommendation, but was decided against in favor of one
+key everywhere.
+
+Reporting still degrades cleanly regardless of path: no `OPERATOR_KEY`
+configured → 503 on every station endpoint *and* on manual report; wrong
+key/passcode → 401; right key but no `STARTGG_TOKEN` → the auto-report attempt
+is skipped (noted as `autoReportError`) and manual report returns 501. See
+[`../broker/README.md`](../broker/README.md#one-shared-key-mandatory).
 
 ## Optional view 2 — Discord
 
 Interchangeable with the web console, and often the more practical one since
 TOs already live in Discord:
 
-- **Notify + confirm inline.** On ingest the broker posts a message to a
-  configured channel — "Station 3: set complete, 3–1, ~12 min, winner on
-  Clairen → likely **[EntrantA]**" — with **Report 3–1** / **Swap winner** /
-  **Ignore** buttons. Clicking Report calls the same `/matchlogger/report`
-  path. Works from a phone, no software.
+- **Notify, with a correction button for the residual case.** On ingest the
+  broker posts a message to a configured channel — most of the time this is
+  just an FYI, since ingest already auto-reported: "Station 3: set complete,
+  3–1, winner **Clairen** — reported to start.gg ✅". When auto-report
+  couldn't resolve a winner (`none` confidence) or failed, the message instead
+  offers **Report as [EntrantA]** / **Report as [EntrantB]** buttons, calling
+  the same `/matchlogger/report` path. Works from a phone, no software.
 - **Manual `/report` slash command.** `/report station:3 score:3-1
   winner:@Player` — a fallback ingestion path for stations *not* running the
-  mod, or for corrections. The broker resolves the station's set and writes
-  it, so Discord doubles as a lightweight reporting UI for the whole event.
+  mod, or for corrections (including overriding an auto-report that went
+  wrong). The broker resolves the station's set and writes it, so Discord
+  doubles as a lightweight reporting UI for the whole event.
 
-## Identity matching — the hard part, and the rule
+## Identity matching — the hard part, and the auto-report policy
 
 To report a score you must map the game-set to a start.gg set **and its
 winner**.
@@ -280,11 +302,33 @@ winner**.
   lookup), so by set end the pairing is known and the winner follows from
   side + score.
 
-**Rule: notify + one-click confirm; never silently guess.** The ingest ping
-always fires; an actual bracket write happens only when the operator confirms,
-or (later) automatically *only* when identity is unambiguous (e.g. in-game
-tags matched start.gg tags exactly). Reporting a wrong score to a live bracket
-is worse than not reporting, so the system fails toward pinging a human.
+**Policy: auto-report on any candidate; manual only when there's truly
+nothing to guess from.** `matchWinner()` compares the set's declared winner
+name against the two pre-bound entrants and returns one of:
+
+- **`high`** — exact name match.
+- **`low`** — fuzzy/partial match (one name contains the other).
+- **`none`** — no overlap with either entrant at all.
+
+`high` and `low` both report to start.gg immediately on ingest, no human
+click needed — this was a deliberate choice to prioritize hands-off operation
+over a safety net for the ambiguous case. `none` is not a confidence tier the
+policy could extend to even if we wanted to: with zero name overlap there is
+no candidate entrant at all, so it always falls back to a manual pick via the
+console's winner-picker or the Discord `/report` command. A failed auto-report
+attempt (start.gg hiccup, etc.) similarly falls back to manual, noted as
+`autoReportError` on the record.
+
+**The risk this accepts:** a `low`-confidence fuzzy match can be wrong — e.g.
+two similarly-named entrants, or a name that happens to be a substring of the
+wrong one — and reporting a wrong winner to a live bracket is a worse failure
+mode than not reporting, since it has to be manually corrected on start.gg
+after the fact (a `resetSet` + re-report) rather than just being caught before
+it ever landed. This was chosen anyway in favor of not requiring a human to
+click Report for the common case. If this turns out to bite in practice, the
+mitigation is narrowing the policy back to auto-reporting only `high`-confidence
+matches (a one-line change in `handleIngest`'s auto-report condition in
+`../broker/worker.js`), leaving `low` for manual confirmation same as `none`.
 
 ## VOD splitter tie-in
 
@@ -308,41 +352,44 @@ Everything is in this one repo (`jugeeya.github.io`):
 
 - **`matchlogger/ue4ss/`** — the UE4SS mod + minimal profile (drop-in install
   for a game PC).
-- **`matchlogger/sender/`** — the headless per-station sender ✅ *(built:
-  `station_sender.py`, stdlib-only, forwards `sets/*.json` and
-  `current.json` to the broker with the station stamped on)*.
+- **`matchlogger/sender/`** — the per-station sender ✅ *(built:
+  `station_sender.py` (headless) + `station_widget.py`/`rivals-station-reporter.pyw`
+  (the corner-widget GUI every station actually runs), stdlib-only, forwards
+  `sets/*.json`, `current.json`, and `live.json` to the broker with the
+  station stamped on and the shared key attached)*.
 - **`matchlogger/` page** (`index.html` + `matchlogger.js/.css`) — the optional
   web console, a static page alongside `../vods/` sharing `../styles.css` ✅
   *(built: live "now playing" per station + a sets-today table; reads
-  `/matchlogger/event`; reporting button present but disabled pending write
-  access)*.
-- **`../broker/worker.js`** — the `/matchlogger/*` (incl. passcode-gated
-  `/report`) and `/startgg/station` endpoints + KV aggregation store ✅
-  *(built; Discord notify optional via `DISCORD_WEBHOOK_URL`)*. The bracket
-  write inside `/report` activates once `STARTGG_TOKEN` is set.
+  `/matchlogger/event`; Report button + winner picker for whatever auto-report
+  didn't resolve)*.
+- **`../broker/worker.js`** — the `/matchlogger/*` endpoints (incl. auto-report
+  on ingest and the manual `/report`) and `/startgg/station` + KV aggregation
+  store ✅ *(built; Discord notify optional via `DISCORD_WEBHOOK_URL`)*. Live
+  and validated against a real start.gg bracket, `STARTGG_TOKEN` + `OPERATOR_KEY`
+  both configured.
 - **`matchlogger/DESIGN.md`** — this document.
 
 ## Phasing
 
-- **Phase 0 — sender + console skeleton.** Headless station sender (watch →
-  POST) ✅ and the mod's `current.json`/epoch output ✅; still to do: a static
-  console page reading a stub `/matchlogger/event` with the aggregated "sets
-  today across stations" table.
-- **Phase 1 — ingest + Discord notify.** `/matchlogger/ingest` stores sets and
-  posts to Discord on set end ✅. Read-only w.r.t. start.gg.
-- **Phase 2 — live tracking + confirm-report.** `current.json` mod addition ✅ +
-  `/matchlogger/current` heartbeat ✅ + `/startgg/station` pre-binding ✅; real
-  names/round in the console ✅; passcode-gated operator **report** action with
-  a winner picker ✅ (the bracket write itself activates once `STARTGG_TOKEN` is
-  set). Still to do: the Discord `/report` slash command.
-- **Phase 3 — guarded auto-report + timing export.** Auto-report only on
-  unambiguous identity; `/matchlogger/sets` timing export for the splitter.
+- **Phase 0 — sender + console skeleton.** ✅ Done.
+- **Phase 1 — ingest + Discord notify.** ✅ Done.
+- **Phase 2 — live tracking + report.** ✅ Done: `current.json`/`live.json` mod
+  output, `/startgg/station` pre-binding, per-game `gameData` (score +
+  characters), the console's winner picker, live (non-advancing) score pushes.
+- **Phase 3 — auto-report.** ✅ Done, broader than originally scoped: every
+  candidate winner (`high` **or** `low` confidence) auto-reports on ingest, not
+  only unambiguous (`high`-only) matches — a deliberate choice, see "Identity
+  matching" above. Still to do: the Discord `/report` slash command, and the
+  `/matchlogger/sets` timing export for the VOD splitter.
 
 ## Operational notes
 
-- start.gg write credentials (once added) and Discord credentials live only in
-  the broker; the read path uses start.gg's unauthenticated website API.
-- Bracket writes default to operator confirmation, on whichever surface.
+- start.gg write credentials and Discord credentials live only in the broker;
+  the read path uses start.gg's unauthenticated website API.
+- **Bracket writes are automatic by default**, not operator-confirmed: ingest
+  auto-reports any set with a candidate winner (`high` or `low` confidence).
+  Manual confirmation via the console/Discord is the fallback for the
+  `none`-confidence case and failed auto-report attempts only.
 - Every station PC runs the sender (widget); none of them needs an operator
   sitting at it. A station that isn't running the mod at all can still be
   reported via the Discord `/report` command — or simply on start.gg, as

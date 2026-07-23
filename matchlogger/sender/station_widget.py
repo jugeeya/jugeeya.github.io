@@ -7,15 +7,16 @@ It wraps `station_sender.py` (the headless core does the real work): this file
 is just a face on it. Closing the window sends it to the system tray (if
 `pystray` + `pillow` are installed) rather than quitting.
 
-  Windows: double-click station_widget.pyw   (no terminal window)
+  Windows: double-click rivals-station-reporter.pyw   (no terminal window)
   Anywhere: python station_widget.py
 
 No config file editing needed: the Settings panel edits everything (broker,
-event slug, station number, MatchLogger folder, optional station key) and
-writes it back to `config.json` next to the script, so the next launch needs
-nothing. A config file / command-line flags still work and pre-fill the
-fields, same as the headless sender. The Log panel shows the sender's log
-lines — the same ones the headless sender prints to a terminal.
+event slug, station number, MatchLogger folder, and the shared key — required,
+same value as the broker's OPERATOR_KEY secret) and writes it back to
+`config.json` next to the script, so the next launch needs nothing. A config
+file / command-line flags still work and pre-fill the fields, same as the
+headless sender. The Log panel shows the sender's log lines — the same ones
+the headless sender prints to a terminal.
 
 Extending it: `poll_extras()` returns a dict of extra status rows shown under
 the sender status — e.g. wire it to obs-websocket to show "OBS: recording".
@@ -75,9 +76,9 @@ SETTINGS_FIELDS = (
     ("broker", "Broker URL"),
     ("slug", "start.gg event"),
     ("dir", "MatchLogger folder"),
-    ("key", "Station key (optional)"),
+    ("key", "Shared key (same as the broker's OPERATOR_KEY)"),
 )
-REQUIRED = ("broker", "slug", "station", "dir")
+REQUIRED = ("broker", "slug", "station", "dir", "key")
 
 
 class Widget:
