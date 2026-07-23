@@ -30,7 +30,7 @@ jobs:
           mkdir -p matchlogger/dist
           rm -f matchlogger/dist/matchlogger-mod.zip matchlogger/dist/station-sender.zip
           (cd matchlogger/ue4ss && zip -r -X ../dist/matchlogger-mod.zip UE4SS-settings.ini Mods)
-          (cd matchlogger/sender && zip -r -X ../dist/station-sender.zip station_sender.py station_widget.py config.example.json README.md)
+          (cd matchlogger/sender && zip -r -X ../dist/station-sender.zip station_sender.py station_widget.py station_widget.pyw config.example.json README.md)
 
       - name: Commit if changed
         run: |
