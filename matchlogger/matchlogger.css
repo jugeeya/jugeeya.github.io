@@ -24,6 +24,44 @@ main {
 
 .panel-head h3 { margin: 0; }
 
+/* ---- Install ---- */
+.install-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.install-card {
+    background: var(--md-surface-container);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-corner-md);
+    padding: 1.1rem 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.install-icon {
+    font-size: 1.6rem;
+    color: var(--md-primary);
+    margin-bottom: 0.5rem;
+}
+
+.install-card h4 {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-display);
+}
+
+.install-card p {
+    color: var(--md-on-surface-variant);
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin: 0 0 1rem;
+    flex: 1;
+}
+
+.install-card button { align-self: stretch; }
+
 /* ---- Config ---- */
 .sgg-field label,
 .ml-advanced label {
@@ -174,6 +212,117 @@ main {
 .ml-foot { margin-top: 1rem; font-size: 0.82rem; }
 
 .empty { color: var(--md-on-surface-variant); padding: 0.5rem 0; }
+
+/* ---- Install modal (same component as the tags page's guided modal) ---- */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: color-mix(in srgb, #000 58%, transparent);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    animation: modal-fade var(--md-dur-med, 0.3s) var(--md-ease-standard, ease);
+}
+
+.modal-backdrop[hidden] { display: none; }
+
+body.modal-open { overflow: hidden; }
+
+.modal {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    max-height: calc(100dvh - 3rem);
+    overflow-y: auto;
+    background: var(--md-surface-container-high);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-corner-lg);
+    padding: 1.75rem;
+    box-shadow: var(--md-elev-3);
+    animation: modal-pop var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease);
+}
+
+@keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-pop {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+}
+
+.modal-title {
+    font-size: 1.4rem;
+    margin: 0 0 1.4rem;
+    padding-right: 2rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    font-size: 1.4rem;
+    line-height: 1;
+    background: none;
+    color: var(--md-on-surface-variant);
+    box-shadow: none;
+    border-radius: var(--md-corner-full);
+}
+
+.modal-close:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--md-on-surface) 8%, transparent);
+    color: var(--md-on-surface);
+    box-shadow: none;
+    transform: none;
+}
+
+.modal-steps {
+    margin: 0;
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.modal-steps > li::marker {
+    font-weight: 600;
+    color: var(--md-primary);
+}
+
+.modal-steps code {
+    background: var(--md-surface-container-highest);
+    border-radius: var(--md-corner-xs);
+    padding: 0.1rem 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    word-break: break-word;
+}
+
+.modal-download {
+    margin-top: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.modal-note {
+    color: var(--md-on-surface-variant);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal-backdrop,
+    .modal { animation: none; }
+}
 
 @media (max-width: 600px) {
     .panel { padding: 1.25rem 1rem; }

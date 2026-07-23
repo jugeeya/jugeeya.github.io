@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="matchlogger.css">
 </head>
@@ -26,6 +28,33 @@
         </header>
 
         <main>
+            <section class="panel">
+                <div class="panel-head">
+                    <h3>Install</h3>
+                </div>
+                <p class="step-help">Three roles, three setups. Pick the one that matches this machine.</p>
+                <div class="install-grid">
+                    <div class="install-card">
+                        <span class="material-symbols-outlined install-icon">stadia_controller</span>
+                        <h4>Game PC</h4>
+                        <p>Runs Rivals 2 + the MatchLogger mod under UE4SS.</p>
+                        <button type="button" class="secondary" data-install="mod">Install instructions</button>
+                    </div>
+                    <div class="install-card">
+                        <span class="material-symbols-outlined install-icon">sensors</span>
+                        <h4>Station PC</h4>
+                        <p>Watches the mod's output and reports it to the broker. Same machine as above, or a second PC on the same network share.</p>
+                        <button type="button" class="secondary" data-install="sender">Install instructions</button>
+                    </div>
+                    <div class="install-card">
+                        <span class="material-symbols-outlined install-icon">monitor</span>
+                        <h4>Operator</h4>
+                        <p>Whoever runs this console. No install — open this page in a browser.</p>
+                        <button type="button" class="secondary" data-install="operator">What do I need?</button>
+                    </div>
+                </div>
+            </section>
+
             <section class="panel">
                 <div class="ml-config">
                     <div class="sgg-field">
@@ -96,6 +125,14 @@
             <p>Part of the <a href="../">jugeeya.github.io</a> tools. See the
                 <a href="DESIGN.md">MatchLogger design</a>.</p>
         </footer>
+    </div>
+
+    <div class="modal-backdrop" id="installModal" hidden>
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="installModalTitle">
+            <button type="button" class="modal-close" id="installModalClose" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="installModalTitle">Install</h2>
+            <div id="installModalBody"></div>
+        </div>
     </div>
 
     <script type="module" src="matchlogger.js"></script>

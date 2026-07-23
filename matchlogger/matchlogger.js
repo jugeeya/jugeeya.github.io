@@ -1,9 +1,9 @@
 // MatchLogger operator console — reads the broker's aggregated per-event view
 // (GET /matchlogger/event?slug=…) and shows live "now playing" per station
-// plus a sets-today table across every station. Reporting to start.gg is not
-// wired yet (needs authenticated write access on the broker), so the report
-// action is present but disabled — this console aggregates, matches, and
-// surfaces status for a human to act on.
+// plus a sets-today table across every station. Reporting a matched set to
+// start.gg is gated behind the operator passcode (see the Report button
+// below); it's a no-op until the broker also has start.gg write access
+// configured.
 
 const DEFAULT_BROKER = 'https://r2tag-broker.jdsambasivam.workers.dev';
 const POLL_MS = 5000;
@@ -260,6 +260,99 @@ function loadDemo() {
              players: [{ name: 'Cara', character: 'maypul', wins: 3 }, { name: 'Dan', character: 'fleet', wins: 2 }] } },
   ]);
   setStatus('Showing demo data (not live).', 'success');
+}
+
+// ---- install modal ----------------------------------------------------
+// One modal, content swapped per role — same pattern as the tags page's
+// guided save-file modal (open/close, Escape, backdrop click).
+const INSTALL = {
+  mod: {
+    title: 'Game PC — install the MatchLogger mod',
+    steps: `
+      <li>Get a current <strong>experimental</strong> release of
+        <a href="https://github.com/UE4SS-RE/RE-UE4SS/releases" target="_blank" rel="noopener">RE-UE4SS</a>
+        (Rivals 2 is UE5; the old stable release predates UE5.3+ support) and
+        extract it into <code>Rivals2/Binaries/Win64/</code> — the game's own folder.
+        You'll end up with a loose <code>dwmapi.dll</code> next to the game exe and
+        a <code>ue4ss/</code> folder beside it.</li>
+      <li>Download the MatchLogger package below and extract it <strong>into that
+        <code>ue4ss/</code> folder</strong>, merging/overwriting
+        <code>UE4SS-settings.ini</code>, <code>Mods/mods.txt</code>, and
+        <code>Mods/mods.json</code>, and adding <code>Mods/MatchLogger/</code>.</li>
+      <li>Delete any <code>enabled.txt</code> file inside other <code>Mods/&lt;Name&gt;/</code>
+        folders — it force-enables that mod regardless of <code>mods.txt</code>.</li>
+      <li>Launch the game <strong>without Easy Anti-Cheat</strong> (offline/local play
+        only — UE4SS can't inject otherwise).</li>
+      <li>To disable everything later: delete <code>dwmapi.dll</code>. To reinstall:
+        put it back.</li>`,
+    download: { href: 'dist/matchlogger-mod.zip', label: 'Download MatchLogger mod (.zip)' },
+    note: 'Full details, why each setting is off, and a lag-bisection guide: <a href="ue4ss/README.md">ue4ss/README.md</a>.',
+  },
+  sender: {
+    title: 'Station PC — install the sender',
+    steps: `
+      <li>Needs <strong>Python 3.8+</strong> installed on this machine.</li>
+      <li>Download the sender package below and extract it anywhere (e.g. a
+        <code>MatchLoggerSender</code> folder on the Desktop).</li>
+      <li>Copy <code>config.example.json</code> to <code>config.json</code> and fill in
+        the broker URL, this event's start.gg slug, <strong>this station's number</strong>,
+        and <code>dir</code> — the path to the <code>MatchLogger</code> output folder next
+        to the game exe (e.g. <code>…/Rivals2/Binaries/Win64/MatchLogger</code>).</li>
+      <li>Run the corner widget:
+        <code>python station_widget.py --config config.json</code>
+        (or <code>station_sender.py</code> for no window at all — that's all stations
+        2..N need, since nobody operates them directly).</li>
+      <li>Closing the widget sends it to the system tray — it keeps running. Right-click
+        the tray icon to reopen or quit it.</li>`,
+    download: { href: 'dist/station-sender.zip', label: 'Download station sender (.zip)' },
+    note: 'Flags, the tray dependency (<code>pip install pystray pillow</code>), and what it does/doesn\'t touch: <a href="sender/README.md">sender/README.md</a>.',
+  },
+  operator: {
+    title: 'Operator — nothing to install',
+    steps: `
+      <li>Just keep this page open — on a laptop, the stream PC, or a phone. There's
+        no download; it talks straight to the broker.</li>
+      <li>Get the <strong>event slug</strong> (the start.gg URL) and enter it above,
+        then <strong>Connect</strong>.</li>
+      <li>Only if you plan to report results: get the <strong>operator passcode</strong>
+        from whoever set up the broker, and enter it above. Viewing never needs it —
+        only the Report button does.</li>
+      <li>Bookmark the page, or use your browser's "Add to Home Screen" for a
+        one-tap launch during the event.</li>`,
+  },
+};
+
+const installModal = $('installModal');
+const installModalBody = $('installModalBody');
+const installModalTitle = $('installModalTitle');
+const installModalClose = $('installModalClose');
+
+function openInstallModal(kind) {
+  const info = INSTALL[kind];
+  if (!info || !installModal) return;
+  installModalTitle.textContent = info.title;
+  const dl = info.download
+    ? `<div class="modal-download"><a href="${esc(info.download.href)}"><button type="button">${esc(info.download.label)}</button></a></div>`
+    : '';
+  const note = info.note ? `<p class="modal-note">${info.note}</p>` : '';
+  installModalBody.innerHTML = `<ol class="modal-steps">${info.steps}</ol>${dl}${note}`;
+  installModal.hidden = false;
+  document.body.classList.add('modal-open');
+  installModalClose?.focus();
+}
+
+function closeInstallModal() {
+  if (!installModal) return;
+  installModal.hidden = true;
+  document.body.classList.remove('modal-open');
+}
+
+if (installModal) {
+  document.querySelectorAll('[data-install]').forEach((btn) =>
+    btn.addEventListener('click', () => openInstallModal(btn.dataset.install)));
+  installModalClose.addEventListener('click', closeInstallModal);
+  installModal.addEventListener('click', (e) => { if (e.target === installModal) closeInstallModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !installModal.hidden) closeInstallModal(); });
 }
 
 // ---- init -----------------------------------------------------------------
