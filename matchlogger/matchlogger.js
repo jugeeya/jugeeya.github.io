@@ -289,7 +289,7 @@ const INSTALL = {
     note: 'Full details, why each setting is off, and a lag-bisection guide: <a href="ue4ss/README.md">ue4ss/README.md</a>.',
   },
   sender: {
-    title: 'Station PC — install the sender',
+    title: 'Sender widget — install on every station PC',
     steps: `
       <li>Needs <strong>Python 3.8+</strong> installed on this machine.</li>
       <li>Download the sender package below and extract it anywhere (e.g. a
@@ -300,23 +300,26 @@ const INSTALL = {
         to the game exe (e.g. <code>…/Rivals2/Binaries/Win64/MatchLogger</code>).</li>
       <li>Run the corner widget:
         <code>python station_widget.py --config config.json</code>
-        (or <code>station_sender.py</code> for no window at all — that's all stations
-        2..N need, since nobody operates them directly).</li>
+        — it shows this station's number and a live status dot, and lets you change
+        the number without touching the config. (<code>station_sender.py</code> is the
+        same sender with no window, e.g. for a scheduled task.)</li>
       <li>Closing the widget sends it to the system tray — it keeps running. Right-click
         the tray icon to reopen or quit it.</li>`,
     download: { href: 'dist/station-sender.zip', label: 'Download station sender (.zip)' },
     note: 'Flags, the tray dependency (<code>pip install pystray pillow</code>), and what it does/doesn\'t touch: <a href="sender/README.md">sender/README.md</a>.',
   },
   operator: {
-    title: 'Operator — nothing to install',
+    title: 'This console — nothing to install',
     steps: `
-      <li>Just keep this page open — on a laptop, the stream PC, or a phone. There's
-        no download; it talks straight to the broker.</li>
+      <li>This page is optional — the event runs fine without it. Run the bracket on
+        start.gg as usual, and open this anywhere (laptop, stream PC, phone) when you
+        want to check what the stations are sending.</li>
       <li>Get the <strong>event slug</strong> (the start.gg URL) and enter it above,
-        then <strong>Connect</strong>.</li>
-      <li>Only if you plan to report results: get the <strong>operator passcode</strong>
-        from whoever set up the broker, and enter it above. Viewing never needs it —
-        only the Report button does.</li>
+        then <strong>Connect</strong>. There's no download; it talks straight to the
+        broker.</li>
+      <li>Only if you plan to report results from here instead of start.gg: get the
+        <strong>operator passcode</strong> from whoever set up the broker, and enter it
+        above. Viewing never needs it — only the Report button does.</li>
       <li>Bookmark the page, or use your browser's "Add to Home Screen" for a
         one-tap launch during the event.</li>`,
   },

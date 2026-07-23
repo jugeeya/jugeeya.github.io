@@ -4,8 +4,8 @@ This document describes how to connect the Rivals of Aether II **MatchLogger**
 UE4SS mod (`ue4ss/Mods/MatchLogger/`) to a live tournament: knowing which
 station a machine is, pinging when a set ends, optionally reporting the set to
 start.gg, and feeding precise timings to the [VOD splitter](../vods/). Every
-piece lives in this repo — the mod and headless sender under `matchlogger/`,
-the web console as a page here, and the broker endpoints in
+piece lives in this repo — the mod and per-station sender under `matchlogger/`,
+the optional web console as a page here, and the broker endpoints in
 [`../broker/worker.js`](../broker/worker.js).
 
 ## The core idea
@@ -27,15 +27,18 @@ the MatchLogger the same two coordinates the rest of the system uses.
 
 ## Components
 
-At a real event only **one** person operates consistently (station 1, or a
-satellite PC/laptop/phone), while every station needs to report. So the
-station PCs run a **headless sender** with no UI, the broker is the
-**aggregation hub**, and there is **one operator surface** — a hosted web
-console and/or Discord — that sees every station at once.
+At a real event every station needs to report, but nobody needs a dedicated
+admin machine. So **every station PC runs the sender** (usually as the corner
+widget, which is where its station number gets set), the broker is the
+**aggregation hub**, and the operator administrates the bracket on **start.gg
+itself**. The hosted web console and Discord are **optional views** on the
+broker's aggregated state — a debug console for checking what the pipeline is
+doing, and one-click confirms for reporting — not something the event depends
+on.
 
 ```mermaid
 flowchart LR
-    subgraph ST["Stations 1..N PC (headless, no operator)"]
+    subgraph ST["Station PCs 1..N (each runs the sender widget)"]
         Game["Rivals 2 + UE4SS<br/>MatchLogger mod"]
         Files["MatchLogger/ JSON<br/>(per-set + current.json)"]
         Sender["Station sender<br/>(watch files → POST)"]
@@ -43,8 +46,8 @@ flowchart LR
         Sender -->|watches| Files
     end
     Broker["r2tag-broker (Cloudflare Worker)<br/>aggregation store + start.gg token"]
-    subgraph OPS["Operator surfaces — one human, all stations"]
-        Console["Web console on jugeeya.github.io<br/>(satellite PC / laptop / phone)"]
+    subgraph OPS["Optional operator views — all stations at once"]
+        Console["Web console on jugeeya.github.io<br/>(debug view — any laptop / phone)"]
         Discord["Discord bot<br/>(confirm buttons + /report)"]
     end
     StartGG["start.gg API"]
@@ -62,11 +65,13 @@ The design keeps four concerns strictly separated:
 - **The mod stays dumb and tournament-agnostic.** It writes JSON to disk and
   nothing else — no networking, no secrets, no station awareness. The same
   install works at any station.
-- **The station sender is headless.** A tiny per-station background process
-  that watches the MatchLogger folder and POSTs finished sets to the broker
-  with its station number. No UI, set-and-forget — this is what lets stations
-  2..N run with nobody sitting at them. Its station number is its only config
-  (a launch arg or one-line file).
+- **The station sender is set-and-forget.** A tiny per-station background
+  process that watches the MatchLogger folder and POSTs finished sets to the
+  broker with its station number — this is what lets every station run with
+  nobody sitting at it. Its station number is its only per-machine config,
+  usually set through the corner widget (the same sender with a small
+  always-on-top status window); the headless `station_sender.py` is the
+  no-window variant.
 - **The broker is the aggregation hub and holds the secrets.** It stores every
   ingested set per event (keyed by station + time), does the start.gg matching,
   and drives Discord. Note the current broker (`../broker/worker.js`) reads
@@ -74,11 +79,13 @@ The design keeps four concerns strictly separated:
   — perfect for the read-only matching/lookup here, but a bracket **write**
   (`reportBracketSet`) needs authenticated access it does not yet have. See
   "Reporting to start.gg needs write access" below.
-- **The operator surface is the human-in-the-loop console**, and there is one
-  of it per event, not per station. Two interchangeable forms, both reading
-  the broker's aggregated view: a **hosted web console** and **Discord**. All
-  ambiguous decisions (confirm a winner, fix an entrant mapping, push a
-  report) happen here.
+- **The operator surfaces are optional.** The bracket itself is administrated
+  on start.gg, as at any event. Two interchangeable views read the broker's
+  aggregated state when a human wants eyes on the pipeline: a **hosted web
+  console** (effectively a debug view — is every station sending? did the set
+  match?) and **Discord**. Ambiguous decisions (confirm a winner, fix an
+  entrant mapping, push a report) happen on one of these — or the operator
+  simply enters the result on start.gg directly and ignores them.
 
 This is the same shape as the existing metrics project (mod → files → sender →
 cloud) and the VOD splitter (browser → broker → start.gg).
@@ -134,21 +141,23 @@ is (`--station 3`, or a one-line file). It:
 - **Watches** `MatchLogger/sets/*.json` (new set) and `current.json` (live
   state).
 - **On set start** (`current.json` → `set_start`): POSTs a lightweight
-  heartbeat to `/matchlogger/current` so the broker (and thus the operator
-  surface) knows station N just started a set — this is what triggers the
-  broker's `/startgg/station` pre-binding.
+  heartbeat to `/matchlogger/current` so the broker (and thus the console)
+  knows station N just started a set — this is what triggers the broker's
+  `/startgg/station` pre-binding.
 - **On a new set file:** stamps the station and POSTs it to
   `/matchlogger/ingest`, then marks the file consumed (same "clear after
   consume" pattern as the metrics project).
 
-It retries on failure and is otherwise invisible. Stations 2..N run only this.
+It retries on failure and is otherwise invisible. Every station PC runs one —
+in practice as the corner widget (`station_widget.py`), the same sender with a
+station-number field and a live status dot.
 
 ## The broker as aggregation hub
 
 The broker stores, per event, every ingested set keyed by station + time, plus
-the latest `current` heartbeat per station. That aggregated view is what both
-operator surfaces read, so the human sees all stations without anything being
-co-located. Suggested shape (Cloudflare KV/R2/D1):
+the latest `current` heartbeat per station. That aggregated view is what the
+console and Discord read, so a human can see all stations without anything
+being co-located. Suggested shape (Cloudflare KV/R2/D1):
 
 ```jsonc
 // GET /matchlogger/event?slug=…  → the operator's whole-event view
@@ -211,11 +220,14 @@ Until write access is wired up, every surface still does the full
 notify/aggregate/confirm flow; the final "report" button is just disabled
 (or falls back to "mark reported manually").
 
-## Operator surface 1 — the web console (a page in this repo)
+## Optional view 1 — the web console (a page in this repo)
 
 A static page alongside `../vods/`, sharing `../styles.css` and the broker —
-no local server, runs on any satellite PC, laptop, or phone. It reads
-`/matchlogger/event` (SSE for live updates) and shows:
+no local server, runs on any laptop or phone. It's the MatchLogger's **debug
+view**: the event runs fine without it open, but when you want to check that
+every station is sending, that heartbeats are flowing, or why a set didn't
+match, this is where you look. It reads `/matchlogger/event` (SSE for live
+updates) and shows:
 
 - **Config:** event slug (broker URL is implicit).
 - **Stations panel:** one live "now playing" card per station from the
@@ -238,7 +250,7 @@ needs `STARTGG_TOKEN` — so reporting degrades cleanly: no `OPERATOR_KEY` → 5
 wrong passcode → 401, right passcode but no token → 501. See
 [`../broker/README.md`](../broker/README.md#why-reporting-is-gated).
 
-## Operator surface 2 — Discord
+## Optional view 2 — Discord
 
 Interchangeable with the web console, and often the more practical one since
 TOs already live in Discord:
@@ -299,7 +311,7 @@ Everything is in this one repo (`jugeeya.github.io`):
 - **`matchlogger/sender/`** — the headless per-station sender ✅ *(built:
   `station_sender.py`, stdlib-only, forwards `sets/*.json` and
   `current.json` to the broker with the station stamped on)*.
-- **`matchlogger/` page** (`index.html` + `matchlogger.js/.css`) — the operator
+- **`matchlogger/` page** (`index.html` + `matchlogger.js/.css`) — the optional
   web console, a static page alongside `../vods/` sharing `../styles.css` ✅
   *(built: live "now playing" per station + a sets-today table; reads
   `/matchlogger/event`; reporting button present but disabled pending write
@@ -331,7 +343,9 @@ Everything is in this one repo (`jugeeya.github.io`):
 - start.gg write credentials (once added) and Discord credentials live only in
   the broker; the read path uses start.gg's unauthenticated website API.
 - Bracket writes default to operator confirmation, on whichever surface.
-- Stations 2..N are headless; a station that isn't running the mod at all can
-  still be reported via the Discord `/report` command.
+- Every station PC runs the sender (widget); none of them needs an operator
+  sitting at it. A station that isn't running the mod at all can still be
+  reported via the Discord `/report` command — or simply on start.gg, as
+  always.
 - The anti-cheat/offline caveat from the mod README still applies — UE4SS only
   injects when the game runs without Easy Anti-Cheat.
