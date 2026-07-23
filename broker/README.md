@@ -99,6 +99,14 @@ Everything expires after 24h.
   it to the station's start.gg set, computes a candidate winner + confidence,
   stores it, and (if configured) posts a Discord notification. **Read-only with
   respect to the bracket.**
+- `POST /matchlogger/live` `{ slug, station, set }` — a running (in-progress)
+  set. Pushes the games-so-far to start.gg's **live** score via
+  `markSetInProgress` + `updateBracketSet`, which records the per-game score +
+  characters **without finalizing or advancing** the bracket. Station-side
+  (station-key gated), players mapped to entrants by name; if they can't be
+  mapped confidently it stores but skips the start.gg push (never publishes a
+  guessed live score). Finalizing stays the operator's passcode-gated
+  `/report`.
 - `GET /matchlogger/event?slug=…` — the aggregated whole-event view the console
   renders: `{ slug, stations: {…}, sets: […] }`.
 - `POST /matchlogger/report` `{ slug, station, setId, winnerEntrantId, passcode }`

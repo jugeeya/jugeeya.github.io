@@ -167,6 +167,28 @@ local function WriteCurrent(state, extra)
     WriteJsonFile(OUTPUT_DIR .. "/current.json", cur)
 end
 
+-- Running snapshot of the in-progress set, refreshed after each game, so the
+-- companion agent can push a live (non-finalizing) score + characters to
+-- start.gg while the set is still being played.
+local function WriteLiveSet()
+    if not CurrentSet then return end
+    local lastMatch = CurrentSet.matches[#CurrentSet.matches]
+    local standings = {}
+    if lastMatch then
+        for _, p in ipairs(lastMatch.players) do
+            table.insert(standings, { slot = p.slot, name = p.name, character = p.character, wins = p.wins })
+        end
+    end
+    WriteJsonFile(OUTPUT_DIR .. "/live.json", {
+        setId = CurrentSet.id,
+        complete = false,
+        winsRequired = CurrentSet.winsRequired,
+        matchCount = #CurrentSet.matches,
+        players = standings,
+        matches = CurrentSet.matches,
+    })
+end
+
 -- ---------------------------------------------------------------------------
 -- Set finalization
 -- ---------------------------------------------------------------------------
@@ -221,6 +243,9 @@ local function FinalizeSet(complete)
 
     CurrentSet = nil
     WriteCurrent("idle")
+    -- Mark the running snapshot done so the sender stops live-pushing this set
+    -- (the operator finalizes via the console, which advances the bracket).
+    WriteJsonFile(OUTPUT_DIR .. "/live.json", { complete = true })
 end
 
 -- ---------------------------------------------------------------------------
@@ -368,6 +393,7 @@ function LogFromResultsWidget(widget)
         FinalizeSet(true)          -- writes the "idle" heartbeat itself
     else
         WriteCurrent("set_open", { setId = CurrentSet.id, matchCount = #CurrentSet.matches })
+        WriteLiveSet()             -- refresh the running snapshot for live reporting
     end
 end
 

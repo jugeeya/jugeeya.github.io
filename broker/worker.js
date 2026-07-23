@@ -360,17 +360,18 @@ async function handleMatchlogger(request, env, url, cors) {
     // which never leaves the Worker). See handleReport.
     if (op === 'report') return handleReport(kv, env, slug, body, cors);
 
-    if (op === 'current' || op === 'ingest') {
+    if (op === 'current' || op === 'ingest' || op === 'live') {
       const station = Number(body.station);
       if (!Number.isInteger(station) || station < 0 || station > 100000)
         return json({ error: 'Bad or missing station.' }, 400, cors);
       // Optional station key: only enforced if STATION_KEY is set on the Worker,
-      // so the default deployment stays zero-config. Prevents view-pollution.
+      // so the default deployment stays zero-config. Gates the station-side
+      // writes (including live updates, which are non-advancing).
       if (env.STATION_KEY && body.key !== env.STATION_KEY)
         return json({ error: 'Bad station key.' }, 401, cors);
-      return op === 'current'
-        ? handleCurrent(kv, env, slug, station, body.current, cors)
-        : handleIngest(kv, env, slug, station, body.set, cors);
+      if (op === 'current') return handleCurrent(kv, env, slug, station, body.current, cors);
+      if (op === 'ingest') return handleIngest(kv, env, slug, station, body.set, cors);
+      return handleLive(kv, env, slug, station, body.set, cors);
     }
   }
 
@@ -433,6 +434,57 @@ async function handleIngest(kv, env, slug, station, set, cors) {
   return json({ ok: true, record }, 200, cors);
 }
 
+// Live, non-advancing update from a station as a set is played: store the
+// running set and push its games-so-far to start.gg's live score. Gated by the
+// station key (not the operator passcode) since it never advances the bracket.
+async function handleLive(kv, env, slug, station, set, cors) {
+  if (!set || typeof set !== 'object') return json({ error: 'Missing set.' }, 400, cors);
+  const setId = sanitizeId(set.setId) || String(nowSec());
+
+  let entrants = null, matchedSetId = null, fullRoundText = null;
+  const curRaw = await kv.get(curKey(slug, station));
+  if (curRaw) {
+    try {
+      const c = JSON.parse(curRaw);
+      if (c.startgg && c.startgg.entrants) {
+        entrants = c.startgg.entrants; matchedSetId = c.startgg.setId; fullRoundText = c.startgg.fullRoundText;
+      }
+    } catch { /* ignore */ }
+  }
+  if (!entrants) {
+    try {
+      const s = await fetchStationSet(slug, station);
+      if (s) { entrants = s.entrants; matchedSetId = s.setId; fullRoundText = s.fullRoundText; }
+    } catch { /* best effort */ }
+  }
+
+  const rec = {
+    id: setId, station, ingestedAt: nowSec(), set: summarizeSet(set),
+    matchedStartggSetId: matchedSetId, fullRoundText: fullRoundText || null,
+    entrants: entrants || null, status: 'live',
+  };
+  await kv.put(setKey(slug, station, setId), JSON.stringify(rec), { expirationTtl: 86400 });
+
+  // Push the live score to start.gg (best effort — never fail the station's call).
+  let live = false, reason = null, games = 0;
+  if (!env.STARTGG_TOKEN) reason = 'no start.gg token';
+  else if (!matchedSetId) reason = 'no matched start.gg set';
+  else {
+    const slotMap = mapSlotsToEntrants(rec, null);
+    if (!slotMap) reason = 'could not map players to entrants by name';
+    else {
+      const charMap = await getCharacterMap(env, kv, slug).catch(() => ({}));
+      const gd = gameDataFromGames(rec.set.games || [], slotMap, charMap).filter(g => g.winnerId);
+      if (!gd.length) reason = 'no completed games yet';
+      else {
+        try { await pushLiveGameData(env, matchedSetId, gd); live = true; games = gd.length; }
+        catch (e) { reason = `start.gg update failed: ${(e && e.message) || e}`; }
+      }
+    }
+  }
+  return json({ ok: true, live, games, reason }, 200, cors);
+}
+
 // Report a set's winner to start.gg. Gated by an operator passcode: the
 // start.gg token authorizes Worker→start.gg, the passcode authorizes
 // client→Worker, so an open Worker URL can't be used to write to a bracket.
@@ -471,7 +523,12 @@ async function handleReport(kv, env, slug, body, cors) {
   // partial mapping never produces a wrong set score.
   let gameData = null;
   try {
-    gameData = await buildGameData(env, kv, slug, rec, winnerEntrantId);
+    const slotMap = mapSlotsToEntrants(rec, winnerEntrantId);
+    if (slotMap) {
+      const charMap = await getCharacterMap(env, kv, slug).catch(() => ({}));
+      const gd = gameDataFromGames(rec.set.games || [], slotMap, charMap);
+      if (gd.length && gd.every(g => g.winnerId)) gameData = gd; // all games attributed
+    }
   } catch { /* best effort — fall back to winner-only */ }
 
   try {
@@ -487,37 +544,53 @@ async function handleReport(kv, env, slug, body, cors) {
   return json({ ok: true, record: rec, gamesReported: rec.reportedGames }, 200, cors);
 }
 
-// Map the stored per-game data to start.gg's gameData: each game's winner
-// entrant + each entrant's character. Returns null (winner-only report) unless
-// every game's winner resolves, so we never send a partial/wrong score.
-async function buildGameData(env, kv, slug, rec, winnerEntrantId) {
-  const games = rec.set && rec.set.games;
-  const winnerSlot = rec.set && rec.set.winnerSlot;
+// Map player slots → start.gg entrant ids.
+//  - Finalizing (winnerEntrantId given): anchor the winner's slot to the chosen
+//    entrant, the other slot to the other entrant — unambiguous with 2 entrants.
+//  - Live (winnerEntrantId null): match players to entrants by name; if at least
+//    one matches, the other is inferred; if none match, return null so we don't
+//    push a possibly-swapped live score to the public bracket.
+function mapSlotsToEntrants(rec, winnerEntrantId) {
   const entrants = rec.entrants || [];
-  if (!Array.isArray(games) || !games.length || winnerSlot == null || entrants.length !== 2) return null;
+  const players = (rec.set && rec.set.players) || [];
+  if (entrants.length !== 2 || players.length !== 2) return null;
+  const slots = players.map(p => p.slot);
 
-  // slot → entrant id, anchored on the (possibly operator-corrected) winner.
-  const otherEntrant = entrants.find(e => String(e.id) !== winnerEntrantId);
-  const otherSlot = (rec.set.players || []).map(p => p.slot).find(s => s !== winnerSlot);
-  if (!otherEntrant || otherSlot == null) return null;
-  const slotToEntrant = { [winnerSlot]: winnerEntrantId, [otherSlot]: String(otherEntrant.id) };
+  if (winnerEntrantId != null) {
+    const winnerSlot = rec.set.winnerSlot;
+    const other = entrants.find(e => String(e.id) !== String(winnerEntrantId));
+    const otherSlot = slots.find(s => s !== winnerSlot);
+    if (winnerSlot == null || !other || otherSlot == null) return null;
+    return { [winnerSlot]: String(winnerEntrantId), [otherSlot]: String(other.id) };
+  }
 
-  const charMap = await getCharacterMap(env, kv, slug).catch(() => ({}));
-  const out = [];
-  for (const g of games) {
-    const winnerId = slotToEntrant[g.winnerSlot];
-    if (!winnerId) return null; // a game we can't attribute → bail to winner-only
+  const map = {}, used = new Set();
+  for (const p of players) {
+    const m = entrants.find(e => !used.has(e.id) && normChar(e.name) === normChar(p.name));
+    if (m) { map[p.slot] = String(m.id); used.add(m.id); }
+  }
+  const openSlots = slots.filter(s => !(s in map));
+  const openEntrants = entrants.filter(e => !used.has(e.id));
+  if (openSlots.length === 1 && openEntrants.length === 1) map[openSlots[0]] = String(openEntrants[0].id);
+  return Object.keys(map).length === 2 ? map : null;
+}
+
+// Per-game start.gg gameData from the stored games + a slot→entrant map +
+// character name→id map. Each entry: { gameNum, winnerId?, selections? }.
+function gameDataFromGames(games, slotToEntrant, charMap) {
+  return (games || []).map(g => {
+    const winnerId = g.winnerSlot != null ? slotToEntrant[g.winnerSlot] : null;
     const selections = [];
     for (const c of g.chars || []) {
       const eid = slotToEntrant[c.slot];
       const cid = charMap[normChar(c.character)];
       if (eid && cid != null) selections.push({ entrantId: eid, characterId: cid });
     }
-    const game = { gameNum: g.gameNum, winnerId };
+    const game = { gameNum: g.gameNum };
+    if (winnerId) game.winnerId = winnerId;
     if (selections.length) game.selections = selections;
-    out.push(game);
-  }
-  return out.length ? out : null;
+    return game;
+  });
 }
 
 const normChar = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -539,23 +612,38 @@ async function getCharacterMap(env, kv, slug) {
   return map;
 }
 
-// Uses start.gg's authenticated API (not the website endpoint used for reads).
-// gameData is optional: when present, start.gg tallies the set score from the
-// per-game winners and records each game's character selections.
-async function reportBracketSet(env, startggSetId, winnerEntrantId, gameData) {
+// One place for start.gg's authenticated API (writes), separate from the
+// website endpoint used for reads.
+async function startggAuthMutation(env, query, variables) {
   const res = await fetch('https://api.start.gg/gql/alpha', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${env.STARTGG_TOKEN}` },
-    body: JSON.stringify({
-      query: `mutation($setId:ID!,$winnerId:ID!,$gameData:[BracketSetGameDataInput]){
-                reportBracketSet(setId:$setId, winnerId:$winnerId, gameData:$gameData){ id state } }`,
-      variables: { setId: startggSetId, winnerId: winnerEntrantId, gameData: gameData || null },
-    }),
+    body: JSON.stringify({ query, variables }),
   });
   if (!res.ok) throw new Error(`start.gg ${res.status}`);
   const out = await res.json();
   if (out.errors && out.errors.length) throw new Error(out.errors[0].message || 'GraphQL error');
   return out.data;
+}
+
+// reportBracketSet with a winnerId marks the set complete (advances the
+// bracket); gameData records the per-game score + character selections.
+function reportBracketSet(env, startggSetId, winnerEntrantId, gameData) {
+  return startggAuthMutation(env,
+    `mutation($setId:ID!,$winnerId:ID!,$gameData:[BracketSetGameDataInput]){
+       reportBracketSet(setId:$setId, winnerId:$winnerId, gameData:$gameData){ id state } }`,
+    { setId: startggSetId, winnerId: winnerEntrantId, gameData: gameData || null });
+}
+
+// Live, non-advancing update: mark the set called and push the games-so-far.
+// updateBracketSet records game stats without setting a winner, so the bracket
+// does not advance — that stays the operator's finalize step.
+async function pushLiveGameData(env, startggSetId, gameData) {
+  await startggAuthMutation(env,
+    `mutation($id:ID!){ markSetInProgress(setId:$id){ id state } }`, { id: startggSetId });
+  await startggAuthMutation(env,
+    `mutation($id:ID!,$g:[BracketSetGameDataInput]){ updateBracketSet(setId:$id, gameData:$g){ id state } }`,
+    { id: startggSetId, g: gameData });
 }
 
 function constantTimeEqual(a, b) {

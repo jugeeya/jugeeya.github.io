@@ -75,6 +75,7 @@ class Sender:
         self.out_dir = Path(out_dir)
         self.sets_dir = self.out_dir / "sets"
         self.current_path = self.out_dir / "current.json"
+        self.live_path = self.out_dir / "live.json"
         self.state_path = Path(state_path)
         self.dry_run = dry_run
         self.state = self._load_state()
@@ -162,9 +163,30 @@ class Sender:
             self.state["current_hash"] = digest
             self._save_state()
 
+    def process_live(self):
+        # Running per-game snapshot → live (non-finalizing) start.gg score.
+        if not self.live_path.is_file():
+            return
+        raw = self.live_path.read_bytes()
+        digest = hashlib.sha1(raw).hexdigest()
+        if digest == self.state.get("live_hash"):
+            return
+        body = read_json(self.live_path)
+        if body is None:
+            return
+        # The mod writes {"complete": true} when the set ends — nothing to push.
+        if not body.get("complete"):
+            ok = self._post("/matchlogger/live", self._payload({"set": body}))
+            if not ok:
+                return  # retry next pass; leave the hash so a later change re-sends
+            log(f"live: {body.get('matchCount', '?')} game(s)")
+        self.state["live_hash"] = digest
+        self._save_state()
+
     def tick(self):
         # Heartbeat first: it's time-sensitive (drives start.gg pre-binding).
         self.process_current()
+        self.process_live()
         self.process_sets()
 
 
