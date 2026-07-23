@@ -28,16 +28,29 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p matchlogger/dist
-          rm -f matchlogger/dist/matchlogger-mod.zip matchlogger/dist/station-sender.zip
+          rm -f matchlogger/dist/matchlogger-mod.zip matchlogger/dist/rivals-station-reporter.zip
+
           (cd matchlogger/ue4ss && zip -r -X ../dist/matchlogger-mod.zip UE4SS-settings.ini Mods)
-          (cd matchlogger/sender && zip -r -X ../dist/station-sender.zip station_sender.py station_widget.py station_widget.pyw config.example.json README.md)
+
+          # rivals-station-reporter.zip: the launcher sits alone at the zip root
+          # (the only thing you need to double-click); everything else is tucked
+          # into _internal/ so extracting doesn't dump a pile of loose files next
+          # to it. rivals-station-reporter.pyw finds _internal/ next to itself at
+          # runtime, so no source patching is needed to build it this way.
+          stage=$(mktemp -d)
+          cp matchlogger/sender/rivals-station-reporter.pyw "$stage/"
+          mkdir "$stage/_internal"
+          cp matchlogger/sender/station_sender.py matchlogger/sender/station_widget.py \
+             matchlogger/sender/config.example.json matchlogger/sender/README.md "$stage/_internal/"
+          (cd "$stage" && zip -r -X "$GITHUB_WORKSPACE/matchlogger/dist/rivals-station-reporter.zip" rivals-station-reporter.pyw _internal)
+          rm -rf "$stage"
 
       - name: Commit if changed
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add matchlogger/dist/matchlogger-mod.zip matchlogger/dist/station-sender.zip
+          git add matchlogger/dist/matchlogger-mod.zip matchlogger/dist/rivals-station-reporter.zip
           if git diff --cached --quiet; then
             echo "No changes to the install zips."
             exit 0

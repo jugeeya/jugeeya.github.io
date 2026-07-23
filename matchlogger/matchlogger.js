@@ -289,15 +289,18 @@ const INSTALL = {
     note: 'Full details, why each setting is off, and a lag-bisection guide: <a href="ue4ss/README.md">ue4ss/README.md</a>.',
   },
   sender: {
-    title: 'Sender widget — install on every station PC',
+    title: 'Rivals Station Reporter — install on every station PC',
     steps: `
       <li>Needs <strong>Python 3.8+</strong> installed on this machine.</li>
-      <li>Download the sender package below and extract it anywhere (e.g. a
-        <code>MatchLoggerSender</code> folder on the Desktop).</li>
-      <li>Double-click <code>station_widget.pyw</code> — no terminal window opens; the
-        widget's <strong>Log</strong> panel shows what the sender is doing instead.
-        (Elsewhere: <code>python station_widget.py</code>. <code>station_sender.py</code>
-        is the same sender with no window at all, e.g. for a scheduled task.)</li>
+      <li>Download the package below and extract it anywhere (e.g. a
+        <code>RivalsStationReporter</code> folder on the Desktop) — it unpacks to one
+        launcher plus an <code>_internal</code> folder holding everything else, so
+        there's nothing else to hunt for.</li>
+      <li>Double-click <code>rivals-station-reporter.pyw</code> — no terminal window
+        opens; the widget's <strong>Log</strong> panel shows what the sender is doing
+        instead. (Elsewhere: <code>python rivals-station-reporter.pyw</code> works the
+        same from a terminal. For a scheduled task with no window at all, run
+        <code>station_sender.py</code> from inside <code>_internal/</code> directly.)</li>
       <li>First run, the widget opens its <strong>Settings</strong> panel: fill in the
         broker URL, this event's start.gg slug, <strong>this station's number</strong>,
         and the <code>MatchLogger</code> output folder next to the game exe (e.g.
@@ -305,7 +308,7 @@ const INSTALL = {
         for next launch, no config file editing needed.</li>
       <li>Closing the widget sends it to the system tray — it keeps running. Right-click
         the tray icon to reopen or quit it.</li>`,
-    download: { href: 'dist/station-sender.zip', label: 'Download station sender (.zip)' },
+    download: { href: 'dist/rivals-station-reporter.zip', label: 'Download Rivals Station Reporter (.zip)' },
     note: 'Flags, the tray dependency (<code>pip install pystray pillow</code>), and what it does/doesn\'t touch: <a href="sender/README.md">sender/README.md</a>.',
   },
   operator: {

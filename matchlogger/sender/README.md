@@ -1,16 +1,25 @@
-# Station sender
+# Rivals Station Reporter (station sender)
 
 Background process for a game PC. It watches the MatchLogger output folder and
 forwards to the broker, stamping this machine's station number:
 
 - new `sets/*.json` → `POST /matchlogger/ingest`
 - changed `current.json` (the live heartbeat) → `POST /matchlogger/current`
+- changed `live.json` (running per-game score) → `POST /matchlogger/live`
 
 **Every station PC runs one** — usually as the corner widget below, where all
 of its settings live (no config-file editing). Administration happens on
 start.gg itself;
 the [web console](../) is an optional debug view of the broker's aggregated
 state if you need to check what's flowing. See [`../DESIGN.md`](../DESIGN.md).
+
+The packaged download (`rivals-station-reporter.zip`, from the console's
+install button) unpacks to just one launcher plus an `_internal/` folder
+holding everything below — so there's only one file to find and double-click.
+This directory holds the flat source the zip is built from (see
+`.github/workflows/build-matchlogger-dist.yml`); running things directly from
+here during development works the same way, since the launcher falls back to
+importing its sibling files when there's no `_internal/` next to it.
 
 ## Requirements
 
@@ -19,9 +28,12 @@ can later be frozen to a single `.exe` with PyInstaller.
 
 ## Run — the widget (what station PCs use)
 
-- **Windows:** double-click **`station_widget.pyw`** — no terminal window
-  opens; the widget's **Log** panel shows what would have been printed there.
-- Anywhere else: `python station_widget.py`
+- **Windows:** double-click **`rivals-station-reporter.pyw`** — no terminal
+  window opens; the widget's **Log** panel shows what would have been printed
+  there.
+- Anywhere else: `python rivals-station-reporter.pyw` (or `station_widget.py`
+  directly if you're working in this flat source folder rather than the
+  packaged zip).
 
 No config file editing needed: on first run the widget opens its **Settings**
 panel — broker URL, start.gg event slug, station number, and the MatchLogger
@@ -32,7 +44,7 @@ output folder (with a folder picker) — and **Save** writes them to
 ## Run — headless (no window at all)
 
 For a scheduled task, or when you'd rather pass everything on the command
-line:
+line. In the packaged zip this file lives in `_internal/` — `cd` there first.
 
 ```sh
 python station_sender.py \
@@ -80,8 +92,9 @@ This is what each station PC runs at an event — set it up once and forget it.
 Closing it sends it to the **system tray** instead of quitting (the sender
 keeps running); the tray menu restores or quits it.
 
-- On Windows, launch it by double-clicking `station_widget.pyw` — the `.pyw`
-  extension runs under `pythonw.exe`, which never opens a terminal window.
+- On Windows, launch it by double-clicking `rivals-station-reporter.pyw` — the
+  `.pyw` extension runs under `pythonw.exe`, which never opens a terminal
+  window.
 - Needs `tkinter` (bundled with Python on Windows/macOS). The tray fallback
   needs `pip install pystray pillow`; without them, closing just minimizes.
 - It's built to grow: `poll_extras()` returns the status rows under the sender
