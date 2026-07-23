@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-"""MatchLogger station widget — a small always-on-top corner window that runs
-the station sender, lets you set the station number, and shows live status.
+"""MatchLogger station widget — a small window (spawning in the corner of the
+desktop) that runs the station sender, lets you edit all its settings, and
+shows live status.
 
 It wraps `station_sender.py` (the headless core does the real work): this file
 is just a face on it. Closing the window sends it to the system tray (if
 `pystray` + `pillow` are installed) rather than quitting.
 
-  python station_widget.py --config config.json
+  Windows: double-click station_widget.pyw   (no terminal window)
+  Anywhere: python station_widget.py
 
-The station number is editable in the window and written back to the config
-file. Everything else (broker, event slug, folder) comes from the config, the
-same as the headless sender.
+No config file editing needed: the Settings panel edits everything (broker,
+event slug, station number, MatchLogger folder, optional station key) and
+writes it back to `config.json` next to the script, so the next launch needs
+nothing. A config file / command-line flags still work and pre-fill the
+fields, same as the headless sender. The Log panel shows the sender's log
+lines — the same ones the headless sender prints to a terminal.
 
 Extending it: `poll_extras()` returns a dict of extra status rows shown under
 the sender status — e.g. wire it to obs-websocket to show "OBS: recording".
@@ -21,10 +26,12 @@ fallback needs `pip install pystray pillow`; without them, closing minimizes.
 """
 
 import argparse
+import collections
 import threading
 import time
 import tkinter as tk
-from tkinter import ttk
+from pathlib import Path
+from tkinter import filedialog, ttk
 
 import station_sender as ss
 
@@ -37,13 +44,20 @@ except Exception:
     HAVE_TRAY = False
 
 POLL_SEC = 2.0
+LOG_LINES = 200
+DEFAULT_BROKER = "https://r2tag-broker.jdsambasivam.workers.dev"
 
-# Capture the sender's last log line for the status row (non-invasive: the core
-# stays a plain module).
+# Capture the sender's log lines for the status row and the Log panel
+# (non-invasive: the core stays a plain module).
 _last = {"msg": "starting…", "t": time.time(), "error": False}
+_log = collections.deque(maxlen=LOG_LINES)
+_log_count = 0
 _orig_log = ss.log
 def _cap_log(msg):
+    global _log_count
     _last.update(msg=msg, t=time.time(), error=("fail" in msg.lower() or "error" in msg.lower()))
+    _log.append(f"{time.strftime('%H:%M:%S')}  {msg}")
+    _log_count += 1
     _orig_log(msg)
 ss.log = _cap_log
 
@@ -57,6 +71,15 @@ def poll_extras():
     return {"OBS": "not wired up"}
 
 
+SETTINGS_FIELDS = (
+    ("broker", "Broker URL"),
+    ("slug", "start.gg event"),
+    ("dir", "MatchLogger folder"),
+    ("key", "Station key (optional)"),
+)
+REQUIRED = ("broker", "slug", "station", "dir")
+
+
 class Widget:
     def __init__(self, cfg, config_path):
         self.cfg = cfg
@@ -65,15 +88,24 @@ class Widget:
         self.sender_lock = threading.Lock()
         self.running = True
         self.tray_icon = None
+        self._log_rendered = -1
         self._build_sender()
 
         self.root = tk.Tk()
         self.root.title("MatchLogger")
-        self.root.attributes("-topmost", True)
         self.root.resizable(False, False)
         self._build_ui()
-        self._place_bottom_right(260, 150)
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
+
+        # First run (or broken config): open Settings so it can be fixed here.
+        if any(not self.cfg.get(k) for k in REQUIRED):
+            self._set_status("fill in Settings to start", True)
+            self.settings_frame.grid()
+            self.settings_btn.config(text="Settings ▾")
+
+        # Spawn in the bottom-right corner; after that it's a normal window —
+        # the user moves it wherever, and toggles keep it where it is.
+        self._place_bottom_right()
 
         threading.Thread(target=self._sender_loop, daemon=True).start()
         if HAVE_TRAY:
@@ -87,6 +119,8 @@ class Widget:
                 self.sender = ss.build_sender(dict(self.cfg))
             return True
         except SystemExit as e:  # build_sender exits on missing config
+            with self.sender_lock:
+                self.sender = None
             _last.update(msg=str(e), t=time.time(), error=True)
             return False
 
@@ -111,6 +145,37 @@ class Widget:
         if self._build_sender():
             self._save_config()
             self._set_status(f"now station {n}", False)
+
+    def save_settings(self):
+        for key, var in self.setting_vars.items():
+            val = var.get().strip()
+            if val:
+                self.cfg[key] = val
+            else:
+                self.cfg.pop(key, None)
+        try:
+            self.cfg["station"] = int(self.station_var.get())
+        except (TypeError, ValueError):
+            self._set_status("station must be a number", True)
+            return
+        if not self._build_sender():
+            return
+        self._save_config()
+        self.event_label.config(text=self.cfg.get("slug") or "(no event set)")
+        folder = self.cfg.get("dir", "")
+        if folder and not Path(folder).is_dir():
+            # Not fatal: the mod creates MatchLogger/ the first time the game runs.
+            self._set_status("saved — folder doesn't exist yet (mod creates it on first run)", True)
+        else:
+            self._set_status("settings saved", False)
+
+    def _browse_dir(self):
+        current = self.setting_vars["dir"].get().strip()
+        chosen = filedialog.askdirectory(
+            initialdir=current or str(Path.home()),
+            title="MatchLogger output folder (next to the game exe)")
+        if chosen:
+            self.setting_vars["dir"].set(chosen)
 
     def _save_config(self):
         import json
@@ -137,21 +202,82 @@ class Widget:
         self.dot.grid(row=1, column=0, sticky="w", padx=8)
         self._dot_id = self.dot.create_oval(1, 1, 9, 9, fill="#7fd39a", outline="")
 
-        self.status = ttk.Label(frm, text="starting…", wraplength=230, foreground="#555")
+        self.status = ttk.Label(frm, text="starting…", wraplength=260, foreground="#555")
         self.status.grid(row=2, column=0, sticky="w", padx=8, pady=(0, 4))
 
-        ev = self.cfg.get("slug", "") or "(no event set)"
-        ttk.Label(frm, text=ev, wraplength=230, foreground="#888", font=("", 8)).grid(
-            row=3, column=0, sticky="w", padx=8)
+        self.event_label = ttk.Label(frm, text=self.cfg.get("slug") or "(no event set)",
+                                     wraplength=260, foreground="#888", font=("", 8))
+        self.event_label.grid(row=3, column=0, sticky="w", padx=8)
 
         self.extras = ttk.Label(frm, text="", foreground="#888", font=("", 8))
         self.extras.grid(row=4, column=0, sticky="w", padx=8, pady=(2, 0))
 
-    def _place_bottom_right(self, w, h):
+        toggles = ttk.Frame(frm)
+        toggles.grid(row=5, column=0, sticky="w", pady=(6, 0))
+        self.settings_btn = ttk.Button(
+            toggles, text="Settings ▸",
+            command=lambda: self._toggle(self.settings_frame, self.settings_btn, "Settings"))
+        self.settings_btn.grid(row=0, column=0, padx=(8, 4))
+        self.log_btn = ttk.Button(
+            toggles, text="Log ▸",
+            command=lambda: self._toggle(self.log_frame, self.log_btn, "Log"))
+        self.log_btn.grid(row=0, column=1)
+
+        # Settings panel (hidden until toggled) — every sender option, saved
+        # back to the config file so nothing needs hand-editing.
+        self.settings_frame = ttk.Frame(frm, padding=(8, 6, 8, 2))
+        self.settings_frame.grid(row=6, column=0, sticky="we")
+        self.settings_frame.grid_remove()
+        self.setting_vars = {}
+        for i, (key, label) in enumerate(SETTINGS_FIELDS):
+            ttk.Label(self.settings_frame, text=label, font=("", 8)).grid(
+                row=i * 2, column=0, columnspan=2, sticky="w")
+            var = tk.StringVar(value=str(self.cfg.get(key, "") or ""))
+            self.setting_vars[key] = var
+            entry = ttk.Entry(self.settings_frame, width=36, textvariable=var)
+            entry.grid(row=i * 2 + 1, column=0, sticky="we", pady=(0, 3))
+            if key == "dir":
+                ttk.Button(self.settings_frame, text="…", width=2,
+                           command=self._browse_dir).grid(row=i * 2 + 1, column=1, padx=(3, 0))
+        ttk.Button(self.settings_frame, text="Save", command=self.save_settings).grid(
+            row=len(SETTINGS_FIELDS) * 2, column=0, sticky="w", pady=(3, 0))
+
+        # Log panel (hidden until toggled) — the sender's log lines, so no
+        # terminal is ever needed.
+        self.log_frame = ttk.Frame(frm, padding=(8, 6, 8, 2))
+        self.log_frame.grid(row=7, column=0, sticky="we")
+        self.log_frame.grid_remove()
+        self.log_text = tk.Text(self.log_frame, height=8, width=42, state="disabled",
+                                font=("Courier", 9), wrap="none", relief="flat",
+                                background="#f4f2f7")
+        self.log_text.grid(row=0, column=0, sticky="we")
+
+    def _toggle(self, frame, btn, label, show=None):
+        visible = bool(frame.grid_info())
+        show = (not visible) if show is None else show
+        if show == visible:
+            return
+        # Anchor the bottom edge: panels expand upward, so a window sitting in
+        # the corner (or wherever the user moved it) never grows off-screen.
         self.root.update_idletasks()
+        bottom = self.root.winfo_y() + self.root.winfo_height()
+        if show:
+            frame.grid()
+            btn.config(text=f"{label} ▾")
+        else:
+            frame.grid_remove()
+            btn.config(text=f"{label} ▸")
+        self.root.update_idletasks()
+        y = max(0, bottom - self.root.winfo_reqheight())
+        self.root.geometry(f"+{self.root.winfo_x()}+{y}")
+
+    def _place_bottom_right(self):
+        self.root.update_idletasks()
+        w = self.root.winfo_reqwidth()
+        h = self.root.winfo_reqheight()
         sw = self.root.winfo_screenwidth()
         sh = self.root.winfo_screenheight()
-        self.root.geometry(f"{w}x{h}+{sw - w - 24}+{sh - h - 60}")
+        self.root.geometry(f"+{sw - w - 24}+{sh - h - 60}")
 
     def _set_status(self, msg, error):
         _last.update(msg=msg, t=time.time(), error=error)
@@ -163,6 +289,13 @@ class Widget:
         self.dot.itemconfig(self._dot_id, fill="#ffb4ab" if _last["error"] else "#7fd39a")
         rows = poll_extras()
         self.extras.config(text="   ".join(f"{k}: {v}" for k, v in rows.items()))
+        if self.log_frame.grid_info() and self._log_rendered != _log_count:
+            self._log_rendered = _log_count
+            self.log_text.config(state="normal")
+            self.log_text.delete("1.0", "end")
+            self.log_text.insert("1.0", "\n".join(_log))
+            self.log_text.see("end")
+            self.log_text.config(state="disabled")
         if self.running:
             self.root.after(1000, self._refresh_status)
 
@@ -212,12 +345,20 @@ def main(argv=None):
     p.add_argument("--station", type=int)
     args = p.parse_args(argv)
 
-    cfg = ss.load_config(args.config)
+    # A missing config file is fine: the widget starts with Settings open and
+    # creates the file on Save. Resolve it next to this script so double-click
+    # launches (cwd = who-knows-where) still find/create the same config.
+    config_path = args.config
+    if not Path(config_path).is_absolute():
+        config_path = str(Path(__file__).resolve().parent / config_path)
+
+    cfg = ss.load_config(config_path if Path(config_path).exists() else None)
     for f in ("broker", "slug", "dir", "key", "station"):
         v = getattr(args, f)
         if v is not None:
             cfg[f] = v
-    Widget(cfg, args.config).run()
+    cfg.setdefault("broker", DEFAULT_BROKER)
+    Widget(cfg, config_path).run()
 
 
 if __name__ == "__main__":

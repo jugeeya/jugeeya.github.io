@@ -38,7 +38,11 @@ STATE_VERSION = 1
 
 
 def log(msg):
-    print(f"[station-sender] {msg}", flush=True)
+    # Under pythonw (no console) stdout is missing; logging must never crash.
+    try:
+        print(f"[station-sender] {msg}", flush=True)
+    except Exception:
+        pass
 
 
 def load_config(path):
