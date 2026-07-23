@@ -4,13 +4,15 @@
 Watches a MatchLogger output folder on a game PC and forwards what it finds to
 the broker, stamping this machine's station number on the way out:
 
-  * new  <dir>/sets/*.json   -> POST <broker>/matchlogger/ingest
+  * new  <dir>/sets/*.json     -> POST <broker>/matchlogger/ingest
   * changed <dir>/current.json -> POST <broker>/matchlogger/current   (heartbeat)
+  * changed <dir>/live.json    -> POST <broker>/matchlogger/live      (running score)
 
-This is the only piece that runs on stations 2..N, so it has no UI and no
-secrets: the broker holds those. Its station number is its only real config.
-Standard library only (no pip installs) so it freezes cleanly into an .exe
-later.
+This is the core every station PC runs; station_widget.py wraps it with a
+Settings/Log window. This file is the no-window variant — same behavior, run
+from a terminal or a scheduled task instead. It has no secrets: the broker
+holds those. Standard library only (no pip installs) so it freezes cleanly
+into an .exe later.
 
 Usage:
   python station_sender.py --broker https://r2tag-broker.jdsambasivam.workers.dev \
