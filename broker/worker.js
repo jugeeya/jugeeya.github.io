@@ -27,6 +27,7 @@ const STARTGG_HEADERS = {
     '(KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36',
 };
 const SLUG_RE = /^user\/[a-z0-9]+$/i;
+const EVENT_SLUG_RE = /^tournament\/[^/]+\/event\/[^/]+$/i;
 
 export default {
   async fetch(request, env) {
@@ -34,6 +35,13 @@ export default {
     if (request.method === 'OPTIONS') return new Response(null, { headers: cors });
 
     const url = new URL(request.url);
+
+    // MatchLogger aggregation: stations POST their sets/heartbeats here, the
+    // operator console GETs the whole-event view. (Both GET and POST, so it's
+    // routed before the multipart tag-submission handling below.)
+    if (url.pathname.startsWith('/matchlogger/')) {
+      return handleMatchlogger(request, env, url, cors);
+    }
 
     // start.gg lookups are proxied here so the page can query them despite the
     // start.gg API not sending cross-origin CORS headers. Only a few fixed,
@@ -276,11 +284,493 @@ async function handleStartgg(env, url, cors) {
       return json({ event: eventName, tournament: tournamentName, sets: setsOut }, 200, cors);
     }
 
+    if (op === 'station') {
+      // The set currently at a station (for live "now playing" + pre-binding).
+      const slug = (url.searchParams.get('slug') || '').trim().slice(0, 200);
+      if (!EVENT_SLUG_RE.test(slug))
+        return json({ error: 'Expected an event slug like tournament/<t>/event/<e>.' }, 400, cors);
+      const station = parseInt(url.searchParams.get('station') || '', 10);
+      if (!Number.isInteger(station)) return json({ error: 'Bad station number.' }, 400, cors);
+      const s = await fetchStationSet(slug, station);
+      return json(s || { found: false }, 200, cors);
+    }
+
     return json({ error: 'Unknown start.gg operation.' }, 404, cors);
   } catch (err) {
     return json({ error: `start.gg lookup failed: ${err.message}` }, 502, cors);
   }
 }
+
+// The not-yet-completed set currently assigned to a station, with its two
+// entrants. start.gg's set filters don't reliably support filtering by station
+// number, so we fetch the event's active sets and match the station locally.
+// Read-only; used both by GET /startgg/station and the ingest pre-binding.
+async function fetchStationSet(slug, station) {
+  const data = await startggGql(
+    `query($slug:String!){ event(slug:$slug){
+       sets(page:1, perPage:60, sortType:STANDARD, filters:{ state:[1,2,6] }){
+         nodes{ id state fullRoundText station{ number }
+           slots{ entrant{ id name } } } } } }`,
+    { slug }
+  );
+  const nodes = (data.event && data.event.sets && data.event.sets.nodes) || [];
+  const hit = nodes.find(n => n.station && Number(n.station.number) === Number(station));
+  if (!hit) return null;
+  const entrants = (hit.slots || [])
+    .map(s => s.entrant).filter(Boolean)
+    .map(e => ({ id: e.id, name: e.name || '' }));
+  return {
+    found: true,
+    setId: hit.id,
+    state: hit.state,
+    fullRoundText: hit.fullRoundText || '',
+    entrants,
+  };
+}
+
+// ---- MatchLogger aggregation ---------------------------------------------
+//
+// Each writer owns its own KV keys so concurrent stations never lose each
+// other's writes (KV has no transactions):
+//   ml:cur:<slug>:<station>          - latest heartbeat for a station
+//   ml:set:<slug>:<station>:<setId>  - one finished set
+// Everything expires after 24h so an event cleans itself up.
+
+async function handleMatchlogger(request, env, url, cors) {
+  const kv = env.MATCHLOGGER;
+  if (!kv)
+    return json({ error: 'MatchLogger storage not configured (bind a KV namespace named MATCHLOGGER).' }, 503, cors);
+
+  const op = url.pathname.slice('/matchlogger/'.length);
+
+  if (request.method === 'GET' && op === 'event') {
+    const slug = (url.searchParams.get('slug') || '').trim().slice(0, 200);
+    if (!EVENT_SLUG_RE.test(slug)) return json({ error: 'Expected an event slug.' }, 400, cors);
+    return json(await buildEventView(kv, slug), 200, cors);
+  }
+
+  if (request.method === 'POST') {
+    let body;
+    try { body = await request.json(); } catch { return json({ error: 'Expected a JSON body.' }, 400, cors); }
+    const slug = (body.slug || '').toString().trim().slice(0, 200);
+    if (!EVENT_SLUG_RE.test(slug)) return json({ error: 'Bad or missing event slug.' }, 400, cors);
+
+    // Reporting to start.gg is the one privileged, externally-visible action, so
+    // it's gated by an operator passcode (separate from the start.gg token,
+    // which never leaves the Worker). See handleReport.
+    if (op === 'report') return handleReport(kv, env, slug, body, cors);
+
+    if (op === 'current' || op === 'ingest' || op === 'live') {
+      const station = Number(body.station);
+      if (!Number.isInteger(station) || station < 0 || station > 100000)
+        return json({ error: 'Bad or missing station.' }, 400, cors);
+      // Optional station key: only enforced if STATION_KEY is set on the Worker,
+      // so the default deployment stays zero-config. Gates the station-side
+      // writes (including live updates, which are non-advancing).
+      if (env.STATION_KEY && body.key !== env.STATION_KEY)
+        return json({ error: 'Bad station key.' }, 401, cors);
+      if (op === 'current') return handleCurrent(kv, env, slug, station, body.current, cors);
+      if (op === 'ingest') return handleIngest(kv, env, slug, station, body.set, cors);
+      return handleLive(kv, env, slug, station, body.set, cors);
+    }
+  }
+
+  return json({ error: 'Unknown MatchLogger operation.' }, 404, cors);
+}
+
+async function handleCurrent(kv, env, slug, station, current, cors) {
+  current = (current && typeof current === 'object') ? current : {};
+  const rec = { station, current, updatedAt: nowSec() };
+  // A set just started at this station → pre-bind the two start.gg entrants now,
+  // so the eventual ingest can name a winner with far less ambiguity. Best
+  // effort: a start.gg hiccup must not fail the heartbeat.
+  if (current.state === 'set_start') {
+    try { rec.startgg = await fetchStationSet(slug, station); }
+    catch (e) { rec.startggError = String((e && e.message) || e); }
+  }
+  await kv.put(curKey(slug, station), JSON.stringify(rec), { expirationTtl: 86400 });
+  return json({ ok: true, startgg: rec.startgg || null }, 200, cors);
+}
+
+async function handleIngest(kv, env, slug, station, set, cors) {
+  if (!set || typeof set !== 'object') return json({ error: 'Missing set.' }, 400, cors);
+  const setId = sanitizeId(set.setId) || String(nowSec());
+
+  // Prefer the entrants pre-bound at set start; otherwise look them up now.
+  let entrants = null, matchedSetId = null, fullRoundText = null;
+  const curRaw = await kv.get(curKey(slug, station));
+  if (curRaw) {
+    try {
+      const c = JSON.parse(curRaw);
+      if (c.startgg && c.startgg.entrants) {
+        entrants = c.startgg.entrants;
+        matchedSetId = c.startgg.setId || null;
+        fullRoundText = c.startgg.fullRoundText || null;
+      }
+    } catch { /* ignore a corrupt heartbeat */ }
+  }
+  if (!entrants) {
+    try {
+      const s = await fetchStationSet(slug, station);
+      if (s) { entrants = s.entrants; matchedSetId = s.setId; fullRoundText = s.fullRoundText; }
+    } catch { /* best effort */ }
+  }
+
+  const { candidateWinnerEntrantId, confidence } = matchWinner(set, entrants);
+  const record = {
+    id: setId,
+    station,
+    ingestedAt: nowSec(),
+    set: summarizeSet(set),
+    matchedStartggSetId: matchedSetId,
+    fullRoundText: fullRoundText || null,
+    entrants: entrants || null,
+    candidateWinnerEntrantId,
+    confidence,
+    status: matchedSetId ? 'matched' : 'recorded',
+  };
+  await kv.put(setKey(slug, station, setId), JSON.stringify(record), { expirationTtl: 86400 });
+  try { await notifyDiscord(env, record); } catch { /* notifications are best effort */ }
+  return json({ ok: true, record }, 200, cors);
+}
+
+// Live, non-advancing update from a station as a set is played: store the
+// running set and push its games-so-far to start.gg's live score. Gated by the
+// station key (not the operator passcode) since it never advances the bracket.
+async function handleLive(kv, env, slug, station, set, cors) {
+  if (!set || typeof set !== 'object') return json({ error: 'Missing set.' }, 400, cors);
+  const setId = sanitizeId(set.setId) || String(nowSec());
+
+  let entrants = null, matchedSetId = null, fullRoundText = null;
+  const curRaw = await kv.get(curKey(slug, station));
+  if (curRaw) {
+    try {
+      const c = JSON.parse(curRaw);
+      if (c.startgg && c.startgg.entrants) {
+        entrants = c.startgg.entrants; matchedSetId = c.startgg.setId; fullRoundText = c.startgg.fullRoundText;
+      }
+    } catch { /* ignore */ }
+  }
+  if (!entrants) {
+    try {
+      const s = await fetchStationSet(slug, station);
+      if (s) { entrants = s.entrants; matchedSetId = s.setId; fullRoundText = s.fullRoundText; }
+    } catch { /* best effort */ }
+  }
+
+  const rec = {
+    id: setId, station, ingestedAt: nowSec(), set: summarizeSet(set),
+    matchedStartggSetId: matchedSetId, fullRoundText: fullRoundText || null,
+    entrants: entrants || null, status: 'live',
+  };
+  await kv.put(setKey(slug, station, setId), JSON.stringify(rec), { expirationTtl: 86400 });
+
+  // Push the live score to start.gg (best effort — never fail the station's call).
+  let live = false, reason = null, games = 0;
+  if (!env.STARTGG_TOKEN) reason = 'no start.gg token';
+  else if (!matchedSetId) reason = 'no matched start.gg set';
+  else {
+    const slotMap = mapSlotsToEntrants(rec, null);
+    if (!slotMap) reason = 'could not map players to entrants by name';
+    else {
+      const charMap = await getCharacterMap(env, kv, slug).catch(() => ({}));
+      const gd = gameDataFromGames(rec.set.games || [], slotMap, charMap).filter(g => g.winnerId);
+      if (!gd.length) reason = 'no completed games yet';
+      else {
+        try { await pushLiveGameData(env, matchedSetId, gd); live = true; games = gd.length; }
+        catch (e) { reason = `start.gg update failed: ${(e && e.message) || e}`; }
+      }
+    }
+  }
+  return json({ ok: true, live, games, reason }, 200, cors);
+}
+
+// Report a set's winner to start.gg. Gated by an operator passcode: the
+// start.gg token authorizes Worker→start.gg, the passcode authorizes
+// client→Worker, so an open Worker URL can't be used to write to a bracket.
+async function handleReport(kv, env, slug, body, cors) {
+  if (!env.OPERATOR_KEY)
+    return json({ error: 'Reporting is not enabled (set OPERATOR_KEY on the broker).' }, 503, cors);
+  if (!constantTimeEqual(String(body.passcode || ''), env.OPERATOR_KEY))
+    return json({ error: 'Wrong operator passcode.' }, 401, cors);
+
+  const station = Number(body.station);
+  const setId = sanitizeId(body.setId);
+  const winnerEntrantId = String(body.winnerEntrantId || '');
+  if (!Number.isInteger(station) || !setId) return json({ error: 'Bad station or setId.' }, 400, cors);
+  if (!winnerEntrantId) return json({ error: 'Missing winnerEntrantId.' }, 400, cors);
+
+  const key = setKey(slug, station, setId);
+  const raw = await kv.get(key);
+  if (!raw) return json({ error: 'Set not found.' }, 404, cors);
+  let rec;
+  try { rec = JSON.parse(raw); } catch { return json({ error: 'Corrupt set record.' }, 500, cors); }
+  if (!rec.matchedStartggSetId)
+    return json({ error: 'This set is not matched to a start.gg set.' }, 409, cors);
+  // start.gg entrant ids come back as numbers; the client sends a string —
+  // compare as strings so the types don't matter.
+  if (rec.entrants && rec.entrants.length && !rec.entrants.some(e => String(e.id) === winnerEntrantId))
+    return json({ error: 'winnerEntrantId is not one of this set\'s entrants.' }, 400, cors);
+
+  // Passcode is valid and the request is well-formed. The actual bracket write
+  // needs an authenticated start.gg token; until one is provisioned we stop
+  // here (the gate is real, the write is just not wired yet).
+  if (!env.STARTGG_TOKEN)
+    return json({ error: 'start.gg write access is not configured (set STARTGG_TOKEN on the broker).' }, 501, cors);
+
+  // Build per-game data (score + characters) when we can map every game's
+  // winner to an entrant; otherwise fall back to a winner-only report so a
+  // partial mapping never produces a wrong set score.
+  let gameData = null;
+  try {
+    const slotMap = mapSlotsToEntrants(rec, winnerEntrantId);
+    if (slotMap) {
+      const charMap = await getCharacterMap(env, kv, slug).catch(() => ({}));
+      const gd = gameDataFromGames(rec.set.games || [], slotMap, charMap);
+      if (gd.length && gd.every(g => g.winnerId)) gameData = gd; // all games attributed
+    }
+  } catch { /* best effort — fall back to winner-only */ }
+
+  try {
+    await reportBracketSet(env, rec.matchedStartggSetId, winnerEntrantId, gameData);
+  } catch (e) {
+    return json({ error: `start.gg report failed: ${(e && e.message) || e}` }, 502, cors);
+  }
+  rec.status = 'reported';
+  rec.reportedAt = nowSec();
+  rec.reportedWinnerEntrantId = winnerEntrantId;
+  rec.reportedGames = gameData ? gameData.length : 0;
+  await kv.put(key, JSON.stringify(rec), { expirationTtl: 86400 });
+  return json({ ok: true, record: rec, gamesReported: rec.reportedGames }, 200, cors);
+}
+
+// Map player slots → start.gg entrant ids.
+//  - Finalizing (winnerEntrantId given): anchor the winner's slot to the chosen
+//    entrant, the other slot to the other entrant — unambiguous with 2 entrants.
+//  - Live (winnerEntrantId null): match players to entrants by name; if at least
+//    one matches, the other is inferred; if none match, return null so we don't
+//    push a possibly-swapped live score to the public bracket.
+function mapSlotsToEntrants(rec, winnerEntrantId) {
+  const entrants = rec.entrants || [];
+  const players = (rec.set && rec.set.players) || [];
+  if (entrants.length !== 2 || players.length !== 2) return null;
+  const slots = players.map(p => p.slot);
+
+  if (winnerEntrantId != null) {
+    const winnerSlot = rec.set.winnerSlot;
+    const other = entrants.find(e => String(e.id) !== String(winnerEntrantId));
+    const otherSlot = slots.find(s => s !== winnerSlot);
+    if (winnerSlot == null || !other || otherSlot == null) return null;
+    return { [winnerSlot]: String(winnerEntrantId), [otherSlot]: String(other.id) };
+  }
+
+  const map = {}, used = new Set();
+  for (const p of players) {
+    const m = entrants.find(e => !used.has(e.id) && normChar(e.name) === normChar(p.name));
+    if (m) { map[p.slot] = String(m.id); used.add(m.id); }
+  }
+  const openSlots = slots.filter(s => !(s in map));
+  const openEntrants = entrants.filter(e => !used.has(e.id));
+  if (openSlots.length === 1 && openEntrants.length === 1) map[openSlots[0]] = String(openEntrants[0].id);
+  return Object.keys(map).length === 2 ? map : null;
+}
+
+// Per-game start.gg gameData from the stored games + a slot→entrant map +
+// character name→id map. Each entry: { gameNum, winnerId?, selections? }.
+function gameDataFromGames(games, slotToEntrant, charMap) {
+  return (games || []).map(g => {
+    const winnerId = g.winnerSlot != null ? slotToEntrant[g.winnerSlot] : null;
+    const selections = [];
+    for (const c of g.chars || []) {
+      const eid = slotToEntrant[c.slot];
+      const cid = charMap[normChar(c.character)];
+      if (eid && cid != null) selections.push({ entrantId: eid, characterId: cid });
+    }
+    const game = { gameNum: g.gameNum };
+    if (winnerId) game.winnerId = winnerId;
+    if (selections.length) game.selections = selections;
+    return game;
+  });
+}
+
+const normChar = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+// Character name→id for the event's videogame, cached in KV (names/ids are
+// stable, so a long TTL is fine).
+async function getCharacterMap(env, kv, slug) {
+  const cacheKey = `ml:chars:${slug}`;
+  const cached = await kv.get(cacheKey);
+  if (cached) { try { return JSON.parse(cached); } catch { /* refetch */ } }
+  const data = await startggGql(
+    `query($slug:String!){ event(slug:$slug){ videogame{ id characters{ id name } } } }`,
+    { slug }
+  );
+  const chars = (data.event && data.event.videogame && data.event.videogame.characters) || [];
+  const map = {};
+  for (const c of chars) if (c && c.name != null) map[normChar(c.name)] = c.id;
+  if (Object.keys(map).length) await kv.put(cacheKey, JSON.stringify(map), { expirationTtl: 604800 });
+  return map;
+}
+
+// One place for start.gg's authenticated API (writes), separate from the
+// website endpoint used for reads.
+async function startggAuthMutation(env, query, variables) {
+  const res = await fetch('https://api.start.gg/gql/alpha', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${env.STARTGG_TOKEN}` },
+    body: JSON.stringify({ query, variables }),
+  });
+  if (!res.ok) throw new Error(`start.gg ${res.status}`);
+  const out = await res.json();
+  if (out.errors && out.errors.length) throw new Error(out.errors[0].message || 'GraphQL error');
+  return out.data;
+}
+
+// reportBracketSet with a winnerId marks the set complete (advances the
+// bracket); gameData records the per-game score + character selections.
+function reportBracketSet(env, startggSetId, winnerEntrantId, gameData) {
+  return startggAuthMutation(env,
+    `mutation($setId:ID!,$winnerId:ID!,$gameData:[BracketSetGameDataInput]){
+       reportBracketSet(setId:$setId, winnerId:$winnerId, gameData:$gameData){ id state } }`,
+    { setId: startggSetId, winnerId: winnerEntrantId, gameData: gameData || null });
+}
+
+// Live, non-advancing update: mark the set called and push the games-so-far.
+// updateBracketSet records game stats without setting a winner, so the bracket
+// does not advance — that stays the operator's finalize step.
+async function pushLiveGameData(env, startggSetId, gameData) {
+  await startggAuthMutation(env,
+    `mutation($id:ID!){ markSetInProgress(setId:$id){ id state } }`, { id: startggSetId });
+  await startggAuthMutation(env,
+    `mutation($id:ID!,$g:[BracketSetGameDataInput]){ updateBracketSet(setId:$id, gameData:$g){ id state } }`,
+    { id: startggSetId, g: gameData });
+}
+
+function constantTimeEqual(a, b) {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
+async function buildEventView(kv, slug) {
+  const stations = {};
+  const sets = [];
+  for (const k of await listAll(kv, curPrefix(slug))) {
+    const v = await kv.get(k);
+    if (!v) continue;
+    try {
+      const r = JSON.parse(v);
+      stations[r.station] = { current: r.current, startgg: r.startgg || null, updatedAt: r.updatedAt };
+    } catch { /* skip */ }
+  }
+  for (const k of await listAll(kv, setPrefix(slug))) {
+    const v = await kv.get(k);
+    if (!v) continue;
+    try { sets.push(JSON.parse(v)); } catch { /* skip */ }
+  }
+  sets.sort((a, b) => (a.ingestedAt || 0) - (b.ingestedAt || 0));
+  return { slug, stations, sets };
+}
+
+async function listAll(kv, prefix) {
+  const names = [];
+  let cursor;
+  do {
+    const page = await kv.list({ prefix, cursor });
+    for (const k of page.keys || []) names.push(k.name);
+    cursor = page.list_complete ? null : page.cursor;
+  } while (cursor);
+  return names;
+}
+
+// Best-effort winner match: line the game's winner name up against the two
+// pre-bound start.gg entrants. In-game names rarely equal start.gg tags
+// exactly, so an unsure result is expected — the operator confirms.
+function matchWinner(set, entrants) {
+  if (!entrants || !entrants.length || !set || !set.winnerName)
+    return { candidateWinnerEntrantId: null, confidence: 'none' };
+  const norm = (s) => String(s || '').toLowerCase().replace(/\s+/g, '').trim();
+  const w = norm(set.winnerName);
+  let exact = null, partial = null;
+  for (const e of entrants) {
+    const n = norm(e.name);
+    if (!n) continue;
+    if (n === w) exact = e;
+    else if (n.includes(w) || w.includes(n)) partial = partial || e;
+  }
+  if (exact) return { candidateWinnerEntrantId: exact.id, confidence: 'high' };
+  if (partial) return { candidateWinnerEntrantId: partial.id, confidence: 'low' };
+  return { candidateWinnerEntrantId: null, confidence: 'none' };
+}
+
+function summarizeSet(set) {
+  const players = Array.isArray(set.players)
+    ? set.players.map(p => ({ slot: p.slot, name: p.name, character: p.character, wins: p.wins }))
+    : [];
+  return {
+    setId: set.setId ?? null,
+    complete: !!set.complete,
+    startEpoch: set.startEpoch ?? null,
+    endEpoch: set.endEpoch ?? null,
+    durationSeconds: set.durationSeconds ?? null,
+    winsRequired: set.winsRequired ?? null,
+    matchCount: set.matchCount ?? (Array.isArray(set.matches) ? set.matches.length : null),
+    winnerSlot: set.winnerSlot ?? null,
+    winnerName: set.winnerName ?? null,
+    winnerCharacter: set.winnerCharacter ?? null,
+    players,
+    games: deriveGames(set), // per-game winner + characters, for score reporting
+  };
+}
+
+// Reduce the mod's matches[] to a compact per-game record. Each match logged at
+// a Results screen is one game; `wins` is cumulative, so the game's winner is
+// whoever's win count ticked up this game.
+function deriveGames(set) {
+  const matches = Array.isArray(set.matches) ? set.matches : [];
+  const prevWins = {};
+  return matches.map((m, i) => {
+    const mps = Array.isArray(m.players) ? m.players : [];
+    let winnerSlot = null;
+    for (const p of mps) {
+      const w = Number(p.wins) || 0;
+      if (w > (prevWins[p.slot] || 0)) winnerSlot = p.slot;
+      prevWins[p.slot] = w;
+    }
+    return {
+      gameNum: m.index || (i + 1),
+      winnerSlot,
+      chars: mps.map(p => ({ slot: p.slot, character: p.character })),
+    };
+  });
+}
+
+async function notifyDiscord(env, record) {
+  const wh = env.DISCORD_WEBHOOK_URL;
+  if (!wh) return; // not configured → no-op
+  const s = record.set;
+  const score = (s.players || []).map(p => p.wins).filter(w => w != null).join('–');
+  const who = record.confidence !== 'none' && record.candidateWinnerEntrantId
+    ? 'matched to a start.gg entrant — confirm to report'
+    : 'needs an operator to pick the winner';
+  const content =
+    `**Station ${record.station}** — set complete` +
+    (record.fullRoundText ? ` (${record.fullRoundText})` : '') +
+    `\nScore ${score || '?'} · winner **${s.winnerName || '?'}** (${s.winnerCharacter || '?'}) · ${who}`;
+  await fetch(wh, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content }),
+  });
+}
+
+const nowSec = () => Math.floor(Date.now() / 1000);
+const sanitizeId = (s) => String(s || '').replace(/[^A-Za-z0-9_-]/g, '').slice(0, 64);
+const curKey = (slug, station) => `ml:cur:${slug}:${station}`;
+const setKey = (slug, station, setId) => `ml:set:${slug}:${station}:${setId}`;
+const curPrefix = (slug) => `ml:cur:${slug}:`;
+const setPrefix = (slug) => `ml:set:${slug}:`;
 
 async function startggGql(query, variables) {
   const res = await fetch(STARTGG_API, {

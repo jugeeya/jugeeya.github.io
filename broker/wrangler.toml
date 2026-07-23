@@ -9,7 +9,17 @@ REPO_OWNER = "jugeeya"
 REPO_NAME = "jugeeya.github.io"
 BASE_BRANCH = "main"
 
+# MatchLogger aggregation store. Create the namespace once, then paste its id:
+#   wrangler kv namespace create MATCHLOGGER
+[[kv_namespaces]]
+binding = "MATCHLOGGER"
+id = "e194066950bf4238a3827b5e154e46cb"
+
 # Secrets are NOT stored here. Set them with:
 #   wrangler secret put GITHUB_APP_ID
 #   wrangler secret put GITHUB_APP_PRIVATE_KEY     # PKCS#8 PEM (see README)
 #   wrangler secret put GITHUB_INSTALLATION_ID
+#   wrangler secret put DISCORD_WEBHOOK_URL        # optional: set-complete pings
+#   wrangler secret put OPERATOR_KEY               # passcode gating start.gg reporting
+#   wrangler secret put STARTGG_TOKEN              # start.gg API token (enables the bracket write)
+#   wrangler secret put STATION_KEY                # optional: lock ingest to your stations

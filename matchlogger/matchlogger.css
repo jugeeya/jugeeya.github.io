@@ -1,0 +1,329 @@
+/* MatchLogger console — page layout on top of the shared MD3 system in
+   ../styles.css (buttons, inputs, .panel, .container all come from there). */
+
+main {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.panel {
+    background-color: var(--md-surface-container-low);
+    border-radius: var(--md-corner-lg);
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.muted { color: var(--md-on-surface-variant); }
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.panel-head h3 { margin: 0; }
+
+/* ---- Install ---- */
+.install-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.install-card {
+    background: var(--md-surface-container);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-corner-md);
+    padding: 1.1rem 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.install-icon {
+    font-size: 1.6rem;
+    color: var(--md-primary);
+    margin-bottom: 0.5rem;
+}
+
+.install-card h4 {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-display);
+}
+
+.install-card p {
+    color: var(--md-on-surface-variant);
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin: 0 0 1rem;
+    flex: 1;
+}
+
+.install-card button { align-self: stretch; }
+
+/* ---- Config ---- */
+.sgg-field label,
+.ml-advanced label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.sgg-row {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.sgg-row input { flex: 1 1 320px; min-width: 0; }
+
+.ml-status {
+    margin-top: 0.6rem;
+    font-size: 0.88rem;
+    min-height: 1.1em;
+    color: var(--md-on-surface-variant);
+}
+.ml-status.success { color: var(--md-success); }
+.ml-status.error { color: var(--md-error); }
+
+.ml-passcode { margin-top: 1rem; }
+.ml-passcode input { width: 100%; max-width: 340px; }
+.optional { color: var(--md-on-surface-variant); font-weight: 400; font-size: 0.85em; }
+
+/* Inline winner picker (shown when Report is clicked) */
+.report-pick { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; font-size: 0.82rem; }
+.report-pick .pick-entrant { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
+.report-pick .pick-cancel { padding: 0.2rem 0.4rem; }
+
+.ml-advanced {
+    margin-top: 1.25rem;
+    border-top: 1px solid var(--md-outline-variant);
+    padding-top: 1rem;
+}
+.ml-advanced summary {
+    cursor: pointer;
+    color: var(--md-on-surface-variant);
+    font-size: 0.9rem;
+}
+.ml-advanced input { width: 100%; max-width: 520px; margin-bottom: 0.75rem; }
+.ml-advanced-actions { margin-top: 0.25rem; }
+
+/* ---- Live dot ---- */
+.live-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--md-success);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--md-success) 70%, transparent);
+    animation: ml-pulse 2s var(--md-ease-standard) infinite;
+}
+@keyframes ml-pulse {
+    0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--md-success) 60%, transparent); }
+    70%  { box-shadow: 0 0 0 7px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+}
+@media (prefers-reduced-motion: reduce) { .live-dot { animation: none; } }
+
+/* ---- Stations grid ---- */
+.stations {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 0.85rem;
+}
+
+.station-card {
+    background: var(--md-surface-container);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-corner-md);
+    padding: 0.9rem 1rem;
+}
+
+.station-card .stn-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+.station-card .stn-name { font-weight: 600; font-family: var(--font-display); }
+
+.station-card .stn-players { font-size: 0.95rem; line-height: 1.5; }
+.station-card .stn-round { color: var(--md-on-surface-variant); font-size: 0.8rem; margin-top: 0.35rem; }
+.station-card .stn-updated { color: var(--md-on-surface-variant); font-size: 0.75rem; margin-top: 0.35rem; }
+
+/* State + status pills */
+.pill {
+    display: inline-block;
+    padding: 0.1rem 0.55rem;
+    border-radius: var(--md-corner-full);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background: var(--md-surface-container-highest);
+    color: var(--md-on-surface-variant);
+}
+.pill.live { background: color-mix(in srgb, var(--md-success) 22%, transparent); color: var(--md-success); }
+.pill.idle { background: var(--md-surface-container-highest); color: var(--md-on-surface-variant); }
+.pill.recorded { background: var(--md-surface-container-highest); color: var(--md-on-surface-variant); }
+.pill.matched { background: color-mix(in srgb, var(--md-tertiary) 22%, transparent); color: var(--md-tertiary); }
+.pill.reported { background: color-mix(in srgb, var(--md-success) 22%, transparent); color: var(--md-success); }
+.pill.error { background: color-mix(in srgb, var(--md-error) 22%, transparent); color: var(--md-error); }
+
+/* Confidence badge */
+.conf { font-size: 0.72rem; font-weight: 600; }
+.conf.high { color: var(--md-success); }
+.conf.low  { color: var(--accent-amber); }
+.conf.none { color: var(--md-on-surface-variant); }
+
+/* ---- Sets table ---- */
+.table-scroll { overflow-x: auto; }
+
+.sets-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 720px;
+}
+.sets-table th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--md-on-surface-variant);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.5rem 0.7rem;
+    border-bottom: 1px solid var(--md-outline-variant);
+    white-space: nowrap;
+}
+.sets-table td {
+    padding: 0.6rem 0.7rem;
+    border-bottom: 1px solid var(--md-outline-variant);
+    vertical-align: middle;
+}
+.sets-table tbody tr:hover td { background: color-mix(in srgb, var(--md-primary) 6%, transparent); }
+.sets-table .stn-cell { font-family: var(--font-mono); font-weight: 600; }
+.sets-table .win { font-weight: 600; color: var(--md-on-surface); }
+.sets-table .char { color: var(--md-on-surface-variant); font-size: 0.85em; }
+.sets-table .score { font-family: var(--font-mono); }
+.sets-table .time-cell { font-family: var(--font-mono); font-size: 0.82rem; color: var(--md-on-surface-variant); white-space: nowrap; }
+
+.report-btn { padding: 0.35rem 0.8rem; font-size: 0.82rem; }
+
+.ml-foot { margin-top: 1rem; font-size: 0.82rem; }
+
+.empty { color: var(--md-on-surface-variant); padding: 0.5rem 0; }
+
+/* ---- Install modal (same component as the tags page's guided modal) ---- */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: color-mix(in srgb, #000 58%, transparent);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    animation: modal-fade var(--md-dur-med, 0.3s) var(--md-ease-standard, ease);
+}
+
+.modal-backdrop[hidden] { display: none; }
+
+body.modal-open { overflow: hidden; }
+
+.modal {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    max-height: calc(100dvh - 3rem);
+    overflow-y: auto;
+    background: var(--md-surface-container-high);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-corner-lg);
+    padding: 1.75rem;
+    box-shadow: var(--md-elev-3);
+    animation: modal-pop var(--md-dur-med, 0.3s) var(--md-ease-emphasized, ease);
+}
+
+@keyframes modal-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-pop {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: none; }
+}
+
+.modal-title {
+    font-size: 1.4rem;
+    margin: 0 0 1.4rem;
+    padding-right: 2rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    font-size: 1.4rem;
+    line-height: 1;
+    background: none;
+    color: var(--md-on-surface-variant);
+    box-shadow: none;
+    border-radius: var(--md-corner-full);
+}
+
+.modal-close:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--md-on-surface) 8%, transparent);
+    color: var(--md-on-surface);
+    box-shadow: none;
+    transform: none;
+}
+
+.modal-steps {
+    margin: 0;
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.modal-steps > li::marker {
+    font-weight: 600;
+    color: var(--md-primary);
+}
+
+.modal-steps code {
+    background: var(--md-surface-container-highest);
+    border-radius: var(--md-corner-xs);
+    padding: 0.1rem 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    word-break: break-word;
+}
+
+.modal-download {
+    margin-top: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.modal-note {
+    color: var(--md-on-surface-variant);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 1rem 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal-backdrop,
+    .modal { animation: none; }
+}
+
+@media (max-width: 600px) {
+    .panel { padding: 1.25rem 1rem; }
+}

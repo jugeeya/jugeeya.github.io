@@ -1,0 +1,46 @@
+name: Build MatchLogger install zips
+
+# The console's install buttons link to matchlogger/dist/*.zip. This keeps
+# those zips in sync with the mod/sender source whenever either changes, the
+# same "commit the built artifact" pattern as build-wasm.yml.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "matchlogger/ue4ss/**"
+      - "matchlogger/sender/**"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: matchlogger-dist
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build zips
+        run: |
+          set -euo pipefail
+          mkdir -p matchlogger/dist
+          rm -f matchlogger/dist/matchlogger-mod.zip matchlogger/dist/station-sender.zip
+          (cd matchlogger/ue4ss && zip -r -X ../dist/matchlogger-mod.zip UE4SS-settings.ini Mods)
+          (cd matchlogger/sender && zip -r -X ../dist/station-sender.zip station_sender.py station_widget.py config.example.json README.md)
+
+      - name: Commit if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add matchlogger/dist/matchlogger-mod.zip matchlogger/dist/station-sender.zip
+          if git diff --cached --quiet; then
+            echo "No changes to the install zips."
+            exit 0
+          fi
+          git commit -m "chore: rebuild MatchLogger install zips"
+          git push

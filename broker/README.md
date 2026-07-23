@@ -76,8 +76,75 @@ open GraphQL passthrough:
 - `GET /startgg/event?phaseGroupId=<id>` → `{ event, section, entrants: [...] }` — only the
   entrants seeded into a single bracket section (phase group), e.g. when the page is given a
   `…/brackets/<phaseId>/<phaseGroupId>` URL. Smaller/faster than scanning the whole event.
+- `GET /startgg/sets?slug=tournament/<t>/event/<e>` → completed sets with times/station (the VOD splitter).
+- `GET /startgg/station?slug=…&station=<n>` → the not-yet-completed set currently at a station:
+  `{ found, setId, state, fullRoundText, entrants: [{ id, name }] }`. Powers the MatchLogger
+  console's "now playing" and the ingest pre-binding.
 
 All use start.gg's unauthenticated website endpoint (no API token).
+
+## MatchLogger aggregation (`/matchlogger/*`)
+
+Stations running the [MatchLogger](../matchlogger/) mod + sender push their
+results here; the operator [console](../matchlogger/) reads them back across
+every station. Storage is a KV namespace where **each writer owns its own
+keys** (`ml:cur:<slug>:<station>`, `ml:set:<slug>:<station>:<setId>`), so
+concurrent stations never clobber each other (KV has no transactions).
+Everything expires after 24h.
+
+- `POST /matchlogger/current` `{ slug, station, current }` — a station's live
+  heartbeat. On `current.state === "set_start"` the Worker looks up the
+  station's start.gg entrants and caches them for pre-binding.
+- `POST /matchlogger/ingest` `{ slug, station, set }` — a finished set. Matches
+  it to the station's start.gg set, computes a candidate winner + confidence,
+  stores it, and (if configured) posts a Discord notification. **Read-only with
+  respect to the bracket.**
+- `POST /matchlogger/live` `{ slug, station, set }` — a running (in-progress)
+  set. Pushes the games-so-far to start.gg's **live** score via
+  `markSetInProgress` + `updateBracketSet`, which records the per-game score +
+  characters **without finalizing or advancing** the bracket. Station-side
+  (station-key gated), players mapped to entrants by name; if they can't be
+  mapped confidently it stores but skips the start.gg push (never publishes a
+  guessed live score). Finalizing stays the operator's passcode-gated
+  `/report`.
+- `GET /matchlogger/event?slug=…` — the aggregated whole-event view the console
+  renders: `{ slug, stations: {…}, sets: […] }`.
+- `POST /matchlogger/report` `{ slug, station, setId, winnerEntrantId, passcode }`
+  — report a matched set to start.gg. Sends per-game `gameData` (each game's
+  winner + character selections, derived from the mod's logged games and mapped
+  to start.gg character ids) so the full score is recorded; falls back to a
+  winner-only report if any game can't be attributed. **Gated by an operator
+  passcode** (see below).
+
+Setup:
+
+```sh
+wrangler kv namespace create MATCHLOGGER   # paste the id into wrangler.toml
+wrangler secret put DISCORD_WEBHOOK_URL     # optional: set-complete pings
+wrangler secret put OPERATOR_KEY            # required to enable reporting (the passcode)
+wrangler secret put STARTGG_TOKEN           # start.gg API token; enables the actual bracket write
+wrangler secret put STATION_KEY             # optional: reject ingest/current without this key
+```
+
+### Why reporting is gated
+
+The start.gg token authorizes Worker→start.gg, but the Worker URL is public, so
+the *action* needs its own gate or anyone could POST `/matchlogger/report` and
+write to your bracket (a "confused deputy"). So the operator supplies a
+**passcode** (`OPERATOR_KEY`) with each report; the Worker checks it
+(constant-time) before doing anything. Two-stage by design:
+
+- `OPERATOR_KEY` unset → reporting disabled (503).
+- Passcode wrong → 401.
+- Passcode right but `STARTGG_TOKEN` unset → 501 (gate passes, the write isn't
+  wired yet — so you can turn on the passcode UI before wiring the token).
+- Both set → the winner is reported via start.gg's **authenticated** API
+  (`api.start.gg/gql/alpha`), separate from the website API used for reads.
+
+`STATION_KEY` is an optional, symmetric guard for `ingest`/`current`: if set, a
+matching `key` must accompany those POSTs (the station sender's `--key`), which
+stops strangers polluting your aggregated view. Left unset, those stay open
+(low stakes — self-cleaning after 24h).
 
 ## How a submission flows
 
