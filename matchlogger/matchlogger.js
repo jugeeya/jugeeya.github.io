@@ -294,15 +294,15 @@ const INSTALL = {
       <li>Needs <strong>Python 3.8+</strong> installed on this machine.</li>
       <li>Download the sender package below and extract it anywhere (e.g. a
         <code>MatchLoggerSender</code> folder on the Desktop).</li>
-      <li>Copy <code>config.example.json</code> to <code>config.json</code> and fill in
-        the broker URL, this event's start.gg slug, <strong>this station's number</strong>,
-        and <code>dir</code> — the path to the <code>MatchLogger</code> output folder next
-        to the game exe (e.g. <code>…/Rivals2/Binaries/Win64/MatchLogger</code>).</li>
-      <li>Run the corner widget:
-        <code>python station_widget.py --config config.json</code>
-        — it shows this station's number and a live status dot, and lets you change
-        the number without touching the config. (<code>station_sender.py</code> is the
-        same sender with no window, e.g. for a scheduled task.)</li>
+      <li>Double-click <code>station_widget.pyw</code> — no terminal window opens; the
+        widget's <strong>Log</strong> panel shows what the sender is doing instead.
+        (Elsewhere: <code>python station_widget.py</code>. <code>station_sender.py</code>
+        is the same sender with no window at all, e.g. for a scheduled task.)</li>
+      <li>First run, the widget opens its <strong>Settings</strong> panel: fill in the
+        broker URL, this event's start.gg slug, <strong>this station's number</strong>,
+        and the <code>MatchLogger</code> output folder next to the game exe (e.g.
+        <code>…/Rivals2/Binaries/Win64/MatchLogger</code>), then hit Save — it's stored
+        for next launch, no config file editing needed.</li>
       <li>Closing the widget sends it to the system tray — it keeps running. Right-click
         the tray icon to reopen or quit it.</li>`,
     download: { href: 'dist/station-sender.zip', label: 'Download station sender (.zip)' },

@@ -69,9 +69,8 @@ The design keeps four concerns strictly separated:
   process that watches the MatchLogger folder and POSTs finished sets to the
   broker with its station number — this is what lets every station run with
   nobody sitting at it. Its station number is its only per-machine config,
-  usually set through the corner widget (the same sender with a small
-  always-on-top status window); the headless `station_sender.py` is the
-  no-window variant.
+  set (along with everything else) through the corner widget's Settings panel;
+  the headless `station_sender.py` is the no-window variant.
 - **The broker is the aggregation hub and holds the secrets.** It stores every
   ingested set per event (keyed by station + time), does the start.gg matching,
   and drives Discord. Note the current broker (`../broker/worker.js`) reads
@@ -150,7 +149,8 @@ is (`--station 3`, or a one-line file). It:
 
 It retries on failure and is otherwise invisible. Every station PC runs one —
 in practice as the corner widget (`station_widget.py`), the same sender with a
-station-number field and a live status dot.
+live status dot, a Settings panel that edits all of its config in place, and a
+Log panel that replaces the terminal.
 
 ## The broker as aggregation hub
 
