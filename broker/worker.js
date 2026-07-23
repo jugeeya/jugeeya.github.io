@@ -455,7 +455,9 @@ async function handleReport(kv, env, slug, body, cors) {
   try { rec = JSON.parse(raw); } catch { return json({ error: 'Corrupt set record.' }, 500, cors); }
   if (!rec.matchedStartggSetId)
     return json({ error: 'This set is not matched to a start.gg set.' }, 409, cors);
-  if (rec.entrants && rec.entrants.length && !rec.entrants.some(e => e.id === winnerEntrantId))
+  // start.gg entrant ids come back as numbers; the client sends a string —
+  // compare as strings so the types don't matter.
+  if (rec.entrants && rec.entrants.length && !rec.entrants.some(e => String(e.id) === winnerEntrantId))
     return json({ error: 'winnerEntrantId is not one of this set\'s entrants.' }, 400, cors);
 
   // Passcode is valid and the request is well-formed. The actual bracket write
