@@ -45,6 +45,27 @@ the config file, so the same config can be shared across stations with only
 | `--state F` | State-file path (default `<dir>/.station-sender-state.json`). |
 | `--key K`   | Station key — only needed if the broker has `STATION_KEY` set. |
 
+## Corner widget (optional GUI)
+
+`station_widget.py` is a small always-on-top window that runs the same sender
+and lets you **set the station number** without editing the config, showing live
+status (a green/red dot + the last action). Closing it sends it to the **system
+tray** instead of quitting (the sender keeps running); the tray menu restores or
+quits it.
+
+```sh
+python station_widget.py --config config.json
+```
+
+- Needs `tkinter` (bundled with Python on Windows/macOS). The tray fallback
+  needs `pip install pystray pillow`; without them, closing just minimizes.
+- The station number you set is written back into the config file.
+- It's built to grow: `poll_extras()` returns the status rows under the sender
+  line — wire it to obs-websocket to show "OBS: recording", etc. (there's a
+  placeholder row there now).
+- Everything else (broker, event slug, folder) still comes from the config,
+  exactly like the headless sender — the widget is just a face on it.
+
 ## What it does and doesn't touch
 
 - **Non-destructive.** It never modifies or deletes the MatchLogger files. A
