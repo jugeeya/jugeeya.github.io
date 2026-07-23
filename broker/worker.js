@@ -466,26 +466,90 @@ async function handleReport(kv, env, slug, body, cors) {
   if (!env.STARTGG_TOKEN)
     return json({ error: 'start.gg write access is not configured (set STARTGG_TOKEN on the broker).' }, 501, cors);
 
+  // Build per-game data (score + characters) when we can map every game's
+  // winner to an entrant; otherwise fall back to a winner-only report so a
+  // partial mapping never produces a wrong set score.
+  let gameData = null;
   try {
-    await reportBracketSet(env, rec.matchedStartggSetId, winnerEntrantId);
+    gameData = await buildGameData(env, kv, slug, rec, winnerEntrantId);
+  } catch { /* best effort — fall back to winner-only */ }
+
+  try {
+    await reportBracketSet(env, rec.matchedStartggSetId, winnerEntrantId, gameData);
   } catch (e) {
     return json({ error: `start.gg report failed: ${(e && e.message) || e}` }, 502, cors);
   }
   rec.status = 'reported';
   rec.reportedAt = nowSec();
   rec.reportedWinnerEntrantId = winnerEntrantId;
+  rec.reportedGames = gameData ? gameData.length : 0;
   await kv.put(key, JSON.stringify(rec), { expirationTtl: 86400 });
-  return json({ ok: true, record: rec }, 200, cors);
+  return json({ ok: true, record: rec, gamesReported: rec.reportedGames }, 200, cors);
+}
+
+// Map the stored per-game data to start.gg's gameData: each game's winner
+// entrant + each entrant's character. Returns null (winner-only report) unless
+// every game's winner resolves, so we never send a partial/wrong score.
+async function buildGameData(env, kv, slug, rec, winnerEntrantId) {
+  const games = rec.set && rec.set.games;
+  const winnerSlot = rec.set && rec.set.winnerSlot;
+  const entrants = rec.entrants || [];
+  if (!Array.isArray(games) || !games.length || winnerSlot == null || entrants.length !== 2) return null;
+
+  // slot → entrant id, anchored on the (possibly operator-corrected) winner.
+  const otherEntrant = entrants.find(e => String(e.id) !== winnerEntrantId);
+  const otherSlot = (rec.set.players || []).map(p => p.slot).find(s => s !== winnerSlot);
+  if (!otherEntrant || otherSlot == null) return null;
+  const slotToEntrant = { [winnerSlot]: winnerEntrantId, [otherSlot]: String(otherEntrant.id) };
+
+  const charMap = await getCharacterMap(env, kv, slug).catch(() => ({}));
+  const out = [];
+  for (const g of games) {
+    const winnerId = slotToEntrant[g.winnerSlot];
+    if (!winnerId) return null; // a game we can't attribute → bail to winner-only
+    const selections = [];
+    for (const c of g.chars || []) {
+      const eid = slotToEntrant[c.slot];
+      const cid = charMap[normChar(c.character)];
+      if (eid && cid != null) selections.push({ entrantId: eid, characterId: cid });
+    }
+    const game = { gameNum: g.gameNum, winnerId };
+    if (selections.length) game.selections = selections;
+    out.push(game);
+  }
+  return out.length ? out : null;
+}
+
+const normChar = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+// Character name→id for the event's videogame, cached in KV (names/ids are
+// stable, so a long TTL is fine).
+async function getCharacterMap(env, kv, slug) {
+  const cacheKey = `ml:chars:${slug}`;
+  const cached = await kv.get(cacheKey);
+  if (cached) { try { return JSON.parse(cached); } catch { /* refetch */ } }
+  const data = await startggGql(
+    `query($slug:String!){ event(slug:$slug){ videogame{ id characters{ id name } } } }`,
+    { slug }
+  );
+  const chars = (data.event && data.event.videogame && data.event.videogame.characters) || [];
+  const map = {};
+  for (const c of chars) if (c && c.name != null) map[normChar(c.name)] = c.id;
+  if (Object.keys(map).length) await kv.put(cacheKey, JSON.stringify(map), { expirationTtl: 604800 });
+  return map;
 }
 
 // Uses start.gg's authenticated API (not the website endpoint used for reads).
-async function reportBracketSet(env, startggSetId, winnerEntrantId) {
+// gameData is optional: when present, start.gg tallies the set score from the
+// per-game winners and records each game's character selections.
+async function reportBracketSet(env, startggSetId, winnerEntrantId, gameData) {
   const res = await fetch('https://api.start.gg/gql/alpha', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${env.STARTGG_TOKEN}` },
     body: JSON.stringify({
-      query: `mutation($setId:ID!,$winnerId:ID!){ reportBracketSet(setId:$setId, winnerId:$winnerId){ id state } }`,
-      variables: { setId: startggSetId, winnerId: winnerEntrantId },
+      query: `mutation($setId:ID!,$winnerId:ID!,$gameData:[BracketSetGameDataInput]){
+                reportBracketSet(setId:$setId, winnerId:$winnerId, gameData:$gameData){ id state } }`,
+      variables: { setId: startggSetId, winnerId: winnerEntrantId, gameData: gameData || null },
     }),
   });
   if (!res.ok) throw new Error(`start.gg ${res.status}`);
@@ -568,7 +632,30 @@ function summarizeSet(set) {
     winnerName: set.winnerName ?? null,
     winnerCharacter: set.winnerCharacter ?? null,
     players,
+    games: deriveGames(set), // per-game winner + characters, for score reporting
   };
+}
+
+// Reduce the mod's matches[] to a compact per-game record. Each match logged at
+// a Results screen is one game; `wins` is cumulative, so the game's winner is
+// whoever's win count ticked up this game.
+function deriveGames(set) {
+  const matches = Array.isArray(set.matches) ? set.matches : [];
+  const prevWins = {};
+  return matches.map((m, i) => {
+    const mps = Array.isArray(m.players) ? m.players : [];
+    let winnerSlot = null;
+    for (const p of mps) {
+      const w = Number(p.wins) || 0;
+      if (w > (prevWins[p.slot] || 0)) winnerSlot = p.slot;
+      prevWins[p.slot] = w;
+    }
+    return {
+      gameNum: m.index || (i + 1),
+      winnerSlot,
+      chars: mps.map(p => ({ slot: p.slot, character: p.character })),
+    };
+  });
 }
 
 async function notifyDiscord(env, record) {

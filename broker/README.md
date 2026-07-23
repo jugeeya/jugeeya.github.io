@@ -102,8 +102,11 @@ Everything expires after 24h.
 - `GET /matchlogger/event?slug=…` — the aggregated whole-event view the console
   renders: `{ slug, stations: {…}, sets: […] }`.
 - `POST /matchlogger/report` `{ slug, station, setId, winnerEntrantId, passcode }`
-  — report a matched set's winner to start.gg. **Gated by an operator passcode**
-  (see below).
+  — report a matched set to start.gg. Sends per-game `gameData` (each game's
+  winner + character selections, derived from the mod's logged games and mapped
+  to start.gg character ids) so the full score is recorded; falls back to a
+  winner-only report if any game can't be attributed. **Gated by an operator
+  passcode** (see below).
 
 Setup:
 
