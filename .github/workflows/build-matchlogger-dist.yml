@@ -40,8 +40,18 @@ jobs:
           stage=$(mktemp -d)
           cp matchlogger/sender/rivals-station-reporter.pyw "$stage/"
           mkdir "$stage/_internal"
-          cp matchlogger/sender/station_sender.py matchlogger/sender/station_widget.py \
-             matchlogger/sender/config.example.json matchlogger/sender/README.md "$stage/_internal/"
+          # Every runtime module, not a hand-kept list: the app has grown
+          # rivals_stats/dashboard/matching/hub/startgg, and a missing one only
+          # shows up as an ImportError on the user's machine. Tests stay out.
+          cp matchlogger/sender/*.py "$stage/_internal/"
+          rm -f "$stage/_internal"/test_*.py
+          cp matchlogger/sender/config.example.json matchlogger/sender/players.example.json \
+             matchlogger/sender/README.md "$stage/_internal/"
+
+          # Guard: the staged app must actually import, or we'd ship a zip that
+          # crashes on launch (this is exactly how rivals_stats went missing).
+          (cd "$stage/_internal" && python -c "import station_widget, station_sender, hub, matching, startgg, rivals_stats, dashboard")
+
           (cd "$stage" && zip -r -X "$GITHUB_WORKSPACE/matchlogger/dist/rivals-station-reporter.zip" rivals-station-reporter.pyw _internal)
           rm -rf "$stage"
 

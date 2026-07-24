@@ -34,8 +34,10 @@ def build_tag_map(players_json):
     happen on normalized names, so key it that way once at load."""
     out = {}
     for k, v in (players_json or {}).items():
+        if str(k).startswith('_'):
+            continue          # "_comment" style notes people leave in the file
         nk = norm(k)
-        if nk and v:
+        if nk and isinstance(v, str) and v:
             out[nk] = v
     return out
 
