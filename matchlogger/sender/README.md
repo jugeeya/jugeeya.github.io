@@ -135,6 +135,46 @@ The **start.gg** column comes from `players.json` next to the script — a map o
 save-tag to start.gg tag, e.g. `{"JUGZ!": "jugeeya", "KIM": "Kimchi"}`. Without
 it that column shows `-`.
 
+## LAN mode — run the event with no Cloudflare (`"mode": "operator"`)
+
+At an event every machine is on one network, so per-game traffic doesn't need
+to leave it. Set one PC to **operator** and it runs a local hub
+([`hub.py`](hub.py)): stations POST to it, and it is the only machine that talks
+to start.gg. Cloudflare is then out of the loop entirely — no KV reads, writes
+or list ops, so none of the free-tier limits apply.
+
+The hub speaks the **same `/matchlogger/*` API as the broker**, so a station
+switches over by pointing its "Hub / broker URL" at the operator's address —
+no other station changes.
+
+| Mode | What the app does |
+| --- | --- |
+| `station` | Watches this PC's games and sends them onward (the default). |
+| `operator` | Runs the LAN hub + shows the console view. No game watching. |
+| `both` | This PC is a station *and* the operator (talks to its own hub). |
+
+**Operator setup:** pick `operator` in the Mode box, put the **start.gg API
+token** in Settings (it lives only here), and set the **shared key**. The window
+then shows `hub: http://<your-lan-ip>:8787` — that's what every station puts in
+its Hub URL box, with the same shared key. Windows will ask to allow the
+listener through the firewall the first time; do that before the event.
+
+**Console view.** In operator mode the table becomes the full console: every
+station's sets with station number, both players' tags, the matched start.gg
+entrant, character, score, bracket round, and status. Select a set to act on it:
+
+- **Report winner…** — asks which entrant won (pre-marking the suggested one)
+  and finalizes on start.gg. The only action that advances the bracket.
+- **Switch winner** — the station paired the two players backwards; flips the
+  mapping and immediately re-pushes the corrected live score.
+- **Delete** — drops the set from the console. start.gg is never touched.
+
+Per-game scores still go to start.gg **automatically** as games finish
+(non-advancing: no winner is set), exactly as through the broker.
+
+Tests: `python test_matching.py` and `python test_hub.py` (the latter runs a
+real hub and drives it with the real station sender; start.gg is stubbed).
+
 ## Corner widget
 
 `station_widget.py` is a small window that runs the same sender — a normal
