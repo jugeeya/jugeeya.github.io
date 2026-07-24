@@ -854,8 +854,15 @@ function reportBracketSet(env, startggSetId, winnerEntrantId, gameData) {
 // updateBracketSet records game stats without setting a winner, so the bracket
 // does not advance — that stays the operator's finalize step.
 async function pushLiveGameData(env, startggSetId, gameData) {
-  await startggAuthMutation(env,
-    `mutation($id:ID!){ markSetInProgress(setId:$id){ id state } }`, { id: startggSetId });
+  // markSetInProgress is only needed the first time; on every later game it
+  // errors "Set is already started". That's benign — swallow it so it never
+  // aborts the score update below (the bug that froze live scores after game 1).
+  try {
+    await startggAuthMutation(env,
+      `mutation($id:ID!){ markSetInProgress(setId:$id){ id state } }`, { id: startggSetId });
+  } catch (e) {
+    if (!/already started/i.test(String((e && e.message) || e))) throw e;
+  }
   await startggAuthMutation(env,
     `mutation($id:ID!,$g:[BracketSetGameDataInput]){ updateBracketSet(setId:$id, gameData:$g){ id state } }`,
     { id: startggSetId, g: gameData });
