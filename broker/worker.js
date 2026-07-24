@@ -735,7 +735,7 @@ function gameDataFromGames(games, slotToEntrant, charMap) {
     const selections = [];
     for (const c of g.chars || []) {
       const eid = slotToEntrant[c.slot];
-      const cid = charMap[normChar(c.character)];
+      const cid = charIdFor(charMap, c.character);
       if (eid && cid != null) selections.push({ entrantId: eid, characterId: cid });
     }
     const game = { gameNum: g.gameNum };
@@ -746,6 +746,21 @@ function gameDataFromGames(games, slotToEntrant, charMap) {
 }
 
 const normChar = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+// Character id lookup: exact normalized name, else a unique-prefix match —
+// the save file / replays store characters as 3-letter codes ("Cla"), while
+// start.gg names are full ("Clairen"). Newer senders translate to full names
+// themselves; this keeps characters working for stations on older builds.
+function charIdFor(charMap, name) {
+  const n = normChar(name);
+  if (!n) return null;
+  if (charMap[n] != null) return charMap[n];
+  let hits = Object.keys(charMap).filter(k => k.startsWith(n));
+  // "Ran" prefixes both Ranno and Random; the save spells Random out in
+  // full (matched exactly above), so a code never means it.
+  if (hits.length > 1) hits = hits.filter(k => k !== 'random');
+  return hits.length === 1 ? charMap[hits[0]] : null;
+}
 
 // The tags page publishes a save-tag → start.gg-tag mapping for every player
 // who has submitted controls (tags/data/index.json). In-game names rarely

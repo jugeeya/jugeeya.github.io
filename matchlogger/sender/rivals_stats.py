@@ -316,24 +316,28 @@ class _SetMachine:
                     'firstMatchStartIso': None, 'matches': [], 'winsByName': {}}
 
     def _players(self, result, replay):
+        # Characters leave here as full names ("Clairen"), never save codes
+        # ("Cla") — the broker's start.gg character lookup, the console, and
+        # Discord all work in full names. char_full() is idempotent on names
+        # it doesn't know, so codes and full names compare safely below.
         known = [dict(w, won=True) for w in result['winners']] + \
                 [dict(l, won=False) for l in result['losers']]
-        players = [{'name': k['tag'], 'character': k['char'], 'won': k['won'], 'stats': k['stats']}
+        players = [{'name': k['tag'], 'character': char_full(k['char']), 'won': k['won'], 'stats': k['stats']}
                    for k in known]
         # ONLINE: only the local tag came from the save -> opponent from replay.
         if len(players) == 1 and replay and len(replay['players']) == 2:
             mine = players[0]
-            opp = next((p for p in replay['players'] if p['char'] != mine['character']), None) or \
+            opp = next((p for p in replay['players'] if char_full(p['char']) != mine['character']), None) or \
                 next((p for p in replay['players'] if p['name'] != mine['name']), None)
             if opp:
-                players.append({'name': opp['name'], 'character': opp['char'],
+                players.append({'name': opp['name'], 'character': char_full(opp['char']),
                                 'won': not mine['won'], 'stats': {}})
         # slots from replay by character
         for pl in players:
             slot = None
             if replay:
                 for idx, rp in enumerate(replay['players']):
-                    if rp['char'] == pl['character']:
+                    if char_full(rp['char']) == pl['character']:
                         slot = idx; break
             pl['slot'] = slot
         for i, pl in enumerate(players):

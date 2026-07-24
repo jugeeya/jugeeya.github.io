@@ -67,7 +67,7 @@ SETTINGS_FIELDS = (
     ("broker", "Broker URL"),
     ("slug", "start.gg event (optional)"),
     ("dir", "Output / MatchLogger folder"),
-    ("key", "Station key (optional)"),
+    ("key", "Shared key (broker's OPERATOR_KEY — required to send)"),
 )
 
 

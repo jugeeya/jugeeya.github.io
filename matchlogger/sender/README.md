@@ -81,7 +81,7 @@ confident the match is.
 | `--once`    | One pass then exit (testing, or a scheduled task).           |
 | `--poll N`  | Seconds between passes (default 2).                          |
 | `--state F` | State-file path (default `<dir>/.station-sender-state.json`). |
-| `--key K`   | Station key — only needed if the broker has `STATION_KEY` set. |
+| `--key K`   | **Required to send.** Same value as the broker's `OPERATOR_KEY` secret. |
 | `--source`  | `mod` (default) or `stats` — see below. |
 
 ## Stats-diff mode — no UE4SS mod (`--source stats`)
