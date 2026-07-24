@@ -28,6 +28,7 @@ Flags of note:
 import argparse
 import hashlib
 import json
+import os
 import sys
 import time
 import urllib.error
@@ -36,9 +37,32 @@ from pathlib import Path
 
 STATE_VERSION = 1
 
+# Optional sink so the stats-mode dashboard can capture log lines instead of
+# printing them (it owns the screen). Left None -> plain stdout.
+_log_hook = None
+
 
 def log(msg):
-    print(f"[station-sender] {msg}", flush=True)
+    if _log_hook is not None:
+        _log_hook(msg)
+    else:
+        print(f"[station-sender] {msg}", flush=True)
+
+
+def normalize_slug(slug):
+    """Reduce a pasted start.gg event/bracket URL to the broker's event slug.
+
+    The broker wants exactly `tournament/<t>/event/<e>`. People naturally paste
+    the whole URL (with https://www.start.gg/ and a trailing /brackets/… path),
+    so pull the tournament+event pair out of whatever they gave us.
+    """
+    import re
+    if not slug:
+        return slug
+    m = re.search(r'tournament/([^/?#]+)/event/([^/?#]+)', str(slug), re.I)
+    if m:
+        return f"tournament/{m.group(1)}/event/{m.group(2)}"
+    return str(slug).strip()
 
 
 def load_config(path):
@@ -69,7 +93,7 @@ def read_json(path):
 class Sender:
     def __init__(self, broker, slug, station, out_dir, state_path, dry_run, key=None):
         self.broker = broker.rstrip("/")
-        self.slug = slug
+        self.slug = normalize_slug(slug)
         self.station = station
         self.key = key or None  # only needed if the broker has STATION_KEY set
         self.out_dir = Path(out_dir)
@@ -118,7 +142,11 @@ class Sender:
         data = json.dumps(payload).encode("utf-8")
         req = urllib.request.Request(
             url, data=data, method="POST",
-            headers={"Content-Type": "application/json"},
+            # An explicit User-Agent is required: Cloudflare's bot rules 403 the
+            # default "Python-urllib/x.y" signature (error 1010) before the
+            # request ever reaches the Worker.
+            headers={"Content-Type": "application/json",
+                     "User-Agent": "rivals-station-sender/1.0"},
         )
         try:
             with urllib.request.urlopen(req, timeout=15) as resp:
@@ -190,7 +218,17 @@ class Sender:
         self.process_sets()
 
 
+def default_save_paths():
+    """Standard %LOCALAPPDATA% locations for the stats save and replays folder."""
+    base = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local")) / "Rivals2" / "Saved"
+    return (str(base / "SaveGames" / "Rivals2_StatsSaveSlot.sav"), str(base / "Replays"))
+
+
 def build_sender(cfg):
+    # In stats-diff mode the sender produces its own files, so --dir defaults to
+    # a working folder it owns rather than a mod-written one.
+    if cfg.get("source") == "stats" and not cfg.get("dir"):
+        cfg["dir"] = str(Path.cwd() / "matchlogger-out")
     missing = [k for k in ("broker", "slug", "station", "dir") if not cfg.get(k)]
     if missing:
         sys.exit(f"[station-sender] missing required config: {', '.join(missing)}")
@@ -214,29 +252,96 @@ def main(argv=None):
     p.add_argument("--config", help="JSON config file; flags override it")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--once", action="store_true", help="run one pass and exit")
+    p.add_argument("--source", choices=("mod", "stats"), default="mod",
+                   help="'mod' (default): forward files written by the UE4SS mod. "
+                        "'stats': no mod - watch the stats save + replays and produce them here.")
+    p.add_argument("--save", help="[stats] Rivals2_StatsSaveSlot.sav path (default: %%LOCALAPPDATA%%)")
+    p.add_argument("--replays", help="[stats] Replays folder path (default: %%LOCALAPPDATA%%)")
+    p.add_argument("--idle", type=float, default=180.0,
+                   help="[stats] finalize an open set after this many idle seconds")
+    p.add_argument("--players", help="[stats] JSON map of save-tag -> start.gg tag "
+                                     "(default: players.json next to this script, if present)")
+    p.add_argument("--no-display", action="store_true",
+                   help="[stats] disable the live scoreboard (plain log lines instead)")
     args = p.parse_args(argv)
 
     cfg = load_config(args.config)
-    for key in ("broker", "slug", "station", "dir", "state", "key"):
+    for key in ("broker", "slug", "station", "dir", "state", "key", "source", "save", "replays"):
         val = getattr(args, key)
         if val is not None:
             cfg[key] = val
     cfg["poll"] = args.poll if args.poll is not None else cfg.get("poll", 2.0)
     cfg["dry_run"] = args.dry_run
+    cfg.setdefault("source", "mod")
+    cfg["idle"] = args.idle
 
-    sender = build_sender(cfg)
-    log(f"station {sender.station} · event {sender.slug} · watching {sender.out_dir}"
-        + (" · DRY-RUN" if sender.dry_run else ""))
+    producer = None
+
+    if cfg["source"] == "stats":
+        # No mod: the sender watches the save + replays and produces the files
+        # itself into its own --dir. Forwarding to the broker is OPTIONAL — with
+        # no broker/slug it runs local-only (scoreboard + files), so it works
+        # even without a start.gg bracket.
+        global _log_hook
+        import rivals_stats
+        def_save, def_replays = default_save_paths()
+
+        out_dir = cfg.get("dir") or str(Path.cwd() / "matchlogger-out")
+        cfg["dir"] = out_dir
+        station = cfg.get("station") or 1
+        cfg["station"] = station
+        slug = cfg.get("slug")
+        forwarder = build_sender(cfg) if (cfg.get("broker") and slug) else None
+
+        # Optional save-tag -> start.gg-tag alias map for the scoreboard.
+        aliases = {}
+        players_path = args.players or str(Path(__file__).resolve().parent / "players.json")
+        try:
+            aliases = json.loads(Path(players_path).read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            pass
+
+        on_change = None
+        if not args.no_display:
+            from dashboard import Dashboard
+            mode = "DRY-RUN" if cfg["dry_run"] else ("live" if forwarder else "local-only")
+            dash = Dashboard(station, slug or "(no bracket)", mode, aliases)
+            _log_hook = dash.log          # route all logs into the scoreboard
+            on_change = dash.update       # re-render whenever a set changes
+            dash.render()                 # initial empty board
+
+        producer = rivals_stats.StatsProducer(
+            save_path=cfg.get("save") or def_save,
+            replays_dir=cfg.get("replays") or def_replays,
+            out_dir=out_dir, idle_s=cfg["idle"], log=log, on_change=on_change,
+        )
+        log("source stats | station %s | %s | out %s%s" % (
+            station, slug or "(no bracket)", out_dir,
+            "" if forwarder else " | local-only (no broker)"))
+    else:
+        forwarder = build_sender(cfg)
+        log(f"station {forwarder.station} | event {forwarder.slug} | source mod | {forwarder.out_dir}"
+            + (" | DRY-RUN" if forwarder.dry_run else ""))
 
     if args.once:
-        sender.tick()
+        if producer:
+            producer.poll()
+        if forwarder:
+            forwarder.tick()
         return
 
     try:
         while True:
-            sender.tick()
+            if producer:
+                producer.poll()
+            if forwarder:
+                forwarder.tick()
             time.sleep(cfg["poll"])
     except KeyboardInterrupt:
+        if producer:
+            producer.shutdown()
+            if forwarder:
+                forwarder.tick()  # forward the interrupted-set file before exiting
         log("stopped")
 
 

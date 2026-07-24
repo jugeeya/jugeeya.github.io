@@ -44,6 +44,58 @@ the config file, so the same config can be shared across stations with only
 | `--poll N`  | Seconds between passes (default 2).                          |
 | `--state F` | State-file path (default `<dir>/.station-sender-state.json`). |
 | `--key K`   | Station key — only needed if the broker has `STATION_KEY` set. |
+| `--source`  | `mod` (default) or `stats` — see below. |
+
+## Stats-diff mode — no UE4SS mod (`--source stats`)
+
+The sender can produce the MatchLogger files **itself**, without the mod (no
+injection, no Easy-Anti-Cheat concern). Instead of watching a folder the mod
+writes, it watches two things the game already writes:
+
+- **`Rivals2_StatsSaveSlot.sav`** — the stats save, which flushes **per game, in
+  real time**. Diffing it recovers the winner, loser, characters, and per-game
+  stats (KOs, damage, parries, grabs, …). Parsed by
+  [`rivals_stats.py`](rivals_stats.py) — a stdlib-only GVAS reader whose output
+  matches the site's `uesave` wasm exactly.
+- **`Saved/Replays/*.rpl`** — auto-saved every game; the *filename* gives the
+  timestamp, `Player1/Player2` slots, characters, and the `GameN` set counter.
+
+It writes the same `current.json` / `live.json` / `sets/*.json` into its own
+`--dir` and then forwards them exactly as in mod mode — so the broker sees no
+difference.
+
+```sh
+python station_sender.py --source stats \
+  --broker https://r2tag-broker.jdsambasivam.workers.dev \
+  --slug tournament/your-tournament/event/your-event \
+  --station 1
+  # --dir defaults to ./matchlogger-out (the sender's own working folder)
+  # --save / --replays default to the standard %LOCALAPPDATA% paths
+  # --idle SEC  finalize an open set after this many quiet seconds (default 180)
+```
+
+**Scope:** LOCAL brackets are the validated case — both players' tags update on
+the one PC, so a single diff yields winner **and** loser. ONLINE fills the
+opponent from the replay filename (no opponent stats). Trade-offs vs. the mod:
+no frame-accurate match-start time (end times come from the replay) and
+`winsRequired` is unknown (`null`) — the operator console confirms before any
+start.gg write anyway. Tests: `python test_rivals_stats.py [save.sav]`.
+
+Runs **without a bracket**: with no `--broker`/`--slug` it just produces the
+files + scoreboard locally (nothing is forwarded).
+
+### Scoreboard
+
+A live table of the sets it detects, in two forms:
+
+- **Console** (`--source stats` in a terminal): redraws a table of
+  `Time · Tag · start.gg · Character · Score`, winner starred.
+- **GUI reporter** (double-click `rivals-station-reporter.pyw`): the same table
+  in the corner window, winner in bold, live set marked — no terminal needed.
+
+The **start.gg** column comes from `players.json` next to the script — a map of
+save-tag to start.gg tag, e.g. `{"JUGZ!": "jugeeya", "KIM": "Kimchi"}`. Without
+it that column shows `-`.
 
 ## Corner widget (optional GUI)
 
