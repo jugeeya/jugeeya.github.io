@@ -164,6 +164,36 @@ ok(len(h3.event_view(SLUG)['sets']) == 1, "state survives a hub restart")
 
 # ---- key gate --------------------------------------------------------------
 ok(h.check_key(KEY) and not h.check_key('wrong'), "shared key gate works")
+
+# ---- online / ranked games are logged but never reported -------------------
+before = len(fake.live_pushes)
+ONLINE = dict(REAL_SET, setId='ONLINE1', mode='ONLINE')
+h.handle_current(SLUG, 1, {'state': 'set_start'})
+res_live = h.handle_live(SLUG, 1, dict(ONLINE, complete=False))
+ok(len(fake.live_pushes) == before,
+   "an ONLINE set is NOT pushed to start.gg  [%s]" % res_live.get('reason'))
+ok('online' in (res_live.get('reason') or ''), "reason names the mode")
+h.handle_ingest(SLUG, 1, ONLINE)
+orec = h.get_set(SLUG, 1, 'ONLINE1')
+ok(orec is not None, "the online set is still recorded (visible in the console)")
+ok(orec.get('reportable') is False, "record flagged not reportable")
+ok(orec.get('status') == 'online', "status shows the mode  [%s]" % orec.get('status'))
+ok(orec.get('matchedStartggSetId') is None,
+   "online set is not bound to the station's bracket set")
+rep_o = h.do_report(SLUG, 1, 'ONLINE1', 24186345)
+ok(isinstance(rep_o, tuple) and rep_o[1] == 409, "reporting an online set is refused (409)")
+ok(len(fake.reports) == 1, "no extra start.gg report happened")
+
+RANKED = dict(REAL_SET, setId='RANKED1', mode='RANKED')
+h.handle_ingest(SLUG, 1, RANKED)
+ok(h.get_set(SLUG, 1, 'RANKED1').get('status') == 'ranked', "ranked labelled too")
+
+# a LOCAL set is unaffected by the new gate
+LOCAL = dict(REAL_SET, setId='LOCAL1', mode='LOCAL')
+h.handle_ingest(SLUG, 1, LOCAL)
+lrec = h.get_set(SLUG, 1, 'LOCAL1')
+ok(lrec.get('reportable') is True and lrec.get('matchedStartggSetId') == 105639152,
+   "LOCAL sets still match and stay reportable")
 bad = ss.Sender(broker=BROKER, slug=SLUG, station=9, out_dir=station_dir,
                 state_path=os.path.join(station_dir, 'state2.json'),
                 dry_run=False, key='wrong-key')

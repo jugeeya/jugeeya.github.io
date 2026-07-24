@@ -172,6 +172,16 @@ entrant, character, score, bracket round, and status. Select a set to act on it:
 Per-game scores still go to start.gg **automatically** as games finish
 (non-advancing: no winner is set), exactly as through the broker.
 
+### Online and ranked games
+
+People play the ladder at a station between tournament matches, and the stats
+save records those too. Only **LOCAL** games — two people on the same machine —
+are tournament sets. Online and ranked games are still logged and shown (greyed
+out, labelled `online` / `ranked`, with "not a bracket set" where the round
+would be), but they are never bound to the station's start.gg set, never pushed
+to the live score, and cannot be reported. Sets from the UE4SS mod carry no mode
+field and stay reportable exactly as before.
+
 Tests: `python test_matching.py` and `python test_hub.py` (the latter runs a
 real hub and drives it with the real station sender; start.gg is stubbed).
 

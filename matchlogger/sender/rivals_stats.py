@@ -135,6 +135,27 @@ def char_full(abbrev):
     return CHARACTERS.get(abbrev, abbrev)
 
 
+# EGameModeType from the save. Only LOCAL is someone playing on this machine
+# against someone else on this machine — i.e. a tournament game. ONLINE and
+# RANKED are ladder games that happen to be played at a station between
+# matches; they get logged and shown, but must never reach the bracket.
+LOCAL_MODE = 'LOCAL'
+
+
+def is_reportable(mode):
+    """True only for LOCAL sets. An unknown/missing mode is treated as
+    reportable so sets recorded by the UE4SS mod (which has no mode field)
+    keep working exactly as before."""
+    return mode is None or str(mode).upper() == LOCAL_MODE
+
+
+def mode_label(mode):
+    """Short human label for the console: '' for local, else 'online'/'ranked'."""
+    if not mode or str(mode).upper() == LOCAL_MODE:
+        return ''
+    return str(mode).lower()
+
+
 def format_set_rows(snapshot, aliases=None):
     """Flatten a machine snapshot into display rows (one per player), shared by
     the console scoreboard and the GUI table. Chronological; live set last.
@@ -149,6 +170,7 @@ def format_set_rows(snapshot, aliases=None):
         for i, p in enumerate(s['players']):
             rows.append({
                 'startEpoch': s['startEpoch'], 'first': i == 0, 'complete': s['complete'],
+                'mode': s.get('mode'), 'reportable': is_reportable(s.get('mode')),
                 'tag': p['tag'], 'gg': aliases.get(p['tag'], ''),
                 'char': char_full(p['char']), 'wins': p['wins'], 'won': p.get('won', False),
             })
@@ -228,6 +250,11 @@ def to_game_result(buckets):
     losers = side(lambda d: d.get('LossesByCharacter', 0) > 0)
     if not winners and not losers:
         return None
+    # A 1v1 moves exactly one winner and one loser. Anything wider is the game
+    # rewriting several tags' stats at once (a cloud sync / bulk save), not a
+    # match — recording it invents a "set" with a dozen players in it.
+    if len(winners) > 1 or len(losers) > 1:
+        return None
     mode = (winners or losers)[0]['mode']
     return {'mode': mode, 'winners': winners, 'losers': losers}
 
@@ -287,7 +314,7 @@ class _SetMachine:
         for p in players:
             p['won'] = (p['wins'] == top and top > 0 and unique)
         return {'startEpoch': s['startEpoch'], 'complete': complete,
-                'games': len(s['matches']), 'players': players}
+                'mode': s.get('mode'), 'games': len(s['matches']), 'players': players}
 
     def snapshot(self):
         live = self._summ(self.set, False) if self.set and self.set['matches'] else None
@@ -313,7 +340,8 @@ class _SetMachine:
 
     def _start(self, at):
         self.set = {'id': _stamp_of(at), 'startEpoch': at, 'startIso': _iso_of(at),
-                    'firstMatchStartIso': None, 'matches': [], 'winsByName': {}}
+                    'firstMatchStartIso': None, 'matches': [], 'winsByName': {},
+                    'mode': None}
 
     def _players(self, result, replay):
         # Characters leave here as full names ("Clairen"), never save codes
@@ -352,6 +380,11 @@ class _SetMachine:
             self.finalize(True, at)
         if not self.set:
             self._start(end_epoch)
+        # LOCAL / ONLINE / RANKED, straight from the save. Only LOCAL is a
+        # tournament game; the rest are shown but never reported (a ranked
+        # ladder game must not touch the bracket set at this station).
+        if result.get('mode'):
+            self.set['mode'] = result['mode']
 
         players = self._players(result, replay)
         winner = next((p for p in players if p['won']), None)
@@ -366,7 +399,8 @@ class _SetMachine:
             match_players.append(row)
         record = {'index': len(self.set['matches']) + 1, 'startTime': None, 'startEpoch': None,
                   'endTime': _iso_of(end_epoch), 'endEpoch': end_epoch, 'durationSeconds': None,
-                  'playerCount': len(match_players), 'gameNumber': game_num, 'players': match_players}
+                  'playerCount': len(match_players), 'gameNumber': game_num,
+                  'mode': result.get('mode'), 'players': match_players}
         if not self.set['firstMatchStartIso']:
             self.set['firstMatchStartIso'] = record['endTime']
         self.set['matches'].append(record)
@@ -375,7 +409,9 @@ class _SetMachine:
         standings = [{'slot': p['slot'], 'name': p['name'], 'character': p['character'], 'wins': p['wins']}
                      for p in match_players]
         self.live({'setId': self.set['id'], 'complete': False, 'winsRequired': None,
-                   'matchCount': len(self.set['matches']), 'players': standings, 'matches': self.set['matches']})
+                   'mode': self.set.get('mode'),
+                   'matchCount': len(self.set['matches']), 'players': standings,
+                   'matches': self.set['matches']})
         self.current({'state': 'set_open', 'epoch': end_epoch, 'setId': self.set['id'],
                       'matchCount': len(self.set['matches'])})
         self.log('game %s | %s -> %s wins [%s]' % (
@@ -401,7 +437,8 @@ class _SetMachine:
                   'firstMatchStartTime': self.set['firstMatchStartIso'],
                   'endTime': _iso_of(at), 'endEpoch': at,
                   'durationSeconds': (at - self.set['startEpoch']) if self.set['startEpoch'] else None,
-                  'winsRequired': None, 'matchCount': len(self.set['matches']),
+                  'winsRequired': None, 'mode': self.set.get('mode'),
+                  'matchCount': len(self.set['matches']),
                   'winnerSlot': winner['slot'] if winner else None,
                   'winnerName': winner['name'] if winner else None,
                   'winnerCharacter': winner['character'] if winner else None,

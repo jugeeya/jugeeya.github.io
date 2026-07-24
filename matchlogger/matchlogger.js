@@ -115,12 +115,19 @@ function renderSets(sets) {
     const s = r.set || {};
     const score = (s.players || []).map((p) => p.wins).filter((w) => w != null).join('–');
     const conf = r.confidence || 'none';
-    const winnerCell = r.candidateWinnerEntrantId
-      ? `<span class="conf ${esc(conf)}" title="match confidence: ${esc(conf)}">${esc(entrantName(r))}</span>`
-      : `<span class="conf none">unmatched</span>`;
+    // Online/ranked ladder games get played at stations between matches. They
+    // are recorded and shown, but they are not that station's bracket set, so
+    // they can never be reported.
+    const reportable = r.reportable !== false;
+    const modeName = reportable ? '' : (r.mode ? String(r.mode).toLowerCase() : 'non-local');
+    const winnerCell = !reportable
+      ? `<span class="conf none" title="a ${esc(modeName)} game played at this station — not part of the bracket">not a bracket set</span>`
+      : r.candidateWinnerEntrantId
+        ? `<span class="conf ${esc(conf)}" title="match confidence: ${esc(conf)}">${esc(entrantName(r))}</span>`
+        : `<span class="conf none">unmatched</span>`;
     const status = r.status || 'recorded';
     const key = `${esc(r.station)}:${esc(r.id)}`;
-    const canPick = r.matchedStartggSetId && (r.entrants || []).length;
+    const canPick = reportable && r.matchedStartggSetId && (r.entrants || []).length;
     let action;
     if (status === 'reported') {
       // Wrong auto-match confirmed? Switch winner re-opens the same picker and
@@ -131,7 +138,10 @@ function renderSets(sets) {
     } else if (canPick) {
       action = `<button class="secondary report-btn" data-key="${key}">Report</button>`;
     } else {
-      action = `<button class="secondary report-btn" disabled title="${r.matchedStartggSetId ? 'no entrants to pick from' : 'not matched to a start.gg set'}">Report</button>`;
+      const why = !reportable
+        ? `${modeName} game — logged for reference, but it can't be reported to the bracket`
+        : (r.matchedStartggSetId ? 'no entrants to pick from' : 'not matched to a start.gg set');
+      action = `<button class="secondary report-btn" disabled title="${esc(why)}">Report</button>`;
     }
     if (canPick && status !== 'reported') {
       // Station guessed who's who backwards? Swap flips the player↔entrant
@@ -147,7 +157,8 @@ function renderSets(sets) {
         <td class="time-cell">${esc(clock(s.endEpoch || r.ingestedAt))}</td>
         <td>${playersLabel(s.players, s.winnerName)}</td>
         <td class="score">${esc(score || '—')}</td>
-        <td>${esc(r.fullRoundText || '—')}</td>
+        <td>${reportable ? esc(r.fullRoundText || '—')
+                          : `<span class="muted">${esc(modeName)} match</span>`}</td>
         <td>${winnerCell}</td>
         <td><span class="pill ${esc(status)}">${esc(status)}</span></td>
         <td class="action-cell">${action}</td>
@@ -376,6 +387,12 @@ function loadDemo() {
       candidateWinnerEntrantId: 'E1', confidence: 'high', status: 'matched',
       set: { endEpoch: now - 300, winnerName: 'Alice', winnerCharacter: 'clairen',
              players: [{ name: 'Alice', character: 'clairen', wins: 3 }, { name: 'Bob', character: 'zetterburn', wins: 1 }] } },
+    { id: 'demoRanked', station: 3, ingestedAt: now - 200, matchedStartggSetId: null,
+      fullRoundText: null, entrants: null, candidateWinnerEntrantId: null, confidence: 'none',
+      status: 'ranked', mode: 'RANKED', reportable: false,
+      set: { endEpoch: now - 200, winnerName: 'Alice', winnerCharacter: 'fleet', mode: 'RANKED',
+             players: [{ name: 'Alice', character: 'fleet', wins: 2 },
+                       { name: 'ladder_opponent', character: 'orcane', wins: 1 }] } },
     { id: 'demo2', station: 5, ingestedAt: now - 120, matchedStartggSetId: null, fullRoundText: null,
       entrants: null, candidateWinnerEntrantId: null, confidence: 'none', status: 'recorded',
       set: { endEpoch: now - 120, winnerName: 'Cara', winnerCharacter: 'maypul',

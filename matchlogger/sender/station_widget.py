@@ -342,6 +342,8 @@ class Widget:
         self.tree.tag_configure("win", font=("TkDefaultFont", 9, "bold"))
         self.tree.tag_configure("live", foreground="#3b7fd0")
         self.tree.tag_configure("reported", foreground="#2e7d4f")
+        # online/ranked: shown, but greyed out — they can't touch the bracket.
+        self.tree.tag_configure("notreportable", foreground="#999")
         self.tree.grid(row=0, column=0, sticky="we")
         self._apply_columns()
         self._empty_note = ttk.Label(sets_frame, text="waiting for a game…",
@@ -435,6 +437,11 @@ class Widget:
         rec = self._selected_rec()
         if not rec or not self.hub:
             return
+        if not rec.get("reportable", True):
+            self._set_status(
+                f"{rivals_stats.mode_label(rec.get('mode')) or 'non-local'} game — "
+                f"logged for reference, but it can't be reported to the bracket", True)
+            return
         entrants = rec.get("entrants") or []
         if len(entrants) < 2:
             self._set_status("no start.gg entrants to pick from", True)
@@ -468,6 +475,9 @@ class Widget:
         re-push the corrected live score."""
         rec = self._selected_rec()
         if not rec or not self.hub:
+            return
+        if not rec.get("reportable", True):
+            self._set_status("that game isn't tied to a bracket set — nothing to swap", True)
             return
         res = self.hub.do_swap(self.cfg.get("slug") or "", rec["station"], rec["id"])
         if isinstance(res, tuple):
@@ -512,14 +522,21 @@ class Widget:
         for grp in reversed(groups):
             head = time.strftime("%H:%M", time.localtime(grp[0]["startEpoch"]))
             live = not grp[0]["complete"]
+            reportable = grp[0].get("reportable", True)
+            label = rivals_stats.mode_label(grp[0].get("mode"))
             for i, r in enumerate(grp):
                 tags = []
-                if r["won"]:
-                    tags.append("win")
-                if live:
-                    tags.append("live")
+                if not reportable:
+                    tags.append("notreportable")
+                else:
+                    if r["won"]:
+                        tags.append("win")
+                    if live:
+                        tags.append("live")
+                # Mark online/ranked so it's obvious why it won't be reported.
+                marker = "  ●" if (live and reportable) else ("  " + label if label else "")
                 self.tree.insert("", "end",
-                    text=(head + ("  ●" if live else "") if i == 0 else ""),
+                    text=(head + marker if i == 0 else ""),
                     values=("", r["tag"], r["gg"] or "—", r["char"], r["wins"], "", ""),
                     tags=tuple(tags))
 
@@ -539,6 +556,7 @@ class Widget:
             players = sorted(st.get("players") or [],
                              key=lambda p: (p.get("slot") is None, p.get("slot")))
             status = rec.get("status") or "recorded"
+            reportable = rec.get("reportable", True)
             head = time.strftime("%H:%M", time.localtime(st.get("endEpoch")
                                                          or rec.get("ingestedAt") or 0))
             entrants = {str(e.get("id")): e.get("name") for e in (rec.get("entrants") or [])}
@@ -548,12 +566,17 @@ class Widget:
             for i, p in enumerate(players):
                 gg = entrants.get(str(smap.get(p.get("slot"))), "") or ""
                 tags = []
-                if (p.get("wins") or 0) == top and top > 0:
-                    tags.append("win")
-                if status == "reported":
-                    tags.append("reported")
-                elif status == "live":
-                    tags.append("live")
+                if not reportable:
+                    tags.append("notreportable")
+                else:
+                    if (p.get("wins") or 0) == top and top > 0:
+                        tags.append("win")
+                    if status == "reported":
+                        tags.append("reported")
+                    elif status == "live":
+                        tags.append("live")
+                # An online/ranked game has no bracket round — say why instead.
+                round_cell = (rec.get("fullRoundText") or "—") if reportable else "not a bracket set"
                 iid = self.tree.insert(
                     "", "end",
                     text=(head + ("  ●" if status == "live" else "") if i == 0 else ""),
@@ -561,7 +584,7 @@ class Widget:
                             p.get("name") or "?", gg or "—",
                             rivals_stats.char_full(p.get("character") or ""),
                             p.get("wins") if p.get("wins") is not None else "",
-                            (rec.get("fullRoundText") or "—") if i == 0 else "",
+                            round_cell if i == 0 else "",
                             status if i == 0 else ""),
                     tags=tuple(tags))
                 self._row_recs[iid] = rec

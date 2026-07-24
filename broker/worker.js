@@ -451,17 +451,24 @@ async function handleIngest(kv, env, slug, station, set, cors) {
     if (other) candidateWinnerEntrantId = other.id;
   }
 
+  // An online/ranked game played at a station is not that station's bracket
+  // set — don't let it borrow the match, or the console would offer to report
+  // a ladder game onto the bracket.
+  const reportable = isReportableMode(set.mode);
   const record = {
     id: setId,
     station,
     ingestedAt: nowSec(),
     set: summarizeSet(set),
-    matchedStartggSetId: matchedSetId,
-    fullRoundText: fullRoundText || null,
-    entrants: entrants || null,
-    candidateWinnerEntrantId,
-    confidence,
-    status: matchedSetId ? 'matched' : 'recorded',
+    matchedStartggSetId: reportable ? matchedSetId : null,
+    fullRoundText: reportable ? (fullRoundText || null) : null,
+    entrants: reportable ? (entrants || null) : null,
+    candidateWinnerEntrantId: reportable ? candidateWinnerEntrantId : null,
+    confidence: reportable ? confidence : 'none',
+    mode: set.mode ?? null,
+    reportable,
+    status: reportable ? (matchedSetId ? 'matched' : 'recorded')
+                       : (modeLabel(set.mode) || 'not reportable'),
   };
   if (swap) record.swap = true;
 
@@ -509,10 +516,15 @@ async function handleLive(kv, env, slug, station, set, cors) {
   // already did to this set (a tag swap, or an early report).
   let prev = null;
   try { prev = JSON.parse(await kv.get(setKey(slug, station, setId))); } catch { /* new set */ }
+  const liveReportable = isReportableMode(set.mode);
   const rec = {
     id: setId, station, ingestedAt: nowSec(), set: summarizeSet(set),
-    matchedStartggSetId: matchedSetId, fullRoundText: fullRoundText || null,
-    entrants: entrants || null, status: 'live',
+    matchedStartggSetId: liveReportable ? matchedSetId : null,
+    fullRoundText: liveReportable ? (fullRoundText || null) : null,
+    entrants: liveReportable ? (entrants || null) : null,
+    mode: set.mode ?? null,
+    reportable: liveReportable,
+    status: liveReportable ? 'live' : (modeLabel(set.mode) || 'not reportable'),
   };
   if (prev && prev.swap) rec.swap = true;
   if (prev && prev.status === 'reported') {
@@ -527,7 +539,8 @@ async function handleLive(kv, env, slug, station, set, cors) {
 
   // Push the live score to start.gg (best effort — never fail the station's call).
   let live = false, reason = null, games = 0;
-  if (!env.STARTGG_TOKEN) reason = 'no start.gg token';
+  if (!liveReportable) reason = `${modeLabel(set.mode) || 'non-local'} game — logged, not reported`;
+  else if (!env.STARTGG_TOKEN) reason = 'no start.gg token';
   else if (!matchedSetId) reason = 'no matched start.gg set';
   else {
     const tagMap = await getTagNameMap(kv).catch(() => ({}));
@@ -605,6 +618,9 @@ async function handleReport(kv, env, slug, body, cors) {
   if (!raw) return json({ error: 'Set not found.' }, 404, cors);
   let rec;
   try { rec = JSON.parse(raw); } catch { return json({ error: 'Corrupt set record.' }, 500, cors); }
+  if (rec.reportable === false)
+    return json({ error: `This is a ${modeLabel(rec.mode) || 'non-local'} game, not a tournament `
+                        + `set — it cannot be reported to the bracket.` }, 409, cors);
   if (!rec.matchedStartggSetId)
     return json({ error: 'This set is not matched to a start.gg set.' }, 409, cors);
   // start.gg entrant ids come back as numbers; the client sends a string —
@@ -673,7 +689,7 @@ async function handleSwap(kv, env, slug, body, cors) {
   await bumpVer(kv, slug);
 
   let repushed = false;
-  if (env.STARTGG_TOKEN && rec.matchedStartggSetId) {
+  if (env.STARTGG_TOKEN && rec.matchedStartggSetId && rec.reportable !== false) {
     try {
       const tagMap = await getTagNameMap(kv).catch(() => ({}));
       const slotMap = mapSlotsToEntrants(rec, null, tagMap);
@@ -759,6 +775,14 @@ function gameDataFromGames(games, slotToEntrant, charMap) {
 }
 
 const normChar = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+// EGameModeType from the stats save. Only LOCAL is two people playing on the
+// same machine — a tournament game. ONLINE/RANKED ladder games get played at
+// stations between matches; they're recorded and shown, but must never touch
+// the bracket. A missing mode means the UE4SS mod (which has no mode field)
+// wrote it, so it stays reportable exactly as before.
+const isReportableMode = (mode) => mode == null || String(mode).toUpperCase() === 'LOCAL';
+const modeLabel = (mode) => (isReportableMode(mode) ? '' : String(mode).toLowerCase());
 
 // Character id lookup: exact normalized name, else a unique-prefix match —
 // the save file / replays store characters as 3-letter codes ("Cla"), while
@@ -951,6 +975,7 @@ function summarizeSet(set) {
     endEpoch: set.endEpoch ?? null,
     durationSeconds: set.durationSeconds ?? null,
     winsRequired: set.winsRequired ?? null,
+    mode: set.mode ?? null,          // LOCAL | ONLINE | RANKED (stats source only)
     matchCount: set.matchCount ?? (Array.isArray(set.matches) ? set.matches.length : null),
     winnerSlot: set.winnerSlot ?? null,
     winnerName: set.winnerName ?? null,

@@ -32,6 +32,7 @@ import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 import matching
+from rivals_stats import is_reportable, mode_label
 from startgg import Startgg, StartggError
 
 DEFAULT_PORT = 8787
@@ -156,6 +157,7 @@ class Hub:
         if not sg:
             sg = self._bind_station_set(slug, station)
         summary = matching.summarize_set(st)
+        summary['mode'] = st.get('mode')
         key = self._sid(station, st.get('setId'))
         prev = self._set_bucket(slug).get(key) or {}
         cand, conf = matching.match_winner(summary, (sg or {}).get('entrants'), self.tag_map)
@@ -168,7 +170,17 @@ class Hub:
             'candidateWinnerEntrantId': cand, 'confidence': conf,
             'status': status if not prev.get('status') == 'reported' else 'reported',
             'swap': prev.get('swap', False),
+            'mode': st.get('mode'),
+            'reportable': is_reportable(st.get('mode')),
         }
+        # An online/ranked game played at a station is not this station's
+        # bracket set — don't let it borrow the match, or the console offers to
+        # report a ladder game onto the bracket.
+        if not rec['reportable']:
+            rec['matchedStartggSetId'] = None
+            rec['candidateWinnerEntrantId'] = None
+            rec['confidence'] = 'none'
+            rec['status'] = mode_label(st.get('mode')) or 'not reportable'
         # Preserve anything the operator already decided.
         for k in ('reportedAt', 'reportedWinnerEntrantId', 'reportedGames', 'reportedBy'):
             if k in prev:
@@ -186,13 +198,16 @@ class Hub:
             return {'error': 'Missing set.'}, 400
         with self._lock:
             key, rec = self._record_for(slug, station, st, 'live')
-            if rec.get('status') != 'reported':
+            # Don't clobber the mode label _record_for set for online/ranked.
+            if rec.get('status') != 'reported' and rec.get('reportable', True):
                 rec['status'] = 'live'
             self._set_bucket(slug)[key] = rec
             self._touch()
 
         live, games, reason = False, 0, None
-        if not self.startgg.enabled:
+        if not rec.get('reportable', True):
+            reason = '%s game — logged, not reported' % (mode_label(rec.get('mode')) or 'non-local')
+        elif not self.startgg.enabled:
             reason = 'no start.gg token'
         elif not rec.get('matchedStartggSetId'):
             reason = 'no matched start.gg set'
@@ -225,7 +240,7 @@ class Hub:
             return {'error': 'Missing set.'}, 400
         with self._lock:
             key, rec = self._record_for(slug, station, st, 'recorded')
-            if rec.get('status') != 'reported':
+            if rec.get('status') != 'reported' and rec.get('reportable', True):
                 rec['status'] = 'matched' if rec.get('matchedStartggSetId') else 'recorded'
             self._set_bucket(slug)[key] = rec
             self._touch()
@@ -260,6 +275,10 @@ class Hub:
         rec = self.get_set(slug, station, set_id)
         if not rec:
             return {'error': 'Set not found.'}, 404
+        if not rec.get('reportable', True):
+            return {'error': 'This is a %s game, not a tournament set — it cannot be '
+                             'reported to the bracket.' % (mode_label(rec.get('mode'))
+                                                           or 'non-local')}, 409
         if not rec.get('matchedStartggSetId'):
             return {'error': 'This set is not matched to a start.gg set.'}, 409
         if not self.startgg.enabled:
@@ -312,7 +331,7 @@ class Hub:
                     rec['candidateWinnerEntrantId'] = other.get('id')
             self._touch()
         repushed = False
-        if self.startgg.enabled and rec.get('matchedStartggSetId'):
+        if self.startgg.enabled and rec.get('matchedStartggSetId') and rec.get('reportable', True):
             try:
                 slot_map = matching.map_slots_to_entrants(rec, None, self.tag_map)
                 if slot_map:
