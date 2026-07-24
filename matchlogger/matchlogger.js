@@ -108,7 +108,8 @@ function renderSets(sets) {
   }
 
   body.innerHTML = rows.map((r) => {
-    setsById[`${r.station}:${r.id}`] = r;
+    // Same string the buttons carry in data-key (esc() maps undefined to '').
+    setsById[`${esc(r.station)}:${esc(r.id)}`] = r;
     const s = r.set || {};
     const score = (s.players || []).map((p) => p.wins).filter((w) => w != null).join('–');
     const conf = r.confidence || 'none';
@@ -116,15 +117,28 @@ function renderSets(sets) {
       ? `<span class="conf ${esc(conf)}" title="match confidence: ${esc(conf)}">${esc(entrantName(r))}</span>`
       : `<span class="conf none">unmatched</span>`;
     const status = r.status || 'recorded';
-    const canReport = r.matchedStartggSetId && (r.entrants || []).length && status !== 'reported';
+    const key = `${esc(r.station)}:${esc(r.id)}`;
+    const canPick = r.matchedStartggSetId && (r.entrants || []).length;
     let action;
     if (status === 'reported') {
-      action = `<span class="conf high">✓ reported</span>`;
-    } else if (canReport) {
-      action = `<button class="secondary report-btn" data-key="${esc(r.station)}:${esc(r.id)}">Report</button>`;
+      // Wrong auto-match confirmed? Switch winner re-opens the same picker and
+      // re-reports (the broker resets the start.gg set first).
+      action = `<span class="conf high">✓ reported</span>` + (canPick
+        ? ` <button class="secondary report-btn" data-key="${key}">Switch winner</button>`
+        : '');
+    } else if (canPick) {
+      action = `<button class="secondary report-btn" data-key="${key}">Report</button>`;
     } else {
       action = `<button class="secondary report-btn" disabled title="${r.matchedStartggSetId ? 'no entrants to pick from' : 'not matched to a start.gg set'}">Report</button>`;
     }
+    if (canPick && status !== 'reported') {
+      // Station guessed who's who backwards? Swap flips the player↔entrant
+      // mapping — characters and the live score follow on start.gg.
+      action += ` <button class="linkish swap-btn${r.swap ? ' swapped' : ''}" data-key="${key}"
+        title="Swap which player is which start.gg entrant (characters and live score flip too)${r.swap ? ' — currently swapped' : ''}">⇄</button>`;
+    }
+    action += ` <button class="linkish del-btn" data-key="${key}"
+      title="Delete this set from the console (start.gg is untouched)">✕</button>`;
     return `
       <tr>
         <td class="stn-cell">${esc(r.station)}</td>
@@ -151,15 +165,19 @@ function openPicker(cell, rec) {
   }
   pickerOpen = true;
   cell._rec = rec; // the element persists across the innerHTML swap
-  const btns = (rec.entrants || []).map((e) =>
-    `<button class="secondary pick-entrant" data-entrant="${esc(e.id)}">${esc(e.name || 'entrant')}</button>`).join(' ');
+  const btns = (rec.entrants || []).map((e) => {
+    const current = rec.reportedWinnerEntrantId && String(e.id) === String(rec.reportedWinnerEntrantId);
+    return `<button class="secondary pick-entrant" data-entrant="${esc(e.id)}"
+      ${current ? 'title="currently reported winner"' : ''}>${esc(e.name || 'entrant')}${current ? ' ✓' : ''}</button>`;
+  }).join(' ');
   cell.innerHTML = `<span class="report-pick">win: ${btns}
     <button class="linkish pick-cancel" title="cancel">✕</button></span>`;
 }
 
 async function doReport(rec, winnerEntrantId) {
   pickerOpen = false; // we're committing → let the next render refresh the row
-  setStatus('Reporting…');
+  const switching = rec.status === 'reported';
+  setStatus(switching ? 'Switching winner…' : 'Reporting…');
   try {
     const res = await fetch(`${brokerUrl()}/matchlogger/report`, {
       method: 'POST',
@@ -174,7 +192,7 @@ async function doReport(rec, winnerEntrantId) {
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
-    setStatus('Reported to start.gg.', 'success');
+    setStatus(switching ? 'Winner switched on start.gg.' : 'Reported to start.gg.', 'success');
     refresh();
   } catch (e) {
     setStatus(`Report failed: ${e.message}`, 'error');
@@ -182,7 +200,82 @@ async function doReport(rec, winnerEntrantId) {
   }
 }
 
+// Delete only removes the record from the broker's view (a duplicate, a
+// hand-warmer, a test set) — anything already reported on start.gg stays.
+async function doDelete(rec) {
+  if (!$('passcodeInput').value.trim()) {
+    setStatus('Enter the operator passcode first (top of the page).', 'error');
+    $('passcodeInput').focus();
+    return;
+  }
+  const s = rec.set || {};
+  const who = (s.players || []).map((p) => p.name).filter(Boolean).join(' vs ') || `set ${rec.id}`;
+  if (!window.confirm(`Delete ${who} (station ${rec.station}) from the console?\nstart.gg is untouched.`)) return;
+  setStatus('Deleting…');
+  try {
+    const res = await fetch(`${brokerUrl()}/matchlogger/delete`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        slug: parseEventSlug($('eventInput').value),
+        station: rec.station,
+        setId: rec.id,
+        passcode: $('passcodeInput').value,
+      }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+    setStatus('Set deleted.', 'success');
+    refresh();
+  } catch (e) {
+    setStatus(`Delete failed: ${e.message}`, 'error');
+  }
+}
+
+// Flip a set's player↔entrant mapping on the broker; it re-pushes the
+// corrected live score to start.gg immediately.
+async function doSwap(rec) {
+  if (!$('passcodeInput').value.trim()) {
+    setStatus('Enter the operator passcode first (top of the page).', 'error');
+    $('passcodeInput').focus();
+    return;
+  }
+  setStatus('Swapping tags…');
+  try {
+    const res = await fetch(`${brokerUrl()}/matchlogger/swap`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        slug: parseEventSlug($('eventInput').value),
+        station: rec.station,
+        setId: rec.id,
+        passcode: $('passcodeInput').value,
+      }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+    setStatus(data.repushed
+      ? 'Tags swapped — live score corrected on start.gg.'
+      : 'Tags swapped.', 'success');
+    refresh();
+  } catch (e) {
+    setStatus(`Swap failed: ${e.message}`, 'error');
+  }
+}
+
 function onSetsClick(ev) {
+  const swapBtn = ev.target.closest('.swap-btn');
+  if (swapBtn) {
+    const rec = setsById[swapBtn.dataset.key];
+    if (rec) doSwap(rec);
+    return;
+  }
+  const delBtn = ev.target.closest('.del-btn');
+  if (delBtn) {
+    const rec = setsById[delBtn.dataset.key];
+    if (rec) doDelete(rec);
+    return;
+  }
   const reportBtn = ev.target.closest('.report-btn');
   if (reportBtn && !reportBtn.disabled) {
     const rec = setsById[reportBtn.dataset.key];
@@ -249,15 +342,21 @@ function loadDemo() {
     5: { current: { state: 'idle' }, updatedAt: now - 240, startgg: null },
   });
   renderSets([
-    { station: 3, ingestedAt: now - 300, matchedStartggSetId: '111', fullRoundText: 'Winners Round 1',
+    { id: 'demo1', station: 3, ingestedAt: now - 300, matchedStartggSetId: '111', fullRoundText: 'Winners Round 1',
       entrants: [{ id: 'E1', name: 'Alice' }, { id: 'E2', name: 'Bob' }],
       candidateWinnerEntrantId: 'E1', confidence: 'high', status: 'matched',
       set: { endEpoch: now - 300, winnerName: 'Alice', winnerCharacter: 'clairen',
              players: [{ name: 'Alice', character: 'clairen', wins: 3 }, { name: 'Bob', character: 'zetterburn', wins: 1 }] } },
-    { station: 5, ingestedAt: now - 120, matchedStartggSetId: null, fullRoundText: null,
+    { id: 'demo2', station: 5, ingestedAt: now - 120, matchedStartggSetId: null, fullRoundText: null,
       entrants: null, candidateWinnerEntrantId: null, confidence: 'none', status: 'recorded',
       set: { endEpoch: now - 120, winnerName: 'Cara', winnerCharacter: 'maypul',
              players: [{ name: 'Cara', character: 'maypul', wins: 3 }, { name: 'Dan', character: 'fleet', wins: 2 }] } },
+    { id: 'demo0', station: 3, ingestedAt: now - 900, matchedStartggSetId: '110', fullRoundText: 'Winners Round 1',
+      entrants: [{ id: 'E3', name: 'Eve' }, { id: 'E4', name: 'Finn' }],
+      candidateWinnerEntrantId: 'E3', confidence: 'high', status: 'reported',
+      reportedWinnerEntrantId: 'E3',
+      set: { endEpoch: now - 900, winnerName: 'Eve', winnerCharacter: 'ranno',
+             players: [{ name: 'Eve', character: 'ranno', wins: 3 }, { name: 'Finn', character: 'kragg', wins: 0 }] } },
   ]);
   setStatus('Showing demo data (not live).', 'success');
 }
@@ -266,57 +365,43 @@ function loadDemo() {
 // One modal, content swapped per role — same pattern as the tags page's
 // guided save-file modal (open/close, Escape, backdrop click).
 const INSTALL = {
-  mod: {
-    title: 'Game PC — install the MatchLogger mod',
-    steps: `
-      <li>Get a current <strong>experimental</strong> release of
-        <a href="https://github.com/UE4SS-RE/RE-UE4SS/releases" target="_blank" rel="noopener">RE-UE4SS</a>
-        (Rivals 2 is UE5; the old stable release predates UE5.3+ support) and
-        extract it into <code>Rivals2/Binaries/Win64/</code> — the game's own folder.
-        You'll end up with a loose <code>dwmapi.dll</code> next to the game exe and
-        a <code>ue4ss/</code> folder beside it.</li>
-      <li>Download the MatchLogger package below and extract it <strong>into that
-        <code>ue4ss/</code> folder</strong>, merging/overwriting
-        <code>UE4SS-settings.ini</code>, <code>Mods/mods.txt</code>, and
-        <code>Mods/mods.json</code>, and adding <code>Mods/MatchLogger/</code>.</li>
-      <li>Delete any <code>enabled.txt</code> file inside other <code>Mods/&lt;Name&gt;/</code>
-        folders — it force-enables that mod regardless of <code>mods.txt</code>.</li>
-      <li>Launch the game <strong>without Easy Anti-Cheat</strong> (offline/local play
-        only — UE4SS can't inject otherwise).</li>
-      <li>To disable everything later: delete <code>dwmapi.dll</code>. To reinstall:
-        put it back.</li>`,
-    download: { href: 'dist/matchlogger-mod.zip', label: 'Download MatchLogger mod (.zip)' },
-    note: 'Full details, why each setting is off, and a lag-bisection guide: <a href="ue4ss/README.md">ue4ss/README.md</a>.',
-  },
   sender: {
-    title: 'Station PC — install the sender',
+    title: 'Rivals Station Reporter — install on every station PC',
     steps: `
       <li>Needs <strong>Python 3.8+</strong> installed on this machine.</li>
-      <li>Download the sender package below and extract it anywhere (e.g. a
-        <code>MatchLoggerSender</code> folder on the Desktop).</li>
-      <li>Copy <code>config.example.json</code> to <code>config.json</code> and fill in
-        the broker URL, this event's start.gg slug, <strong>this station's number</strong>,
-        and <code>dir</code> — the path to the <code>MatchLogger</code> output folder next
-        to the game exe (e.g. <code>…/Rivals2/Binaries/Win64/MatchLogger</code>).</li>
-      <li>Run the corner widget:
-        <code>python station_widget.py --config config.json</code>
-        (or <code>station_sender.py</code> for no window at all — that's all stations
-        2..N need, since nobody operates them directly).</li>
+      <li>Download the package below and extract it anywhere (e.g. a
+        <code>RivalsStationReporter</code> folder on the Desktop) — it unpacks to one
+        launcher plus an <code>_internal</code> folder holding everything else, so
+        there's nothing else to hunt for.</li>
+      <li>Double-click <code>rivals-station-reporter.pyw</code> — no terminal window
+        opens; the widget's <strong>Log</strong> panel shows what the sender is doing
+        instead. (Elsewhere: <code>python rivals-station-reporter.pyw</code> works the
+        same from a terminal. For a scheduled task with no window at all, run
+        <code>station_sender.py</code> from inside <code>_internal/</code> directly.)</li>
+      <li>First run, the widget opens its <strong>Settings</strong> panel: fill in the
+        broker URL, this event's start.gg slug, <strong>this station's number</strong>,
+        the <code>MatchLogger</code> output folder next to the game exe (e.g.
+        <code>…/Rivals2/Binaries/Win64/MatchLogger</code>), and the <strong>shared
+        key</strong> (get this from whoever set up the event — it's required, not
+        optional), then hit Save — it's stored for next launch, no config file
+        editing needed.</li>
       <li>Closing the widget sends it to the system tray — it keeps running. Right-click
         the tray icon to reopen or quit it.</li>`,
-    download: { href: 'dist/station-sender.zip', label: 'Download station sender (.zip)' },
+    download: { href: 'dist/rivals-station-reporter.zip', label: 'Download Rivals Station Reporter (.zip)' },
     note: 'Flags, the tray dependency (<code>pip install pystray pillow</code>), and what it does/doesn\'t touch: <a href="sender/README.md">sender/README.md</a>.',
   },
   operator: {
-    title: 'Operator — nothing to install',
+    title: 'This console — nothing to install',
     steps: `
-      <li>Just keep this page open — on a laptop, the stream PC, or a phone. There's
-        no download; it talks straight to the broker.</li>
+      <li>This page is optional — the event runs fine without it. Run the bracket on
+        start.gg as usual, and open this anywhere (laptop, stream PC, phone) when you
+        want to check what the stations are sending.</li>
       <li>Get the <strong>event slug</strong> (the start.gg URL) and enter it above,
-        then <strong>Connect</strong>.</li>
-      <li>Only if you plan to report results: get the <strong>operator passcode</strong>
-        from whoever set up the broker, and enter it above. Viewing never needs it —
-        only the Report button does.</li>
+        then <strong>Connect</strong>. There's no download; it talks straight to the
+        broker.</li>
+      <li>Only if you plan to report results from here instead of start.gg: get the
+        <strong>operator passcode</strong> from whoever set up the broker, and enter it
+        above. Viewing never needs it — only the Report button does.</li>
       <li>Bookmark the page, or use your browser's "Add to Home Screen" for a
         one-tap launch during the event.</li>`,
   },

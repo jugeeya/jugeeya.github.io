@@ -39,11 +39,12 @@ try:
 except Exception:
     HAVE_TRAY = False
 
-POLL_SEC = 1.0
+POLL_SEC = 2.0
 LOG_LINES = 200
 DEFAULT_BROKER = "https://r2tag-broker.jdsambasivam.workers.dev"
 
-# Capture the sender's log lines for the status row and the Log panel.
+# Capture the sender's log lines for the status row and the Log panel
+# (non-invasive: the core stays a plain module).
 _last = {"msg": "starting…", "t": time.time(), "error": False}
 _log = collections.deque(maxlen=LOG_LINES)
 _log_count = 0

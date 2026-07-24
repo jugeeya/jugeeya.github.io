@@ -24,7 +24,8 @@
 
         <header>
             <h1>MatchLogger Console</h1>
-            <p class="subtitle">Live per-station set results across a tournament</p>
+            <p class="subtitle">A live debug view of every station's sets — the bracket itself runs on
+                start.gg</p>
         </header>
 
         <main>
@@ -32,24 +33,19 @@
                 <div class="panel-head">
                     <h3>Install</h3>
                 </div>
-                <p class="step-help">Three roles, three setups. Pick the one that matches this machine.</p>
+                <p class="step-help">Every station PC runs the sender widget. This console is
+                    optional — open it anywhere you want to check on things.</p>
                 <div class="install-grid">
                     <div class="install-card">
-                        <span class="material-symbols-outlined install-icon">stadia_controller</span>
-                        <h4>Game PC</h4>
-                        <p>Runs Rivals 2 + the MatchLogger mod under UE4SS.</p>
-                        <button type="button" class="secondary" data-install="mod">Install instructions</button>
-                    </div>
-                    <div class="install-card">
                         <span class="material-symbols-outlined install-icon">sensors</span>
-                        <h4>Station PC</h4>
-                        <p>Watches the mod's output and reports it to the broker. Same machine as above, or a second PC on the same network share.</p>
+                        <h4>Sender widget</h4>
+                        <p>Runs on every station PC: set its station number once and it reports each set to the broker as it's played.</p>
                         <button type="button" class="secondary" data-install="sender">Install instructions</button>
                     </div>
                     <div class="install-card">
                         <span class="material-symbols-outlined install-icon">monitor</span>
-                        <h4>Operator</h4>
-                        <p>Whoever runs this console. No install — open this page in a browser.</p>
+                        <h4>This console (optional)</h4>
+                        <p>A debug view of what every station is sending. No install — open this page in a browser; run the bracket on start.gg as usual.</p>
                         <button type="button" class="secondary" data-install="operator">What do I need?</button>
                     </div>
                 </div>
@@ -67,8 +63,9 @@
                         <p id="status" class="ml-status"></p>
                     </div>
                     <div class="ml-passcode">
-                        <label for="passcodeInput">Operator passcode
-                            <span class="optional">(only needed to report results)</span></label>
+                        <label for="passcodeInput">Shared key
+                            <span class="optional">(same as the broker's OPERATOR_KEY — only needed to
+                                click Report below)</span></label>
                         <input type="password" id="passcodeInput" autocomplete="off"
                             placeholder="leave blank if you're only viewing">
                     </div>
@@ -114,9 +111,14 @@
                     </table>
                 </div>
                 <p class="ml-foot muted">
-                    Reporting needs the operator passcode above, and the broker must have
-                    start.gg write access configured. Reporting is only offered for sets
-                    matched to a start.gg set. See <a href="DESIGN.md">DESIGN.md</a>.
+                    Per-game score and characters stream to start.gg automatically as each set is
+                    played. Reporting the final winner is always a manual click here (or in
+                    Discord) — it needs the shared key above. The suggested winner is a
+                    best-effort name match; double-check it before confirming. Got it wrong?
+                    <strong>Switch winner</strong> resets the start.gg set and re-reports it.
+                    <strong>✕</strong> deletes a set from this console only — start.gg is
+                    untouched.
+                    See <a href="DESIGN.md">DESIGN.md</a>.
                 </p>
             </section>
         </main>

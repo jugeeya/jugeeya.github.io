@@ -97,6 +97,13 @@ main {
 .report-pick .pick-entrant { padding: 0.3rem 0.6rem; font-size: 0.8rem; }
 .report-pick .pick-cancel { padding: 0.2rem 0.4rem; }
 
+/* Per-row swap-tags / delete (console housekeeping) */
+.action-cell { white-space: nowrap; }
+.del-btn, .swap-btn { padding: 0.2rem 0.45rem; color: var(--md-on-surface-variant); }
+.del-btn:hover { color: var(--md-error); }
+.swap-btn:hover { color: var(--md-on-surface); }
+.swap-btn.swapped { color: var(--md-primary); }
+
 .ml-advanced {
     margin-top: 1.25rem;
     border-top: 1px solid var(--md-outline-variant);

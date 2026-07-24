@@ -1,27 +1,56 @@
-# Station sender
+# Rivals Station Reporter (station sender)
 
-Headless background process for a game PC. It watches the MatchLogger output
-folder and forwards to the broker, stamping this machine's station number:
+Background process for a game PC. It watches the MatchLogger output folder and
+forwards to the broker, stamping this machine's station number:
 
 - new `sets/*.json` → `POST /matchlogger/ingest`
 - changed `current.json` (the live heartbeat) → `POST /matchlogger/current`
+- changed `live.json` (running per-game score) → `POST /matchlogger/live`
 
-Stations 2..N run only this — there's no UI here. The operator surface (web
-console / Discord) lives elsewhere and reads the broker's aggregated view. See
-[`../DESIGN.md`](../DESIGN.md).
+**Every station PC runs one** — usually as the corner widget below, where all
+of its settings live (no config-file editing). Administration happens on
+start.gg itself;
+the [web console](../) is an optional debug view of the broker's aggregated
+state if you need to check what's flowing. See [`../DESIGN.md`](../DESIGN.md).
+
+The packaged download (`rivals-station-reporter.zip`, from the console's
+install button) unpacks to just one launcher plus an `_internal/` folder
+holding everything below — so there's only one file to find and double-click.
+This directory holds the flat source the zip is built from (see
+`.github/workflows/build-matchlogger-dist.yml`); running things directly from
+here during development works the same way, since the launcher falls back to
+importing its sibling files when there's no `_internal/` next to it.
 
 ## Requirements
 
 Python 3.8+ (standard library only — no `pip install`). On a tournament PC it
 can later be frozen to a single `.exe` with PyInstaller.
 
-## Run
+## Run — the widget (what station PCs use)
+
+- **Windows:** double-click **`rivals-station-reporter.pyw`** — no terminal
+  window opens; the widget's **Log** panel shows what would have been printed
+  there.
+- Anywhere else: `python rivals-station-reporter.pyw` (or `station_widget.py`
+  directly if you're working in this flat source folder rather than the
+  packaged zip).
+
+No config file editing needed: on first run the widget opens its **Settings**
+panel — broker URL, start.gg event slug, station number, and the MatchLogger
+output folder (with a folder picker) — and **Save** writes them to
+`config.json` next to the script, so the next launch needs nothing. See
+"Corner widget" below for the rest of what it does.
+
+## Run — headless (no window at all)
+
+For a scheduled task, or when you'd rather pass everything on the command
+line. In the packaged zip this file lives in `_internal/` — `cd` there first.
 
 ```sh
 python station_sender.py \
   --broker https://r2tag-broker.jdsambasivam.workers.dev \
   --slug   tournament/your-tournament/event/your-event \
-  --station 3 \
+  --station 3 --key "<same value as the broker's OPERATOR_KEY secret>" \
   --dir    "C:/Program Files (x86)/Steam/steamapps/common/RivalsofAether2/Rivals2/Binaries/Win64/MatchLogger"
 ```
 
@@ -31,9 +60,18 @@ Or put the stable values in a config file and pass just `--config`:
 python station_sender.py --config config.json
 ```
 
-See [`config.example.json`](config.example.json). Command-line flags override
-the config file, so the same config can be shared across stations with only
-`--station N` differing.
+See [`config.example.json`](config.example.json) — the same file the widget
+writes. Command-line flags override the config file, so the same config can be
+shared across stations with only `--station N` differing.
+
+`--key` is required — it's the same value as the broker's `OPERATOR_KEY`
+secret, not a separate one. Every set this sender submits gets its running
+per-game score pushed to start.gg automatically (no human involved), so this
+key is a real bracket-write credential, not just a submission password —
+treat it accordingly. It does **not** let this station finalize a set on its
+own: naming a winner always requires an explicit click in the console or
+Discord (see the console's report behavior below), regardless of how
+confident the match is.
 
 ### Useful flags
 
@@ -97,26 +135,32 @@ The **start.gg** column comes from `players.json` next to the script — a map o
 save-tag to start.gg tag, e.g. `{"JUGZ!": "jugeeya", "KIM": "Kimchi"}`. Without
 it that column shows `-`.
 
-## Corner widget (optional GUI)
+## Corner widget
 
-`station_widget.py` is a small always-on-top window that runs the same sender
-and lets you **set the station number** without editing the config, showing live
-status (a green/red dot + the last action). Closing it sends it to the **system
-tray** instead of quitting (the sender keeps running); the tray menu restores or
-quits it.
+`station_widget.py` is a small window that runs the same sender — a normal
+window that just spawns in the bottom-right corner of the desktop.
+It shows live status (a green/red dot + the last action) and has two
+collapsible panels:
 
-```sh
-python station_widget.py --config config.json
-```
+- **Settings** — every sender option (broker, event slug, station number,
+  MatchLogger folder, and the shared key — required), written back to
+  `config.json` on Save. Opens automatically when anything required is
+  missing, so a fresh install configures itself entirely in the widget.
+- **Log** — the sender's recent log lines (the same ones the headless sender
+  prints), so you never need a terminal to see what it's doing.
 
+This is what each station PC runs at an event — set it up once and forget it.
+Closing it sends it to the **system tray** instead of quitting (the sender
+keeps running); the tray menu restores or quits it.
+
+- On Windows, launch it by double-clicking `rivals-station-reporter.pyw` — the
+  `.pyw` extension runs under `pythonw.exe`, which never opens a terminal
+  window.
 - Needs `tkinter` (bundled with Python on Windows/macOS). The tray fallback
   needs `pip install pystray pillow`; without them, closing just minimizes.
-- The station number you set is written back into the config file.
 - It's built to grow: `poll_extras()` returns the status rows under the sender
   line — wire it to obs-websocket to show "OBS: recording", etc. (there's a
   placeholder row there now).
-- Everything else (broker, event slug, folder) still comes from the config,
-  exactly like the headless sender — the widget is just a face on it.
 
 ## What it does and doesn't touch
 
@@ -126,5 +170,7 @@ python station_widget.py --config config.json
   re-send.
 - **Resilient.** Network failures are retried on the next pass; a set file
   that's still being written (unparseable) is simply picked up once complete.
-- **No secrets.** Only the broker URL, event slug, and station number — all
-  non-sensitive. start.gg and Discord credentials live in the broker.
+- **Does hold one secret.** The shared key (same value as the broker's
+  `OPERATOR_KEY`) — treat `config.json` as sensitive, not just as settings.
+  The start.gg token and Discord credentials themselves still never leave the
+  broker; the shared key only authorizes talking to it.

@@ -20,6 +20,12 @@ id = "e194066950bf4238a3827b5e154e46cb"
 #   wrangler secret put GITHUB_APP_PRIVATE_KEY     # PKCS#8 PEM (see README)
 #   wrangler secret put GITHUB_INSTALLATION_ID
 #   wrangler secret put DISCORD_WEBHOOK_URL        # optional: set-complete pings
-#   wrangler secret put OPERATOR_KEY               # passcode gating start.gg reporting
-#   wrangler secret put STARTGG_TOKEN              # start.gg API token (enables the bracket write)
-#   wrangler secret put STATION_KEY                # optional: lock ingest to your stations
+#   wrangler secret put OPERATOR_KEY                # REQUIRED for MatchLogger: the one shared
+#                                                    # key both stations (submitting sets) and
+#                                                    # the console/Discord (manual report/correct)
+#                                                    # use. Every station's config must carry
+#                                                    # this same value.
+#   wrangler secret put STARTGG_TOKEN               # start.gg API token (enables the bracket write,
+#                                                    # including MatchLogger's automatic live score
+#                                                    # push; finalizing a set is always a manual
+#                                                    # /matchlogger/report call, never automatic)

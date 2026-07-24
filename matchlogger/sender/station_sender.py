@@ -4,24 +4,32 @@
 Watches a MatchLogger output folder on a game PC and forwards what it finds to
 the broker, stamping this machine's station number on the way out:
 
-  * new  <dir>/sets/*.json   -> POST <broker>/matchlogger/ingest
+  * new  <dir>/sets/*.json     -> POST <broker>/matchlogger/ingest
   * changed <dir>/current.json -> POST <broker>/matchlogger/current   (heartbeat)
+  * changed <dir>/live.json    -> POST <broker>/matchlogger/live      (running score)
 
-This is the only piece that runs on stations 2..N, so it has no UI and no
-secrets: the broker holds those. Its station number is its only real config.
-Standard library only (no pip installs) so it freezes cleanly into an .exe
-later.
+This is the core every station PC runs; station_widget.py wraps it with a
+Settings/Log window. This file is the no-window variant — same behavior, run
+from a terminal or a scheduled task instead. It DOES hold one secret — the
+shared key below — since the running-score push (matchlogger/live) writes to
+start.gg automatically, no human involved; it's the same value as the
+broker's OPERATOR_KEY, not a separate lower-stakes one. It does NOT let this
+station finalize a set on its own — naming a winner always requires an
+explicit click in the console or Discord. The start.gg token itself still
+never leaves the broker. Standard library only (no pip installs) so it
+freezes cleanly into an .exe later.
 
 Usage:
   python station_sender.py --broker https://r2tag-broker.jdsambasivam.workers.dev \
-      --slug tournament/foo/event/bar --station 3 \
+      --slug tournament/foo/event/bar --station 3 --key <shared key> \
       --dir "C:/.../Rivals2/Binaries/Win64/MatchLogger"
 
 Flags of note:
+  --key K     required: same value as the broker's OPERATOR_KEY secret
   --dry-run   print the requests instead of sending them
   --once      one pass then exit (for testing / cron-style use)
   --poll N    seconds between passes (default 2)
-  --config F  JSON file with any of {broker, slug, station, dir, poll};
+  --config F  JSON file with any of {broker, slug, station, dir, key, poll};
               explicit command-line flags win over it.
 """
 
@@ -95,7 +103,7 @@ class Sender:
         self.broker = broker.rstrip("/")
         self.slug = normalize_slug(slug)
         self.station = station
-        self.key = key or None  # only needed if the broker has STATION_KEY set
+        self.key = key or None  # required: same shared secret as the broker's OPERATOR_KEY
         self.out_dir = Path(out_dir)
         self.sets_dir = self.out_dir / "sets"
         self.current_path = self.out_dir / "current.json"
@@ -248,7 +256,7 @@ def main(argv=None):
     p.add_argument("--dir", help="MatchLogger output folder (contains sets/ and current.json)")
     p.add_argument("--poll", type=float, default=2.0)
     p.add_argument("--state", help="state file path (default: <dir>/.station-sender-state.json)")
-    p.add_argument("--key", help="station key (only if the broker has STATION_KEY set)")
+    p.add_argument("--key", help="shared key (same value as the broker's OPERATOR_KEY secret) — required")
     p.add_argument("--config", help="JSON config file; flags override it")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--once", action="store_true", help="run one pass and exit")
