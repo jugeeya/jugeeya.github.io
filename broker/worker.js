@@ -360,6 +360,16 @@ async function handleMatchlogger(request, env, url, cors) {
     // which never leaves the Worker). See handleReport.
     if (op === 'report') return handleReport(kv, env, slug, body, cors);
 
+    // Deleting a set from the aggregated view is operator housekeeping
+    // (duplicates, hand-warmers, test sets), gated like reporting. It never
+    // touches start.gg: anything already reported there stays reported.
+    if (op === 'delete') return handleDelete(kv, env, slug, body, cors);
+
+    // The station guessed the two players' identities backwards → flip the
+    // mapping for this set (characters and score follow) and re-push the
+    // corrected live score. Same operator gate.
+    if (op === 'swap') return handleSwap(kv, env, slug, body, cors);
+
     if (op === 'current' || op === 'ingest' || op === 'live') {
       const station = Number(body.station);
       if (!Number.isInteger(station) || station < 0 || station > 100000)
@@ -421,7 +431,18 @@ async function handleIngest(kv, env, slug, station, set, cors) {
     } catch { /* best effort */ }
   }
 
-  const { candidateWinnerEntrantId, confidence } = matchWinner(set, entrants);
+  const tagMap = await getTagNameMap(kv).catch(() => ({}));
+  let { candidateWinnerEntrantId, confidence } = matchWinner(set, entrants, tagMap);
+
+  // Carry over an operator tag-swap made while the set was live; under
+  // swapped identities the name-matched candidate means the other entrant.
+  let swap = false;
+  try { swap = !!JSON.parse(await kv.get(setKey(slug, station, setId))).swap; } catch { /* new set */ }
+  if (swap && candidateWinnerEntrantId && (entrants || []).length === 2) {
+    const other = entrants.find(e => String(e.id) !== String(candidateWinnerEntrantId));
+    if (other) candidateWinnerEntrantId = other.id;
+  }
+
   const record = {
     id: setId,
     station,
@@ -434,6 +455,7 @@ async function handleIngest(kv, env, slug, station, set, cors) {
     confidence,
     status: matchedSetId ? 'matched' : 'recorded',
   };
+  if (swap) record.swap = true;
 
   // Ingest never finalizes a set itself — matching + storing + notifying only.
   // The candidateWinnerEntrantId/confidence computed above just pre-fills the
@@ -474,11 +496,23 @@ async function handleLive(kv, env, slug, station, set, cors) {
     } catch { /* best effort */ }
   }
 
+  // Live updates overwrite the record — carry over anything the operator
+  // already did to this set (a tag swap, or an early report).
+  let prev = null;
+  try { prev = JSON.parse(await kv.get(setKey(slug, station, setId))); } catch { /* new set */ }
   const rec = {
     id: setId, station, ingestedAt: nowSec(), set: summarizeSet(set),
     matchedStartggSetId: matchedSetId, fullRoundText: fullRoundText || null,
     entrants: entrants || null, status: 'live',
   };
+  if (prev && prev.swap) rec.swap = true;
+  if (prev && prev.status === 'reported') {
+    rec.status = 'reported';
+    rec.reportedAt = prev.reportedAt;
+    rec.reportedWinnerEntrantId = prev.reportedWinnerEntrantId;
+    rec.reportedGames = prev.reportedGames;
+    rec.reportedBy = prev.reportedBy;
+  }
   await kv.put(setKey(slug, station, setId), JSON.stringify(rec), { expirationTtl: 86400 });
 
   // Push the live score to start.gg (best effort — never fail the station's call).
@@ -486,7 +520,8 @@ async function handleLive(kv, env, slug, station, set, cors) {
   if (!env.STARTGG_TOKEN) reason = 'no start.gg token';
   else if (!matchedSetId) reason = 'no matched start.gg set';
   else {
-    const slotMap = mapSlotsToEntrants(rec, null);
+    const tagMap = await getTagNameMap(kv).catch(() => ({}));
+    const slotMap = mapSlotsToEntrants(rec, null, tagMap);
     if (!slotMap) reason = 'could not map players to entrants by name';
     else {
       const charMap = await getCharacterMap(env, kv, slug).catch(() => ({}));
@@ -520,7 +555,17 @@ async function doReport(kv, env, slug, rec, winnerEntrantId) {
     }
   } catch { /* best effort — fall back to winner-only */ }
 
-  await reportBracketSet(env, rec.matchedStartggSetId, winnerEntrantId, gameData);
+  try {
+    await reportBracketSet(env, rec.matchedStartggSetId, winnerEntrantId, gameData);
+  } catch (e) {
+    // A set already completed on start.gg (an earlier report from here, or a
+    // result entered on the site) rejects a plain re-report — reset it once
+    // and retry, which is what makes the console's "Switch winner" work.
+    await startggAuthMutation(env,
+      `mutation($id:ID!){ resetSet(setId:$id){ id state } }`,
+      { id: rec.matchedStartggSetId });
+    await reportBracketSet(env, rec.matchedStartggSetId, winnerEntrantId, gameData);
+  }
   rec.status = 'reported';
   rec.reportedAt = nowSec();
   rec.reportedWinnerEntrantId = winnerEntrantId;
@@ -573,13 +618,71 @@ async function handleReport(kv, env, slug, body, cors) {
   return json({ ok: true, record: rec, gamesReported: rec.reportedGames }, 200, cors);
 }
 
+// Remove one set record from the broker's view. start.gg is never involved.
+async function handleDelete(kv, env, slug, body, cors) {
+  if (!env.OPERATOR_KEY)
+    return json({ error: 'Deleting is not enabled (set OPERATOR_KEY on the broker).' }, 503, cors);
+  if (!constantTimeEqual(String(body.passcode || ''), env.OPERATOR_KEY))
+    return json({ error: 'Wrong operator passcode.' }, 401, cors);
+  const station = Number(body.station);
+  const setId = sanitizeId(body.setId);
+  if (!Number.isInteger(station) || !setId)
+    return json({ error: 'Bad station or setId.' }, 400, cors);
+  await kv.delete(setKey(slug, station, setId));
+  return json({ ok: true }, 200, cors);
+}
+
+// Toggle a set's player↔entrant mapping (the operator's "swap tags"). Flips
+// the stored candidate winner (it was derived under the old identities) and
+// immediately re-pushes the live per-game score so start.gg's characters and
+// score flip too, rather than waiting for the station's next update.
+async function handleSwap(kv, env, slug, body, cors) {
+  if (!env.OPERATOR_KEY)
+    return json({ error: 'Swapping is not enabled (set OPERATOR_KEY on the broker).' }, 503, cors);
+  if (!constantTimeEqual(String(body.passcode || ''), env.OPERATOR_KEY))
+    return json({ error: 'Wrong operator passcode.' }, 401, cors);
+  const station = Number(body.station);
+  const setId = sanitizeId(body.setId);
+  if (!Number.isInteger(station) || !setId)
+    return json({ error: 'Bad station or setId.' }, 400, cors);
+
+  const key = setKey(slug, station, setId);
+  const raw = await kv.get(key);
+  if (!raw) return json({ error: 'Set not found.' }, 404, cors);
+  let rec;
+  try { rec = JSON.parse(raw); } catch { return json({ error: 'Corrupt set record.' }, 500, cors); }
+
+  rec.swap = !rec.swap;
+  if (rec.candidateWinnerEntrantId && (rec.entrants || []).length === 2) {
+    const other = rec.entrants.find(e => String(e.id) !== String(rec.candidateWinnerEntrantId));
+    if (other) rec.candidateWinnerEntrantId = other.id;
+  }
+  await kv.put(key, JSON.stringify(rec), { expirationTtl: 86400 });
+
+  let repushed = false;
+  if (env.STARTGG_TOKEN && rec.matchedStartggSetId) {
+    try {
+      const tagMap = await getTagNameMap(kv).catch(() => ({}));
+      const slotMap = mapSlotsToEntrants(rec, null, tagMap);
+      if (slotMap) {
+        const charMap = await getCharacterMap(env, kv, slug).catch(() => ({}));
+        const gd = gameDataFromGames((rec.set && rec.set.games) || [], slotMap, charMap).filter(g => g.winnerId);
+        if (gd.length) { await pushLiveGameData(env, rec.matchedStartggSetId, gd); repushed = true; }
+      }
+    } catch { /* best effort — the station's next live tick carries it */ }
+  }
+  return json({ ok: true, swap: rec.swap, repushed, record: rec }, 200, cors);
+}
+
 // Map player slots → start.gg entrant ids.
 //  - Finalizing (winnerEntrantId given): anchor the winner's slot to the chosen
 //    entrant, the other slot to the other entrant — unambiguous with 2 entrants.
-//  - Live (winnerEntrantId null): match players to entrants by name; if at least
-//    one matches, the other is inferred; if none match, return null so we don't
-//    push a possibly-swapped live score to the public bracket.
-function mapSlotsToEntrants(rec, winnerEntrantId) {
+//  - Live (winnerEntrantId null): match players to entrants by name — exact
+//    aliases first, then fuzzy, then pair the leftovers by order. Always
+//    returns a mapping when there are two of each: the console's swap-tags
+//    action makes a wrong guess correctable, and rec.swap inverts the result
+//    here once the operator uses it.
+function mapSlotsToEntrants(rec, winnerEntrantId, tagMap) {
   const entrants = rec.entrants || [];
   const players = (rec.set && rec.set.players) || [];
   if (entrants.length !== 2 || players.length !== 2) return null;
@@ -593,15 +696,35 @@ function mapSlotsToEntrants(rec, winnerEntrantId) {
     return { [winnerSlot]: String(winnerEntrantId), [otherSlot]: String(other.id) };
   }
 
+  // Two passes: exact alias match first, then fuzzy (substring either way,
+  // against the two entrant tags we know we should be seeing). Whatever is
+  // still unmatched pairs up by order — never refuse to map: a swapped guess
+  // is one console click to fix (swap tags / switch winner), an absent live
+  // score isn't fixable at all.
   const map = {}, used = new Set();
-  for (const p of players) {
-    const m = entrants.find(e => !used.has(e.id) && normChar(e.name) === normChar(p.name));
-    if (m) { map[p.slot] = String(m.id); used.add(m.id); }
+  for (const exact of [true, false]) {
+    for (const p of players) {
+      if (p.slot in map) continue;
+      const aliases = playerAliases(p, tagMap).map(normChar).filter(Boolean);
+      const m = entrants.find(e => !used.has(e.id) && entrantNames(e).some(n => {
+        const nn = normChar(n);
+        if (!nn) return false;
+        return exact ? aliases.includes(nn)
+          : aliases.some(a => nn.includes(a) || a.includes(nn));
+      }));
+      if (m) { map[p.slot] = String(m.id); used.add(m.id); }
+    }
   }
   const openSlots = slots.filter(s => !(s in map));
   const openEntrants = entrants.filter(e => !used.has(e.id));
-  if (openSlots.length === 1 && openEntrants.length === 1) map[openSlots[0]] = String(openEntrants[0].id);
-  return Object.keys(map).length === 2 ? map : null;
+  openSlots.forEach((s, i) => { if (openEntrants[i]) map[s] = String(openEntrants[i].id); });
+  if (Object.keys(map).length !== 2) return null;
+  // The operator said the station guessed identities backwards → invert.
+  if (rec.swap) {
+    const [a, b] = slots;
+    const t = map[a]; map[a] = map[b]; map[b] = t;
+  }
+  return map;
 }
 
 // Per-game start.gg gameData from the stored games + a slot→entrant map +
@@ -623,6 +746,54 @@ function gameDataFromGames(games, slotToEntrant, charMap) {
 }
 
 const normChar = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+// The tags page publishes a save-tag → start.gg-tag mapping for every player
+// who has submitted controls (tags/data/index.json). In-game names rarely
+// equal start.gg tags, so this map is what makes automatic matching work for
+// anyone in the tag database. Cached in KV so live pushes don't refetch the
+// site every game. Best effort: on any failure matching falls back to raw
+// name comparison.
+const TAGS_MANIFEST_URL = 'https://jugeeya.github.io/tags/data/index.json';
+
+async function getTagNameMap(kv) {
+  const cacheKey = 'ml:tagmap';
+  const cached = await kv.get(cacheKey);
+  if (cached) { try { return JSON.parse(cached); } catch { /* refetch */ } }
+  const map = {};
+  try {
+    const res = await fetch(TAGS_MANIFEST_URL);
+    if (res.ok) {
+      const manifest = await res.json();
+      for (const t of manifest.tags || []) {
+        const sgg = t && t.startgg && t.startgg.tag;
+        if (t && t.name && sgg) map[normChar(t.name)] = sgg;
+      }
+    }
+  } catch { /* offline/renamed manifest — raw names still work */ }
+  if (Object.keys(map).length)
+    await kv.put(cacheKey, JSON.stringify(map), { expirationTtl: 3600 });
+  return map;
+}
+
+// Every name a player might appear under on start.gg: an explicit
+// station-supplied start.gg name (p.sgg, if a sender ever sends one), the tag
+// database's translation of their save tag, then the raw in-game name.
+function playerAliases(p, tagMap) {
+  const out = [];
+  if (p && p.sgg) out.push(p.sgg);
+  const viaTag = tagMap && p && tagMap[normChar(p.name)];
+  if (viaTag) out.push(viaTag);
+  if (p && p.name) out.push(p.name);
+  return out;
+}
+
+// start.gg entrant names may carry a sponsor prefix ("TEAM | Tag") — match on
+// both the full name and the bare tag after the last pipe.
+function entrantNames(e) {
+  const full = String((e && e.name) || '');
+  const bare = full.includes('|') ? full.split('|').pop().trim() : null;
+  return bare ? [full, bare] : [full];
+}
 
 // Character name→id for the event's videogame, cached in KV (names/ids are
 // stable, so a long TTL is fine).
@@ -713,20 +884,21 @@ async function listAll(kv, prefix) {
   return names;
 }
 
-// Best-effort winner match: line the game's winner name up against the two
-// pre-bound start.gg entrants. In-game names rarely equal start.gg tags
-// exactly, so an unsure result is expected — the operator confirms.
-function matchWinner(set, entrants) {
+// Best-effort winner match: line the game's winner up against the two
+// pre-bound start.gg entrants, going through the same aliases the live-score
+// mapping uses (station-sent sgg name → tag-database translation → raw
+// in-game name). An unsure result is still expected — the operator confirms.
+function matchWinner(set, entrants, tagMap) {
   if (!entrants || !entrants.length || !set || !set.winnerName)
     return { candidateWinnerEntrantId: null, confidence: 'none' };
-  const norm = (s) => String(s || '').toLowerCase().replace(/\s+/g, '').trim();
-  const w = norm(set.winnerName);
+  const winnerPlayer = (Array.isArray(set.players) &&
+    set.players.find(p => p.slot === set.winnerSlot)) || { name: set.winnerName };
+  const aliases = playerAliases(winnerPlayer, tagMap).map(normChar).filter(Boolean);
   let exact = null, partial = null;
   for (const e of entrants) {
-    const n = norm(e.name);
-    if (!n) continue;
-    if (n === w) exact = e;
-    else if (n.includes(w) || w.includes(n)) partial = partial || e;
+    const names = entrantNames(e).map(normChar).filter(Boolean);
+    if (names.some(n => aliases.includes(n))) exact = exact || e;
+    else if (names.some(n => aliases.some(a => n.includes(a) || a.includes(n)))) partial = partial || e;
   }
   if (exact) return { candidateWinnerEntrantId: exact.id, confidence: 'high' };
   if (partial) return { candidateWinnerEntrantId: partial.id, confidence: 'low' };

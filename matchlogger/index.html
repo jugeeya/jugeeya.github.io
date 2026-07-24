@@ -33,19 +33,13 @@
                 <div class="panel-head">
                     <h3>Install</h3>
                 </div>
-                <p class="step-help">Every station PC runs the mod and the sender widget. This console is
+                <p class="step-help">Every station PC runs the sender widget. This console is
                     optional — open it anywhere you want to check on things.</p>
                 <div class="install-grid">
                     <div class="install-card">
-                        <span class="material-symbols-outlined install-icon">stadia_controller</span>
-                        <h4>Game PC</h4>
-                        <p>Runs Rivals 2 + the MatchLogger mod under UE4SS.</p>
-                        <button type="button" class="secondary" data-install="mod">Install instructions</button>
-                    </div>
-                    <div class="install-card">
                         <span class="material-symbols-outlined install-icon">sensors</span>
                         <h4>Sender widget</h4>
-                        <p>Runs on every station PC: set its station number once and it reports the mod's output to the broker as sets finish.</p>
+                        <p>Runs on every station PC: set its station number once and it reports each set to the broker as it's played.</p>
                         <button type="button" class="secondary" data-install="sender">Install instructions</button>
                     </div>
                     <div class="install-card">
@@ -120,7 +114,10 @@
                     Per-game score and characters stream to start.gg automatically as each set is
                     played. Reporting the final winner is always a manual click here (or in
                     Discord) — it needs the shared key above. The suggested winner is a
-                    best-effort name match; double-check it before confirming.
+                    best-effort name match; double-check it before confirming. Got it wrong?
+                    <strong>Switch winner</strong> resets the start.gg set and re-reports it.
+                    <strong>✕</strong> deletes a set from this console only — start.gg is
+                    untouched.
                     See <a href="DESIGN.md">DESIGN.md</a>.
                 </p>
             </section>

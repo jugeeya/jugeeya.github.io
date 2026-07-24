@@ -207,8 +207,18 @@ New:
 - `POST /matchlogger/report` → body `{ slug, setId, winnerEntrantId, passcode
   }`. Calls start.gg's `reportBracketSet` mutation — the **only** path that
   ever finalizes a set, always an explicit human action regardless of how
-  confident the ingest-time match was. **Requires start.gg write access (see
-  below).**
+  confident the ingest-time match was. Re-reporting an already-completed set
+  (the console's **Switch winner**) resets it on start.gg first (`resetSet`)
+  and reports again. **Requires start.gg write access (see below).**
+- `POST /matchlogger/swap` → body `{ slug, station, setId, passcode }`.
+  Toggles the set's player↔entrant mapping for when the station guessed the
+  two identities backwards: subsequent live pushes (and the suggested winner)
+  use the flipped mapping, and the corrected per-game score/characters are
+  re-pushed to start.gg immediately.
+- `POST /matchlogger/delete` → body `{ slug, station, setId, passcode }`.
+  Removes one set record from the broker's aggregated view (duplicates,
+  hand-warmers, test sets). Never touches start.gg: anything already reported
+  there stays reported.
 - `POST /discord/interactions` → Discord's interaction webhook: handles the
   confirm/report buttons and the manual `/report` slash command.
 
@@ -248,7 +258,16 @@ updates) and shows:
   not-yet-reported set exposes **Report**, which opens an inline winner picker
   (pre-selecting the confidence-based candidate when there is one) and calls
   `/matchlogger/report` with the shared key. Reporting is always this one
-  explicit click — there is no set for which it happens on its own.
+  explicit click — there is no set for which it happens on its own. Every
+  matched, already-reported set exposes **Switch winner** instead (the same
+  picker, the currently-reported winner marked), for when the confirmed
+  auto-match turns out wrong — the broker resets the start.gg set and
+  re-reports it. Unreported matched sets also expose **⇄ swap tags** for when
+  the station guessed the two identities backwards — the mapping flips
+  (characters and live score follow on start.gg immediately). And every row
+  has a **✕ delete** (same passcode gate) that removes the set from this view
+  only, for duplicates and hand-warmers; start.gg is never touched by a
+  delete.
 
 ### One shared key, mandatory
 
@@ -300,11 +319,18 @@ winner**.
   the reported time. Station + time window is usually unique — the same
   assumption the VOD splitter and TSH already rely on.
 - **Which entrant won?** Fragile: in-game names (Steam/display) do not
-  reliably equal start.gg tags, so exact-match is unreliable. The fix is to
+  reliably equal start.gg tags, so exact-match is unreliable. Two fixes stack:
   **capture the two entrants at set start** (the sender's
   `/matchlogger/current` heartbeat triggers the broker's `/startgg/station`
   lookup), so by set end the pairing is known and the winner follows from
-  side + score.
+  side + score; and **translate save tags through the tag database** — the
+  [tags page](../tags/) already publishes a save-tag → start.gg-tag mapping
+  (`tags/data/index.json`) for every player who submitted controls, so the
+  broker resolves each in-game name through it (cached in KV) before
+  comparing against entrant names. This is what makes both the automatic
+  live-score mapping and the ingest-time candidate winner land for anyone in
+  the tag database; sponsor prefixes on entrant names ("TEAM | Tag") are
+  stripped for the comparison too.
 
 **Rule: notify + one-click confirm; never silently finalize.** `matchWinner()`
 compares the set's declared winner name against the two pre-bound entrants and
