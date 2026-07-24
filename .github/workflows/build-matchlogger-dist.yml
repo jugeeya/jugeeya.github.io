@@ -48,9 +48,48 @@ jobs:
           cp matchlogger/sender/config.example.json matchlogger/sender/players.example.json \
              matchlogger/sender/README.md "$stage/_internal/"
 
-          # Guard: the staged app must actually import, or we'd ship a zip that
-          # crashes on launch (this is exactly how rivals_stats went missing).
-          (cd "$stage/_internal" && python -c "import station_widget, station_sender, hub, matching, startgg, rivals_stats, dashboard")
+          # Guard: don't ship a zip that crashes on launch (this is exactly how
+          # rivals_stats went missing). Two checks, neither needing tkinter —
+          # the runner's Python has no GUI toolkit and never needs one:
+          #  1. every staged file compiles;
+          #  2. every local module an app file imports is actually in the zip.
+          STAGE="$stage" SRC="matchlogger/sender" python - <<'PY'
+          import ast, os, sys
+
+          stage = os.path.join(os.environ['STAGE'], '_internal')
+          src = os.environ['SRC']
+          local = {f[:-3] for f in os.listdir(src)
+                   if f.endswith('.py') and not f.startswith('test_')}
+          staged = {f[:-3] for f in os.listdir(stage) if f.endswith('.py')}
+
+          problems = []
+          for f in sorted(os.listdir(stage)):
+              if not f.endswith('.py'):
+                  continue
+              path = os.path.join(stage, f)
+              try:
+                  tree = ast.parse(open(path, encoding='utf-8').read())
+              except SyntaxError as e:
+                  problems.append('%s does not parse: %s' % (f, e))
+                  continue
+              for node in ast.walk(tree):
+                  if isinstance(node, ast.Import):
+                      names = [a.name.split('.')[0] for a in node.names]
+                  elif isinstance(node, ast.ImportFrom) and not node.level and node.module:
+                      names = [node.module.split('.')[0]]
+                  else:
+                      continue
+                  for n in names:
+                      if n in local and n not in staged:
+                          problems.append('%s imports %s, which is not in the zip' % (f, n))
+
+          if problems:
+            print('ZIP WOULD BE BROKEN:')
+            for p in sorted(set(problems)):
+                print('  -', p)
+            sys.exit(1)
+          print('zip check OK: %d modules, imports all satisfied' % len(staged))
+          PY
 
           (cd "$stage" && zip -r -X "$GITHUB_WORKSPACE/matchlogger/dist/rivals-station-reporter.zip" rivals-station-reporter.pyw _internal)
           rm -rf "$stage"
