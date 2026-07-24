@@ -349,6 +349,14 @@ async function handleMatchlogger(request, env, url, cors) {
     return json(await buildEventView(kv, slug), 200, cors);
   }
 
+  // Cheap poll target: one KV read, no list. The console hits this frequently
+  // and only fetches /event when v changes (see bumpVer).
+  if (request.method === 'GET' && op === 'version') {
+    const slug = (url.searchParams.get('slug') || '').trim().slice(0, 200);
+    if (!EVENT_SLUG_RE.test(slug)) return json({ error: 'Expected an event slug.' }, 400, cors);
+    return json({ v: Number(await kv.get(verKey(slug))) || 0 }, 200, cors);
+  }
+
   if (request.method === 'POST') {
     let body;
     try { body = await request.json(); } catch { return json({ error: 'Expected a JSON body.' }, 400, cors); }
@@ -465,6 +473,7 @@ async function handleIngest(kv, env, slug, station, set, cors) {
   // score/characters DO go out automatically — that's /matchlogger/live,
   // which never sets a winner and so can't advance the bracket on its own.)
   await kv.put(setKey(slug, station, setId), JSON.stringify(record), { expirationTtl: 86400 });
+  await bumpVer(kv, slug);
   try { await notifyDiscord(env, record); } catch { /* notifications are best effort */ }
   return json({ ok: true, record }, 200, cors);
 }
@@ -514,6 +523,7 @@ async function handleLive(kv, env, slug, station, set, cors) {
     rec.reportedBy = prev.reportedBy;
   }
   await kv.put(setKey(slug, station, setId), JSON.stringify(rec), { expirationTtl: 86400 });
+  await bumpVer(kv, slug);
 
   // Push the live score to start.gg (best effort — never fail the station's call).
   let live = false, reason = null, games = 0;
@@ -615,6 +625,7 @@ async function handleReport(kv, env, slug, body, cors) {
   }
   rec.reportedBy = 'operator';
   await kv.put(key, JSON.stringify(rec), { expirationTtl: 86400 });
+  await bumpVer(kv, slug);
   return json({ ok: true, record: rec, gamesReported: rec.reportedGames }, 200, cors);
 }
 
@@ -629,6 +640,7 @@ async function handleDelete(kv, env, slug, body, cors) {
   if (!Number.isInteger(station) || !setId)
     return json({ error: 'Bad station or setId.' }, 400, cors);
   await kv.delete(setKey(slug, station, setId));
+  await bumpVer(kv, slug);
   return json({ ok: true }, 200, cors);
 }
 
@@ -658,6 +670,7 @@ async function handleSwap(kv, env, slug, body, cors) {
     if (other) rec.candidateWinnerEntrantId = other.id;
   }
   await kv.put(key, JSON.stringify(rec), { expirationTtl: 86400 });
+  await bumpVer(kv, slug);
 
   let repushed = false;
   if (env.STARTGG_TOKEN && rec.matchedStartggSetId) {
@@ -1007,6 +1020,15 @@ const curKey = (slug, station) => `ml:cur:${slug}:${station}`;
 const setKey = (slug, station, setId) => `ml:set:${slug}:${station}:${setId}`;
 const curPrefix = (slug) => `ml:cur:${slug}:`;
 const setPrefix = (slug) => `ml:set:${slug}:`;
+const verKey = (slug) => `ml:ver:${slug}`;
+
+// Cheap change-counter. The console polls GET /matchlogger/version (one KV read,
+// no list) and only fetches the full /event (which KV-lists) when this changes —
+// so KV list ops scale with games played, not with console poll frequency.
+async function bumpVer(kv, slug) {
+  try { await kv.put(verKey(slug), String(nowSec()), { expirationTtl: 86400 }); }
+  catch { /* best effort — a missed bump just delays one console refresh */ }
+}
 
 async function startggGql(query, variables) {
   const res = await fetch(STARTGG_API, {

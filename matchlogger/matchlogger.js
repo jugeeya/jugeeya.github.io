@@ -14,6 +14,8 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) =>
 
 let timer = null;
 let demoMode = false;
+let connected = false;
+let lastVersion = null; // last broker change-counter we pulled a full view for
 let pickerOpen = false; // pause re-render while the operator is choosing a winner
 const setsById = {}; // "station:id" -> record, for the report picker
 
@@ -314,6 +316,31 @@ async function refresh() {
   }
 }
 
+// Poll the cheap change-counter (one KV read); only pull the full event view
+// (which KV-lists) when it moved. This is what keeps the console under
+// Cloudflare's free KV limits when left open during an event.
+async function checkVersion() {
+  if (demoMode || !connected) return;
+  const slug = parseEventSlug($('eventInput').value);
+  if (!/^tournament\/[^/]+\/event\/[^/]+$/i.test(slug)) return;
+  try {
+    const res = await fetch(`${brokerUrl()}/matchlogger/version?slug=${encodeURIComponent(slug)}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+    if (data.v !== lastVersion) { lastVersion = data.v; await refresh(); }
+  } catch {
+    await refresh(); // version endpoint missing/hiccup → fall back to a full pull
+  }
+}
+
+function startPolling() {
+  stopPolling();
+  if (!document.hidden) timer = setInterval(checkVersion, POLL_MS);
+}
+function stopPolling() {
+  if (timer) { clearInterval(timer); timer = null; }
+}
+
 function connect() {
   demoMode = false;
   const slug = parseEventSlug($('eventInput').value);
@@ -325,15 +352,17 @@ function connect() {
   localStorage.setItem(LS_BROKER, $('brokerInput').value.trim());
   $('liveDot').style.display = '';
   setStatus('Connecting…');
-  refresh();
-  if (timer) clearInterval(timer);
-  timer = setInterval(refresh, POLL_MS);
+  connected = true;
+  lastVersion = null;  // force a full pull on (re)connect
+  checkVersion();
+  startPolling();
 }
 
 // ---- demo -----------------------------------------------------------------
 function loadDemo() {
   demoMode = true;
-  if (timer) { clearInterval(timer); timer = null; }
+  connected = false;
+  stopPolling();
   $('liveDot').style.display = 'none';
   const now = Math.floor(Date.now() / 1000);
   renderStations({
@@ -453,5 +482,13 @@ $('connectBtn').addEventListener('click', connect);
 $('eventInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') connect(); });
 $('demoBtn').addEventListener('click', loadDemo);
 $('setsBody').addEventListener('click', onSetsClick);
+
+// Stop polling while the tab is hidden (backgrounded / phone locked); resume
+// with an immediate check when it's shown again. Big saver for a console left
+// open all event.
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) stopPolling();
+  else if (connected && !demoMode) { checkVersion(); startPolling(); }
+});
 
 if (savedSlug) connect();
