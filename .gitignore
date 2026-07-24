@@ -24,3 +24,7 @@ __pycache__/
 broker/.wrangler/ 
 # Claude Code local config
 .claude/
+
+# Station sender runtime output (produced when the app runs)
+matchlogger/sender/matchlogger-out/
+matchlogger/statswatch/out/
