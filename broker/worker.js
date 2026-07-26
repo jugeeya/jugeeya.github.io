@@ -419,25 +419,22 @@ async function handleIngest(kv, env, slug, station, set, cors) {
   if (!set || typeof set !== 'object') return json({ error: 'Missing set.' }, 400, cors);
   const setId = sanitizeId(set.setId) || String(nowSec());
 
-  // Prefer the entrants pre-bound at set start; otherwise look them up now.
-  let entrants = null, matchedSetId = null, fullRoundText = null;
+  // Prefer the set pre-bound at set start; otherwise look it up now. Keep the
+  // whole object — its `state` decides whether the match has actually started.
+  let sg = null;
   const curRaw = await kv.get(curKey(slug, station));
   if (curRaw) {
     try {
       const c = JSON.parse(curRaw);
-      if (c.startgg && c.startgg.entrants) {
-        entrants = c.startgg.entrants;
-        matchedSetId = c.startgg.setId || null;
-        fullRoundText = c.startgg.fullRoundText || null;
-      }
+      if (c.startgg && c.startgg.entrants) sg = c.startgg;
     } catch { /* ignore a corrupt heartbeat */ }
   }
-  if (!entrants) {
-    try {
-      const s = await fetchStationSet(slug, station);
-      if (s) { entrants = s.entrants; matchedSetId = s.setId; fullRoundText = s.fullRoundText; }
-    } catch { /* best effort */ }
+  if (!sg) {
+    try { sg = await fetchStationSet(slug, station); } catch { /* best effort */ }
   }
+  const entrants = (sg && sg.entrants) || null;
+  const matchedSetId = (sg && sg.setId) || null;
+  const fullRoundText = (sg && sg.fullRoundText) || null;
 
   const tagMap = await getTagNameMap(kv).catch(() => ({}));
   let { candidateWinnerEntrantId, confidence } = matchWinner(set, entrants, tagMap);
@@ -451,10 +448,11 @@ async function handleIngest(kv, env, slug, station, set, cors) {
     if (other) candidateWinnerEntrantId = other.id;
   }
 
-  // An online/ranked game played at a station is not that station's bracket
-  // set — don't let it borrow the match, or the console would offer to report
-  // a ladder game onto the bracket.
-  const reportable = isReportableMode(set.mode);
+  // A ladder game, or a match the TO hasn't started yet, is not this station's
+  // bracket set — don't let it borrow the match, or the console would offer to
+  // report it onto the bracket.
+  const reason = notReportableReason(set, sg);
+  const reportable = reason === null;
   const record = {
     id: setId,
     station,
@@ -466,9 +464,11 @@ async function handleIngest(kv, env, slug, station, set, cors) {
     candidateWinnerEntrantId: reportable ? candidateWinnerEntrantId : null,
     confidence: reportable ? confidence : 'none',
     mode: set.mode ?? null,
+    startggState: (sg && sg.state) ?? null,
     reportable,
-    status: reportable ? (matchedSetId ? 'matched' : 'recorded')
-                       : (modeLabel(set.mode) || 'not reportable'),
+    notReportableReason: reason,
+    status: reportable ? 'matched'
+                       : (modeLabel(set.mode) || (sg ? 'waiting for start' : 'recorded')),
   };
   if (swap) record.swap = true;
 
@@ -495,36 +495,38 @@ async function handleLive(kv, env, slug, station, set, cors) {
   if (!set || typeof set !== 'object') return json({ error: 'Missing set.' }, 400, cors);
   const setId = sanitizeId(set.setId) || String(nowSec());
 
-  let entrants = null, matchedSetId = null, fullRoundText = null;
+  let sg = null;
   const curRaw = await kv.get(curKey(slug, station));
   if (curRaw) {
     try {
       const c = JSON.parse(curRaw);
-      if (c.startgg && c.startgg.entrants) {
-        entrants = c.startgg.entrants; matchedSetId = c.startgg.setId; fullRoundText = c.startgg.fullRoundText;
-      }
+      if (c.startgg && c.startgg.entrants) sg = c.startgg;
     } catch { /* ignore */ }
   }
-  if (!entrants) {
-    try {
-      const s = await fetchStationSet(slug, station);
-      if (s) { entrants = s.entrants; matchedSetId = s.setId; fullRoundText = s.fullRoundText; }
-    } catch { /* best effort */ }
+  if (!sg) {
+    try { sg = await fetchStationSet(slug, station); } catch { /* best effort */ }
   }
+  const entrants = (sg && sg.entrants) || null;
+  const matchedSetId = (sg && sg.setId) || null;
+  const fullRoundText = (sg && sg.fullRoundText) || null;
 
   // Live updates overwrite the record — carry over anything the operator
   // already did to this set (a tag swap, or an early report).
   let prev = null;
   try { prev = JSON.parse(await kv.get(setKey(slug, station, setId))); } catch { /* new set */ }
-  const liveReportable = isReportableMode(set.mode);
+  const liveReason = notReportableReason(set, sg);
+  const liveReportable = liveReason === null;
   const rec = {
     id: setId, station, ingestedAt: nowSec(), set: summarizeSet(set),
     matchedStartggSetId: liveReportable ? matchedSetId : null,
     fullRoundText: liveReportable ? (fullRoundText || null) : null,
     entrants: liveReportable ? (entrants || null) : null,
     mode: set.mode ?? null,
+    startggState: (sg && sg.state) ?? null,
     reportable: liveReportable,
-    status: liveReportable ? 'live' : (modeLabel(set.mode) || 'not reportable'),
+    notReportableReason: liveReason,
+    status: liveReportable ? 'live'
+                           : (modeLabel(set.mode) || (sg ? 'waiting for start' : 'recorded')),
   };
   if (prev && prev.swap) rec.swap = true;
   if (prev && prev.status === 'reported') {
@@ -539,7 +541,7 @@ async function handleLive(kv, env, slug, station, set, cors) {
 
   // Push the live score to start.gg (best effort — never fail the station's call).
   let live = false, reason = null, games = 0;
-  if (!liveReportable) reason = `${modeLabel(set.mode) || 'non-local'} game — logged, not reported`;
+  if (!liveReportable) reason = `${liveReason} — logged, not reported`;
   else if (!env.STARTGG_TOKEN) reason = 'no start.gg token';
   else if (!matchedSetId) reason = 'no matched start.gg set';
   else {
@@ -619,8 +621,8 @@ async function handleReport(kv, env, slug, body, cors) {
   let rec;
   try { rec = JSON.parse(raw); } catch { return json({ error: 'Corrupt set record.' }, 500, cors); }
   if (rec.reportable === false)
-    return json({ error: `This is a ${modeLabel(rec.mode) || 'non-local'} game, not a tournament `
-                        + `set — it cannot be reported to the bracket.` }, 409, cors);
+    return json({ error: `Not reportable: ${rec.notReportableReason || 'not a tournament set'}.` },
+                409, cors);
   if (!rec.matchedStartggSetId)
     return json({ error: 'This set is not matched to a start.gg set.' }, 409, cors);
   // start.gg entrant ids come back as numbers; the client sends a string —
@@ -783,6 +785,21 @@ const normChar = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
 // wrote it, so it stays reportable exactly as before.
 const isReportableMode = (mode) => mode == null || String(mode).toUpperCase() === 'LOCAL';
 const modeLabel = (mode) => (isReportableMode(mode) ? '' : String(mode).toLowerCase());
+
+// start.gg Set.state: 1 = created, 2 = ongoing (the TO pressed "Start Match"),
+// 3 = completed, 6 = called to a station but not started. Only 2 means the
+// match is genuinely underway — until then a station's games are warmups at
+// that setup, so they must not bind to the bracket set or be pushed to it.
+const STARTGG_STATE_ONGOING = 2;
+const setStarted = (sg) => !!sg && Number(sg.state) === STARTGG_STATE_ONGOING;
+
+// Why a record can't touch the bracket, or null when it can.
+function notReportableReason(set, sg) {
+  if (!isReportableMode(set && set.mode)) return `${modeLabel(set.mode) || 'non-local'} game`;
+  if (!sg) return 'no start.gg set at this station';
+  if (!setStarted(sg)) return 'match not started on start.gg';
+  return null;
+}
 
 // Character id lookup: exact normalized name, else a unique-prefix match —
 // the save file / replays store characters as 3-letter codes ("Cla"), while

@@ -133,16 +133,13 @@ class Startgg:
     # -- writes -------------------------------------------------------------
     def update_live(self, set_id, game_data):
         """Non-advancing: record games so far. No winner is set, so the bracket
-        never advances — finalizing stays an explicit operator action."""
-        # Only needed the first time; later games error "Set is already
-        # started". Swallow that so it can't abort the score update (the bug
-        # that froze live scores at game 1).
-        try:
-            self._gql('mutation($id:ID!){ markSetInProgress(setId:$id){ id state } }',
-                      {'id': set_id})
-        except StartggError as e:
-            if 'already started' not in str(e).lower():
-                raise
+        never advances — finalizing stays an explicit operator action.
+
+        Deliberately does NOT call markSetInProgress: starting a match is the
+        TO's call ("Start Match" on start.gg), and callers only reach here for
+        a set that is already ongoing. Doing it here meant warmups at a setup
+        could start the bracket match on their own.
+        """
         self._gql(
             '''mutation($id:ID!,$g:[BracketSetGameDataInput]){
                  updateBracketSet(setId:$id, gameData:$g){ id state } }''',

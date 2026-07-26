@@ -119,9 +119,11 @@ function renderSets(sets) {
     // are recorded and shown, but they are not that station's bracket set, so
     // they can never be reported.
     const reportable = r.reportable !== false;
-    const modeName = reportable ? '' : (r.mode ? String(r.mode).toLowerCase() : 'non-local');
+    const why = r.notReportableReason
+      || (r.mode ? `${String(r.mode).toLowerCase()} game` : 'not a tournament set');
+    const modeName = reportable ? '' : why;
     const winnerCell = !reportable
-      ? `<span class="conf none" title="a ${esc(modeName)} game played at this station — not part of the bracket">not a bracket set</span>`
+      ? `<span class="conf none" title="${esc(why)} — not part of the bracket">not a bracket set</span>`
       : r.candidateWinnerEntrantId
         ? `<span class="conf ${esc(conf)}" title="match confidence: ${esc(conf)}">${esc(entrantName(r))}</span>`
         : `<span class="conf none">unmatched</span>`;
@@ -138,16 +140,16 @@ function renderSets(sets) {
     } else if (canPick) {
       action = `<button class="secondary report-btn" data-key="${key}">Report</button>`;
     } else {
-      const why = !reportable
-        ? `${modeName} game — logged for reference, but it can't be reported to the bracket`
+      const tip = !reportable
+        ? `${why} — logged for reference, but it can't be reported to the bracket`
         : (r.matchedStartggSetId ? 'no entrants to pick from' : 'not matched to a start.gg set');
-      action = `<button class="secondary report-btn" disabled title="${esc(why)}">Report</button>`;
+      action = `<button class="secondary report-btn" disabled title="${esc(tip)}">Report</button>`;
     }
     if (canPick && status !== 'reported') {
       // Station guessed who's who backwards? Swap flips the player↔entrant
       // mapping — characters and the live score follow on start.gg.
       action += ` <button class="linkish swap-btn${r.swap ? ' swapped' : ''}" data-key="${key}"
-        title="Swap which player is which start.gg entrant (characters and live score flip too)${r.swap ? ' — currently swapped' : ''}">⇄</button>`;
+        title="Switch players — flip which in-game player is which start.gg entrant. Characters and the live score follow, and the pairing is remembered for later sets${r.swap ? ' — currently switched' : ''}">⇄</button>`;
     }
     action += ` <button class="linkish del-btn" data-key="${key}"
       title="Delete this set from the console (start.gg is untouched)">✕</button>`;
@@ -158,7 +160,7 @@ function renderSets(sets) {
         <td>${playersLabel(s.players, s.winnerName)}</td>
         <td class="score">${esc(score || '—')}</td>
         <td>${reportable ? esc(r.fullRoundText || '—')
-                          : `<span class="muted">${esc(modeName)} match</span>`}</td>
+                          : `<span class="muted">${esc(modeName)}</span>`}</td>
         <td>${winnerCell}</td>
         <td><span class="pill ${esc(status)}">${esc(status)}</span></td>
         <td class="action-cell">${action}</td>
@@ -387,6 +389,13 @@ function loadDemo() {
       candidateWinnerEntrantId: 'E1', confidence: 'high', status: 'matched',
       set: { endEpoch: now - 300, winnerName: 'Alice', winnerCharacter: 'clairen',
              players: [{ name: 'Alice', character: 'clairen', wins: 3 }, { name: 'Bob', character: 'zetterburn', wins: 1 }] } },
+    { id: 'demoNotStarted', station: 5, ingestedAt: now - 60, matchedStartggSetId: null,
+      fullRoundText: null, entrants: null, candidateWinnerEntrantId: null, confidence: 'none',
+      status: 'waiting for start', mode: 'LOCAL', reportable: false,
+      startggState: 6, notReportableReason: 'match not started on start.gg',
+      set: { endEpoch: now - 60, winnerName: 'Gus', winnerCharacter: 'kragg', mode: 'LOCAL',
+             players: [{ name: 'Gus', character: 'kragg', wins: 1 },
+                       { name: 'Hana', character: 'absa', wins: 0 }] } },
     { id: 'demoRanked', station: 3, ingestedAt: now - 200, matchedStartggSetId: null,
       fullRoundText: null, entrants: null, candidateWinnerEntrantId: null, confidence: 'none',
       status: 'ranked', mode: 'RANKED', reportable: false,

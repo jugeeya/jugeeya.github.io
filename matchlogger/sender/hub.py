@@ -55,9 +55,21 @@ class Hub:
     handler and the operator UI both call these methods."""
 
     def __init__(self, key=None, token=None, tag_map=None, state_path=None,
-                 log=None, on_change=None):
+                 log=None, on_change=None, learned_path=None):
         self.key = (key or '').strip() or None
-        self.tag_map = tag_map or {}
+        self.tag_map = dict(tag_map or {})
+        # Corrections the operator has made (save tag -> start.gg tag), kept
+        # apart from the hand-written players.json so that file is never
+        # rewritten. Merged over it, so a manual entry can be corrected once.
+        self.learned_path = learned_path
+        self.learned = {}
+        if learned_path and os.path.exists(learned_path):
+            try:
+                with open(learned_path, 'r', encoding='utf-8') as f:
+                    self.learned = json.load(f) or {}
+                self.tag_map.update(matching.build_tag_map(self.learned))
+            except (OSError, ValueError):
+                self.learned = {}
         self.log = log or (lambda m: None)
         self.on_change = on_change
         self.startgg = Startgg(token, log=self.log)
@@ -161,6 +173,17 @@ class Hub:
         key = self._sid(station, st.get('setId'))
         prev = self._set_bucket(slug).get(key) or {}
         cand, conf = matching.match_winner(summary, (sg or {}).get('entrants'), self.tag_map)
+
+        # Two independent reasons a set must stay off the bracket.
+        reason = None
+        if not is_reportable(st.get('mode')):
+            reason = '%s game' % (mode_label(st.get('mode')) or 'non-local')
+        elif sg and not matching.set_started(sg):
+            # Called to this station but the TO hasn't pressed Start Match, so
+            # anything played here is still a warmup.
+            reason = 'match not started on start.gg'
+        elif not sg:
+            reason = 'no start.gg set at this station'
         rec = {
             'id': st.get('setId'), 'station': station,
             'ingestedAt': int(time.time()), 'set': summary,
@@ -171,16 +194,19 @@ class Hub:
             'status': status if not prev.get('status') == 'reported' else 'reported',
             'swap': prev.get('swap', False),
             'mode': st.get('mode'),
-            'reportable': is_reportable(st.get('mode')),
+            'startggState': (sg or {}).get('state'),
+            'reportable': reason is None,
+            'notReportableReason': reason,
         }
-        # An online/ranked game played at a station is not this station's
-        # bracket set — don't let it borrow the match, or the console offers to
-        # report a ladder game onto the bracket.
-        if not rec['reportable']:
+        # Not a tournament game, or the match isn't underway yet: keep the
+        # record (the operator still wants to see it) but don't let it borrow
+        # the station's bracket set, or the console would offer to report it.
+        if reason:
             rec['matchedStartggSetId'] = None
             rec['candidateWinnerEntrantId'] = None
             rec['confidence'] = 'none'
-            rec['status'] = mode_label(st.get('mode')) or 'not reportable'
+            rec['status'] = (mode_label(st.get('mode'))
+                             or ('waiting for start' if sg else 'recorded'))
         # Preserve anything the operator already decided.
         for k in ('reportedAt', 'reportedWinnerEntrantId', 'reportedGames', 'reportedBy'):
             if k in prev:
@@ -206,7 +232,7 @@ class Hub:
 
         live, games, reason = False, 0, None
         if not rec.get('reportable', True):
-            reason = '%s game — logged, not reported' % (mode_label(rec.get('mode')) or 'non-local')
+            reason = '%s — logged, not reported' % (rec.get('notReportableReason') or 'not reportable')
         elif not self.startgg.enabled:
             reason = 'no start.gg token'
         elif not rec.get('matchedStartggSetId'):
@@ -270,15 +296,55 @@ class Hub:
         with self._lock:
             return self._set_bucket(slug).get(self._sid(station, set_id))
 
+    def rebind(self, slug, station, set_id):
+        """Re-ask start.gg what's at this station and re-evaluate the record.
+
+        A set finished before the TO pressed Start Match is correctly refused at
+        the time; once they do start it, nothing else would revisit that record
+        (finished sets get no further station updates), so the operator's next
+        Report re-checks instead of being stuck.
+        """
+        rec = self.get_set(slug, station, set_id)
+        if not rec or not is_reportable((rec.get('set') or {}).get('mode')):
+            return rec
+        try:
+            sg = self.startgg.station_set(slug, station, max_age=0)
+        except StartggError as e:
+            self.log('re-check failed: %s' % e)
+            return rec
+        if not matching.set_started(sg):
+            return rec
+        with self._lock:
+            # Refresh the station's cached binding too, so later updates agree.
+            stn = self.stations.setdefault(slug, {}).setdefault(str(station), {})
+            stn['startgg'] = sg
+            rec['matchedStartggSetId'] = sg.get('setId')
+            rec['fullRoundText'] = sg.get('fullRoundText')
+            rec['entrants'] = sg.get('entrants')
+            rec['startggState'] = sg.get('state')
+            rec['reportable'] = True
+            rec['notReportableReason'] = None
+            if rec.get('status') not in ('reported',):
+                rec['status'] = 'matched'
+            cand, conf = matching.match_winner(rec.get('set') or {},
+                                               sg.get('entrants'), self.tag_map)
+            rec['candidateWinnerEntrantId'] = cand
+            rec['confidence'] = conf
+            self._touch()
+        self.log('set %s re-bound: match is now started on start.gg' % set_id)
+        return rec
+
     def do_report(self, slug, station, set_id, winner_entrant_id):
         """Advance the bracket. Operator action only."""
         rec = self.get_set(slug, station, set_id)
         if not rec:
             return {'error': 'Set not found.'}, 404
+        # The TO may have pressed Start Match after this set finished.
         if not rec.get('reportable', True):
-            return {'error': 'This is a %s game, not a tournament set — it cannot be '
-                             'reported to the bracket.' % (mode_label(rec.get('mode'))
-                                                           or 'non-local')}, 409
+            rec = self.rebind(slug, station, set_id) or rec
+        if not rec.get('reportable', True):
+            return {'error': 'Not reportable: %s.'
+                             % (rec.get('notReportableReason') or 'not a tournament set')}, 409
         if not rec.get('matchedStartggSetId'):
             return {'error': 'This set is not matched to a start.gg set.'}, 409
         if not self.startgg.enabled:
@@ -315,9 +381,42 @@ class Hub:
         self.log('reported set %s (station %s) to start.gg' % (set_id, station))
         return {'ok': True, 'record': rec, 'gamesReported': rec['reportedGames']}
 
+    def _learn_aliases(self, rec):
+        """Remember which save tag belongs to which start.gg entrant.
+
+        The station can only ever guess: in-game tags don't have to match
+        start.gg tags. Once the operator corrects a set, that pairing is a fact
+        — record it so the next set between the same people maps right without
+        another correction. Kept in its own file so a hand-written players.json
+        is never rewritten.
+        """
+        smap = matching.map_slots_to_entrants(rec, None, self.tag_map)
+        if not smap:
+            return
+        by_id = {str(e.get('id')): e.get('name') for e in (rec.get('entrants') or [])}
+        learned = False
+        for p in ((rec.get('set') or {}).get('players') or []):
+            gg = by_id.get(str(smap.get(p.get('slot'))))
+            key = matching.norm(p.get('name'))
+            if gg and key and self.tag_map.get(key) != gg:
+                self.tag_map[key] = gg
+                self.learned[p.get('name')] = gg
+                learned = True
+        if learned and self.learned_path:
+            try:
+                tmp = self.learned_path + '.tmp'
+                with open(tmp, 'w', encoding='utf-8') as f:
+                    json.dump(self.learned, f, indent=2)
+                os.replace(tmp, self.learned_path)
+            except OSError as e:
+                self.log('could not save learned tags: %s' % e)
+        if learned:
+            self.log('learned tag mapping: %s' % ', '.join(
+                '%s -> %s' % kv for kv in self.learned.items()))
+
     def do_swap(self, slug, station, set_id):
-        """Flip which player maps to which entrant, and re-push the live score
-        so start.gg's characters/score flip immediately too."""
+        """Flip which in-game player maps to which start.gg entrant, re-push the
+        corrected live score, and remember the pairing for future sets."""
         rec = self.get_set(slug, station, set_id)
         if not rec:
             return {'error': 'Set not found.'}, 404
@@ -329,6 +428,7 @@ class Hub:
                               if str(e.get('id')) != str(rec['candidateWinnerEntrantId'])), None)
                 if other:
                     rec['candidateWinnerEntrantId'] = other.get('id')
+            self._learn_aliases(rec)
             self._touch()
         repushed = False
         if self.startgg.enabled and rec.get('matchedStartggSetId') and rec.get('reportable', True):

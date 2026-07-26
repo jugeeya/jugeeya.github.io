@@ -53,8 +53,10 @@ class FakeStartgg:
         self.live_pushes = []
         self.reports = []
 
+    state = 2   # 2 = ongoing (TO pressed Start Match); 6 = called, not started
+
     def station_set(self, slug, station, max_age=None):
-        return {'found': True, 'setId': 105639152, 'state': 2,
+        return {'found': True, 'setId': 105639152, 'state': self.state,
                 'fullRoundText': 'Winners Round 1', 'entrants': ENTRANTS}
 
     def character_map(self, slug):
@@ -200,6 +202,61 @@ bad = ss.Sender(broker=BROKER, slug=SLUG, station=9, out_dir=station_dir,
 ok(bad._post('/matchlogger/current', {'slug': SLUG, 'station': 9, 'key': 'wrong-key',
                                       'current': {'state': 'idle'}}) is False,
    "a station with the wrong key is rejected")
+
+# ---- safeguard: nothing happens until the TO presses Start Match -----------
+h4 = hubmod.Hub(key=None, token=None, tag_map=tag_map,
+                state_path=os.path.join(workdir, 'h4.json'),
+                learned_path=os.path.join(workdir, 'learned.json'), log=logs.append)
+called = FakeStartgg()
+called.state = 6            # called to the station, but NOT started
+h4.startgg = called
+h4.handle_current(SLUG, 1, {'state': 'set_start'})
+res_ns = h4.handle_live(SLUG, 1, dict(REAL_SET, setId='NS', mode='LOCAL', complete=False))
+ok(len(called.live_pushes) == 0,
+   "a called-but-not-started match is NOT pushed  [%s]" % res_ns.get('reason'))
+ok('not started' in (res_ns.get('reason') or ''), "reason says the match isn't started")
+h4.handle_ingest(SLUG, 1, dict(REAL_SET, setId='NS', mode='LOCAL'))
+nrec = h4.get_set(SLUG, 1, 'NS')
+ok(nrec.get('reportable') is False, "not-started set is not reportable")
+ok(nrec.get('matchedStartggSetId') is None, "not-started set isn't bound to the bracket set")
+ok(nrec.get('status') == 'waiting for start', "status 'waiting for start'  [%s]" % nrec.get('status'))
+rep_ns = h4.do_report(SLUG, 1, 'NS', 24186345)
+ok(isinstance(rep_ns, tuple) and rep_ns[1] == 409, "reporting a not-started match is refused")
+ok(len(called.reports) == 0, "nothing was reported to start.gg")
+
+# ...and once the TO does start it, Report re-checks and goes through
+called.state = 2
+rep_ok = h4.do_report(SLUG, 1, 'NS', 24186345)
+ok(rep_ok.get('ok') is True, "after Start Match, the same set reports fine  [%s]" % (rep_ok,))
+ok(len(called.reports) == 1, "exactly one report reached start.gg")
+
+# We must never start a match ourselves — check what the client actually sends.
+import startgg as sgmod
+sent = []
+client = sgmod.Startgg('fake-token')
+client._gql = lambda q, v: sent.append(q) or {}
+client.update_live(1, [{'gameNum': 1, 'winnerId': '2'}])
+ok(len(sent) == 1, "the live push issues exactly one mutation  [%d]" % len(sent))
+ok('updateBracketSet' in sent[0] and 'markSetInProgress' not in sent[0],
+   "it's updateBracketSet only — we never start a match ourselves")
+
+# ---- Switch players: the correction is remembered --------------------------
+h5 = hubmod.Hub(key=None, token=None, tag_map=dict(tag_map),
+                state_path=os.path.join(workdir, 'h5.json'),
+                learned_path=os.path.join(workdir, 'learned5.json'), log=logs.append)
+h5.startgg = FakeStartgg()
+h5.handle_current(SLUG, 1, {'state': 'set_start'})
+h5.handle_ingest(SLUG, 1, dict(REAL_SET, setId='SW', mode='LOCAL'))
+before_map = dict(h5.tag_map)
+h5.do_swap(SLUG, 1, 'SW')
+ok(h5.tag_map != before_map, "switching players updates the tag map")
+ok(h5.tag_map.get('jugz') == 'Kimchi',
+   "JUGZ! now maps to Kimchi  [%s]" % h5.tag_map.get('jugz'))
+ok(os.path.exists(os.path.join(workdir, 'learned5.json')), "correction persisted to disk")
+h6 = hubmod.Hub(key=None, token=None, tag_map=dict(tag_map),
+                state_path=None, learned_path=os.path.join(workdir, 'learned5.json'),
+                log=logs.append)
+ok(h6.tag_map.get('jugz') == 'Kimchi', "a restarted hub still knows the correction")
 
 server.stop()
 shutil.rmtree(workdir, ignore_errors=True)

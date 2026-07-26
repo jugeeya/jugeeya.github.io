@@ -164,6 +164,7 @@ class Widget:
                 token=self.cfg.get("startgg_token"),
                 tag_map=matching.build_tag_map(self.aliases),
                 state_path=str(here / "hub-state.json"),
+                learned_path=str(here / "learned-tags.json"),
                 log=ss.log, on_change=self._on_hub_change)
             self.hub_server = hub.HubServer(
                 self.hub, port=int(self.cfg.get("hub_port", hub.DEFAULT_PORT)))
@@ -354,7 +355,7 @@ class Widget:
         self.actions.grid(row=2, column=0, sticky="w", pady=(4, 0))
         self.report_btn = ttk.Button(self.actions, text="Report winner…", command=self.on_report)
         self.report_btn.grid(row=0, column=0, padx=(0, 4))
-        ttk.Button(self.actions, text="Switch winner", command=self.on_swap).grid(row=0, column=1, padx=4)
+        ttk.Button(self.actions, text="Switch players", command=self.on_swap).grid(row=0, column=1, padx=4)
         ttk.Button(self.actions, text="Delete", command=self.on_delete).grid(row=0, column=2, padx=4)
 
         self.extras = ttk.Label(frm, text="", foreground="#888", font=("", 8))
@@ -438,9 +439,11 @@ class Widget:
         if not rec or not self.hub:
             return
         if not rec.get("reportable", True):
+            # May have become reportable since (TO pressed Start Match).
+            rec = self.hub.rebind(self.cfg.get("slug") or "", rec["station"], rec["id"]) or rec
+        if not rec.get("reportable", True):
             self._set_status(
-                f"{rivals_stats.mode_label(rec.get('mode')) or 'non-local'} game — "
-                f"logged for reference, but it can't be reported to the bracket", True)
+                f"can't report: {rec.get('notReportableReason') or 'not a tournament set'}", True)
             return
         entrants = rec.get("entrants") or []
         if len(entrants) < 2:
@@ -477,13 +480,16 @@ class Widget:
         if not rec or not self.hub:
             return
         if not rec.get("reportable", True):
-            self._set_status("that game isn't tied to a bracket set — nothing to swap", True)
+            self._set_status(
+                f"not tied to a bracket set ({rec.get('notReportableReason') or '—'}) "
+                f"— nothing to switch", True)
             return
         res = self.hub.do_swap(self.cfg.get("slug") or "", rec["station"], rec["id"])
         if isinstance(res, tuple):
-            self._set_status(f"swap failed: {res[0].get('error')}", True)
+            self._set_status(f"switch failed: {res[0].get('error')}", True)
         else:
-            self._set_status("swapped tags" + (" and re-pushed" if res.get("repushed") else ""), False)
+            self._set_status("switched players — remembered for future sets"
+                             + (" and re-pushed" if res.get("repushed") else ""), False)
 
     def on_delete(self):
         rec = self._selected_rec()

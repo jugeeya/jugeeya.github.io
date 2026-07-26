@@ -13,6 +13,25 @@ only ever makes matching more forgiving, which is the direction we want.
 import re
 
 
+# start.gg Set.state:
+#   1 = created (seeded, not called)   2 = ongoing — the TO pressed "Start Match"
+#   3 = completed                      6 = called to a station, still not started
+# Only 2 means the match is genuinely underway. Until then a station's games are
+# warmups/friendlies at that setup, so they must not be bound to the bracket set
+# or pushed to it — and we never start a match ourselves.
+STARTGG_STATE_ONGOING = 2
+
+
+def set_started(startgg_set):
+    """True once the TO has actually started this set on start.gg."""
+    if not startgg_set:
+        return False
+    try:
+        return int(startgg_set.get('state')) == STARTGG_STATE_ONGOING
+    except (TypeError, ValueError):
+        return False
+
+
 def norm(s):
     """Lowercase, strip everything that isn't a letter or digit."""
     return re.sub(r'[^a-z0-9]', '', str(s if s is not None else '').lower())

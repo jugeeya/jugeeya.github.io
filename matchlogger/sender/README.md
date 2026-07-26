@@ -172,6 +172,27 @@ entrant, character, score, bracket round, and status. Select a set to act on it:
 Per-game scores still go to start.gg **automatically** as games finish
 (non-advancing: no winner is set), exactly as through the broker.
 
+### Nothing touches the bracket until you press Start Match
+
+A set is only bound to a start.gg set once that set is **ongoing** — i.e. the TO
+pressed **Start Match**. A match merely called to a station still counts as
+warmups: it's recorded and shown as `waiting for start`, but it isn't bound,
+isn't pushed to the live score, and can't be reported. The app also never calls
+`markSetInProgress`, so it can't start a match on its own.
+
+If a set finishes before you press Start Match, hitting **Report** afterwards
+re-checks start.gg and binds it then, so nothing is lost.
+
+### Switch players
+
+The station can only guess who's who — in-game tags don't have to match start.gg
+tags, and it reports *something* rather than nothing. When the game count and
+characters make the real pairing obvious, **Switch players** flips which in-game
+player is which start.gg entrant. Characters and the live score are re-pushed
+immediately, and the pairing is **remembered** (in `learned-tags.json`, kept
+separate so a hand-written `players.json` is never rewritten) — so the next set
+between the same people maps correctly without another correction.
+
 ### Online and ranked games
 
 People play the ladder at a station between tournament matches, and the stats
