@@ -265,7 +265,13 @@ def main(argv=None):
                         "'stats': no mod - watch the stats save + replays and produce them here.")
     p.add_argument("--save", help="[stats] Rivals2_StatsSaveSlot.sav path (default: %%LOCALAPPDATA%%)")
     p.add_argument("--replays", help="[stats] Replays folder path (default: %%LOCALAPPDATA%%)")
-    p.add_argument("--idle", type=float, default=180.0,
+    # 420s (7min): measured from real online games, back-to-back games in one
+    # set land ~182-300s apart (matchmaking + the game itself). A shorter idle
+    # timer fires before the next game arrives and splits one set into
+    # several 1-game "sets". A genuinely new set still closes the previous
+    # one immediately via its Game1, so this is only a fallback for
+    # "the player stopped playing".
+    p.add_argument("--idle", type=float, default=420.0,
                    help="[stats] finalize an open set after this many idle seconds")
     p.add_argument("--players", help="[stats] JSON map of save-tag -> start.gg tag "
                                      "(default: players.json next to this script, if present)")

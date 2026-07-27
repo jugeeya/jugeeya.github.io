@@ -80,6 +80,86 @@ ok(saved['matchCount'] == 2, 'set file matchCount=2')
 ok(json.load(open(os.path.join(outdir, 'live.json'))).get('complete') is True, 'live.json complete after finalize')
 ok(json.load(open(os.path.join(outdir, 'current.json'))).get('state') == 'idle', 'current.json idle after finalize')
 
+# --- backfill: replay race (save flushes before the replay file appears) ---
+# The game writes the stats save BEFORE its replay is visible on disk (measured
+# 9-16s lag in production data). record_game() must still record the game
+# immediately with whatever's known; StatsProducer._backfill_replays() re-checks
+# shortly after and fills in what a same-time replay lookup would have given.
+import time as _time
+
+
+def _replay_name(epoch, mid, game):
+    t = _time.localtime(epoch)
+    return '%04d-%02d-%02d_%02d-%02d-%02d-000-%s-Game%d.rpl' % (
+        t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec, mid, game)
+
+
+bf_out = tempfile.mkdtemp(prefix='statstest_bf_')
+bf_replays = tempfile.mkdtemp(prefix='statstest_bf_replays_')
+bm = rs._SetMachine(bf_out, lambda msg: None)
+
+# Game A: LOCAL, both players known from the save (uses the earlier r1/rep1).
+bm.record_game(r1, rep1, rep1['epoch'])
+# Game B: ONLINE, only the local tag (JUGZ!) moved in the save -> single known
+# player, and this time NO replay is available yet (the race). JUGZ! loses, so
+# the (still unknown) opponent is the winner - this is exactly the case where
+# the opponent/character used to be lost forever.
+result_b = {'mode': 'ONLINE', 'winners': [],
+            'losers': [{'tag': 'JUGZ!', 'char': 'Fle', 'mode': 'ONLINE', 'stats': {'kos': 1}}]}
+# Recent wall-clock time (not rep1's fixed 2026-07-23 stamp): _backfill_replays
+# gives up on games older than BACKFILL_TIMEOUT_S measured against real time.
+at_b = int(_time.time()) - 5
+bm.record_game(result_b, None, at_b)
+
+game_b = bm.set['matches'][1]
+ok(len(game_b['players']) == 1 and game_b['gameNumber'] is None,
+   'backfill setup: game B recorded with no opponent/gameNumber (replay missing at record time)')
+
+# The replay shows up afterwards (deliberately GameN=1, even though this is the
+# 2nd game of the still-open set - GameN arriving late must only patch display
+# fields, never re-trigger the "new Game1 closes the previous set" boundary).
+replay_fname = _replay_name(at_b, 'RIVAL(Zet)-JUGZ!(Fle)', 1)
+with open(os.path.join(bf_replays, replay_fname), 'w') as f:
+    f.write('')
+
+prod = rs.StatsProducer.__new__(rs.StatsProducer)
+prod.replays = bf_replays
+prod.log = lambda msg: None
+prod.machine = bm
+prod._backfill_replays()
+
+ok(bm.set is not None and len(bm.set['matches']) == 2,
+   'late GameN=1 backfill does not split/finalize the open set')
+game_b = bm.set['matches'][1]
+ok(game_b['gameNumber'] == 1, 'gameNumber backfilled onto game B')
+ok(len(game_b['players']) == 2, 'opponent backfilled onto game B')
+opp = next((p for p in game_b['players'] if p['name'] == 'RIVAL'), None)
+ok(opp is not None and opp['character'] == 'Zetterburn', 'backfilled opponent name+character correct')
+ok(opp is not None and opp['wins'] == 1, 'backfilled opponent credited the win JUGZ! lost')
+jz_b = next(p for p in game_b['players'] if p['name'] == 'JUGZ!')
+ok(jz_b['wins'] == 0, "known player's own wins untouched by backfill")
+live_after = json.load(open(os.path.join(bf_out, 'live.json')))
+ok(live_after['matches'][1]['gameNumber'] == 1, 'live.json reflects the backfilled game')
+
+# Give-up bound: a game older than BACKFILL_TIMEOUT_S is left alone even if a
+# matching replay exists, so this can't retry forever.
+bm2 = rs._SetMachine(tempfile.mkdtemp(prefix='statstest_bf2_'), lambda msg: None)
+at_old = rep1['epoch']
+bm2.record_game(result_b, None, at_old)
+old_replays = tempfile.mkdtemp(prefix='statstest_bf2_replays_')
+with open(os.path.join(old_replays, _replay_name(at_old, 'RIVAL(Zet)-JUGZ!(Fle)', 1)), 'w') as f:
+    f.write('')
+prod2 = rs.StatsProducer.__new__(rs.StatsProducer)
+prod2.replays = old_replays
+prod2.log = lambda msg: None
+prod2.machine = bm2
+# Pretend this game was recorded well beyond the backfill window by back-dating
+# its endEpoch, rather than sleeping BACKFILL_TIMEOUT_S seconds in a test.
+bm2.set['matches'][0]['endEpoch'] = int(_time.time()) - rs.StatsProducer.BACKFILL_TIMEOUT_S - 5
+prod2._backfill_replays()
+ok(len(bm2.set['matches'][0]['players']) == 1 and bm2.set['matches'][0]['gameNumber'] is None,
+   'a too-old game is left un-backfilled (gives up after BACKFILL_TIMEOUT_S)')
+
 # Optional: reader parity if a real save is provided
 if len(sys.argv) > 1:
     flat = rs.parse_stats(open(sys.argv[1], 'rb').read())

@@ -109,7 +109,7 @@ python station_sender.py --source stats \
   --station 1
   # --dir defaults to ./matchlogger-out (the sender's own working folder)
   # --save / --replays default to the standard %LOCALAPPDATA% paths
-  # --idle SEC  finalize an open set after this many quiet seconds (default 180)
+  # --idle SEC  finalize an open set after this many quiet seconds (default 420)
 ```
 
 **Scope:** LOCAL brackets are the validated case — both players' tags update on

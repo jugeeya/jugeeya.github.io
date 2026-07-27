@@ -397,6 +397,10 @@ class _SetMachine:
                    'wins': self.set['winsByName'].get(p['name'], 0)}
             row.update(p['stats'])
             match_players.append(row)
+        # end_epoch doubles as the backfill lookup key when replay is None: it's
+        # exactly the wall-clock "at" passed in from poll() at record time, so a
+        # later re-check of _newest_replay_near() against this same value finds
+        # the replay once it shows up on disk. No separate field needed.
         record = {'index': len(self.set['matches']) + 1, 'startTime': None, 'startEpoch': None,
                   'endTime': _iso_of(end_epoch), 'endEpoch': end_epoch, 'durationSeconds': None,
                   'playerCount': len(match_players), 'gameNumber': game_num,
@@ -408,10 +412,7 @@ class _SetMachine:
 
         standings = [{'slot': p['slot'], 'name': p['name'], 'character': p['character'], 'wins': p['wins']}
                      for p in match_players]
-        self.live({'setId': self.set['id'], 'complete': False, 'winsRequired': None,
-                   'mode': self.set.get('mode'),
-                   'matchCount': len(self.set['matches']), 'players': standings,
-                   'matches': self.set['matches']})
+        self.live(self._live_payload())
         self.current({'state': 'set_open', 'epoch': end_epoch, 'setId': self.set['id'],
                       'matchCount': len(self.set['matches'])})
         self.log('game %s | %s -> %s wins [%s]' % (
@@ -419,6 +420,69 @@ class _SetMachine:
             winner['name'] if winner else '?',
             ' '.join('%s %d' % (s['name'], s['wins']) for s in standings)))
         self._emit()
+
+    def _live_payload(self):
+        last = self.set['matches'][-1]
+        standings = [{'slot': p['slot'], 'name': p['name'], 'character': p['character'], 'wins': p['wins']}
+                     for p in last['players']]
+        return {'setId': self.set['id'], 'complete': False, 'winsRequired': None,
+                'mode': self.set.get('mode'),
+                'matchCount': len(self.set['matches']), 'players': standings,
+                'matches': self.set['matches']}
+
+    def _game_winner_name(self, idx):
+        """Whoever's cumulative 'wins' ticked up in matches[idx] vs the same
+        name's count in the previous match of this set (0 if none before it) -
+        the same rule the broker's deriveGames() uses. None if no one's row in
+        this match shows an increase (e.g. the only known player here lost)."""
+        matches = self.set['matches']
+        match = matches[idx]
+        prev = {p['name']: p['wins'] for p in matches[idx - 1]['players']} if idx > 0 else {}
+        for p in match['players']:
+            if p['wins'] > prev.get(p['name'], 0):
+                return p['name']
+        return None
+
+    def backfill_match(self, idx, replay):
+        """Patch match #idx of the CURRENT open set with replay info that
+        wasn't available yet at record time (opponent/character, gameNumber).
+        Never touches set boundaries - that decision was already made (or not)
+        in record_game using only what was known at record time; this only
+        fills in display fields on an already-recorded game. Returns True if
+        anything changed."""
+        if not self.set or idx >= len(self.set['matches']) or replay is None:
+            return False
+        match = self.set['matches'][idx]
+        changed = False
+        if match['gameNumber'] is None:
+            match['gameNumber'] = replay['game']
+            changed = True
+        if len(match['players']) == 1 and len(replay['players']) == 2:
+            known = match['players'][0]
+            opp = next((p for p in replay['players'] if char_full(p['char']) != known['character']), None) or \
+                next((p for p in replay['players'] if p['name'] != known['name']), None)
+            if opp:
+                opp_name = opp['name']
+                opp_char = char_full(opp['char'])
+                # known player's row already carries the correct outcome (it was
+                # computed at record time from the save diff, independent of the
+                # opponent); the opponent, in a 1v1, won iff the known one didn't.
+                opp_won = self._game_winner_name(idx) != known['name']
+                opp_wins = self.set['winsByName'].get(opp_name, 0) + (1 if opp_won else 0)
+                self.set['winsByName'][opp_name] = opp_wins
+                opp_slot = 1 - known['slot'] if known['slot'] in (0, 1) else 1
+                match['players'].append({'slot': opp_slot, 'name': opp_name,
+                                         'character': opp_char, 'wins': opp_wins})
+                match['players'].sort(key=lambda p: p['slot'])
+                match['playerCount'] = len(match['players'])
+                changed = True
+        return changed
+
+    def refresh_live(self):
+        """Re-write live.json after a backfill patches the open set in place."""
+        if self.set and self.set['matches']:
+            self.live(self._live_payload())
+            self._emit()
 
     def finalize(self, complete, at=None):
         if not self.set or not self.set['matches']:
@@ -464,7 +528,16 @@ class _SetMachine:
 # Producer: wires the save/replays to the SetMachine. Call poll() each tick.
 # ---------------------------------------------------------------------------
 class StatsProducer:
-    REPLAY_WINDOW_S = 20
+    # The replay can legitimately land a few seconds either side of the game's
+    # recorded time; widened from 20s after measuring the game write the save
+    # BEFORE the replay file appears on disk (9-16s later in samples). Wide
+    # enough to still catch a late replay via backfill, tight enough not to
+    # grab an unrelated match.
+    REPLAY_WINDOW_S = 45
+    # How long to keep re-checking for a game's replay before giving up. Must
+    # stay well inside the idle timeout so a still-open set has a chance to
+    # get backfilled before it's finalized.
+    BACKFILL_TIMEOUT_S = 120
 
     def __init__(self, save_path, replays_dir, out_dir, idle_s, log, on_change=None):
         self.save = save_path
@@ -502,8 +575,36 @@ class StatsProducer:
                 best = parsed
         return best
 
+    def _backfill_replays(self):
+        """Re-check for replays of recent games in the currently open set that
+        didn't have one at record time (the save flushes before the replay
+        file is visible on disk - see REPLAY_WINDOW_S above). Runs every poll,
+        independent of whether the save itself changed."""
+        s = self.machine.set
+        if not s or not s['matches']:
+            return
+        now = time.time()
+        changed = False
+        for idx, match in enumerate(s['matches']):
+            if match['gameNumber'] is not None and len(match['players']) != 1:
+                continue  # already has everything a replay would add
+            if now - match['endEpoch'] > self.BACKFILL_TIMEOUT_S:
+                continue  # too old - give up, keep the game as originally recorded
+            replay = self._newest_replay_near(match['endEpoch'])
+            if replay is None:
+                continue
+            had_one_player = len(match['players']) == 1
+            if self.machine.backfill_match(idx, replay):
+                changed = True
+                self.log('backfilled game %s%s' % (
+                    match['gameNumber'],
+                    ' + opponent' if had_one_player and len(match['players']) == 2 else ''))
+        if changed:
+            self.machine.refresh_live()
+
     def poll(self):
         self.machine.idle_check(self.idle_s)
+        self._backfill_replays()
         try:
             mtime = os.path.getmtime(self.save)
         except OSError:

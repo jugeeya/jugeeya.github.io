@@ -196,7 +196,7 @@ class Widget:
             self.producer = rivals_stats.StatsProducer(
                 save_path=self.cfg.get("save") or def_save,
                 replays_dir=self.cfg.get("replays") or def_replays,
-                out_dir=out_dir, idle_s=float(self.cfg.get("idle", 180)),
+                out_dir=out_dir, idle_s=float(self.cfg.get("idle", 420)),
                 log=ss.log, on_change=self._on_change)
         except Exception as e:  # never let setup crash the widget
             self.producer = None
