@@ -7,13 +7,17 @@ and the tooling to tie it into a live tournament (start.gg + the
 - **[`ue4ss/`](ue4ss/)** — the mod and a minimal UE4SS profile tuned so it
   doesn't lag the game. Drop-in install for a game PC; see
   [`ue4ss/README.md`](ue4ss/README.md).
-- **[`sender/`](sender/)** — the per-station sender that forwards the mod's
-  output to the broker, run on **every** station PC — usually as the corner
-  widget (`rivals-station-reporter.pyw` / `station_widget.py`), which is where
-  you set the machine's station number and the shared key; `station_sender.py`
-  is the same sender headless. The shared key is **required** — it's the same
-  value as the broker's `OPERATOR_KEY`, since it authorizes the automatic live
-  per-game score push (see below).
+- **Station reporter** — the per-station app that forwards the mod's output to
+  the broker, run on **every** station PC, which is where you set the
+  machine's station number and the shared key. It used to live in this repo
+  as a Python widget (`sender/`); that's been superseded by a full Rust/Tauri
+  rewrite, now developed in its own repo:
+  [jugeeya/rivals-station-reporter](https://github.com/jugeeya/rivals-station-reporter)
+  — grab the installer from its
+  [latest release](https://github.com/jugeeya/rivals-station-reporter/releases).
+  The shared key is **required** — it's the same value as the broker's
+  `OPERATOR_KEY`, since it authorizes the automatic live per-game score push
+  (see below).
 - **Console (optional)** — `index.html` + `matchlogger.js/.css`, served at
   `/matchlogger/`. A debug view of the broker's aggregated state: live "now
   playing" per station and a sets-today table, reading `/matchlogger/event`.

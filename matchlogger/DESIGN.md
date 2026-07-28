@@ -1,5 +1,15 @@
 # MatchLogger ↔ start.gg ↔ VOD splitter — integration design
 
+> **Note:** the station reporter described below (`sender/`, the Python
+> corner widget) has been rewritten from scratch in Rust/Tauri and moved to
+> its own repo:
+> [jugeeya/rivals-station-reporter](https://github.com/jugeeya/rivals-station-reporter).
+> That repo is where station-reporter development now happens; the Python
+> code this document describes no longer exists in this repo. The design
+> below is kept for history/context — the broker, console, and overall
+> architecture it describes are still accurate, but anything specific to the
+> Python sender's implementation is out of date.
+
 This document describes how to connect the Rivals of Aether II **MatchLogger**
 UE4SS mod (`ue4ss/Mods/MatchLogger/`) to a live tournament: knowing which
 station a machine is, pinging when a set ends, optionally reporting the set to

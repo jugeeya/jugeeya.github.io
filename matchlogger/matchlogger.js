@@ -423,27 +423,17 @@ const INSTALL = {
   sender: {
     title: 'Rivals Station Reporter — install on every station PC',
     steps: `
-      <li>Needs <strong>Python 3.8+</strong> installed on this machine.</li>
-      <li>Download the package below and extract it anywhere (e.g. a
-        <code>RivalsStationReporter</code> folder on the Desktop) — it unpacks to one
-        launcher plus an <code>_internal</code> folder holding everything else, so
-        there's nothing else to hunt for.</li>
-      <li>Double-click <code>rivals-station-reporter.pyw</code> — no terminal window
-        opens; the widget's <strong>Log</strong> panel shows what the sender is doing
-        instead. (Elsewhere: <code>python rivals-station-reporter.pyw</code> works the
-        same from a terminal. For a scheduled task with no window at all, run
-        <code>station_sender.py</code> from inside <code>_internal/</code> directly.)</li>
-      <li>First run, the widget opens its <strong>Settings</strong> panel: fill in the
-        broker URL, this event's start.gg slug, <strong>this station's number</strong>,
-        the <code>MatchLogger</code> output folder next to the game exe (e.g.
-        <code>…/Rivals2/Binaries/Win64/MatchLogger</code>), and the <strong>shared
-        key</strong> (get this from whoever set up the event — it's required, not
-        optional), then hit Save — it's stored for next launch, no config file
-        editing needed.</li>
-      <li>Closing the widget sends it to the system tray — it keeps running. Right-click
-        the tray icon to reopen or quit it.</li>`,
-    download: { href: 'dist/rivals-station-reporter.zip', label: 'Download Rivals Station Reporter (.zip)' },
-    note: 'Flags, the tray dependency (<code>pip install pystray pillow</code>), and what it does/doesn\'t touch: <a href="sender/README.md">sender/README.md</a>.',
+      <li>Grab the installer from the
+        <a href="https://github.com/jugeeya/rivals-station-reporter/releases" target="_blank" rel="noopener">latest release</a>
+        (Windows NSIS <code>.exe</code>; macOS <code>.dmg</code>) and run it.</li>
+      <li>First run walks through setup: pick what this PC is (station, operator,
+        or both), paste the start.gg event link (it echoes back the tournament name
+        so a wrong paste is caught immediately), and enter the shared key from
+        whoever runs the event. Save/replay paths are auto-detected — nothing to
+        browse for.</li>
+      <li>Closing the window sends the app to the tray; reporting keeps running.
+        "Start with Windows" is in Settings.</li>`,
+    note: 'This replaces the old Python sender — see the <a href="https://github.com/jugeeya/rivals-station-reporter" target="_blank" rel="noopener">rivals-station-reporter</a> repo for details, release downloads, and source.',
   },
   operator: {
     title: 'This console — nothing to install',
