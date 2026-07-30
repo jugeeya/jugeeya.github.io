@@ -1624,12 +1624,12 @@ const SAVE_PATHS = {
     },
     deck: {
         file: {
-            path: '~/.local/share/Steam/steamapps/compatdata/217000/pfx/drive_c/users/steamuser/AppData/Local/Rivals2/Saved/SaveGames/Rivals2_PlayerTagSaveSlot.sav',
+            path: '~/.local/share/Steam/steamapps/compatdata/2217000/pfx/drive_c/users/steamuser/AppData/Local/Rivals2/Saved/SaveGames/Rivals2_PlayerTagSaveSlot.sav',
             intro: 'On Steam Deck (Proton) your save is under your home folder:',
             tip: 'Tip: in the file picker press <kbd>Ctrl</kbd>+<kbd>L</kbd> and paste this path. You may need to show hidden files (<kbd>Ctrl</kbd>+<kbd>H</kbd>).',
         },
         folder: {
-            path: '~/.local/share/Steam/steamapps/compatdata/217000/pfx/drive_c/users/steamuser/AppData/Local/Rivals2/Saved/SaveGames',
+            path: '~/.local/share/Steam/steamapps/compatdata/2217000/pfx/drive_c/users/steamuser/AppData/Local/Rivals2/Saved/SaveGames',
             intro: 'On Steam Deck (Proton) the save folder is under your home folder:',
             tip: 'Tip: open this folder (file manager ▸ <kbd>Ctrl</kbd>+<kbd>L</kbd>, paste) and replace the old <code>.sav</code> with the one you just downloaded. You may need to show hidden files (<kbd>Ctrl</kbd>+<kbd>H</kbd>).',
         },
