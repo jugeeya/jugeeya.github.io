@@ -17,7 +17,8 @@
   "bOnlyDashAttackWhenHoldingForward": true,
   "RollSetting": "Default",
   "bWavedashAssist": false,
-  "AirdodgeCardinalRoundingAngle": 20
+  "AirdodgeCardinalRoundingAngle": 20,
+  "HoldToTaunt": false
  },
  "controllers": {
   "Keyboard": {

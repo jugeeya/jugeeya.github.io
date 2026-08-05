@@ -11,6 +11,15 @@ const DEFAULTS_URL = 'control-defaults.json';
 const ENUM_SETTINGS = new Set(['RollSetting', 'RightStickSetting', 'AirParrySetting',
     'AirGrabSetting', 'ItemTossSetting']);
 const NUM_SETTINGS = new Set(['AirdodgeCardinalRoundingAngle']);
+// Boolean settings that DON'T use the usual `b` prefix. Everything else is
+// caught by the generic `startsWith('b')` rule below (bAutoWalk, bDpadMovement,
+// bTapJumpEnabled, ...), but "Hold to Taunt" — added in the patch on
+// 2026-08-04 — serialises as a bare `HoldToTaunt` BoolProperty. Confirmed by
+// reading a real save: it sits directly after AirdodgeCardinalRoundingAngle in
+// ControlSettings, so it is a sibling of the rest despite the naming. Without
+// listing it here it is silently dropped from the digest and never shows as a
+// change, however the player has it set.
+const BOOL_SETTINGS = new Set(['HoldToTaunt']);
 
 // ---- digest extraction (pure; mirrors the GVAS property tree) --------------
 
@@ -38,7 +47,7 @@ export function extractDigest(root) {
         const base = strip(k);
         if (ENUM_SETTINGS.has(base)) digest.settings[base] = enumShort(v);
         else if (NUM_SETTINGS.has(base)) digest.settings[base] = round(v, 4);
-        else if (base.startsWith('b')) digest.settings[base] = !!v;
+        else if (base.startsWith('b') || BOOL_SETTINGS.has(base)) digest.settings[base] = !!v;
     }
 
     // Bindings: collect every action/axis mapping, bucket by input type.
@@ -158,6 +167,9 @@ const SETTING_LABEL = {
     RollSetting: 'Roll', RightStickSetting: 'Right stick',
     AirParrySetting: 'Air parry', AirGrabSetting: 'Air grab',
     ItemTossSetting: 'Item toss', AirdodgeCardinalRoundingAngle: 'Airdodge cardinal angle',
+    // Spelled out rather than left to camel(), which would render the
+    // unprefixed name as "Hold To Taunt".
+    HoldToTaunt: 'Hold to taunt',
 };
 function settingLabel(k) {
     return SETTING_LABEL[k] || camel(k.replace(/^b/, '').replace(/Enabled$/, ''));

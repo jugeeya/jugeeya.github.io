@@ -34,6 +34,15 @@ const DEFAULT_OVERRIDES = {
         RightStickSetting: 'Strong',
         AirParrySetting: 'Nspecial',
         AirGrabSetting: 'Airdodge',
+        // "Hold to Taunt" (patch of 2026-08-04) postdates BASELINE_TAG, so the
+        // baseline tag has no such property and extractDigest can't produce
+        // one. Listed here because applyOverrides Object.assign's this over the
+        // digest, which ADDS missing keys as well as correcting present ones —
+        // without it a regenerated baseline would silently drop the setting,
+        // and every tag carrying it would then diff against `undefined` and
+        // render a phantom "Hold to taunt — → Off" row. Defaults off: it is an
+        // opt-in Advanced Control option.
+        HoldToTaunt: false,
     },
     // Xbox sticks ship at 1.0; the baseline tag raised them. Other pads' defaults
     // (Switch 1.2, GameCube 1.3) are left as-is.
