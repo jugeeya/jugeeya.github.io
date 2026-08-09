@@ -10,10 +10,16 @@
 
 const BROKER = 'https://r2tag-broker.jdsambasivam.workers.dev';
 
-// ffmpeg.wasm from CDN (UMD globals; single-threaded core needs no COOP/COEP).
+// ffmpeg.wasm (UMD globals; single-threaded core needs no COOP/COEP).
+//
+// The loader is served from our own origin: ffmpeg.js spawns its Web Worker
+// from a sibling chunk resolved relative to its own URL, and a cross-origin
+// Worker is blocked outright ("cannot be accessed from origin …"). Only the
+// ~10 KB loader is vendored — the ~32 MB core still comes from the CDN, handed
+// over as a blob URL (same-origin by definition). See vendor/README.md.
 const FF = {
-  ffmpeg: 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js',
-  util: 'https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/umd/index.js',
+  ffmpeg: 'vendor/ffmpeg.js',
+  util: 'vendor/ffmpeg-util.js',
   core: 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/umd',
 };
 
@@ -255,6 +261,32 @@ function outName(clip) {
   return `${sanitizeName(clip.name)}.mp4`;
 }
 
+// Quick ± offsets offered under each start/end field. U+2212 (real minus) so the
+// labels line up with the "+" ones instead of sitting a pixel high on a hyphen.
+const NUDGES = [
+  [-60, '−1m'], [-30, '−30s'], [-5, '−5s'],
+  [5, '+5s'], [30, '+30s'], [60, '+1m'],
+];
+const MIN_CLIP_LEN = 1;   // seconds; keeps start from crossing end
+
+function nudgeButtons(key) {
+  return NUDGES.map(([delta, label]) =>
+    `<button type="button" class="clip-nudge" data-nudge="${key}" data-delta="${delta}">${label}</button>`
+  ).join('');
+}
+
+// Timecode on one line, its ± offsets on the next — side by side they'd wrap
+// awkwardly once the preview frames claim their half of the row.
+function timeRow(key, label, value) {
+  return `<div class="clip-edit">
+        <div class="clip-edit-head">
+          <span class="clip-time-label">${label}</span>
+          <input class="clip-time" type="text" data-k="${key}" value="${value}">
+        </div>
+        <span class="clip-nudge-group">${nudgeButtons(key)}</span>
+      </div>`;
+}
+
 function renderClips() {
   const list = $('clipList');
   if (!clips.length) {
@@ -262,16 +294,19 @@ function renderClips() {
     return;
   }
   list.innerHTML = '';
-  clips.forEach((clip, i) => {
+  clips.forEach((clip) => {
     const row = document.createElement('div');
     row.className = 'clip-row';
     row.innerHTML = `
       <label class="clip-include"><input type="checkbox" data-k="on" checked></label>
-      <input class="clip-name" data-k="name" value="${escapeAttr(clip.name)}">
+      <input class="clip-name" type="text" data-k="name" value="${escapeAttr(clip.name)}">
       <div class="clip-times">
-        <label>start <input class="clip-time" data-k="start" value="${clock(clip.start)}"></label>
-        <label>end <input class="clip-time" data-k="end" value="${clock(clip.end)}"></label>
-        <span class="clip-dur">${clock(Math.max(0, clip.end - clip.start))}</span>
+        ${timeRow('start', 'Start', clock(clip.start))}
+        ${timeRow('end', 'End', clock(clip.end))}
+        <div class="clip-edit-head">
+          <span class="clip-time-label">Length</span>
+          <span class="clip-dur">${clock(Math.max(0, clip.end - clip.start))}</span>
+        </div>
       </div>
       <div class="clip-frames">
         <figure><img data-frame="start" alt="start frame"><figcaption>start</figcaption></figure>
@@ -279,16 +314,46 @@ function renderClips() {
       </div>`;
     row.querySelector('[data-k="name"]').addEventListener('input', (e) => { clip.name = e.target.value; });
     for (const k of ['start', 'end']) {
-      row.querySelector(`[data-k="${k}"]`).addEventListener('change', (e) => {
+      row.querySelector(`input[data-k="${k}"]`).addEventListener('change', (e) => {
         const v = parseClock(e.target.value);
         if (v != null) { clip[k] = v; e.target.value = clock(v); refreshFrames(row, clip); updateDur(row, clip); }
       });
     }
+    row.querySelectorAll('.clip-nudge').forEach((btn) => {
+      btn.addEventListener('click', () =>
+        nudgeClip(row, clip, btn.dataset.nudge, Number(btn.dataset.delta)));
+    });
     row.dataset.id = clip.id;
     list.appendChild(row);
     refreshFrames(row, clip);
   });
 }
+
+// Shift one edge of a clip, clamped to the recording and to a minimum length so
+// start can never cross end.
+function nudgeClip(row, clip, key, delta) {
+  let next = Math.round(clip[key] + delta);
+  if (key === 'start') {
+    next = Math.max(0, Math.min(next, clip.end - MIN_CLIP_LEN));
+  } else {
+    next = Math.max(next, clip.start + MIN_CLIP_LEN);
+    if (vodDuration) next = Math.min(next, vodDuration);
+  }
+  if (next === clip[key]) return;   // already pinned at an edge
+  clip[key] = next;
+  row.querySelector(`input[data-k="${key}"]`).value = clock(next);
+  updateDur(row, clip);
+  queueFrames(row, clip);
+}
+
+// Each nudge would otherwise fire a seek; a burst of clicks queues them all up
+// and the previews crawl behind. Redraw once the clicking settles instead.
+const frameTimers = new WeakMap();
+function queueFrames(row, clip) {
+  clearTimeout(frameTimers.get(row));
+  frameTimers.set(row, setTimeout(() => refreshFrames(row, clip), 250));
+}
+
 function updateDur(row, clip) {
   row.querySelector('.clip-dur').textContent = clock(Math.max(0, clip.end - clip.start));
 }

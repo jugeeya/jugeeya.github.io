@@ -178,6 +178,14 @@ body::before {
     padding: 2rem 1.5rem 3rem;
 }
 
+/* Opt-in wider shell for tool pages with a two-up or workspace-style layout
+   (tags, vods). Only kicks in once there's room for it. */
+@media (min-width: 1024px) {
+    .container-wide {
+        max-width: 1240px;
+    }
+}
+
 /* ---- Top app bar ---------------------------------------------------------- */
 .site-nav {
     position: sticky;
@@ -670,6 +678,19 @@ button.linkish {
 button.linkish:hover:not(:disabled) {
     box-shadow: none;
     transform: none;
+}
+
+/* Form controls don't inherit the page font, and the outlined-field rule below
+   is keyed to specific [type=…] values — so an <input> written without a type
+   attribute silently falls back to the UA default (Arial on Chrome/Windows) and
+   sticks out. Make the inheritance unconditional; pages can still opt an
+   individual field into the mono stack with a class. */
+input,
+select,
+textarea,
+button,
+progress {
+    font-family: var(--font-family);
 }
 
 /* Text fields (outlined) */

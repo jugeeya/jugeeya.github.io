@@ -15,9 +15,7 @@ main {
 }
 
 @media (min-width: 1024px) {
-    .container-wide {
-        max-width: 1240px;
-    }
+    /* .container-wide itself now lives in ../styles.css (shared with vods). */
 
     /* Hero: title + subtitle on the left, the walkthrough video beside it on the
        right, so the header fills the width instead of floating in the centre. */

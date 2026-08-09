@@ -11,11 +11,25 @@
     margin-bottom: 1.5rem;
 }
 
-/* A single guided column reads better at a comfortable line length than
-   stretched across the full container, same as the tags page. */
+/* A single guided column at a comfortable line length by default. On desktop
+   the flow opens up to the full (wide) container, because step 3 is a
+   workspace — clip name, both timecodes with their nudge controls, and two
+   preview frames all want to sit on one line. Steps 1 and 2 are plain forms
+   that don't benefit from that width, so their bodies stay capped. */
 main {
     max-width: 920px;
     margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    main {
+        max-width: none;
+    }
+
+    #vodStep1 .step-body,
+    #vodStep2 .step-body {
+        max-width: 760px;
+    }
 }
 
 .muted {
@@ -175,18 +189,24 @@ label {
 
 .clip-row {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto minmax(0, 1fr);
     grid-template-areas:
         "include name"
         "include times"
         "frames  frames";
-    gap: 0.6rem 0.85rem;
-    align-items: center;
-    padding: 1rem 0;
+    gap: 0.75rem 0.85rem;
+    align-items: start;
+    padding: 1.15rem 0;
     border-top: 1px solid var(--md-outline-variant);
 }
 
-.clip-include { grid-area: include; }
+/* The list already sits under the toolbar's own spacing. */
+.clip-row:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.clip-include { grid-area: include; padding-top: 0.7rem; }
 .clip-include input { accent-color: var(--md-primary); width: 18px; height: 18px; }
 
 .clip-name {
@@ -198,22 +218,81 @@ label {
 .clip-times {
     grid-area: times;
     display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.7rem;
     color: var(--md-on-surface-variant);
     font-size: 0.85rem;
 }
 
-.clip-time {
-    width: 8ch;
+/* One edge of the clip: "Start 0:01:23" with its ± offsets on the line below. */
+.clip-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.clip-edit-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+/* Shared min-width keeps the Start / End / Length values in one column. */
+.clip-time-label {
+    min-width: 3.25rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--md-on-surface-variant);
+}
+
+/* Qualified with `input` on purpose: these carry type="text", so the shared
+   `input[type="text"]` rule (an attribute selector, which outranks a bare
+   class) would otherwise win and take the timecodes off the mono stack — and
+   digits that don't line up in a timecode are genuinely harder to read. */
+input.clip-time {
+    width: 9ch;
+    padding: 0.4rem 0.45rem;
     font-family: var(--font-mono);
+    font-size: 0.85rem;
     text-align: center;
 }
 
 .clip-dur {
     font-family: var(--font-mono);
+    font-size: 0.9rem;
     color: var(--md-on-surface);
+}
+
+/* ---- ± quick offsets ------------------------------------------------------ */
+/* Outlined pills, deliberately quiet: there are twelve per clip, so they have
+   to sit behind the timecode they adjust rather than compete with the row's
+   real actions. Overrides the shared filled-button look. */
+.clip-nudge-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+}
+
+.clip-nudge {
+    min-width: 3.1rem;
+    padding: 0.25rem 0.5rem;
+    background-color: transparent;
+    color: var(--md-primary);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-corner-full);
+    box-shadow: none;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.clip-nudge:hover:not(:disabled) {
+    border-color: var(--md-primary);
+    box-shadow: none;
+    transform: none;
 }
 
 .clip-frames {
@@ -258,11 +337,20 @@ label {
     overflow: hidden;
 }
 
-@media (min-width: 720px) {
+/* Wide enough for the fields and both preview frames to share a line: the whole
+   clip reads as one strip instead of wrapping into a block per clip. */
+@media (min-width: 900px) {
     .clip-row {
-        grid-template-columns: auto 2fr 3fr;
-        grid-template-areas: "include name frames" "include times frames";
-        align-items: start;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-areas:
+            "include name  frames"
+            "include times frames";
+        column-gap: 1.5rem;
     }
-    .clip-name { align-self: end; }
+}
+
+@media (min-width: 1180px) {
+    .clip-frames img {
+        width: 268px;
+    }
 }
