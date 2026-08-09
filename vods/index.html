@@ -103,8 +103,13 @@
                                 <span class="tag-action-sep">·</span>
                                 <button type="button" id="clearClips" class="linkish">Clear</button>
                                 <span class="clip-spacer"></span>
+                                <span class="clip-exports">
+                                    <span class="clip-exports-label">Or hand off to another tool:</span>
+                                    <button type="button" id="scriptBtn" class="linkish" disabled>ffmpeg script</button>
+                                    <button type="button" id="csvBtn" class="linkish" disabled>CSV</button>
+                                    <button type="button" id="jsonBtn" class="linkish" disabled>JSON</button>
+                                </span>
                                 <button type="button" id="splitBtn" disabled>Split in browser</button>
-                                <button type="button" id="scriptBtn" class="secondary" disabled>Copy ffmpeg commands</button>
                             </div>
                             <div id="clipList" class="clip-list">
                                 <p class="muted">No clips yet. Build them from start.gg above, or add one by hand.</p>

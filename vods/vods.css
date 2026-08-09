@@ -183,6 +183,26 @@ label {
     flex: 1 1 auto;
 }
 
+/* Secondary escape hatches — the cut list handed to some other tool. Grouped
+   and quiet so "Split in browser" stays the obvious action. */
+.clip-exports {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    flex-wrap: wrap;
+}
+
+.clip-exports-label {
+    margin-right: 0.35rem;
+    color: var(--md-on-surface-variant);
+    font-size: 0.82rem;
+}
+
+.clip-exports .linkish {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.85rem;
+}
+
 .tag-action-sep {
     color: var(--md-outline-variant);
 }
@@ -263,6 +283,22 @@ input.clip-time {
     font-family: var(--font-mono);
     font-size: 0.9rem;
     color: var(--md-on-surface);
+}
+
+/* A clip long enough to be a bad start.gg end time rather than a real set. */
+.clip-warn {
+    color: var(--md-error);
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.clip-row.is-long .clip-dur {
+    color: var(--md-error);
+}
+
+.clip-row.is-long {
+    background: color-mix(in srgb, var(--md-error) 7%, transparent);
+    border-radius: var(--md-corner-sm);
 }
 
 /* ---- ± quick offsets ------------------------------------------------------ */

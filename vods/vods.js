@@ -248,7 +248,14 @@ $('buildClips').addEventListener('click', () => {
   clips = built;
   renderClips();
   updateActionButtons();
-  setSplitStatus(`Built ${clips.length} clip(s). Review the frames below, then split.`, 'success');
+  const long = longClips().length;
+  setSplitStatus(
+    long
+      ? `Built ${clips.length} clip(s), but ${long} run longer than ` +
+        `${LONG_CLIP_WARN_SEC / 60} minutes — start.gg probably never got a proper ` +
+        `end time for those. Fix the flagged rows before splitting.`
+      : `Built ${clips.length} clip(s). Review the frames below, then split.`,
+    long ? 'warn' : 'success');
 });
 
 // ---- Clip list ------------------------------------------------------------
@@ -268,6 +275,12 @@ const NUDGES = [
   [5, '+5s'], [30, '+30s'], [60, '+1m'],
 ];
 const MIN_CLIP_LEN = 1;   // seconds; keeps start from crossing end
+
+// start.gg's completedAt is often stale or missing — a set that was never
+// properly closed out reports an end time hours after it started, which turns
+// into one absurd clip that quietly eats the whole split. Flag those rather
+// than letting someone discover it after a long encode.
+const LONG_CLIP_WARN_SEC = 45 * 60;
 
 function nudgeButtons(key) {
   return NUDGES.map(([delta, label]) =>
@@ -306,6 +319,7 @@ function renderClips() {
         <div class="clip-edit-head">
           <span class="clip-time-label">Length</span>
           <span class="clip-dur">${clock(Math.max(0, clip.end - clip.start))}</span>
+          <span class="clip-warn" hidden>⚠ Unusually long — check the end time</span>
         </div>
       </div>
       <div class="clip-frames">
@@ -325,6 +339,7 @@ function renderClips() {
     });
     row.dataset.id = clip.id;
     list.appendChild(row);
+    updateDur(row, clip);   // also surfaces the too-long warning on first paint
     refreshFrames(row, clip);
   });
 }
@@ -355,7 +370,15 @@ function queueFrames(row, clip) {
 }
 
 function updateDur(row, clip) {
-  row.querySelector('.clip-dur').textContent = clock(Math.max(0, clip.end - clip.start));
+  const len = Math.max(0, clip.end - clip.start);
+  row.querySelector('.clip-dur').textContent = clock(len);
+  const tooLong = len > LONG_CLIP_WARN_SEC;
+  row.classList.toggle('is-long', tooLong);
+  row.querySelector('.clip-warn').hidden = !tooLong;
+}
+
+function longClips(list = clips) {
+  return list.filter((c) => (c.end - c.start) > LONG_CLIP_WARN_SEC);
 }
 async function refreshFrames(row, clip) {
   if (!vodUrl) return;
@@ -380,15 +403,69 @@ $('clearClips').addEventListener('click', () => { clips = []; renderClips(); upd
 function updateActionButtons() {
   const ready = clips.length > 0 && vodFile;
   $('splitBtn').disabled = !ready;
-  $('scriptBtn').disabled = !clips.length;
+  // The exports describe the cut list, so they only need clips — not the VOD.
+  for (const id of ['scriptBtn', 'csvBtn', 'jsonBtn']) $(id).disabled = !clips.length;
 }
+
+function downloadText(text, filename, mime = 'text/plain') {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text], { type: mime }));
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+// ---- Option C: hand the cut list to another tool --------------------------
+// Ticked clips if any are ticked, otherwise everything — same rule the ffmpeg
+// script uses, so every export describes the same set of clips.
+function exportedClips() {
+  return includedClips().length ? includedClips() : clips;
+}
+
+function csvCell(s) {
+  return `"${String(s).replace(/"/g, '""')}"`;
+}
+
+// LosslessCut's CSV importer takes bare `start,end,name` rows in seconds. It
+// only skips a header when it reads exactly "Start,End,Name" — any other
+// wording (start_sec, …) is parsed as a cut whose times fail to parse and
+// silently land at 0, so the header has to be spelled its way. Plain decimal
+// seconds are fine, and it caps fractions at 3 digits, hence toFixed(3).
+function buildCsv() {
+  const rows = exportedClips().map((c) =>
+    `${c.start.toFixed(3)},${c.end.toFixed(3)},${csvCell(sanitizeName(c.name))}`);
+  return ['Start,End,Name', ...rows].join('\n') + '\n';
+}
+
+function buildJson() {
+  return JSON.stringify({
+    vod: vodFile ? vodFile.name : null,
+    generated: new Date().toISOString(),
+    cuts: exportedClips().map((c) => ({
+      start_sec: Number(c.start.toFixed(3)),
+      end_sec: Number(c.end.toFixed(3)),
+      duration_sec: Number(Math.max(0, c.end - c.start).toFixed(3)),
+      filename: outName(c),
+    })),
+  }, null, 2) + '\n';
+}
+
+$('csvBtn').addEventListener('click', () => {
+  downloadText(buildCsv(), 'cuts.csv', 'text/csv');
+  setSplitStatus(`Exported ${exportedClips().length} cut(s) to cuts.csv — ` +
+    `importable in LosslessCut (File ▸ Import project ▸ CSV).`, 'success');
+});
+
+$('jsonBtn').addEventListener('click', () => {
+  downloadText(buildJson(), 'cuts.json', 'application/json');
+  setSplitStatus(`Exported ${exportedClips().length} cut(s) to cuts.json.`, 'success');
+});
 
 // ---- Option B: ffmpeg command generator -----------------------------------
 function buildScript(kind) {
   const inp = vodFile ? vodFile.name : 'INPUT.mkv';
   const q = (s) => `"${s.replace(/"/g, '\\"')}"`;
-  const lines = includedClips().length ? includedClips() : clips;
-  const cmds = lines.map((c) =>
+  const cmds = exportedClips().map((c) =>
     `ffmpeg -y -ss ${ffTime(c.start)} -i ${q(inp)} -t ${ffTime(Math.max(0, c.end - c.start))} -c copy ${q(outName(c))}`
   );
   if (kind === 'bat') return ['@echo off', ...cmds, 'echo Done.'].join('\r\n') + '\r\n';
@@ -400,12 +477,8 @@ $('scriptBtn').addEventListener('click', () => {
   const kind = isWin ? 'bat' : 'sh';
   const text = buildScript(kind);
   navigator.clipboard?.writeText(text).catch(() => {});
-  const blob = new Blob([text], { type: 'text/plain' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `split-clips.${kind}`;
-  a.click();
-  setSplitStatus(`Copied ${includedClips().length || clips.length} ffmpeg command(s) to your clipboard and downloaded split-clips.${kind}. Run it in the folder with your VOD.`, 'success');
+  downloadText(text, `split-clips.${kind}`);
+  setSplitStatus(`Copied ${exportedClips().length} ffmpeg command(s) to your clipboard and downloaded split-clips.${kind}. Run it in the folder with your VOD.`, 'success');
 });
 
 // ---- Option A: split in the browser with ffmpeg.wasm ----------------------
