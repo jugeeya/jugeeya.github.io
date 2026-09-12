@@ -1,7 +1,17 @@
 {
   "version": 1,
-  "updated": "2026-09-12T15:41:11Z",
+  "updated": "2026-09-12T17:01:02Z",
   "tags": [
+    {
+      "name": "ACRID",
+      "author": "Acridbubbles",
+      "file": "acrid-6242bb50.r2tag.zip",
+      "uploaded": "2026-09-12T17:00:44Z",
+      "startgg": {
+        "slug": "user/6242bb50",
+        "tag": "Acridbubbles"
+      }
+    },
     {
       "name": "Joulie-T",
       "author": "",
