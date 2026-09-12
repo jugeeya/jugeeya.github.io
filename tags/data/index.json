@@ -1,7 +1,17 @@
 {
   "version": 1,
-  "updated": "2026-09-12T17:01:02Z",
+  "updated": "2026-09-12T19:23:21Z",
   "tags": [
+    {
+      "name": "JR.DAN*",
+      "author": "Jr.Dan",
+      "file": "jr.dan-14c41db0.r2tag.zip",
+      "uploaded": "2026-09-12T19:23:04Z",
+      "startgg": {
+        "slug": "user/14c41db0",
+        "tag": "Jr. Dan"
+      }
+    },
     {
       "name": "ACRID",
       "author": "Acridbubbles",
