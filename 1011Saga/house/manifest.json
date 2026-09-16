@@ -3373,7 +3373,8 @@
             "Part Concrete (concrete slab)",
             "Part Wood Flooring (concrete slab)",
             "Floor Overlay \u00b7",
-            "Slab concrete slab.026"
+            "Slab concrete slab.026",
+            "Web Floor Finish \u00b7 "
           ],
           "bounds": [
             [
@@ -3436,11 +3437,20 @@
           "reason": "Powder-facing partitions and trim under the west stair, excluding the stairs and rails themselves."
         }
       ],
-      "asset": "entry-6c9e87c14cf7.glb",
-      "assetHash": "6c9e87c14cf71118f7b2bfc5436265dd6ebbd42f5700b09ef7c572d142d72ea1",
-      "assetBytes": 11236580,
-      "objectCount": 497,
-      "triangles": 99661,
+      "cutawayKeepPrefixes": [
+        "Slab concrete slab."
+      ],
+      "floorFinish": {
+        "material": "Floor \u00b7 White Marble 18in (atrium)",
+        "offset": 0.002,
+        "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it.",
+        "grid": "marble18"
+      },
+      "asset": "entry-304e4ef2b2fd.glb",
+      "assetHash": "304e4ef2b2fdc620192a8188f74f6f39ab098c64232dd78ecb4d366d55db05d8",
+      "assetBytes": 11270352,
+      "objectCount": 498,
+      "triangles": 100143,
       "cameras": [
         {
           "id": "room-view",
@@ -3750,13 +3760,13 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-410c3eb43047",
-          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "id": "mat-7f34b4ab5826",
+          "name": "Floor \u00b7 White Marble 18in (atrium)",
           "roomId": "entry",
           "role": null,
-          "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "color": "#ecebe9",
+          "roughness": 0.12,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-e78b35bec6eb",
@@ -3766,15 +3776,6 @@
           "color": "#f3f3f3",
           "roughness": 0.5,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-7f34b4ab5826",
-          "name": "Floor \u00b7 White Marble 18in (atrium)",
-          "roomId": "entry",
-          "role": null,
-          "color": "#ecebe9",
-          "roughness": 0.12,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-8c19a23282ba",
@@ -3948,6 +3949,15 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-410c3eb43047",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "entry",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.3757433593273163,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-67d32cb227e3",
           "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
           "roomId": "entry",
@@ -4082,9 +4092,6 @@
           "roughness": 0.6361762881278992,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         }
-      ],
-      "cutawayKeepPrefixes": [
-        "Slab concrete slab."
       ]
     },
     {
@@ -4145,7 +4152,8 @@
         "Wall W4.003",
         "Obj 84\" BASE CAB",
         "Obj 84\" BASE CAB.023",
-        "Obj 86\" BASE CAB.020"
+        "Obj 86\" BASE CAB.020",
+        "Powder floor tile"
       ],
       "wallAttachments": [
         {
@@ -4262,11 +4270,17 @@
           "visibilityThreshold": -0.2
         }
       ],
-      "asset": "powder-room-dfb0c6915af0.glb",
-      "assetHash": "dfb0c6915af085bd3b203ae357a16a0f20d72f1c2c0a5b40c7f0af6b6fd38ee7",
-      "assetBytes": 3856692,
+      "floorFinish": {
+        "material": "Floor \u00b7 White Marble 18in (atrium)",
+        "offset": 0.008,
+        "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it.",
+        "grid": "marble18"
+      },
+      "asset": "powder-room-cbee037bcfd7.glb",
+      "assetHash": "cbee037bcfd75a33aad6d10597fd8917b6c1c6daf9283d82003bad366bdd25b6",
+      "assetBytes": 3292612,
       "objectCount": 144,
-      "triangles": 17617,
+      "triangles": 17425,
       "cameras": [
         {
           "id": "room-view",
@@ -4404,24 +4418,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-b327c4eac67e",
-          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
-          "roomId": "powder-room",
-          "role": null,
-          "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-50fe67c972bb",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "powder-room",
-          "role": null,
-          "color": "#ebe8e0",
-          "roughness": 0.9077944755554199,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
           "id": "mat-5d7e979b5b00",
           "name": "Floor \u00b7 White Marble 18in (atrium)",
           "roomId": "powder-room",
@@ -4431,13 +4427,13 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
-          "id": "mat-bc5665aaebdd",
-          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "id": "mat-50fe67c972bb",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "powder-room",
           "role": null,
-          "color": "#a0a09e",
-          "roughness": 0.550000011920929,
-          "translation": "constant source PBR values"
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-76a22c71689a",
@@ -4528,6 +4524,15 @@
           "color": "#3a3941",
           "roughness": 0.12,
           "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-bc5665aaebdd",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -5931,11 +5936,16 @@
         "Part Gypsum Board (concrete slab).003",
         "Part Wood Framing + Insulation (concrete slab).003"
       ],
-      "asset": "loli-bathroom-e84641fbf16c.glb",
-      "assetHash": "e84641fbf16cf44c938c4abb0906c8b570092571d612bf3c98891b5a6553882c",
-      "assetBytes": 4806092,
-      "objectCount": 112,
-      "triangles": 26440,
+      "floorFinish": {
+        "material": "Tile \u00b7 Materika Sand 12x24 Matte (Loli floor)",
+        "offset": 0.002,
+        "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
+      },
+      "asset": "loli-bathroom-04a67fcb4c84.glb",
+      "assetHash": "04a67fcb4c84d5f5f8699f02045ba28ee2e3f8d5f26c2c2747d0e8806d49ac4c",
+      "assetBytes": 4255956,
+      "objectCount": 113,
+      "triangles": 26442,
       "cameras": [
         {
           "id": "room-view",
@@ -6138,13 +6148,13 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-e5d5229fa74a",
-          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "id": "mat-be71591e8f2b",
+          "name": "Tile \u00b7 Materika Sand 12x24 Matte (Loli floor)",
           "roomId": "loli-bathroom",
           "role": null,
-          "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "color": "#cdc3b5",
+          "roughness": 0.508817195892334,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
           "id": "mat-87b62842fe81",
@@ -6324,15 +6334,6 @@
           "role": null,
           "color": "#dbccb5",
           "roughness": 0.41902217268943787,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
-        },
-        {
-          "id": "mat-be71591e8f2b",
-          "name": "Tile \u00b7 Materika Sand 12x24 Matte (Loli floor)",
-          "roomId": "loli-bathroom",
-          "role": null,
-          "color": "#cdc3b5",
-          "roughness": 0.508817195892334,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
@@ -7362,11 +7363,16 @@
           "reason": "Internal WC/shower divider follows the west cutaway."
         }
       ],
-      "asset": "primary-bath-865c3dcdb1ea.glb",
-      "assetHash": "865c3dcdb1ea1c3e57e3fe2f80faba35129ce137db180d0a7c8d885959777c09",
-      "assetBytes": 5043024,
-      "objectCount": 182,
-      "triangles": 25851,
+      "floorFinish": {
+        "material": "Tile \u00b7 Poetry Stone Ivory 24x48 Matte (Primary floor)",
+        "offset": 0.002,
+        "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
+      },
+      "asset": "primary-bath-b56052ba925b.glb",
+      "assetHash": "b56052ba925b570f144558221d667d86f4f80f8c8e45108ded968d1f9340d910",
+      "assetBytes": 4492880,
+      "objectCount": 183,
+      "triangles": 25853,
       "cameras": [
         {
           "id": "room-view",
@@ -7680,13 +7686,13 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-c22139f86ce7",
-          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "id": "mat-55ef884f0281",
+          "name": "Tile \u00b7 Poetry Stone Ivory 24x48 Matte (Primary floor)",
           "roomId": "primary-bath",
           "role": null,
-          "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "color": "#eae3d6",
+          "roughness": 0.4647962152957916,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
           "id": "mat-e79e800de2a6",
@@ -7812,15 +7818,6 @@
           "role": null,
           "color": "#dbccb5",
           "roughness": 0.41902217268943787,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
-        },
-        {
-          "id": "mat-55ef884f0281",
-          "name": "Tile \u00b7 Poetry Stone Ivory 24x48 Matte (Primary floor)",
-          "roomId": "primary-bath",
-          "role": null,
-          "color": "#eae3d6",
-          "roughness": 0.4647962152957916,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
@@ -8396,11 +8393,16 @@
       "cutawayHiddenPrefixes": [
         "Door ZD"
       ],
-      "asset": "green-bath-b05da358a6e6.glb",
-      "assetHash": "b05da358a6e670e25e63534245eca0ae07b0d67029e2f6c18c3605d8f968f79a",
-      "assetBytes": 3795980,
-      "objectCount": 93,
-      "triangles": 20622,
+      "floorFinish": {
+        "material": "Tile \u00b7 Hex 10in Shoji White",
+        "offset": 0.002,
+        "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
+      },
+      "asset": "green-bath-4d4482dbd27e.glb",
+      "assetHash": "4d4482dbd27eabc8ba65d9408a93834d7f7522d4d2999c7ced8cf28fc2ec844a",
+      "assetBytes": 3245836,
+      "objectCount": 94,
+      "triangles": 20624,
       "cameras": [
         {
           "id": "room-view",
@@ -8575,13 +8577,13 @@
           "translation": "Base Color source graph baked in UV space"
         },
         {
-          "id": "mat-e5ca0ae0fec8",
-          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "id": "mat-dc22556fe836",
+          "name": "Tile \u00b7 Hex 10in Shoji White",
           "roomId": "green-bath",
           "role": null,
-          "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "color": "#f0eee9",
+          "roughness": 0.4159236550331116,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
           "id": "mat-bdbd26a0776c",
@@ -8599,15 +8601,6 @@
           "role": null,
           "color": "#d8d1c2",
           "roughness": 0.555277943611145,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
-        },
-        {
-          "id": "mat-dc22556fe836",
-          "name": "Tile \u00b7 Hex 10in Shoji White",
-          "roomId": "green-bath",
-          "role": null,
-          "color": "#f0eee9",
-          "roughness": 0.4159236550331116,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
@@ -9280,11 +9273,16 @@
       "freestandingPrefixes": [
         "Fixture P9.002"
       ],
-      "asset": "blue-bath-14e85dc2b4b5.glb",
-      "assetHash": "14e85dc2b4b5b1609d107d16da59a887d4f8b2866275f466498c3c655bb5d089",
-      "assetBytes": 4214656,
-      "objectCount": 116,
-      "triangles": 21231,
+      "floorFinish": {
+        "material": "Tile \u00b7 Hex 10in Shoji White",
+        "offset": 0.002,
+        "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
+      },
+      "asset": "blue-bath-554d55699c9c.glb",
+      "assetHash": "554d55699c9c6456ecdc935d269b748abb41ab097e6c67e99d32f0b3f89a9401",
+      "assetBytes": 3664496,
+      "objectCount": 117,
+      "triangles": 21233,
       "cameras": [
         {
           "id": "room-view",
@@ -9450,13 +9448,13 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-9b4fafc6bb27",
-          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "id": "mat-e381c8de4b87",
+          "name": "Tile \u00b7 Hex 10in Shoji White",
           "roomId": "blue-bath",
           "role": null,
-          "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "color": "#f0eee9",
+          "roughness": 0.4159236550331116,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
           "id": "mat-073749e61965",
@@ -9484,15 +9482,6 @@
           "color": "#f8fbfa",
           "roughness": 0.12,
           "translation": "source dielectric/opaque glass parameters"
-        },
-        {
-          "id": "mat-e381c8de4b87",
-          "name": "Tile \u00b7 Hex 10in Shoji White",
-          "roomId": "blue-bath",
-          "role": null,
-          "color": "#f0eee9",
-          "roughness": 0.4159236550331116,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
           "id": "mat-c1a0abc8f6b6",
