@@ -3,7 +3,7 @@
   "exporterVersion": "0.2.0",
   "sceneVersion": "72fc702d8e20",
   "source": {
-    "file": "candidate-2026-09-16f.blend",
+    "file": "Web.blend",
     "sha256": "72fc702d8e205ded69adb4d339147df8583fa02b893216d94fd5f395c2c7d608",
     "blenderVersion": "5.2.1 LTS"
   },
@@ -97,9 +97,9 @@
       "excludeSourceNames": [
         "Obj table.013"
       ],
-      "asset": "game-room-974442a39724.glb",
-      "assetHash": "974442a397244b8fdb508ad2d151d1d5de712c600d1bce8923586dc19220a6bd",
-      "assetBytes": 8898044,
+      "asset": "game-room-bf35b26e3b4c.glb",
+      "assetHash": "bf35b26e3b4c49c2b8fad416be46796ecf8e9f9ec2a3babfbc6a6f8af89388fc",
+      "assetBytes": 8911392,
       "objectCount": 208,
       "triangles": 43564,
       "cameras": [
@@ -460,7 +460,7 @@
           "roomId": "game-room",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -469,7 +469,7 @@
           "roomId": "game-room",
           "role": null,
           "color": "#969696",
-          "roughness": 0.6569451689720154,
+          "roughness": 0.6569449305534363,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -945,9 +945,9 @@
         "Furniture table.003",
         "Slab concrete slab.063"
       ],
-      "asset": "family-room-d8f439250b37.glb",
-      "assetHash": "d8f439250b37821174da0877c526e7ef997f17df42d5256ad7cf104d19e9c257",
-      "assetBytes": 7420492,
+      "asset": "family-room-2563a1c80daf.glb",
+      "assetHash": "2563a1c80dafc168b5f8437729c688b131a9828c6cc0e0cafa8952c89cf799d0",
+      "assetBytes": 7425068,
       "objectCount": 230,
       "triangles": 39727,
       "cameras": [
@@ -1283,7 +1283,7 @@
           "roomId": "family-room",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -1301,7 +1301,7 @@
           "roomId": "family-room",
           "role": null,
           "color": "#969696",
-          "roughness": 0.6569451689720154,
+          "roughness": 0.6569449305534363,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -1652,9 +1652,9 @@
         "PVanity",
         "PBath"
       ],
-      "asset": "dining-room-d7f0dc44eb80.glb",
-      "assetHash": "d7f0dc44eb80ee57b12c5d3a244c2a62f67c36853a8878fa762d18b555be9c3c",
-      "assetBytes": 7768160,
+      "asset": "dining-room-dd1e936df99e.glb",
+      "assetHash": "dd1e936df99e746297b00c2d0594cbd902e4e3d04a4c6b88704a8ce558bb379e",
+      "assetBytes": 7771696,
       "objectCount": 230,
       "triangles": 34322,
       "cameras": [
@@ -2036,7 +2036,7 @@
           "roomId": "dining-room",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -2081,7 +2081,7 @@
           "roomId": "dining-room",
           "role": null,
           "color": "#969696",
-          "roughness": 0.6569451689720154,
+          "roughness": 0.6569449305534363,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -2180,7 +2180,7 @@
           "roomId": "dining-room",
           "role": "cabinet",
           "color": "#e7e7e7",
-          "roughness": 0.4104025065898895,
+          "roughness": 0.41040244698524475,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -2225,7 +2225,7 @@
           "roomId": "dining-room",
           "role": null,
           "color": "#e7e7e7",
-          "roughness": 0.4104025065898895,
+          "roughness": 0.41040244698524475,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -2534,9 +2534,9 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-181e2526af50.glb",
-      "assetHash": "181e2526af50c0193de4c087afcc517df69d7fcf3adc8f8d2ebcb6a741481b61",
-      "assetBytes": 20904808,
+      "asset": "kitchen-b4e46ff9b100.glb",
+      "assetHash": "b4e46ff9b10017289d7b0c7b808f92c27a5fd801e56a6aadf27706a7d9f6890e",
+      "assetBytes": 20911012,
       "objectCount": 468,
       "triangles": 291979,
       "cameras": [
@@ -2881,7 +2881,7 @@
           "roomId": "kitchen",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -2926,7 +2926,7 @@
           "roomId": "kitchen",
           "role": null,
           "color": "#969696",
-          "roughness": 0.6569451689720154,
+          "roughness": 0.6569449305534363,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -3446,9 +3446,9 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it.",
         "grid": "marble18"
       },
-      "asset": "entry-304e4ef2b2fd.glb",
-      "assetHash": "304e4ef2b2fdc620192a8188f74f6f39ab098c64232dd78ecb4d366d55db05d8",
-      "assetBytes": 11270352,
+      "asset": "entry-610d946ad80c.glb",
+      "assetHash": "610d946ad80c57a897f20d65b707b5919f5a24ce5504cdaf721c601fdca5b5e3",
+      "assetBytes": 11278308,
       "objectCount": 498,
       "triangles": 100143,
       "cameras": [
@@ -3465,7 +3465,7 @@
             1.974512,
             3.983887
           ],
-          "fov": 83.97442499163333,
+          "fov": 83.97442499163331,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.3333333333333333,
@@ -3484,7 +3484,7 @@
             4.285959,
             3.830001
           ],
-          "fov": 83.97442499163333,
+          "fov": 83.97442499163331,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.3333333333333333,
@@ -3522,7 +3522,7 @@
             2.734173,
             5.73543
           ],
-          "fov": 83.97442499163333,
+          "fov": 83.97442499163331,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.3333333333333333,
@@ -3954,7 +3954,7 @@
           "roomId": "entry",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -4276,9 +4276,9 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it.",
         "grid": "marble18"
       },
-      "asset": "powder-room-cbee037bcfd7.glb",
-      "assetHash": "cbee037bcfd75a33aad6d10597fd8917b6c1c6daf9283d82003bad366bdd25b6",
-      "assetBytes": 3292612,
+      "asset": "powder-room-726e58254998.glb",
+      "assetHash": "726e58254998e944bce27f343067e9d07b1c15be1fa0ab0e93279a67603beb72",
+      "assetBytes": 3295980,
       "objectCount": 144,
       "triangles": 17425,
       "cameras": [
@@ -4616,9 +4616,9 @@
         "Slab concrete slab.058",
         "Slab C01.003"
       ],
-      "asset": "pantry-6b1ee7580539.glb",
-      "assetHash": "6b1ee758053919d1510167ef60d173146e0eb0d80fda10d8bc457cc507891398",
-      "assetBytes": 3480792,
+      "asset": "pantry-89fb9b81a268.glb",
+      "assetHash": "89fb9b81a268b5866aab14a31b8bdb8d38c3bb40311d8a9f40d2ed3b87cb3afe",
+      "assetBytes": 3480868,
       "objectCount": 135,
       "triangles": 14394,
       "cameras": [
@@ -4762,7 +4762,7 @@
           "roomId": "pantry",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -5027,9 +5027,20 @@
           ]
         }
       ],
-      "asset": "wine-cellar-b97b3fc089f1.glb",
-      "assetHash": "b97b3fc089f12be65aa6bba2d5cd255fedd7fe46b9212e7154129711d7d93ca2",
-      "assetBytes": 3210520,
+      "cutawayClipPrefixes": [
+        "Slab concrete slab.058"
+      ],
+      "cutawayInsets": {
+        "xMax": 0.65,
+        "zMin": 0.65,
+        "zMax": 0.65
+      },
+      "cutawayKeepPrefixes": [
+        "Fascia Fascia."
+      ],
+      "asset": "wine-cellar-afa5d06826cb.glb",
+      "assetHash": "afa5d06826cb07a893feb1c1714f263cf22911ab8a2d39e009bacc272f6df664",
+      "assetBytes": 3210596,
       "objectCount": 246,
       "triangles": 9813,
       "cameras": [
@@ -5168,7 +5179,7 @@
           "roomId": "wine-cellar",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -5234,17 +5245,6 @@
           "roughness": 0.800000011920929,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
         }
-      ],
-      "cutawayClipPrefixes": [
-        "Slab concrete slab.058"
-      ],
-      "cutawayInsets": {
-        "xMax": 0.65,
-        "zMin": 0.65,
-        "zMax": 0.65
-      },
-      "cutawayKeepPrefixes": [
-        "Fascia Fascia."
       ]
     },
     {
@@ -5354,9 +5354,37 @@
           "side": "zMax"
         }
       ],
-      "asset": "loli-bedroom-6451bd442f04.glb",
-      "assetHash": "6451bd442f046963f2a1e1ad58a599e2c300476bb942e9b3d29d91491ae2824f",
-      "assetBytes": 5109480,
+      "wallAttachmentRegions": [
+        {
+          "bounds": [
+            [
+              7.36,
+              10.99
+            ],
+            [
+              -8.33,
+              -7.5
+            ],
+            [
+              -0.05,
+              3.02
+            ]
+          ],
+          "roles": [
+            "wall",
+            "trim",
+            "object",
+            "cabinet"
+          ],
+          "side": [
+            "zMax"
+          ],
+          "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
+        }
+      ],
+      "asset": "loli-bedroom-c8fb1a18e55c.glb",
+      "assetHash": "c8fb1a18e55c93902f46a32dbe29293c46f65c2329529a108c8267ecb1d9227b",
+      "assetBytes": 5109556,
       "objectCount": 164,
       "triangles": 23820,
       "cameras": [
@@ -5575,7 +5603,7 @@
           "roomId": "loli-bedroom",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -5584,7 +5612,7 @@
           "roomId": "loli-bedroom",
           "role": null,
           "color": "#969696",
-          "roughness": 0.6569451689720154,
+          "roughness": 0.6569449305534363,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -5794,34 +5822,6 @@
           "roughness": 0.800000011920929,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
         }
-      ],
-      "wallAttachmentRegions": [
-        {
-          "bounds": [
-            [
-              7.36,
-              10.99
-            ],
-            [
-              -8.33,
-              -7.5
-            ],
-            [
-              -0.05,
-              3.02
-            ]
-          ],
-          "roles": [
-            "wall",
-            "trim",
-            "object",
-            "cabinet"
-          ],
-          "side": [
-            "zMax"
-          ],
-          "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
-        }
       ]
     },
     {
@@ -5941,9 +5941,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "loli-bathroom-04a67fcb4c84.glb",
-      "assetHash": "04a67fcb4c84d5f5f8699f02045ba28ee2e3f8d5f26c2c2747d0e8806d49ac4c",
-      "assetBytes": 4255956,
+      "asset": "loli-bathroom-da1ca022e8de.glb",
+      "assetHash": "da1ca022e8de76b55a2e031efc734641682df6131425d159433ee02a404e9bc4",
+      "assetBytes": 4257836,
       "objectCount": 113,
       "triangles": 26442,
       "cameras": [
@@ -5960,7 +5960,7 @@
             0.8085,
             1.086087
           ],
-          "fov": 83.97442499163333,
+          "fov": 83.97442499163331,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.3333333333333333,
@@ -5998,7 +5998,7 @@
             0.635632,
             0.031805
           ],
-          "fov": 83.97442499163333,
+          "fov": 83.97442499163331,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.3333333333333333,
@@ -6425,9 +6425,9 @@
       "excludeSourceNames": [
         "Slab concrete slab.135"
       ],
-      "asset": "laundry-6236925ab602.glb",
-      "assetHash": "6236925ab60233694bc28b3032a5a4a009ac375956a1c758f2142e5be72c36bd",
-      "assetBytes": 1802020,
+      "asset": "laundry-cff4814c49aa.glb",
+      "assetHash": "cff4814c49aaff0f887813a86b5b3c981a80e6aa775721fdeae951b65f84d0e7",
+      "assetBytes": 1806256,
       "objectCount": 36,
       "triangles": 4782,
       "cameras": [
@@ -6444,7 +6444,7 @@
             4.554507,
             -1.356355
           ],
-          "fov": 83.97442499163333,
+          "fov": 83.97442499163331,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.3333333333333333,
@@ -6463,7 +6463,7 @@
             4.589708,
             -2.023049
           ],
-          "fov": 83.97442499163333,
+          "fov": 83.97442499163331,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.3333333333333333,
@@ -6805,9 +6805,9 @@
       "excludeSourceNames": [
         "Obj Object-35.013"
       ],
-      "asset": "primary-bedroom-2e87f41fbdcc.glb",
-      "assetHash": "2e87f41fbdcc0c31f99287d11da2d483be503e8501f7b25904582b45d1d5bed7",
-      "assetBytes": 5273388,
+      "asset": "primary-bedroom-18a003bf1d67.glb",
+      "assetHash": "18a003bf1d67d7a801908407096510ef621e2363b12645907de52a714b64b1ac",
+      "assetBytes": 5273464,
       "objectCount": 151,
       "triangles": 25662,
       "cameras": [
@@ -6990,7 +6990,7 @@
           "roomId": "primary-bedroom",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -6999,7 +6999,7 @@
           "roomId": "primary-bedroom",
           "role": null,
           "color": "#969696",
-          "roughness": 0.6569451689720154,
+          "roughness": 0.6569449305534363,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -7368,9 +7368,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "primary-bath-b56052ba925b.glb",
-      "assetHash": "b56052ba925b570f144558221d667d86f4f80f8c8e45108ded968d1f9340d910",
-      "assetBytes": 4492880,
+      "asset": "primary-bath-a7103fa3f9b2.glb",
+      "assetHash": "a7103fa3f9b25297f7383f25edcb9e10111ed754e041211642dbf7fb3e501d5b",
+      "assetBytes": 4494680,
       "objectCount": 183,
       "triangles": 25853,
       "cameras": [
@@ -7425,7 +7425,7 @@
             4.309045,
             4.994501
           ],
-          "fov": 83.97442499163333,
+          "fov": 83.97442499163331,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.3333333333333333,
@@ -7924,9 +7924,9 @@
         "Slab concrete slab.109",
         "Slab concrete slab.135"
       ],
-      "asset": "green-bedroom-477aa4882195.glb",
-      "assetHash": "477aa4882195ae4fa10aa0af7e3fe0734e0c9cdc9e32dbd1ecc0b5029d6d6d8d",
-      "assetBytes": 5024612,
+      "asset": "green-bedroom-c8801029506d.glb",
+      "assetHash": "c8801029506d4cee403c9894cf883ac4c983d7320341f6b27d034e3fdde60f8e",
+      "assetBytes": 5024688,
       "objectCount": 125,
       "triangles": 22666,
       "cameras": [
@@ -8108,7 +8108,7 @@
           "roomId": "green-bedroom",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -8117,7 +8117,7 @@
           "roomId": "green-bedroom",
           "role": null,
           "color": "#969696",
-          "roughness": 0.6569451689720154,
+          "roughness": 0.6569449305534363,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -8398,9 +8398,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "green-bath-4d4482dbd27e.glb",
-      "assetHash": "4d4482dbd27eabc8ba65d9408a93834d7f7522d4d2999c7ced8cf28fc2ec844a",
-      "assetBytes": 3245836,
+      "asset": "green-bath-e08d115bbf5a.glb",
+      "assetHash": "e08d115bbf5a057937b02e35922aab2e1eb70d57f4c99ef17c921d3ce82ead4c",
+      "assetBytes": 3247580,
       "objectCount": 94,
       "triangles": 20624,
       "cameras": [
@@ -8792,9 +8792,12 @@
           "side": "zMin"
         }
       ],
-      "asset": "blue-bedroom-602d1c1d86f0.glb",
-      "assetHash": "602d1c1d86f017d3887c5300165f0c4a7120bc987e0a9a127867ec43c3de2498",
-      "assetBytes": 4586964,
+      "cutawayHiddenPrefixes": [
+        "Slab Roof."
+      ],
+      "asset": "blue-bedroom-c130a0f314b5.glb",
+      "assetHash": "c130a0f314b5eeea6d1b2916def888b6bfcabca22904f23cbd6609c3a645e62c",
+      "assetBytes": 4587040,
       "objectCount": 95,
       "triangles": 16885,
       "cameras": [
@@ -8985,7 +8988,7 @@
           "roomId": "blue-bedroom",
           "role": null,
           "color": "#d4ba98",
-          "roughness": 0.3757433593273163,
+          "roughness": 0.37574318051338196,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -8994,7 +8997,7 @@
           "roomId": "blue-bedroom",
           "role": null,
           "color": "#969696",
-          "roughness": 0.6569451689720154,
+          "roughness": 0.6569449305534363,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
@@ -9159,9 +9162,6 @@
           "roughness": 0.800000011920929,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
         }
-      ],
-      "cutawayHiddenPrefixes": [
-        "Slab Roof."
       ]
     },
     {
@@ -9278,9 +9278,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "blue-bath-554d55699c9c.glb",
-      "assetHash": "554d55699c9c6456ecdc935d269b748abb41ab097e6c67e99d32f0b3f89a9401",
-      "assetBytes": 3664496,
+      "asset": "blue-bath-d147bb53db1b.glb",
+      "assetHash": "d147bb53db1b66736f4bb223b9f0b6e263364648cfa2ad391c848c425957b9fe",
+      "assetBytes": 3667392,
       "objectCount": 117,
       "triangles": 21233,
       "cameras": [
