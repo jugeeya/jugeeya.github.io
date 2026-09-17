@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "72fc702d8e20",
+  "sceneVersion": "3458ad29c832",
   "source": {
     "file": "Web.blend",
-    "sha256": "72fc702d8e205ded69adb4d339147df8583fa02b893216d94fd5f395c2c7d608",
+    "sha256": "3458ad29c832454b1b81afe7e959bbe9ef9bda0018d2f046df845037702f5e38",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -97,9 +97,9 @@
       "excludeSourceNames": [
         "Obj table.013"
       ],
-      "asset": "game-room-bf35b26e3b4c.glb",
-      "assetHash": "bf35b26e3b4c49c2b8fad416be46796ecf8e9f9ec2a3babfbc6a6f8af89388fc",
-      "assetBytes": 8911392,
+      "asset": "game-room-8e6a57c6ab2b.glb",
+      "assetHash": "8e6a57c6ab2b748079ee8a29d1564727801f52a3d5719060cb18fd523ed0aedf",
+      "assetBytes": 8911256,
       "objectCount": 208,
       "triangles": 43564,
       "cameras": [
@@ -945,9 +945,9 @@
         "Furniture table.003",
         "Slab concrete slab.063"
       ],
-      "asset": "family-room-2563a1c80daf.glb",
-      "assetHash": "2563a1c80dafc168b5f8437729c688b131a9828c6cc0e0cafa8952c89cf799d0",
-      "assetBytes": 7425068,
+      "asset": "family-room-7c22b0fc4dee.glb",
+      "assetHash": "7c22b0fc4dee060d2aa485ae69348177ae87e3cf5c4a3e8e48544c0473488273",
+      "assetBytes": 7426268,
       "objectCount": 230,
       "triangles": 39727,
       "cameras": [
@@ -1341,15 +1341,6 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
-          "id": "mat-b2bb69541ad5",
-          "name": "09 | Color: 01 Ceiling White",
-          "roomId": "family-room",
-          "role": null,
-          "color": "#f3f3f3",
-          "roughness": 0.5,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-0c39c537d61a",
           "name": "09 | Color: 07 Gray-Dark*",
           "roomId": "family-room",
@@ -1410,6 +1401,15 @@
           "role": "cabinet",
           "color": "#95856e",
           "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b2bb69541ad5",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
           "translation": "constant source PBR values"
         },
         {
@@ -1652,9 +1652,9 @@
         "PVanity",
         "PBath"
       ],
-      "asset": "dining-room-dd1e936df99e.glb",
-      "assetHash": "dd1e936df99e746297b00c2d0594cbd902e4e3d04a4c6b88704a8ce558bb379e",
-      "assetBytes": 7771696,
+      "asset": "dining-room-ff599206e34c.glb",
+      "assetHash": "ff599206e34cb4196693d7c03cbadca15661a0c16abfbd52f684b4cde62d4da5",
+      "assetBytes": 7771860,
       "objectCount": 230,
       "triangles": 34322,
       "cameras": [
@@ -2367,10 +2367,6 @@
           "side": "zMin"
         },
         {
-          "prefix": "Kitchen counter",
-          "side": "zMin"
-        },
-        {
           "prefix": "Slab concrete slab.060",
           "side": "zMin"
         },
@@ -2407,7 +2403,7 @@
           "side": "xMax"
         },
         {
-          "prefix": "Obj P2",
+          "prefix": "Kitchen pot filler",
           "side": "xMax"
         },
         {
@@ -2534,11 +2530,11 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-b4e46ff9b100.glb",
-      "assetHash": "b4e46ff9b10017289d7b0c7b808f92c27a5fd801e56a6aadf27706a7d9f6890e",
-      "assetBytes": 20911012,
-      "objectCount": 468,
-      "triangles": 291979,
+      "asset": "kitchen-b7dd55690f3c.glb",
+      "assetHash": "b7dd55690f3cc18568a4b2823cd9103b95539f2b1bded77ca50d3c827ecc10d3",
+      "assetBytes": 20991832,
+      "objectCount": 472,
+      "triangles": 292561,
       "cameras": [
         {
           "id": "room-view",
@@ -3128,24 +3124,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-0167463856a5",
-          "name": "05 | Metal: Bronze*",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#816627",
-          "roughness": 0.30000001192092896,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-86fd0a9f138b",
-          "name": "Fixture \u00b7 White Porcelain",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#f6f6f4",
-          "roughness": 0.18000000715255737,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-02108160a4fb",
           "name": "09 | Glass: Simple Gray - Existing",
           "roomId": "kitchen",
@@ -3182,51 +3160,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-db223f0561e0",
-          "name": "05 | Metal: Steel",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#c4c8c9",
-          "roughness": 0.30000001192092896,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-7c67cded8a3b",
-          "name": "09 | Color: 08 Black*",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#272727",
-          "roughness": 0.5,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-23c14c784f52",
-          "name": "builtInMatSemitransBlackPlastic",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#55504b",
-          "roughness": 0.550000011920929,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-6c1ff12a6be2",
-          "name": "05 | Metal: Chrome*",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#bfbfbf",
-          "roughness": 0.30000001192092896,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-8c9454af129a",
-          "name": "09 | Glass: Blue/Ice*",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#f8fbfa",
-          "roughness": 0.12,
-          "translation": "source dielectric/opaque glass parameters"
-        },
-        {
           "id": "mat-4db26faa02d7",
           "name": "09 | Color: 01 Ceiling White",
           "roomId": "kitchen",
@@ -3243,6 +3176,78 @@
           "color": "#a09784",
           "roughness": 0.6361762881278992,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-370c550d5520",
+          "name": "Fixture \u00b7 Kohler Vibrant Polished Nickel",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#e2dfd8",
+          "roughness": 0.12,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-75ab97bf78a6",
+          "name": "Fixture \u00b7 Kohler sprayhead detail (dark)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#272829",
+          "roughness": 0.3400000035762787,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e2adcaabf0fd",
+          "name": "Fixture \u00b7 Kohler Neoroc Matte White (Cairn K-8223-CM6)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#e8e8e6",
+          "roughness": 0.5600000023841858,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a39327881108",
+          "name": "Fixture \u00b7 DeerValley White Fireclay (kitchen apron sinks)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#f7f7f5",
+          "roughness": 0.12,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4e6016339fd0",
+          "name": "Appliance \u00b7 Breville Brushed Stainless (Creatista Pro)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#c5c7c8",
+          "roughness": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d8cdc4748008",
+          "name": "Appliance \u00b7 Breville polished chrome trim",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#c4c5c8",
+          "roughness": 0.12,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-dc6f48eacbc0",
+          "name": "Appliance \u00b7 Breville matte black plinth",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#29292b",
+          "roughness": 0.6200000047683716,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-89cf00c837e6",
+          "name": "Appliance \u00b7 Breville water tank (translucent)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#e5e7e8",
+          "roughness": 0.12,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -3446,8 +3451,8 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it.",
         "grid": "marble18"
       },
-      "asset": "entry-610d946ad80c.glb",
-      "assetHash": "610d946ad80c57a897f20d65b707b5919f5a24ce5504cdaf721c601fdca5b5e3",
+      "asset": "entry-16cff588891a.glb",
+      "assetHash": "16cff588891a8cfd62fff136003bd0d7127a3d1a7a3ffc0c99e486bf66114cd8",
       "assetBytes": 11278308,
       "objectCount": 498,
       "triangles": 100143,
@@ -3805,6 +3810,15 @@
           "translation": "Base Color source graph baked in UV space"
         },
         {
+          "id": "mat-e3076b336846",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "entry",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-5702dc430041",
           "name": "09 | Color: 07 Gray-Dark*",
           "roomId": "entry",
@@ -3965,15 +3979,6 @@
           "color": "#ecebe9",
           "roughness": 0.12,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
-        },
-        {
-          "id": "mat-e3076b336846",
-          "name": "Metal \u00b7 Black Frame",
-          "roomId": "entry",
-          "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-84394471edab",
@@ -4201,7 +4206,7 @@
           "side": "xMin"
         },
         {
-          "prefix": "Fixture P9.003",
+          "prefix": "Powder toilet",
           "side": "zMax"
         }
       ],
@@ -4214,7 +4219,7 @@
         "Part Wood Framing + Insulation (concrete slab).003"
       ],
       "freestandingPrefixes": [
-        "Fixture P9.003"
+        "Powder toilet"
       ],
       "footprint": [
         [
@@ -4276,11 +4281,11 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it.",
         "grid": "marble18"
       },
-      "asset": "powder-room-726e58254998.glb",
-      "assetHash": "726e58254998e944bce27f343067e9d07b1c15be1fa0ab0e93279a67603beb72",
-      "assetBytes": 3295980,
+      "asset": "powder-room-6c014abd29f6.glb",
+      "assetHash": "6c014abd29f62c34751f11bb775818aa08fc33482d0b8c19de54ad602f9385fe",
+      "assetBytes": 3314920,
       "objectCount": 144,
-      "triangles": 17425,
+      "triangles": 17131,
       "cameras": [
         {
           "id": "room-view",
@@ -4524,6 +4529,15 @@
           "color": "#3a3941",
           "roughness": 0.12,
           "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-d3d18ba9df29",
+          "name": "Fixture \u00b7 Kohler Polished Chrome (trip lever)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#c4c5c8",
+          "roughness": 0.12,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-bc5665aaebdd",
@@ -5891,12 +5905,12 @@
           "side": "xMax"
         },
         {
-          "prefix": "Fixture P9",
+          "prefix": "Loli toilet",
           "side": "xMax"
         },
         {
-          "prefix": "Fixture P12",
-          "side": "xMax"
+          "prefix": "Loli shower",
+          "side": "xMin"
         },
         {
           "prefix": "Furniture AC-01",
@@ -5941,11 +5955,11 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "loli-bathroom-da1ca022e8de.glb",
-      "assetHash": "da1ca022e8de76b55a2e031efc734641682df6131425d159433ee02a404e9bc4",
-      "assetBytes": 4257836,
-      "objectCount": 113,
-      "triangles": 26442,
+      "asset": "loli-bathroom-1f6ec5757ff1.glb",
+      "assetHash": "1f6ec5757ff1e8e890bc1cf5e1c35f7455c4340937210244fdb3f0e9e34da729",
+      "assetBytes": 4144956,
+      "objectCount": 115,
+      "triangles": 20921,
       "cameras": [
         {
           "id": "room-view",
@@ -6265,21 +6279,21 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-1c62910e842f",
-          "name": "09 | Color: 07 Gray-Dark*",
-          "roomId": "loli-bathroom",
-          "role": null,
-          "color": "#2f2f2f",
-          "roughness": 0.5,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-c0991825ed11",
           "name": "Fixture \u00b7 White Porcelain",
           "roomId": "loli-bathroom",
           "role": null,
           "color": "#f6f6f4",
           "roughness": 0.18000000715255737,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1c62910e842f",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
           "translation": "constant source PBR values"
         },
         {
@@ -6353,6 +6367,33 @@
           "color": "#cec5b2",
           "roughness": 0.800000011920929,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-5e23b910a0dd",
+          "name": "Fixture \u00b7 Kohler MasterClean sprayface (dark)",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#6b6d72",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3561572b2d0a",
+          "name": "Fixture \u00b7 Smart toilet shadow gap (dark)",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#242527",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9e116693b9d0",
+          "name": "Fixture \u00b7 DeerValley champagne gold (smart toilet trim)",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#c2b088",
+          "roughness": 0.3400000035762787,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -6425,9 +6466,9 @@
       "excludeSourceNames": [
         "Slab concrete slab.135"
       ],
-      "asset": "laundry-cff4814c49aa.glb",
-      "assetHash": "cff4814c49aaff0f887813a86b5b3c981a80e6aa775721fdeae951b65f84d0e7",
-      "assetBytes": 1806256,
+      "asset": "laundry-bd38d636d7d2.glb",
+      "assetHash": "bd38d636d7d25cc9b1bc3a1f883ff08e4fba4a319680e3583c3b2254bbfed292",
+      "assetBytes": 1806624,
       "objectCount": 36,
       "triangles": 4782,
       "cameras": [
@@ -6498,6 +6539,20 @@
           "intensity": 65,
           "angle": 0.72,
           "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "laundry-08b844aeace9e6ed",
+          "group": "laundry:ceiling",
+          "type": "spot",
+          "position": [
+            -6.9,
+            6.2886,
+            -1.45
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
         }
       ],
       "sourcePaint": "#d8ceb9",
@@ -6553,12 +6608,12 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-0ab196953130",
-          "name": "09 | Color: 01 Ceiling White",
+          "id": "mat-7b4ab413ff47",
+          "name": "Metal \u00b7 Black Frame",
           "roomId": "laundry",
           "role": null,
-          "color": "#f3f3f3",
-          "roughness": 0.5,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
           "translation": "constant source PBR values"
         },
         {
@@ -6622,6 +6677,15 @@
           "role": null,
           "color": "#d7d3d9",
           "roughness": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0ab196953130",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "laundry",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
           "translation": "constant source PBR values"
         },
         {
@@ -7267,7 +7331,7 @@
         "Furniture queen",
         "Obj chair",
         "Obj ottoman",
-        "Fixture P9.001",
+        "Primary WC toilet",
         "Obj Object-59",
         "Slab C01.017",
         "Column C11"
@@ -7368,11 +7432,11 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "primary-bath-a7103fa3f9b2.glb",
-      "assetHash": "a7103fa3f9b25297f7383f25edcb9e10111ed754e041211642dbf7fb3e501d5b",
-      "assetBytes": 4494680,
-      "objectCount": 183,
-      "triangles": 25853,
+      "asset": "primary-bath-dd1e9b15dbdb.glb",
+      "assetHash": "dd1e9b15dbdbba9d9e8cd836d330f439f4ce85abab45eb7ad262e3ccc2375c3e",
+      "assetBytes": 4644824,
+      "objectCount": 188,
+      "triangles": 27285,
       "cameras": [
         {
           "id": "room-view",
@@ -7767,21 +7831,21 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-34c8a098ab60",
-          "name": "Fixture \u00b7 White Porcelain",
-          "roomId": "primary-bath",
-          "role": null,
-          "color": "#f6f6f4",
-          "roughness": 0.18000000715255737,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-ee74660a16c7",
           "name": "Fixture \u00b7 Kohler Vibrant Brushed Bronze",
           "roomId": "primary-bath",
           "role": null,
           "color": "#7a604a",
           "roughness": 0.3199999928474426,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-34c8a098ab60",
+          "name": "Fixture \u00b7 White Porcelain",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#f6f6f4",
+          "roughness": 0.18000000715255737,
           "translation": "constant source PBR values"
         },
         {
@@ -7845,6 +7909,33 @@
           "role": null,
           "color": "#babab8",
           "roughness": 0.25999999046325684,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4067a76688a7",
+          "name": "Fixture \u00b7 Kohler MasterClean sprayface (dark)",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#6b6d72",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2f0102fcfe82",
+          "name": "Fixture \u00b7 Smart toilet shadow gap (dark)",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#242527",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1e5f58610615",
+          "name": "Fixture \u00b7 DeerValley champagne gold (smart toilet trim)",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#c2b088",
+          "roughness": 0.3400000035762787,
           "translation": "constant source PBR values"
         }
       ]
@@ -8340,7 +8431,7 @@
         "Furniture queen",
         "Obj chair",
         "Obj ottoman",
-        "Fixture P9.004"
+        "Green toilet"
       ],
       "wallAttachments": [
         {
@@ -8398,11 +8489,11 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "green-bath-e08d115bbf5a.glb",
-      "assetHash": "e08d115bbf5a057937b02e35922aab2e1eb70d57f4c99ef17c921d3ce82ead4c",
-      "assetBytes": 3247580,
-      "objectCount": 94,
-      "triangles": 20624,
+      "asset": "green-bath-ad7330af214b.glb",
+      "assetHash": "ad7330af214b6ec7a5fbf04930f44a9ad5db264c8adde2149cc127acef72b417",
+      "assetBytes": 3347500,
+      "objectCount": 97,
+      "triangles": 21364,
       "cameras": [
         {
           "id": "room-view",
@@ -8728,6 +8819,33 @@
           "color": "#cec5b2",
           "roughness": 0.800000011920929,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-f495e981ca24",
+          "name": "Fixture \u00b7 Kohler MasterClean sprayface (dark)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#6b6d72",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-fc3b8ce0b9b5",
+          "name": "Fixture \u00b7 Smart toilet shadow gap (dark)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#242527",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-34b260baff30",
+          "name": "Fixture \u00b7 DeerValley champagne gold (smart toilet trim)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#c2b088",
+          "roughness": 0.3400000035762787,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -8795,11 +8913,11 @@
       "cutawayHiddenPrefixes": [
         "Slab Roof."
       ],
-      "asset": "blue-bedroom-c130a0f314b5.glb",
-      "assetHash": "c130a0f314b5eeea6d1b2916def888b6bfcabca22904f23cbd6609c3a645e62c",
-      "assetBytes": 4587040,
-      "objectCount": 95,
-      "triangles": 16885,
+      "asset": "blue-bedroom-22e94ba35b6c.glb",
+      "assetHash": "22e94ba35b6cb6a1cfca83454ca862b4effa5a3ea0140a8cf82b4888086f1aa8",
+      "assetBytes": 4588900,
+      "objectCount": 96,
+      "triangles": 16897,
       "cameras": [
         {
           "id": "room-view",
@@ -9258,7 +9376,7 @@
           "side": "zMin"
         },
         {
-          "prefix": "BlueBath old door infill",
+          "prefix": "Wall infill \u00b7 Blue Bedroom old bath door",
           "side": "xMax"
         },
         {
@@ -9271,18 +9389,18 @@
         }
       ],
       "freestandingPrefixes": [
-        "Fixture P9.002"
+        "Blue toilet"
       ],
       "floorFinish": {
         "material": "Tile \u00b7 Hex 10in Shoji White",
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "blue-bath-d147bb53db1b.glb",
-      "assetHash": "d147bb53db1b66736f4bb223b9f0b6e263364648cfa2ad391c848c425957b9fe",
-      "assetBytes": 3667392,
-      "objectCount": 117,
-      "triangles": 21233,
+      "asset": "blue-bath-26d93d088cf3.glb",
+      "assetHash": "26d93d088cf38924799ee2c55b60a3d2b2aa6325c437b6746772daa6799619f2",
+      "assetBytes": 3773364,
+      "objectCount": 120,
+      "triangles": 21985,
       "cameras": [
         {
           "id": "room-view",
@@ -9626,6 +9744,33 @@
           "color": "#cec5b2",
           "roughness": 0.800000011920929,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-bed7de79431a",
+          "name": "Fixture \u00b7 Kohler MasterClean sprayface (dark)",
+          "roomId": "blue-bath",
+          "role": null,
+          "color": "#6b6d72",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-aae64b6849df",
+          "name": "Fixture \u00b7 Smart toilet shadow gap (dark)",
+          "roomId": "blue-bath",
+          "role": null,
+          "color": "#242527",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8df87c5c4730",
+          "name": "Fixture \u00b7 DeerValley champagne gold (smart toilet trim)",
+          "roomId": "blue-bath",
+          "role": null,
+          "color": "#c2b088",
+          "roughness": 0.3400000035762787,
+          "translation": "constant source PBR values"
         }
       ]
     }
