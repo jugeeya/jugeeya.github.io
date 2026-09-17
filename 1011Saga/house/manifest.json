@@ -9773,6 +9773,3566 @@
           "translation": "constant source PBR values"
         }
       ]
+    },
+    {
+      "id": "office-west",
+      "name": "West Office",
+      "floor": "Main level",
+      "subtitle": "Work & reading",
+      "description": "The west office, with its shared sliding partition and modeled furniture.",
+      "bounds": [
+        [
+          1.856,
+          4.732
+        ],
+        [
+          -6.216,
+          -2.726
+        ],
+        [
+          -0.04,
+          3.0072
+        ]
+      ],
+      "walkBounds": [
+        [
+          2.106,
+          4.482
+        ],
+        [
+          -5.966,
+          -2.976
+        ]
+      ],
+      "floorElevation": 0,
+      "ceilingHeight": 2.9972,
+      "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
+      "defaultPaint": "#e9e4da",
+      "cutawayCameraSide": [
+        1,
+        -1
+      ],
+      "contextRoomIds": [],
+      "excludeCollectionPrefixes": [
+        "2F ",
+        "RF "
+      ],
+      "includeSourceNames": [
+        "Slab concrete slab.092",
+        "Slab concrete slab.098"
+      ],
+      "freestandingPrefixes": [
+        "Obj table",
+        "Obj chair",
+        "Furniture couch"
+      ],
+      "menuDescription": "Work & reading",
+      "roleOverrides": {
+        "Office west entry header": "wall"
+      },
+      "cutawayClipPrefixes": [
+        "Office entry",
+        "Office west entry header"
+      ],
+      "excludeSourcePrefixes": [
+        "DEC3650FI",
+        "DET3650RID",
+        "SO30PM"
+      ],
+      "asset": "office-west-13b7bf6a93db.glb",
+      "assetHash": "13b7bf6a93db8722849af630c84391ab1396a713289dbc8966a71b02c885389f",
+      "assetBytes": 4101448,
+      "objectCount": 153,
+      "triangles": 19582,
+      "cameras": [
+        {
+          "id": "room-view",
+          "label": "Room view",
+          "position": [
+            4.45,
+            1.58,
+            3.15
+          ],
+          "target": [
+            2.584235,
+            1.397394,
+            5.49213
+          ],
+          "fov": 80.31199924983865,
+          "lensMm": 16.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Offices \u00b7 office west"
+        }
+      ],
+      "lights": [
+        {
+          "id": "office-west-410bd27781cd0eb8",
+          "group": "office-west:ceiling",
+          "type": "spot",
+          "position": [
+            2.406388,
+            2.987075,
+            3.661093
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "office-west-88e759f77a34fbc6",
+          "group": "office-west:ceiling",
+          "type": "spot",
+          "position": [
+            2.406388,
+            2.987075,
+            5.793643
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "office-west-c54487a8a59da6de",
+          "group": "office-west:ceiling",
+          "type": "spot",
+          "position": [
+            4.304902,
+            2.987075,
+            3.661093
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "office-west-098e4df01cf34636",
+          "group": "office-west:ceiling",
+          "type": "spot",
+          "position": [
+            4.304902,
+            2.987075,
+            5.793643
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "ceiling": "#d8ceb9",
+        "trim": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-99befb0d1392",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "office-west",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1bbcb128dce3",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-9b4c37d9dc4c",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-west",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-aa41b026f4f6",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8182d5886675",
+          "name": "03 | Concrete: Light",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#ded9d0",
+          "roughness": 0.8500000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a1a57bb13356",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.37574318051338196,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-4d271a3378e2",
+          "name": "05 | Metal: Bronze*",
+          "roomId": "office-west",
+          "role": "ceiling",
+          "color": "#816627",
+          "roughness": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5debceaef847",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-west",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-19d4f555e511",
+          "name": "Floor \u00b7 White Marble 18in (atrium)",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.12,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-265c6776c0de",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-08630a1704e1",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f42bdf9a46ec",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f801653058f1",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-d3f62d35a869",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5a0dab0c90af",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.12,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-bedc5b1e11c3",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-153fc1993bc9",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-west",
+          "role": "trim",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-a70444165f63",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.5284832715988159,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-f26f6cfee07a",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-0305ba653874",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ac67e66db980",
+          "name": "06 | Wood: Pine-Knotty Horiz*",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#edd9b8",
+          "roughness": 0.44999998807907104,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ce98e34516e9",
+          "name": "09 | Upholstery: Leather*",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#823427",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e89e3f208ab4",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "office-west",
+          "role": "ceiling",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ca016caf1251",
+          "name": "Fixture \u00b7 White Porcelain",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#f6f6f4",
+          "roughness": 0.18000000715255737,
+          "translation": "constant source PBR values"
+        }
+      ]
+    },
+    {
+      "id": "office-east",
+      "name": "East Office",
+      "floor": "Main level",
+      "subtitle": "Work & reading",
+      "description": "The east office, with its shared sliding partition and modeled furniture.",
+      "bounds": [
+        [
+          4.612,
+          7.488
+        ],
+        [
+          -6.216,
+          -2.726
+        ],
+        [
+          -0.04,
+          3.0072
+        ]
+      ],
+      "walkBounds": [
+        [
+          4.862,
+          7.238
+        ],
+        [
+          -5.966,
+          -2.976
+        ]
+      ],
+      "floorElevation": 0,
+      "ceilingHeight": 2.9972,
+      "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
+      "defaultPaint": "#e9e4da",
+      "cutawayCameraSide": [
+        -1,
+        -1
+      ],
+      "contextRoomIds": [],
+      "excludeCollectionPrefixes": [
+        "2F ",
+        "RF "
+      ],
+      "includeSourceNames": [
+        "Slab concrete slab.092",
+        "Slab concrete slab.098"
+      ],
+      "freestandingPrefixes": [
+        "Obj table",
+        "Obj chair",
+        "Furniture couch"
+      ],
+      "menuDescription": "Work & reading",
+      "roleOverrides": {
+        "Office east entry header": "wall"
+      },
+      "cutawayClipPrefixes": [
+        "Office entry",
+        "Office east entry header"
+      ],
+      "excludeSourcePrefixes": [
+        "DEC3650FI",
+        "DET3650RID",
+        "SO30PM"
+      ],
+      "asset": "office-east-b86a39ff502d.glb",
+      "assetHash": "b86a39ff502d7f6a018f95e64b10388c8ee0c9f4de6d0598680451171c65a69a",
+      "assetBytes": 4109484,
+      "objectCount": 135,
+      "triangles": 21432,
+      "cameras": [
+        {
+          "id": "room-view",
+          "label": "Room view",
+          "position": [
+            4.9,
+            1.58,
+            3.15
+          ],
+          "target": [
+            6.78981,
+            1.398894,
+            5.472891
+          ],
+          "fov": 80.31199924983865,
+          "lensMm": 16.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Offices \u00b7 office east"
+        }
+      ],
+      "lights": [
+        {
+          "id": "office-east-682312dd32b36c2e",
+          "group": "office-east:ceiling",
+          "type": "spot",
+          "position": [
+            5.17519,
+            2.987075,
+            3.661093
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "office-east-6d7ab06e32d82ac5",
+          "group": "office-east:ceiling",
+          "type": "spot",
+          "position": [
+            5.17519,
+            2.987075,
+            5.793643
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "office-east-7233db841658d45c",
+          "group": "office-east:ceiling",
+          "type": "spot",
+          "position": [
+            7.073705,
+            2.987075,
+            3.661093
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "office-east-854220f7cc6d9272",
+          "group": "office-east:ceiling",
+          "type": "spot",
+          "position": [
+            7.073705,
+            2.987075,
+            5.793643
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "ceiling": "#d8ceb9",
+        "trim": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-bdf40731d340",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-51250b9f761f",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-east",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-dca44930d638",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "office-east",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-adb99e989018",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6c98b43a1cfe",
+          "name": "03 | Concrete: Light",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#ded9d0",
+          "roughness": 0.8500000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b74a346defb0",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.37574318051338196,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-303a12b259e4",
+          "name": "05 | Metal: Bronze*",
+          "roomId": "office-east",
+          "role": "ceiling",
+          "color": "#816627",
+          "roughness": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4b04a70ff1a7",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-east",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-476730956f6a",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f294c64e7534",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-586476e7dab5",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.12,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-931738c72cc6",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-42ce7ed9d5e1",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-east",
+          "role": "trim",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-87e398ef73b8",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.5284832715988159,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-ab5ce9a95073",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-efc16a9deba8",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-2ff08043bb93",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-baa3535c9c7e",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "office-east",
+          "role": "ceiling",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-23c6526c8b96",
+          "name": "Fixture \u00b7 White Porcelain",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#f6f6f4",
+          "roughness": 0.18000000715255737,
+          "translation": "constant source PBR values"
+        }
+      ]
+    },
+    {
+      "id": "office-hall",
+      "name": "Office Hall",
+      "floor": "Main level",
+      "subtitle": "The arched-window corridor",
+      "description": "The shared hall in front of both offices.",
+      "bounds": [
+        [
+          1.84,
+          7.488
+        ],
+        [
+          -7.646,
+          -6.095
+        ],
+        [
+          -0.04,
+          3.0072
+        ]
+      ],
+      "walkBounds": [
+        [
+          2.09,
+          7.238
+        ],
+        [
+          -7.396,
+          -6.345
+        ]
+      ],
+      "floorElevation": 0,
+      "ceilingHeight": 2.9972,
+      "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
+      "defaultPaint": "#e9e4da",
+      "cutawayCameraSide": [
+        1,
+        1
+      ],
+      "contextRoomIds": [],
+      "excludeCollectionPrefixes": [
+        "2F ",
+        "RF "
+      ],
+      "includeSourceNames": [
+        "Slab concrete slab.092",
+        "Slab concrete slab.098"
+      ],
+      "cutawayClipPrefixes": [
+        "Arch reveal",
+        "Arch frame",
+        "Arch glass",
+        "Office entry",
+        "Office west entry header",
+        "Office east entry header"
+      ],
+      "roleOverrides": {
+        "Office west entry header": "wall",
+        "Office east entry header": "wall"
+      },
+      "wallAttachments": [
+        {
+          "prefix": "Arch reveal",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Arch frame",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Arch glass",
+          "side": "zMax"
+        }
+      ],
+      "menuDescription": "The arched-window corridor",
+      "excludeSourcePrefixes": [
+        "DEC3650FI",
+        "DET3650RID",
+        "SO30PM"
+      ],
+      "asset": "office-hall-14b90d8882a3.glb",
+      "assetHash": "14b90d8882a330430a5695320af6b63e04f16d643e1dc2150a1cc360a079ebfe",
+      "assetBytes": 3719532,
+      "objectCount": 151,
+      "triangles": 15408,
+      "cameras": [
+        {
+          "id": "room-view",
+          "label": "Room view",
+          "position": [
+            6.95,
+            1.6,
+            6.8
+          ],
+          "target": [
+            4.039126,
+            1.509973,
+            6.079783
+          ],
+          "fov": 80.31199924983865,
+          "lensMm": 16.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Offices \u00b7 entrances"
+        },
+        {
+          "id": "arched-windows",
+          "label": "Arched windows",
+          "position": [
+            2.2,
+            1.6,
+            6.85
+          ],
+          "target": [
+            5.185544,
+            1.57073,
+            7.142701
+          ],
+          "fov": 76.90741843341195,
+          "lensMm": 17.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Offices \u00b7 corridor arches"
+        }
+      ],
+      "lights": [
+        {
+          "id": "office-hall-f624dbdf90f30138",
+          "group": "office-hall:ceiling",
+          "type": "point",
+          "position": [
+            2.931761,
+            2.895,
+            6.864642
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "office-hall-ab74068f787153e3",
+          "group": "office-hall:ceiling",
+          "type": "point",
+          "position": [
+            4.525543,
+            2.895,
+            6.864642
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "office-hall-df2c10236106b9b4",
+          "group": "office-hall:ceiling",
+          "type": "point",
+          "position": [
+            6.119224,
+            2.895,
+            6.864642
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "trim": "#d8ceb9",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-a5f518ca0943",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "office-hall",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0c565a331714",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-6887e2331d72",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-hall",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-a2f2f9d6b5c4",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-ddb7811e2eb8",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-fa93aa3b3499",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.5284832715988159,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-eda3c792bd2d",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.37574318051338196,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-23d45e2360ca",
+          "name": "Floor \u00b7 White Marble 18in (atrium)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.12,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-bc9166ebc810",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0f7eac7719ae",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-2352268893e1",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5e4f83f46577",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.12,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-6dca8d0ee13c",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ba4334383985",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-hall",
+          "role": "trim",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-ad9dd47484a9",
+          "name": "05 | Metal: Steel",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#c4c8c9",
+          "roughness": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6966cd630384",
+          "name": "09 | Paint-02 Whitewash",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2ed0d1ebca82",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "office-hall",
+          "role": "ceiling",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-61b4e5cacf8c",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "office-hall",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-f8115855f216",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "office-hall",
+          "role": "ceiling",
+          "color": "#cec5b2",
+          "roughness": 0.800000011920929,
+          "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        }
+      ]
+    },
+    {
+      "id": "loli-closet",
+      "name": "Loli Closet",
+      "floor": "Main level",
+      "subtitle": "Main-level dressing room",
+      "description": "Loli\u2019s first-floor closet with the storage geometry currently in the model.",
+      "bounds": [
+        [
+          7.368,
+          9.323
+        ],
+        [
+          -4.324,
+          -1.44
+        ],
+        [
+          -0.04,
+          3.0072
+        ]
+      ],
+      "walkBounds": [
+        [
+          7.618,
+          9.073
+        ],
+        [
+          -4.074,
+          -1.69
+        ]
+      ],
+      "floorElevation": 0,
+      "ceilingHeight": 2.9972,
+      "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
+      "defaultPaint": "#e9e4da",
+      "cutawayCameraSide": [
+        -1,
+        1
+      ],
+      "contextRoomIds": [],
+      "excludeCollectionPrefixes": [
+        "2F ",
+        "RF "
+      ],
+      "includeSourceNames": [
+        "Slab concrete slab.092"
+      ],
+      "excludeSourcePrefixes": [
+        "LoliBath",
+        "LoliVanity",
+        "Loli toilet",
+        "Loli shower",
+        "LoliBath faucet",
+        "Fixture P",
+        "Furniture AC"
+      ],
+      "cutawayHiddenPrefixes": [
+        "Slab C01.003"
+      ],
+      "wallAttachments": [
+        {
+          "prefix": "Slab C01",
+          "side": "xMax"
+        },
+        {
+          "prefix": "Wall W1.023",
+          "side": "xMax"
+        }
+      ],
+      "menuDescription": "Main-level dressing room",
+      "asset": "loli-closet-de1becd92895.glb",
+      "assetHash": "de1becd92895efff1034fab167f964743c362aa67d951f69c90dc48d5bbf61fc",
+      "assetBytes": 1956240,
+      "objectCount": 112,
+      "triangles": 5602,
+      "cameras": [
+        {
+          "id": "room-view",
+          "label": "Room view",
+          "position": [
+            8.98,
+            1.55,
+            4.02
+          ],
+          "target": [
+            7.555901,
+            0.993711,
+            1.438821
+          ],
+          "fov": 83.97442499163331,
+          "lensMm": 15.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Loli Bedroom \u00b7 closet"
+        }
+      ],
+      "lights": [
+        {
+          "id": "loli-closet-8eaabdc8f5e35bad",
+          "group": "loli-closet:ceiling",
+          "type": "spot",
+          "position": [
+            8.612319,
+            2.987075,
+            2.410617
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "loli-closet-dd688e88d6f1790c",
+          "group": "loli-closet:ceiling",
+          "type": "spot",
+          "position": [
+            8.612319,
+            2.987075,
+            3.602961
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "trim": "#d8ceb9",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-8acdedb35154",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "loli-closet",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-fe6779b53a62",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-96e4a37f9192",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "loli-closet",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-5dbf4d629463",
+          "name": "09 | Glass-Blue/Ice",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#f8fbfa",
+          "roughness": 0.12,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-be24d65933ff",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-266a2747f003",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-0f06526f3947",
+          "name": "03 | Concrete: Light",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#ded9d0",
+          "roughness": 0.8500000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2b8f50e95934",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.37574318051338196,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-22142c879d88",
+          "name": "09 | Tile: 9\" Tan Terracotta",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#cdc6ba",
+          "roughness": 0.15000000596046448,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c2d6a3a90adb",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-59d408a3de15",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "loli-closet",
+          "role": "trim",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-d02947239d1a",
+          "name": "09 | Paint-02 Whitewash",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-79c319879f51",
+          "name": "09 | Paint-03 Gray",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1065ebc90724",
+          "name": "06 | P Laminate",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#f3f3e1",
+          "roughness": 0.15000000596046448,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-78c1e84baa6e",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-c05161a4d139",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2e1b9576c237",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "loli-closet",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        }
+      ]
+    },
+    {
+      "id": "primary-loli-closet",
+      "name": "Primary Loli Closet",
+      "floor": "Upper level",
+      "subtitle": "Oval window & dressing storage",
+      "description": "Primary-suite dressing room. The modeled wardrobe fit-out is provisional; it is not an approved cabinet elevation.",
+      "bounds": [
+        [
+          1.18,
+          6.155
+        ],
+        [
+          -0.236,
+          2.104
+        ],
+        [
+          3.3636,
+          6.3092
+        ]
+      ],
+      "walkBounds": [
+        [
+          1.88,
+          5.455
+        ],
+        [
+          0.495,
+          1.358
+        ]
+      ],
+      "floorElevation": 3.4036,
+      "ceilingHeight": 6.2992,
+      "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
+      "defaultPaint": "#e9e4da",
+      "cutawayCameraSide": [
+        1,
+        1
+      ],
+      "contextRoomIds": [],
+      "excludeCollectionPrefixes": [
+        "1F ",
+        "RF "
+      ],
+      "includeSourceNames": [
+        "Part Gypsum Board (C02).001",
+        "Part Wood Framing + Insulation (C02).001"
+      ],
+      "roleOverrides": {
+        "Part Gypsum Board (C02).001": "ceiling",
+        "Part Wood Framing + Insulation (C02).001": "ceiling"
+      },
+      "menuDescription": "Oval window & dressing storage",
+      "wallAttachments": [
+        {
+          "prefix": "Closet run \u00b7 Primary Loli Closet \u00b7 south wall",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 Primary Loli Closet \u00b7 south wall",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Closet run \u00b7 Primary Loli Closet \u00b7 north wall",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 Primary Loli Closet \u00b7 north wall",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet run \u00b7 Primary Loli Closet \u00b7 west wall",
+          "side": "xMin"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 Primary Loli Closet \u00b7 west wall",
+          "side": "xMin"
+        },
+        {
+          "prefix": "Closet run \u00b7 Primary Loli Closet \u00b7 north-west return",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 Primary Loli Closet \u00b7 north-west return",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet dresser Loli",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet dresser pulls Loli",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet dresser top \u00b7 Primary Loli Closet",
+          "side": "zMin"
+        }
+      ],
+      "excludeSourcePrefixes": [
+        "Closet run \u00b7 Primary Green",
+        "Closet rods and pulls \u00b7 Primary Green"
+      ],
+      "viewpoints": [
+        {
+          "label": "Room view",
+          "position": [
+            2.1,
+            0.926,
+            5.02
+          ],
+          "target": [
+            4.6,
+            0.926,
+            4.7
+          ],
+          "fov": 65
+        }
+      ],
+      "asset": "primary-loli-closet-65354cc57629.glb",
+      "assetHash": "65354cc576292383c0ae4fd2d53c7caa7c6116a32d2cbdaa79d356073769b868",
+      "assetBytes": 3221388,
+      "objectCount": 94,
+      "triangles": 10944,
+      "cameras": [
+        {
+          "id": "room-view",
+          "label": "Room view",
+          "position": [
+            2.1,
+            5.02,
+            -0.926
+          ],
+          "target": [
+            4.6,
+            4.7,
+            -0.926
+          ],
+          "fov": 65,
+          "sourceCamera": "Web presentation view"
+        },
+        {
+          "id": "dresser",
+          "label": "Dresser",
+          "position": [
+            2.9123,
+            4.650094,
+            -0.4458
+          ],
+          "target": [
+            2.9123,
+            4.650094,
+            -3.4458
+          ],
+          "fov": 30.219150244680932,
+          "lensMm": 50.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Primary Loli Closet \u00b7 dresser elevation"
+        }
+      ],
+      "lights": [
+        {
+          "id": "primary-loli-closet-d73f13f3b694d929",
+          "group": "primary-loli-closet:ceiling",
+          "type": "spot",
+          "position": [
+            2.182275,
+            6.2886,
+            -0.952665
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "primary-loli-closet-5e81c8174817970a",
+          "group": "primary-loli-closet:ceiling",
+          "type": "spot",
+          "position": [
+            3.643249,
+            6.2886,
+            -0.952665
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "primary-loli-closet-1feb406ed4b9f775",
+          "group": "primary-loli-closet:ceiling",
+          "type": "spot",
+          "position": [
+            5.551907,
+            6.2886,
+            -0.952665
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "trim": "#d8ceb9",
+        "cabinet": "#f0ece3",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-a0403126a04b",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "primary-loli-closet",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a23802fd8d7c",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-88f68733ffc5",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-79c234720ba9",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "primary-loli-closet",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-fa14bf6d531a",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-ba5fd81b3531",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-34a52c031544",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.37574318051338196,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-775c880f8214",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ea9ef2495fa6",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f57f4c83d9e6",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-305682b271b3",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.12,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-445560d7f1fd",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "primary-loli-closet",
+          "role": "trim",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-338236527341",
+          "name": "09 | Paint-02 Whitewash",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-15ddd7ab75f7",
+          "name": "09 | Paint-03 Gray",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e69bfae5641b",
+          "name": "06 | P Laminate",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#f3f3e1",
+          "roughness": 0.15000000596046448,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2d56d40ef42c",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.5284832715988159,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-b01a99a8844d",
+          "name": "Cabinet \u00b7 Cream Painted (closet dressers)",
+          "roomId": "primary-loli-closet",
+          "role": "cabinet",
+          "color": "#f0ece3",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-189c750effea",
+          "name": "Fixture \u00b7 Unlacquered Brass",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#c49e5c",
+          "roughness": 0.2199999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-da161b5816ae",
+          "name": "Marble \u00b7 White Slab (counters, stairs)",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#eeefec",
+          "roughness": 0.12,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-555e37e0b39d",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2d20a393ed05",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "primary-loli-closet",
+          "role": "ceiling",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-fd4634fcdc7e",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "primary-loli-closet",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        }
+      ]
+    },
+    {
+      "id": "primary-green-closet",
+      "name": "Primary Green Closet",
+      "floor": "Upper level",
+      "subtitle": "Oval window & dressing storage",
+      "description": "Primary-suite dressing room. The modeled wardrobe fit-out is provisional; it is not an approved cabinet elevation.",
+      "bounds": [
+        [
+          6.034,
+          10.984
+        ],
+        [
+          -0.236,
+          2.104
+        ],
+        [
+          3.3636,
+          6.3092
+        ]
+      ],
+      "walkBounds": [
+        [
+          6.734,
+          10.284
+        ],
+        [
+          0.495,
+          1.358
+        ]
+      ],
+      "floorElevation": 3.4036,
+      "ceilingHeight": 6.2992,
+      "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
+      "defaultPaint": "#e9e4da",
+      "cutawayCameraSide": [
+        -1,
+        1
+      ],
+      "contextRoomIds": [],
+      "excludeCollectionPrefixes": [
+        "1F ",
+        "RF "
+      ],
+      "includeSourceNames": [
+        "Part Gypsum Board (C02).001",
+        "Part Wood Framing + Insulation (C02).001"
+      ],
+      "roleOverrides": {
+        "Part Gypsum Board (C02).001": "ceiling",
+        "Part Wood Framing + Insulation (C02).001": "ceiling"
+      },
+      "menuDescription": "Oval window & dressing storage",
+      "wallAttachments": [
+        {
+          "prefix": "Closet run \u00b7 Primary Green Closet \u00b7 south wall",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 Primary Green Closet \u00b7 south wall",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Closet run \u00b7 Primary Green Closet \u00b7 north wall",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 Primary Green Closet \u00b7 north wall",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet run \u00b7 Primary Green Closet \u00b7 east wall",
+          "side": "xMax"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 Primary Green Closet \u00b7 east wall",
+          "side": "xMax"
+        },
+        {
+          "prefix": "Closet run \u00b7 Primary Green Closet \u00b7 north-east return",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 Primary Green Closet \u00b7 north-east return",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet dresser Green",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet dresser pulls Green",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet dresser top \u00b7 Primary Green Closet",
+          "side": "zMin"
+        }
+      ],
+      "excludeSourcePrefixes": [
+        "Closet run \u00b7 Primary Loli",
+        "Closet rods and pulls \u00b7 Primary Loli"
+      ],
+      "viewpoints": [
+        {
+          "label": "Room view",
+          "position": [
+            10.0,
+            0.926,
+            5.02
+          ],
+          "target": [
+            7.1,
+            0.926,
+            4.7
+          ],
+          "fov": 65
+        }
+      ],
+      "asset": "primary-green-closet-5ff4bf737ace.glb",
+      "assetHash": "5ff4bf737ace36e5eed07e4e243deb8b3cf6a34251602c243aea6d2b0dda0e03",
+      "assetBytes": 3176032,
+      "objectCount": 76,
+      "triangles": 10387,
+      "cameras": [
+        {
+          "id": "room-view",
+          "label": "Room view",
+          "position": [
+            10.0,
+            5.02,
+            -0.926
+          ],
+          "target": [
+            7.1,
+            4.7,
+            -0.926
+          ],
+          "fov": 65,
+          "sourceCamera": "Web presentation view"
+        },
+        {
+          "id": "dresser",
+          "label": "Dresser",
+          "position": [
+            8.5746,
+            4.650094,
+            -0.4458
+          ],
+          "target": [
+            8.5746,
+            4.650094,
+            -3.4458
+          ],
+          "fov": 30.219150244680932,
+          "lensMm": 50.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Primary Green Closet \u00b7 dresser elevation"
+        }
+      ],
+      "lights": [
+        {
+          "id": "primary-green-closet-21721d1bcd5a47f5",
+          "group": "primary-green-closet:ceiling",
+          "type": "spot",
+          "position": [
+            6.746469,
+            6.2886,
+            -0.952665
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "primary-green-closet-4bfd4b5c1bdf7de4",
+          "group": "primary-green-closet:ceiling",
+          "type": "spot",
+          "position": [
+            8.435907,
+            6.2886,
+            -0.952665
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "primary-green-closet-fb55f71d6c1d9135",
+          "group": "primary-green-closet:ceiling",
+          "type": "spot",
+          "position": [
+            9.962447,
+            6.2886,
+            -0.952665
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "trim": "#d8ceb9",
+        "cabinet": "#f0ece3",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-6578fea5a5f9",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "primary-green-closet",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-76c525de3990",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-b72766e32d0d",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "primary-green-closet",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-64d8c8fc41ef",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-d41d34fb453c",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-71f01c5382b3",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.37574318051338196,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-30b550c33a45",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-06f08e87f46e",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-69a84d6ee3d8",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-85b7cd55df88",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.12,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-805ef7890037",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "primary-green-closet",
+          "role": "trim",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-dd8500ac2cee",
+          "name": "09 | Paint-02 Whitewash",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f60a1c55a80d",
+          "name": "09 | Paint-03 Gray",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-29e514dc54ef",
+          "name": "06 | P Laminate",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#f3f3e1",
+          "roughness": 0.15000000596046448,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d7f2b973f7e6",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.5284832715988159,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-936250c02ff5",
+          "name": "Cabinet \u00b7 Cream Painted (closet dressers)",
+          "roomId": "primary-green-closet",
+          "role": "cabinet",
+          "color": "#f0ece3",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4d2aea5f4076",
+          "name": "Fixture \u00b7 Unlacquered Brass",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#c49e5c",
+          "roughness": 0.2199999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-02423c7da631",
+          "name": "Marble \u00b7 White Slab (counters, stairs)",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#eeefec",
+          "roughness": 0.12,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-107ec05ee461",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6f988db44b6e",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "primary-green-closet",
+          "role": "ceiling",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-92dc4ec5a304",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "primary-green-closet",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-5fea29ab6a8d",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "primary-green-closet",
+          "role": "ceiling",
+          "color": "#cec5b2",
+          "roughness": 0.800000011920929,
+          "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        }
+      ]
+    },
+    {
+      "id": "upstairs-closet-west",
+      "name": "West Closet",
+      "floor": "Upper level",
+      "subtitle": "West-wing dressing room",
+      "description": "One of the two upstairs west-wing closets. The modeled open storage is a provisional fit-out.",
+      "bounds": [
+        [
+          -10.984,
+          -8.24
+        ],
+        [
+          -4.269,
+          -2.504
+        ],
+        [
+          3.3636,
+          6.3092
+        ]
+      ],
+      "walkBounds": [
+        [
+          -10.684,
+          -8.540000000000001
+        ],
+        [
+          -3.64,
+          -3.133
+        ]
+      ],
+      "floorElevation": 3.4036,
+      "ceilingHeight": 6.2992,
+      "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
+      "defaultPaint": "#e9e4da",
+      "cutawayCameraSide": [
+        1,
+        1
+      ],
+      "contextRoomIds": [],
+      "excludeCollectionPrefixes": [
+        "1F ",
+        "RF "
+      ],
+      "includeSourceNames": [
+        "Part Gypsum Board (C02).001",
+        "Part Wood Framing + Insulation (C02).001"
+      ],
+      "roleOverrides": {
+        "Part Gypsum Board (C02).001": "ceiling",
+        "Part Wood Framing + Insulation (C02).001": "ceiling"
+      },
+      "wallAttachments": [
+        {
+          "prefix": "Closet run \u00b7 2F west closet, west room \u00b7 south wall",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 2F west closet, west room \u00b7 south wall",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Closet run \u00b7 2F west closet, west room \u00b7 north wall",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 2F west closet, west room \u00b7 north wall",
+          "side": "zMin"
+        }
+      ],
+      "menuDescription": "West-wing dressing room",
+      "viewpoints": [
+        {
+          "label": "Room view",
+          "position": [
+            -10.35,
+            -3.3865,
+            5.02
+          ],
+          "target": [
+            -8.65,
+            -3.3865,
+            4.72
+          ],
+          "fov": 65
+        }
+      ],
+      "asset": "upstairs-closet-west-a6f4515ca9cc.glb",
+      "assetHash": "a6f4515ca9cc480399494927d7080c217b5b047eea3a87e717b197ac16e50154",
+      "assetBytes": 1972352,
+      "objectCount": 53,
+      "triangles": 5880,
+      "cameras": [
+        {
+          "id": "room-view",
+          "label": "Room view",
+          "position": [
+            -10.35,
+            5.02,
+            3.3865
+          ],
+          "target": [
+            -8.65,
+            4.72,
+            3.3865
+          ],
+          "fov": 65,
+          "sourceCamera": "Web presentation view"
+        },
+        {
+          "id": "storage-detail",
+          "label": "Storage detail",
+          "position": [
+            -9.501265,
+            4.9536,
+            3.550001
+          ],
+          "target": [
+            -6.683756,
+            4.014431,
+            3.126199
+          ],
+          "fov": 83.97442499163331,
+          "lensMm": 15.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Green Bedroom \u00b7 closet"
+        }
+      ],
+      "lights": [
+        {
+          "id": "upstairs-closet-west-758ea5f8bbb8c93e",
+          "group": "upstairs-closet-west:ceiling",
+          "type": "spot",
+          "position": [
+            -10.413737,
+            5.9838,
+            3.364471
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "upstairs-closet-west-c27156b5c3d117ef",
+          "group": "upstairs-closet-west:ceiling",
+          "type": "spot",
+          "position": [
+            -8.642223,
+            5.9838,
+            3.364471
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "trim": "#d8ceb9",
+        "cabinet": "#f0ece3",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-b8405dcf3344",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-43d3e2dcfd84",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "upstairs-closet-west",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9e3a87ffb5e0",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-0077d977cbb7",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "upstairs-closet-west",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-38df0af0d3c2",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-e18fe38e57f6",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-fd43714d6fe8",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.37574318051338196,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-34577d4600ef",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7860447d0f6c",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "upstairs-closet-west",
+          "role": "trim",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-c3d1b77af57e",
+          "name": "09 | Paint-02 Whitewash",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-361b110ef2c9",
+          "name": "09 | Paint-03 Gray",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-86cb9bc48a6c",
+          "name": "06 | P Laminate",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#f3f3e1",
+          "roughness": 0.15000000596046448,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ff364a50340b",
+          "name": "Cabinet \u00b7 Cream Painted (closet dressers)",
+          "roomId": "upstairs-closet-west",
+          "role": "cabinet",
+          "color": "#f0ece3",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-56fb14572087",
+          "name": "Fixture \u00b7 Unlacquered Brass",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#c49e5c",
+          "roughness": 0.2199999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-bd0a3978924a",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-afd3d21ec350",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "upstairs-closet-west",
+          "role": "ceiling",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c2f1d40e97e6",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "upstairs-closet-west",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        }
+      ]
+    },
+    {
+      "id": "upstairs-closet-east",
+      "name": "East Closet",
+      "floor": "Upper level",
+      "subtitle": "West-wing dressing room",
+      "description": "One of the two upstairs west-wing closets. The modeled open storage is a provisional fit-out.",
+      "bounds": [
+        [
+          -8.361,
+          -5.631
+        ],
+        [
+          -4.269,
+          -2.504
+        ],
+        [
+          3.3636,
+          6.3092
+        ]
+      ],
+      "walkBounds": [
+        [
+          -8.061,
+          -5.931
+        ],
+        [
+          -3.64,
+          -3.133
+        ]
+      ],
+      "floorElevation": 3.4036,
+      "ceilingHeight": 6.2992,
+      "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
+      "defaultPaint": "#e9e4da",
+      "cutawayCameraSide": [
+        1,
+        1
+      ],
+      "contextRoomIds": [],
+      "excludeCollectionPrefixes": [
+        "1F ",
+        "RF "
+      ],
+      "includeSourceNames": [
+        "Part Gypsum Board (C02).001",
+        "Part Wood Framing + Insulation (C02).001"
+      ],
+      "roleOverrides": {
+        "Part Gypsum Board (C02).001": "ceiling",
+        "Part Wood Framing + Insulation (C02).001": "ceiling"
+      },
+      "wallAttachments": [
+        {
+          "prefix": "Closet run \u00b7 2F west closet, east room \u00b7 south wall",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 2F west closet, east room \u00b7 south wall",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Closet run \u00b7 2F west closet, east room \u00b7 north wall",
+          "side": "zMin"
+        },
+        {
+          "prefix": "Closet rods and pulls \u00b7 2F west closet, east room \u00b7 north wall",
+          "side": "zMin"
+        }
+      ],
+      "menuDescription": "West-wing dressing room",
+      "viewpoints": [
+        {
+          "position": [
+            -8.02,
+            -3.39,
+            4.95
+          ],
+          "target": [
+            -5.95,
+            -3.35,
+            4.65
+          ],
+          "label": "Room view",
+          "fov": 60
+        }
+      ],
+      "asset": "upstairs-closet-east-901778551a1e.glb",
+      "assetHash": "901778551a1e416b43058c0a06b5e645eee67233a609607b4a10f10d59a69bfd",
+      "assetBytes": 1991036,
+      "objectCount": 70,
+      "triangles": 6422,
+      "cameras": [
+        {
+          "id": "room-view",
+          "label": "Room view",
+          "position": [
+            -8.02,
+            4.95,
+            3.39
+          ],
+          "target": [
+            -5.95,
+            4.65,
+            3.35
+          ],
+          "fov": 60,
+          "sourceCamera": "Web presentation view"
+        }
+      ],
+      "lights": [
+        {
+          "id": "upstairs-closet-east-13b6859e7f47281e",
+          "group": "upstairs-closet-east:ceiling",
+          "type": "spot",
+          "position": [
+            -7.88703,
+            6.2886,
+            3.364471
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "upstairs-closet-east-12e04a496558ec62",
+          "group": "upstairs-closet-east:ceiling",
+          "type": "spot",
+          "position": [
+            -6.268881,
+            6.2886,
+            3.364471
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "trim": "#d8ceb9",
+        "cabinet": "#f0ece3",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-34182d1cf038",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-490f4683094e",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "upstairs-closet-east",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6e55009aaa75",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-e8551024f49e",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "upstairs-closet-east",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-9505cb261c3a",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.37574318051338196,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-360ecc87e99e",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-16823ee3fd76",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7539a639472c",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "upstairs-closet-east",
+          "role": "trim",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-bc17d1d420c0",
+          "name": "09 | Paint-02 Whitewash",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-944ab3eaea03",
+          "name": "09 | Paint-03 Gray",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-574ae91a5abe",
+          "name": "06 | P Laminate",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#f3f3e1",
+          "roughness": 0.15000000596046448,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-df18fa8b5995",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-cd6c0a60e4ef",
+          "name": "Cabinet \u00b7 Cream Painted (closet dressers)",
+          "roomId": "upstairs-closet-east",
+          "role": "cabinet",
+          "color": "#f0ece3",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e6a793935f5f",
+          "name": "Fixture \u00b7 Unlacquered Brass",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#c49e5c",
+          "roughness": 0.2199999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9b481297f267",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-10950b52f615",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "upstairs-closet-east",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        }
+      ]
+    },
+    {
+      "id": "rear-deck",
+      "name": "Rear Deck",
+      "floor": "Upper level",
+      "subtitle": "Open-air deck & island",
+      "description": "The modeled rear roof deck, concrete walking surface, outdoor island and exterior stair. Walk stays on the level deck; it does not climb the stair.",
+      "bounds": [
+        [
+          -11.138,
+          1.47
+        ],
+        [
+          2.663,
+          9.279
+        ],
+        [
+          3.79,
+          7.66
+        ]
+      ],
+      "walkBounds": [
+        [
+          -10.0,
+          0.2
+        ],
+        [
+          4.05,
+          8.15
+        ]
+      ],
+      "floorElevation": 3.84175,
+      "ceilingHeight": 7.65,
+      "boundaryStatus": "Concave presentation envelope follows the deck floor notch at x -4.89652 / y 3.66304, with modeled wall thickness retained. Not a site survey.",
+      "defaultPaint": "#e9e4da",
+      "cutawayCameraSide": [
+        -1,
+        -1
+      ],
+      "contextRoomIds": [],
+      "excludeCollectionPrefixes": [
+        "1F ",
+        "RF "
+      ],
+      "roleOverrides": {
+        "Part Wood Flooring (Roof)": "floor",
+        "Part Plywood Sheathing (Roof).004": "floor",
+        "Deck island body": "cabinet",
+        "Deck island counter": "cabinet"
+      },
+      "cutawayKeepPrefixes": [
+        "Part Wood Flooring (Roof)",
+        "Part Plywood Sheathing (Roof).004",
+        "Part Asphalt Shingles (Roof)",
+        "Part Plywood Sheathing (Roof)",
+        "Part Wood Framing (Roof)",
+        "Fascia"
+      ],
+      "freestandingPrefixes": [
+        "Deck island"
+      ],
+      "cutawayDisplayHeight": 3.7,
+      "menuDescription": "Open-air deck & island",
+      "viewpoints": [
+        {
+          "label": "Room view",
+          "position": [
+            -8.8,
+            7.8,
+            5.46
+          ],
+          "target": [
+            -2.0,
+            4.5,
+            4.8
+          ],
+          "fov": 65
+        }
+      ],
+      "footprint": [
+        [
+          -11.138,
+          2.663
+        ],
+        [
+          -4.776,
+          2.663
+        ],
+        [
+          -4.776,
+          3.526
+        ],
+        [
+          1.47,
+          3.526
+        ],
+        [
+          1.47,
+          9.279
+        ],
+        [
+          -11.138,
+          9.279
+        ]
+      ],
+      "excludeSourcePrefixes": [
+        "Millwork"
+      ],
+      "architectureAttachmentDepth": 1.2,
+      "asset": "rear-deck-42ff84d2ba8e.glb",
+      "assetHash": "42ff84d2ba8e980f2be876c7e4db94c12c106e242095ab7f977b311d35cf6284",
+      "assetBytes": 1721900,
+      "objectCount": 121,
+      "triangles": 6145,
+      "cameras": [
+        {
+          "id": "room-view",
+          "label": "Room view",
+          "position": [
+            -8.8,
+            5.46,
+            -7.8
+          ],
+          "target": [
+            -2.0,
+            4.8,
+            -4.5
+          ],
+          "fov": 65,
+          "sourceCamera": "Web presentation view"
+        },
+        {
+          "id": "stair-wall",
+          "label": "Stair wall",
+          "position": [
+            -6.9,
+            5.442,
+            -7.4
+          ],
+          "target": [
+            -7.33271,
+            4.921512,
+            -4.477355
+          ],
+          "fov": 58.71550708558255,
+          "lensMm": 24.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Cam 22 Deck 2 Wall"
+        },
+        {
+          "id": "exterior-stair",
+          "label": "Exterior stair",
+          "position": [
+            -4.1,
+            4.95,
+            -6.6
+          ],
+          "target": [
+            -6.290712,
+            5.200367,
+            -4.565768
+          ],
+          "fov": 58.71550708558255,
+          "lensMm": 24.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Cam 25 Deck Stair"
+        },
+        {
+          "id": "island",
+          "label": "Island",
+          "position": [
+            -4.3,
+            4.98,
+            -6.0
+          ],
+          "target": [
+            -1.315323,
+            4.677259,
+            -5.992876
+          ],
+          "fov": 51.48141671246568,
+          "lensMm": 28.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Cam 26 Deck Island"
+        }
+      ],
+      "lights": [],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-ef9a96a4a4c6",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "rear-deck",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-16caf756f92b",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-8b88aeeec0f6",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "rear-deck",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-396b7f15014b",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-3ab45dca3913",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-98099221f7e4",
+          "name": "Concrete \u00b7 Broom Finish (deck)",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#b4b1ab",
+          "roughness": 0.8600000143051147,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-f5b97dc20684",
+          "name": "Quartzite \u00b7 Titanium (Deck island)",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#1d1d20",
+          "roughness": 0.1323891431093216,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-8ed193c5472e",
+          "name": "07 | Roof: Asphalt Shingle, Slate",
+          "roomId": "rear-deck",
+          "role": "ceiling",
+          "color": "#555555",
+          "roughness": 0.8999999761581421,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ff025b8e82aa",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "rear-deck",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-62132a29b019",
+          "name": "09 | Color: Tan",
+          "roomId": "rear-deck",
+          "role": "ceiling",
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ee44a3f356ad",
+          "name": "09 | Color: Tan",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-638c912be5cd",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "rear-deck",
+          "role": "ceiling",
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-607da371b034",
+          "name": "06 | Wood: Pine-Clear Vert",
+          "roomId": "rear-deck",
+          "role": "ceiling",
+          "color": "#edbb85",
+          "roughness": 0.44999998807907104,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7ac3a47e2ba9",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-aeee012ff269",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.12,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-1d367635283d",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6ce04c1f4609",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a53ad4c5d140",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-aa287e2dbccd",
+          "name": "Concrete \u00b7 Grey Painted (exterior stair)",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#8c8c8e",
+          "roughness": 0.7799999713897705,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-63842dfe8703",
+          "name": "Railing \u00b7 Black Iron",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#272729",
+          "roughness": 0.44999998807907104,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9f6b6b055172",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1192f6c6156f",
+          "name": "09 | Paint-07 Gray",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#5b5b5b",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        }
+      ]
+    },
+    {
+      "id": "front-balcony",
+      "name": "Front Balcony",
+      "floor": "Upper level",
+      "subtitle": "Covered balcony above the offices",
+      "description": "The front balcony with its modeled columns, parapet and iron railing. Its walking surface is 51 mm below the adjoining interior floor.",
+      "bounds": [
+        [
+          1.84,
+          10.984
+        ],
+        [
+          -7.646,
+          -5.093
+        ],
+        [
+          3.3128,
+          6.3092
+        ]
+      ],
+      "walkBounds": [
+        [
+          2.45,
+          10.35
+        ],
+        [
+          -7.02,
+          -5.6
+        ]
+      ],
+      "floorElevation": 3.3528,
+      "ceilingHeight": 6.1018,
+      "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
+      "defaultPaint": "#e9e4da",
+      "cutawayCameraSide": [
+        1,
+        1
+      ],
+      "contextRoomIds": [],
+      "excludeCollectionPrefixes": [
+        "1F ",
+        "RF "
+      ],
+      "viewpoints": [
+        {
+          "position": [
+            3.2,
+            -6.15,
+            4.95
+          ],
+          "target": [
+            9.7,
+            -6.15,
+            4.65
+          ],
+          "label": "Room view",
+          "fov": 60
+        },
+        {
+          "position": [
+            9.85,
+            -6.1,
+            4.95
+          ],
+          "target": [
+            3.0,
+            -6.1,
+            4.65
+          ],
+          "label": "Reverse view",
+          "fov": 60
+        }
+      ],
+      "cutawayKeepPrefixes": [
+        "Fascia Fascia.075",
+        "Fascia Fascia.076"
+      ],
+      "excludeSourcePrefixes": [
+        "Obj Object-35",
+        "PrimaryBath",
+        "Primary bath",
+        "PB ",
+        "Fixture P",
+        "Millwork"
+      ],
+      "cutawayClipPrefixes": [
+        "Column C06",
+        "Column C08",
+        "Fascia Fascia.075",
+        "Fascia Fascia.076"
+      ],
+      "roleOverrides": {
+        "Slab concrete slab.098": "floor",
+        "Part Gypsum Board (C02)": "ceiling",
+        "Part Wood Framing + Insulation (C02)": "ceiling"
+      },
+      "includeSourceNames": [
+        "Part Gypsum Board (C02)",
+        "Part Wood Framing + Insulation (C02)",
+        "Fascia Fascia.100",
+        "Fascia Fascia.101"
+      ],
+      "wallAttachmentRegions": [
+        {
+          "bounds": [
+            [
+              1.84,
+              10.984
+            ],
+            [
+              -7.646,
+              -7.05
+            ],
+            [
+              3.3,
+              6.4
+            ]
+          ],
+          "roles": [
+            "object"
+          ],
+          "side": [
+            "zMax"
+          ]
+        }
+      ],
+      "menuDescription": "Covered balcony above the offices",
+      "asset": "front-balcony-d2f1b9a3ebc4.glb",
+      "assetHash": "d2f1b9a3ebc41bf347ac9ff34de6d0d76fcd6d950b9ab24dac54c958027ca3d9",
+      "assetBytes": 3590600,
+      "objectCount": 151,
+      "triangles": 15408,
+      "cameras": [
+        {
+          "id": "room-view",
+          "label": "Room view",
+          "position": [
+            3.2,
+            4.95,
+            6.15
+          ],
+          "target": [
+            9.7,
+            4.65,
+            6.15
+          ],
+          "fov": 60,
+          "sourceCamera": "Web presentation view"
+        },
+        {
+          "id": "reverse-view",
+          "label": "Reverse view",
+          "position": [
+            9.85,
+            4.95,
+            6.1
+          ],
+          "target": [
+            3.0,
+            4.65,
+            6.1
+          ],
+          "fov": 60,
+          "sourceCamera": "Web presentation view"
+        }
+      ],
+      "lights": [
+        {
+          "id": "front-balcony-078afa1195dad882",
+          "group": "front-balcony:ceiling",
+          "type": "point",
+          "position": [
+            3.569386,
+            6.197,
+            6.155474
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "front-balcony-1b862b0f4d6ba82a",
+          "group": "front-balcony:ceiling",
+          "type": "point",
+          "position": [
+            6.339815,
+            6.197,
+            6.155474
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "front-balcony-12d915abde06eb70",
+          "group": "front-balcony:ceiling",
+          "type": "point",
+          "position": [
+            9.270568,
+            6.197,
+            6.155474
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-baf22408b809",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "front-balcony",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3414fdb7e303",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-47686fa47ba7",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "front-balcony",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-b2af3c780c44",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-dba6dea1f4cd",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a7a6c01bf2f1",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.37574318051338196,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-e48bf444ba74",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.9077944755554199,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-019d6beaf0ed",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-97d68575af55",
+          "name": "Railing \u00b7 Black Iron",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#272729",
+          "roughness": 0.44999998807907104,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-cf9a56cb50ac",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-78a8c2165da5",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-70702cec5f16",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.12,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-f082104dabae",
+          "name": "05 | Metal: Steel",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#c4c8c9",
+          "roughness": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-27177d56db64",
+          "name": "09 | Color: Tan",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-879124c955c5",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.5284832715988159,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-1e1e89d64158",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "front-balcony",
+          "role": "ceiling",
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-70231353fff3",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "front-balcony",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.9077944755554199,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-9f9821a44d53",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "front-balcony",
+          "role": "ceiling",
+          "color": "#cec5b2",
+          "roughness": 0.800000011920929,
+          "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-dcb75b3c9686",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "front-balcony",
+          "role": "ceiling",
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "translation": "source dielectric/opaque glass parameters"
+        }
+      ]
     }
   ],
   "products": [
