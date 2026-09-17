@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "3458ad29c832",
+  "sceneVersion": "0e4321bb4569",
   "source": {
     "file": "Web.blend",
-    "sha256": "3458ad29c832454b1b81afe7e959bbe9ef9bda0018d2f046df845037702f5e38",
+    "sha256": "0e4321bb4569415d9071de1a4175f29739e86aec4498eaac4589fd61935b3630",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -945,11 +945,11 @@
         "Furniture table.003",
         "Slab concrete slab.063"
       ],
-      "asset": "family-room-7c22b0fc4dee.glb",
-      "assetHash": "7c22b0fc4dee060d2aa485ae69348177ae87e3cf5c4a3e8e48544c0473488273",
-      "assetBytes": 7426268,
+      "asset": "family-room-cf9996a8d8a4.glb",
+      "assetHash": "cf9996a8d8a4cb9450c7cade83b8d5ef3419359b8a479faf4d5edf403e67a95a",
+      "assetBytes": 7427084,
       "objectCount": 230,
-      "triangles": 39727,
+      "triangles": 39747,
       "cameras": [
         {
           "id": "room-view",
@@ -1652,11 +1652,11 @@
         "PVanity",
         "PBath"
       ],
-      "asset": "dining-room-ff599206e34c.glb",
-      "assetHash": "ff599206e34cb4196693d7c03cbadca15661a0c16abfbd52f684b4cde62d4da5",
-      "assetBytes": 7771860,
-      "objectCount": 230,
-      "triangles": 34322,
+      "asset": "dining-room-c711710810b8.glb",
+      "assetHash": "c711710810b84b259f6457387d09737d59edee5f408c6271ab9b74215f8c4a02",
+      "assetBytes": 9967672,
+      "objectCount": 242,
+      "triangles": 105738,
       "cameras": [
         {
           "id": "room-view",
@@ -2238,12 +2238,39 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-e724a48f2782",
-          "name": "06 | Wood: Pine-Clear Horiz",
+          "id": "mat-664e8fbd2fc6",
+          "name": "Wood \u00b7 RH Antiqued Natural (Dining table top)",
           "roomId": "dining-room",
           "role": null,
-          "color": "#edbb85",
-          "roughness": 0.44999998807907104,
+          "color": "#946c4e",
+          "roughness": 0.7200000286102295,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-70731567b08f",
+          "name": "Wood \u00b7 RH Antiqued Natural (Dining table base)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#946c4e",
+          "roughness": 0.7200000286102295,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8c1cd2c9e05c",
+          "name": "Wood \u00b7 RH Antiqued Natural (Dining chair frame, coordinating)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#946c4e",
+          "roughness": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b33eb49e4468",
+          "name": "Fabric \u00b7 Sage (Pinterest baseline dining chair)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#838d7c",
+          "roughness": 0.9599999785423279,
           "translation": "constant source PBR values"
         }
       ]
@@ -2530,11 +2557,11 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-b7dd55690f3c.glb",
-      "assetHash": "b7dd55690f3cc18568a4b2823cd9103b95539f2b1bded77ca50d3c827ecc10d3",
-      "assetBytes": 20991832,
+      "asset": "kitchen-4b458bb7f177.glb",
+      "assetHash": "4b458bb7f177b77b2071982cde365ec12d481997ae1f374d34bc9a4d6834216f",
+      "assetBytes": 20992672,
       "objectCount": 472,
-      "triangles": 292561,
+      "triangles": 292585,
       "cameras": [
         {
           "id": "room-view",
@@ -4630,11 +4657,11 @@
         "Slab concrete slab.058",
         "Slab C01.003"
       ],
-      "asset": "pantry-89fb9b81a268.glb",
-      "assetHash": "89fb9b81a268b5866aab14a31b8bdb8d38c3bb40311d8a9f40d2ed3b87cb3afe",
-      "assetBytes": 3480868,
+      "asset": "pantry-7c983c1c965f.glb",
+      "assetHash": "7c983c1c965f7f76fe5447be4da7ced6a27be3637f3d9b3355dab2b29cb579e5",
+      "assetBytes": 3486684,
       "objectCount": 135,
-      "triangles": 14394,
+      "triangles": 14546,
       "cameras": [
         {
           "id": "room-view",
@@ -5396,11 +5423,11 @@
           "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
         }
       ],
-      "asset": "loli-bedroom-c8fb1a18e55c.glb",
-      "assetHash": "c8fb1a18e55c93902f46a32dbe29293c46f65c2329529a108c8267ecb1d9227b",
-      "assetBytes": 5109556,
+      "asset": "loli-bedroom-b23bb8bd201a.glb",
+      "assetHash": "b23bb8bd201aafdfb3260e412987a54a36b964e938fdd7eac21736606f93bd95",
+      "assetBytes": 5111740,
       "objectCount": 164,
-      "triangles": 23820,
+      "triangles": 23868,
       "cameras": [
         {
           "id": "room-view",
@@ -5955,11 +5982,11 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "loli-bathroom-1f6ec5757ff1.glb",
-      "assetHash": "1f6ec5757ff1e8e890bc1cf5e1c35f7455c4340937210244fdb3f0e9e34da729",
-      "assetBytes": 4144956,
+      "asset": "loli-bathroom-67ba7d1c10be.glb",
+      "assetHash": "67ba7d1c10be0f81efc22655597f0dc4816663734bb5558bc4bb4f62c03bd62e",
+      "assetBytes": 4149012,
       "objectCount": 115,
-      "triangles": 20921,
+      "triangles": 21005,
       "cameras": [
         {
           "id": "room-view",
@@ -6869,11 +6896,11 @@
       "excludeSourceNames": [
         "Obj Object-35.013"
       ],
-      "asset": "primary-bedroom-18a003bf1d67.glb",
-      "assetHash": "18a003bf1d67d7a801908407096510ef621e2363b12645907de52a714b64b1ac",
-      "assetBytes": 5273464,
+      "asset": "primary-bedroom-c5ffe549416e.glb",
+      "assetHash": "c5ffe549416ef4a0217025615cc5ea6ac4e9437a9c99f7f121057f3887dd5f2c",
+      "assetBytes": 5274168,
       "objectCount": 151,
-      "triangles": 25662,
+      "triangles": 25664,
       "cameras": [
         {
           "id": "room-view",
@@ -8015,11 +8042,11 @@
         "Slab concrete slab.109",
         "Slab concrete slab.135"
       ],
-      "asset": "green-bedroom-c8801029506d.glb",
-      "assetHash": "c8801029506d4cee403c9894cf883ac4c983d7320341f6b27d034e3fdde60f8e",
-      "assetBytes": 5024688,
+      "asset": "green-bedroom-54c9c2673e30.glb",
+      "assetHash": "54c9c2673e30d7fa45c4faed78dfe9d319b9429606edc14c55b7bc73557002ec",
+      "assetBytes": 5031340,
       "objectCount": 125,
-      "triangles": 22666,
+      "triangles": 22816,
       "cameras": [
         {
           "id": "room-view",
@@ -10894,11 +10921,11 @@
         }
       ],
       "menuDescription": "Main-level dressing room",
-      "asset": "loli-closet-de1becd92895.glb",
-      "assetHash": "de1becd92895efff1034fab167f964743c362aa67d951f69c90dc48d5bbf61fc",
-      "assetBytes": 1956240,
-      "objectCount": 112,
-      "triangles": 5602,
+      "asset": "loli-closet-56fe919ee37a.glb",
+      "assetHash": "56fe919ee37a22ccbc7cd5ce286d487868a63deaec7e36e959f8872db386e3d2",
+      "assetBytes": 1945480,
+      "objectCount": 106,
+      "triangles": 5598,
       "cameras": [
         {
           "id": "room-view",
@@ -11230,11 +11257,11 @@
           "fov": 65
         }
       ],
-      "asset": "primary-loli-closet-65354cc57629.glb",
-      "assetHash": "65354cc576292383c0ae4fd2d53c7caa7c6116a32d2cbdaa79d356073769b868",
-      "assetBytes": 3221388,
-      "objectCount": 94,
-      "triangles": 10944,
+      "asset": "primary-loli-closet-d785e4453fba.glb",
+      "assetHash": "d785e4453fba958c0deddea76669bfe95f777c634f4780cc990d06bf97cba629",
+      "assetBytes": 3211824,
+      "objectCount": 92,
+      "triangles": 10856,
       "cameras": [
         {
           "id": "room-view",
@@ -11642,11 +11669,11 @@
           "fov": 65
         }
       ],
-      "asset": "primary-green-closet-5ff4bf737ace.glb",
-      "assetHash": "5ff4bf737ace36e5eed07e4e243deb8b3cf6a34251602c243aea6d2b0dda0e03",
-      "assetBytes": 3176032,
-      "objectCount": 76,
-      "triangles": 10387,
+      "asset": "primary-green-closet-5ac536aaaec9.glb",
+      "assetHash": "5ac536aaaec9d69cef685f81ade1402599554d6e5763672de9dc4f58ed0fd84d",
+      "assetBytes": 3166236,
+      "objectCount": 74,
+      "triangles": 10273,
       "cameras": [
         {
           "id": "room-view",
@@ -11989,20 +12016,16 @@
       },
       "wallAttachments": [
         {
-          "prefix": "Closet run \u00b7 2F west closet, west room \u00b7 south wall",
+          "prefix": "Closet \u00b7 Green Closet \u00b7 vanity wall",
           "side": "zMax"
         },
         {
-          "prefix": "Closet rods and pulls \u00b7 2F west closet, west room \u00b7 south wall",
-          "side": "zMax"
-        },
-        {
-          "prefix": "Closet run \u00b7 2F west closet, west room \u00b7 north wall",
+          "prefix": "Closet \u00b7 Green Closet \u00b7 entrance wall",
           "side": "zMin"
         },
         {
-          "prefix": "Closet rods and pulls \u00b7 2F west closet, west room \u00b7 north wall",
-          "side": "zMin"
+          "prefix": "Closet \u00b7 Green Closet \u00b7 east return",
+          "side": "xMax"
         }
       ],
       "menuDescription": "West-wing dressing room",
@@ -12022,11 +12045,11 @@
           "fov": 65
         }
       ],
-      "asset": "upstairs-closet-west-a6f4515ca9cc.glb",
-      "assetHash": "a6f4515ca9cc480399494927d7080c217b5b047eea3a87e717b197ac16e50154",
-      "assetBytes": 1972352,
-      "objectCount": 53,
-      "triangles": 5880,
+      "asset": "upstairs-closet-west-7847ea66b016.glb",
+      "assetHash": "7847ea66b0160a24fa8ad9324248af7389fd4bb66f9bca1e621c93da112d1e3d",
+      "assetBytes": 2129940,
+      "objectCount": 62,
+      "triangles": 8256,
       "cameras": [
         {
           "id": "room-view",
@@ -12066,6 +12089,201 @@
       ],
       "lights": [
         {
+          "id": "upstairs-closet-west-3dfc915f6339c55f-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -9.01973,
+            4.6422,
+            3.92
+          ],
+          "width": 0.40386009216308594,
+          "height": 0.4572000503540039,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-d93be089c420e2e8-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -9.65346,
+            4.6422,
+            3.902715
+          ],
+          "width": 0.8636007308959961,
+          "height": 0.49177002906799316,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-532c71a4f393238d-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -10.46626,
+            4.6422,
+            3.92
+          ],
+          "width": 0.7620000839233398,
+          "height": 0.4572000503540039,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-3b0358966d6ab829-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -9.83253,
+            6.0646,
+            3.92
+          ],
+          "width": 2.029460906982422,
+          "height": 0.4572000503540039,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-242740a07d2af182-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -9.83253,
+            6.2678,
+            3.92
+          ],
+          "width": 2.029460906982422,
+          "height": 0.4572000503540039,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-9806068215966fab-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -8.5892,
+            4.6422,
+            3.3866
+          ],
+          "width": 0.4571990966796875,
+          "height": 0.6096000671386719,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-5f4f5c5f894b2df1-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -8.5892,
+            6.0646,
+            3.3866
+          ],
+          "width": 0.4571990966796875,
+          "height": 0.6096000671386719,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-a977945125d6b08c-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -8.5892,
+            6.2678,
+            3.3866
+          ],
+          "width": 0.4571990966796875,
+          "height": 0.6096000671386719,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-b7597e58001ae9cd-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -9.6914,
+            4.6422,
+            2.870485
+          ],
+          "width": 0.508000373840332,
+          "height": 0.49177002906799316,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-7eb8be435795d165-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -9.127647,
+            4.6422,
+            2.8532
+          ],
+          "width": 0.6195058822631836,
+          "height": 0.4572000503540039,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-13317064382297d6-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -9.381647,
+            6.0646,
+            2.8532
+          ],
+          "width": 1.1275062561035156,
+          "height": 0.4572000503540039,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-6a4a24524a86ae48-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -9.381647,
+            6.2678,
+            2.8532
+          ],
+          "width": 1.1275062561035156,
+          "height": 0.4572000503540039,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
+          "id": "upstairs-closet-west-c2daece473437b61-light",
+          "group": "upstairs-closet-west:shelves",
+          "type": "rect",
+          "position": [
+            -9.65346,
+            4.245325,
+            3.9073
+          ],
+          "width": 0.8636007308959961,
+          "height": 0.48260021209716797,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
           "id": "upstairs-closet-west-758ea5f8bbb8c93e",
           "group": "upstairs-closet-west:ceiling",
           "type": "spot",
@@ -12098,7 +12316,6 @@
       "finishDefaults": {
         "walls": "#d8ceb9",
         "trim": "#d8ceb9",
-        "cabinet": "#f0ece3",
         "ceiling": "#d8ceb9"
       },
       "materials": [
@@ -12211,24 +12428,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-ff364a50340b",
-          "name": "Cabinet \u00b7 Cream Painted (closet dressers)",
-          "roomId": "upstairs-closet-west",
-          "role": "cabinet",
-          "color": "#f0ece3",
-          "roughness": 0.4000000059604645,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-56fb14572087",
-          "name": "Fixture \u00b7 Unlacquered Brass",
-          "roomId": "upstairs-closet-west",
-          "role": null,
-          "color": "#c49e5c",
-          "roughness": 0.2199999988079071,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-bd0a3978924a",
           "name": "09 | Color: 01 Ceiling White",
           "roomId": "upstairs-closet-west",
@@ -12254,6 +12453,60 @@
           "color": "#d8ceb9",
           "roughness": 0.9077944755554199,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-c3a2f6036dd4",
+          "name": "Paint \u00b7 Closet casework (Green Closet, provisional neutral)",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#dddbd7",
+          "roughness": 0.47999998927116394,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d070a1e1538f",
+          "name": "Light \u00b7 LED diffuser (Green Closet, provisional 3000K)",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#f6f3ef",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-87af6d8eaa0c",
+          "name": "Metal \u00b7 Green Closet pulls and rails (finish TBD, provisional)",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#c2b085",
+          "roughness": 0.2800000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-31bd524bc22d",
+          "name": "Metal \u00b7 Green Closet pull-down lift (provisional envelope)",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#69696a",
+          "roughness": 0.3499999940395355,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5d0959ac06f3",
+          "name": "Fabric \u00b7 Green Closet hamper bag (provisional)",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#bfbcb5",
+          "roughness": 0.9200000166893005,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c187095301e0",
+          "name": "Wood \u00b7 Green Closet vanity countertop (species TBD, provisional)",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#8c7256",
+          "roughness": 0.550000011920929,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -12343,11 +12596,11 @@
           "fov": 60
         }
       ],
-      "asset": "upstairs-closet-east-901778551a1e.glb",
-      "assetHash": "901778551a1e416b43058c0a06b5e645eee67233a609607b4a10f10d59a69bfd",
-      "assetBytes": 1991036,
-      "objectCount": 70,
-      "triangles": 6422,
+      "asset": "upstairs-closet-east-260d11e25c32.glb",
+      "assetHash": "260d11e25c3236a6a64f213622975ca2fd0d7c57b0005714e64b3cb7046b419a",
+      "assetBytes": 2014944,
+      "objectCount": 72,
+      "triangles": 6904,
       "cameras": [
         {
           "id": "room-view",
