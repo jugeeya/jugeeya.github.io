@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "8c21fc005682",
+  "sceneVersion": "6e99b99d8f13",
   "source": {
     "file": "Web.blend",
-    "sha256": "8c21fc005682bb6435cad4843f8fbc16857eb37bb29f15409b00b92dd489adac",
+    "sha256": "6e99b99d8f1393286fe265e6da216e35ed8d12cb86f847d2b3bbf1db574138a9",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1679,11 +1679,11 @@
         "PVanity",
         "PBath"
       ],
-      "asset": "dining-room-c711710810b8.glb",
-      "assetHash": "c711710810b84b259f6457387d09737d59edee5f408c6271ab9b74215f8c4a02",
-      "assetBytes": 9967672,
+      "asset": "dining-room-756403a2309a.glb",
+      "assetHash": "756403a2309abaf7fcdbbfba3b2afeaf421c0dba8da16752e32d2fe9afc3a36b",
+      "assetBytes": 9573876,
       "objectCount": 242,
-      "triangles": 105738,
+      "triangles": 89994,
       "cameras": [
         {
           "id": "room-view",
@@ -2283,12 +2283,12 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-8c1cd2c9e05c",
-          "name": "Wood \u00b7 RH Antiqued Natural (Dining chair frame, coordinating)",
+          "id": "mat-cd8494f8e4b4",
+          "name": "Paint \u00b7 Sage (Pinterest baseline chair legs)",
           "roomId": "dining-room",
           "role": null,
-          "color": "#946c4e",
-          "roughness": 0.699999988079071,
+          "color": "#737c6d",
+          "roughness": 0.5199999809265137,
           "translation": "constant source PBR values"
         },
         {
@@ -2298,6 +2298,15 @@
           "role": null,
           "color": "#838d7c",
           "roughness": 0.9599999785423279,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-524cb7fd2c8e",
+          "name": "Metal \u00b7 Brass ferrule (Pinterest baseline chair feet)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#c5af79",
+          "roughness": 0.30000001192092896,
           "translation": "constant source PBR values"
         }
       ]
@@ -4438,9 +4447,9 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#9cbe9d",
       "finishDefaults": {
-        "walls": "#d8ceb9",
+        "walls": "#9cbe9d",
         "trim": "#9cbe9d",
         "ceiling": "#d8ceb9"
       },
