@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "1704f7e61dc6",
+  "sceneVersion": "cc48980e909e",
   "source": {
     "file": "Web.blend",
-    "sha256": "1704f7e61dc60bc4c9a68ff48e5f687762ffff901110937685ac0fb267774b99",
+    "sha256": "cc48980e909e2b055ace853bdbe642b0fe7daa4ae4754f4a51711ea6e45edee3",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -108,9 +108,9 @@
       "cutawayMillworkRooms": [
         "Game Room"
       ],
-      "asset": "game-room-2f7f606e872e.glb",
-      "assetHash": "2f7f606e872e9bfe9d2c4a1e985517a1d46d612f7be0f9969d68d1a3f27da632",
-      "assetBytes": 8919900,
+      "asset": "game-room-06004e900dc8.glb",
+      "assetHash": "06004e900dc83d8e841f0bbbdf89ff440e281bd4827cb448aaa0a9a3154927d9",
+      "assetBytes": 8919884,
       "objectCount": 208,
       "triangles": 43802,
       "cameras": [
@@ -1027,9 +1027,9 @@
         "Obj 84\" BASE CAB.004",
         "Obj M06"
       ],
-      "asset": "family-room-015419d30636.glb",
-      "assetHash": "015419d30636a94d4b8958ecdaa885b4c4f69ae6ca1cdf3924ec2ea6710a1361",
-      "assetBytes": 7439972,
+      "asset": "family-room-9a89fe000644.glb",
+      "assetHash": "9a89fe0006441e89858932c461c180a01037884e7108bcb8ecf3898999427d1a",
+      "assetBytes": 7439996,
       "objectCount": 229,
       "triangles": 40083,
       "cameras": [
@@ -1780,9 +1780,9 @@
         "PVanity",
         "PBath"
       ],
-      "asset": "dining-room-ba2880c80ede.glb",
-      "assetHash": "ba2880c80edec2b52e87622cdf8ecbf4751086ae34aacad4d4349c91ea1fced1",
-      "assetBytes": 9570124,
+      "asset": "dining-room-52e9f5fb88ce.glb",
+      "assetHash": "52e9f5fb88ce238c8ff7db1c2db98de9876c065b1c007ca22511284a33ea9913",
+      "assetBytes": 9570104,
       "objectCount": 240,
       "triangles": 89976,
       "cameras": [
@@ -2758,11 +2758,11 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-dc5e19443898.glb",
-      "assetHash": "dc5e1944389829ff80b296c89dcd445d142def3b856f16197e21c391e47866ea",
-      "assetBytes": 21203816,
-      "objectCount": 475,
-      "triangles": 297875,
+      "asset": "kitchen-4e3b58ca1c14.glb",
+      "assetHash": "4e3b58ca1c143f23c957d03e72999b98e03a24fc3587e914789516f1fc4a8590",
+      "assetBytes": 21195648,
+      "objectCount": 473,
+      "triangles": 297827,
       "cameras": [
         {
           "id": "room-view",
@@ -3061,6 +3061,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-e6636861fd75",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-6534ad664763",
           "name": "Cabinet \u00b7 Slate Teal (island)",
           "roomId": "kitchen",
@@ -3276,16 +3286,6 @@
           "roomId": "kitchen",
           "role": null,
           "color": "#ebe8e0",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-e6636861fd75",
-          "name": "Stone \u00b7 Split-face Travertine",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#f6efdf",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -3744,11 +3744,11 @@
         "Entry",
         "Upper Hall & Bridge"
       ],
-      "asset": "entry-7bce03525a22.glb",
-      "assetHash": "7bce03525a2213967e3ccdee07d9a64a51b26fefb18f51ecd0eefa4875900beb",
-      "assetBytes": 11279372,
+      "asset": "entry-31ce2d8e8461.glb",
+      "assetHash": "31ce2d8e8461fef38214ee2b471ae8f691e7d91dc43536f8c96a42ffb630a5dd",
+      "assetBytes": 11075564,
       "objectCount": 491,
-      "triangles": 100455,
+      "triangles": 98231,
       "cameras": [
         {
           "id": "room-view",
@@ -4257,26 +4257,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-c73e86edc5be",
-          "name": "32 | Landscape: Earth*",
-          "roomId": "entry",
-          "role": null,
-          "color": "#94684b",
-          "roughness": 0.8500000238418579,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-34364dcd4880",
-          "name": "leafs1",
-          "roomId": "entry",
-          "role": null,
-          "color": "#275927",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-2f0dba37dad6",
           "name": "04 | B Running Bond WHITE",
           "roomId": "entry",
@@ -4631,9 +4611,9 @@
       "cutawayMillworkRooms": [
         "Powder"
       ],
-      "asset": "powder-room-54c357e46644.glb",
-      "assetHash": "54c357e466447bc393d5ccf03bedbe579c3a4aab451ebb331bfb7a4ffd5ab688",
-      "assetBytes": 3327096,
+      "asset": "powder-room-19486b447ae7.glb",
+      "assetHash": "19486b447ae72926d81427768ae13c9a523b601cd52b035b0ec98d7478cc0d26",
+      "assetBytes": 3327116,
       "objectCount": 144,
       "triangles": 17459,
       "cameras": [
@@ -5000,9 +4980,9 @@
         "Slab concrete slab.058",
         "Slab C01.003"
       ],
-      "asset": "pantry-bdede94e672f.glb",
-      "assetHash": "bdede94e672fbc95da1ba86b2ba322506712f2d252b76b175c6acebee0826128",
-      "assetBytes": 3508076,
+      "asset": "pantry-c572e7774d1d.glb",
+      "assetHash": "c572e7774d1d9545bec84151a08e46103081407a823bb6c2b39e339ee5c510d1",
+      "assetBytes": 3508100,
       "objectCount": 133,
       "triangles": 15156,
       "cameras": [
@@ -5443,9 +5423,9 @@
       "cutawayKeepPrefixes": [
         "Fascia Fascia."
       ],
-      "asset": "wine-cellar-eef51c725af9.glb",
-      "assetHash": "eef51c725af968af08f3b760c18bd155cab860ac7160c875da4b0551e45809c1",
-      "assetBytes": 3220976,
+      "asset": "wine-cellar-1fb0a59d26aa.glb",
+      "assetHash": "1fb0a59d26aaacf5f8a7b3e68b81b4ad23e597c8df83685660ec766ca84f3306",
+      "assetBytes": 3221000,
       "objectCount": 246,
       "triangles": 10087,
       "cameras": [
@@ -5803,9 +5783,9 @@
           "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
         }
       ],
-      "asset": "loli-bedroom-b795c94e9321.glb",
-      "assetHash": "b795c94e9321eb5ad57d7b2fde08ab80dbbb09be8e4b54b9da3cc16b98369bbe",
-      "assetBytes": 5103532,
+      "asset": "loli-bedroom-6f3957222dbc.glb",
+      "assetHash": "6f3957222dbc5c3c1bd5fd0fef202bdcd5f7fbf7e2e3da0ada7b83f1b48a9676",
+      "assetBytes": 5103556,
       "objectCount": 157,
       "triangles": 23952,
       "cameras": [
@@ -6397,9 +6377,9 @@
       "cutawayMillworkRooms": [
         "Loli Bathroom"
       ],
-      "asset": "loli-bathroom-c76e823617f9.glb",
-      "assetHash": "c76e823617f921630b916f2c277c54edb35f9baedc80fdec27b930cc49910733",
-      "assetBytes": 4173188,
+      "asset": "loli-bathroom-1aee5fff6bf0.glb",
+      "assetHash": "1aee5fff6bf00bd7b3124c7cba34f2d137bac23f574b2f1c8a9826d6de4eef4a",
+      "assetBytes": 4173208,
       "objectCount": 116,
       "triangles": 21529,
       "cameras": [
@@ -6944,11 +6924,11 @@
       "excludeSourceNames": [
         "Slab concrete slab.135"
       ],
-      "asset": "laundry-dd1bcafa5e40.glb",
-      "assetHash": "dd1bcafa5e40df2b0c6ad328af31b0356d92e43e79d32cad42b15efdc2639e37",
-      "assetBytes": 1806632,
+      "asset": "laundry-771baf1cbd6a.glb",
+      "assetHash": "771baf1cbd6af4016224cd7db3fed0ca3028293221994fb48af14a62277dcb86",
+      "assetBytes": 1808032,
       "objectCount": 36,
-      "triangles": 4782,
+      "triangles": 4824,
       "cameras": [
         {
           "id": "room-view",
@@ -7373,11 +7353,11 @@
       "excludeSourceNames": [
         "Obj Object-35.013"
       ],
-      "asset": "primary-bedroom-014505c3209c.glb",
-      "assetHash": "014505c3209cb08be1e6a432750ba0934bb794b8a140e4e3e2feb8ea2c49205f",
-      "assetBytes": 5275056,
+      "asset": "primary-bedroom-a3ba78781c2b.glb",
+      "assetHash": "a3ba78781c2b593a6f74481a061b63e6c2daf440ea3fd5045cb826a7368dc6c8",
+      "assetBytes": 5276028,
       "objectCount": 151,
-      "triangles": 25688,
+      "triangles": 25716,
       "cameras": [
         {
           "id": "room-view",
@@ -7891,6 +7871,10 @@
           "side": "xMax"
         },
         {
+          "prefix": "PBath niche E",
+          "side": "xMax"
+        },
+        {
           "prefix": "PBath tile S",
           "side": "zMax"
         },
@@ -7970,11 +7954,11 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "primary-bath-24f5e1bc920c.glb",
-      "assetHash": "24f5e1bc920c1ae1d3de66c3f877710d5c9f4b54a9bd55a287b472ffd11d123b",
-      "assetBytes": 4655056,
-      "objectCount": 189,
-      "triangles": 27445,
+      "asset": "primary-bath-3f879a7587e9.glb",
+      "assetHash": "3f879a7587e9ccfefb820a66ec50098977907db280433e1d4d814c449f6e3968",
+      "assetBytes": 4683404,
+      "objectCount": 202,
+      "triangles": 27711,
       "cameras": [
         {
           "id": "room-view",
@@ -8585,11 +8569,11 @@
         "Slab concrete slab.109",
         "Slab concrete slab.135"
       ],
-      "asset": "green-bedroom-2cf6008d2f4e.glb",
-      "assetHash": "2cf6008d2f4efee3d8b445d97924ae0bcba84f585096cf1ba330c4c992fa0560",
-      "assetBytes": 5045900,
+      "asset": "green-bedroom-c7e2c69ba970.glb",
+      "assetHash": "c7e2c69ba97068259173056b02adbbb6325271a560b4a699ac1b530143cd6b34",
+      "assetBytes": 5046380,
       "objectCount": 125,
-      "triangles": 23238,
+      "triangles": 23250,
       "cameras": [
         {
           "id": "room-view",
@@ -9093,11 +9077,11 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "green-bath-d86791712fd2.glb",
-      "assetHash": "d86791712fd2d5349b893bd64e464e388a51dc0a21a6c941865f6bafa2d8c3c4",
-      "assetBytes": 3347484,
+      "asset": "green-bath-a9f479ee7811.glb",
+      "assetHash": "a9f479ee78118626407b1980fb8a317d11225947fc11ea5a474b974363b291ba",
+      "assetBytes": 3351996,
       "objectCount": 97,
-      "triangles": 21364,
+      "triangles": 21446,
       "cameras": [
         {
           "id": "room-view",
@@ -9544,11 +9528,11 @@
       "cutawayHiddenPrefixes": [
         "Slab Roof."
       ],
-      "asset": "blue-bedroom-0c4fe6f559d5.glb",
-      "assetHash": "0c4fe6f559d544e469ae758fce3da1a8c32764347f268bbbe90d36d54e55cd6e",
-      "assetBytes": 4604340,
+      "asset": "blue-bedroom-2349ba96c10a.glb",
+      "assetHash": "2349ba96c10acf5489c52c092901515fee775ce1b9ca75affddd39376d8d2768",
+      "assetBytes": 4605920,
       "objectCount": 100,
-      "triangles": 17089,
+      "triangles": 17135,
       "cameras": [
         {
           "id": "room-view",
@@ -10026,6 +10010,10 @@
           "side": "xMax"
         },
         {
+          "prefix": "BlueBath niche",
+          "side": "xMax"
+        },
+        {
           "prefix": "BlueBath tile W",
           "side": "xMin"
         },
@@ -10058,11 +10046,11 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "blue-bath-650001a51926.glb",
-      "assetHash": "650001a519264890ed5987397a175ae3afe39dd8539ff41ffc0b4197f6fbf1cf",
-      "assetBytes": 3783504,
-      "objectCount": 122,
-      "triangles": 22129,
+      "asset": "blue-bath-41bc66fc3467.glb",
+      "assetHash": "41bc66fc346751700d10cb51601d377409e4e2c4e8fe3337f73e26e6254acea3",
+      "assetBytes": 3796276,
+      "objectCount": 127,
+      "triangles": 22271,
       "cameras": [
         {
           "id": "room-view",
@@ -10530,9 +10518,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-west-59bec902ece4.glb",
-      "assetHash": "59bec902ece47ca2a7e19a5e34deb4f28d07a475b045df76beaab4e630c48e5f",
-      "assetBytes": 4122172,
+      "asset": "office-west-8909e3ef22f2.glb",
+      "assetHash": "8909e3ef22f2fa4a750c74c0e402a6b69cd2bfde15ee5e73cdb1f273b18dc54a",
+      "assetBytes": 4122196,
       "objectCount": 151,
       "triangles": 20152,
       "cameras": [
@@ -10928,9 +10916,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-east-0cee0a96c80a.glb",
-      "assetHash": "0cee0a96c80af650ada81ad5b942998f3a4891619b6876274d4b0aeb27c70182",
-      "assetBytes": 4125356,
+      "asset": "office-east-fb1e03da1b4c.glb",
+      "assetHash": "fb1e03da1b4cc9fbee7e3672f6ed5e89c24807b29f4477e2dca01face3a3c6b6",
+      "assetBytes": 4125380,
       "objectCount": 131,
       "triangles": 21872,
       "cameras": [
@@ -11290,9 +11278,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-hall-5086dab86839.glb",
-      "assetHash": "5086dab868398f6be349d2458e5a4ab6f1a5427a4e984b4773063a5cce26a773",
-      "assetBytes": 3712164,
+      "asset": "office-hall-a2773e85d57b.glb",
+      "assetHash": "a2773e85d57bda0aac97b39c19ea0fe8f28f64e675c5a6e231b61abf5984bfe3",
+      "assetBytes": 3712188,
       "objectCount": 137,
       "triangles": 15524,
       "cameras": [
@@ -11650,9 +11638,9 @@
       "cutawayMillworkRooms": [
         "Loli Closet"
       ],
-      "asset": "loli-closet-a352c781c2ee.glb",
-      "assetHash": "a352c781c2ee3e609576df044ee2451064e29d396f7baf7740dd24a8b90ae88a",
-      "assetBytes": 1944128,
+      "asset": "loli-closet-758352e6825b.glb",
+      "assetHash": "758352e6825bfc0f85e2be44c6cf4d79bfc17e3b1b80bb3d7069e96695b3791a",
+      "assetBytes": 1944160,
       "objectCount": 102,
       "triangles": 5742,
       "cameras": [
@@ -12006,9 +11994,9 @@
       "cutawayMillworkRooms": [
         "Primary Loli Closet"
       ],
-      "asset": "primary-loli-closet-305b8137962c.glb",
-      "assetHash": "305b8137962cfb5a610e63f45128b012b17391cc4514103d40828c4019c341de",
-      "assetBytes": 3204452,
+      "asset": "primary-loli-closet-300a5a34e215.glb",
+      "assetHash": "300a5a34e215d5d1a4fa62d7ecdf7f89e80f446804a39916f1b8059da4e5e00e",
+      "assetBytes": 3204488,
       "objectCount": 86,
       "triangles": 10878,
       "cameras": [
@@ -12443,9 +12431,9 @@
       "cutawayMillworkRooms": [
         "Primary Green Closet"
       ],
-      "asset": "primary-green-closet-6b5ed7f3880f.glb",
-      "assetHash": "6b5ed7f3880f1534e4a6dc324c87721ccdc6f65158bfc5d4605c82252db1c3c0",
-      "assetBytes": 3169164,
+      "asset": "primary-green-closet-86a4385b9575.glb",
+      "assetHash": "86a4385b957534b6b55d078a9d0a298aae34678997a37864a8aac7eefc53837a",
+      "assetBytes": 3169200,
       "objectCount": 74,
       "triangles": 10329,
       "cameras": [
@@ -12844,9 +12832,9 @@
       "cutawayMillworkRooms": [
         "Green Closet"
       ],
-      "asset": "upstairs-closet-west-13529b14d37b.glb",
-      "assetHash": "13529b14d37be4d210ca4d503707ad8c01882d05412ec58067b36ce81ebb1bc4",
-      "assetBytes": 2135508,
+      "asset": "upstairs-closet-west-6aaabbf33fb8.glb",
+      "assetHash": "6aaabbf33fb8aeff0d7f9917cdb59887b96dbfece7bccec009f8bda6f35ddc71",
+      "assetBytes": 2135540,
       "objectCount": 58,
       "triangles": 8616,
       "cameras": [
@@ -13476,9 +13464,9 @@
       "cutawayMillworkRooms": [
         "Dressing 3"
       ],
-      "asset": "upstairs-closet-east-37ce8bdb2e03.glb",
-      "assetHash": "37ce8bdb2e03d472dbb025fcd8bbdd6f0f38fba970ec362c7027b6ec15c071f4",
-      "assetBytes": 2010176,
+      "asset": "upstairs-closet-east-b23c9e42267a.glb",
+      "assetHash": "b23c9e42267a40cb147d2245ccb8da76ff84d5cd4b3e8b83157f3ddbbdbfcf9c",
+      "assetBytes": 2010208,
       "objectCount": 66,
       "triangles": 7154,
       "cameras": [
@@ -13807,9 +13795,9 @@
         "Millwork"
       ],
       "architectureAttachmentDepth": 1.2,
-      "asset": "rear-deck-885dcbd5c0fa.glb",
-      "assetHash": "885dcbd5c0fa96eba2f6a889f38eba002e5a276209c67d87042baa6b98ca76e0",
-      "assetBytes": 1721896,
+      "asset": "rear-deck-42ff84d2ba8e.glb",
+      "assetHash": "42ff84d2ba8e980f2be876c7e4db94c12c106e242095ab7f977b311d35cf6284",
+      "assetBytes": 1721900,
       "objectCount": 121,
       "triangles": 6145,
       "cameras": [
@@ -14243,11 +14231,11 @@
         }
       ],
       "menuDescription": "Covered balcony above the offices",
-      "asset": "front-balcony-1a57b2a9281f.glb",
-      "assetHash": "1a57b2a9281f1d99345812fe9382615da239b5e4af87f55c575fe3249bf4d488",
-      "assetBytes": 3590576,
-      "objectCount": 151,
-      "triangles": 15408,
+      "asset": "front-balcony-0d7ba385d7c4.glb",
+      "assetHash": "0d7ba385d7c406d8e40aa8a049505c4b53421f5c27a5832b1d66eed87306df70",
+      "assetBytes": 3830320,
+      "objectCount": 159,
+      "triangles": 15500,
       "cameras": [
         {
           "id": "room-view",
@@ -14461,6 +14449,26 @@
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ee893d178b7f",
+          "name": "Tile \u00b7 Calacatta Oro 12x24 Polished (Primary shower walls)",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#f3f1ed",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-7afac34aedb0",
+          "name": "Tile \u00b7 Calacatta Oro 2x6 Mosaic Polished (Primary accent)",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#f3f1ed",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
           "id": "mat-27177d56db64",
