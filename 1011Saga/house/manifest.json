@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "cc48980e909e",
+  "sceneVersion": "a23d304728aa",
   "source": {
     "file": "Web.blend",
-    "sha256": "cc48980e909e2b055ace853bdbe642b0fe7daa4ae4754f4a51711ea6e45edee3",
+    "sha256": "a23d304728aa40fb4b99635b0c1fe55c8127c2c51f0b6aa31c74873311de3d6c",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -3744,11 +3744,11 @@
         "Entry",
         "Upper Hall & Bridge"
       ],
-      "asset": "entry-31ce2d8e8461.glb",
-      "assetHash": "31ce2d8e8461fef38214ee2b471ae8f691e7d91dc43536f8c96a42ffb630a5dd",
-      "assetBytes": 11075564,
-      "objectCount": 491,
-      "triangles": 98231,
+      "asset": "entry-64e2716580d8.glb",
+      "assetHash": "64e2716580d8023f0e3cb2e94a0b8928cb5000010157f2b2881334dc19b60efc",
+      "assetBytes": 11161088,
+      "objectCount": 503,
+      "triangles": 99432,
       "cameras": [
         {
           "id": "room-view",
@@ -4253,6 +4253,46 @@
           "role": null,
           "color": "#d3d4d1",
           "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c73e86edc5be",
+          "name": "32 | Landscape: Earth*",
+          "roomId": "entry",
+          "role": null,
+          "color": "#94684b",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-db41ce0c5ebf",
+          "name": "09 | Color: Green Celadon",
+          "roomId": "entry",
+          "role": null,
+          "color": "#a7c6a6",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b62c4d5ab5c9",
+          "name": "32 | Landscape: Leaves Shrub",
+          "roomId": "entry",
+          "role": null,
+          "color": "#274f27",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0e955cd65cbb",
+          "name": "Bloom \u00b7 Entry arrangement cream (x130, provisional)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#f8f4ec",
+          "roughness": 0.6200000047683716,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -7879,6 +7919,10 @@
           "side": "zMax"
         },
         {
+          "prefix": "PBath tile N",
+          "side": "zMax"
+        },
+        {
           "prefix": "PBath tile W",
           "side": "xMin"
         },
@@ -7954,11 +7998,11 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "primary-bath-3f879a7587e9.glb",
-      "assetHash": "3f879a7587e9ccfefb820a66ec50098977907db280433e1d4d814c449f6e3968",
-      "assetBytes": 4683404,
-      "objectCount": 202,
-      "triangles": 27711,
+      "asset": "primary-bath-7437b93912fd.glb",
+      "assetHash": "7437b93912fd1747f75421faaf83e0ac98a2ef17b5506ee27a99677b6eb75b2e",
+      "assetBytes": 4695404,
+      "objectCount": 207,
+      "triangles": 27853,
       "cameras": [
         {
           "id": "room-view",
