@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "75e6d05cdf83",
+  "sceneVersion": "8c21fc005682",
   "source": {
     "file": "Web.blend",
-    "sha256": "75e6d05cdf834725d3828b2564b8176826aabb5f01b6cf4f0d7ff30e98ad650d",
+    "sha256": "8c21fc005682bb6435cad4843f8fbc16857eb37bb29f15409b00b92dd489adac",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -3517,11 +3517,11 @@
         "Entry",
         "Upper Hall & Bridge"
       ],
-      "asset": "entry-16cff588891a.glb",
-      "assetHash": "16cff588891a8cfd62fff136003bd0d7127a3d1a7a3ffc0c99e486bf66114cd8",
-      "assetBytes": 11278308,
-      "objectCount": 498,
-      "triangles": 100143,
+      "asset": "entry-c53c87f77d8d.glb",
+      "assetHash": "c53c87f77d8d0915efda2c829c918915b7515242ba5524e97ce260446eb0dace",
+      "assetBytes": 11267672,
+      "objectCount": 493,
+      "triangles": 100063,
       "cameras": [
         {
           "id": "room-view",
@@ -5473,11 +5473,11 @@
           "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
         }
       ],
-      "asset": "loli-bedroom-b23bb8bd201a.glb",
-      "assetHash": "b23bb8bd201aafdfb3260e412987a54a36b964e938fdd7eac21736606f93bd95",
-      "assetBytes": 5111740,
-      "objectCount": 164,
-      "triangles": 23868,
+      "asset": "loli-bedroom-7f816a524a82.glb",
+      "assetHash": "7f816a524a82ced36266c6269882ea1c4ab0fd947b0056c3cbfccf449822dca0",
+      "assetBytes": 5095496,
+      "objectCount": 157,
+      "triangles": 23736,
       "cameras": [
         {
           "id": "room-view",
@@ -9916,11 +9916,11 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-west-13b7bf6a93db.glb",
-      "assetHash": "13b7bf6a93db8722849af630c84391ab1396a713289dbc8966a71b02c885389f",
-      "assetBytes": 4101448,
-      "objectCount": 153,
-      "triangles": 19582,
+      "asset": "office-west-5a96aa458e34.glb",
+      "assetHash": "5a96aa458e34324e8ba7c7f0a6dd17d819f1b8ebcbb5f8da1ae3b809d011382f",
+      "assetBytes": 4108000,
+      "objectCount": 151,
+      "triangles": 19714,
       "cameras": [
         {
           "id": "room-view",
@@ -10134,24 +10134,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-5a0dab0c90af",
-          "name": "09 | Glass: Clear, Fast*",
-          "roomId": "office-west",
-          "role": null,
-          "color": "#f0f3f3",
-          "roughness": 0.12,
-          "translation": "source dielectric/opaque glass parameters"
-        },
-        {
-          "id": "mat-bedc5b1e11c3",
-          "name": "Metal \u00b7 Black Frame",
-          "roomId": "office-west",
-          "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-153fc1993bc9",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-west",
@@ -10222,6 +10204,24 @@
           "color": "#f6f6f4",
           "roughness": 0.18000000715255737,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-bedc5b1e11c3",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5a0dab0c90af",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.12,
+          "translation": "source dielectric/opaque glass parameters"
         }
       ]
     },
@@ -10290,11 +10290,11 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-east-b86a39ff502d.glb",
-      "assetHash": "b86a39ff502d7f6a018f95e64b10388c8ee0c9f4de6d0598680451171c65a69a",
-      "assetBytes": 4109484,
-      "objectCount": 135,
-      "triangles": 21432,
+      "asset": "office-east-388c4c67661f.glb",
+      "assetHash": "388c4c67661f164b9203ec7cf73856e73bb1aefdb462261d73feca64e4558d37",
+      "assetBytes": 4112428,
+      "objectCount": 131,
+      "triangles": 21536,
       "cameras": [
         {
           "id": "room-view",
@@ -10472,24 +10472,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-586476e7dab5",
-          "name": "09 | Glass: Clear, Fast*",
-          "roomId": "office-east",
-          "role": null,
-          "color": "#f0f3f3",
-          "roughness": 0.12,
-          "translation": "source dielectric/opaque glass parameters"
-        },
-        {
-          "id": "mat-931738c72cc6",
-          "name": "Metal \u00b7 Black Frame",
-          "roomId": "office-east",
-          "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-42ce7ed9d5e1",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-east",
@@ -10551,6 +10533,24 @@
           "color": "#f6f6f4",
           "roughness": 0.18000000715255737,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-931738c72cc6",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-586476e7dab5",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.12,
+          "translation": "source dielectric/opaque glass parameters"
         }
       ]
     },
@@ -10633,11 +10633,11 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-hall-14b90d8882a3.glb",
-      "assetHash": "14b90d8882a330430a5695320af6b63e04f16d643e1dc2150a1cc360a079ebfe",
-      "assetBytes": 3719532,
-      "objectCount": 151,
-      "triangles": 15408,
+      "asset": "office-hall-29f37b354128.glb",
+      "assetHash": "29f37b354128720008e03e5ad007bfc08a8617d5f0a2cfe692e97364575da99b",
+      "assetBytes": 3708688,
+      "objectCount": 137,
+      "triangles": 15444,
       "cameras": [
         {
           "id": "room-view",
