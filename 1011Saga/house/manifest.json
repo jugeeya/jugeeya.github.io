@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "0e4321bb4569",
+  "sceneVersion": "75e6d05cdf83",
   "source": {
     "file": "Web.blend",
-    "sha256": "0e4321bb4569415d9071de1a4175f29739e86aec4498eaac4589fd61935b3630",
+    "sha256": "75e6d05cdf834725d3828b2564b8176826aabb5f01b6cf4f0d7ff30e98ad650d",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -96,6 +96,17 @@
       ],
       "excludeSourceNames": [
         "Obj table.013"
+      ],
+      "uniformPaintGroups": [
+        "walls",
+        "trim"
+      ],
+      "finishSourceMaterials": {
+        "walls": "Paint \u00b7 Dusty Blue (Game Room)",
+        "trim": "Paint \u00b7 Dusty Blue (Game Room)"
+      },
+      "cutawayMillworkRooms": [
+        "Game Room"
       ],
       "asset": "game-room-8e6a57c6ab2b.glb",
       "assetHash": "8e6a57c6ab2b748079ee8a29d1564727801f52a3d5719060cb18fd523ed0aedf",
@@ -944,6 +955,22 @@
       "excludeSourceNames": [
         "Furniture table.003",
         "Slab concrete slab.063"
+      ],
+      "uniformPaintGroups": [
+        "walls",
+        "trim"
+      ],
+      "finishSourceMaterials": {
+        "walls": "Paint \u00b7 Behr White Veil (semi-gloss)",
+        "trim": "Paint \u00b7 Behr White Veil (semi-gloss)"
+      },
+      "cutawayMillworkRooms": [
+        "Family Room"
+      ],
+      "cutawayHiddenPrefixes": [
+        "Obj 86\" BASE CAB.021",
+        "Obj 84\" BASE CAB.004",
+        "Obj M06"
       ],
       "asset": "family-room-cf9996a8d8a4.glb",
       "assetHash": "cf9996a8d8a4cb9450c7cade83b8d5ef3419359b8a479faf4d5edf403e67a95a",
@@ -3478,6 +3505,18 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it.",
         "grid": "marble18"
       },
+      "uniformPaintGroups": [
+        "walls",
+        "trim"
+      ],
+      "finishSourceMaterials": {
+        "walls": "Paint \u00b7 Behr White Veil (semi-gloss)",
+        "trim": "Paint \u00b7 Behr White Veil (semi-gloss)"
+      },
+      "cutawayMillworkRooms": [
+        "Entry",
+        "Upper Hall & Bridge"
+      ],
       "asset": "entry-16cff588891a.glb",
       "assetHash": "16cff588891a8cfd62fff136003bd0d7127a3d1a7a3ffc0c99e486bf66114cd8",
       "assetBytes": 11278308,
@@ -4308,6 +4347,17 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it.",
         "grid": "marble18"
       },
+      "uniformPaintGroups": [
+        "walls",
+        "trim"
+      ],
+      "finishSourceMaterials": {
+        "walls": "Paint \u00b7 Pale Sage (Dining, Powder)",
+        "trim": "Paint \u00b7 Pale Sage (Dining, Powder)"
+      },
+      "cutawayMillworkRooms": [
+        "Powder"
+      ],
       "asset": "powder-room-6c014abd29f6.glb",
       "assetHash": "6c014abd29f62c34751f11bb775818aa08fc33482d0b8c19de54ad602f9385fe",
       "assetBytes": 3314920,
@@ -12045,8 +12095,8 @@
           "fov": 65
         }
       ],
-      "asset": "upstairs-closet-west-7847ea66b016.glb",
-      "assetHash": "7847ea66b0160a24fa8ad9324248af7389fd4bb66f9bca1e621c93da112d1e3d",
+      "asset": "upstairs-closet-west-fddf6e325226.glb",
+      "assetHash": "fddf6e325226087304cf2e83b7529e1a3f9295882ba7a51800d28c08fd93f216",
       "assetBytes": 2129940,
       "objectCount": 62,
       "triangles": 8256,
@@ -12085,6 +12135,63 @@
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.3333333333333333,
           "sourceCamera": "Room \u00b7 Green Bedroom \u00b7 closet"
+        },
+        {
+          "id": "vanity-wall",
+          "label": "Vanity wall",
+          "position": [
+            -10.3,
+            4.9536,
+            2.9
+          ],
+          "target": [
+            -7.847379,
+            4.077664,
+            4.38909
+          ],
+          "fov": 76.90741843341195,
+          "lensMm": 17.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Green Closet \u00b7 vanity wall"
+        },
+        {
+          "id": "hamper-and-pull-outs",
+          "label": "Hamper and pull-outs",
+          "position": [
+            -10.4,
+            4.8536,
+            3.55
+          ],
+          "target": [
+            -7.706127,
+            4.01757,
+            2.528186
+          ],
+          "fov": 73.73979529168804,
+          "lensMm": 18.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Green Closet \u00b7 hamper and pull-outs"
+        },
+        {
+          "id": "wood-countertop",
+          "label": "Wood countertop",
+          "position": [
+            -9.95,
+            4.4536,
+            3.15
+          ],
+          "target": [
+            -7.970185,
+            3.760664,
+            5.294801
+          ],
+          "fov": 30.219150244680932,
+          "lensMm": 50.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.3333333333333333,
+          "sourceCamera": "Room \u00b7 Green Closet \u00b7 wood top"
         }
       ],
       "lights": [
