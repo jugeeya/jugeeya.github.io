@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "224aff3eec80",
+  "sceneVersion": "4ca49cdc8710",
   "source": {
     "file": "Web.blend",
-    "sha256": "224aff3eec809db33af8d5ef2b59feace38ffc8c5078f6c6c1dd2b7ccc4b67ff",
+    "sha256": "4ca49cdc87107a56139ad47ba076b756489c03be6bdac1ae33e8d000d2650b81",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -3744,11 +3744,11 @@
         "Entry",
         "Upper Hall & Bridge"
       ],
-      "asset": "entry-998a8993c4da.glb",
-      "assetHash": "998a8993c4da98265a3182d5df8f91fffefb7726a7d1456ba56a251451645a0f",
-      "assetBytes": 11214076,
-      "objectCount": 531,
-      "triangles": 99926,
+      "asset": "entry-35b3ae53195a.glb",
+      "assetHash": "35b3ae53195ae9db2ec9f7319f27cbc64cca6aa930703ecffe8923075d048b75",
+      "assetBytes": 10239140,
+      "objectCount": 533,
+      "triangles": 87442,
       "cameras": [
         {
           "id": "room-view",
