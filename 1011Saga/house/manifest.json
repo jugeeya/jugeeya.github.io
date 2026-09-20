@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "4ca49cdc8710",
+  "sceneVersion": "a06917c962b0",
   "source": {
     "file": "Web.blend",
-    "sha256": "4ca49cdc87107a56139ad47ba076b756489c03be6bdac1ae33e8d000d2650b81",
+    "sha256": "a06917c962b0692e272c39e1ffc4612175a071852900b496845c7ecfd9ae757d",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -2758,11 +2758,11 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-4e3b58ca1c14.glb",
-      "assetHash": "4e3b58ca1c143f23c957d03e72999b98e03a24fc3587e914789516f1fc4a8590",
-      "assetBytes": 21195648,
-      "objectCount": 473,
-      "triangles": 297827,
+      "asset": "kitchen-6978d464eddd.glb",
+      "assetHash": "6978d464eddde621ffb7c6fbc72d84d6a34865f82e543a1a79324ce89f55fc08",
+      "assetBytes": 20786080,
+      "objectCount": 472,
+      "triangles": 298499,
       "cameras": [
         {
           "id": "room-view",
@@ -3744,9 +3744,9 @@
         "Entry",
         "Upper Hall & Bridge"
       ],
-      "asset": "entry-35b3ae53195a.glb",
-      "assetHash": "35b3ae53195ae9db2ec9f7319f27cbc64cca6aa930703ecffe8923075d048b75",
-      "assetBytes": 10239140,
+      "asset": "entry-753ca6e085bd.glb",
+      "assetHash": "753ca6e085bd2e6d013ff1949fcc63cab14a3cf81f413b924f4334fa753aa1ec",
+      "assetBytes": 10239940,
       "objectCount": 533,
       "triangles": 87442,
       "cameras": [
@@ -5020,11 +5020,11 @@
         "Slab concrete slab.058",
         "Slab C01.003"
       ],
-      "asset": "pantry-c572e7774d1d.glb",
-      "assetHash": "c572e7774d1d9545bec84151a08e46103081407a823bb6c2b39e339ee5c510d1",
-      "assetBytes": 3508100,
-      "objectCount": 133,
-      "triangles": 15156,
+      "asset": "pantry-756212b9710d.glb",
+      "assetHash": "756212b9710df7cd97ce810a392a63244079cee01e29a2f9a28d50b5f0ec5133",
+      "assetBytes": 3459976,
+      "objectCount": 111,
+      "triangles": 14726,
       "cameras": [
         {
           "id": "room-view",
@@ -5358,10 +5358,6 @@
       "roleOverrides": {},
       "wallAttachments": [
         {
-          "prefix": "Slab concrete slab.013",
-          "side": "xMax"
-        },
-        {
           "prefix": "Slab concrete slab.082",
           "side": "xMin"
         },
@@ -5463,11 +5459,11 @@
       "cutawayKeepPrefixes": [
         "Fascia Fascia."
       ],
-      "asset": "wine-cellar-1fb0a59d26aa.glb",
-      "assetHash": "1fb0a59d26aaacf5f8a7b3e68b81b4ad23e597c8df83685660ec766ca84f3306",
-      "assetBytes": 3221000,
-      "objectCount": 246,
-      "triangles": 10087,
+      "asset": "wine-cellar-a691b09cccf6.glb",
+      "assetHash": "a691b09cccf62ff4f11f634c1a252e0f9087b919ac9ede003b849ff21f03d347",
+      "assetBytes": 8798960,
+      "objectCount": 87,
+      "triangles": 71817,
       "cameras": [
         {
           "id": "room-view",
@@ -5517,13 +5513,140 @@
           "intensity": 35,
           "angle": 0.72,
           "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "wine-cellar-f285daf39268e74c",
+          "group": "wine-cellar:ceiling",
+          "type": "point",
+          "position": [
+            10.508,
+            1.41268,
+            -1.056517
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "wine-cellar-ce38edf42a2f7b28",
+          "group": "wine-cellar:ceiling",
+          "type": "point",
+          "position": [
+            10.508,
+            1.47218,
+            -1.056517
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "wine-cellar-a8adb88318ec40fd",
+          "group": "wine-cellar:ceiling",
+          "type": "point",
+          "position": [
+            10.508,
+            1.41268,
+            -2.0403
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "wine-cellar-105055cf1c646607",
+          "group": "wine-cellar:ceiling",
+          "type": "point",
+          "position": [
+            10.508,
+            1.47218,
+            -2.0403
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "wine-cellar-fb5cf932d780c524",
+          "group": "wine-cellar:ceiling",
+          "type": "point",
+          "position": [
+            10.508,
+            1.41268,
+            -3.024083
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "wine-cellar-2a5b708589fbd747",
+          "group": "wine-cellar:ceiling",
+          "type": "point",
+          "position": [
+            10.508,
+            1.47218,
+            -3.024083
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "wine-cellar-a3ee73b2d385bc42",
+          "group": "wine-cellar:ceiling",
+          "type": "point",
+          "position": [
+            9.597125,
+            1.476,
+            -3.34955
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "wine-cellar-bb06d220a3cffeac",
+          "group": "wine-cellar:ceiling",
+          "type": "point",
+          "position": [
+            9.597125,
+            1.926,
+            -3.34955
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "wine-cellar-d48cfff86a3efd30",
+          "group": "wine-cellar:ceiling",
+          "type": "point",
+          "position": [
+            9.597125,
+            1.036,
+            -3.34955
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
         }
       ],
       "sourcePaint": "#d8ceb9",
       "finishDefaults": {
         "walls": "#d8ceb9",
         "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "ceiling": "#d8ceb9",
+        "cabinet": "#e7e7e7"
       },
       "materials": [
         {
@@ -5617,26 +5740,6 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-59e2641e1845",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "wine-cellar",
-          "role": null,
-          "color": "#ebe8e0",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-a6b2f9cb1ed8",
-          "name": "04 | Stone: Marble White*",
-          "roomId": "wine-cellar",
-          "role": null,
-          "color": "#d3d4d1",
-          "roughness": 0.15000000596046448,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-48e70c93a4c1",
           "name": "09 | Color: 07 Gray-Dark*",
           "roomId": "wine-cellar",
@@ -5645,6 +5748,16 @@
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-59e2641e1845",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "wine-cellar",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-0fc29663f655",
@@ -5685,6 +5798,96 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-a1b4f66ee9d7",
+          "name": "Cabinet \u00b7 Game Room Oak (grained)",
+          "roomId": "wine-cellar",
+          "role": "cabinet",
+          "color": "#e7e7e7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-ca86e94b6d24",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "wine-cellar",
+          "role": null,
+          "color": "#c8d1bc",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-5044bcda55a2",
+          "name": "Cabinet \u00b7 Game Room cabinet interior (painted)",
+          "roomId": "wine-cellar",
+          "role": "cabinet",
+          "color": "#c8c6c1",
+          "roughness": 0.5199999809265137,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d4c7c6d5fbea",
+          "name": "Fixture \u00b7 Unlacquered Brass",
+          "roomId": "wine-cellar",
+          "role": null,
+          "color": "#c49e5c",
+          "roughness": 0.2199999988079071,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7cd5588d0500",
+          "name": "Stone \u00b7 Pale Honed Quartzite (Wine Room) (x143, provisional)",
+          "roomId": "wine-cellar",
+          "role": null,
+          "color": "#dad8d3",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4ce44ef8ce34",
+          "name": "Fixture \u00b7 LED channel, anodised (Game Room shelves, provisional)",
+          "roomId": "wine-cellar",
+          "role": null,
+          "color": "#ced0d1",
+          "roughness": 0.30000001192092896,
+          "metallic": 0.8500000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-44152656c363",
+          "name": "Cabinet \u00b7 Game Room Oak (grained)",
+          "roomId": "wine-cellar",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-1e874ea6978a",
+          "name": "Glass \u00b7 Wine bottle green (x143, provisional)",
+          "roomId": "wine-cellar",
+          "role": null,
+          "color": "#304633",
+          "roughness": 0.054999999701976776,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-d2f0ba69f6a0",
+          "name": "Paper \u00b7 Wine label cream (x143, provisional)",
+          "roomId": "wine-cellar",
+          "role": null,
+          "color": "#e0dccf",
+          "roughness": 0.7200000286102295,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -5787,10 +5990,6 @@
           "side": "xMin"
         },
         {
-          "prefix": "Obj Object-61",
-          "side": "zMax"
-        },
-        {
           "prefix": "Column C09.",
           "side": "zMax"
         }
@@ -5823,11 +6022,11 @@
           "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
         }
       ],
-      "asset": "loli-bedroom-6f3957222dbc.glb",
-      "assetHash": "6f3957222dbc5c3c1bd5fd0fef202bdcd5f7fbf7e2e3da0ada7b83f1b48a9676",
-      "assetBytes": 5103556,
+      "asset": "loli-bedroom-f8f29ab3c156.glb",
+      "assetHash": "f8f29ab3c1562cf3b1f6b652b321d8042502ad8f7bf41938c08a6b900a22d033",
+      "assetBytes": 6137056,
       "objectCount": 157,
-      "triangles": 23952,
+      "triangles": 57171,
       "cameras": [
         {
           "id": "room-view",
@@ -6266,14 +6465,34 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-46dae9672f49",
-          "name": "09 | Upholstery: Fabric, Tan*",
+          "id": "mat-137d6ab10a81",
+          "name": "Fabric \u00b7 Loli bay \u00b7 sage ticking stripe (provisional)",
           "roomId": "loli-bedroom",
           "role": null,
-          "color": "#d8cfc7",
-          "roughness": 0.550000011920929,
+          "color": "#cac7b7",
+          "roughness": 0.8600000143051147,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-3ddcd2898e5e",
+          "name": "Fabric \u00b7 Loli bay \u00b7 plain sage (provisional)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#909a86",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-f0e84a2e1e5c",
+          "name": "Fabric \u00b7 Loli bay \u00b7 sage sprig floral (provisional)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#cac7b7",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
         },
         {
           "id": "mat-8c550f53abd7",
@@ -6417,8 +6636,8 @@
       "cutawayMillworkRooms": [
         "Loli Bathroom"
       ],
-      "asset": "loli-bathroom-1aee5fff6bf0.glb",
-      "assetHash": "1aee5fff6bf00bd7b3124c7cba34f2d137bac23f574b2f1c8a9826d6de4eef4a",
+      "asset": "loli-bathroom-70f12b0c2e3c.glb",
+      "assetHash": "70f12b0c2e3c501a7daeb90fc17ef42fcc4a19a40e3f66e8858081f14767c5a9",
       "assetBytes": 4173208,
       "objectCount": 116,
       "triangles": 21529,
@@ -6964,11 +7183,11 @@
       "excludeSourceNames": [
         "Slab concrete slab.135"
       ],
-      "asset": "laundry-2a037f9d79b5.glb",
-      "assetHash": "2a037f9d79b564467f3bf88f33430f8f101f43fad4c251bd1fe599c3b3d626d5",
-      "assetBytes": 1809360,
-      "objectCount": 37,
-      "triangles": 4846,
+      "asset": "laundry-b58f9706a4c1.glb",
+      "assetHash": "b58f9706a4c11f0a3dad2dfa4001a3411685565c90fbfc8c7eaa1add04273233",
+      "assetBytes": 1817076,
+      "objectCount": 39,
+      "triangles": 4918,
       "cameras": [
         {
           "id": "room-view",
@@ -7011,6 +7230,21 @@
       ],
       "lights": [
         {
+          "id": "laundry-c47d586a1bb8b9c9-light",
+          "group": "laundry:shelves",
+          "type": "rect",
+          "position": [
+            -7.04,
+            5.122,
+            -1.432
+          ],
+          "width": 0.02299976348876953,
+          "height": 0.7690001726150513,
+          "intensity": 38,
+          "color": "#ffcf91",
+          "status": "runtime approximation of modeled LED emission; unselected hardware"
+        },
+        {
           "id": "laundry-35d214a33796d7df",
           "group": "laundry:ceiling",
           "type": "spot",
@@ -7039,16 +7273,16 @@
           "status": "browser preview intensity, not photometric conversion"
         },
         {
-          "id": "laundry-08b844aeace9e6ed",
+          "id": "laundry-d4051b35e5d5e564",
           "group": "laundry:ceiling",
-          "type": "spot",
+          "type": "point",
           "position": [
-            -6.9,
-            6.2886,
-            -1.45
+            -6.1302,
+            5.35,
+            -1.7752
           ],
           "color": "#fff1db",
-          "intensity": 65,
+          "intensity": 35,
           "angle": 0.72,
           "status": "browser preview intensity, not photometric conversion"
         }
@@ -7319,6 +7553,26 @@
           "roughness": 0.30000001192092896,
           "metallic": 0.6000000238418579,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2a7932f0e87f",
+          "name": "Fixture \u00b7 LED channel, anodised (Laundry under-cabinet, provisional)",
+          "roomId": "laundry",
+          "role": null,
+          "color": "#c8cacb",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.8500000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4e4a2046202b",
+          "name": "Light \u00b7 LED diffuser (Laundry under-cabinet task, provisional 3000K)",
+          "roomId": "laundry",
+          "role": null,
+          "color": "#fff7ea",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -7393,8 +7647,8 @@
       "excludeSourceNames": [
         "Obj Object-35.013"
       ],
-      "asset": "primary-bedroom-c30d05263339.glb",
-      "assetHash": "c30d05263339a35a9adaa0de0b0cd2b3604b8fb61a96a0fbb43bfccf011e3e2a",
+      "asset": "primary-bedroom-85a0b8758290.glb",
+      "assetHash": "85a0b875829057d9119a9edb305116009e72fb5c053eb61e673cb1aadd008bad",
       "assetBytes": 5276028,
       "objectCount": 151,
       "triangles": 25716,
@@ -7998,8 +8252,8 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "primary-bath-a5b08f8401f9.glb",
-      "assetHash": "a5b08f8401f9fb1dd92921a0ad3023975c6e3eabdc9366b4c63f29cd519e60d8",
+      "asset": "primary-bath-4c32a03267fc.glb",
+      "assetHash": "4c32a03267fc2de6607e4bcc7712add84748d85e99092efe3351aa941e9f1571",
       "assetBytes": 4695404,
       "objectCount": 207,
       "triangles": 27853,
@@ -8613,8 +8867,8 @@
         "Slab concrete slab.109",
         "Slab concrete slab.135"
       ],
-      "asset": "green-bedroom-273669e57344.glb",
-      "assetHash": "273669e573447af623232a780f2a574d0902cf2036c01fced29af10020cf86a3",
+      "asset": "green-bedroom-ad84193e8d52.glb",
+      "assetHash": "ad84193e8d52c9d2e7cfd53c744f593e199d1f9d6037c0cf7a88de92d35c1d2e",
       "assetBytes": 5046380,
       "objectCount": 125,
       "triangles": 23250,
@@ -9121,8 +9375,8 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "green-bath-9697ac0497f4.glb",
-      "assetHash": "9697ac0497f4b81a275e12a2634d2a800c8505a826f341e738e6dfbb172238df",
+      "asset": "green-bath-b49d0ac45077.glb",
+      "assetHash": "b49d0ac45077ecd031a6a5026e5e48797b51094a7346c78fcf1d48cb40d00986",
       "assetBytes": 3351996,
       "objectCount": 97,
       "triangles": 21446,
@@ -9572,8 +9826,8 @@
       "cutawayHiddenPrefixes": [
         "Slab Roof."
       ],
-      "asset": "blue-bedroom-931bb50aaa6b.glb",
-      "assetHash": "931bb50aaa6be1618834542a6f893db7bcdf611aa4e66a0d52122c778b6cd452",
+      "asset": "blue-bedroom-c4415c3ecda5.glb",
+      "assetHash": "c4415c3ecda523ee9c6553b7aaf2c435c77b3dfd28d54974cf1a3b0f0c05fdee",
       "assetBytes": 4605920,
       "objectCount": 100,
       "triangles": 17135,
@@ -10090,8 +10344,8 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "blue-bath-fa468e3e1e0b.glb",
-      "assetHash": "fa468e3e1e0b413ceb22951f54a3c34a9ab9a531cdbc22c1151d06f1c3adaadb",
+      "asset": "blue-bath-769226db25d2.glb",
+      "assetHash": "769226db25d25181668717723e762d3f6d0122a655d481b40746dc9a6c1957d2",
       "assetBytes": 3796276,
       "objectCount": 127,
       "triangles": 22271,
@@ -10562,8 +10816,8 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-west-8909e3ef22f2.glb",
-      "assetHash": "8909e3ef22f2fa4a750c74c0e402a6b69cd2bfde15ee5e73cdb1f273b18dc54a",
+      "asset": "office-west-183380e60e6d.glb",
+      "assetHash": "183380e60e6de4e4a080f05e479d994d6376496d88014cdd7b280514d7041565",
       "assetBytes": 4122196,
       "objectCount": 151,
       "triangles": 20152,
@@ -10960,8 +11214,8 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-east-fb1e03da1b4c.glb",
-      "assetHash": "fb1e03da1b4cc9fbee7e3672f6ed5e89c24807b29f4477e2dca01face3a3c6b6",
+      "asset": "office-east-44260af913e0.glb",
+      "assetHash": "44260af913e05a99d51abce456c358d7a7485bae9be9402db6f61b17c39ace9a",
       "assetBytes": 4125380,
       "objectCount": 131,
       "triangles": 21872,
@@ -11322,9 +11576,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-hall-a2773e85d57b.glb",
-      "assetHash": "a2773e85d57bda0aac97b39c19ea0fe8f28f64e675c5a6e231b61abf5984bfe3",
-      "assetBytes": 3712188,
+      "asset": "office-hall-0038cdc818d4.glb",
+      "assetHash": "0038cdc818d4e574aa66e7cc0e701a2c78d85b12e7337597aa1dc45c0268d969",
+      "assetBytes": 3712284,
       "objectCount": 137,
       "triangles": 15524,
       "cameras": [
@@ -12038,8 +12292,8 @@
       "cutawayMillworkRooms": [
         "Primary Loli Closet"
       ],
-      "asset": "primary-loli-closet-a4aa4e0c3c50.glb",
-      "assetHash": "a4aa4e0c3c50e8347017bbce4635b3c155fd72f8ac1a390b5813be114afe649c",
+      "asset": "primary-loli-closet-c104d1146548.glb",
+      "assetHash": "c104d1146548f3c46dab663b685d73dc6985287bd915019f1c3d2941078ef003",
       "assetBytes": 3204488,
       "objectCount": 86,
       "triangles": 10878,
@@ -12475,8 +12729,8 @@
       "cutawayMillworkRooms": [
         "Primary Green Closet"
       ],
-      "asset": "primary-green-closet-96d67eeceb03.glb",
-      "assetHash": "96d67eeceb03476d347000c9cac0091108c90c40162ef331aa6e758af4246052",
+      "asset": "primary-green-closet-1aa0176f0907.glb",
+      "assetHash": "1aa0176f09072b5e0b34f965c943f136d0970bb13f28cc976cb644e4ac41bc64",
       "assetBytes": 3169200,
       "objectCount": 74,
       "triangles": 10329,
@@ -14573,6 +14827,3701 @@
           "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
+        }
+      ]
+    },
+    {
+      "id": "elevation-front",
+      "name": "Front elevation",
+      "floor": "Exterior elevations",
+      "subtitle": "Street face, entry tower, carport and garage",
+      "description": "The south (street) face of the released model: a 25.81 by 8.05 m facade showing the entry tower, the carport arch, the garage doors and the two front lanterns. It is held in a presentation slab 7.21 m deep behind the face, so geometry further into the house is clipped away.",
+      "menuDescription": "Front elevation \u00b7 south (street)",
+      "boundaryStatus": "Model elevation, not a drawing and not a survey. It is measured from the released Blender/Web.blend snapshot, so it shows the RELEASED house, not the newest authoring candidate. The slab reaches out to the camera station because the exporter requires a viewpoint inside bounds, which is why the approach ground in front of the face is exported with it. The site and property walls are excluded: the permit sheets draw them as lines, but in a solid orthographic view they stand 2.06 m high across 88% of the east and west frames and screen the ground floor. Neighbouring houses, the rear-yard reconstruction, interior fit-out and furniture are excluded; grade, paving, roof eaves and window surrounds are kept.",
+      "bounds": [
+        [
+          -14.713,
+          11.674
+        ],
+        [
+          -24.409,
+          -2.217
+        ],
+        [
+          -0.68,
+          8.133
+        ]
+      ],
+      "walkBounds": [
+        [
+          -2.519,
+          -0.52
+        ],
+        [
+          -24.809,
+          -22.809
+        ]
+      ],
+      "ceilingHeight": 8.133,
+      "floorElevation": 0.0,
+      "defaultPaint": "#e9e4da",
+      "viewpoints": [
+        {
+          "label": "Front elevation",
+          "position": [
+            -1.5195,
+            -23.8093,
+            3.7465
+          ],
+          "target": [
+            -1.5195,
+            -9.4293,
+            3.7465
+          ],
+          "fov": 60.0
+        }
+      ],
+      "excludeCollectionPrefixes": [
+        "Street & Neighbors",
+        "Landscape & Objects",
+        "BY \u00b7 ",
+        "x49 ",
+        "x56 \u00b7 ",
+        "Rear Yard & Structure",
+        "1F Furniture",
+        "2F Furniture",
+        "1F Appliances & Equipment",
+        "1F Cabinets & Millwork",
+        "2F Cabinets & Millwork",
+        "Millwork \u00b7 ",
+        "Cabinets \u00b7 ",
+        "Furniture \u00b7 ",
+        "Ceiling \u00b7 ",
+        "Closet \u00b7 ",
+        "Fixtures \u00b7 ",
+        "1F Misc Objects",
+        "2F Misc Objects",
+        "1F Misc Parts",
+        "2F Misc Parts",
+        "1F Plumbing Fixtures",
+        "2F Plumbing Fixtures",
+        "1F Plants & Planters",
+        "2F Plants & Planters",
+        "1F Lighting",
+        "2F Lighting",
+        "Interior Lights",
+        "RCP Fixtures",
+        "RCP Lights",
+        "Placeholders \u00b7 ",
+        "LG WashTower",
+        "Wyrmwood",
+        "BY2 \u00b7 ",
+        "BACKYARD_PHOTO_REBUILD",
+        "ARCHIVE \u00b7 ",
+        "Quarantine \u00b7 ",
+        "2F Closet Clearance Envelopes",
+        "Laundry Lighting \u00b7 ",
+        "Lighting \u00b7 ",
+        "Retired Room Aerials",
+        "Site Coping"
+      ],
+      "excludeSourcePrefixes": [
+        "Furniture ",
+        "Obj chair",
+        "Obj table",
+        "Obj ottoman",
+        "Obj A6"
+      ],
+      "excludeSourceNames": [
+        "Wall W0.007",
+        "Wall W1.022",
+        "Wall W3",
+        "Wall W3.001",
+        "Wall W3.019",
+        "Wall W3.020",
+        "Wall W3.021",
+        "Wall W3.022",
+        "Wall W3.023",
+        "Wall W3.024",
+        "Wall W3.025",
+        "Wall W3.026",
+        "Wall W3.032",
+        "Wall W4.006",
+        "Wall W4.007",
+        "Wall W4.008",
+        "Wall W5.009",
+        "Wall W5.010",
+        "Wall W6.005",
+        "Wall W6.007",
+        "Wall W7.010",
+        "Wall W7.011",
+        "Wall W8.016",
+        "Wall W9.010",
+        "Wall exterior wall.029",
+        "Wall exterior wall.030",
+        "Wall exterior wall.031",
+        "Wall exterior wall.032",
+        "Wall exterior wall.033",
+        "Wall exterior wall.034",
+        "Wall exterior wall.035",
+        "Wall exterior wall.036"
+      ],
+      "includeSourceNames": [
+        "Light \u00b7 RCP SconceExt 1F 01",
+        "Light \u00b7 RCP SconceExt 1F 02"
+      ],
+      "applyExclusionsToLights": true,
+      "asset": "elevation-front-fdcbf5bd31e9.glb",
+      "assetHash": "fdcbf5bd31e95cdcf7c4a9265c015090ad87adbaa214fd5830580d6b4606fcb5",
+      "assetBytes": 14953528,
+      "objectCount": 869,
+      "triangles": 117201,
+      "cameras": [
+        {
+          "id": "front-elevation",
+          "label": "Front elevation",
+          "position": [
+            -1.5195,
+            3.7465,
+            23.809299
+          ],
+          "target": [
+            -1.5195,
+            3.7465,
+            9.4293
+          ],
+          "fov": 60.0,
+          "sourceCamera": "Web presentation view"
+        }
+      ],
+      "lights": [
+        {
+          "id": "elevation-front-3a37ce5c6871b166",
+          "group": "elevation-front:ceiling",
+          "type": "point",
+          "position": [
+            -4.113098,
+            4.084014,
+            9.276947
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "elevation-front-925c707550d18dd7",
+          "group": "elevation-front:ceiling",
+          "type": "point",
+          "position": [
+            1.356689,
+            4.084014,
+            9.276947
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "ceiling": "#9b7450"
+      },
+      "materials": [
+        {
+          "id": "mat-829816080d5e",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "elevation-front",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c42af5e6efc4",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-394426a47474",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-front",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-ba6987912ec6",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-bd91e55ac7bc",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "elevation-front",
+          "role": "walls",
+          "color": "#9cbe9d",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-353a01185ab5",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e95f3d104dc2",
+          "name": "05 | Metal: Iron*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#4c4e55",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1a5d0374f93c",
+          "name": "09 | Glass-Blue/Ice",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#f8fbfa",
+          "roughness": 0.029999999329447746,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-40fdbde45a95",
+          "name": "04 | B Running Bond WHITE",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#939492",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-77da10a24bcd",
+          "name": "09 | Color: Tan",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-41c851df5bb9",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-144bb19cfcb7",
+          "name": "09 | Tile: 6\" x 6\" White Tile Staggered",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d7b6d7608fac",
+          "name": "60 | Generic - Walls Exterior",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#f3f1ef",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-07bbfc7249f8",
+          "name": "04 | Block: CMU-16\"x8\"",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#b5b2ae",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-21160e7664c4",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-342fd9eb74c6",
+          "name": "03 | Concrete: Light",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#ded9d0",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-33e03a594add",
+          "name": "04 | Stonework: River Rock Beige",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#c7b696",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-bfa42e5c3162",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-868a20248194",
+          "name": "Stone \u00b7 Milia (Primary Bath, Dining, Powder, Loli)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#e1e1e1",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-fd9c5844e53f",
+          "name": "05 | Metal: Bronze*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#816627",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-caf4758ac629",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f1262a9a7273",
+          "name": "32 | Landscape: Leaves, Tree*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#274f27",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-03ce8c3be655",
+          "name": "09 | Tile: 9\" Tan Terracotta",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#cdc6ba",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d3e30056778a",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-45b0fc2ba5bd",
+          "name": "Rug \u00b7 Natural Woven",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#969696",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-f09b2c384d86",
+          "name": "04 | Stone: Marble White*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#d3d4d1",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-218f79d62c54",
+          "name": "Floor \u00b7 Garage Concrete",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#a2a2a0",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d19718284135",
+          "name": "Floor \u00b7 White Marble 18in (atrium)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-e256b6597357",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3d6a796ed07c",
+          "name": "Floor \u00b7 Black Marble Border",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a3d8d9d1dee5",
+          "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-ddf253abb511",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5278d7ea5caf",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-b6acf945012c",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-983d33ef05bc",
+          "name": "Garage \u00b7 Charcoal Door",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#2f2f30",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c3921cb32074",
+          "name": "Garage \u00b7 Dark Glass",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#27292c",
+          "roughness": 0.05000000074505806,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-6537ebf58681",
+          "name": "Garage \u00b7 Iron Scroll Insert",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#191919",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "source UV opacity mask preserved"
+        },
+        {
+          "id": "mat-73c66497ed0e",
+          "name": "Garage \u00b7 Seam",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#1d1d1e",
+          "roughness": 0.6000000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d5e02e4f869a",
+          "name": "Garage \u00b7 Iron Hardware",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#1d1d1d",
+          "roughness": 0.5,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-69e3ff7cf5e9",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-453cad3fa62d",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-front",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-8154a32110dd",
+          "name": "09 | Tile: 6\" x 6\" Blue Mist Tile Staggered",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3f5776771110",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-c29d3517dd94",
+          "name": "Tile \u00b7 Misty Blue 2.5x10 (Blue Bath shower walls)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#8ea3a6",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-f98bbd1aa546",
+          "name": "Tile \u00b7 Penny Mosaic Sand Dollar",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#d8d1c2",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-92379f78726b",
+          "name": "Tile \u00b7 Hex 10in Shoji White",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#f0eee9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-165e5d5c2775",
+          "name": "07 | Roof: 16\" Standing Seam*",
+          "roomId": "elevation-front",
+          "role": "ceiling",
+          "color": "#45423f",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-58db1210fd8c",
+          "name": "06 | Wood: Pine-Clear Vert",
+          "roomId": "elevation-front",
+          "role": "ceiling",
+          "color": "#edbb85",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-69a37ce319b8",
+          "name": "07 | Roof: 16\" Standing Seam*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#45423f",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9694381a2798",
+          "name": "Railing \u00b7 Black Iron",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#272729",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5ef465cce3f7",
+          "name": "05 | Metal: Chrome*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#bfbfbf",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-22dc964ca1fd",
+          "name": "Railing \u00b7 Arabesque Panel",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#1d1d1d",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "source UV opacity mask preserved"
+        },
+        {
+          "id": "mat-8cb0dbe1a8c2",
+          "name": "09 | Color: 06 Gray-Medium Dark",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#6c6c6c",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b7842bcb8584",
+          "name": "07 | Roof: Asphalt Shingle, Slate",
+          "roomId": "elevation-front",
+          "role": "ceiling",
+          "color": "#555555",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ded3ab7fb9d4",
+          "name": "09 | Color: Tan",
+          "roomId": "elevation-front",
+          "role": "ceiling",
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a0e3dbff16c0",
+          "name": "32 | Paving: Asphalt Dark",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#2e2e2e",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b802fda24f20",
+          "name": "07 | Stucco: White*",
+          "roomId": "elevation-front",
+          "role": "ceiling",
+          "color": "#d4d3d0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-b7f49a787135",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "elevation-front",
+          "role": "ceiling",
+          "color": "#cec5b2",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-01f5b2da69fb",
+          "name": "07 | Roof: Asphalt Shingle, Slate",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#555555",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-835a480235ba",
+          "name": "05 | Nickel Satin",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#a8a49e",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5b1802dff296",
+          "name": "32 | Landscape: Water Moving",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#273c4f",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b4e4f37fd45e",
+          "name": "32 | Landscape: Earth*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#94684b",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-38539fedf8d9",
+          "name": "03 | Concrete: Dark*",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#cacaca",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1d319805ed27",
+          "name": "Paver \u00b7 Grey Field",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#a09784",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-8585e3c93aed",
+          "name": "Paver \u00b7 Buff Soldier",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#c4b599",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-820aa08635d0",
+          "name": "Fixture \u00b7 Lantern bulb (provisional) \u00b7 E",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-70fb2910fce3",
+          "name": "Fixture \u00b7 Lantern stem (non-emitting, provisional)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#3f3f3f",
+          "roughness": 0.4000000059604645,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c364a37d1aef",
+          "name": "Fixture \u00b7 Lantern bulb (provisional) \u00b7 W",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        }
+      ]
+    },
+    {
+      "id": "elevation-east",
+      "name": "East elevation",
+      "floor": "Exterior elevations",
+      "subtitle": "East face, canted bay return and roof deck",
+      "description": "The east face of the released model: a 19.32 by 8.05 m facade showing the Loli bay's canted return, the upper windows and the roof deck parapet. It is held in a presentation slab 18.29 m deep behind the face, so geometry further into the house is clipped away.",
+      "menuDescription": "East elevation \u00b7 east",
+      "boundaryStatus": "Model elevation, not a drawing and not a survey. It is measured from the released Blender/Web.blend snapshot, so it shows the RELEASED house, not the newest authoring candidate. The slab reaches out to the camera station because the exporter requires a viewpoint inside bounds, which is why the approach ground in front of the face is exported with it. The site and property walls are excluded: the permit sheets draw them as lines, but in a solid orthographic view they stand 2.06 m high across 88% of the east and west frames and screen the ground floor. Neighbouring houses, the rear-yard reconstruction, interior fit-out and furniture are excluded; grade, paving, roof eaves and window surrounds are kept.",
+      "bounds": [
+        [
+          -7.071,
+          22.453
+        ],
+        [
+          -9.889,
+          9.893
+        ],
+        [
+          -0.68,
+          8.133
+        ]
+      ],
+      "walkBounds": [
+        [
+          20.853,
+          22.853
+        ],
+        [
+          -0.998,
+          1.002
+        ]
+      ],
+      "ceilingHeight": 8.133,
+      "floorElevation": 0.0,
+      "defaultPaint": "#e9e4da",
+      "viewpoints": [
+        {
+          "label": "East elevation",
+          "position": [
+            21.8531,
+            0.002,
+            3.7465
+          ],
+          "target": [
+            11.2141,
+            0.002,
+            3.7465
+          ],
+          "fov": 60.0
+        }
+      ],
+      "excludeCollectionPrefixes": [
+        "Street & Neighbors",
+        "Landscape & Objects",
+        "BY \u00b7 ",
+        "x49 ",
+        "x56 \u00b7 ",
+        "Rear Yard & Structure",
+        "1F Furniture",
+        "2F Furniture",
+        "1F Appliances & Equipment",
+        "1F Cabinets & Millwork",
+        "2F Cabinets & Millwork",
+        "Millwork \u00b7 ",
+        "Cabinets \u00b7 ",
+        "Furniture \u00b7 ",
+        "Ceiling \u00b7 ",
+        "Closet \u00b7 ",
+        "Fixtures \u00b7 ",
+        "1F Misc Objects",
+        "2F Misc Objects",
+        "1F Misc Parts",
+        "2F Misc Parts",
+        "1F Plumbing Fixtures",
+        "2F Plumbing Fixtures",
+        "1F Plants & Planters",
+        "2F Plants & Planters",
+        "1F Lighting",
+        "2F Lighting",
+        "Interior Lights",
+        "RCP Fixtures",
+        "RCP Lights",
+        "Placeholders \u00b7 ",
+        "LG WashTower",
+        "Wyrmwood",
+        "BY2 \u00b7 ",
+        "BACKYARD_PHOTO_REBUILD",
+        "ARCHIVE \u00b7 ",
+        "Quarantine \u00b7 ",
+        "2F Closet Clearance Envelopes",
+        "Laundry Lighting \u00b7 ",
+        "Lighting \u00b7 ",
+        "Retired Room Aerials",
+        "Site Coping"
+      ],
+      "excludeSourcePrefixes": [
+        "Furniture ",
+        "Obj chair",
+        "Obj table",
+        "Obj ottoman",
+        "Obj A6"
+      ],
+      "excludeSourceNames": [
+        "Wall W0.007",
+        "Wall W1.022",
+        "Wall W3",
+        "Wall W3.001",
+        "Wall W3.019",
+        "Wall W3.020",
+        "Wall W3.021",
+        "Wall W3.022",
+        "Wall W3.023",
+        "Wall W3.024",
+        "Wall W3.025",
+        "Wall W3.026",
+        "Wall W3.032",
+        "Wall W4.006",
+        "Wall W4.007",
+        "Wall W4.008",
+        "Wall W5.009",
+        "Wall W5.010",
+        "Wall W6.005",
+        "Wall W6.007",
+        "Wall W7.010",
+        "Wall W7.011",
+        "Wall W8.016",
+        "Wall W9.010",
+        "Wall exterior wall.029",
+        "Wall exterior wall.030",
+        "Wall exterior wall.031",
+        "Wall exterior wall.032",
+        "Wall exterior wall.033",
+        "Wall exterior wall.034",
+        "Wall exterior wall.035",
+        "Wall exterior wall.036"
+      ],
+      "includeSourceNames": [
+        "Light \u00b7 RCP SconceExt 1F 01",
+        "Light \u00b7 RCP SconceExt 1F 02"
+      ],
+      "applyExclusionsToLights": true,
+      "asset": "elevation-east-7f1713720036.glb",
+      "assetHash": "7f17137200360c32471788a38f057ddda7a6911838ab617e9cfd04f4215aaabd",
+      "assetBytes": 19379088,
+      "objectCount": 1117,
+      "triangles": 174469,
+      "cameras": [
+        {
+          "id": "east-elevation",
+          "label": "East elevation",
+          "position": [
+            21.8531,
+            3.7465,
+            -0.002
+          ],
+          "target": [
+            11.2141,
+            3.7465,
+            -0.002
+          ],
+          "fov": 60.0,
+          "sourceCamera": "Web presentation view"
+        }
+      ],
+      "lights": [
+        {
+          "id": "elevation-east-3a37ce5c6871b166",
+          "group": "elevation-east:ceiling",
+          "type": "point",
+          "position": [
+            -4.113098,
+            4.084014,
+            9.276947
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "elevation-east-925c707550d18dd7",
+          "group": "elevation-east:ceiling",
+          "type": "point",
+          "position": [
+            1.356689,
+            4.084014,
+            9.276947
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-9d48d9f433b1",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "elevation-east",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f8876260afce",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-9c02d8cd59c3",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-east",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-80935a502057",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-cec14a97120a",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "elevation-east",
+          "role": "walls",
+          "color": "#9cbe9d",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-60e6ef581442",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0d2b0f098e2e",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "elevation-east",
+          "role": "walls",
+          "color": "#67839d",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-01c5b45ba131",
+          "name": "05 | Metal: Iron*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#4c4e55",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5a9bd3f96480",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-e5bc47141b0b",
+          "name": "60 | Generic - Walls Exterior",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#f3f1ef",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-dc9d5c0bbb0c",
+          "name": "09 | Color: Blue Cobalt",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#272f39",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-88226b24d009",
+          "name": "09 | Glass-Blue/Ice",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#f8fbfa",
+          "roughness": 0.029999999329447746,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-f1e5f2c2e11b",
+          "name": "04 | B Running Bond WHITE",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#939492",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4434ab7915c5",
+          "name": "09 | Tile: 6\" x 6\" White Tile Staggered",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-69afc268f928",
+          "name": "Cabinet \u00b7 Slate Teal (island)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#5c6f74",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-914222796379",
+          "name": "Marble \u00b7 White Slab (counters, stairs)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#eeefec",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-6e472f86b1aa",
+          "name": "05 | Wallpaper",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#4c4e55",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3301c4c50397",
+          "name": "07 | Siding: 8\" Horiz. White",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#acafaf",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-fb5cf5cd636e",
+          "name": "09 | Glass: Tinted Dark",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#3a3941",
+          "roughness": 0.05000000074505806,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-6f1fa8397a6f",
+          "name": "04 | Block: CMU-16\"x8\"",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#b5b2ae",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b368502708c4",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-27bc2fd2c5e9",
+          "name": "03 | Concrete: Light",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#ded9d0",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9049c6dba5b9",
+          "name": "04 | Stonework: River Rock Beige",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#c7b696",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4f18bf37c8ef",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-180dcd1e807b",
+          "name": "Stone \u00b7 Milia (Primary Bath, Dining, Powder, Loli)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#e1e1e1",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-9d01b3a7ff61",
+          "name": "05 | Metal: Bronze*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#816627",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4793ad4765db",
+          "name": "04 | Stone: Marble White*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#d3d4d1",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-525adabcb100",
+          "name": "32 | Landscape: Leaves, Tree*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#274f27",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ad3ab62f4a86",
+          "name": "Rug \u00b7 Natural Woven",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#969696",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-acfc3469357a",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-148e0574b330",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (Kitchen, stairs)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-e985c85cec1c",
+          "name": "09 | Tile: 9\" Tan Terracotta",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#cdc6ba",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4e88f1517155",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2b4a4383fb8d",
+          "name": "Floor \u00b7 Garage Concrete",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#a2a2a0",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-bd935f8a84eb",
+          "name": "Floor \u00b7 White Marble 18in (atrium)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-8a4074606abc",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-cb1d3f5f3240",
+          "name": "Floor \u00b7 Black Marble Border",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-43b62980662f",
+          "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-043006c98d6e",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e023038a7a5f",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-7c6366727a45",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d51982634960",
+          "name": "Garage \u00b7 Charcoal Door",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#2f2f30",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-eff42a9579ae",
+          "name": "Garage \u00b7 Dark Glass",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#27292c",
+          "roughness": 0.05000000074505806,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-02f2c8a947f3",
+          "name": "Garage \u00b7 Iron Scroll Insert",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#191919",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "source UV opacity mask preserved"
+        },
+        {
+          "id": "mat-245e1bc95d37",
+          "name": "Garage \u00b7 Seam",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#1d1d1e",
+          "roughness": 0.6000000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-839c8816d58c",
+          "name": "Garage \u00b7 Iron Hardware",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#1d1d1d",
+          "roughness": 0.5,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-db3adfda534d",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-136c1a04be98",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-east",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-8b81802abdb5",
+          "name": "09 | Tile: 6\" x 6\" Blue Mist Tile Staggered",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-cc3f8718d5b5",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-0f6e6e6de9ab",
+          "name": "Quartzite \u00b7 Titanium (Deck island)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#1d1d20",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-52d0473bc746",
+          "name": "07 | Roof: Asphalt Shingle, Slate",
+          "roomId": "elevation-east",
+          "role": "ceiling",
+          "color": "#555555",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a565078e9753",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "elevation-east",
+          "role": "ceiling",
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-538307f68eba",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "elevation-east",
+          "role": "ceiling",
+          "color": "#cec5b2",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-668f5f2058d0",
+          "name": "07 | Roof: 16\" Standing Seam*",
+          "roomId": "elevation-east",
+          "role": "ceiling",
+          "color": "#45423f",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3c69af878816",
+          "name": "09 | Color: Tan",
+          "roomId": "elevation-east",
+          "role": "ceiling",
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f460c9918d34",
+          "name": "Concrete \u00b7 Broom Finish (deck)",
+          "roomId": "elevation-east",
+          "role": "ceiling",
+          "color": "#adaaa4",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake"
+        },
+        {
+          "id": "mat-277197a04200",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "elevation-east",
+          "role": "ceiling",
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-58b7b606ae55",
+          "name": "06 | Wood: Pine-Clear Vert",
+          "roomId": "elevation-east",
+          "role": "ceiling",
+          "color": "#edbb85",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3af20fa8b289",
+          "name": "07 | Roof: 16\" Standing Seam*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#45423f",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-37a61a7fe264",
+          "name": "Railing \u00b7 Black Iron",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#272729",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-55990958ef88",
+          "name": "05 | Metal: Chrome*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#bfbfbf",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7e88f08040de",
+          "name": "Concrete \u00b7 Grey Painted (exterior stair)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#8c8c8e",
+          "roughness": 0.7799999713897705,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-9317264c0e8f",
+          "name": "Railing \u00b7 Arabesque Panel",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#1d1d1d",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "source UV opacity mask preserved"
+        },
+        {
+          "id": "mat-0d4ba013e3f2",
+          "name": "09 | Color: Tan",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b50feb472e22",
+          "name": "32 | Paving: Asphalt Dark",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#2e2e2e",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b3936aa7e6ec",
+          "name": "07 | Stucco: White*",
+          "roomId": "elevation-east",
+          "role": "ceiling",
+          "color": "#d4d3d0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-8bc348af98e1",
+          "name": "07 | Roof: Asphalt Shingle, Slate",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#555555",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-cb9d8ef0f25c",
+          "name": "09 | Color: 06 Gray-Medium Dark",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#6c6c6c",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f56106f3a9fe",
+          "name": "09 | Paint-01 Ceiling White",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-88a9c7746946",
+          "name": "05 | Nickel Satin",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#a8a49e",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-bf0073dc09d3",
+          "name": "32 | Landscape: Earth*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#94684b",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-265ddbd74e00",
+          "name": "32 | Landscape: Grass 3D*",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#275827",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-251b725d9663",
+          "name": "Paver \u00b7 Grey Field",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#a09784",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-122c7fafda0a",
+          "name": "Paver \u00b7 Buff Soldier",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#c4b599",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-776e88efb1be",
+          "name": "Fixture \u00b7 Lantern bulb (provisional) \u00b7 E",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0a573bc6d75b",
+          "name": "Fixture \u00b7 Lantern stem (non-emitting, provisional)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#3f3f3f",
+          "roughness": 0.4000000059604645,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-46491491949b",
+          "name": "Fixture \u00b7 Lantern bulb (provisional) \u00b7 W",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        }
+      ]
+    },
+    {
+      "id": "elevation-north",
+      "name": "North elevation",
+      "floor": "Exterior elevations",
+      "subtitle": "Rear-yard face and the four arch doors",
+      "description": "The north (rear yard) face of the released model: a 25.81 by 7.99 m facade showing the four arch doors, the rear arcade columns and the deck stair. It is held in a presentation slab 18.22 m deep behind the face, so geometry further into the house is clipped away.",
+      "menuDescription": "North elevation \u00b7 north (rear yard)",
+      "boundaryStatus": "Model elevation, not a drawing and not a survey. It is measured from the released Blender/Web.blend snapshot, so it shows the RELEASED house, not the newest authoring candidate. The slab reaches out to the camera station because the exporter requires a viewpoint inside bounds, which is why the approach ground in front of the face is exported with it. The site and property walls are excluded: the permit sheets draw them as lines, but in a solid orthographic view they stand 2.06 m high across 88% of the east and west frames and screen the ground floor. Neighbouring houses, the rear-yard reconstruction, interior fit-out and furniture are excluded; grade, paving, roof eaves and window surrounds are kept.",
+      "bounds": [
+        [
+          -14.713,
+          11.674
+        ],
+        [
+          -8.785,
+          24.412
+        ],
+        [
+          -0.68,
+          8.133
+        ]
+      ],
+      "walkBounds": [
+        [
+          -2.519,
+          -0.52
+        ],
+        [
+          22.812,
+          24.812
+        ]
+      ],
+      "ceilingHeight": 8.133,
+      "floorElevation": 0.0,
+      "defaultPaint": "#e9e4da",
+      "viewpoints": [
+        {
+          "label": "North elevation",
+          "position": [
+            -1.5195,
+            23.8125,
+            3.7465
+          ],
+          "target": [
+            -1.5195,
+            9.4325,
+            3.7465
+          ],
+          "fov": 60.0
+        }
+      ],
+      "excludeCollectionPrefixes": [
+        "Street & Neighbors",
+        "Landscape & Objects",
+        "BY \u00b7 ",
+        "x49 ",
+        "x56 \u00b7 ",
+        "Rear Yard & Structure",
+        "1F Furniture",
+        "2F Furniture",
+        "1F Appliances & Equipment",
+        "1F Cabinets & Millwork",
+        "2F Cabinets & Millwork",
+        "Millwork \u00b7 ",
+        "Cabinets \u00b7 ",
+        "Furniture \u00b7 ",
+        "Ceiling \u00b7 ",
+        "Closet \u00b7 ",
+        "Fixtures \u00b7 ",
+        "1F Misc Objects",
+        "2F Misc Objects",
+        "1F Misc Parts",
+        "2F Misc Parts",
+        "1F Plumbing Fixtures",
+        "2F Plumbing Fixtures",
+        "1F Plants & Planters",
+        "2F Plants & Planters",
+        "1F Lighting",
+        "2F Lighting",
+        "Interior Lights",
+        "RCP Fixtures",
+        "RCP Lights",
+        "Placeholders \u00b7 ",
+        "LG WashTower",
+        "Wyrmwood",
+        "BY2 \u00b7 ",
+        "BACKYARD_PHOTO_REBUILD",
+        "ARCHIVE \u00b7 ",
+        "Quarantine \u00b7 ",
+        "2F Closet Clearance Envelopes",
+        "Laundry Lighting \u00b7 ",
+        "Lighting \u00b7 ",
+        "Retired Room Aerials",
+        "Site Coping"
+      ],
+      "excludeSourcePrefixes": [
+        "Furniture ",
+        "Obj chair",
+        "Obj table",
+        "Obj ottoman",
+        "Obj A6"
+      ],
+      "excludeSourceNames": [
+        "Wall W0.007",
+        "Wall W1.022",
+        "Wall W3",
+        "Wall W3.001",
+        "Wall W3.019",
+        "Wall W3.020",
+        "Wall W3.021",
+        "Wall W3.022",
+        "Wall W3.023",
+        "Wall W3.024",
+        "Wall W3.025",
+        "Wall W3.026",
+        "Wall W3.032",
+        "Wall W4.006",
+        "Wall W4.007",
+        "Wall W4.008",
+        "Wall W5.009",
+        "Wall W5.010",
+        "Wall W6.005",
+        "Wall W6.007",
+        "Wall W7.010",
+        "Wall W7.011",
+        "Wall W8.016",
+        "Wall W9.010",
+        "Wall exterior wall.029",
+        "Wall exterior wall.030",
+        "Wall exterior wall.031",
+        "Wall exterior wall.032",
+        "Wall exterior wall.033",
+        "Wall exterior wall.034",
+        "Wall exterior wall.035",
+        "Wall exterior wall.036"
+      ],
+      "includeSourceNames": [
+        "Light \u00b7 RCP SconceExt 1F 01",
+        "Light \u00b7 RCP SconceExt 1F 02"
+      ],
+      "applyExclusionsToLights": true,
+      "asset": "elevation-north-33c92a3d43a5.glb",
+      "assetHash": "33c92a3d43a51b5b7982f634221312deb5b35a0973cdb4e73e45375e1047f554",
+      "assetBytes": 22108720,
+      "objectCount": 1226,
+      "triangles": 199236,
+      "cameras": [
+        {
+          "id": "north-elevation",
+          "label": "North elevation",
+          "position": [
+            -1.5195,
+            3.7465,
+            -23.8125
+          ],
+          "target": [
+            -1.5195,
+            3.7465,
+            -9.4325
+          ],
+          "fov": 60.0,
+          "sourceCamera": "Web presentation view"
+        }
+      ],
+      "lights": [],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-e653f4226d49",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "elevation-north",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1548c2c8ebe1",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-433fc3b3c16f",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-north",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-c2ea6ce9611c",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-b9d6ee0b72f2",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "elevation-north",
+          "role": "walls",
+          "color": "#9cbe9d",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-b3548e16c378",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3bf74e64256f",
+          "name": "05 | Wallpaper",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#4c4e55",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-358914d6a65b",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "elevation-north",
+          "role": "walls",
+          "color": "#67839d",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-b39d37088304",
+          "name": "09 | Color: Blue Cobalt",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#272f39",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-45ff7d810146",
+          "name": "05 | Metal: Iron*",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#4c4e55",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-db02f609bf6b",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-fbf33f56f1b2",
+          "name": "60 | Generic - Walls Exterior",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#f3f1ef",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-78d2d1940537",
+          "name": "09 | Glass-Blue/Ice",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#f8fbfa",
+          "roughness": 0.029999999329447746,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-760e0f554cc6",
+          "name": "04 | B Running Bond WHITE",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#939492",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-af8f80c81b26",
+          "name": "09 | Color: Tan",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5451bf4900b4",
+          "name": "09 | Tile: 6\" x 6\" White Tile Staggered",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8374b6c4ad9a",
+          "name": "Cabinet \u00b7 Slate Teal (island)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#5c6f74",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d5479dd6da7a",
+          "name": "Marble \u00b7 White Slab (counters, stairs)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#eeefec",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-4d8b6df41211",
+          "name": "07 | Siding: 8\" Horiz. White",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#acafaf",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1c7f0491d492",
+          "name": "09 | Glass: Tinted Dark",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#3a3941",
+          "roughness": 0.05000000074505806,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-be0450b3b64a",
+          "name": "04 | Block: CMU-16\"x8\"",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#b5b2ae",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f2e1599ed80a",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-26db05f3ee15",
+          "name": "03 | Concrete: Light",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#ded9d0",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-94f9be53300f",
+          "name": "04 | Stonework: River Rock Beige",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#c7b696",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-71040e4a142a",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-00286b8e2449",
+          "name": "Stone \u00b7 Milia (Primary Bath, Dining, Powder, Loli)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#e1e1e1",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-eb4ff299d0b9",
+          "name": "05 | Metal: Bronze*",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#816627",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-eb6281ae8071",
+          "name": "04 | Stone: Marble White*",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#d3d4d1",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b75f59007037",
+          "name": "32 | Landscape: Leaves, Tree*",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#274f27",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a5373c08b2a3",
+          "name": "Rug \u00b7 Natural Woven",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#969696",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-d4e4c9890f76",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-aac6938a75b8",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (Kitchen, stairs)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-233b79cc5635",
+          "name": "09 | Tile: 9\" Tan Terracotta",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#cdc6ba",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5b59be0cfea3",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d3bd956e1f98",
+          "name": "Floor \u00b7 Garage Concrete",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#a2a2a0",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7c66db29df80",
+          "name": "Floor \u00b7 White Marble 18in (atrium)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-428abf18e710",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-cd3d038d5337",
+          "name": "Floor \u00b7 Black Marble Border",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-59b4fa4b1ebf",
+          "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-be5d08a592f8",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-ed19a11eadde",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ac8337316a42",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-91cd78f6007c",
+          "name": "04 | B Running Bond WHITE vertical",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#939492",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-428bb8bde9cd",
+          "name": "Garage \u00b7 Charcoal Door",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#2f2f30",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-650850deed8a",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-31d4011a40cb",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-north",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-cee11c7c29a2",
+          "name": "09 | Tile: 6\" x 6\" Blue Mist Tile Staggered",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-22787fc382b6",
+          "name": "Stone \u00b7 Sao Paolo (Green Bath)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#939e98",
+          "roughness": 0.17000000178813934,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-a4ac9992d82b",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-ee336e54319f",
+          "name": "Concrete \u00b7 Broom Finish (deck)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#b4b1ab",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-09d8cd178df4",
+          "name": "Tile \u00b7 Midori Green 2.5x10 (Green Bath shower walls)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#50645a",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-0b616a81b495",
+          "name": "Tile \u00b7 Penny Mosaic Sand Dollar",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#d8d1c2",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-79f40e03a632",
+          "name": "Tile \u00b7 Hex 10in Shoji White",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#f0eee9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-92f034081fbe",
+          "name": "Tile \u00b7 Misty Blue 2.5x10 (Blue Bath shower walls)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#8ea3a6",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-5288fef68599",
+          "name": "Quartzite \u00b7 Titanium (Deck island)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#1d1d20",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-e80be0d0085f",
+          "name": "07 | Roof: Asphalt Shingle, Slate",
+          "roomId": "elevation-north",
+          "role": "ceiling",
+          "color": "#555555",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5c8fa9e80010",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "elevation-north",
+          "role": "ceiling",
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-41a2a73d5e0c",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "elevation-north",
+          "role": "ceiling",
+          "color": "#cec5b2",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-a8eed1720089",
+          "name": "07 | Roof: 16\" Standing Seam*",
+          "roomId": "elevation-north",
+          "role": "ceiling",
+          "color": "#45423f",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-739ec774e31b",
+          "name": "09 | Color: Tan",
+          "roomId": "elevation-north",
+          "role": "ceiling",
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7a33bd1e6678",
+          "name": "Concrete \u00b7 Broom Finish (deck)",
+          "roomId": "elevation-north",
+          "role": "ceiling",
+          "color": "#adaaa4",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake"
+        },
+        {
+          "id": "mat-7834fe9a6189",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "elevation-north",
+          "role": "ceiling",
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-e9295bd04bc1",
+          "name": "06 | Wood: Pine-Clear Vert",
+          "roomId": "elevation-north",
+          "role": "ceiling",
+          "color": "#edbb85",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0c970cc6ddd8",
+          "name": "07 | Roof: 16\" Standing Seam*",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#45423f",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6e77729ba0fc",
+          "name": "Railing \u00b7 Black Iron",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#272729",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-377c7c5d65f5",
+          "name": "05 | Metal: Chrome*",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#bfbfbf",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9b284a54209f",
+          "name": "Concrete \u00b7 Grey Painted (exterior stair)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#8c8c8e",
+          "roughness": 0.7799999713897705,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-ec1f77c4f031",
+          "name": "Railing \u00b7 Arabesque Panel",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#1d1d1d",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "source UV opacity mask preserved"
+        },
+        {
+          "id": "mat-7794191a936d",
+          "name": "09 | Color: 06 Gray-Medium Dark",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#6c6c6c",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2e38a50c14d2",
+          "name": "32 | Paving: Asphalt Dark",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#2e2e2e",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-62ceb2c69ea8",
+          "name": "07 | Stucco: White*",
+          "roomId": "elevation-north",
+          "role": "ceiling",
+          "color": "#d4d3d0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-ecd257047201",
+          "name": "07 | Roof: Asphalt Shingle, Slate",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#555555",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-43619228f4be",
+          "name": "09 | Paint-01 Ceiling White",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-543ee38e16bb",
+          "name": "05 | Nickel Satin",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#a8a49e",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d7a382b048d2",
+          "name": "32 | Landscape: Earth*",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#94684b",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-01ed1528a88a",
+          "name": "Paver \u00b7 Grey Field",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#a09784",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-3464a4f02ff2",
+          "name": "Paver \u00b7 Buff Soldier",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#c4b599",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        }
+      ]
+    },
+    {
+      "id": "elevation-west",
+      "name": "West elevation",
+      "floor": "Exterior elevations",
+      "subtitle": "West face, carport arch and the deck stair",
+      "description": "The west face of the released model: a 19.78 by 8.05 m facade showing the carport arch, the west windows and the exterior stair. It is held in a presentation slab 10.96 m deep behind the face, so geometry further into the house is clipped away.",
+      "menuDescription": "West elevation \u00b7 west",
+      "boundaryStatus": "Model elevation, not a drawing and not a survey. It is measured from the released Blender/Web.blend snapshot, so it shows the RELEASED house, not the newest authoring candidate. The slab reaches out to the camera station because the exporter requires a viewpoint inside bounds, which is why the approach ground in front of the face is exported with it. The site and property walls are excluded: the permit sheets draw them as lines, but in a solid orthographic view they stand 2.06 m high across 88% of the east and west frames and screen the ground floor. Neighbouring houses, the rear-yard reconstruction, interior fit-out and furniture are excluded; grade, paving, roof eaves and window surrounds are kept.",
+      "bounds": [
+        [
+          -25.491,
+          -3.29
+        ],
+        [
+          -9.889,
+          9.893
+        ],
+        [
+          -0.68,
+          8.133
+        ]
+      ],
+      "walkBounds": [
+        [
+          -25.891,
+          -23.891
+        ],
+        [
+          -0.998,
+          1.002
+        ]
+      ],
+      "ceilingHeight": 8.133,
+      "floorElevation": 0.0,
+      "defaultPaint": "#e9e4da",
+      "viewpoints": [
+        {
+          "label": "West elevation",
+          "position": [
+            -24.8914,
+            0.002,
+            3.7465
+          ],
+          "target": [
+            -14.2524,
+            0.002,
+            3.7465
+          ],
+          "fov": 60.0
+        }
+      ],
+      "excludeCollectionPrefixes": [
+        "Street & Neighbors",
+        "Landscape & Objects",
+        "BY \u00b7 ",
+        "x49 ",
+        "x56 \u00b7 ",
+        "Rear Yard & Structure",
+        "1F Furniture",
+        "2F Furniture",
+        "1F Appliances & Equipment",
+        "1F Cabinets & Millwork",
+        "2F Cabinets & Millwork",
+        "Millwork \u00b7 ",
+        "Cabinets \u00b7 ",
+        "Furniture \u00b7 ",
+        "Ceiling \u00b7 ",
+        "Closet \u00b7 ",
+        "Fixtures \u00b7 ",
+        "1F Misc Objects",
+        "2F Misc Objects",
+        "1F Misc Parts",
+        "2F Misc Parts",
+        "1F Plumbing Fixtures",
+        "2F Plumbing Fixtures",
+        "1F Plants & Planters",
+        "2F Plants & Planters",
+        "1F Lighting",
+        "2F Lighting",
+        "Interior Lights",
+        "RCP Fixtures",
+        "RCP Lights",
+        "Placeholders \u00b7 ",
+        "LG WashTower",
+        "Wyrmwood",
+        "BY2 \u00b7 ",
+        "BACKYARD_PHOTO_REBUILD",
+        "ARCHIVE \u00b7 ",
+        "Quarantine \u00b7 ",
+        "2F Closet Clearance Envelopes",
+        "Laundry Lighting \u00b7 ",
+        "Lighting \u00b7 ",
+        "Retired Room Aerials",
+        "Site Coping"
+      ],
+      "excludeSourcePrefixes": [
+        "Furniture ",
+        "Obj chair",
+        "Obj table",
+        "Obj ottoman",
+        "Obj A6"
+      ],
+      "excludeSourceNames": [
+        "Wall W0.007",
+        "Wall W1.022",
+        "Wall W3",
+        "Wall W3.001",
+        "Wall W3.019",
+        "Wall W3.020",
+        "Wall W3.021",
+        "Wall W3.022",
+        "Wall W3.023",
+        "Wall W3.024",
+        "Wall W3.025",
+        "Wall W3.026",
+        "Wall W3.032",
+        "Wall W4.006",
+        "Wall W4.007",
+        "Wall W4.008",
+        "Wall W5.009",
+        "Wall W5.010",
+        "Wall W6.005",
+        "Wall W6.007",
+        "Wall W7.010",
+        "Wall W7.011",
+        "Wall W8.016",
+        "Wall W9.010",
+        "Wall exterior wall.029",
+        "Wall exterior wall.030",
+        "Wall exterior wall.031",
+        "Wall exterior wall.032",
+        "Wall exterior wall.033",
+        "Wall exterior wall.034",
+        "Wall exterior wall.035",
+        "Wall exterior wall.036"
+      ],
+      "includeSourceNames": [
+        "Light \u00b7 RCP SconceExt 1F 01",
+        "Light \u00b7 RCP SconceExt 1F 02"
+      ],
+      "applyExclusionsToLights": true,
+      "asset": "elevation-west-a539bdf70422.glb",
+      "assetHash": "a539bdf70422c9d272330633e033a78375171aa64e95fe4efe08e893558250a4",
+      "assetBytes": 12474588,
+      "objectCount": 623,
+      "triangles": 80720,
+      "cameras": [
+        {
+          "id": "west-elevation",
+          "label": "West elevation",
+          "position": [
+            -24.891399,
+            3.7465,
+            -0.002
+          ],
+          "target": [
+            -14.2524,
+            3.7465,
+            -0.002
+          ],
+          "fov": 60.0,
+          "sourceCamera": "Web presentation view"
+        }
+      ],
+      "lights": [
+        {
+          "id": "elevation-west-3a37ce5c6871b166",
+          "group": "elevation-west:ceiling",
+          "type": "point",
+          "position": [
+            -4.113098,
+            4.084014,
+            9.276947
+          ],
+          "color": "#fff1db",
+          "intensity": 35,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        }
+      ],
+      "sourcePaint": "#d8ceb9",
+      "finishDefaults": {
+        "walls": "#d8ceb9",
+        "ceiling": "#d8ceb9"
+      },
+      "materials": [
+        {
+          "id": "mat-ef11d59158e2",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "elevation-west",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2e4b53c18d6d",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-f08cf042cc5b",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-west",
+          "role": "walls",
+          "color": "#d8ceb9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-a0aaea622ea9",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "elevation-west",
+          "role": "walls",
+          "color": "#9cbe9d",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-deb75ef1e67f",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-3a509168d3a0",
+          "name": "05 | Wallpaper",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#4c4e55",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-cda96e1573c5",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "elevation-west",
+          "role": "walls",
+          "color": "#67839d",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-2f2919d308d0",
+          "name": "09 | Color: Blue Cobalt",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#272f39",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1124b4d18299",
+          "name": "04 | B Running Bond WHITE",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#939492",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f9cbb641983c",
+          "name": "09 | Color: Tan",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a018170334e3",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-cf8b9da60335",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-913d04212d6d",
+          "name": "60 | Generic - Walls Exterior",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#f3f1ef",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7c177eb3965d",
+          "name": "07 | Siding: 8\" Horiz. White",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#acafaf",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3f4490e48713",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-bfd932ff9d85",
+          "name": "03 | Concrete: Light",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#ded9d0",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b2775686e2a5",
+          "name": "04 | Stonework: River Rock Beige",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#c7b696",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b786a01aea40",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-1f011a2f54d1",
+          "name": "Rug \u00b7 Natural Woven",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#969696",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-0ba36ab5a49b",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d6f72043a8ce",
+          "name": "04 | Block: CMU-16\"x8\"",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#b5b2ae",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-934ba9c0fd51",
+          "name": "32 | Landscape: Leaves, Tree*",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#274f27",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0351bb10eff3",
+          "name": "Floor \u00b7 Garage Concrete",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#a2a2a0",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9c9d86d0bd2f",
+          "name": "Floor \u00b7 White Marble 18in (atrium)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-4b4c65a24b11",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-08d4bbc1ee42",
+          "name": "Floor \u00b7 Black Marble Border",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4e37c37d68dd",
+          "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-ca0e1ae85db0",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-a189ea67d7d2",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d6ba89b1dbe9",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7f8715611d5e",
+          "name": "04 | B Running Bond WHITE vertical",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#939492",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0031ac117599",
+          "name": "Garage \u00b7 Charcoal Door",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#2f2f30",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-daf0256fe095",
+          "name": "Garage \u00b7 Dark Glass",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#27292c",
+          "roughness": 0.05000000074505806,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-77645722db52",
+          "name": "Garage \u00b7 Iron Scroll Insert",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#191919",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "source UV opacity mask preserved"
+        },
+        {
+          "id": "mat-51b0d9e38b3e",
+          "name": "Garage \u00b7 Seam",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#1d1d1e",
+          "roughness": 0.6000000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a2f967cea761",
+          "name": "Garage \u00b7 Iron Hardware",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#1d1d1d",
+          "roughness": 0.5,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-80316dc2df4e",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-761fbfcf2332",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "elevation-west",
+          "role": "ceiling",
+          "color": "#d8ceb9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-2d4476fe9bb9",
+          "name": "09 | Glass-Blue/Ice",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#f8fbfa",
+          "roughness": 0.029999999329447746,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-70872b427897",
+          "name": "Stone \u00b7 Sao Paolo (Green Bath)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#939e98",
+          "roughness": 0.17000000178813934,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-9ec12b1988c7",
+          "name": "Concrete \u00b7 Broom Finish (deck)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#b4b1ab",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-ee34a6c7bed4",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-4f3283c1346f",
+          "name": "Tile \u00b7 Midori Green 2.5x10 (Green Bath shower walls)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#50645a",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-25ecb0713acf",
+          "name": "Tile \u00b7 Penny Mosaic Sand Dollar",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#d8d1c2",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-d1e6f51ce91c",
+          "name": "Tile \u00b7 Hex 10in Shoji White",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#f0eee9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-12d0d507f6a2",
+          "name": "Tile \u00b7 Misty Blue 2.5x10 (Blue Bath shower walls)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#8ea3a6",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+        },
+        {
+          "id": "mat-0eab179c7ea5",
+          "name": "07 | Roof: Asphalt Shingle, Slate",
+          "roomId": "elevation-west",
+          "role": "ceiling",
+          "color": "#555555",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8abbf1de91da",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "elevation-west",
+          "role": "ceiling",
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a79948880630",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "elevation-west",
+          "role": "ceiling",
+          "color": "#cec5b2",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-d220e02bfa7f",
+          "name": "07 | Roof: 16\" Standing Seam*",
+          "roomId": "elevation-west",
+          "role": "ceiling",
+          "color": "#45423f",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7d2ed2a65448",
+          "name": "09 | Color: Tan",
+          "roomId": "elevation-west",
+          "role": "ceiling",
+          "color": "#9b7450",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-be9a1edf872a",
+          "name": "Concrete \u00b7 Broom Finish (deck)",
+          "roomId": "elevation-west",
+          "role": "ceiling",
+          "color": "#adaaa4",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake"
+        },
+        {
+          "id": "mat-5e80f290e8df",
+          "name": "07 | Insulation: Fiberglass",
+          "roomId": "elevation-west",
+          "role": "ceiling",
+          "color": "#dadad7",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-3162965bd2a8",
+          "name": "06 | Wood: Pine-Clear Vert",
+          "roomId": "elevation-west",
+          "role": "ceiling",
+          "color": "#edbb85",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-621c184d3f7d",
+          "name": "07 | Roof: 16\" Standing Seam*",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#45423f",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9b14ae8ed392",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-030f8a71ec14",
+          "name": "05 | Metal: Chrome*",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#bfbfbf",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4ef63ea676dc",
+          "name": "Concrete \u00b7 Grey Painted (exterior stair)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#8c8c8e",
+          "roughness": 0.7799999713897705,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-351853ced22d",
+          "name": "Railing \u00b7 Black Iron",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#272729",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-73ef9a1b3085",
+          "name": "Railing \u00b7 Arabesque Panel",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#1d1d1d",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "source UV opacity mask preserved"
+        },
+        {
+          "id": "mat-ae08d1599e4f",
+          "name": "09 | Color: 06 Gray-Medium Dark",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#6c6c6c",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e3646cc0516b",
+          "name": "07 | Stucco: White*",
+          "roomId": "elevation-west",
+          "role": "ceiling",
+          "color": "#d4d3d0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-23ee56175b5a",
+          "name": "09 | Paint-01 Ceiling White",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-918974769e26",
+          "name": "05 | Nickel Satin",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#a8a49e",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-69f5ad0a8488",
+          "name": "32 | Landscape: Earth*",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#94684b",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c9f5107e7e6c",
+          "name": "32 | Landscape: Grass 3D*",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#275827",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c169a7f54316",
+          "name": "Paver \u00b7 Grey Field",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#a09784",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-8335b806d370",
+          "name": "Paver \u00b7 Buff Soldier",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#c4b599",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-d773dab9c1ef",
+          "name": "Fixture \u00b7 Lantern bulb (provisional) \u00b7 W",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8934c236469e",
+          "name": "Fixture \u00b7 Lantern stem (non-emitting, provisional)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#3f3f3f",
+          "roughness": 0.4000000059604645,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         }
       ]
     }
