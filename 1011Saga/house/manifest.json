@@ -108,9 +108,9 @@
       "cutawayMillworkRooms": [
         "Game Room"
       ],
-      "asset": "game-room-06004e900dc8.glb",
-      "assetHash": "06004e900dc83d8e841f0bbbdf89ff440e281bd4827cb448aaa0a9a3154927d9",
-      "assetBytes": 8919884,
+      "asset": "game-room-2f7f606e872e.glb",
+      "assetHash": "2f7f606e872e9bfe9d2c4a1e985517a1d46d612f7be0f9969d68d1a3f27da632",
+      "assetBytes": 8919900,
       "objectCount": 208,
       "triangles": 43802,
       "cameras": [
@@ -1027,9 +1027,9 @@
         "Obj 84\" BASE CAB.004",
         "Obj M06"
       ],
-      "asset": "family-room-9a89fe000644.glb",
-      "assetHash": "9a89fe0006441e89858932c461c180a01037884e7108bcb8ecf3898999427d1a",
-      "assetBytes": 7439996,
+      "asset": "family-room-015419d30636.glb",
+      "assetHash": "015419d30636a94d4b8958ecdaa885b4c4f69ae6ca1cdf3924ec2ea6710a1361",
+      "assetBytes": 7439972,
       "objectCount": 229,
       "triangles": 40083,
       "cameras": [
@@ -1780,9 +1780,9 @@
         "PVanity",
         "PBath"
       ],
-      "asset": "dining-room-52e9f5fb88ce.glb",
-      "assetHash": "52e9f5fb88ce238c8ff7db1c2db98de9876c065b1c007ca22511284a33ea9913",
-      "assetBytes": 9570104,
+      "asset": "dining-room-ba2880c80ede.glb",
+      "assetHash": "ba2880c80edec2b52e87622cdf8ecbf4751086ae34aacad4d4349c91ea1fced1",
+      "assetBytes": 9570124,
       "objectCount": 240,
       "triangles": 89976,
       "cameras": [
@@ -2758,9 +2758,9 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-6978d464eddd.glb",
-      "assetHash": "6978d464eddde621ffb7c6fbc72d84d6a34865f82e543a1a79324ce89f55fc08",
-      "assetBytes": 20786080,
+      "asset": "kitchen-ca300d7bc917.glb",
+      "assetHash": "ca300d7bc917cc89911884e1056a9898bbca0ba88faace1be2d8fa3c5cf3d036",
+      "assetBytes": 20786044,
       "objectCount": 472,
       "triangles": 298499,
       "cameras": [
@@ -3744,9 +3744,9 @@
         "Entry",
         "Upper Hall & Bridge"
       ],
-      "asset": "entry-753ca6e085bd.glb",
-      "assetHash": "753ca6e085bd2e6d013ff1949fcc63cab14a3cf81f413b924f4334fa753aa1ec",
-      "assetBytes": 10239940,
+      "asset": "entry-af176ebadb07.glb",
+      "assetHash": "af176ebadb07931b4ff123a3332816cd7319002d66f7844c106d8fc464233e91",
+      "assetBytes": 10239916,
       "objectCount": 533,
       "triangles": 87442,
       "cameras": [
@@ -4651,9 +4651,9 @@
       "cutawayMillworkRooms": [
         "Powder"
       ],
-      "asset": "powder-room-19486b447ae7.glb",
-      "assetHash": "19486b447ae72926d81427768ae13c9a523b601cd52b035b0ec98d7478cc0d26",
-      "assetBytes": 3327116,
+      "asset": "powder-room-54c357e46644.glb",
+      "assetHash": "54c357e466447bc393d5ccf03bedbe579c3a4aab451ebb331bfb7a4ffd5ab688",
+      "assetBytes": 3327096,
       "objectCount": 144,
       "triangles": 17459,
       "cameras": [
@@ -5020,9 +5020,9 @@
         "Slab concrete slab.058",
         "Slab C01.003"
       ],
-      "asset": "pantry-756212b9710d.glb",
-      "assetHash": "756212b9710df7cd97ce810a392a63244079cee01e29a2f9a28d50b5f0ec5133",
-      "assetBytes": 3459976,
+      "asset": "pantry-b3641b13cb0c.glb",
+      "assetHash": "b3641b13cb0caeac46d8e2b3334f03eca8272a14b76d4c48a15a4031e6678286",
+      "assetBytes": 3459952,
       "objectCount": 111,
       "triangles": 14726,
       "cameras": [
@@ -5375,6 +5375,32 @@
         {
           "bounds": [
             [
+              9.04,
+              10.47
+            ],
+            [
+              3.05,
+              3.68
+            ],
+            [
+              0,
+              3
+            ]
+          ],
+          "roles": [
+            "wall",
+            "trim",
+            "object",
+            "cabinet"
+          ],
+          "side": [
+            "zMin"
+          ],
+          "reason": "The north serving counter and display run are one assembly. The band has to reach the cabinet fronts at y 3.055 and past the east region's x 10.4 edge, or the drawer fronts, face frame, pulls and east end panel leave with a different wall than the carcass they sit on."
+        },
+        {
+          "bounds": [
+            [
               10.4,
               10.99
             ],
@@ -5395,31 +5421,6 @@
           ],
           "side": [
             "xMax"
-          ]
-        },
-        {
-          "bounds": [
-            [
-              9.04,
-              10.41
-            ],
-            [
-              3.04,
-              3.68
-            ],
-            [
-              0,
-              3
-            ]
-          ],
-          "roles": [
-            "wall",
-            "trim",
-            "object",
-            "cabinet"
-          ],
-          "side": [
-            "zMin"
           ]
         },
         {
@@ -5459,9 +5460,9 @@
       "cutawayKeepPrefixes": [
         "Fascia Fascia."
       ],
-      "asset": "wine-cellar-a691b09cccf6.glb",
-      "assetHash": "a691b09cccf62ff4f11f634c1a252e0f9087b919ac9ede003b849ff21f03d347",
-      "assetBytes": 8798960,
+      "asset": "wine-cellar-7b6159ddff90.glb",
+      "assetHash": "7b6159ddff901855d646ac9fad62b0e1f3d01b430dc1dba2351f5db4ef6f0eb6",
+      "assetBytes": 8799000,
       "objectCount": 87,
       "triangles": 71817,
       "cameras": [
@@ -6022,9 +6023,9 @@
           "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
         }
       ],
-      "asset": "loli-bedroom-f8f29ab3c156.glb",
-      "assetHash": "f8f29ab3c1562cf3b1f6b652b321d8042502ad8f7bf41938c08a6b900a22d033",
-      "assetBytes": 6137056,
+      "asset": "loli-bedroom-859df771120a.glb",
+      "assetHash": "859df771120a2048fd2d663959b428bb0ac76d71464bc38ab4bdd78ea1feb55e",
+      "assetBytes": 6137032,
       "objectCount": 157,
       "triangles": 57171,
       "cameras": [
@@ -6636,9 +6637,9 @@
       "cutawayMillworkRooms": [
         "Loli Bathroom"
       ],
-      "asset": "loli-bathroom-70f12b0c2e3c.glb",
-      "assetHash": "70f12b0c2e3c501a7daeb90fc17ef42fcc4a19a40e3f66e8858081f14767c5a9",
-      "assetBytes": 4173208,
+      "asset": "loli-bathroom-7149993c08f7.glb",
+      "assetHash": "7149993c08f74d77934c2b0c9e48a9ea2751e2acca7c791fdaa6e9cbd6db24a7",
+      "assetBytes": 4173188,
       "objectCount": 116,
       "triangles": 21529,
       "cameras": [
@@ -7183,9 +7184,9 @@
       "excludeSourceNames": [
         "Slab concrete slab.135"
       ],
-      "asset": "laundry-b58f9706a4c1.glb",
-      "assetHash": "b58f9706a4c11f0a3dad2dfa4001a3411685565c90fbfc8c7eaa1add04273233",
-      "assetBytes": 1817076,
+      "asset": "laundry-be97ababd588.glb",
+      "assetHash": "be97ababd588af645fee71d1bfc8c429d75b36465b56b90ae29150a3fe3d59f6",
+      "assetBytes": 1817084,
       "objectCount": 39,
       "triangles": 4918,
       "cameras": [
@@ -7647,9 +7648,9 @@
       "excludeSourceNames": [
         "Obj Object-35.013"
       ],
-      "asset": "primary-bedroom-85a0b8758290.glb",
-      "assetHash": "85a0b875829057d9119a9edb305116009e72fb5c053eb61e673cb1aadd008bad",
-      "assetBytes": 5276028,
+      "asset": "primary-bedroom-78bfa5e80498.glb",
+      "assetHash": "78bfa5e804982f2524532e6ab8d40d6140558bf6c90b39c690d11855ef73e439",
+      "assetBytes": 5276004,
       "objectCount": 151,
       "triangles": 25716,
       "cameras": [
@@ -8252,9 +8253,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "primary-bath-4c32a03267fc.glb",
-      "assetHash": "4c32a03267fc2de6607e4bcc7712add84748d85e99092efe3351aa941e9f1571",
-      "assetBytes": 4695404,
+      "asset": "primary-bath-a80f3d1869a7.glb",
+      "assetHash": "a80f3d1869a7ce56c3b335e5263f7fb73b4b235796db44deb7edda719ca87c56",
+      "assetBytes": 4695380,
       "objectCount": 207,
       "triangles": 27853,
       "cameras": [
@@ -8867,9 +8868,9 @@
         "Slab concrete slab.109",
         "Slab concrete slab.135"
       ],
-      "asset": "green-bedroom-ad84193e8d52.glb",
-      "assetHash": "ad84193e8d52c9d2e7cfd53c744f593e199d1f9d6037c0cf7a88de92d35c1d2e",
-      "assetBytes": 5046380,
+      "asset": "green-bedroom-640dba06e64c.glb",
+      "assetHash": "640dba06e64c41d6eb8c67d530c916a556658219583f6a3749a861cb5431d8fc",
+      "assetBytes": 5046356,
       "objectCount": 125,
       "triangles": 23250,
       "cameras": [
@@ -9375,9 +9376,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "green-bath-b49d0ac45077.glb",
-      "assetHash": "b49d0ac45077ecd031a6a5026e5e48797b51094a7346c78fcf1d48cb40d00986",
-      "assetBytes": 3351996,
+      "asset": "green-bath-e0dd79edc3ea.glb",
+      "assetHash": "e0dd79edc3ea7234c99028557af9b6ca16c9deb437f9e1a422ad4bdde5c7feb5",
+      "assetBytes": 3351980,
       "objectCount": 97,
       "triangles": 21446,
       "cameras": [
@@ -9826,9 +9827,9 @@
       "cutawayHiddenPrefixes": [
         "Slab Roof."
       ],
-      "asset": "blue-bedroom-c4415c3ecda5.glb",
-      "assetHash": "c4415c3ecda523ee9c6553b7aaf2c435c77b3dfd28d54974cf1a3b0f0c05fdee",
-      "assetBytes": 4605920,
+      "asset": "blue-bedroom-fdbca96d79b3.glb",
+      "assetHash": "fdbca96d79b33fd471ab7f6905841d10470503c60d2788b62734a5725e7fe904",
+      "assetBytes": 4605896,
       "objectCount": 100,
       "triangles": 17135,
       "cameras": [
@@ -10344,9 +10345,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "blue-bath-769226db25d2.glb",
-      "assetHash": "769226db25d25181668717723e762d3f6d0122a655d481b40746dc9a6c1957d2",
-      "assetBytes": 3796276,
+      "asset": "blue-bath-0146360bb9b0.glb",
+      "assetHash": "0146360bb9b0f34704615e269df44d9857ffe6f2da4f9dab2d6fda93c53f6a86",
+      "assetBytes": 3796292,
       "objectCount": 127,
       "triangles": 22271,
       "cameras": [
@@ -10816,9 +10817,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-west-183380e60e6d.glb",
-      "assetHash": "183380e60e6de4e4a080f05e479d994d6376496d88014cdd7b280514d7041565",
-      "assetBytes": 4122196,
+      "asset": "office-west-31c7fe3e907b.glb",
+      "assetHash": "31c7fe3e907bcbe0ff8c2017fcd77e11888766930e33c7340029c34054fed619",
+      "assetBytes": 4122172,
       "objectCount": 151,
       "triangles": 20152,
       "cameras": [
@@ -11214,9 +11215,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-east-44260af913e0.glb",
-      "assetHash": "44260af913e05a99d51abce456c358d7a7485bae9be9402db6f61b17c39ace9a",
-      "assetBytes": 4125380,
+      "asset": "office-east-147a5f1d30a1.glb",
+      "assetHash": "147a5f1d30a113da380363bfbce8f0064d4a570212a6d822c0308d0851b8f74a",
+      "assetBytes": 4125356,
       "objectCount": 131,
       "triangles": 21872,
       "cameras": [
@@ -11576,9 +11577,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-hall-0038cdc818d4.glb",
-      "assetHash": "0038cdc818d4e574aa66e7cc0e701a2c78d85b12e7337597aa1dc45c0268d969",
-      "assetBytes": 3712284,
+      "asset": "office-hall-879047b0f7b5.glb",
+      "assetHash": "879047b0f7b5e7b6b8e66622a003f4667b1d82572c61aeaa148e8687081dd482",
+      "assetBytes": 3712260,
       "objectCount": 137,
       "triangles": 15524,
       "cameras": [
@@ -11936,9 +11937,9 @@
       "cutawayMillworkRooms": [
         "Loli Closet"
       ],
-      "asset": "loli-closet-758352e6825b.glb",
-      "assetHash": "758352e6825bfc0f85e2be44c6cf4d79bfc17e3b1b80bb3d7069e96695b3791a",
-      "assetBytes": 1944160,
+      "asset": "loli-closet-a352c781c2ee.glb",
+      "assetHash": "a352c781c2ee3e609576df044ee2451064e29d396f7baf7740dd24a8b90ae88a",
+      "assetBytes": 1944128,
       "objectCount": 102,
       "triangles": 5742,
       "cameras": [
@@ -12292,9 +12293,9 @@
       "cutawayMillworkRooms": [
         "Primary Loli Closet"
       ],
-      "asset": "primary-loli-closet-c104d1146548.glb",
-      "assetHash": "c104d1146548f3c46dab663b685d73dc6985287bd915019f1c3d2941078ef003",
-      "assetBytes": 3204488,
+      "asset": "primary-loli-closet-6379cb48edcb.glb",
+      "assetHash": "6379cb48edcb674cfcdff5ac49ddb5ee660fdc04432b5cf610adbe2f07267afa",
+      "assetBytes": 3204452,
       "objectCount": 86,
       "triangles": 10878,
       "cameras": [
@@ -12729,9 +12730,9 @@
       "cutawayMillworkRooms": [
         "Primary Green Closet"
       ],
-      "asset": "primary-green-closet-1aa0176f0907.glb",
-      "assetHash": "1aa0176f09072b5e0b34f965c943f136d0970bb13f28cc976cb644e4ac41bc64",
-      "assetBytes": 3169200,
+      "asset": "primary-green-closet-a1849cd7f102.glb",
+      "assetHash": "a1849cd7f102e0f69de78fd0f7952f98d6b535792946ee849bf7a1b8a5a53a7b",
+      "assetBytes": 3169164,
       "objectCount": 74,
       "triangles": 10329,
       "cameras": [
@@ -13130,9 +13131,9 @@
       "cutawayMillworkRooms": [
         "Green Closet"
       ],
-      "asset": "upstairs-closet-west-e18778ec7951.glb",
-      "assetHash": "e18778ec79519f52fceb2698e48861f377bc8f8ab96a1e42be3d3a29cd86851e",
-      "assetBytes": 2135540,
+      "asset": "upstairs-closet-west-4096611cd9a8.glb",
+      "assetHash": "4096611cd9a8883147e1a09a45af164614d11c9ee47b882334b3326c75834df3",
+      "assetBytes": 2135508,
       "objectCount": 58,
       "triangles": 8616,
       "cameras": [
@@ -13762,9 +13763,9 @@
       "cutawayMillworkRooms": [
         "Dressing 3"
       ],
-      "asset": "upstairs-closet-east-4a3f5b60e0d4.glb",
-      "assetHash": "4a3f5b60e0d4275d3ea2bcef0424f34d3f2d10865d738ff06ffe59946c8264ca",
-      "assetBytes": 2010208,
+      "asset": "upstairs-closet-east-710af6a18780.glb",
+      "assetHash": "710af6a18780280a9fbcf08e4cfb551addf790c32eea100405d9b1f49738795e",
+      "assetBytes": 2010176,
       "objectCount": 66,
       "triangles": 7154,
       "cameras": [
@@ -14093,9 +14094,9 @@
         "Millwork"
       ],
       "architectureAttachmentDepth": 1.2,
-      "asset": "rear-deck-42ff84d2ba8e.glb",
-      "assetHash": "42ff84d2ba8e980f2be876c7e4db94c12c106e242095ab7f977b311d35cf6284",
-      "assetBytes": 1721900,
+      "asset": "rear-deck-885dcbd5c0fa.glb",
+      "assetHash": "885dcbd5c0fa96eba2f6a889f38eba002e5a276209c67d87042baa6b98ca76e0",
+      "assetBytes": 1721896,
       "objectCount": 121,
       "triangles": 6145,
       "cameras": [
@@ -14529,9 +14530,9 @@
         }
       ],
       "menuDescription": "Covered balcony above the offices",
-      "asset": "front-balcony-0d7ba385d7c4.glb",
-      "assetHash": "0d7ba385d7c406d8e40aa8a049505c4b53421f5c27a5832b1d66eed87306df70",
-      "assetBytes": 3830320,
+      "asset": "front-balcony-6f23f7ef3035.glb",
+      "assetHash": "6f23f7ef303570d69a244d70b6ef7ec6f53c851527098570552e36a5372a4038",
+      "assetBytes": 3830292,
       "objectCount": 159,
       "triangles": 15500,
       "cameras": [
@@ -14970,9 +14971,9 @@
         "Obj 34"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-front-33a8fe2435b5.glb",
-      "assetHash": "33a8fe2435b57584433bf231298d753300853aa82ca4abab1f38a34efdfaa1c2",
-      "assetBytes": 15286840,
+      "asset": "elevation-front-e1f60e7cf597.glb",
+      "assetHash": "e1f60e7cf5970f2f33423d7458a50947782966d2c61b823d33972e82b03d13ce",
+      "assetBytes": 15286796,
       "objectCount": 915,
       "triangles": 121292,
       "cameras": [
@@ -15850,9 +15851,9 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-east-0481d6ebe207.glb",
-      "assetHash": "0481d6ebe20738a52282f3eb072aa0de176a827c32d8c99f823d9112deb83a88",
-      "assetBytes": 19673144,
+      "asset": "elevation-east-f951057dcd38.glb",
+      "assetHash": "f951057dcd3864b9a0eac45c84b9a00d1c36f55bf2cbe6a03e96adfe0f234543",
+      "assetBytes": 19673092,
       "objectCount": 1169,
       "triangles": 177902,
       "cameras": [
@@ -16830,9 +16831,9 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-north-1b10cf141493.glb",
-      "assetHash": "1b10cf141493f4dbdccfc724e005b9964836cd1a65009ec4f6100880b5d0d504",
-      "assetBytes": 22501368,
+      "asset": "elevation-north-28660456051b.glb",
+      "assetHash": "28660456051bad412e9c53f9f8015b3f90d3749f134eb12764fb2967f7c739ed",
+      "assetBytes": 22501292,
       "objectCount": 1284,
       "triangles": 204168,
       "cameras": [
@@ -17771,9 +17772,9 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-west-1635263eb42b.glb",
-      "assetHash": "1635263eb42b4ad4bccbd453e1c9a01165b567205603fccd55d13f0f64f7d0b4",
-      "assetBytes": 12708396,
+      "asset": "elevation-west-8bd65dd94660.glb",
+      "assetHash": "8bd65dd946603487270f95a299238fb8a4f52ee98c1a880e7b773fa053d88e9d",
+      "assetBytes": 12708360,
       "objectCount": 660,
       "triangles": 83577,
       "cameras": [
