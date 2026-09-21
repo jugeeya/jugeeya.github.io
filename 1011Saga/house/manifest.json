@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "a06917c962b0",
+  "sceneVersion": "23fb00811a14",
   "source": {
     "file": "Web.blend",
-    "sha256": "a06917c962b0692e272c39e1ffc4612175a071852900b496845c7ecfd9ae757d",
+    "sha256": "23fb00811a143b0e01886345b00efe29100c26670ad55828315635b02c6888cd",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -2758,11 +2758,11 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-6978d464eddd.glb",
-      "assetHash": "6978d464eddde621ffb7c6fbc72d84d6a34865f82e543a1a79324ce89f55fc08",
-      "assetBytes": 20786080,
-      "objectCount": 472,
-      "triangles": 298499,
+      "asset": "kitchen-5dae2456a02c.glb",
+      "assetHash": "5dae2456a02c4564ba5540588200a000c55b67992ccdcc41f1dc498e07c26a3e",
+      "assetBytes": 20780992,
+      "objectCount": 471,
+      "triangles": 298445,
       "cameras": [
         {
           "id": "room-view",
@@ -3614,7 +3614,7 @@
           "side": "xMin"
         },
         {
-          "prefix": "Wall W1.018",
+          "prefix": "x168 \u00b7 Enclosure \u00b7 Entry B",
           "side": "xMin"
         },
         {
@@ -3744,11 +3744,11 @@
         "Entry",
         "Upper Hall & Bridge"
       ],
-      "asset": "entry-753ca6e085bd.glb",
-      "assetHash": "753ca6e085bd2e6d013ff1949fcc63cab14a3cf81f413b924f4334fa753aa1ec",
-      "assetBytes": 10239940,
+      "asset": "entry-a95805270ef8.glb",
+      "assetHash": "a95805270ef87df391c60cc3c198b598bd766384c10c2581ad10b30462ab3f7b",
+      "assetBytes": 10462584,
       "objectCount": 533,
-      "triangles": 87442,
+      "triangles": 91006,
       "cameras": [
         {
           "id": "room-view",
@@ -4651,11 +4651,11 @@
       "cutawayMillworkRooms": [
         "Powder"
       ],
-      "asset": "powder-room-19486b447ae7.glb",
-      "assetHash": "19486b447ae72926d81427768ae13c9a523b601cd52b035b0ec98d7478cc0d26",
-      "assetBytes": 3327116,
-      "objectCount": 144,
-      "triangles": 17459,
+      "asset": "powder-room-da0b1aac192b.glb",
+      "assetHash": "da0b1aac192b8d3ac355754624a2da65e9a99342d7014136012bbcec36c3a37e",
+      "assetBytes": 3319408,
+      "objectCount": 143,
+      "triangles": 17376,
       "cameras": [
         {
           "id": "room-view",
@@ -7648,11 +7648,11 @@
       "excludeSourceNames": [
         "Obj Object-35.013"
       ],
-      "asset": "primary-bedroom-85a0b8758290.glb",
-      "assetHash": "85a0b875829057d9119a9edb305116009e72fb5c053eb61e673cb1aadd008bad",
-      "assetBytes": 5276028,
-      "objectCount": 151,
-      "triangles": 25716,
+      "asset": "primary-bedroom-8f8550567492.glb",
+      "assetHash": "8f8550567492195c653a00b02e45455bb54390b52ec541df8341fbfb729770e9",
+      "assetBytes": 5225028,
+      "objectCount": 178,
+      "triangles": 23392,
       "cameras": [
         {
           "id": "room-view",
@@ -7982,43 +7982,13 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-98027c69b87f",
-          "name": "09 | Upholstery: Fabric, Tan*",
+          "id": "mat-6821e6fc38b1",
+          "name": "05 | Metal: Stainless Steel*",
           "roomId": "primary-bedroom",
           "role": null,
-          "color": "#d8cfc7",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-33707a931813",
-          "name": "06 | Wood: Pine-Knotty Horiz*",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#edd9b8",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-4825adfdad65",
-          "name": "06 | Wood: Pine-Clear Horiz",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#edbb85",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-991b858d94f5",
-          "name": "04 | Stone: Marble White*",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#d3d4d1",
-          "roughness": 0.15000000596046448,
-          "metallic": 0.0,
+          "color": "#d7d3d9",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
           "translation": "constant source PBR values"
         },
         {
@@ -8029,16 +7999,6 @@
           "color": "#f3f3f3",
           "roughness": 0.5,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-6821e6fc38b1",
-          "name": "05 | Metal: Stainless Steel*",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#d7d3d9",
-          "roughness": 0.30000001192092896,
-          "metallic": 1.0,
           "translation": "constant source PBR values"
         },
         {
@@ -8080,6 +8040,66 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-3440c2ba3438",
+          "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#242528",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1f48d939140b",
+          "name": "Wood \u00b7 Scarlett Weathered Wheat (provisional)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#c9a57f",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-cffa74782e3f",
+          "name": "Upholstery \u00b7 Scarlett Basketweave Slub Ivory (provisional)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#e9e5d8",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-84aa41b55eca",
+          "name": "Fabric \u00b7 mattress ticking - NOT a product colour (provisional)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#eaeae7",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-61f5b09dedbd",
+          "name": "Stone \u00b7 Scarlett nightstand marble (provisional)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#e8e7e3",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-35a56de471b1",
+          "name": "Fabric \u00b7 Jardin Toile GREEN \u2014 discontinued colourway, PURCHASED; pattern INDEPENDENTLY AUTHORED at the measured colour and density (provisional)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#cdc7b7",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
         }
       ]
     },
@@ -9827,8 +9847,8 @@
       "cutawayHiddenPrefixes": [
         "Slab Roof."
       ],
-      "asset": "blue-bedroom-c4415c3ecda5.glb",
-      "assetHash": "c4415c3ecda523ee9c6553b7aaf2c435c77b3dfd28d54974cf1a3b0f0c05fdee",
+      "asset": "blue-bedroom-9109a6785c33.glb",
+      "assetHash": "9109a6785c330449005177096e59650595fc85d1de3e5bdc24a6e3d2d8eb1193",
       "assetBytes": 4605920,
       "objectCount": 100,
       "triangles": 17135,
@@ -14971,11 +14991,11 @@
         "Obj 34"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-front-33a8fe2435b5.glb",
-      "assetHash": "33a8fe2435b57584433bf231298d753300853aa82ca4abab1f38a34efdfaa1c2",
-      "assetBytes": 15286840,
-      "objectCount": 915,
-      "triangles": 121292,
+      "asset": "elevation-front-2a60d292c5a7.glb",
+      "assetHash": "2a60d292c5a76bc895fc5478f3fdc0d9d7b809bf7f33cefee6c88d38666e7cd1",
+      "assetBytes": 15667260,
+      "objectCount": 930,
+      "triangles": 124440,
       "cameras": [
         {
           "id": "front-elevation",
@@ -15709,6 +15729,36 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c3dab2288612",
+          "name": "Wood \u00b7 Scarlett Weathered Wheat (provisional)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#c9a57f",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b11328c2fd34",
+          "name": "Fabric \u00b7 mattress ticking - NOT a product colour (provisional)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#eaeae7",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0ba4eb20d82b",
+          "name": "Fabric \u00b7 Jardin Toile GREEN \u2014 discontinued colourway, PURCHASED; pattern INDEPENDENTLY AUTHORED at the measured colour and density (provisional)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#cdc7b7",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
         }
       ]
     },
@@ -15851,11 +15901,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-east-0481d6ebe207.glb",
-      "assetHash": "0481d6ebe20738a52282f3eb072aa0de176a827c32d8c99f823d9112deb83a88",
-      "assetBytes": 19673144,
-      "objectCount": 1169,
-      "triangles": 177902,
+      "asset": "elevation-east-69efe30f4940.glb",
+      "assetHash": "69efe30f4940492cc439c77cf2d41f0e5bb9aea3da990c9c8bf34672c431124d",
+      "assetBytes": 20176680,
+      "objectCount": 1202,
+      "triangles": 182830,
       "cameras": [
         {
           "id": "east-elevation",
@@ -16689,6 +16739,66 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-72ce0100946b",
+          "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#242528",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-fa6c9eac0494",
+          "name": "Wood \u00b7 Scarlett Weathered Wheat (provisional)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#c9a57f",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b06a65f3eef0",
+          "name": "Upholstery \u00b7 Scarlett Basketweave Slub Ivory (provisional)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#e9e5d8",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7f44c07e962c",
+          "name": "Fabric \u00b7 mattress ticking - NOT a product colour (provisional)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#eaeae7",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-de59b58af762",
+          "name": "Stone \u00b7 Scarlett nightstand marble (provisional)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#e8e7e3",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-88bde44097fb",
+          "name": "Fabric \u00b7 Jardin Toile GREEN \u2014 discontinued colourway, PURCHASED; pattern INDEPENDENTLY AUTHORED at the measured colour and density (provisional)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#cdc7b7",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
         }
       ]
     },
@@ -16831,11 +16941,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-north-1b10cf141493.glb",
-      "assetHash": "1b10cf141493f4dbdccfc724e005b9964836cd1a65009ec4f6100880b5d0d504",
-      "assetBytes": 22501368,
-      "objectCount": 1284,
-      "triangles": 204168,
+      "asset": "elevation-north-ac7550bf7dc8.glb",
+      "assetHash": "ac7550bf7dc8724d52c91923d481cfbbcf0391d716c62a6c056954fc87db139d",
+      "assetBytes": 23004888,
+      "objectCount": 1317,
+      "triangles": 209096,
       "cameras": [
         {
           "id": "north-elevation",
@@ -17630,6 +17740,66 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-bc9b7ddd3c2a",
+          "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#242528",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3bfa8fb06a17",
+          "name": "Wood \u00b7 Scarlett Weathered Wheat (provisional)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#c9a57f",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b820bea4a18d",
+          "name": "Upholstery \u00b7 Scarlett Basketweave Slub Ivory (provisional)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#e9e5d8",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a059ea417407",
+          "name": "Fabric \u00b7 mattress ticking - NOT a product colour (provisional)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#eaeae7",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e579f9f0851c",
+          "name": "Stone \u00b7 Scarlett nightstand marble (provisional)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#e8e7e3",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9168d9273c6f",
+          "name": "Fabric \u00b7 Jardin Toile GREEN \u2014 discontinued colourway, PURCHASED; pattern INDEPENDENTLY AUTHORED at the measured colour and density (provisional)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#cdc7b7",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
         }
       ]
     },
@@ -17772,11 +17942,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-west-1635263eb42b.glb",
-      "assetHash": "1635263eb42b4ad4bccbd453e1c9a01165b567205603fccd55d13f0f64f7d0b4",
-      "assetBytes": 12708396,
+      "asset": "elevation-west-6c041ec9302f.glb",
+      "assetHash": "6c041ec9302fe26dbc330e5fb2f4d322364582b5b7f8569e7d04be445b7cb1da",
+      "assetBytes": 12776384,
       "objectCount": 660,
-      "triangles": 83577,
+      "triangles": 84671,
       "cameras": [
         {
           "id": "west-elevation",
