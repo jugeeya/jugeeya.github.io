@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "23fb00811a14",
+  "sceneVersion": "c9cdbd6e29d8",
   "source": {
     "file": "Web.blend",
-    "sha256": "23fb00811a143b0e01886345b00efe29100c26670ad55828315635b02c6888cd",
+    "sha256": "c9cdbd6e29d84f650d407a127517ff609a46736ef912b3db49a7548f1c2f8785",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -18,8 +18,8 @@
   },
   "colorManagement": {
     "view": "AgX",
-    "sourceLook": "AgX - Punchy",
-    "exposureStops": 0.20000000298023224
+    "sourceLook": "None",
+    "exposureStops": 0.0
   },
   "units": "metres",
   "coordinateTransform": {
@@ -108,9 +108,9 @@
       "cutawayMillworkRooms": [
         "Game Room"
       ],
-      "asset": "game-room-06004e900dc8.glb",
-      "assetHash": "06004e900dc83d8e841f0bbbdf89ff440e281bd4827cb448aaa0a9a3154927d9",
-      "assetBytes": 8919884,
+      "asset": "game-room-2f7f606e872e.glb",
+      "assetHash": "2f7f606e872e9bfe9d2c4a1e985517a1d46d612f7be0f9969d68d1a3f27da632",
+      "assetBytes": 8919900,
       "objectCount": 208,
       "triangles": 43802,
       "cameras": [
@@ -127,10 +127,10 @@
             1.46311,
             -6.32089
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Game Room \u00b7 overview"
         },
         {
@@ -146,10 +146,10 @@
             1.5,
             -6.03321
           ],
-          "fov": 74.36043214114798,
+          "fov": 71.04454491563716,
           "lensMm": 17.798351287841797,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Game Room \u00b7 fireplace"
         },
         {
@@ -165,10 +165,10 @@
             1.426686,
             -5.436235
           ],
-          "fov": 68.03869997965292,
+          "fov": 64.85510999154494,
           "lensMm": 20.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Game Room \u00b7 cabinet wall"
         },
         {
@@ -184,10 +184,10 @@
             2.866757,
             -5.215092
           ],
-          "fov": 87.91674664798006,
+          "fov": 84.45144537739843,
           "lensMm": 14.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Game Room \u00b7 ceiling"
         }
       ],
@@ -1027,9 +1027,9 @@
         "Obj 84\" BASE CAB.004",
         "Obj M06"
       ],
-      "asset": "family-room-9a89fe000644.glb",
-      "assetHash": "9a89fe0006441e89858932c461c180a01037884e7108bcb8ecf3898999427d1a",
-      "assetBytes": 7439996,
+      "asset": "family-room-015419d30636.glb",
+      "assetHash": "015419d30636a94d4b8958ecdaa885b4c4f69ae6ca1cdf3924ec2ea6710a1361",
+      "assetBytes": 7439972,
       "objectCount": 229,
       "triangles": 40083,
       "cameras": [
@@ -1046,10 +1046,10 @@
             1.4594,
             -1.611187
           ],
-          "fov": 73.73979529168804,
+          "fov": 70.43518593638542,
           "lensMm": 18.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Family Room \u00b7 view2"
         },
         {
@@ -1065,10 +1065,10 @@
             1.4594,
             -5.988813
           ],
-          "fov": 73.73979529168804,
+          "fov": 70.43518593638542,
           "lensMm": 18.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Family Room \u00b7 view3"
         },
         {
@@ -1084,10 +1084,10 @@
             1.736223,
             -4.51383
           ],
-          "fov": 58.71550708558255,
+          "fov": 55.79454206189526,
           "lensMm": 24.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Cam 18 Family Room to Garden Doors"
         }
       ],
@@ -1763,7 +1763,7 @@
       ],
       "boundaryStatus": "Presentation envelope follows the Dining Room perimeter, including the east window partition at x=-5.039 m; excludes the adjoining Powder Room. Not a site survey.",
       "defaultPaint": "#bac7ad",
-      "ceilingHeight": 3.0,
+      "ceilingHeight": 3,
       "menuDescription": "Dining & entertaining",
       "wallAttachments": [
         {
@@ -1780,9 +1780,9 @@
         "PVanity",
         "PBath"
       ],
-      "asset": "dining-room-52e9f5fb88ce.glb",
-      "assetHash": "52e9f5fb88ce238c8ff7db1c2db98de9876c065b1c007ca22511284a33ea9913",
-      "assetBytes": 9570104,
+      "asset": "dining-room-ba2880c80ede.glb",
+      "assetHash": "ba2880c80edec2b52e87622cdf8ecbf4751086ae34aacad4d4349c91ea1fced1",
+      "assetBytes": 9570124,
       "objectCount": 240,
       "triangles": 89976,
       "cameras": [
@@ -1799,10 +1799,10 @@
             1.496818,
             -0.43996
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Dining Room \u00b7 to window"
         },
         {
@@ -1818,10 +1818,10 @@
             1.366937,
             0.739307
           ],
-          "fov": 68.03869997965292,
+          "fov": 64.85510999154494,
           "lensMm": 20.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Dining Room \u00b7 cabinets"
         },
         {
@@ -1837,10 +1837,10 @@
             1.476683,
             -1.034502
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Dining Room \u00b7 boiserie"
         }
       ],
@@ -2484,7 +2484,7 @@
       ],
       "boundaryStatus": "Presentation envelope derived from source walls, cabinetry and camera positions; not a site survey. Walking remains inside the selected room.",
       "defaultPaint": "#e9e4da",
-      "ceilingHeight": 3.0,
+      "ceilingHeight": 3,
       "menuDescription": "Cooking & gathering",
       "wallAttachments": [
         {
@@ -2758,9 +2758,9 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-5dae2456a02c.glb",
-      "assetHash": "5dae2456a02c4564ba5540588200a000c55b67992ccdcc41f1dc498e07c26a3e",
-      "assetBytes": 20780992,
+      "asset": "kitchen-d200b2fbe49a.glb",
+      "assetHash": "d200b2fbe49a38149eaa0d96881d27657aaf672b6550cd6d72575496c1059c62",
+      "assetBytes": 20780956,
       "objectCount": 471,
       "triangles": 298445,
       "cameras": [
@@ -2777,10 +2777,10 @@
             1.411972,
             -0.762694
           ],
-          "fov": 73.73979529168804,
+          "fov": 70.43518593638542,
           "lensMm": 18.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Kitchen \u00b7 view1"
         },
         {
@@ -2796,10 +2796,10 @@
             1.411971,
             -0.762694
           ],
-          "fov": 73.73979529168804,
+          "fov": 70.43518593638542,
           "lensMm": 18.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Kitchen \u00b7 view2"
         },
         {
@@ -2815,10 +2815,10 @@
             1.41197,
             -1.337306
           ],
-          "fov": 73.73979529168804,
+          "fov": 70.43518593638542,
           "lensMm": 18.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Kitchen \u00b7 view3"
         }
       ],
@@ -3744,11 +3744,11 @@
         "Entry",
         "Upper Hall & Bridge"
       ],
-      "asset": "entry-a95805270ef8.glb",
-      "assetHash": "a95805270ef87df391c60cc3c198b598bd766384c10c2581ad10b30462ab3f7b",
-      "assetBytes": 10462584,
-      "objectCount": 533,
-      "triangles": 91006,
+      "asset": "entry-e158f4fbdac5.glb",
+      "assetHash": "e158f4fbdac523af38b207fe3fa629bbe0c38bcbb5d9bbc845bb58539856f6a7",
+      "assetBytes": 10512452,
+      "objectCount": 535,
+      "triangles": 92526,
       "cameras": [
         {
           "id": "room-view",
@@ -3763,10 +3763,10 @@
             1.974512,
             3.983887
           ],
-          "fov": 83.97442499163331,
+          "fov": 80.53312333884902,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Entry \u00b7 from front door"
         },
         {
@@ -3782,10 +3782,10 @@
             4.285959,
             3.830001
           ],
-          "fov": 83.97442499163331,
+          "fov": 80.53312333884902,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Entry \u00b7 dome"
         },
         {
@@ -3801,10 +3801,10 @@
             1.99466,
             5.534833
           ],
-          "fov": 76.90741843341195,
+          "fov": 73.54923300777499,
           "lensMm": 17.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Entry \u00b7 stair base"
         },
         {
@@ -3820,10 +3820,10 @@
             2.734173,
             5.73543
           ],
-          "fov": 83.97442499163331,
+          "fov": 80.53312333884902,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Entry \u00b7 under bridge"
         }
       ],
@@ -4651,9 +4651,9 @@
       "cutawayMillworkRooms": [
         "Powder"
       ],
-      "asset": "powder-room-da0b1aac192b.glb",
-      "assetHash": "da0b1aac192b8d3ac355754624a2da65e9a99342d7014136012bbcec36c3a37e",
-      "assetBytes": 3319408,
+      "asset": "powder-room-82a180556c72.glb",
+      "assetHash": "82a180556c72b142689bef2ef9e071ff73f25659f01a7714398abd5b0e433f63",
+      "assetBytes": 3319388,
       "objectCount": 143,
       "triangles": 17376,
       "cameras": [
@@ -4670,10 +4670,10 @@
             0.044734,
             2.39209
           ],
-          "fov": 96.73292132685961,
+          "fov": 93.27315408323344,
           "lensMm": 12.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Powder Room \u00b7 vanity"
         },
         {
@@ -4689,10 +4689,10 @@
             0.124331,
             4.212866
           ],
-          "fov": 87.91674664798006,
+          "fov": 84.45144537739843,
           "lensMm": 14.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Powder Room \u00b7 wc"
         },
         {
@@ -4708,10 +4708,10 @@
             0.154332,
             3.875392
           ],
-          "fov": 96.73292132685961,
+          "fov": 93.27315408323344,
           "lensMm": 12.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Powder Room \u00b7 from door"
         }
       ],
@@ -4966,7 +4966,7 @@
           10.35
         ],
         [
-          -1.0,
+          -1,
           0.12
         ]
       ],
@@ -5020,9 +5020,9 @@
         "Slab concrete slab.058",
         "Slab C01.003"
       ],
-      "asset": "pantry-756212b9710d.glb",
-      "assetHash": "756212b9710df7cd97ce810a392a63244079cee01e29a2f9a28d50b5f0ec5133",
-      "assetBytes": 3459976,
+      "asset": "pantry-b3641b13cb0c.glb",
+      "assetHash": "b3641b13cb0caeac46d8e2b3334f03eca8272a14b76d4c48a15a4031e6678286",
+      "assetBytes": 3459952,
       "objectCount": 111,
       "triangles": 14726,
       "cameras": [
@@ -5039,10 +5039,10 @@
             1.223702,
             -0.308578
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Pantry \u00b7 view1"
         }
       ],
@@ -5460,9 +5460,9 @@
       "cutawayKeepPrefixes": [
         "Fascia Fascia."
       ],
-      "asset": "wine-cellar-a691b09cccf6.glb",
-      "assetHash": "a691b09cccf62ff4f11f634c1a252e0f9087b919ac9ede003b849ff21f03d347",
-      "assetBytes": 8798960,
+      "asset": "wine-cellar-7b6159ddff90.glb",
+      "assetHash": "7b6159ddff901855d646ac9fad62b0e1f3d01b430dc1dba2351f5db4ef6f0eb6",
+      "assetBytes": 8799000,
       "objectCount": 87,
       "triangles": 71817,
       "cameras": [
@@ -5479,10 +5479,10 @@
             1.19164,
             -3.560906
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Wine Cellar \u00b7 view1"
         }
       ],
@@ -6023,9 +6023,9 @@
           "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
         }
       ],
-      "asset": "loli-bedroom-f8f29ab3c156.glb",
-      "assetHash": "f8f29ab3c1562cf3b1f6b652b321d8042502ad8f7bf41938c08a6b900a22d033",
-      "assetBytes": 6137056,
+      "asset": "loli-bedroom-859df771120a.glb",
+      "assetHash": "859df771120a2048fd2d663959b428bb0ac76d71464bc38ab4bdd78ea1feb55e",
+      "assetBytes": 6137032,
       "objectCount": 157,
       "triangles": 57171,
       "cameras": [
@@ -6042,10 +6042,10 @@
             1.340471,
             6.708146
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Loli Bedroom \u00b7 bedroom"
         },
         {
@@ -6061,10 +6061,10 @@
             1.038379,
             8.50603
           ],
-          "fov": 68.03869997965292,
+          "fov": 64.85510999154494,
           "lensMm": 20.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Loli Bedroom \u00b7 bay window"
         }
       ],
@@ -6637,9 +6637,9 @@
       "cutawayMillworkRooms": [
         "Loli Bathroom"
       ],
-      "asset": "loli-bathroom-70f12b0c2e3c.glb",
-      "assetHash": "70f12b0c2e3c501a7daeb90fc17ef42fcc4a19a40e3f66e8858081f14767c5a9",
-      "assetBytes": 4173208,
+      "asset": "loli-bathroom-7149993c08f7.glb",
+      "assetHash": "7149993c08f74d77934c2b0c9e48a9ea2751e2acca7c791fdaa6e9cbd6db24a7",
+      "assetBytes": 4173188,
       "objectCount": 116,
       "triangles": 21529,
       "cameras": [
@@ -6656,10 +6656,10 @@
             0.8085,
             1.086087
           ],
-          "fov": 83.97442499163331,
+          "fov": 80.53312333884902,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Loli Bedroom \u00b7 bathroom wide"
         },
         {
@@ -6675,10 +6675,10 @@
             0.471157,
             4.384333
           ],
-          "fov": 63.06958381037659,
+          "fov": 60.016314012696,
           "lensMm": 22.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Loli Bedroom \u00b7 bathroom vanity"
         },
         {
@@ -6694,10 +6694,10 @@
             0.635632,
             0.031805
           ],
-          "fov": 83.97442499163331,
+          "fov": 80.53312333884902,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Loli Bedroom \u00b7 bathroom shower"
         }
       ],
@@ -7184,9 +7184,9 @@
       "excludeSourceNames": [
         "Slab concrete slab.135"
       ],
-      "asset": "laundry-b58f9706a4c1.glb",
-      "assetHash": "b58f9706a4c11f0a3dad2dfa4001a3411685565c90fbfc8c7eaa1add04273233",
-      "assetBytes": 1817076,
+      "asset": "laundry-be97ababd588.glb",
+      "assetHash": "be97ababd588af645fee71d1bfc8c429d75b36465b56b90ae29150a3fe3d59f6",
+      "assetBytes": 1817084,
       "objectCount": 39,
       "triangles": 4918,
       "cameras": [
@@ -7203,10 +7203,10 @@
             4.554507,
             -1.356355
           ],
-          "fov": 83.97442499163331,
+          "fov": 80.53312333884902,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Laundry \u00b7 wide"
         },
         {
@@ -7222,10 +7222,10 @@
             4.589708,
             -2.023049
           ],
-          "fov": 83.97442499163331,
+          "fov": 80.53312333884902,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Laundry \u00b7 sink"
         }
       ],
@@ -7648,11 +7648,11 @@
       "excludeSourceNames": [
         "Obj Object-35.013"
       ],
-      "asset": "primary-bedroom-8f8550567492.glb",
-      "assetHash": "8f8550567492195c653a00b02e45455bb54390b52ec541df8341fbfb729770e9",
-      "assetBytes": 5225028,
-      "objectCount": 178,
-      "triangles": 23392,
+      "asset": "primary-bedroom-61a30f9e0281.glb",
+      "assetHash": "61a30f9e0281a22ae836b8ae76d70cfa791161939fe81a08f65ec7bf716763a7",
+      "assetBytes": 8202600,
+      "objectCount": 177,
+      "triangles": 59036,
       "cameras": [
         {
           "id": "room-view",
@@ -7667,10 +7667,10 @@
             4.782313,
             2.855986
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Primary Bedroom \u00b7 view3"
         },
         {
@@ -7686,10 +7686,10 @@
             4.782312,
             2.594014
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Primary Bedroom \u00b7 view2"
         },
         {
@@ -7705,10 +7705,10 @@
             4.782312,
             2.594014
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Primary Bedroom \u00b7 view1"
         }
       ],
@@ -8100,6 +8100,16 @@
           "roughness": 0.8600000143051147,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-353d96742a4b",
+          "name": "Fabric \u00b7 PLAIN bed linen STAND-IN, warm white - NOT a product colour, NOT measured, and NOT the purchased Jardin Toile (x169)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#dddbd6",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -8273,9 +8283,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "primary-bath-4c32a03267fc.glb",
-      "assetHash": "4c32a03267fc2de6607e4bcc7712add84748d85e99092efe3351aa941e9f1571",
-      "assetBytes": 4695404,
+      "asset": "primary-bath-a80f3d1869a7.glb",
+      "assetHash": "a80f3d1869a7ce56c3b335e5263f7fb73b4b235796db44deb7edda719ca87c56",
+      "assetBytes": 4695380,
       "objectCount": 207,
       "triangles": 27853,
       "cameras": [
@@ -8292,10 +8302,10 @@
             4.680869,
             2.13507
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Primary Bath \u00b7 view1"
         },
         {
@@ -8311,10 +8321,10 @@
             4.06017,
             1.04092
           ],
-          "fov": 73.73979529168804,
+          "fov": 70.43518593638542,
           "lensMm": 18.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Primary Bath \u00b7 vanity"
         },
         {
@@ -8330,10 +8340,10 @@
             4.309045,
             4.994501
           ],
-          "fov": 83.97442499163331,
+          "fov": 80.53312333884902,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Primary Bath \u00b7 shower"
         },
         {
@@ -8349,10 +8359,10 @@
             3.079323,
             0.554672
           ],
-          "fov": 30.219150244680932,
+          "fov": 28.51614672855795,
           "lensMm": 50.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Primary Bath \u00b7 basin detail"
         }
       ],
@@ -8888,9 +8898,9 @@
         "Slab concrete slab.109",
         "Slab concrete slab.135"
       ],
-      "asset": "green-bedroom-ad84193e8d52.glb",
-      "assetHash": "ad84193e8d52c9d2e7cfd53c744f593e199d1f9d6037c0cf7a88de92d35c1d2e",
-      "assetBytes": 5046380,
+      "asset": "green-bedroom-640dba06e64c.glb",
+      "assetHash": "640dba06e64c41d6eb8c67d530c916a556658219583f6a3749a861cb5431d8fc",
+      "assetBytes": 5046356,
       "objectCount": 125,
       "triangles": 23250,
       "cameras": [
@@ -8907,10 +8917,10 @@
             4.74441,
             0.292701
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Green Bedroom \u00b7 bedroom"
         },
         {
@@ -8926,10 +8936,10 @@
             4.752609,
             1.239686
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Green Bedroom \u00b7 bedroom 2"
         }
       ],
@@ -9396,9 +9406,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "green-bath-b49d0ac45077.glb",
-      "assetHash": "b49d0ac45077ecd031a6a5026e5e48797b51094a7346c78fcf1d48cb40d00986",
-      "assetBytes": 3351996,
+      "asset": "green-bath-e0dd79edc3ea.glb",
+      "assetHash": "e0dd79edc3ea7234c99028557af9b6ca16c9deb437f9e1a422ad4bdde5c7feb5",
+      "assetBytes": 3351980,
       "objectCount": 97,
       "triangles": 21446,
       "cameras": [
@@ -9415,10 +9425,10 @@
             3.86808,
             -3.486893
           ],
-          "fov": 63.06958381037659,
+          "fov": 60.016314012696,
           "lensMm": 22.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Green Bedroom \u00b7 bathroom vanity"
         },
         {
@@ -9434,10 +9444,10 @@
             3.412745,
             -1.942171
           ],
-          "fov": 73.73979529168804,
+          "fov": 70.43518593638542,
           "lensMm": 18.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Green Bedroom \u00b7 bathroom shower"
         },
         {
@@ -9453,10 +9463,10 @@
             3.979115,
             -3.282195
           ],
-          "fov": 47.91286197465109,
+          "fov": 45.38755789441632,
           "lensMm": 30.383655548095703,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Green Bedroom \u00b7 basin detail"
         }
       ],
@@ -9847,9 +9857,9 @@
       "cutawayHiddenPrefixes": [
         "Slab Roof."
       ],
-      "asset": "blue-bedroom-9109a6785c33.glb",
-      "assetHash": "9109a6785c330449005177096e59650595fc85d1de3e5bdc24a6e3d2d8eb1193",
-      "assetBytes": 4605920,
+      "asset": "blue-bedroom-0022c0ae7be2.glb",
+      "assetHash": "0022c0ae7be2acb5a8b7a6c3a9a7b13b2f65e9147737d0b96ae97b04bddf5a4a",
+      "assetBytes": 4605896,
       "objectCount": 100,
       "triangles": 17135,
       "cameras": [
@@ -9866,10 +9876,10 @@
             4.759287,
             6.279655
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Blue Bedroom \u00b7 bedroom"
         },
         {
@@ -9885,10 +9895,10 @@
             4.767283,
             5.675311
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Blue Bedroom \u00b7 bedroom 2"
         }
       ],
@@ -10365,9 +10375,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "blue-bath-769226db25d2.glb",
-      "assetHash": "769226db25d25181668717723e762d3f6d0122a655d481b40746dc9a6c1957d2",
-      "assetBytes": 3796276,
+      "asset": "blue-bath-0146360bb9b0.glb",
+      "assetHash": "0146360bb9b0f34704615e269df44d9857ffe6f2da4f9dab2d6fda93c53f6a86",
+      "assetBytes": 3796292,
       "objectCount": 127,
       "triangles": 22271,
       "cameras": [
@@ -10384,10 +10394,10 @@
             3.855276,
             7.737316
           ],
-          "fov": 63.06958381037659,
+          "fov": 60.016314012696,
           "lensMm": 22.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Blue Bedroom \u00b7 bathroom vanity"
         },
         {
@@ -10403,10 +10413,10 @@
             4.014946,
             4.244396
           ],
-          "fov": 73.73979529168804,
+          "fov": 70.43518593638542,
           "lensMm": 18.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Blue Bedroom \u00b7 bathroom shower"
         },
         {
@@ -10422,10 +10432,10 @@
             3.940106,
             7.828519
           ],
-          "fov": 48.097152719086566,
+          "fov": 45.56434831929581,
           "lensMm": 30.252443313598633,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Blue Bedroom \u00b7 basin detail"
         }
       ],
@@ -10837,9 +10847,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-west-183380e60e6d.glb",
-      "assetHash": "183380e60e6de4e4a080f05e479d994d6376496d88014cdd7b280514d7041565",
-      "assetBytes": 4122196,
+      "asset": "office-west-31c7fe3e907b.glb",
+      "assetHash": "31c7fe3e907bcbe0ff8c2017fcd77e11888766930e33c7340029c34054fed619",
+      "assetBytes": 4122172,
       "objectCount": 151,
       "triangles": 20152,
       "cameras": [
@@ -10856,10 +10866,10 @@
             1.397394,
             5.49213
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Offices \u00b7 office west"
         }
       ],
@@ -11235,9 +11245,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-east-44260af913e0.glb",
-      "assetHash": "44260af913e05a99d51abce456c358d7a7485bae9be9402db6f61b17c39ace9a",
-      "assetBytes": 4125380,
+      "asset": "office-east-147a5f1d30a1.glb",
+      "assetHash": "147a5f1d30a113da380363bfbce8f0064d4a570212a6d822c0308d0851b8f74a",
+      "assetBytes": 4125356,
       "objectCount": 131,
       "triangles": 21872,
       "cameras": [
@@ -11254,10 +11264,10 @@
             1.398894,
             5.472891
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Offices \u00b7 office east"
         }
       ],
@@ -11597,9 +11607,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-hall-0038cdc818d4.glb",
-      "assetHash": "0038cdc818d4e574aa66e7cc0e701a2c78d85b12e7337597aa1dc45c0268d969",
-      "assetBytes": 3712284,
+      "asset": "office-hall-879047b0f7b5.glb",
+      "assetHash": "879047b0f7b5e7b6b8e66622a003f4667b1d82572c61aeaa148e8687081dd482",
+      "assetBytes": 3712260,
       "objectCount": 137,
       "triangles": 15524,
       "cameras": [
@@ -11616,10 +11626,10 @@
             1.509973,
             6.079783
           ],
-          "fov": 80.31199924983865,
+          "fov": 76.90741843341193,
           "lensMm": 16.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Offices \u00b7 entrances"
         },
         {
@@ -11635,10 +11645,10 @@
             1.57073,
             7.142701
           ],
-          "fov": 76.90741843341195,
+          "fov": 73.54923300777499,
           "lensMm": 17.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Offices \u00b7 corridor arches"
         }
       ],
@@ -11957,9 +11967,9 @@
       "cutawayMillworkRooms": [
         "Loli Closet"
       ],
-      "asset": "loli-closet-758352e6825b.glb",
-      "assetHash": "758352e6825bfc0f85e2be44c6cf4d79bfc17e3b1b80bb3d7069e96695b3791a",
-      "assetBytes": 1944160,
+      "asset": "loli-closet-a352c781c2ee.glb",
+      "assetHash": "a352c781c2ee3e609576df044ee2451064e29d396f7baf7740dd24a8b90ae88a",
+      "assetBytes": 1944128,
       "objectCount": 102,
       "triangles": 5742,
       "cameras": [
@@ -11976,10 +11986,10 @@
             0.993711,
             1.438821
           ],
-          "fov": 83.97442499163331,
+          "fov": 80.53312333884902,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Loli Bedroom \u00b7 closet"
         }
       ],
@@ -12313,9 +12323,9 @@
       "cutawayMillworkRooms": [
         "Primary Loli Closet"
       ],
-      "asset": "primary-loli-closet-c104d1146548.glb",
-      "assetHash": "c104d1146548f3c46dab663b685d73dc6985287bd915019f1c3d2941078ef003",
-      "assetBytes": 3204488,
+      "asset": "primary-loli-closet-6379cb48edcb.glb",
+      "assetHash": "6379cb48edcb674cfcdff5ac49ddb5ee660fdc04432b5cf610adbe2f07267afa",
+      "assetBytes": 3204452,
       "objectCount": 86,
       "triangles": 10878,
       "cameras": [
@@ -12348,10 +12358,10 @@
             4.650094,
             -3.4458
           ],
-          "fov": 30.219150244680932,
+          "fov": 28.51614672855795,
           "lensMm": 50.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Primary Loli Closet \u00b7 dresser elevation"
         }
       ],
@@ -12735,7 +12745,7 @@
         {
           "label": "Room view",
           "position": [
-            10.0,
+            10,
             0.926,
             5.02
           ],
@@ -12750,9 +12760,9 @@
       "cutawayMillworkRooms": [
         "Primary Green Closet"
       ],
-      "asset": "primary-green-closet-1aa0176f0907.glb",
-      "assetHash": "1aa0176f09072b5e0b34f965c943f136d0970bb13f28cc976cb644e4ac41bc64",
-      "assetBytes": 3169200,
+      "asset": "primary-green-closet-a1849cd7f102.glb",
+      "assetHash": "a1849cd7f102e0f69de78fd0f7952f98d6b535792946ee849bf7a1b8a5a53a7b",
+      "assetBytes": 3169164,
       "objectCount": 74,
       "triangles": 10329,
       "cameras": [
@@ -12785,10 +12795,10 @@
             4.650094,
             -3.4458
           ],
-          "fov": 30.219150244680932,
+          "fov": 28.51614672855795,
           "lensMm": 50.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Primary Green Closet \u00b7 dresser elevation"
         }
       ],
@@ -13151,9 +13161,9 @@
       "cutawayMillworkRooms": [
         "Green Closet"
       ],
-      "asset": "upstairs-closet-west-e18778ec7951.glb",
-      "assetHash": "e18778ec79519f52fceb2698e48861f377bc8f8ab96a1e42be3d3a29cd86851e",
-      "assetBytes": 2135540,
+      "asset": "upstairs-closet-west-4096611cd9a8.glb",
+      "assetHash": "4096611cd9a8883147e1a09a45af164614d11c9ee47b882334b3326c75834df3",
+      "assetBytes": 2135508,
       "objectCount": 58,
       "triangles": 8616,
       "cameras": [
@@ -13186,10 +13196,10 @@
             4.014431,
             3.126199
           ],
-          "fov": 83.97442499163331,
+          "fov": 80.53312333884902,
           "lensMm": 15.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Green Bedroom \u00b7 closet"
         },
         {
@@ -13205,10 +13215,10 @@
             4.077664,
             4.38909
           ],
-          "fov": 76.90741843341195,
+          "fov": 73.54923300777499,
           "lensMm": 17.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Green Closet \u00b7 vanity wall"
         },
         {
@@ -13224,10 +13234,10 @@
             4.01757,
             2.528186
           ],
-          "fov": 73.73979529168804,
+          "fov": 70.43518593638542,
           "lensMm": 18.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Green Closet \u00b7 hamper and pull-outs"
         },
         {
@@ -13243,10 +13253,10 @@
             3.760664,
             5.294801
           ],
-          "fov": 30.219150244680932,
+          "fov": 28.51614672855795,
           "lensMm": 50.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Green Closet \u00b7 wood top"
         }
       ],
@@ -13783,9 +13793,9 @@
       "cutawayMillworkRooms": [
         "Dressing 3"
       ],
-      "asset": "upstairs-closet-east-4a3f5b60e0d4.glb",
-      "assetHash": "4a3f5b60e0d4275d3ea2bcef0424f34d3f2d10865d738ff06ffe59946c8264ca",
-      "assetBytes": 2010208,
+      "asset": "upstairs-closet-east-710af6a18780.glb",
+      "assetHash": "710af6a18780280a9fbcf08e4cfb551addf790c32eea100405d9b1f49738795e",
+      "assetBytes": 2010176,
       "objectCount": 66,
       "triangles": 7154,
       "cameras": [
@@ -14028,7 +14038,7 @@
       ],
       "walkBounds": [
         [
-          -10.0,
+          -10,
           0.2
         ],
         [
@@ -14077,7 +14087,7 @@
             5.46
           ],
           "target": [
-            -2.0,
+            -2,
             4.5,
             4.8
           ],
@@ -14114,9 +14124,9 @@
         "Millwork"
       ],
       "architectureAttachmentDepth": 1.2,
-      "asset": "rear-deck-42ff84d2ba8e.glb",
-      "assetHash": "42ff84d2ba8e980f2be876c7e4db94c12c106e242095ab7f977b311d35cf6284",
-      "assetBytes": 1721900,
+      "asset": "rear-deck-885dcbd5c0fa.glb",
+      "assetHash": "885dcbd5c0fa96eba2f6a889f38eba002e5a276209c67d87042baa6b98ca76e0",
+      "assetBytes": 1721896,
       "objectCount": 121,
       "triangles": 6145,
       "cameras": [
@@ -14149,10 +14159,10 @@
             4.921512,
             -4.477355
           ],
-          "fov": 58.71550708558255,
+          "fov": 55.79454206189526,
           "lensMm": 24.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Cam 22 Deck 2 Wall"
         },
         {
@@ -14168,10 +14178,10 @@
             5.200367,
             -4.565768
           ],
-          "fov": 58.71550708558255,
+          "fov": 55.79454206189526,
           "lensMm": 24.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Cam 25 Deck Stair"
         },
         {
@@ -14187,10 +14197,10 @@
             4.677259,
             -5.992876
           ],
-          "fov": 51.48141671246568,
+          "fov": 48.815337335560194,
           "lensMm": 28.0,
           "sensorWidthMm": 36.0,
-          "sourceAspect": 1.3333333333333333,
+          "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Cam 26 Deck Island"
         }
       ],
@@ -14488,7 +14498,7 @@
             4.95
           ],
           "target": [
-            3.0,
+            3,
             -6.1,
             4.65
           ],
@@ -14550,9 +14560,9 @@
         }
       ],
       "menuDescription": "Covered balcony above the offices",
-      "asset": "front-balcony-0d7ba385d7c4.glb",
-      "assetHash": "0d7ba385d7c406d8e40aa8a049505c4b53421f5c27a5832b1d66eed87306df70",
-      "assetBytes": 3830320,
+      "asset": "front-balcony-6f23f7ef3035.glb",
+      "assetHash": "6f23f7ef303570d69a244d70b6ef7ec6f53c851527098570552e36a5372a4038",
+      "assetBytes": 3830292,
       "objectCount": 159,
       "triangles": 15500,
       "cameras": [
@@ -14884,7 +14894,7 @@
         ]
       ],
       "ceilingHeight": 8.133,
-      "floorElevation": 0.0,
+      "floorElevation": 0,
       "defaultPaint": "#e9e4da",
       "viewpoints": [
         {
@@ -14899,7 +14909,7 @@
             -9.4293,
             3.7465
           ],
-          "fov": 60.0
+          "fov": 60
         }
       ],
       "excludeCollectionPrefixes": [
@@ -14942,7 +14952,11 @@
         "Laundry Lighting \u00b7 ",
         "Lighting \u00b7 ",
         "Retired Room Aerials",
-        "Site Coping"
+        "Site Coping",
+        "x166b \u00b7 ",
+        "x169 \u00b7 ",
+        "x171 \u00b7 ",
+        "x173 \u00b7 "
       ],
       "excludeSourcePrefixes": [
         "Furniture ",
@@ -14991,11 +15005,11 @@
         "Obj 34"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-front-2a60d292c5a7.glb",
-      "assetHash": "2a60d292c5a76bc895fc5478f3fdc0d9d7b809bf7f33cefee6c88d38666e7cd1",
-      "assetBytes": 15667260,
-      "objectCount": 930,
-      "triangles": 124440,
+      "asset": "elevation-front-c3e6aad12449.glb",
+      "assetHash": "c3e6aad12449b8b29968606e26eb66251781ad4e47c149060cf27de616f46e34",
+      "assetBytes": 15526572,
+      "objectCount": 919,
+      "triangles": 125850,
       "cameras": [
         {
           "id": "front-elevation",
@@ -15010,7 +15024,7 @@
             3.7465,
             9.4293
           ],
-          "fov": 60.0,
+          "fov": 60,
           "sourceCamera": "Web presentation view"
         }
       ],
@@ -15729,36 +15743,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-c3dab2288612",
-          "name": "Wood \u00b7 Scarlett Weathered Wheat (provisional)",
-          "roomId": "elevation-front",
-          "role": null,
-          "color": "#c9a57f",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-b11328c2fd34",
-          "name": "Fabric \u00b7 mattress ticking - NOT a product colour (provisional)",
-          "roomId": "elevation-front",
-          "role": null,
-          "color": "#eaeae7",
-          "roughness": 0.75,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-0ba4eb20d82b",
-          "name": "Fabric \u00b7 Jardin Toile GREEN \u2014 discontinued colourway, PURCHASED; pattern INDEPENDENTLY AUTHORED at the measured colour and density (provisional)",
-          "roomId": "elevation-front",
-          "role": null,
-          "color": "#cdc7b7",
-          "roughness": 0.8600000143051147,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space"
         }
       ]
     },
@@ -15795,7 +15779,7 @@
         ]
       ],
       "ceilingHeight": 8.133,
-      "floorElevation": 0.0,
+      "floorElevation": 0,
       "defaultPaint": "#e9e4da",
       "viewpoints": [
         {
@@ -15810,7 +15794,7 @@
             0.002,
             3.7465
           ],
-          "fov": 60.0
+          "fov": 60
         }
       ],
       "excludeCollectionPrefixes": [
@@ -15853,7 +15837,11 @@
         "Laundry Lighting \u00b7 ",
         "Lighting \u00b7 ",
         "Retired Room Aerials",
-        "Site Coping"
+        "Site Coping",
+        "x166b \u00b7 ",
+        "x169 \u00b7 ",
+        "x171 \u00b7 ",
+        "x173 \u00b7 "
       ],
       "excludeSourcePrefixes": [
         "Furniture ",
@@ -15901,11 +15889,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-east-69efe30f4940.glb",
-      "assetHash": "69efe30f4940492cc439c77cf2d41f0e5bb9aea3da990c9c8bf34672c431124d",
-      "assetBytes": 20176680,
-      "objectCount": 1202,
-      "triangles": 182830,
+      "asset": "elevation-east-bbe16f98054a.glb",
+      "assetHash": "bbe16f98054a7443243e0d5f41a29553e347541a61c251b65dfcdc09b21c4c79",
+      "assetBytes": 19951348,
+      "objectCount": 1173,
+      "triangles": 183038,
       "cameras": [
         {
           "id": "east-elevation",
@@ -15920,7 +15908,7 @@
             3.7465,
             -0.002
           ],
-          "fov": 60.0,
+          "fov": 60,
           "sourceCamera": "Web presentation view"
         }
       ],
@@ -16739,66 +16727,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-72ce0100946b",
-          "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
-          "roomId": "elevation-east",
-          "role": null,
-          "color": "#242528",
-          "roughness": 0.75,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-fa6c9eac0494",
-          "name": "Wood \u00b7 Scarlett Weathered Wheat (provisional)",
-          "roomId": "elevation-east",
-          "role": null,
-          "color": "#c9a57f",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-b06a65f3eef0",
-          "name": "Upholstery \u00b7 Scarlett Basketweave Slub Ivory (provisional)",
-          "roomId": "elevation-east",
-          "role": null,
-          "color": "#e9e5d8",
-          "roughness": 0.75,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-7f44c07e962c",
-          "name": "Fabric \u00b7 mattress ticking - NOT a product colour (provisional)",
-          "roomId": "elevation-east",
-          "role": null,
-          "color": "#eaeae7",
-          "roughness": 0.75,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-de59b58af762",
-          "name": "Stone \u00b7 Scarlett nightstand marble (provisional)",
-          "roomId": "elevation-east",
-          "role": null,
-          "color": "#e8e7e3",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-88bde44097fb",
-          "name": "Fabric \u00b7 Jardin Toile GREEN \u2014 discontinued colourway, PURCHASED; pattern INDEPENDENTLY AUTHORED at the measured colour and density (provisional)",
-          "roomId": "elevation-east",
-          "role": null,
-          "color": "#cdc7b7",
-          "roughness": 0.8600000143051147,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space"
         }
       ]
     },
@@ -16835,7 +16763,7 @@
         ]
       ],
       "ceilingHeight": 8.133,
-      "floorElevation": 0.0,
+      "floorElevation": 0,
       "defaultPaint": "#e9e4da",
       "viewpoints": [
         {
@@ -16850,7 +16778,7 @@
             9.4325,
             3.7465
           ],
-          "fov": 60.0
+          "fov": 60
         }
       ],
       "excludeCollectionPrefixes": [
@@ -16893,7 +16821,11 @@
         "Laundry Lighting \u00b7 ",
         "Lighting \u00b7 ",
         "Retired Room Aerials",
-        "Site Coping"
+        "Site Coping",
+        "x166b \u00b7 ",
+        "x169 \u00b7 ",
+        "x171 \u00b7 ",
+        "x173 \u00b7 "
       ],
       "excludeSourcePrefixes": [
         "Furniture ",
@@ -16941,11 +16873,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-north-ac7550bf7dc8.glb",
-      "assetHash": "ac7550bf7dc8724d52c91923d481cfbbcf0391d716c62a6c056954fc87db139d",
-      "assetBytes": 23004888,
-      "objectCount": 1317,
-      "triangles": 209096,
+      "asset": "elevation-north-02fdfc0edccb.glb",
+      "assetHash": "02fdfc0edccb78929dde462fc653fdfa32698b3d6f2412d3e5c39c3ecf21d5a7",
+      "assetBytes": 22779536,
+      "objectCount": 1288,
+      "triangles": 209304,
       "cameras": [
         {
           "id": "north-elevation",
@@ -16960,7 +16892,7 @@
             3.7465,
             -9.4325
           ],
-          "fov": 60.0,
+          "fov": 60,
           "sourceCamera": "Web presentation view"
         }
       ],
@@ -17740,66 +17672,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-bc9b7ddd3c2a",
-          "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
-          "roomId": "elevation-north",
-          "role": null,
-          "color": "#242528",
-          "roughness": 0.75,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-3bfa8fb06a17",
-          "name": "Wood \u00b7 Scarlett Weathered Wheat (provisional)",
-          "roomId": "elevation-north",
-          "role": null,
-          "color": "#c9a57f",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-b820bea4a18d",
-          "name": "Upholstery \u00b7 Scarlett Basketweave Slub Ivory (provisional)",
-          "roomId": "elevation-north",
-          "role": null,
-          "color": "#e9e5d8",
-          "roughness": 0.75,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-a059ea417407",
-          "name": "Fabric \u00b7 mattress ticking - NOT a product colour (provisional)",
-          "roomId": "elevation-north",
-          "role": null,
-          "color": "#eaeae7",
-          "roughness": 0.75,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-e579f9f0851c",
-          "name": "Stone \u00b7 Scarlett nightstand marble (provisional)",
-          "roomId": "elevation-north",
-          "role": null,
-          "color": "#e8e7e3",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-9168d9273c6f",
-          "name": "Fabric \u00b7 Jardin Toile GREEN \u2014 discontinued colourway, PURCHASED; pattern INDEPENDENTLY AUTHORED at the measured colour and density (provisional)",
-          "roomId": "elevation-north",
-          "role": null,
-          "color": "#cdc7b7",
-          "roughness": 0.8600000143051147,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space"
         }
       ]
     },
@@ -17836,7 +17708,7 @@
         ]
       ],
       "ceilingHeight": 8.133,
-      "floorElevation": 0.0,
+      "floorElevation": 0,
       "defaultPaint": "#e9e4da",
       "viewpoints": [
         {
@@ -17851,7 +17723,7 @@
             0.002,
             3.7465
           ],
-          "fov": 60.0
+          "fov": 60
         }
       ],
       "excludeCollectionPrefixes": [
@@ -17894,7 +17766,11 @@
         "Laundry Lighting \u00b7 ",
         "Lighting \u00b7 ",
         "Retired Room Aerials",
-        "Site Coping"
+        "Site Coping",
+        "x166b \u00b7 ",
+        "x169 \u00b7 ",
+        "x171 \u00b7 ",
+        "x173 \u00b7 "
       ],
       "excludeSourcePrefixes": [
         "Furniture ",
@@ -17942,11 +17818,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-west-6c041ec9302f.glb",
-      "assetHash": "6c041ec9302fe26dbc330e5fb2f4d322364582b5b7f8569e7d04be445b7cb1da",
-      "assetBytes": 12776384,
+      "asset": "elevation-west-85669125ca12.glb",
+      "assetHash": "85669125ca126ec428239c71546b7249389ad8a4ed304bf168da1ed8eb64e8e9",
+      "assetBytes": 12769104,
       "objectCount": 660,
-      "triangles": 84671,
+      "triangles": 84607,
       "cameras": [
         {
           "id": "west-elevation",
@@ -17961,7 +17837,7 @@
             3.7465,
             -0.002
           ],
-          "fov": 60.0,
+          "fov": 60,
           "sourceCamera": "Web presentation view"
         }
       ],
