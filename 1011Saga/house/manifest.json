@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "ab5844e72ad8",
+  "sceneVersion": "3d77362dca13",
   "source": {
     "file": "Web.blend",
-    "sha256": "ab5844e72ad8af6cb001fb4d0358d36a5045afeab19cc253b6f279286fd4cc33",
+    "sha256": "3d77362dca139c5ef7d069eba6d6adcee95f441b376be00844e676c623802d26",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -108,11 +108,11 @@
       "cutawayMillworkRooms": [
         "Game Room"
       ],
-      "asset": "game-room-06004e900dc8.glb",
-      "assetHash": "06004e900dc83d8e841f0bbbdf89ff440e281bd4827cb448aaa0a9a3154927d9",
-      "assetBytes": 8919884,
+      "asset": "game-room-9ea8eff8e07c.glb",
+      "assetHash": "9ea8eff8e07cbaaaa9c7d80ec5d5b81ad6109dda81bafaf290af3454d98efaef",
+      "assetBytes": 8921048,
       "objectCount": 208,
-      "triangles": 43802,
+      "triangles": 43818,
       "cameras": [
         {
           "id": "room-view",
@@ -1027,11 +1027,11 @@
         "Obj 84\" BASE CAB.004",
         "Obj M06"
       ],
-      "asset": "family-room-9a89fe000644.glb",
-      "assetHash": "9a89fe0006441e89858932c461c180a01037884e7108bcb8ecf3898999427d1a",
-      "assetBytes": 7439996,
+      "asset": "family-room-8ccd73f27ed8.glb",
+      "assetHash": "8ccd73f27ed85ea254e205139b842fe4879a1c1ee0254ab56565d4811eba8001",
+      "assetBytes": 7441284,
       "objectCount": 229,
-      "triangles": 40083,
+      "triangles": 40099,
       "cameras": [
         {
           "id": "room-view",
@@ -2758,11 +2758,11 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-5dae2456a02c.glb",
-      "assetHash": "5dae2456a02c4564ba5540588200a000c55b67992ccdcc41f1dc498e07c26a3e",
-      "assetBytes": 20780992,
-      "objectCount": 471,
-      "triangles": 298445,
+      "asset": "kitchen-4371cd4da607.glb",
+      "assetHash": "4371cd4da60733905f8e8d4a427629b221a1871a6126a4bc1e8c92cb7b446ac4",
+      "assetBytes": 20767020,
+      "objectCount": 465,
+      "triangles": 298331,
       "cameras": [
         {
           "id": "room-view",
@@ -3744,11 +3744,1997 @@
         "Entry",
         "Upper Hall & Bridge"
       ],
-      "asset": "entry-20fcb93c4140.glb",
-      "assetHash": "20fcb93c414027be50271916ca67c2cf112502090b93010da28eba4d8ab79e14",
-      "assetBytes": 10512476,
-      "objectCount": 535,
-      "triangles": 92526,
+      "lookContext": {
+        "bounds": [
+          [
+            -11.56,
+            10.06
+          ],
+          [
+            -9.34,
+            9.58
+          ],
+          [
+            -0.03,
+            7.57
+          ]
+        ],
+        "names": [
+          "Arabesque railing panel Obj Object-36.002",
+          "Arch frame 01",
+          "Arch frame 02",
+          "Arch glass 01",
+          "Arch glass 02",
+          "Arch glass 03",
+          "Arch reveal 01",
+          "Arch reveal 02",
+          "Arch reveal 03",
+          "Column C06.021",
+          "Door B",
+          "Door L",
+          "Door L leaf",
+          "Door ZI",
+          "Floor Overlay \u00b7 Atrium White Marble",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-03",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-04",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 S-02",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 S-03",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Kitchen \u00b7 S-01",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Bedroom \u00b7 N-02",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-01",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-02",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-03",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-04",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-05",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-SB",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-02-L2",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-02-L3",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-02-U2",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-02-U3",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-03-L1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-03-U1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Game Room \u00b7 S-02-U1",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-32 (E-02)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (E-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (E-02)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (W-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (W-02)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 09 (S-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 10 (S-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 11 (S-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Loli Bedroom \u00b7 Door L (W-02)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Pantry \u00b7 Door B (S-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Window I-33 (E-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Window I-33 (E-02)",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Dining Room \u00b7 S-02",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Dining Room \u00b7 S-03",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Kitchen \u00b7 S-01",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 N-04",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Dining Room \u00b7 S-03",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 NW-01",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 S-01",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 W-04",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-01",
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-02",
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Green Bedroom \u00b7 S-02-U2",
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 E-02-U1",
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 S-03-U1",
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 S-04-U1",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Open to below 1 \u00b7 Window 19 (S-02)",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Open to below 1 \u00b7 Window 20 (S-02)",
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Open to below 1 \u00b7 S-02",
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Upper Hall & Bridge \u00b7 S-03",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Green Bedroom \u00b7 S-02",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Laundry \u00b7 E-02",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 S-01",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 S-02",
+          "Part Gypsum Board (C02).001",
+          "Part Gypsum Board (W2).001",
+          "Part Gypsum Board (W3).001",
+          "Part Gypsum Board (W3).005",
+          "Part Gypsum Board (W7).002",
+          "Part Gypsum Board (concrete slab)",
+          "Part Gypsum Board (concrete slab).003",
+          "Part Plywood Sheathing (C02).001",
+          "Part Rubber (C02).001",
+          "Part Wood Flooring (concrete slab)",
+          "Part Wood Framing (Roof).018",
+          "Part Wood Framing + Insulation (C02).001",
+          "Part Wood Framing + Insulation (W2)",
+          "Slab Roof.002",
+          "Slab concrete slab.026",
+          "Slab concrete slab.069",
+          "Slab concrete slab.092",
+          "Slab concrete slab.098",
+          "Wall Office photo E",
+          "Wall Office photo W",
+          "Wall P1.001",
+          "Wall P1.005",
+          "Wall P1.009",
+          "Wall P1.013",
+          "Wall P1.015",
+          "Wall P1.016",
+          "Wall P1.017",
+          "Wall P1.018",
+          "Wall P1.020",
+          "Wall P1.024",
+          "Wall P4.002",
+          "Wall P4.003",
+          "Wall W1.003",
+          "Wall W1.004",
+          "Wall W1.008",
+          "Wall W1.009",
+          "Wall W1.011",
+          "Wall W1.017",
+          "Wall W2",
+          "Wall W2.011",
+          "Wall W2.019",
+          "Wall W2.022",
+          "Wall W3.009",
+          "Wall W3.028",
+          "Wall W3.040",
+          "Wall W5.008",
+          "Wall W7.012",
+          "Wall W7.014",
+          "Wall W7.015",
+          "Wall W7.016",
+          "Wall W9.012",
+          "Window 09",
+          "Window 10",
+          "Window 11",
+          "Window 19",
+          "Window 20",
+          "Window I-32",
+          "Window I-33",
+          "Window I-34",
+          "Window skylight"
+        ],
+        "clip": {
+          "Arabesque railing panel Obj Object-36.002": [
+            [
+              -4.0,
+              1.58
+            ],
+            [
+              -0.77,
+              0.43
+            ],
+            [
+              3.3,
+              4.92
+            ]
+          ],
+          "Arch frame 01": [
+            [
+              1.82,
+              4.18
+            ],
+            [
+              -8.22,
+              -6.96
+            ],
+            [
+              -0.03,
+              3.05
+            ]
+          ],
+          "Arch frame 02": [
+            [
+              4.03,
+              5.78
+            ],
+            [
+              -8.22,
+              -6.98
+            ],
+            [
+              -0.03,
+              2.0
+            ]
+          ],
+          "Arch glass 01": [
+            [
+              1.71,
+              4.16
+            ],
+            [
+              -8.19,
+              -6.99
+            ],
+            [
+              -0.03,
+              3.03
+            ]
+          ],
+          "Arch glass 02": [
+            [
+              3.54,
+              5.76
+            ],
+            [
+              -8.19,
+              -6.99
+            ],
+            [
+              -0.03,
+              2.9
+            ]
+          ],
+          "Arch glass 03": [
+            [
+              5.64,
+              7.18
+            ],
+            [
+              -8.19,
+              -6.99
+            ],
+            [
+              0.01,
+              2.34
+            ]
+          ],
+          "Arch reveal 01": [
+            [
+              1.47,
+              4.29
+            ],
+            [
+              -8.1,
+              -6.8
+            ],
+            [
+              -0.03,
+              3.3
+            ]
+          ],
+          "Arch reveal 02": [
+            [
+              3.1,
+              5.83
+            ],
+            [
+              -8.1,
+              -6.8
+            ],
+            [
+              -0.03,
+              3.28
+            ]
+          ],
+          "Arch reveal 03": [
+            [
+              4.68,
+              7.49
+            ],
+            [
+              -8.09,
+              -6.8
+            ],
+            [
+              -0.03,
+              3.28
+            ]
+          ],
+          "Column C06.021": [
+            [
+              3.92,
+              5.15
+            ],
+            [
+              -2.81,
+              -1.5
+            ],
+            [
+              -0.03,
+              3.49
+            ]
+          ],
+          "Door B": [
+            [
+              6.56,
+              9.44
+            ],
+            [
+              2.91,
+              4.25
+            ],
+            [
+              -0.03,
+              3.08
+            ]
+          ],
+          "Door L": [
+            [
+              6.77,
+              8.0
+            ],
+            [
+              -7.85,
+              -5.8
+            ],
+            [
+              0.24,
+              3.07
+            ]
+          ],
+          "Door L leaf": [
+            [
+              6.81,
+              8.01
+            ],
+            [
+              -7.84,
+              -5.84
+            ],
+            [
+              -0.03,
+              3.03
+            ]
+          ],
+          "Door ZI": [
+            [
+              -11.56,
+              -10.24
+            ],
+            [
+              0.82,
+              3.12
+            ],
+            [
+              0.27,
+              3.08
+            ]
+          ],
+          "Floor Overlay \u00b7 Atrium White Marble": [
+            [
+              -5.64,
+              -2.81
+            ],
+            [
+              -2.49,
+              2.95
+            ],
+            [
+              -0.03,
+              0.6
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-03": [
+            [
+              -5.62,
+              -4.41
+            ],
+            [
+              -1.68,
+              0.37
+            ],
+            [
+              -0.03,
+              0.74
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-04": [
+            [
+              -5.64,
+              -4.41
+            ],
+            [
+              1.03,
+              3.07
+            ],
+            [
+              -0.03,
+              0.74
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 S-02": [
+            [
+              -8.35,
+              -5.23
+            ],
+            [
+              1.92,
+              3.13
+            ],
+            [
+              -0.03,
+              0.74
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 S-03": [
+            [
+              -5.57,
+              -4.26
+            ],
+            [
+              1.92,
+              3.14
+            ],
+            [
+              -0.03,
+              0.74
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Kitchen \u00b7 S-01": [
+            [
+              0.76,
+              1.97
+            ],
+            [
+              2.91,
+              4.11
+            ],
+            [
+              -0.03,
+              0.71
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Bedroom \u00b7 N-02": [
+            [
+              1.45,
+              4.62
+            ],
+            [
+              -8.09,
+              -6.88
+            ],
+            [
+              -0.03,
+              0.72
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-01": [
+            [
+              0.72,
+              1.97
+            ],
+            [
+              -1.72,
+              4.1
+            ],
+            [
+              2.26,
+              3.46
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-02": [
+            [
+              2.01,
+              3.4
+            ],
+            [
+              -1.82,
+              4.09
+            ],
+            [
+              2.26,
+              3.59
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-03": [
+            [
+              3.54,
+              4.91
+            ],
+            [
+              -1.84,
+              4.03
+            ],
+            [
+              2.26,
+              3.59
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-04": [
+            [
+              5.07,
+              6.45
+            ],
+            [
+              -1.8,
+              4.03
+            ],
+            [
+              2.26,
+              3.59
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-05": [
+            [
+              6.49,
+              7.79
+            ],
+            [
+              -1.68,
+              4.05
+            ],
+            [
+              2.26,
+              3.59
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-SB": [
+            [
+              1.38,
+              6.88
+            ],
+            [
+              -2.06,
+              -0.66
+            ],
+            [
+              2.26,
+              3.59
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-02-L2": [
+            [
+              -8.71,
+              -6.57
+            ],
+            [
+              1.94,
+              3.14
+            ],
+            [
+              -0.03,
+              1.41
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-02-L3": [
+            [
+              -7.61,
+              -5.35
+            ],
+            [
+              1.94,
+              3.14
+            ],
+            [
+              -0.03,
+              1.44
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-02-U2": [
+            [
+              -9.43,
+              -6.55
+            ],
+            [
+              1.94,
+              3.15
+            ],
+            [
+              0.46,
+              3.39
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-02-U3": [
+            [
+              -7.63,
+              -5.68
+            ],
+            [
+              1.94,
+              3.14
+            ],
+            [
+              0.47,
+              2.2
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-03-L1": [
+            [
+              -5.5,
+              -4.27
+            ],
+            [
+              1.94,
+              3.14
+            ],
+            [
+              -0.03,
+              1.38
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-03-U1": [
+            [
+              -5.5,
+              -4.27
+            ],
+            [
+              1.94,
+              3.15
+            ],
+            [
+              0.56,
+              3.37
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Game Room \u00b7 S-02-U1": [
+            [
+              -8.36,
+              -7.02
+            ],
+            [
+              8.37,
+              9.57
+            ],
+            [
+              2.24,
+              3.45
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-32 (E-02)": [
+            [
+              -5.62,
+              -4.42
+            ],
+            [
+              -1.65,
+              0.45
+            ],
+            [
+              0.02,
+              2.75
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (E-01)": [
+            [
+              -5.74,
+              -4.52
+            ],
+            [
+              0.97,
+              2.22
+            ],
+            [
+              0.02,
+              2.53
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (E-02)": [
+            [
+              -5.64,
+              -4.42
+            ],
+            [
+              0.97,
+              3.12
+            ],
+            [
+              0.01,
+              2.76
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (W-01)": [
+            [
+              -5.67,
+              -4.45
+            ],
+            [
+              0.97,
+              2.17
+            ],
+            [
+              0.16,
+              2.63
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (W-02)": [
+            [
+              -5.78,
+              -4.56
+            ],
+            [
+              0.97,
+              2.19
+            ],
+            [
+              0.39,
+              2.64
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 09 (S-01)": [
+            [
+              4.42,
+              7.41
+            ],
+            [
+              2.91,
+              4.11
+            ],
+            [
+              0.49,
+              3.18
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 10 (S-01)": [
+            [
+              2.68,
+              5.75
+            ],
+            [
+              2.91,
+              4.12
+            ],
+            [
+              0.44,
+              3.18
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 11 (S-01)": [
+            [
+              0.91,
+              3.98
+            ],
+            [
+              2.91,
+              4.13
+            ],
+            [
+              0.44,
+              3.16
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Loli Bedroom \u00b7 Door L (W-02)": [
+            [
+              6.75,
+              7.95
+            ],
+            [
+              -7.91,
+              -5.75
+            ],
+            [
+              0.02,
+              3.12
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Pantry \u00b7 Door B (S-01)": [
+            [
+              6.24,
+              7.44
+            ],
+            [
+              2.91,
+              4.11
+            ],
+            [
+              0.88,
+              2.39
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Window I-33 (E-01)": [
+            [
+              -5.72,
+              -4.52
+            ],
+            [
+              -0.49,
+              1.67
+            ],
+            [
+              1.46,
+              2.67
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Window I-33 (E-02)": [
+            [
+              -5.65,
+              -4.43
+            ],
+            [
+              -1.56,
+              3.07
+            ],
+            [
+              1.46,
+              3.54
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Dining Room \u00b7 S-02": [
+            [
+              -8.92,
+              -5.34
+            ],
+            [
+              1.92,
+              3.13
+            ],
+            [
+              0.32,
+              1.58
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Dining Room \u00b7 S-03": [
+            [
+              -5.5,
+              -4.3
+            ],
+            [
+              1.92,
+              3.12
+            ],
+            [
+              0.36,
+              1.56
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Kitchen \u00b7 S-01": [
+            [
+              1.12,
+              5.32
+            ],
+            [
+              2.9,
+              4.11
+            ],
+            [
+              0.32,
+              1.58
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 N-04": [
+            [
+              1.46,
+              2.66
+            ],
+            [
+              -8.09,
+              -6.89
+            ],
+            [
+              0.35,
+              1.55
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Dining Room \u00b7 S-03": [
+            [
+              -5.64,
+              -4.24
+            ],
+            [
+              1.88,
+              3.12
+            ],
+            [
+              2.27,
+              3.57
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": [
+            [
+              -5.46,
+              -4.26
+            ],
+            [
+              8.31,
+              9.51
+            ],
+            [
+              2.3,
+              3.5
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-02": [
+            [
+              -4.98,
+              1.61
+            ],
+            [
+              2.86,
+              4.11
+            ],
+            [
+              5.57,
+              6.89
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 NW-01": [
+            [
+              5.6,
+              7.23
+            ],
+            [
+              -2.58,
+              -0.9
+            ],
+            [
+              2.32,
+              3.55
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 S-01": [
+            [
+              0.9,
+              9.53
+            ],
+            [
+              2.86,
+              4.12
+            ],
+            [
+              2.27,
+              3.59
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02": [
+            [
+              1.4,
+              5.23
+            ],
+            [
+              -8.1,
+              -6.84
+            ],
+            [
+              2.27,
+              3.6
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 W-04": [
+            [
+              6.71,
+              7.95
+            ],
+            [
+              -8.08,
+              -5.94
+            ],
+            [
+              2.29,
+              3.57
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-01": [
+            [
+              6.7,
+              7.94
+            ],
+            [
+              -7.71,
+              2.37
+            ],
+            [
+              2.14,
+              3.42
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-02": [
+            [
+              -5.37,
+              1.41
+            ],
+            [
+              2.91,
+              4.12
+            ],
+            [
+              2.92,
+              4.14
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Green Bedroom \u00b7 S-02-U2": [
+            [
+              -6.56,
+              -5.33
+            ],
+            [
+              0.27,
+              1.48
+            ],
+            [
+              4.36,
+              6.42
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 E-02-U1": [
+            [
+              -6.94,
+              -5.74
+            ],
+            [
+              -0.34,
+              1.37
+            ],
+            [
+              4.84,
+              6.7
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 S-03-U1": [
+            [
+              -5.39,
+              -3.28
+            ],
+            [
+              -0.85,
+              0.36
+            ],
+            [
+              3.87,
+              6.7
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 S-04-U1": [
+            [
+              0.71,
+              3.44
+            ],
+            [
+              -0.85,
+              0.36
+            ],
+            [
+              3.98,
+              6.7
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Open to below 1 \u00b7 Window 19 (S-02)": [
+            [
+              -2.51,
+              0.62
+            ],
+            [
+              2.91,
+              4.11
+            ],
+            [
+              3.8,
+              6.65
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Open to below 1 \u00b7 Window 20 (S-02)": [
+            [
+              -4.35,
+              -1.23
+            ],
+            [
+              2.91,
+              4.11
+            ],
+            [
+              3.8,
+              6.65
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Open to below 1 \u00b7 S-02": [
+            [
+              -5.26,
+              1.7
+            ],
+            [
+              2.91,
+              4.12
+            ],
+            [
+              3.73,
+              4.97
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Upper Hall & Bridge \u00b7 S-03": [
+            [
+              1.55,
+              2.75
+            ],
+            [
+              -0.86,
+              0.34
+            ],
+            [
+              3.75,
+              4.95
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Green Bedroom \u00b7 S-02": [
+            [
+              -6.87,
+              -5.22
+            ],
+            [
+              0.21,
+              1.45
+            ],
+            [
+              5.58,
+              6.87
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Laundry \u00b7 E-02": [
+            [
+              -6.92,
+              -5.68
+            ],
+            [
+              -0.52,
+              1.36
+            ],
+            [
+              5.58,
+              6.9
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 S-01": [
+            [
+              -5.45,
+              -3.17
+            ],
+            [
+              -0.91,
+              0.36
+            ],
+            [
+              5.57,
+              6.9
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 S-02": [
+            [
+              0.6,
+              3.21
+            ],
+            [
+              -0.91,
+              0.36
+            ],
+            [
+              5.57,
+              6.87
+            ]
+          ],
+          "Part Gypsum Board (C02).001": [
+            [
+              -7.17,
+              3.48
+            ],
+            [
+              -2.04,
+              4.05
+            ],
+            [
+              5.7,
+              6.9
+            ]
+          ],
+          "Part Gypsum Board (W2).001": [
+            [
+              -5.49,
+              -4.28
+            ],
+            [
+              3.59,
+              9.11
+            ],
+            [
+              -0.03,
+              3.6
+            ]
+          ],
+          "Part Gypsum Board (W3).001": [
+            [
+              -6.78,
+              -5.2
+            ],
+            [
+              -9.34,
+              -8.14
+            ],
+            [
+              2.13,
+              3.44
+            ]
+          ],
+          "Part Gypsum Board (W3).005": [
+            [
+              0.58,
+              1.78
+            ],
+            [
+              1.39,
+              4.08
+            ],
+            [
+              3.58,
+              6.87
+            ]
+          ],
+          "Part Gypsum Board (W7).002": [
+            [
+              -7.15,
+              -5.84
+            ],
+            [
+              1.95,
+              3.15
+            ],
+            [
+              4.87,
+              6.8
+            ]
+          ],
+          "Part Gypsum Board (concrete slab)": [
+            [
+              -5.55,
+              -3.98
+            ],
+            [
+              -2.83,
+              -0.77
+            ],
+            [
+              2.19,
+              3.39
+            ]
+          ],
+          "Part Gypsum Board (concrete slab).003": [
+            [
+              0.87,
+              10.06
+            ],
+            [
+              1.52,
+              4.02
+            ],
+            [
+              2.4,
+              3.6
+            ]
+          ],
+          "Part Plywood Sheathing (C02).001": [
+            [
+              -2.53,
+              0.12
+            ],
+            [
+              -6.19,
+              -3.44
+            ],
+            [
+              5.96,
+              7.17
+            ]
+          ],
+          "Part Rubber (C02).001": [
+            [
+              -2.44,
+              -0.81
+            ],
+            [
+              -4.89,
+              -3.42
+            ],
+            [
+              5.98,
+              7.18
+            ]
+          ],
+          "Part Wood Flooring (concrete slab)": [
+            [
+              -8.47,
+              7.34
+            ],
+            [
+              -3.32,
+              5.25
+            ],
+            [
+              -0.03,
+              0.6
+            ]
+          ],
+          "Part Wood Framing (Roof).018": [
+            [
+              -5.36,
+              -4.16
+            ],
+            [
+              1.95,
+              3.15
+            ],
+            [
+              5.7,
+              6.9
+            ]
+          ],
+          "Part Wood Framing + Insulation (C02).001": [
+            [
+              -2.62,
+              0.18
+            ],
+            [
+              -6.19,
+              -3.4
+            ],
+            [
+              5.8,
+              7.16
+            ]
+          ],
+          "Part Wood Framing + Insulation (W2)": [
+            [
+              -5.48,
+              -4.24
+            ],
+            [
+              3.43,
+              9.24
+            ],
+            [
+              -0.03,
+              3.6
+            ]
+          ],
+          "Slab Roof.002": [
+            [
+              -6.84,
+              -5.64
+            ],
+            [
+              -9.33,
+              -8.13
+            ],
+            [
+              2.3,
+              3.5
+            ]
+          ],
+          "Slab concrete slab.026": [
+            [
+              1.38,
+              7.93
+            ],
+            [
+              -8.09,
+              -5.36
+            ],
+            [
+              -0.03,
+              0.6
+            ]
+          ],
+          "Slab concrete slab.069": [
+            [
+              1.42,
+              4.29
+            ],
+            [
+              -2.7,
+              -1.5
+            ],
+            [
+              1.54,
+              2.75
+            ]
+          ],
+          "Slab concrete slab.092": [
+            [
+              -9.05,
+              7.63
+            ],
+            [
+              -8.12,
+              3.08
+            ],
+            [
+              2.4,
+              4.0
+            ]
+          ],
+          "Slab concrete slab.098": [
+            [
+              1.39,
+              7.8
+            ],
+            [
+              -8.03,
+              -5.34
+            ],
+            [
+              2.4,
+              3.6
+            ]
+          ],
+          "Wall Office photo E": [
+            [
+              4.15,
+              7.87
+            ],
+            [
+              -6.82,
+              -5.5
+            ],
+            [
+              -0.03,
+              3.56
+            ]
+          ],
+          "Wall Office photo W": [
+            [
+              1.38,
+              5.15
+            ],
+            [
+              -6.82,
+              -5.5
+            ],
+            [
+              -0.03,
+              3.6
+            ]
+          ],
+          "Wall P1.001": [
+            [
+              4.01,
+              5.26
+            ],
+            [
+              -6.82,
+              -5.3
+            ],
+            [
+              -0.03,
+              2.62
+            ]
+          ],
+          "Wall P1.005": [
+            [
+              0.6,
+              3.38
+            ],
+            [
+              -0.84,
+              0.38
+            ],
+            [
+              3.34,
+              6.77
+            ]
+          ],
+          "Wall P1.009": [
+            [
+              -6.95,
+              -5.75
+            ],
+            [
+              -0.52,
+              1.48
+            ],
+            [
+              4.14,
+              6.77
+            ]
+          ],
+          "Wall P1.013": [
+            [
+              -11.41,
+              -5.16
+            ],
+            [
+              1.95,
+              3.15
+            ],
+            [
+              -0.03,
+              3.36
+            ]
+          ],
+          "Wall P1.015": [
+            [
+              6.77,
+              7.97
+            ],
+            [
+              -1.97,
+              1.01
+            ],
+            [
+              1.51,
+              3.32
+            ]
+          ],
+          "Wall P1.016": [
+            [
+              6.77,
+              7.97
+            ],
+            [
+              -0.03,
+              2.41
+            ],
+            [
+              1.5,
+              3.32
+            ]
+          ],
+          "Wall P1.017": [
+            [
+              -5.63,
+              -3.97
+            ],
+            [
+              -1.85,
+              -0.65
+            ],
+            [
+              0.25,
+              3.24
+            ]
+          ],
+          "Wall P1.018": [
+            [
+              -5.49,
+              -4.18
+            ],
+            [
+              -0.15,
+              3.21
+            ],
+            [
+              2.4,
+              6.87
+            ]
+          ],
+          "Wall P1.020": [
+            [
+              0.58,
+              1.79
+            ],
+            [
+              -0.83,
+              2.56
+            ],
+            [
+              2.93,
+              6.86
+            ]
+          ],
+          "Wall P1.024": [
+            [
+              -5.5,
+              -3.17
+            ],
+            [
+              -0.84,
+              0.48
+            ],
+            [
+              3.3,
+              6.84
+            ]
+          ],
+          "Wall P4.002": [
+            [
+              -5.63,
+              -3.97
+            ],
+            [
+              -3.38,
+              -2.18
+            ],
+            [
+              0.29,
+              3.18
+            ]
+          ],
+          "Wall P4.003": [
+            [
+              -5.64,
+              -4.44
+            ],
+            [
+              -3.38,
+              -0.93
+            ],
+            [
+              0.36,
+              3.58
+            ]
+          ],
+          "Wall W1.003": [
+            [
+              0.72,
+              8.9
+            ],
+            [
+              2.93,
+              4.13
+            ],
+            [
+              -0.03,
+              3.47
+            ]
+          ],
+          "Wall W1.004": [
+            [
+              6.77,
+              7.97
+            ],
+            [
+              -8.09,
+              -5.64
+            ],
+            [
+              -0.03,
+              3.33
+            ]
+          ],
+          "Wall W1.008": [
+            [
+              1.44,
+              7.37
+            ],
+            [
+              -8.22,
+              -6.91
+            ],
+            [
+              -0.03,
+              3.47
+            ]
+          ],
+          "Wall W1.009": [
+            [
+              -10.88,
+              -4.24
+            ],
+            [
+              8.38,
+              9.58
+            ],
+            [
+              0.05,
+              3.88
+            ]
+          ],
+          "Wall W1.011": [
+            [
+              5.52,
+              7.35
+            ],
+            [
+              -2.7,
+              -0.87
+            ],
+            [
+              -0.03,
+              3.41
+            ]
+          ],
+          "Wall W1.017": [
+            [
+              2.36,
+              3.56
+            ],
+            [
+              -1.01,
+              0.34
+            ],
+            [
+              4.01,
+              6.77
+            ]
+          ],
+          "Wall W2": [
+            [
+              -5.75,
+              -4.44
+            ],
+            [
+              -1.63,
+              3.14
+            ],
+            [
+              -0.03,
+              3.6
+            ]
+          ],
+          "Wall W2.011": [
+            [
+              -5.76,
+              -4.49
+            ],
+            [
+              1.0,
+              2.21
+            ],
+            [
+              -0.03,
+              0.68
+            ]
+          ],
+          "Wall W2.019": [
+            [
+              -5.64,
+              -4.44
+            ],
+            [
+              -2.13,
+              -0.66
+            ],
+            [
+              0.39,
+              3.16
+            ]
+          ],
+          "Wall W2.022": [
+            [
+              -5.64,
+              -4.24
+            ],
+            [
+              1.95,
+              3.15
+            ],
+            [
+              -0.03,
+              3.47
+            ]
+          ],
+          "Wall W3.009": [
+            [
+              -5.37,
+              1.76
+            ],
+            [
+              2.93,
+              4.13
+            ],
+            [
+              2.95,
+              6.75
+            ]
+          ],
+          "Wall W3.028": [
+            [
+              8.4,
+              9.6
+            ],
+            [
+              1.79,
+              4.06
+            ],
+            [
+              0.18,
+              3.44
+            ]
+          ],
+          "Wall W3.040": [
+            [
+              -5.38,
+              -4.18
+            ],
+            [
+              2.09,
+              4.11
+            ],
+            [
+              2.92,
+              6.84
+            ]
+          ],
+          "Wall W5.008": [
+            [
+              6.65,
+              7.85
+            ],
+            [
+              -2.58,
+              -1.14
+            ],
+            [
+              -0.03,
+              2.03
+            ]
+          ],
+          "Wall W7.012": [
+            [
+              1.38,
+              2.59
+            ],
+            [
+              -7.94,
+              -5.73
+            ],
+            [
+              2.4,
+              3.6
+            ]
+          ],
+          "Wall W7.014": [
+            [
+              -5.54,
+              -3.93
+            ],
+            [
+              -8.24,
+              -7.01
+            ],
+            [
+              2.98,
+              4.6
+            ]
+          ],
+          "Wall W7.015": [
+            [
+              0.58,
+              1.78
+            ],
+            [
+              1.46,
+              4.04
+            ],
+            [
+              2.93,
+              4.73
+            ]
+          ],
+          "Wall W7.016": [
+            [
+              0.57,
+              1.77
+            ],
+            [
+              2.93,
+              4.13
+            ],
+            [
+              3.01,
+              4.31
+            ]
+          ],
+          "Wall W9.012": [
+            [
+              -6.95,
+              -5.21
+            ],
+            [
+              0.28,
+              1.6
+            ],
+            [
+              4.11,
+              6.83
+            ]
+          ],
+          "Window 09": [
+            [
+              4.7,
+              7.42
+            ],
+            [
+              2.91,
+              4.22
+            ],
+            [
+              0.56,
+              3.13
+            ]
+          ],
+          "Window 10": [
+            [
+              2.82,
+              5.69
+            ],
+            [
+              2.91,
+              4.22
+            ],
+            [
+              0.5,
+              3.1
+            ]
+          ],
+          "Window 11": [
+            [
+              0.96,
+              3.88
+            ],
+            [
+              2.91,
+              4.22
+            ],
+            [
+              0.5,
+              3.13
+            ]
+          ],
+          "Window 19": [
+            [
+              -2.38,
+              0.52
+            ],
+            [
+              2.91,
+              4.21
+            ],
+            [
+              3.85,
+              6.59
+            ]
+          ],
+          "Window 20": [
+            [
+              -4.29,
+              -1.33
+            ],
+            [
+              2.91,
+              4.21
+            ],
+            [
+              3.85,
+              6.59
+            ]
+          ],
+          "Window I-32": [
+            [
+              -5.68,
+              -4.44
+            ],
+            [
+              -1.63,
+              0.4
+            ],
+            [
+              0.06,
+              2.66
+            ]
+          ],
+          "Window I-33": [
+            [
+              -5.68,
+              -4.44
+            ],
+            [
+              -1.65,
+              3.13
+            ],
+            [
+              1.51,
+              3.49
+            ]
+          ],
+          "Window I-34": [
+            [
+              -5.72,
+              -4.44
+            ],
+            [
+              1.02,
+              3.14
+            ],
+            [
+              0.05,
+              2.66
+            ]
+          ],
+          "Window skylight": [
+            [
+              -2.67,
+              0.21
+            ],
+            [
+              -6.19,
+              -3.3
+            ],
+            [
+              6.05,
+              7.57
+            ]
+          ]
+        },
+        "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py."
+      },
+      "asset": "entry-6aa3dbb7ce1e.glb",
+      "assetHash": "6aa3dbb7ce1e8ab6f9d2624ab808ff52e7bdd6f3a8005a8fcd89045894a0acf4",
+      "assetBytes": 12208376,
+      "objectCount": 635,
+      "triangles": 114337,
       "cameras": [
         {
           "id": "room-view",
@@ -3808,8 +5794,8 @@
           "sourceCamera": "Room \u00b7 Entry \u00b7 stair base"
         },
         {
-          "id": "toward-family-room",
-          "label": "Toward family room",
+          "id": "toward-front-door",
+          "label": "Toward front door",
           "position": [
             -1.29,
             1.62,
@@ -4455,6 +6441,86 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-aa5feb60b508",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#aabed4",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-a94240860e76",
+          "name": "05 | Metal: Iron*",
+          "roomId": "entry",
+          "role": null,
+          "color": "#4c4e55",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e0cb5498f278",
+          "name": "09 | Color: Blue Cobalt",
+          "roomId": "entry",
+          "role": null,
+          "color": "#272f39",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c54b8917bfa3",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#c8d1bc",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-5d9d0081a596",
+          "name": "09 | Glass: Tinted Dark",
+          "roomId": "entry",
+          "role": null,
+          "color": "#3a3941",
+          "roughness": 0.05000000074505806,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-8827b8502d53",
+          "name": "04 | Block: CMU-16\"x8\"",
+          "roomId": "entry",
+          "role": null,
+          "color": "#b5b2ae",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-15d3015d0a22",
+          "name": "07 | Roof: 16\" Standing Seam*",
+          "roomId": "entry",
+          "role": null,
+          "color": "#45423f",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0c72f6d19b88",
+          "name": "06 | Wood: Pine-Clear Vert",
+          "roomId": "entry",
+          "role": null,
+          "color": "#edbb85",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -4567,6 +6633,22 @@
         {
           "prefix": "Powder toilet",
           "side": "zMax"
+        },
+        {
+          "prefix": "x168 \u00b7 Enclosure",
+          "side": "xMax"
+        },
+        {
+          "prefix": "Slab concrete slab.126",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Slab concrete slab.129",
+          "side": "zMax"
+        },
+        {
+          "prefix": "Slab concrete slab.146",
+          "side": "zMax"
         }
       ],
       "cutawayHiddenPrefixes": [
@@ -4575,7 +6657,12 @@
       "includeSourceNames": [
         "Slab concrete slab.092",
         "Part Gypsum Board (concrete slab).003",
-        "Part Wood Framing + Insulation (concrete slab).003"
+        "Part Wood Framing + Insulation (concrete slab).003",
+        "x168 \u00b7 Enclosure \u00b7 Entry B",
+        "x168 \u00b7 Enclosure cap \u00b7 Entry B",
+        "Slab concrete slab.126",
+        "Slab concrete slab.129",
+        "Slab concrete slab.146"
       ],
       "freestandingPrefixes": [
         "Powder toilet"
@@ -4651,11 +6738,11 @@
       "cutawayMillworkRooms": [
         "Powder"
       ],
-      "asset": "powder-room-da0b1aac192b.glb",
-      "assetHash": "da0b1aac192b8d3ac355754624a2da65e9a99342d7014136012bbcec36c3a37e",
-      "assetBytes": 3319408,
-      "objectCount": 143,
-      "triangles": 17376,
+      "asset": "powder-room-23630aa83fff.glb",
+      "assetHash": "23630aa83fff79bf0ca60d8f145fca5079dab4be966296cad7b896a382e5bc45",
+      "assetBytes": 3552560,
+      "objectCount": 147,
+      "triangles": 17768,
       "cameras": [
         {
           "id": "room-view",
@@ -4907,6 +6994,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-cbcabe4ab630",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-c39d84e8a5d1",
@@ -5353,7 +7450,8 @@
         "RF "
       ],
       "includeSourceNames": [
-        "Slab concrete slab.092"
+        "Slab concrete slab.092",
+        "Part Gypsum Board (concrete slab).003"
       ],
       "roleOverrides": {},
       "wallAttachments": [
@@ -5460,11 +7558,11 @@
       "cutawayKeepPrefixes": [
         "Fascia Fascia."
       ],
-      "asset": "wine-cellar-a691b09cccf6.glb",
-      "assetHash": "a691b09cccf62ff4f11f634c1a252e0f9087b919ac9ede003b849ff21f03d347",
-      "assetBytes": 8798960,
-      "objectCount": 87,
-      "triangles": 71817,
+      "asset": "wine-cellar-0b72bba05c3d.glb",
+      "assetHash": "0b72bba05c3dcd0ef2d765aed4f1e081aa81bd48da723709432e9a268834216d",
+      "assetBytes": 8802548,
+      "objectCount": 88,
+      "triangles": 71829,
       "cameras": [
         {
           "id": "room-view",
@@ -5781,6 +7879,16 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-c737b445d4d9",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "wine-cellar",
+          "role": "ceiling",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-83c330d50121",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "wine-cellar",
@@ -5936,7 +8044,11 @@
         "RF "
       ],
       "includeSourceNames": [
-        "Slab concrete slab.092"
+        "Slab concrete slab.092",
+        "Slab concrete slab.098",
+        "Slab Roof",
+        "Slab Roof.001",
+        "Slab Roof.012"
       ],
       "roleOverrides": {},
       "footprint": [
@@ -6023,11 +8135,11 @@
           "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
         }
       ],
-      "asset": "loli-bedroom-f8f29ab3c156.glb",
-      "assetHash": "f8f29ab3c1562cf3b1f6b652b321d8042502ad8f7bf41938c08a6b900a22d033",
-      "assetBytes": 6137056,
-      "objectCount": 157,
-      "triangles": 57171,
+      "asset": "loli-bedroom-7e80b9282fc9.glb",
+      "assetHash": "7e80b9282fc9a8c2de1e64eb04b5cc5d27c851698aa4a3a7eed538fb75bba73d",
+      "assetBytes": 6149772,
+      "objectCount": 161,
+      "triangles": 57237,
       "cameras": [
         {
           "id": "room-view",
@@ -6514,6 +8626,26 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-8ff8f1d2324d",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "loli-bedroom",
+          "role": "ceiling",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a33adc62811f",
+          "name": "07 | Roof: 16\" Standing Seam*",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#45423f",
+          "roughness": 0.3499999940395355,
+          "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -7648,11 +9780,11 @@
       "excludeSourceNames": [
         "Obj Object-35.013"
       ],
-      "asset": "primary-bedroom-c5618d5df27d.glb",
-      "assetHash": "c5618d5df27df3186e5a5dcaa2af273ced0ec7257161a5832a8e70befc6a10e3",
-      "assetBytes": 12813576,
+      "asset": "primary-bedroom-ec96c585d18c.glb",
+      "assetHash": "ec96c585d18ca0ab9460863da1a76665f14de28131a809973c1d04d83a960c2c",
+      "assetBytes": 10712848,
       "objectCount": 188,
-      "triangles": 103722,
+      "triangles": 134876,
       "cameras": [
         {
           "id": "room-view",
@@ -7696,12 +9828,12 @@
           "id": "sitting-corner",
           "label": "Sitting corner",
           "position": [
-            6.6,
+            7.42057,
             4.95,
             4.75
           ],
           "target": [
-            8.679328,
+            9.499899,
             4.782312,
             2.594014
           ],
@@ -7710,6 +9842,25 @@
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.4166666666666667,
           "sourceCamera": "Room \u00b7 Primary Bedroom \u00b7 view1"
+        },
+        {
+          "id": "chair-sitting-corner",
+          "label": "Chair & sitting corner",
+          "position": [
+            6.467892,
+            4.9536,
+            1.564469
+          ],
+          "target": [
+            8.359013,
+            4.155693,
+            3.752393
+          ],
+          "fov": 70.43518593638542,
+          "lensMm": 18.0,
+          "sensorWidthMm": 36.0,
+          "sourceAspect": 1.4166666666666667,
+          "sourceCamera": "Cam \u00b7 x180 \u00b7 Primary Bedroom \u00b7 chair, front three-quarter"
         }
       ],
       "lights": [
@@ -10897,11 +13048,11 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-west-183380e60e6d.glb",
-      "assetHash": "183380e60e6de4e4a080f05e479d994d6376496d88014cdd7b280514d7041565",
-      "assetBytes": 4122196,
-      "objectCount": 151,
-      "triangles": 20152,
+      "asset": "office-west-1ae13bc66e43.glb",
+      "assetHash": "1ae13bc66e4383dc8bf7e69233f637999b26224310388e0de2e3f8d8696dc8f6",
+      "assetBytes": 4116472,
+      "objectCount": 149,
+      "triangles": 20092,
       "cameras": [
         {
           "id": "room-view",
@@ -11295,8 +13446,8 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-east-44260af913e0.glb",
-      "assetHash": "44260af913e05a99d51abce456c358d7a7485bae9be9402db6f61b17c39ace9a",
+      "asset": "office-east-47f6f9844aa3.glb",
+      "assetHash": "47f6f9844aa3002be6766314318d2dd86751c3660f5b32ca4382629850fcbcf7",
       "assetBytes": 4125380,
       "objectCount": 131,
       "triangles": 21872,
@@ -11657,8 +13808,8 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-hall-0038cdc818d4.glb",
-      "assetHash": "0038cdc818d4e574aa66e7cc0e701a2c78d85b12e7337597aa1dc45c0268d969",
+      "asset": "office-hall-8e53f002e9a8.glb",
+      "assetHash": "8e53f002e9a8f460fbe700f1600bc4105c0062159fdf7fda00e181a0fc4fc208",
       "assetBytes": 3712284,
       "objectCount": 137,
       "triangles": 15524,
@@ -14174,11 +16325,14 @@
         "Millwork"
       ],
       "architectureAttachmentDepth": 1.2,
-      "asset": "rear-deck-42ff84d2ba8e.glb",
-      "assetHash": "42ff84d2ba8e980f2be876c7e4db94c12c106e242095ab7f977b311d35cf6284",
-      "assetBytes": 1721900,
-      "objectCount": 121,
-      "triangles": 6145,
+      "includeSourceNames": [
+        "Obj Object-38"
+      ],
+      "asset": "rear-deck-ffa278d18c2c.glb",
+      "assetHash": "ffa278d18c2c5ba541f2caaf935c1bd0f01eb616ba0287fcdde86aa5b2bd289c",
+      "assetBytes": 1733236,
+      "objectCount": 122,
+      "triangles": 6289,
       "cameras": [
         {
           "id": "room-view",
@@ -14261,6 +16415,16 @@
         "ceiling": "#d8ceb9"
       },
       "materials": [
+        {
+          "id": "mat-8fb0ba6333ec",
+          "name": "05 | Metal: Stainless Steel*",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#d7d3d9",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
         {
           "id": "mat-ef9a96a4a4c6",
           "name": "09 | Color: 01 Ceiling White",
@@ -14610,8 +16774,8 @@
         }
       ],
       "menuDescription": "Covered balcony above the offices",
-      "asset": "front-balcony-0d7ba385d7c4.glb",
-      "assetHash": "0d7ba385d7c406d8e40aa8a049505c4b53421f5c27a5832b1d66eed87306df70",
+      "asset": "front-balcony-a42434570c85.glb",
+      "assetHash": "a42434570c85eb50a65e8898c07d6a3667facdbceaf7e858e6a8197b38ed567c",
       "assetBytes": 3830320,
       "objectCount": 159,
       "triangles": 15500,
@@ -15007,7 +17171,8 @@
         "x169 \u00b7 ",
         "x171 \u00b7 ",
         "x173 \u00b7 ",
-        "x173r \u00b7 "
+        "x173r \u00b7 ",
+        "BY3 . "
       ],
       "excludeSourcePrefixes": [
         "Furniture ",
@@ -15056,11 +17221,11 @@
         "Obj 34"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-front-60ec693b4103.glb",
-      "assetHash": "60ec693b4103cb6591457699de711a6fb36c2b0015254d018af6bbee6ba79a0c",
-      "assetBytes": 15526616,
+      "asset": "elevation-front-fa1e96bc5813.glb",
+      "assetHash": "fa1e96bc5813d54225326149a2e2670f1777a74332c19a88ffbd59af8aad0979",
+      "assetBytes": 15478276,
       "objectCount": 919,
-      "triangles": 125850,
+      "triangles": 127188,
       "cameras": [
         {
           "id": "front-elevation",
@@ -15893,7 +18058,8 @@
         "x169 \u00b7 ",
         "x171 \u00b7 ",
         "x173 \u00b7 ",
-        "x173r \u00b7 "
+        "x173r \u00b7 ",
+        "BY3 . "
       ],
       "excludeSourcePrefixes": [
         "Furniture ",
@@ -15941,11 +18107,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-east-9ba8391f230c.glb",
-      "assetHash": "9ba8391f230cc2a9cf4c46a6cb2a2b8f2f32af2841e71bbbfc469107b06c1a93",
-      "assetBytes": 19951400,
+      "asset": "elevation-east-eb802a3b9031.glb",
+      "assetHash": "eb802a3b90310c6bbfd71245fa5cef4d2dcb4284e24c1f3fd9f420f52c429f56",
+      "assetBytes": 19902924,
       "objectCount": 1173,
-      "triangles": 183038,
+      "triangles": 184718,
       "cameras": [
         {
           "id": "east-elevation",
@@ -16878,7 +19044,8 @@
         "x169 \u00b7 ",
         "x171 \u00b7 ",
         "x173 \u00b7 ",
-        "x173r \u00b7 "
+        "x173r \u00b7 ",
+        "BY3 . "
       ],
       "excludeSourcePrefixes": [
         "Furniture ",
@@ -16926,11 +19093,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-north-b1cedbfb8cfd.glb",
-      "assetHash": "b1cedbfb8cfdbf0a7dfc4de4fee93871d98695419b1c15ec46871278f7347314",
-      "assetBytes": 22779612,
+      "asset": "elevation-north-484f5ad78e0c.glb",
+      "assetHash": "484f5ad78e0c726f1d8c16f2ec47cd0c02cf655329e435e2d4f2392347cfdc80",
+      "assetBytes": 22744860,
       "objectCount": 1288,
-      "triangles": 209304,
+      "triangles": 211160,
       "cameras": [
         {
           "id": "north-elevation",
@@ -17824,7 +19991,8 @@
         "x169 \u00b7 ",
         "x171 \u00b7 ",
         "x173 \u00b7 ",
-        "x173r \u00b7 "
+        "x173r \u00b7 ",
+        "BY3 . "
       ],
       "excludeSourcePrefixes": [
         "Furniture ",
@@ -17872,11 +20040,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-west-21d2935e560d.glb",
-      "assetHash": "21d2935e560dd8d5d3f8fb667e357ab8a95562b363d647f1fc23f0cce7b0b24b",
-      "assetBytes": 12769140,
+      "asset": "elevation-west-14ed3235c79c.glb",
+      "assetHash": "14ed3235c79c73220e26487b24fe7c2adc59933f78ebb2298028d439538da6a0",
+      "assetBytes": 12733452,
       "objectCount": 660,
-      "triangles": 84607,
+      "triangles": 84604,
       "cameras": [
         {
           "id": "west-elevation",
