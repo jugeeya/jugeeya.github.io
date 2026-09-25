@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "bfccaab46b06",
+  "sceneVersion": "1192a1a3c42d",
   "source": {
     "file": "Web.blend",
-    "sha256": "bfccaab46b06e0dfed24f40f05147090890d8c8a4e88ef939317f227d13b5ff1",
+    "sha256": "1192a1a3c42da56f4161b8580a5a1c2f42cfb3e35a52c8b1d0a173c80c5f2db3",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -108,11 +108,1187 @@
       "cutawayMillworkRooms": [
         "Game Room"
       ],
-      "asset": "game-room-02cf4dd26dbe.glb",
-      "assetHash": "02cf4dd26dbee7ca41d49cedc166023557304fe75ecf94432d3095872a79f5fe",
-      "assetBytes": 8921132,
-      "objectCount": 208,
-      "triangles": 43818,
+      "lookContext": {
+        "bounds": [
+          [
+            -4.06,
+            10.69
+          ],
+          [
+            -7.89,
+            3.84
+          ],
+          [
+            -0.03,
+            6.6
+          ]
+        ],
+        "names": [
+          "Arabesque railing bottom rail Obj Object-36.002",
+          "Arabesque railing handrail Obj Object-36.002",
+          "Arabesque railing handrail Obj Object-36.003",
+          "Arabesque railing panel Obj Object-36.002",
+          "Arabesque railing panel Obj Object-36.003",
+          "Arabesque railing panel Obj Object-36.005",
+          "Arabesque railing post Obj Object-36.005",
+          "Arch glass 01",
+          "Arch reveal 01",
+          "Column C06.009",
+          "Column C06.013",
+          "Column C06.019",
+          "Column C06.020",
+          "Column C06.021",
+          "Door B",
+          "Fascia Fascia.011",
+          "Fascia Fascia.012",
+          "Floor Overlay \u00b7 Atrium White Marble",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-01",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-02",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-03",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-04",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-05",
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-SB",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 09 (S-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 10 (S-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 11 (S-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Pantry \u00b7 Door B (S-01)",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Entry \u00b7 x179 flank A",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Kitchen \u00b7 S-01",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Entry \u00b7 W-04",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 S-01",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 N-03",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-01",
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-02",
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 N-03-L1",
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 N-03-U1",
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Open to below 1 \u00b7 S-02",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Open to below 2 \u00b7 W-02",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 N-02",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 N-04",
+          "Part Gypsum Board (C02).001",
+          "Part Gypsum Board (W3).005",
+          "Part Gypsum Board (concrete slab).003",
+          "Part Wood Flooring (concrete slab)",
+          "Slab concrete slab.069",
+          "Slab concrete slab.077",
+          "Slab concrete slab.092",
+          "Slab concrete slab.093",
+          "Slab concrete slab.094",
+          "Slab concrete slab.098",
+          "Slab concrete slab.120",
+          "Slab concrete slab.167",
+          "Slab concrete slab.168",
+          "Wall Office photo W",
+          "Wall P1.004",
+          "Wall P1.006",
+          "Wall P1.015",
+          "Wall P1.016",
+          "Wall P1.020",
+          "Wall W1.003",
+          "Wall W1.005",
+          "Wall W1.008",
+          "Wall W1.011",
+          "Wall W1.017",
+          "Wall W1.032",
+          "Wall W3.009",
+          "Wall W3.028",
+          "Wall W5.011",
+          "Wall W7.012",
+          "Wall W7.015",
+          "Window 09",
+          "Window 10",
+          "Window 11",
+          "x168 \u00b7 Enclosure cap \u00b7 Entry A",
+          "x168 \u00b7 Enclosure \u00b7 Entry A"
+        ],
+        "clip": {
+          "Arabesque railing bottom rail Obj Object-36.002": [
+            [
+              -2.62,
+              1.15
+            ],
+            [
+              -0.48,
+              0.14
+            ],
+            [
+              3.24,
+              3.87
+            ]
+          ],
+          "Arabesque railing handrail Obj Object-36.002": [
+            [
+              -2.21,
+              1.31
+            ],
+            [
+              -0.47,
+              0.15
+            ],
+            [
+              4.06,
+              4.71
+            ]
+          ],
+          "Arabesque railing handrail Obj Object-36.003": [
+            [
+              0.47,
+              1.15
+            ],
+            [
+              -5.42,
+              -3.91
+            ],
+            [
+              1.41,
+              2.75
+            ]
+          ],
+          "Arabesque railing panel Obj Object-36.002": [
+            [
+              -2.84,
+              1.24
+            ],
+            [
+              -0.47,
+              0.13
+            ],
+            [
+              3.29,
+              4.65
+            ]
+          ],
+          "Arabesque railing panel Obj Object-36.003": [
+            [
+              0.48,
+              1.15
+            ],
+            [
+              -5.43,
+              -3.91
+            ],
+            [
+              0.9,
+              2.66
+            ]
+          ],
+          "Arabesque railing panel Obj Object-36.005": [
+            [
+              -1.68,
+              -0.63
+            ],
+            [
+              -1.93,
+              -1.33
+            ],
+            [
+              3.45,
+              4.12
+            ]
+          ],
+          "Arabesque railing post Obj Object-36.005": [
+            [
+              0.73,
+              1.39
+            ],
+            [
+              -0.46,
+              0.16
+            ],
+            [
+              3.22,
+              4.76
+            ]
+          ],
+          "Arch glass 01": [
+            [
+              2.03,
+              2.98
+            ],
+            [
+              -7.89,
+              -7.29
+            ],
+            [
+              1.54,
+              2.62
+            ]
+          ],
+          "Arch reveal 01": [
+            [
+              1.77,
+              2.83
+            ],
+            [
+              -7.73,
+              -7.1
+            ],
+            [
+              1.45,
+              2.84
+            ]
+          ],
+          "Column C06.009": [
+            [
+              8.68,
+              9.28
+            ],
+            [
+              2.69,
+              3.31
+            ],
+            [
+              0.73,
+              2.93
+            ]
+          ],
+          "Column C06.013": [
+            [
+              8.68,
+              9.28
+            ],
+            [
+              3.19,
+              3.81
+            ],
+            [
+              0.94,
+              3.08
+            ]
+          ],
+          "Column C06.019": [
+            [
+              3.43,
+              4.05
+            ],
+            [
+              -2.87,
+              -1.8
+            ],
+            [
+              -0.03,
+              3.19
+            ]
+          ],
+          "Column C06.020": [
+            [
+              1.56,
+              2.16
+            ],
+            [
+              -2.9,
+              -1.82
+            ],
+            [
+              1.56,
+              2.88
+            ]
+          ],
+          "Column C06.021": [
+            [
+              4.22,
+              4.82
+            ],
+            [
+              -2.86,
+              -1.85
+            ],
+            [
+              1.46,
+              3.18
+            ]
+          ],
+          "Door B": [
+            [
+              8.49,
+              9.1
+            ],
+            [
+              3.21,
+              3.84
+            ],
+            [
+              1.39,
+              2.7
+            ]
+          ],
+          "Fascia Fascia.011": [
+            [
+              8.68,
+              9.28
+            ],
+            [
+              1.92,
+              3.58
+            ],
+            [
+              2.56,
+              3.19
+            ]
+          ],
+          "Fascia Fascia.012": [
+            [
+              8.69,
+              9.29
+            ],
+            [
+              1.83,
+              2.57
+            ],
+            [
+              -0.03,
+              1.05
+            ]
+          ],
+          "Floor Overlay \u00b7 Atrium White Marble": [
+            [
+              -1.97,
+              1.77
+            ],
+            [
+              -2.09,
+              -0.9
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-01": [
+            [
+              0.88,
+              1.68
+            ],
+            [
+              -1.54,
+              3.81
+            ],
+            [
+              2.56,
+              3.25
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-02": [
+            [
+              2.31,
+              3.07
+            ],
+            [
+              -1.53,
+              3.74
+            ],
+            [
+              2.56,
+              3.3
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-03": [
+            [
+              3.84,
+              4.6
+            ],
+            [
+              -0.43,
+              3.82
+            ],
+            [
+              2.56,
+              3.28
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-04": [
+            [
+              5.37,
+              6.13
+            ],
+            [
+              -1.06,
+              3.73
+            ],
+            [
+              2.56,
+              3.29
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-05": [
+            [
+              6.79,
+              7.57
+            ],
+            [
+              -1.25,
+              3.79
+            ],
+            [
+              2.56,
+              3.26
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-SB": [
+            [
+              0.88,
+              5.77
+            ],
+            [
+              -1.76,
+              -0.96
+            ],
+            [
+              2.56,
+              3.29
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 09 (S-01)": [
+            [
+              4.72,
+              5.32
+            ],
+            [
+              3.21,
+              3.83
+            ],
+            [
+              0.82,
+              2.63
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 10 (S-01)": [
+            [
+              2.98,
+              3.58
+            ],
+            [
+              3.21,
+              3.82
+            ],
+            [
+              0.79,
+              2.64
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 11 (S-01)": [
+            [
+              1.21,
+              1.81
+            ],
+            [
+              3.21,
+              3.83
+            ],
+            [
+              1.06,
+              2.77
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Pantry \u00b7 Door B (S-01)": [
+            [
+              6.56,
+              7.16
+            ],
+            [
+              3.21,
+              3.81
+            ],
+            [
+              0.87,
+              1.47
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Entry \u00b7 x179 flank A": [
+            [
+              0.38,
+              0.99
+            ],
+            [
+              -5.07,
+              -4.18
+            ],
+            [
+              0.62,
+              1.23
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Kitchen \u00b7 S-01": [
+            [
+              1.86,
+              4.73
+            ],
+            [
+              3.2,
+              3.81
+            ],
+            [
+              0.62,
+              1.27
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Entry \u00b7 W-04": [
+            [
+              1.49,
+              2.13
+            ],
+            [
+              -6.27,
+              -5.35
+            ],
+            [
+              2.57,
+              3.29
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 S-01": [
+            [
+              1.87,
+              9.77
+            ],
+            [
+              3.16,
+              3.81
+            ],
+            [
+              2.57,
+              3.24
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02": [
+            [
+              2.03,
+              2.87
+            ],
+            [
+              -7.78,
+              -7.18
+            ],
+            [
+              2.6,
+              3.2
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 N-03": [
+            [
+              2.5,
+              4.02
+            ],
+            [
+              -2.96,
+              -2.36
+            ],
+            [
+              2.56,
+              3.19
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-01": [
+            [
+              7.0,
+              7.64
+            ],
+            [
+              -1.02,
+              1.71
+            ],
+            [
+              2.47,
+              3.14
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-02": [
+            [
+              -2.2,
+              0.62
+            ],
+            [
+              3.21,
+              3.82
+            ],
+            [
+              3.22,
+              3.82
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 N-03-L1": [
+            [
+              2.54,
+              3.14
+            ],
+            [
+              -1.93,
+              -1.33
+            ],
+            [
+              3.62,
+              4.22
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 N-03-U1": [
+            [
+              1.75,
+              3.14
+            ],
+            [
+              -1.94,
+              -1.33
+            ],
+            [
+              4.86,
+              6.09
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Open to below 1 \u00b7 S-02": [
+            [
+              0.87,
+              1.47
+            ],
+            [
+              3.23,
+              3.83
+            ],
+            [
+              4.02,
+              4.62
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Open to below 2 \u00b7 W-02": [
+            [
+              2.59,
+              3.24
+            ],
+            [
+              -1.92,
+              -1.19
+            ],
+            [
+              5.87,
+              6.54
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 N-02": [
+            [
+              1.56,
+              2.25
+            ],
+            [
+              -1.94,
+              -1.29
+            ],
+            [
+              5.6,
+              6.26
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 N-04": [
+            [
+              1.68,
+              3.23
+            ],
+            [
+              -1.93,
+              -1.27
+            ],
+            [
+              5.58,
+              6.3
+            ]
+          ],
+          "Part Gypsum Board (C02).001": [
+            [
+              -4.06,
+              3.52
+            ],
+            [
+              -4.18,
+              3.66
+            ],
+            [
+              6.0,
+              6.6
+            ]
+          ],
+          "Part Gypsum Board (W3).005": [
+            [
+              0.88,
+              1.48
+            ],
+            [
+              1.68,
+              3.8
+            ],
+            [
+              3.84,
+              6.59
+            ]
+          ],
+          "Part Gypsum Board (concrete slab).003": [
+            [
+              10.09,
+              10.69
+            ],
+            [
+              3.08,
+              3.68
+            ],
+            [
+              2.7,
+              3.3
+            ]
+          ],
+          "Part Wood Flooring (concrete slab)": [
+            [
+              0.75,
+              9.28
+            ],
+            [
+              -2.13,
+              3.79
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Slab concrete slab.069": [
+            [
+              1.79,
+              3.91
+            ],
+            [
+              -2.4,
+              -1.8
+            ],
+            [
+              1.82,
+              2.45
+            ]
+          ],
+          "Slab concrete slab.077": [
+            [
+              4.09,
+              4.76
+            ],
+            [
+              -2.76,
+              -1.8
+            ],
+            [
+              1.55,
+              2.16
+            ]
+          ],
+          "Slab concrete slab.092": [
+            [
+              -1.82,
+              5.89
+            ],
+            [
+              -3.53,
+              2.19
+            ],
+            [
+              2.7,
+              3.3
+            ]
+          ],
+          "Slab concrete slab.093": [
+            [
+              1.0,
+              2.12
+            ],
+            [
+              -2.59,
+              -1.94
+            ],
+            [
+              2.16,
+              2.93
+            ]
+          ],
+          "Slab concrete slab.094": [
+            [
+              0.86,
+              1.72
+            ],
+            [
+              -2.42,
+              -1.66
+            ],
+            [
+              2.35,
+              3.13
+            ]
+          ],
+          "Slab concrete slab.098": [
+            [
+              1.89,
+              2.72
+            ],
+            [
+              -7.56,
+              -6.96
+            ],
+            [
+              2.7,
+              3.3
+            ]
+          ],
+          "Slab concrete slab.120": [
+            [
+              0.86,
+              2.14
+            ],
+            [
+              -2.51,
+              -1.36
+            ],
+            [
+              2.34,
+              3.27
+            ]
+          ],
+          "Slab concrete slab.167": [
+            [
+              -0.01,
+              1.42
+            ],
+            [
+              -2.09,
+              -1.36
+            ],
+            [
+              2.54,
+              3.29
+            ]
+          ],
+          "Slab concrete slab.168": [
+            [
+              1.15,
+              2.15
+            ],
+            [
+              -2.88,
+              -2.22
+            ],
+            [
+              1.96,
+              2.71
+            ]
+          ],
+          "Wall Office photo W": [
+            [
+              1.68,
+              2.28
+            ],
+            [
+              -6.51,
+              -5.91
+            ],
+            [
+              2.06,
+              2.77
+            ]
+          ],
+          "Wall P1.004": [
+            [
+              1.57,
+              3.16
+            ],
+            [
+              -1.94,
+              -1.34
+            ],
+            [
+              3.58,
+              6.17
+            ]
+          ],
+          "Wall P1.006": [
+            [
+              1.56,
+              2.27
+            ],
+            [
+              -3.4,
+              -1.34
+            ],
+            [
+              3.64,
+              6.4
+            ]
+          ],
+          "Wall P1.015": [
+            [
+              7.07,
+              7.67
+            ],
+            [
+              -1.71,
+              0.78
+            ],
+            [
+              1.81,
+              2.97
+            ]
+          ],
+          "Wall P1.016": [
+            [
+              7.07,
+              7.67
+            ],
+            [
+              0.55,
+              1.98
+            ],
+            [
+              1.86,
+              3.0
+            ]
+          ],
+          "Wall P1.020": [
+            [
+              0.88,
+              1.48
+            ],
+            [
+              -0.5,
+              2.25
+            ],
+            [
+              3.24,
+              6.58
+            ]
+          ],
+          "Wall W1.003": [
+            [
+              1.1,
+              7.42
+            ],
+            [
+              3.23,
+              3.83
+            ],
+            [
+              0.85,
+              3.1
+            ]
+          ],
+          "Wall W1.005": [
+            [
+              1.56,
+              2.16
+            ],
+            [
+              -6.2,
+              -5.43
+            ],
+            [
+              2.15,
+              3.16
+            ]
+          ],
+          "Wall W1.008": [
+            [
+              2.06,
+              2.91
+            ],
+            [
+              -7.81,
+              -7.21
+            ],
+            [
+              2.01,
+              3.08
+            ]
+          ],
+          "Wall W1.011": [
+            [
+              5.81,
+              7.21
+            ],
+            [
+              -2.52,
+              -1.16
+            ],
+            [
+              0.68,
+              3.16
+            ]
+          ],
+          "Wall W1.017": [
+            [
+              2.66,
+              3.26
+            ],
+            [
+              -1.93,
+              -1.24
+            ],
+            [
+              3.56,
+              6.44
+            ]
+          ],
+          "Wall W1.032": [
+            [
+              1.56,
+              2.27
+            ],
+            [
+              -6.52,
+              -5.92
+            ],
+            [
+              1.96,
+              3.21
+            ]
+          ],
+          "Wall W3.009": [
+            [
+              -2.1,
+              0.93
+            ],
+            [
+              3.23,
+              3.83
+            ],
+            [
+              3.39,
+              4.41
+            ]
+          ],
+          "Wall W3.028": [
+            [
+              8.7,
+              9.3
+            ],
+            [
+              1.4,
+              3.78
+            ],
+            [
+              0.58,
+              3.13
+            ]
+          ],
+          "Wall W5.011": [
+            [
+              6.63,
+              7.43
+            ],
+            [
+              -1.76,
+              -1.16
+            ],
+            [
+              1.0,
+              3.12
+            ]
+          ],
+          "Wall W7.012": [
+            [
+              1.56,
+              2.16
+            ],
+            [
+              -7.08,
+              -5.11
+            ],
+            [
+              2.71,
+              3.92
+            ]
+          ],
+          "Wall W7.015": [
+            [
+              0.88,
+              1.48
+            ],
+            [
+              1.74,
+              3.82
+            ],
+            [
+              3.22,
+              4.44
+            ]
+          ],
+          "Window 09": [
+            [
+              6.49,
+              7.1
+            ],
+            [
+              3.21,
+              3.84
+            ],
+            [
+              1.07,
+              2.83
+            ]
+          ],
+          "Window 10": [
+            [
+              4.04,
+              5.35
+            ],
+            [
+              3.21,
+              3.84
+            ],
+            [
+              1.37,
+              2.79
+            ]
+          ],
+          "Window 11": [
+            [
+              2.1,
+              3.57
+            ],
+            [
+              3.22,
+              3.84
+            ],
+            [
+              0.89,
+              2.78
+            ]
+          ],
+          "x168 \u00b7 Enclosure cap \u00b7 Entry A": [
+            [
+              0.39,
+              1.01
+            ],
+            [
+              -5.25,
+              -3.69
+            ],
+            [
+              0.81,
+              2.09
+            ]
+          ],
+          "x168 \u00b7 Enclosure \u00b7 Entry A": [
+            [
+              -0.02,
+              1.03
+            ],
+            [
+              -5.27,
+              -2.19
+            ],
+            [
+              0.27,
+              2.93
+            ]
+          ]
+        },
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
+      },
+      "asset": "game-room-71356772a158.glb",
+      "assetHash": "71356772a158276511229d7fe85802d6550a1c79cc2857d7baa6e4b132e997b4",
+      "assetBytes": 9717808,
+      "objectCount": 285,
+      "triangles": 53220,
       "cameras": [
         {
           "id": "room-view",
@@ -951,6 +2127,66 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-473ef87a2dcb",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-17c9f373abfa",
+          "name": "09 | Glass: Tinted Dark",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#3a3941",
+          "roughness": 0.05000000074505806,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-902ef5a49093",
+          "name": "60 | Generic - Walls Exterior",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#f3f1ef",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4e62e82a2bbc",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-0867c0c9082c",
+          "name": "Railing \u00b7 Arabesque Panel",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#1d1d1d",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "source UV opacity mask preserved"
+        },
+        {
+          "id": "mat-ea08fa90885d",
+          "name": "Railing \u00b7 Black Iron",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#272729",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -2758,11 +3994,1622 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-95730b2fee81.glb",
-      "assetHash": "95730b2fee8159717ce820f99d64bf88f8dc6c53b3b676145ebe25021a25f8cf",
-      "assetBytes": 20766984,
-      "objectCount": 465,
-      "triangles": 298331,
+      "lookContext": {
+        "bounds": [
+          [
+            -11.26,
+            9.83
+          ],
+          [
+            -7.82,
+            9.4
+          ],
+          [
+            -0.03,
+            6.54
+          ]
+        ],
+        "names": [
+          "Column C06.007",
+          "Column C06.009",
+          "Column C06.010",
+          "Column C06.011",
+          "Column C06.012",
+          "Column C06.013",
+          "Column C06.022",
+          "Door A",
+          "Door B",
+          "Door C",
+          "Door D",
+          "Door E",
+          "Door G leaf",
+          "Door H",
+          "Door H knob",
+          "Door H leaf",
+          "Door ZH",
+          "Door ZI",
+          "Fascia Fascia.009",
+          "Fascia Fascia.010",
+          "Fascia Fascia.011",
+          "Fascia Fascia.012",
+          "Floor Overlay \u00b7 Atrium White Marble",
+          "Floor Overlay \u00b7 Foyer Black Border 3in",
+          "Floor Overlay \u00b7 Foyer Checkerboard 45deg",
+          "Floor Overlay \u00b7 Foyer White Border 6in",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-03",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-04",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 S-03",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Entry \u00b7 x179 flank B",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Family Room \u00b7 E-04",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Powder \u00b7 NE-01",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Powder \u00b7 NE-02",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 N-02-L1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 N-02-U1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-02-U1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-03-U1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Family Room \u00b7 E-01-L1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Family Room \u00b7 E-01-U1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Game Room \u00b7 E-01-U1",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-32 (E-02)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-33 (W-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (E-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (E-02)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (W-02)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Family Room \u00b7 Door D (S-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Game Room \u00b7 Door E (S-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Pantry \u00b7 Door B (S-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Pantry \u00b7 Door O (N-02)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Door H (NE-02)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Window I-33 (E-01)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Window I-33 (E-02)",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Entry \u00b7 x179 flank B",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Family Room \u00b7 E-04",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Family Room \u00b7 E-06",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Powder \u00b7 NE-01",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Powder \u00b7 NE-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Dining Room \u00b7 S-03",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 E-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 E-03",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 E-04",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Game Room \u00b7 E-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 S-01",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Powder \u00b7 NE-02",
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 N-01",
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 N-02",
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-01",
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-02",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Open to below 1 \u00b7 Window 19 (S-02)",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Open to below 1 \u00b7 Window 20 (S-02)",
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Open to below 1 \u00b7 S-02",
+          "Obj Object-38",
+          "Part Gypsum Board (P1).001",
+          "Part Gypsum Board (W1)",
+          "Part Gypsum Board (W2)",
+          "Part Gypsum Board (W2).001",
+          "Part Gypsum Board (concrete slab).003",
+          "Part Wood Flooring (concrete slab)",
+          "Part Wood Framing + Insulation (W2)",
+          "Slab concrete slab.066",
+          "Slab concrete slab.082",
+          "Slab concrete slab.092",
+          "Wall P1.002",
+          "Wall P1.003",
+          "Wall P1.013",
+          "Wall P1.017",
+          "Wall P4",
+          "Wall P4.003",
+          "Wall W1.001",
+          "Wall W1.003",
+          "Wall W1.009",
+          "Wall W2",
+          "Wall W2.011",
+          "Wall W2.021",
+          "Wall W2.022",
+          "Wall W2.023",
+          "Wall W3.005",
+          "Wall W3.028",
+          "Wall W3.034",
+          "Wall W4.009",
+          "Window I-32",
+          "Window I-33",
+          "Window I-34"
+        ],
+        "clip": {
+          "Column C06.007": [
+            [
+              8.68,
+              9.29
+            ],
+            [
+              0.21,
+              0.85
+            ],
+            [
+              0.68,
+              3.03
+            ]
+          ],
+          "Column C06.009": [
+            [
+              8.68,
+              9.29
+            ],
+            [
+              2.68,
+              3.32
+            ],
+            [
+              -0.03,
+              3.13
+            ]
+          ],
+          "Column C06.010": [
+            [
+              8.69,
+              9.3
+            ],
+            [
+              1.15,
+              1.77
+            ],
+            [
+              0.35,
+              3.13
+            ]
+          ],
+          "Column C06.011": [
+            [
+              8.68,
+              9.29
+            ],
+            [
+              1.65,
+              2.29
+            ],
+            [
+              -0.03,
+              3.11
+            ]
+          ],
+          "Column C06.012": [
+            [
+              8.69,
+              9.29
+            ],
+            [
+              2.18,
+              2.8
+            ],
+            [
+              0.39,
+              3.14
+            ]
+          ],
+          "Column C06.013": [
+            [
+              8.68,
+              9.3
+            ],
+            [
+              3.19,
+              3.82
+            ],
+            [
+              0.13,
+              3.15
+            ]
+          ],
+          "Column C06.022": [
+            [
+              8.68,
+              9.29
+            ],
+            [
+              0.72,
+              1.36
+            ],
+            [
+              0.33,
+              3.1
+            ]
+          ],
+          "Door A": [
+            [
+              -3.16,
+              -0.53
+            ],
+            [
+              -7.82,
+              -7.2
+            ],
+            [
+              -0.03,
+              3.27
+            ]
+          ],
+          "Door B": [
+            [
+              7.19,
+              9.16
+            ],
+            [
+              3.21,
+              3.95
+            ],
+            [
+              -0.03,
+              2.81
+            ]
+          ],
+          "Door C": [
+            [
+              -1.57,
+              0.81
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.08,
+              2.97
+            ]
+          ],
+          "Door D": [
+            [
+              -4.6,
+              -2.2
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.35,
+              3.07
+            ]
+          ],
+          "Door E": [
+            [
+              -6.61,
+              -5.05
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              -0.03,
+              3.08
+            ]
+          ],
+          "Door G leaf": [
+            [
+              -4.79,
+              -4.18
+            ],
+            [
+              -7.43,
+              -6.37
+            ],
+            [
+              0.33,
+              2.59
+            ]
+          ],
+          "Door H": [
+            [
+              -4.52,
+              -3.2
+            ],
+            [
+              -2.19,
+              -1.06
+            ],
+            [
+              -0.03,
+              2.38
+            ]
+          ],
+          "Door H knob": [
+            [
+              -3.87,
+              -3.27
+            ],
+            [
+              -2.17,
+              -1.57
+            ],
+            [
+              0.6,
+              1.2
+            ]
+          ],
+          "Door H leaf": [
+            [
+              -4.47,
+              -3.26
+            ],
+            [
+              -2.2,
+              -1.11
+            ],
+            [
+              -0.03,
+              2.33
+            ]
+          ],
+          "Door ZH": [
+            [
+              -11.26,
+              -10.51
+            ],
+            [
+              4.94,
+              8.59
+            ],
+            [
+              0.41,
+              2.8
+            ]
+          ],
+          "Door ZI": [
+            [
+              -11.26,
+              -10.58
+            ],
+            [
+              -1.18,
+              2.81
+            ],
+            [
+              -0.03,
+              2.66
+            ]
+          ],
+          "Fascia Fascia.009": [
+            [
+              8.68,
+              9.29
+            ],
+            [
+              0.63,
+              3.77
+            ],
+            [
+              1.9,
+              2.54
+            ]
+          ],
+          "Fascia Fascia.010": [
+            [
+              8.69,
+              9.3
+            ],
+            [
+              1.39,
+              3.59
+            ],
+            [
+              2.25,
+              2.87
+            ]
+          ],
+          "Fascia Fascia.011": [
+            [
+              8.68,
+              9.3
+            ],
+            [
+              0.84,
+              3.8
+            ],
+            [
+              2.56,
+              3.2
+            ]
+          ],
+          "Fascia Fascia.012": [
+            [
+              8.69,
+              9.3
+            ],
+            [
+              0.26,
+              3.78
+            ],
+            [
+              -0.03,
+              1.06
+            ]
+          ],
+          "Floor Overlay \u00b7 Atrium White Marble": [
+            [
+              -5.33,
+              0.92
+            ],
+            [
+              -2.75,
+              3.98
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Black Border 3in": [
+            [
+              -3.11,
+              -0.61
+            ],
+            [
+              -7.66,
+              -2.35
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Checkerboard 45deg": [
+            [
+              -3.67,
+              -0.58
+            ],
+            [
+              -7.5,
+              -2.48
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer White Border 6in": [
+            [
+              -3.4,
+              -0.67
+            ],
+            [
+              -2.94,
+              -2.22
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-03": [
+            [
+              -5.33,
+              -4.71
+            ],
+            [
+              -1.37,
+              0.07
+            ],
+            [
+              -0.03,
+              0.44
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-04": [
+            [
+              -5.34,
+              -4.71
+            ],
+            [
+              1.46,
+              2.6
+            ],
+            [
+              -0.03,
+              0.44
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 S-03": [
+            [
+              -4.87,
+              -4.23
+            ],
+            [
+              2.22,
+              2.83
+            ],
+            [
+              -0.03,
+              0.43
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Entry \u00b7 x179 flank B": [
+            [
+              -3.58,
+              -2.96
+            ],
+            [
+              -5.21,
+              -4.21
+            ],
+            [
+              -0.03,
+              0.41
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Family Room \u00b7 E-04": [
+            [
+              -4.73,
+              -4.12
+            ],
+            [
+              2.28,
+              3.35
+            ],
+            [
+              -0.03,
+              0.43
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Powder \u00b7 NE-01": [
+            [
+              -3.72,
+              -2.93
+            ],
+            [
+              -2.4,
+              -1.63
+            ],
+            [
+              -0.03,
+              0.43
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Powder \u00b7 NE-02": [
+            [
+              -4.7,
+              -3.9
+            ],
+            [
+              -1.61,
+              -0.83
+            ],
+            [
+              -0.03,
+              0.44
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 N-02-L1": [
+            [
+              -5.19,
+              -4.21
+            ],
+            [
+              -1.42,
+              -0.82
+            ],
+            [
+              -0.03,
+              0.95
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 N-02-U1": [
+            [
+              -5.07,
+              -4.21
+            ],
+            [
+              -1.43,
+              -0.82
+            ],
+            [
+              2.06,
+              3.08
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-02-U1": [
+            [
+              -10.95,
+              -10.32
+            ],
+            [
+              2.24,
+              2.85
+            ],
+            [
+              1.11,
+              2.37
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Dining Room \u00b7 S-03-U1": [
+            [
+              -5.17,
+              -4.22
+            ],
+            [
+              2.24,
+              2.85
+            ],
+            [
+              1.06,
+              3.08
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Family Room \u00b7 E-01-L1": [
+            [
+              -4.74,
+              -4.14
+            ],
+            [
+              2.38,
+              3.36
+            ],
+            [
+              -0.03,
+              0.78
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Family Room \u00b7 E-01-U1": [
+            [
+              -4.75,
+              -4.14
+            ],
+            [
+              2.31,
+              3.35
+            ],
+            [
+              0.76,
+              3.09
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Game Room \u00b7 E-01-U1": [
+            [
+              -11.13,
+              -10.53
+            ],
+            [
+              4.29,
+              5.14
+            ],
+            [
+              1.72,
+              3.16
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-32 (E-02)": [
+            [
+              -5.32,
+              -4.72
+            ],
+            [
+              -1.36,
+              0.15
+            ],
+            [
+              0.3,
+              2.45
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-33 (W-01)": [
+            [
+              -5.46,
+              -4.86
+            ],
+            [
+              -0.05,
+              0.55
+            ],
+            [
+              1.76,
+              2.36
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (E-01)": [
+            [
+              -5.43,
+              -4.82
+            ],
+            [
+              1.27,
+              1.87
+            ],
+            [
+              1.52,
+              2.31
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (E-02)": [
+            [
+              -5.32,
+              -4.72
+            ],
+            [
+              1.28,
+              2.73
+            ],
+            [
+              0.31,
+              2.42
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Dining Room \u00b7 Window I-34 (W-02)": [
+            [
+              -5.48,
+              -4.86
+            ],
+            [
+              1.27,
+              1.87
+            ],
+            [
+              0.82,
+              1.85
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Family Room \u00b7 Door D (S-01)": [
+            [
+              -4.63,
+              -2.02
+            ],
+            [
+              8.66,
+              9.26
+            ],
+            [
+              0.56,
+              2.93
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Game Room \u00b7 Door E (S-01)": [
+            [
+              -6.2,
+              -5.03
+            ],
+            [
+              8.66,
+              9.26
+            ],
+            [
+              0.16,
+              3.07
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Pantry \u00b7 Door B (S-01)": [
+            [
+              7.23,
+              9.22
+            ],
+            [
+              3.21,
+              3.81
+            ],
+            [
+              -0.03,
+              2.86
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Pantry \u00b7 Door O (N-02)": [
+            [
+              7.54,
+              9.2
+            ],
+            [
+              0.22,
+              0.83
+            ],
+            [
+              -0.03,
+              3.19
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Door H (NE-02)": [
+            [
+              -4.49,
+              -3.14
+            ],
+            [
+              -2.23,
+              -1.01
+            ],
+            [
+              -0.03,
+              2.43
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Window I-33 (E-01)": [
+            [
+              -5.42,
+              -4.82
+            ],
+            [
+              0.02,
+              0.62
+            ],
+            [
+              1.76,
+              2.36
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Window I-33 (E-02)": [
+            [
+              -5.34,
+              -4.73
+            ],
+            [
+              -1.38,
+              2.68
+            ],
+            [
+              1.76,
+              3.25
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Entry \u00b7 x179 flank B": [
+            [
+              -3.57,
+              -2.96
+            ],
+            [
+              -5.23,
+              -3.59
+            ],
+            [
+              0.63,
+              1.27
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Family Room \u00b7 E-04": [
+            [
+              -4.73,
+              -4.12
+            ],
+            [
+              2.46,
+              3.36
+            ],
+            [
+              0.63,
+              1.28
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Family Room \u00b7 E-06": [
+            [
+              -4.75,
+              -4.12
+            ],
+            [
+              6.65,
+              7.51
+            ],
+            [
+              0.63,
+              1.26
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Powder \u00b7 NE-01": [
+            [
+              -3.69,
+              -2.94
+            ],
+            [
+              -2.37,
+              -1.65
+            ],
+            [
+              0.62,
+              1.28
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Powder \u00b7 NE-02": [
+            [
+              -4.71,
+              -3.91
+            ],
+            [
+              -1.58,
+              -0.81
+            ],
+            [
+              0.65,
+              1.28
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Dining Room \u00b7 S-03": [
+            [
+              -5.26,
+              -4.23
+            ],
+            [
+              2.18,
+              2.83
+            ],
+            [
+              2.57,
+              3.27
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 E-02": [
+            [
+              -4.74,
+              -4.08
+            ],
+            [
+              2.28,
+              3.39
+            ],
+            [
+              2.57,
+              3.29
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 E-03": [
+            [
+              -4.72,
+              -4.08
+            ],
+            [
+              3.31,
+              4.42
+            ],
+            [
+              3.05,
+              3.76
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 E-04": [
+            [
+              -4.72,
+              -4.08
+            ],
+            [
+              4.59,
+              7.5
+            ],
+            [
+              3.05,
+              3.77
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01": [
+            [
+              -4.96,
+              -4.15
+            ],
+            [
+              4.48,
+              5.09
+            ],
+            [
+              2.61,
+              3.23
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": [
+            [
+              -4.92,
+              -0.52
+            ],
+            [
+              8.61,
+              9.21
+            ],
+            [
+              2.59,
+              3.24
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-02": [
+            [
+              -4.91,
+              0.32
+            ],
+            [
+              3.16,
+              3.8
+            ],
+            [
+              5.87,
+              6.54
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Game Room \u00b7 E-02": [
+            [
+              -4.74,
+              -4.08
+            ],
+            [
+              7.9,
+              9.1
+            ],
+            [
+              3.05,
+              3.75
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 S-01": [
+            [
+              7.19,
+              9.65
+            ],
+            [
+              3.16,
+              3.83
+            ],
+            [
+              2.57,
+              3.3
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Powder \u00b7 NE-02": [
+            [
+              -4.72,
+              -3.42
+            ],
+            [
+              -1.97,
+              -0.79
+            ],
+            [
+              2.57,
+              3.29
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 N-01": [
+            [
+              -1.76,
+              0.83
+            ],
+            [
+              3.25,
+              3.86
+            ],
+            [
+              3.1,
+              3.7
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 N-02": [
+            [
+              -0.97,
+              1.23
+            ],
+            [
+              3.36,
+              3.98
+            ],
+            [
+              3.1,
+              3.74
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-01": [
+            [
+              -3.78,
+              1.03
+            ],
+            [
+              3.31,
+              3.92
+            ],
+            [
+              3.1,
+              3.75
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-02": [
+            [
+              -4.49,
+              1.17
+            ],
+            [
+              3.21,
+              3.82
+            ],
+            [
+              3.11,
+              3.84
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Open to below 1 \u00b7 Window 19 (S-02)": [
+            [
+              -2.2,
+              -0.71
+            ],
+            [
+              3.21,
+              3.81
+            ],
+            [
+              4.11,
+              6.32
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Open to below 1 \u00b7 Window 20 (S-02)": [
+            [
+              -4.05,
+              -1.53
+            ],
+            [
+              3.21,
+              3.81
+            ],
+            [
+              4.11,
+              5.81
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Open to below 1 \u00b7 S-02": [
+            [
+              -5.04,
+              1.0
+            ],
+            [
+              3.21,
+              3.82
+            ],
+            [
+              4.02,
+              4.68
+            ]
+          ],
+          "Obj Object-38": [
+            [
+              -4.83,
+              -4.15
+            ],
+            [
+              4.89,
+              7.25
+            ],
+            [
+              -0.03,
+              1.23
+            ]
+          ],
+          "Part Gypsum Board (P1).001": [
+            [
+              -3.54,
+              -2.94
+            ],
+            [
+              -3.19,
+              -1.83
+            ],
+            [
+              -0.03,
+              2.87
+            ]
+          ],
+          "Part Gypsum Board (W1)": [
+            [
+              -4.67,
+              -2.64
+            ],
+            [
+              -7.81,
+              -7.21
+            ],
+            [
+              -0.03,
+              3.3
+            ]
+          ],
+          "Part Gypsum Board (W2)": [
+            [
+              -5.09,
+              -4.48
+            ],
+            [
+              3.06,
+              8.19
+            ],
+            [
+              -0.03,
+              3.78
+            ]
+          ],
+          "Part Gypsum Board (W2).001": [
+            [
+              -5.2,
+              -4.58
+            ],
+            [
+              3.89,
+              4.49
+            ],
+            [
+              0.82,
+              1.85
+            ]
+          ],
+          "Part Gypsum Board (concrete slab).003": [
+            [
+              7.21,
+              9.83
+            ],
+            [
+              1.81,
+              3.76
+            ],
+            [
+              2.7,
+              3.3
+            ]
+          ],
+          "Part Wood Flooring (concrete slab)": [
+            [
+              -8.63,
+              9.29
+            ],
+            [
+              -0.44,
+              9.15
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Part Wood Framing + Insulation (W2)": [
+            [
+              -5.18,
+              -4.5
+            ],
+            [
+              3.78,
+              8.73
+            ],
+            [
+              0.11,
+              3.3
+            ]
+          ],
+          "Slab concrete slab.066": [
+            [
+              -10.56,
+              -8.36
+            ],
+            [
+              3.78,
+              4.67
+            ],
+            [
+              -0.03,
+              0.95
+            ]
+          ],
+          "Slab concrete slab.082": [
+            [
+              8.69,
+              9.29
+            ],
+            [
+              1.69,
+              2.44
+            ],
+            [
+              0.59,
+              1.62
+            ]
+          ],
+          "Slab concrete slab.092": [
+            [
+              -5.33,
+              9.82
+            ],
+            [
+              -7.62,
+              2.4
+            ],
+            [
+              2.7,
+              3.7
+            ]
+          ],
+          "Wall P1.002": [
+            [
+              -4.75,
+              -2.94
+            ],
+            [
+              -2.42,
+              -0.83
+            ],
+            [
+              -0.03,
+              3.17
+            ]
+          ],
+          "Wall P1.003": [
+            [
+              7.46,
+              9.27
+            ],
+            [
+              0.14,
+              0.81
+            ],
+            [
+              -0.03,
+              3.28
+            ]
+          ],
+          "Wall P1.013": [
+            [
+              -11.04,
+              -7.08
+            ],
+            [
+              2.25,
+              2.85
+            ],
+            [
+              0.02,
+              2.51
+            ]
+          ],
+          "Wall P1.017": [
+            [
+              -5.33,
+              -4.19
+            ],
+            [
+              -1.43,
+              -0.83
+            ],
+            [
+              -0.03,
+              2.89
+            ]
+          ],
+          "Wall P4": [
+            [
+              -4.74,
+              -4.14
+            ],
+            [
+              -7.54,
+              -4.25
+            ],
+            [
+              1.49,
+              3.28
+            ]
+          ],
+          "Wall P4.003": [
+            [
+              -5.34,
+              -4.74
+            ],
+            [
+              -1.84,
+              -1.24
+            ],
+            [
+              1.77,
+              2.37
+            ]
+          ],
+          "Wall W1.001": [
+            [
+              -11.14,
+              -10.54
+            ],
+            [
+              3.26,
+              8.82
+            ],
+            [
+              0.69,
+              3.55
+            ]
+          ],
+          "Wall W1.003": [
+            [
+              7.19,
+              9.28
+            ],
+            [
+              3.23,
+              3.83
+            ],
+            [
+              0.18,
+              3.17
+            ]
+          ],
+          "Wall W1.009": [
+            [
+              -6.45,
+              0.9
+            ],
+            [
+              8.68,
+              9.28
+            ],
+            [
+              0.04,
+              3.78
+            ]
+          ],
+          "Wall W2": [
+            [
+              -5.43,
+              -4.74
+            ],
+            [
+              -1.42,
+              2.84
+            ],
+            [
+              -0.03,
+              3.29
+            ]
+          ],
+          "Wall W2.011": [
+            [
+              -5.39,
+              -4.74
+            ],
+            [
+              1.31,
+              1.92
+            ],
+            [
+              -0.03,
+              0.35
+            ]
+          ],
+          "Wall W2.021": [
+            [
+              -4.76,
+              -4.16
+            ],
+            [
+              6.94,
+              7.55
+            ],
+            [
+              0.89,
+              3.61
+            ]
+          ],
+          "Wall W2.022": [
+            [
+              -5.14,
+              -4.48
+            ],
+            [
+              2.25,
+              2.85
+            ],
+            [
+              1.15,
+              2.92
+            ]
+          ],
+          "Wall W2.023": [
+            [
+              -5.07,
+              -4.15
+            ],
+            [
+              2.25,
+              2.85
+            ],
+            [
+              0.15,
+              3.24
+            ]
+          ],
+          "Wall W3.005": [
+            [
+              -4.75,
+              -4.15
+            ],
+            [
+              4.52,
+              7.54
+            ],
+            [
+              -0.03,
+              3.65
+            ]
+          ],
+          "Wall W3.028": [
+            [
+              8.7,
+              9.3
+            ],
+            [
+              0.27,
+              3.79
+            ],
+            [
+              0.47,
+              3.16
+            ]
+          ],
+          "Wall W3.034": [
+            [
+              -4.75,
+              -4.15
+            ],
+            [
+              2.25,
+              3.42
+            ],
+            [
+              -0.03,
+              3.17
+            ]
+          ],
+          "Wall W4.009": [
+            [
+              -5.07,
+              -4.15
+            ],
+            [
+              4.51,
+              5.11
+            ],
+            [
+              -0.03,
+              3.63
+            ]
+          ],
+          "Window I-32": [
+            [
+              -5.38,
+              -4.74
+            ],
+            [
+              -1.42,
+              0.1
+            ],
+            [
+              0.35,
+              2.34
+            ]
+          ],
+          "Window I-33": [
+            [
+              -5.38,
+              -4.74
+            ],
+            [
+              -1.42,
+              2.84
+            ],
+            [
+              1.83,
+              3.2
+            ]
+          ],
+          "Window I-34": [
+            [
+              -5.38,
+              -4.74
+            ],
+            [
+              1.33,
+              2.82
+            ],
+            [
+              0.44,
+              2.35
+            ]
+          ]
+        },
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
+      },
+      "asset": "kitchen-dd138a0ec1d3.glb",
+      "assetHash": "dd138a0ec1d3207ce761de5cab1d3c119f1e7dc9d7ab956d63b38c5e0e893560",
+      "assetBytes": 23577236,
+      "objectCount": 570,
+      "triangles": 325555,
       "cameras": [
         {
           "id": "room-view",
@@ -3331,6 +6178,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-21cd28e0b98b",
+          "name": "Fixture \u00b7 Satin Pewter (owner, 24 Sep)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#8c8b86",
+          "roughness": 0.41999998688697815,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-a7a5400b28e3",
           "name": "Fixture \u00b7 Brushed Nickel",
           "roomId": "kitchen",
@@ -3529,6 +6386,86 @@
           "roughness": 0.11999999731779099,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6da6ff70dd7b",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#c8d1bc",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-d0177f175d92",
+          "name": "05 | Wallpaper",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#4c4e55",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-399e5e0461dc",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#aabed4",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-b3e440e4b333",
+          "name": "07 | Siding: 8\" Horiz. White",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#acafaf",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3fd893e878c2",
+          "name": "09 | Glass: Tinted Dark",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#3a3941",
+          "roughness": 0.05000000074505806,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-7c67cded8a3b",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7488b719c163",
+          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#4a3a2e",
+          "roughness": 0.3199999928474426,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-22f3a34a34e4",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "kitchen",
+          "role": "ceiling",
+          "color": "#af9475",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         }
       ]
     },
@@ -5730,9 +8667,9 @@
         },
         "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py."
       },
-      "asset": "entry-5804ccbfc836.glb",
-      "assetHash": "5804ccbfc836b69e522e620c5653fc1c7e8bcde4588c5531177a9bf179f19783",
-      "assetBytes": 15224608,
+      "asset": "entry-4c4e1933d363.glb",
+      "assetHash": "4c4e1933d363163a3fa0ed91c81819be49674c39ced6ecc5a04d5c95dfa4ed25",
+      "assetBytes": 15224792,
       "objectCount": 639,
       "triangles": 172296,
       "cameras": [
@@ -6672,7 +9609,12 @@
         }
       ],
       "cutawayHiddenPrefixes": [
-        "Powder can"
+        "Powder can",
+        "x168 \u00b7 Enclosure \u00b7 Entry B",
+        "x168 \u00b7 Enclosure cap \u00b7 Entry B",
+        "Slab concrete slab.126",
+        "Slab concrete slab.129",
+        "Slab concrete slab.146"
       ],
       "includeSourceNames": [
         "Slab concrete slab.092",
@@ -8155,11 +11097,11 @@
           "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
         }
       ],
-      "asset": "loli-bedroom-66523e0169a1.glb",
-      "assetHash": "66523e0169a198b25b29da1f4cc94d440aecd7dc1121173031ce5e22382f37de",
-      "assetBytes": 6149748,
-      "objectCount": 161,
-      "triangles": 57237,
+      "asset": "loli-bedroom-126b87485031.glb",
+      "assetHash": "126b8748503105cd91e2bece91524499e4af16daae1335f92d3ad777fe67114a",
+      "assetBytes": 7692392,
+      "objectCount": 191,
+      "triangles": 119857,
       "cameras": [
         {
           "id": "room-view",
@@ -8518,56 +11460,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-f8fd31ddef8c",
-          "name": "09 | Color: 05 Gray-Medium",
-          "roomId": "loli-bedroom",
-          "role": null,
-          "color": "#676767",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-49f03289518b",
-          "name": "09 | Color: 06 Gray-Medium Dark",
-          "roomId": "loli-bedroom",
-          "role": null,
-          "color": "#6c6c6c",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-da0da0b604fc",
-          "name": "09 | Color: 02 Whitewash*",
-          "roomId": "loli-bedroom",
-          "role": null,
-          "color": "#f3f3f3",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-0c810c46243e",
-          "name": "05 | Metal: Nickel Satin*",
-          "roomId": "loli-bedroom",
-          "role": null,
-          "color": "#bfbfbf",
-          "roughness": 0.30000001192092896,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-2fb52429c1ec",
-          "name": "builtInMatLampBulb",
-          "roomId": "loli-bedroom",
-          "role": null,
-          "color": "#f0f3f3",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-b312c83f5ecd",
           "name": "blattwerk",
           "roomId": "loli-bedroom",
@@ -8585,6 +11477,16 @@
           "color": "#d7d3d9",
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-da0da0b604fc",
+          "name": "09 | Color: 02 Whitewash*",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -8665,6 +11567,76 @@
           "color": "#45423f",
           "roughness": 0.3499999940395355,
           "metallic": 0.699999988079071,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-60ecf7645834",
+          "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#242528",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-fdcf5d26d337",
+          "name": "Wood \u00b7 Scarlett Weathered Wheat (provisional)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#c9a57f",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-502b9b2553f3",
+          "name": "Upholstery \u00b7 Scarlett Basketweave Slub Ivory (provisional)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#e9e5d8",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-383b797f9bc4",
+          "name": "Fabric \u00b7 mattress ticking - NOT a product colour (provisional)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#eaeae7",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-afe6096d588d",
+          "name": "Fabric \u00b7 PLAIN bed linen STAND-IN, warm white - NOT a product colour, NOT measured, and NOT the purchased Jardin Toile (x169)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#dddbd6",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1529d7495c07",
+          "name": "Fabric \u00b7 Loli comforter and shams \u00b7 plain oatmeal cream STAND-IN (provisional, x183 PROPOSAL)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#c5b6a0",
+          "roughness": 0.8799999952316284,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0809a29418f6",
+          "name": "Stone \u00b7 Scarlett nightstand marble (provisional)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#e8e7e3",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         }
       ]
@@ -9336,11 +12308,377 @@
       "excludeSourceNames": [
         "Slab concrete slab.135"
       ],
-      "asset": "laundry-540ed6dd9049.glb",
-      "assetHash": "540ed6dd90491ad243e01de313463ad87371070fedb814bd927b11d5a7622530",
-      "assetBytes": 1947840,
-      "objectCount": 39,
-      "triangles": 6308,
+      "lookContext": {
+        "bounds": [
+          [
+            -6.69,
+            -0.38
+          ],
+          [
+            -7.85,
+            1.26
+          ],
+          [
+            3.37,
+            6.6
+          ]
+        ],
+        "names": [
+          "Door A",
+          "Door Q",
+          "Door Q leaf",
+          "Door T leaf",
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Upper Hall & Bridge \u00b7 E-02",
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 E-02-U1",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Green Bedroom \u00b7 Door T (E-02)",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Laundry \u00b7 Door Q (N-02)",
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Green Bedroom \u00b7 S-02",
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Upper Hall & Bridge \u00b7 E-02",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Laundry \u00b7 E-02",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Laundry \u00b7 N-01",
+          "Obj 34",
+          "Part Gypsum Board (C02).001",
+          "Part Gypsum Board (W3).002",
+          "Slab concrete slab.092",
+          "Slab concrete slab.170",
+          "Slab concrete slab.171",
+          "Wall P1.007",
+          "Wall P1.008",
+          "Wall P1.009",
+          "Wall P1.018",
+          "Wall W9.012"
+        ],
+        "clip": {
+          "Door A": [
+            [
+              -1.9,
+              -0.38
+            ],
+            [
+              -7.82,
+              -7.21
+            ],
+            [
+              3.37,
+              3.1
+            ]
+          ],
+          "Door Q": [
+            [
+              -5.82,
+              -4.37
+            ],
+            [
+              -2.86,
+              -2.2
+            ],
+            [
+              3.66,
+              5.31
+            ]
+          ],
+          "Door Q leaf": [
+            [
+              -5.79,
+              -4.44
+            ],
+            [
+              -2.85,
+              -2.24
+            ],
+            [
+              3.37,
+              6.05
+            ]
+          ],
+          "Door T leaf": [
+            [
+              -6.69,
+              -6.09
+            ],
+            [
+              -2.54,
+              -1.49
+            ],
+            [
+              3.37,
+              5.96
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Upper Hall & Bridge \u00b7 E-02": [
+            [
+              -6.65,
+              -6.02
+            ],
+            [
+              -1.81,
+              0.24
+            ],
+            [
+              3.37,
+              3.84
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 E-02-U1": [
+            [
+              -6.65,
+              -6.04
+            ],
+            [
+              -1.71,
+              0.88
+            ],
+            [
+              4.16,
+              6.4
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Green Bedroom \u00b7 Door T (E-02)": [
+            [
+              -6.65,
+              -6.03
+            ],
+            [
+              -2.7,
+              -1.25
+            ],
+            [
+              3.37,
+              6.19
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Laundry \u00b7 Door Q (N-02)": [
+            [
+              -5.87,
+              -4.33
+            ],
+            [
+              -2.78,
+              -2.18
+            ],
+            [
+              4.1,
+              6.18
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Green Bedroom \u00b7 S-02": [
+            [
+              -6.17,
+              -5.52
+            ],
+            [
+              0.55,
+              1.16
+            ],
+            [
+              4.06,
+              4.68
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Upper Hall & Bridge \u00b7 E-02": [
+            [
+              -6.65,
+              -6.02
+            ],
+            [
+              -1.79,
+              0.9
+            ],
+            [
+              4.02,
+              4.68
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Laundry \u00b7 E-02": [
+            [
+              -6.65,
+              -5.98
+            ],
+            [
+              -2.32,
+              0.32
+            ],
+            [
+              5.87,
+              6.59
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Laundry \u00b7 N-01": [
+            [
+              -6.22,
+              -4.32
+            ],
+            [
+              -2.77,
+              -2.13
+            ],
+            [
+              5.9,
+              6.58
+            ]
+          ],
+          "Obj 34": [
+            [
+              -1.75,
+              -0.59
+            ],
+            [
+              -7.85,
+              -7.25
+            ],
+            [
+              3.37,
+              4.69
+            ]
+          ],
+          "Part Gypsum Board (C02).001": [
+            [
+              -6.58,
+              -2.76
+            ],
+            [
+              -4.25,
+              1.18
+            ],
+            [
+              6.0,
+              6.6
+            ]
+          ],
+          "Part Gypsum Board (W3).002": [
+            [
+              -1.98,
+              -0.47
+            ],
+            [
+              -7.81,
+              -7.21
+            ],
+            [
+              4.48,
+              6.23
+            ]
+          ],
+          "Slab concrete slab.092": [
+            [
+              -6.69,
+              -4.13
+            ],
+            [
+              -2.75,
+              0.69
+            ],
+            [
+              3.37,
+              3.7
+            ]
+          ],
+          "Slab concrete slab.170": [
+            [
+              -6.18,
+              -4.63
+            ],
+            [
+              0.43,
+              1.26
+            ],
+            [
+              3.4,
+              4.0
+            ]
+          ],
+          "Slab concrete slab.171": [
+            [
+              -6.33,
+              -4.71
+            ],
+            [
+              0.15,
+              0.98
+            ],
+            [
+              3.37,
+              3.85
+            ]
+          ],
+          "Wall P1.007": [
+            [
+              -4.86,
+              -4.15
+            ],
+            [
+              -2.75,
+              -1.34
+            ],
+            [
+              3.37,
+              6.46
+            ]
+          ],
+          "Wall P1.008": [
+            [
+              -6.62,
+              -4.28
+            ],
+            [
+              -2.8,
+              -2.2
+            ],
+            [
+              3.37,
+              6.46
+            ]
+          ],
+          "Wall P1.009": [
+            [
+              -6.65,
+              -6.05
+            ],
+            [
+              -1.94,
+              0.88
+            ],
+            [
+              3.37,
+              6.47
+            ]
+          ],
+          "Wall P1.018": [
+            [
+              -5.2,
+              -4.6
+            ],
+            [
+              -0.53,
+              1.18
+            ],
+            [
+              3.37,
+              6.6
+            ]
+          ],
+          "Wall W9.012": [
+            [
+              -6.11,
+              -5.51
+            ],
+            [
+              0.58,
+              1.24
+            ],
+            [
+              3.46,
+              5.9
+            ]
+          ]
+        },
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
+      },
+      "asset": "laundry-b8e16db446d1.glb",
+      "assetHash": "b8e16db446d136d619bcf26c1861c99bedc64bcbf08231648ba329c8e7bc5dd9",
+      "assetBytes": 2639924,
+      "objectCount": 61,
+      "triangles": 8217,
       "cameras": [
         {
           "id": "room-view",
@@ -9548,12 +12886,12 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-1181d45d2365",
-          "name": "Fixture \u00b7 Unlacquered Brass",
+          "id": "mat-b29f702c93c9",
+          "name": "Fixture \u00b7 Satin Pewter (owner, 24 Sep)",
           "roomId": "laundry",
           "role": null,
-          "color": "#c49e5c",
-          "roughness": 0.2199999988079071,
+          "color": "#8c8b86",
+          "roughness": 0.41999998688697815,
           "metallic": 1.0,
           "translation": "constant source PBR values"
         },
@@ -9736,6 +13074,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-db41f4f520fc",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "laundry",
+          "role": null,
+          "color": "#d4ba98",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         }
       ]
     },
@@ -9810,11 +13158,407 @@
       "excludeSourceNames": [
         "Obj Object-35.013"
       ],
-      "asset": "primary-bedroom-d6519231f705.glb",
-      "assetHash": "d6519231f7053c87d9f83c770e16f69c0e01bcdd04a1ab7bcecde5c64d94b762",
-      "assetBytes": 9348288,
-      "objectCount": 187,
-      "triangles": 166854,
+      "lookContext": {
+        "bounds": [
+          [
+            2.73,
+            6.46
+          ],
+          [
+            -2.01,
+            2.27
+          ],
+          [
+            3.37,
+            6.6
+          ]
+        ],
+        "names": [
+          "Door X",
+          "Door Y",
+          "Door Y knob",
+          "Door Y leaf",
+          "Door ZA",
+          "Door ZA leaf",
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Primary Bedroom \u00b7 S-03",
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Primary Bedroom \u00b7 S-05-L1",
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Primary Bedroom \u00b7 S-05-U1",
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 N-02-U1",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Primary Bedroom \u00b7 Door Y (S-02)",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Primary Bedroom \u00b7 Door ZA (N-01)",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Upper Hall & Bridge \u00b7 Door X (E-02)",
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Primary Bedroom \u00b7 S-03",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Primary Bedroom \u00b7 S-03",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Primary Green Closet \u00b7 S-01",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 E-03",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 N-03",
+          "Part Gypsum Board (C02).001",
+          "Part Gypsum Board (W3).007",
+          "Slab concrete slab.092",
+          "Wall P1.004",
+          "Wall P1.005",
+          "Wall P1.021",
+          "Wall W1.017"
+        ],
+        "clip": {
+          "Door X": [
+            [
+              2.73,
+              3.38
+            ],
+            [
+              -1.72,
+              -0.16
+            ],
+            [
+              3.37,
+              6.17
+            ]
+          ],
+          "Door Y": [
+            [
+              4.82,
+              6.28
+            ],
+            [
+              -0.54,
+              0.17
+            ],
+            [
+              3.37,
+              6.19
+            ]
+          ],
+          "Door Y knob": [
+            [
+              4.91,
+              5.52
+            ],
+            [
+              -0.52,
+              0.08
+            ],
+            [
+              4.03,
+              4.64
+            ]
+          ],
+          "Door Y leaf": [
+            [
+              4.85,
+              6.25
+            ],
+            [
+              -0.5,
+              0.11
+            ],
+            [
+              3.37,
+              6.14
+            ]
+          ],
+          "Door ZA": [
+            [
+              4.83,
+              6.2
+            ],
+            [
+              -1.98,
+              -1.34
+            ],
+            [
+              3.37,
+              6.19
+            ]
+          ],
+          "Door ZA leaf": [
+            [
+              4.85,
+              6.17
+            ],
+            [
+              -1.99,
+              -1.38
+            ],
+            [
+              3.37,
+              6.14
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Primary Bedroom \u00b7 S-03": [
+            [
+              2.83,
+              5.35
+            ],
+            [
+              -0.57,
+              0.04
+            ],
+            [
+              3.37,
+              3.84
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Primary Bedroom \u00b7 S-05-L1": [
+            [
+              2.88,
+              5.24
+            ],
+            [
+              -0.55,
+              0.06
+            ],
+            [
+              3.37,
+              4.54
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Primary Bedroom \u00b7 S-05-U1": [
+            [
+              2.9,
+              5.24
+            ],
+            [
+              -0.55,
+              0.06
+            ],
+            [
+              4.17,
+              6.4
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 N-02-U1": [
+            [
+              2.9,
+              5.25
+            ],
+            [
+              -1.94,
+              -1.33
+            ],
+            [
+              4.21,
+              6.09
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Primary Bedroom \u00b7 Door Y (S-02)": [
+            [
+              4.77,
+              6.32
+            ],
+            [
+              -0.56,
+              0.06
+            ],
+            [
+              3.37,
+              6.24
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Primary Bedroom \u00b7 Door ZA (N-01)": [
+            [
+              4.78,
+              6.32
+            ],
+            [
+              -1.94,
+              -1.32
+            ],
+            [
+              3.6,
+              6.05
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Upper Hall & Bridge \u00b7 Door X (E-02)": [
+            [
+              2.79,
+              3.4
+            ],
+            [
+              -1.77,
+              -0.11
+            ],
+            [
+              3.37,
+              6.21
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Primary Bedroom \u00b7 S-03": [
+            [
+              3.37,
+              5.35
+            ],
+            [
+              -0.57,
+              0.05
+            ],
+            [
+              4.02,
+              4.68
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Primary Bedroom \u00b7 S-03": [
+            [
+              3.48,
+              6.31
+            ],
+            [
+              -0.61,
+              0.05
+            ],
+            [
+              5.87,
+              6.59
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Primary Green Closet \u00b7 S-01": [
+            [
+              3.66,
+              5.67
+            ],
+            [
+              -0.59,
+              0.06
+            ],
+            [
+              5.87,
+              6.54
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 E-03": [
+            [
+              2.8,
+              3.45
+            ],
+            [
+              -1.86,
+              -0.23
+            ],
+            [
+              5.87,
+              6.59
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Upper Hall & Bridge \u00b7 N-03": [
+            [
+              3.4,
+              5.43
+            ],
+            [
+              -1.92,
+              -1.27
+            ],
+            [
+              5.58,
+              6.28
+            ]
+          ],
+          "Part Gypsum Board (C02).001": [
+            [
+              2.88,
+              6.32
+            ],
+            [
+              -2.01,
+              2.18
+            ],
+            [
+              6.0,
+              6.6
+            ]
+          ],
+          "Part Gypsum Board (W3).007": [
+            [
+              2.95,
+              3.55
+            ],
+            [
+              1.67,
+              2.27
+            ],
+            [
+              5.97,
+              6.57
+            ]
+          ],
+          "Slab concrete slab.092": [
+            [
+              2.85,
+              6.32
+            ],
+            [
+              -1.98,
+              0.1
+            ],
+            [
+              3.37,
+              3.7
+            ]
+          ],
+          "Wall P1.004": [
+            [
+              3.1,
+              6.32
+            ],
+            [
+              -1.94,
+              -1.34
+            ],
+            [
+              3.44,
+              6.26
+            ]
+          ],
+          "Wall P1.005": [
+            [
+              2.78,
+              6.3
+            ],
+            [
+              -0.54,
+              0.06
+            ],
+            [
+              3.37,
+              6.47
+            ]
+          ],
+          "Wall P1.021": [
+            [
+              5.86,
+              6.46
+            ],
+            [
+              0.17,
+              0.86
+            ],
+            [
+              5.68,
+              6.29
+            ]
+          ],
+          "Wall W1.017": [
+            [
+              2.78,
+              3.38
+            ],
+            [
+              -1.93,
+              0.04
+            ],
+            [
+              3.37,
+              6.47
+            ]
+          ]
+        },
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
+      },
+      "asset": "primary-bedroom-26fc1eef0567.glb",
+      "assetHash": "26fc1eef05674a43cb002f4eb94548c7a4f725c43f75092db60a4685534ea35d",
+      "assetBytes": 9555032,
+      "objectCount": 212,
+      "triangles": 171608,
       "cameras": [
         {
           "id": "room-view",
@@ -10341,6 +14085,16 @@
           "roughness": 0.8600000143051147,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-46dfaa09a601",
+          "name": "09 | Color: 03 Gray-Light",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#e6e6e6",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -10514,11 +14268,47 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "primary-bath-a80f3d1869a7.glb",
-      "assetHash": "a80f3d1869a7ce56c3b335e5263f7fb73b4b235796db44deb7edda719ca87c56",
-      "assetBytes": 4695380,
-      "objectCount": 207,
-      "triangles": 27853,
+      "lookContext": {
+        "bounds": [
+          [
+            3.55,
+            7.0
+          ],
+          [
+            -1.94,
+            -1.0
+          ],
+          [
+            6.0,
+            6.6
+          ]
+        ],
+        "names": [
+          "Part Gypsum Board (C02).001"
+        ],
+        "clip": {
+          "Part Gypsum Board (C02).001": [
+            [
+              3.55,
+              7.0
+            ],
+            [
+              -1.94,
+              -1.0
+            ],
+            [
+              6.0,
+              6.6
+            ]
+          ]
+        },
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
+      },
+      "asset": "primary-bath-583fcce5f252.glb",
+      "assetHash": "583fcce5f252939f53eb34c654fe73c94f0b31af821b49ccb8249ecc3a0acf2c",
+      "assetBytes": 4698052,
+      "objectCount": 208,
+      "triangles": 27873,
       "cameras": [
         {
           "id": "room-view",
@@ -12088,11 +15878,287 @@
       "cutawayHiddenPrefixes": [
         "Slab Roof."
       ],
-      "asset": "blue-bedroom-0022c0ae7be2.glb",
-      "assetHash": "0022c0ae7be2acb5a8b7a6c3a9a7b13b2f65e9147737d0b96ae97b04bddf5a4a",
-      "assetBytes": 4605896,
-      "objectCount": 100,
-      "triangles": 17135,
+      "lookContext": {
+        "bounds": [
+          [
+            -11.15,
+            -4.13
+          ],
+          [
+            -7.92,
+            -0.45
+          ],
+          [
+            3.37,
+            6.6
+          ]
+        ],
+        "names": [
+          "Door Q",
+          "Door Q leaf",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Dressing 3 \u00b7 Door R (E-02)",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Dressing 3 \u00b7 Window I-36 (W-02)",
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Laundry \u00b7 Door Q (S-01)",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Dressing 3 \u00b7 E-03",
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Laundry \u00b7 S-01",
+          "Part Gypsum Board (C02).001",
+          "Part Gypsum Board (W3).002",
+          "Part Gypsum Board (W3).004",
+          "Part Plywood Sheathing (W3).002",
+          "Part Wood Framing + Insulation (W3).002",
+          "Slab concrete slab.092",
+          "Wall P1.007",
+          "Wall P1.008",
+          "Wall W7.006",
+          "Window I-36"
+        ],
+        "clip": {
+          "Door Q": [
+            [
+              -5.83,
+              -4.37
+            ],
+            [
+              -2.92,
+              -2.22
+            ],
+            [
+              3.63,
+              6.12
+            ]
+          ],
+          "Door Q leaf": [
+            [
+              -5.81,
+              -4.4
+            ],
+            [
+              -2.89,
+              -2.28
+            ],
+            [
+              3.37,
+              6.08
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Dressing 3 \u00b7 Door R (E-02)": [
+            [
+              -5.93,
+              -5.31
+            ],
+            [
+              -4.43,
+              -2.92
+            ],
+            [
+              3.37,
+              6.14
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Dressing 3 \u00b7 Window I-36 (W-02)": [
+            [
+              -4.88,
+              -4.26
+            ],
+            [
+              -3.95,
+              -2.33
+            ],
+            [
+              4.0,
+              6.05
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Casing \u00b7 Laundry \u00b7 Door Q (S-01)": [
+            [
+              -5.88,
+              -4.32
+            ],
+            [
+              -2.94,
+              -2.33
+            ],
+            [
+              3.37,
+              6.19
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Dressing 3 \u00b7 E-03": [
+            [
+              -5.91,
+              -5.26
+            ],
+            [
+              -4.41,
+              -2.57
+            ],
+            [
+              5.87,
+              6.54
+            ]
+          ],
+          "Millwork \u00b7 2F \u00b7 Crown \u00b7 Laundry \u00b7 S-01": [
+            [
+              -5.83,
+              -4.33
+            ],
+            [
+              -2.99,
+              -2.33
+            ],
+            [
+              5.87,
+              6.6
+            ]
+          ],
+          "Part Gypsum Board (C02).001": [
+            [
+              -5.85,
+              -4.27
+            ],
+            [
+              -4.45,
+              -0.45
+            ],
+            [
+              6.0,
+              6.6
+            ]
+          ],
+          "Part Gypsum Board (W3).002": [
+            [
+              -4.73,
+              -4.13
+            ],
+            [
+              -7.82,
+              -7.22
+            ],
+            [
+              3.37,
+              4.04
+            ]
+          ],
+          "Part Gypsum Board (W3).004": [
+            [
+              -11.15,
+              -10.55
+            ],
+            [
+              -7.62,
+              -5.61
+            ],
+            [
+              5.79,
+              6.45
+            ]
+          ],
+          "Part Plywood Sheathing (W3).002": [
+            [
+              -4.73,
+              -4.13
+            ],
+            [
+              -7.92,
+              -7.32
+            ],
+            [
+              3.6,
+              4.2
+            ]
+          ],
+          "Part Wood Framing + Insulation (W3).002": [
+            [
+              -4.73,
+              -4.13
+            ],
+            [
+              -7.91,
+              -7.24
+            ],
+            [
+              3.37,
+              4.2
+            ]
+          ],
+          "Slab concrete slab.092": [
+            [
+              -5.92,
+              -4.27
+            ],
+            [
+              -4.44,
+              -0.89
+            ],
+            [
+              3.37,
+              3.7
+            ]
+          ],
+          "Wall P1.007": [
+            [
+              -4.86,
+              -4.26
+            ],
+            [
+              -4.45,
+              -2.33
+            ],
+            [
+              3.37,
+              6.6
+            ]
+          ],
+          "Wall P1.008": [
+            [
+              -5.91,
+              -4.27
+            ],
+            [
+              -2.92,
+              -2.32
+            ],
+            [
+              3.37,
+              6.47
+            ]
+          ],
+          "Wall W7.006": [
+            [
+              -5.93,
+              -5.33
+            ],
+            [
+              -4.45,
+              -3.83
+            ],
+            [
+              4.31,
+              6.3
+            ]
+          ],
+          "Window I-36": [
+            [
+              -4.86,
+              -4.19
+            ],
+            [
+              -3.89,
+              -2.38
+            ],
+            [
+              4.03,
+              6.0
+            ]
+          ]
+        },
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
+      },
+      "asset": "blue-bedroom-28c9f262ccb1.glb",
+      "assetHash": "28c9f262ccb15daa223a0d90891a1e386c47ff0c640e9b2d61fd57ea88b7efcf",
+      "assetBytes": 4717352,
+      "objectCount": 117,
+      "triangles": 18596,
       "cameras": [
         {
           "id": "room-view",
@@ -12481,6 +16547,16 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-6fe08b352d84",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "blue-bedroom",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -13078,11 +17154,407 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-west-cb8dc67c0b25.glb",
-      "assetHash": "cb8dc67c0b25ea31448081d47d994a69057b19bf4c21d4c9ce8de2530a693e77",
-      "assetBytes": 4116448,
-      "objectCount": 149,
-      "triangles": 20092,
+      "lookContext": {
+        "bounds": [
+          [
+            1.69,
+            7.67
+          ],
+          [
+            -8.76,
+            -2.55
+          ],
+          [
+            -0.1,
+            3.3
+          ]
+        ],
+        "names": [
+          "Arch frame 01",
+          "Arch frame 02",
+          "Arch glass 01",
+          "Arch glass 02",
+          "Arch glass 03",
+          "Arch reveal 01",
+          "Arch reveal 02",
+          "Arch reveal 03",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Bedroom \u00b7 N-02",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Closet \u00b7 W-03",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 N-03",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 S-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-01",
+          "Part Wood Flooring (concrete slab)",
+          "Site Terrain Site",
+          "Slab C01.008",
+          "Slab concrete slab.026",
+          "Slab concrete slab.092",
+          "Slab concrete slab.098",
+          "Wall P1.011",
+          "Wall P1.014",
+          "Wall W1.008",
+          "Window surround 01 [Window 01]",
+          "Window surround 02 [Window 02]"
+        ],
+        "clip": {
+          "Arch frame 01": [
+            [
+              3.03,
+              3.82
+            ],
+            [
+              -7.93,
+              -7.26
+            ],
+            [
+              -0.1,
+              2.56
+            ]
+          ],
+          "Arch frame 02": [
+            [
+              3.5,
+              5.48
+            ],
+            [
+              -7.93,
+              -7.26
+            ],
+            [
+              -0.1,
+              2.76
+            ]
+          ],
+          "Arch glass 01": [
+            [
+              3.03,
+              3.87
+            ],
+            [
+              -7.89,
+              -7.29
+            ],
+            [
+              -0.1,
+              2.53
+            ]
+          ],
+          "Arch glass 02": [
+            [
+              3.5,
+              5.46
+            ],
+            [
+              -7.89,
+              -7.29
+            ],
+            [
+              -0.1,
+              2.73
+            ]
+          ],
+          "Arch glass 03": [
+            [
+              5.26,
+              6.59
+            ],
+            [
+              -7.89,
+              -7.29
+            ],
+            [
+              -0.02,
+              2.71
+            ]
+          ],
+          "Arch reveal 01": [
+            [
+              3.1,
+              4.02
+            ],
+            [
+              -7.8,
+              -7.1
+            ],
+            [
+              -0.1,
+              2.83
+            ]
+          ],
+          "Arch reveal 02": [
+            [
+              3.36,
+              5.57
+            ],
+            [
+              -7.8,
+              -7.1
+            ],
+            [
+              -0.1,
+              2.98
+            ]
+          ],
+          "Arch reveal 03": [
+            [
+              4.99,
+              6.21
+            ],
+            [
+              -7.74,
+              -7.1
+            ],
+            [
+              -0.1,
+              2.93
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Bedroom \u00b7 N-02": [
+            [
+              3.07,
+              4.91
+            ],
+            [
+              -7.79,
+              -7.19
+            ],
+            [
+              -0.1,
+              0.41
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Closet \u00b7 W-03": [
+            [
+              7.04,
+              7.65
+            ],
+            [
+              -5.72,
+              -2.58
+            ],
+            [
+              -0.1,
+              0.43
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 N-03": [
+            [
+              3.46,
+              4.09
+            ],
+            [
+              -7.79,
+              -7.18
+            ],
+            [
+              0.63,
+              1.27
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02": [
+            [
+              3.44,
+              5.53
+            ],
+            [
+              -7.81,
+              -7.14
+            ],
+            [
+              2.57,
+              3.3
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 S-02": [
+            [
+              5.76,
+              7.34
+            ],
+            [
+              -3.18,
+              -2.58
+            ],
+            [
+              2.06,
+              2.66
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-01": [
+            [
+              7.0,
+              7.64
+            ],
+            [
+              -5.72,
+              -2.93
+            ],
+            [
+              2.45,
+              3.13
+            ]
+          ],
+          "Part Wood Flooring (concrete slab)": [
+            [
+              4.45,
+              7.41
+            ],
+            [
+              -5.61,
+              -2.62
+            ],
+            [
+              -0.1,
+              0.3
+            ]
+          ],
+          "Site Terrain Site": [
+            [
+              2.83,
+              4.83
+            ],
+            [
+              -8.76,
+              -7.78
+            ],
+            [
+              -0.1,
+              0.23
+            ]
+          ],
+          "Slab C01.008": [
+            [
+              5.5,
+              7.34
+            ],
+            [
+              -3.55,
+              -2.64
+            ],
+            [
+              2.56,
+              3.18
+            ]
+          ],
+          "Slab concrete slab.026": [
+            [
+              3.08,
+              6.05
+            ],
+            [
+              -7.79,
+              -5.52
+            ],
+            [
+              -0.1,
+              0.3
+            ]
+          ],
+          "Slab concrete slab.092": [
+            [
+              5.14,
+              7.63
+            ],
+            [
+              -5.31,
+              -2.88
+            ],
+            [
+              2.7,
+              3.3
+            ]
+          ],
+          "Slab concrete slab.098": [
+            [
+              1.69,
+              7.54
+            ],
+            [
+              -7.73,
+              -4.96
+            ],
+            [
+              2.7,
+              3.3
+            ]
+          ],
+          "Wall P1.011": [
+            [
+              7.07,
+              7.67
+            ],
+            [
+              -6.01,
+              -2.55
+            ],
+            [
+              -0.09,
+              3.29
+            ]
+          ],
+          "Wall P1.014": [
+            [
+              5.76,
+              7.65
+            ],
+            [
+              -3.15,
+              -2.55
+            ],
+            [
+              -0.1,
+              3.14
+            ]
+          ],
+          "Wall W1.008": [
+            [
+              3.06,
+              6.04
+            ],
+            [
+              -7.94,
+              -7.21
+            ],
+            [
+              -0.1,
+              3.16
+            ]
+          ],
+          "Window surround 01 [Window 01]": [
+            [
+              3.07,
+              3.85
+            ],
+            [
+              -7.95,
+              -7.35
+            ],
+            [
+              -0.1,
+              0.44
+            ]
+          ],
+          "Window surround 02 [Window 02]": [
+            [
+              3.56,
+              4.79
+            ],
+            [
+              -7.97,
+              -7.32
+            ],
+            [
+              -0.1,
+              0.44
+            ]
+          ]
+        },
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10]"
+      },
+      "asset": "office-west-10158e1589a3.glb",
+      "assetHash": "10158e1589a38bfc9d465a3cd941158e1f6c4542d8666d43afacc41cf35bc382",
+      "assetBytes": 4287812,
+      "objectCount": 174,
+      "triangles": 22514,
       "cameras": [
         {
           "id": "room-view",
@@ -13408,6 +17880,36 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-dc800e493ab2",
+          "name": "05 | Metal: Bronze*",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#816627",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e0e43badc78e",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "office-west",
+          "role": "ceiling",
+          "color": "#cec5b2",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-9380db0f9f6a",
+          "name": "32 | Landscape: Earth*",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#94684b",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -13476,11 +17978,497 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-east-0f838d8dbd3d.glb",
-      "assetHash": "0f838d8dbd3d154cabcf91b112eee3008936c07665032d9bd353c02912c7bbe0",
-      "assetBytes": 4125356,
-      "objectCount": 131,
-      "triangles": 21872,
+      "lookContext": {
+        "bounds": [
+          [
+            0.36,
+            7.65
+          ],
+          [
+            -8.77,
+            -2.55
+          ],
+          [
+            -0.1,
+            3.3
+          ]
+        ],
+        "names": [
+          "Arch frame 02",
+          "Arch frame 03",
+          "Arch glass 01",
+          "Arch glass 02",
+          "Arch glass 03",
+          "Arch reveal 01",
+          "Arch reveal 02",
+          "Arch reveal 03",
+          "Door ZJ leaf",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Bedroom \u00b7 N-02",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Offices \u00b7 S-02",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 E-03-U1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 S-02-U1",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Loli Bedroom \u00b7 N-06",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 W-04",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 S-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-01",
+          "Part Gypsum Board (W1)",
+          "Part Wood Flooring (concrete slab)",
+          "Site Terrain Site",
+          "Slab C01.012",
+          "Slab concrete slab.026",
+          "Slab concrete slab.092",
+          "Slab concrete slab.098",
+          "Wall P1.014",
+          "Wall W1.005",
+          "Wall W1.008",
+          "Wall W1.033",
+          "Window surround 02 [Window 02]",
+          "Window surround 03 [Window 03]"
+        ],
+        "clip": {
+          "Arch frame 02": [
+            [
+              3.5,
+              5.48
+            ],
+            [
+              -7.92,
+              -7.26
+            ],
+            [
+              -0.1,
+              2.75
+            ]
+          ],
+          "Arch frame 03": [
+            [
+              5.09,
+              6.3
+            ],
+            [
+              -7.92,
+              -7.26
+            ],
+            [
+              -0.1,
+              2.75
+            ]
+          ],
+          "Arch glass 01": [
+            [
+              1.97,
+              3.68
+            ],
+            [
+              -7.89,
+              -7.29
+            ],
+            [
+              -0.09,
+              2.66
+            ]
+          ],
+          "Arch glass 02": [
+            [
+              3.53,
+              5.48
+            ],
+            [
+              -7.89,
+              -7.29
+            ],
+            [
+              -0.1,
+              2.7
+            ]
+          ],
+          "Arch glass 03": [
+            [
+              5.09,
+              6.31
+            ],
+            [
+              -7.89,
+              -7.29
+            ],
+            [
+              -0.1,
+              2.72
+            ]
+          ],
+          "Arch reveal 01": [
+            [
+              1.85,
+              3.98
+            ],
+            [
+              -7.78,
+              -7.1
+            ],
+            [
+              -0.1,
+              2.99
+            ]
+          ],
+          "Arch reveal 02": [
+            [
+              3.38,
+              5.62
+            ],
+            [
+              -7.8,
+              -7.1
+            ],
+            [
+              -0.1,
+              3.0
+            ]
+          ],
+          "Arch reveal 03": [
+            [
+              4.95,
+              6.24
+            ],
+            [
+              -7.79,
+              -7.1
+            ],
+            [
+              -0.1,
+              2.92
+            ]
+          ],
+          "Door ZJ leaf": [
+            [
+              1.63,
+              2.23
+            ],
+            [
+              -3.92,
+              -3.12
+            ],
+            [
+              0.31,
+              2.13
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Bedroom \u00b7 N-02": [
+            [
+              3.25,
+              6.25
+            ],
+            [
+              -7.81,
+              -7.19
+            ],
+            [
+              -0.1,
+              0.44
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Offices \u00b7 S-02": [
+            [
+              1.94,
+              4.25
+            ],
+            [
+              -3.17,
+              -2.55
+            ],
+            [
+              -0.1,
+              0.44
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 E-03-U1": [
+            [
+              1.69,
+              2.29
+            ],
+            [
+              -5.66,
+              -4.53
+            ],
+            [
+              0.76,
+              3.09
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 S-02-U1": [
+            [
+              1.8,
+              4.01
+            ],
+            [
+              -3.16,
+              -2.55
+            ],
+            [
+              0.78,
+              2.97
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Loli Bedroom \u00b7 N-06": [
+            [
+              4.89,
+              5.69
+            ],
+            [
+              -7.8,
+              -7.18
+            ],
+            [
+              0.62,
+              1.28
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02": [
+            [
+              2.43,
+              5.93
+            ],
+            [
+              -7.79,
+              -7.14
+            ],
+            [
+              2.57,
+              3.29
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 W-04": [
+            [
+              7.01,
+              7.65
+            ],
+            [
+              -7.33,
+              -6.07
+            ],
+            [
+              2.59,
+              3.3
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 S-02": [
+            [
+              1.9,
+              4.08
+            ],
+            [
+              -3.22,
+              -2.58
+            ],
+            [
+              2.02,
+              2.7
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-01": [
+            [
+              7.0,
+              7.64
+            ],
+            [
+              -6.95,
+              -6.01
+            ],
+            [
+              2.46,
+              3.16
+            ]
+          ],
+          "Part Gypsum Board (W1)": [
+            [
+              0.36,
+              1.89
+            ],
+            [
+              -7.81,
+              -7.21
+            ],
+            [
+              0.01,
+              3.21
+            ]
+          ],
+          "Part Wood Flooring (concrete slab)": [
+            [
+              1.79,
+              4.9
+            ],
+            [
+              -5.44,
+              -2.7
+            ],
+            [
+              -0.1,
+              0.3
+            ]
+          ],
+          "Site Terrain Site": [
+            [
+              3.68,
+              6.47
+            ],
+            [
+              -8.77,
+              -8.05
+            ],
+            [
+              -0.1,
+              0.23
+            ]
+          ],
+          "Slab C01.012": [
+            [
+              2.15,
+              4.38
+            ],
+            [
+              -3.55,
+              -2.6
+            ],
+            [
+              2.56,
+              3.18
+            ]
+          ],
+          "Slab concrete slab.026": [
+            [
+              2.06,
+              6.26
+            ],
+            [
+              -7.79,
+              -5.51
+            ],
+            [
+              -0.1,
+              0.3
+            ]
+          ],
+          "Slab concrete slab.092": [
+            [
+              1.87,
+              4.23
+            ],
+            [
+              -5.44,
+              -2.86
+            ],
+            [
+              2.7,
+              3.3
+            ]
+          ],
+          "Slab concrete slab.098": [
+            [
+              1.88,
+              7.61
+            ],
+            [
+              -7.71,
+              -4.97
+            ],
+            [
+              2.7,
+              3.3
+            ]
+          ],
+          "Wall P1.014": [
+            [
+              1.69,
+              4.34
+            ],
+            [
+              -3.15,
+              -2.55
+            ],
+            [
+              -0.05,
+              3.12
+            ]
+          ],
+          "Wall W1.005": [
+            [
+              1.68,
+              2.28
+            ],
+            [
+              -6.12,
+              -2.57
+            ],
+            [
+              -0.07,
+              3.17
+            ]
+          ],
+          "Wall W1.008": [
+            [
+              1.9,
+              6.29
+            ],
+            [
+              -7.95,
+              -7.21
+            ],
+            [
+              -0.1,
+              3.17
+            ]
+          ],
+          "Wall W1.033": [
+            [
+              1.62,
+              2.28
+            ],
+            [
+              -7.74,
+              -7.11
+            ],
+            [
+              0.43,
+              2.68
+            ]
+          ],
+          "Window surround 02 [Window 02]": [
+            [
+              3.82,
+              5.39
+            ],
+            [
+              -7.97,
+              -7.32
+            ],
+            [
+              -0.1,
+              0.44
+            ]
+          ],
+          "Window surround 03 [Window 03]": [
+            [
+              5.38,
+              6.18
+            ],
+            [
+              -7.95,
+              -7.32
+            ],
+            [
+              -0.1,
+              0.44
+            ]
+          ]
+        },
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]"
+      },
+      "asset": "office-east-b208e7d9e21c.glb",
+      "assetHash": "b208e7d9e21c196e770ec2dc2b75c234b1b1368a11464df2c21318c68d6a8077",
+      "assetBytes": 4355416,
+      "objectCount": 162,
+      "triangles": 25276,
       "cameras": [
         {
           "id": "room-view",
@@ -13756,6 +18744,36 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-b4b275717947",
+          "name": "05 | Metal: Bronze*",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#816627",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6d57213e667b",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "office-east",
+          "role": "ceiling",
+          "color": "#cec5b2",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-09db392b44c0",
+          "name": "32 | Landscape: Earth*",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#94684b",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -13838,11 +18856,842 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-hall-20fcc7c6b8e8.glb",
-      "assetHash": "20fcc7c6b8e802401c6a71d4f9a6b090f77609fc912813906376ab8219bea5e0",
-      "assetBytes": 3925008,
-      "objectCount": 137,
-      "triangles": 15524,
+      "lookContext": {
+        "bounds": [
+          [
+            -11.11,
+            11.08
+          ],
+          [
+            -7.82,
+            -2.55
+          ],
+          [
+            -0.03,
+            3.7
+          ]
+        ],
+        "names": [
+          "Door A",
+          "Door G",
+          "Door G knob",
+          "Door G leaf",
+          "Door K",
+          "Floor Overlay \u00b7 Foyer Black Border 3in",
+          "Floor Overlay \u00b7 Foyer Checkerboard 45deg",
+          "Floor Overlay \u00b7 Foyer White Border 6in",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Entry \u00b7 E-03",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Closet \u00b7 W-03",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Offices \u00b7 E-11",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Offices \u00b7 S-02",
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Offices \u00b7 W-05",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Entry \u00b7 E-02-L1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 E-03-U1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 E-09-L1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 E-09-U1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 S-02-U1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 S-02-U2",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 S-02-U3",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 W-01-L4",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 W-06-L1",
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 W-06-U1",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Entry \u00b7 Door G (E-02)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Offices \u00b7 Door K (E-03)",
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Offices \u00b7 Door K (W-02)",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Loli Closet \u00b7 W-03",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 E-05",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 E-11",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 S-02",
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 W-05",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Garage \u00b7 E-01",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 W-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 E-09",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 N-01",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 N-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 S-02",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-01",
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-05",
+          "Part Gypsum Board (W1)",
+          "Part Wood Flooring (concrete slab)",
+          "Slab C01.008",
+          "Slab C01.012",
+          "Slab concrete slab.026",
+          "Slab concrete slab.092",
+          "Slab concrete slab.098",
+          "Wall P1.001",
+          "Wall P1.011",
+          "Wall P1.014",
+          "Wall P4",
+          "Wall W0.004",
+          "Wall W1.005",
+          "Wall W1.014"
+        ],
+        "clip": {
+          "Door A": [
+            [
+              -3.16,
+              0.63
+            ],
+            [
+              -7.82,
+              -7.2
+            ],
+            [
+              -0.03,
+              3.38
+            ]
+          ],
+          "Door G": [
+            [
+              -4.85,
+              -4.14
+            ],
+            [
+              -7.67,
+              -7.06
+            ],
+            [
+              -0.03,
+              2.55
+            ]
+          ],
+          "Door G knob": [
+            [
+              -4.76,
+              -4.16
+            ],
+            [
+              -6.95,
+              -6.35
+            ],
+            [
+              0.6,
+              1.2
+            ]
+          ],
+          "Door G leaf": [
+            [
+              -4.79,
+              -4.18
+            ],
+            [
+              -7.65,
+              -6.34
+            ],
+            [
+              -0.03,
+              2.66
+            ]
+          ],
+          "Door K": [
+            [
+              4.34,
+              5.06
+            ],
+            [
+              -5.34,
+              -3.17
+            ],
+            [
+              -0.03,
+              2.73
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Black Border 3in": [
+            [
+              -4.57,
+              2.0
+            ],
+            [
+              -7.66,
+              -6.16
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Checkerboard 45deg": [
+            [
+              -4.5,
+              1.93
+            ],
+            [
+              -7.58,
+              -5.59
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer White Border 6in": [
+            [
+              -4.67,
+              2.14
+            ],
+            [
+              -7.81,
+              -6.01
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Entry \u00b7 E-03": [
+            [
+              -4.72,
+              -4.12
+            ],
+            [
+              -6.76,
+              -6.05
+            ],
+            [
+              -0.03,
+              0.37
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Closet \u00b7 W-03": [
+            [
+              7.05,
+              7.65
+            ],
+            [
+              -5.97,
+              -5.37
+            ],
+            [
+              -0.03,
+              0.42
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Offices \u00b7 E-11": [
+            [
+              4.43,
+              5.06
+            ],
+            [
+              -6.35,
+              -5.06
+            ],
+            [
+              -0.03,
+              0.44
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Offices \u00b7 S-02": [
+            [
+              3.44,
+              6.04
+            ],
+            [
+              -3.18,
+              -2.57
+            ],
+            [
+              -0.03,
+              0.44
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Offices \u00b7 W-05": [
+            [
+              4.28,
+              4.91
+            ],
+            [
+              -6.37,
+              -5.09
+            ],
+            [
+              -0.03,
+              0.44
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Entry \u00b7 E-02-L1": [
+            [
+              -4.73,
+              -4.13
+            ],
+            [
+              -6.65,
+              -6.05
+            ],
+            [
+              -0.03,
+              1.1
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 E-03-U1": [
+            [
+              1.69,
+              2.29
+            ],
+            [
+              -5.92,
+              -5.32
+            ],
+            [
+              2.49,
+              3.09
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 E-09-L1": [
+            [
+              4.44,
+              5.04
+            ],
+            [
+              -6.35,
+              -5.11
+            ],
+            [
+              -0.03,
+              1.14
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 E-09-U1": [
+            [
+              4.43,
+              5.04
+            ],
+            [
+              -6.35,
+              -5.1
+            ],
+            [
+              0.75,
+              3.08
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 S-02-U1": [
+            [
+              1.79,
+              4.02
+            ],
+            [
+              -3.16,
+              -2.56
+            ],
+            [
+              0.76,
+              2.97
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 S-02-U2": [
+            [
+              3.9,
+              5.8
+            ],
+            [
+              -3.16,
+              -2.56
+            ],
+            [
+              0.76,
+              2.97
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 S-02-U3": [
+            [
+              5.31,
+              7.54
+            ],
+            [
+              -3.16,
+              -2.55
+            ],
+            [
+              0.78,
+              2.09
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 W-01-L4": [
+            [
+              7.06,
+              7.66
+            ],
+            [
+              -6.01,
+              -5.33
+            ],
+            [
+              0.52,
+              1.12
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 W-06-L1": [
+            [
+              4.3,
+              4.91
+            ],
+            [
+              -6.36,
+              -5.11
+            ],
+            [
+              -0.03,
+              1.14
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 Offices \u00b7 W-06-U1": [
+            [
+              4.3,
+              4.9
+            ],
+            [
+              -6.36,
+              -5.11
+            ],
+            [
+              0.76,
+              3.07
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Entry \u00b7 Door G (E-02)": [
+            [
+              -4.72,
+              -4.12
+            ],
+            [
+              -6.86,
+              -6.24
+            ],
+            [
+              -0.03,
+              2.76
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Offices \u00b7 Door K (E-03)": [
+            [
+              4.43,
+              5.05
+            ],
+            [
+              -5.58,
+              -3.0
+            ],
+            [
+              -0.03,
+              2.77
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Casing \u00b7 Offices \u00b7 Door K (W-02)": [
+            [
+              4.29,
+              4.91
+            ],
+            [
+              -5.58,
+              -3.0
+            ],
+            [
+              0.1,
+              2.81
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Loli Closet \u00b7 W-03": [
+            [
+              7.04,
+              7.65
+            ],
+            [
+              -6.02,
+              -2.72
+            ],
+            [
+              0.62,
+              1.26
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 E-05": [
+            [
+              1.7,
+              2.31
+            ],
+            [
+              -6.02,
+              -5.32
+            ],
+            [
+              0.65,
+              1.25
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 E-11": [
+            [
+              4.44,
+              5.06
+            ],
+            [
+              -6.36,
+              -5.11
+            ],
+            [
+              0.61,
+              1.28
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 S-02": [
+            [
+              2.81,
+              6.85
+            ],
+            [
+              -3.18,
+              -2.55
+            ],
+            [
+              0.62,
+              1.28
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 W-05": [
+            [
+              4.28,
+              4.91
+            ],
+            [
+              -6.37,
+              -5.04
+            ],
+            [
+              0.61,
+              1.28
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Garage \u00b7 E-01": [
+            [
+              -11.11,
+              -10.51
+            ],
+            [
+              -7.63,
+              -6.25
+            ],
+            [
+              2.62,
+              3.23
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02": [
+            [
+              10.18,
+              10.78
+            ],
+            [
+              -7.74,
+              -7.14
+            ],
+            [
+              2.64,
+              3.24
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 W-02": [
+            [
+              10.48,
+              11.08
+            ],
+            [
+              -7.69,
+              -6.79
+            ],
+            [
+              2.68,
+              3.29
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 E-09": [
+            [
+              4.44,
+              5.1
+            ],
+            [
+              -6.12,
+              -4.03
+            ],
+            [
+              2.57,
+              3.26
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 N-01": [
+            [
+              4.54,
+              6.58
+            ],
+            [
+              -6.39,
+              -5.78
+            ],
+            [
+              2.57,
+              3.17
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 N-02": [
+            [
+              2.92,
+              4.88
+            ],
+            [
+              -6.39,
+              -5.78
+            ],
+            [
+              2.57,
+              3.17
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 S-02": [
+            [
+              1.75,
+              7.48
+            ],
+            [
+              -3.22,
+              -2.58
+            ],
+            [
+              2.03,
+              2.72
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-01": [
+            [
+              7.0,
+              7.64
+            ],
+            [
+              -5.94,
+              -2.93
+            ],
+            [
+              2.46,
+              3.14
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 W-05": [
+            [
+              4.24,
+              4.9
+            ],
+            [
+              -6.11,
+              -3.19
+            ],
+            [
+              2.57,
+              3.26
+            ]
+          ],
+          "Part Gypsum Board (W1)": [
+            [
+              -4.65,
+              1.97
+            ],
+            [
+              -7.81,
+              -7.21
+            ],
+            [
+              -0.03,
+              3.41
+            ]
+          ],
+          "Part Wood Flooring (concrete slab)": [
+            [
+              2.13,
+              7.26
+            ],
+            [
+              -5.75,
+              -2.65
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Slab C01.008": [
+            [
+              4.55,
+              7.26
+            ],
+            [
+              -3.55,
+              -2.61
+            ],
+            [
+              2.56,
+              3.18
+            ]
+          ],
+          "Slab C01.012": [
+            [
+              2.08,
+              4.82
+            ],
+            [
+              -3.55,
+              -2.61
+            ],
+            [
+              2.56,
+              3.18
+            ]
+          ],
+          "Slab concrete slab.026": [
+            [
+              2.95,
+              7.6
+            ],
+            [
+              -6.39,
+              -5.17
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Slab concrete slab.092": [
+            [
+              -10.15,
+              7.39
+            ],
+            [
+              -7.73,
+              -2.74
+            ],
+            [
+              2.7,
+              3.7
+            ]
+          ],
+          "Slab concrete slab.098": [
+            [
+              1.87,
+              7.53
+            ],
+            [
+              -6.34,
+              -4.94
+            ],
+            [
+              2.7,
+              3.3
+            ]
+          ],
+          "Wall P1.001": [
+            [
+              4.31,
+              5.03
+            ],
+            [
+              -6.36,
+              -2.61
+            ],
+            [
+              -0.03,
+              3.17
+            ]
+          ],
+          "Wall P1.011": [
+            [
+              7.07,
+              7.67
+            ],
+            [
+              -6.36,
+              -2.59
+            ],
+            [
+              -0.03,
+              3.29
+            ]
+          ],
+          "Wall P1.014": [
+            [
+              1.7,
+              7.64
+            ],
+            [
+              -3.15,
+              -2.55
+            ],
+            [
+              -0.03,
+              3.14
+            ]
+          ],
+          "Wall P4": [
+            [
+              -4.74,
+              -4.14
+            ],
+            [
+              -7.76,
+              -5.42
+            ],
+            [
+              -0.03,
+              3.3
+            ]
+          ],
+          "Wall W0.004": [
+            [
+              -4.52,
+              -2.88
+            ],
+            [
+              -6.56,
+              -5.73
+            ],
+            [
+              -0.03,
+              0.39
+            ]
+          ],
+          "Wall W1.005": [
+            [
+              1.68,
+              2.28
+            ],
+            [
+              -6.35,
+              -5.32
+            ],
+            [
+              0.31,
+              3.26
+            ]
+          ],
+          "Wall W1.014": [
+            [
+              -3.28,
+              -2.61
+            ],
+            [
+              -6.26,
+              -5.57
+            ],
+            [
+              -0.03,
+              0.36
+            ]
+          ]
+        },
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
+      },
+      "asset": "office-hall-176c8e9e4adb.glb",
+      "assetHash": "176c8e9e4adba539f9cf6be388f40a7ea39656ed661e5b9996202c5b18131916",
+      "assetBytes": 4801292,
+      "objectCount": 191,
+      "triangles": 23978,
       "cameras": [
         {
           "id": "room-view",
@@ -14133,6 +19982,76 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-37be3901d252",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-cec9c9cd7ba9",
+          "name": "05 | Metal: Bronze*",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#816627",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a5af25249b5b",
+          "name": "Floor \u00b7 Black Marble Border",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-75fdee0ef69d",
+          "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-d1e3e0513cd5",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0a0b48a4b287",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-117eb84ef4bf",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "office-hall",
+          "role": "ceiling",
+          "color": "#af9475",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         }
       ]
     },
@@ -16365,9 +22284,9 @@
         "Millwork"
       ],
       "architectureAttachmentDepth": 1.2,
-      "asset": "rear-deck-b22bd34fb210.glb",
-      "assetHash": "b22bd34fb2100eb84640272ecb0994bed2223f5a626d186feaa86a0843ed4085",
-      "assetBytes": 1947984,
+      "asset": "rear-deck-874a5c4377d4.glb",
+      "assetHash": "874a5c4377d4ac2305b76df100eb9af37f385b23fa5696fcfd01f13a8b72bd8b",
+      "assetBytes": 1948024,
       "objectCount": 125,
       "triangles": 8807,
       "cameras": [
