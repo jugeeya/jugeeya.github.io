@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "3d77362dca13",
+  "sceneVersion": "bfccaab46b06",
   "source": {
     "file": "Web.blend",
-    "sha256": "3d77362dca139c5ef7d069eba6d6adcee95f441b376be00844e676c623802d26",
+    "sha256": "bfccaab46b06e0dfed24f40f05147090890d8c8a4e88ef939317f227d13b5ff1",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -108,9 +108,9 @@
       "cutawayMillworkRooms": [
         "Game Room"
       ],
-      "asset": "game-room-9ea8eff8e07c.glb",
-      "assetHash": "9ea8eff8e07cbaaaa9c7d80ec5d5b81ad6109dda81bafaf290af3454d98efaef",
-      "assetBytes": 8921048,
+      "asset": "game-room-02cf4dd26dbe.glb",
+      "assetHash": "02cf4dd26dbee7ca41d49cedc166023557304fe75ecf94432d3095872a79f5fe",
+      "assetBytes": 8921132,
       "objectCount": 208,
       "triangles": 43818,
       "cameras": [
@@ -1027,9 +1027,9 @@
         "Obj 84\" BASE CAB.004",
         "Obj M06"
       ],
-      "asset": "family-room-8ccd73f27ed8.glb",
-      "assetHash": "8ccd73f27ed85ea254e205139b842fe4879a1c1ee0254ab56565d4811eba8001",
-      "assetBytes": 7441284,
+      "asset": "family-room-3ef82bc538ff.glb",
+      "assetHash": "3ef82bc538ff772649ef427e85bfa07c25206f5ef7b771f15bc7814209943c3e",
+      "assetBytes": 7441356,
       "objectCount": 229,
       "triangles": 40099,
       "cameras": [
@@ -1780,9 +1780,9 @@
         "PVanity",
         "PBath"
       ],
-      "asset": "dining-room-52e9f5fb88ce.glb",
-      "assetHash": "52e9f5fb88ce238c8ff7db1c2db98de9876c065b1c007ca22511284a33ea9913",
-      "assetBytes": 9570104,
+      "asset": "dining-room-ba2880c80ede.glb",
+      "assetHash": "ba2880c80edec2b52e87622cdf8ecbf4751086ae34aacad4d4349c91ea1fced1",
+      "assetBytes": 9570124,
       "objectCount": 240,
       "triangles": 89976,
       "cameras": [
@@ -2758,9 +2758,9 @@
           "reason": "Corner partition, returns and trim are one assembly; source names span Kitchen and Loli Closet."
         }
       ],
-      "asset": "kitchen-4371cd4da607.glb",
-      "assetHash": "4371cd4da60733905f8e8d4a427629b221a1871a6126a4bc1e8c92cb7b446ac4",
-      "assetBytes": 20767020,
+      "asset": "kitchen-95730b2fee81.glb",
+      "assetHash": "95730b2fee8159717ce820f99d64bf88f8dc6c53b3b676145ebe25021a25f8cf",
+      "assetBytes": 20766984,
       "objectCount": 465,
       "triangles": 298331,
       "cameras": [
@@ -5730,11 +5730,11 @@
         },
         "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py."
       },
-      "asset": "entry-6aa3dbb7ce1e.glb",
-      "assetHash": "6aa3dbb7ce1e8ab6f9d2624ab808ff52e7bdd6f3a8005a8fcd89045894a0acf4",
-      "assetBytes": 12208376,
-      "objectCount": 635,
-      "triangles": 114337,
+      "asset": "entry-5804ccbfc836.glb",
+      "assetHash": "5804ccbfc836b69e522e620c5653fc1c7e8bcde4588c5531177a9bf179f19783",
+      "assetBytes": 15224608,
+      "objectCount": 639,
+      "triangles": 172296,
       "cameras": [
         {
           "id": "room-view",
@@ -6013,6 +6013,16 @@
           "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-67d32cb227e3",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
           "id": "mat-e43a38fc4914",
           "name": "09 | Color: 03 Gray-Light",
           "roomId": "entry",
@@ -6253,32 +6263,52 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-db41ce0c5ebf",
-          "name": "09 | Color: Green Celadon",
+          "id": "mat-5cc85d5221e0",
+          "name": "Bloom \u00b7 Entry arrangement white hydrangea (x187)",
           "roomId": "entry",
           "role": null,
-          "color": "#a7c6a6",
+          "color": "#e5e7da",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-b62c4d5ab5c9",
-          "name": "32 | Landscape: Leaves Shrub",
+          "id": "mat-54705d717ec9",
+          "name": "Bloom \u00b7 Entry arrangement ivory (x187)",
           "roomId": "entry",
           "role": null,
-          "color": "#274f27",
-          "roughness": 0.550000011920929,
+          "color": "#efeadd",
+          "roughness": 0.47999998927116394,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-0e955cd65cbb",
-          "name": "Bloom \u00b7 Entry arrangement cream (x130, provisional)",
+          "id": "mat-793dc811a645",
+          "name": "Bloom \u00b7 Entry arrangement blush garden rose (x187)",
           "roomId": "entry",
           "role": null,
-          "color": "#f8f4ec",
-          "roughness": 0.6200000047683716,
+          "color": "#efd7cd",
+          "roughness": 0.46000000834465027,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-82ffa8305dfa",
+          "name": "Leaf \u00b7 Entry arrangement eucalyptus (x187)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#7c8e81",
+          "roughness": 0.5799999833106995,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-54c494616dcb",
+          "name": "Leaf \u00b7 Entry arrangement deep green (x187)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#2f4d2b",
+          "roughness": 0.3799999952316284,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -6301,16 +6331,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-67d32cb227e3",
-          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
-          "roomId": "entry",
-          "role": null,
-          "color": "#ecebe9",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-84394471edab",
@@ -6738,9 +6758,9 @@
       "cutawayMillworkRooms": [
         "Powder"
       ],
-      "asset": "powder-room-23630aa83fff.glb",
-      "assetHash": "23630aa83fff79bf0ca60d8f145fca5079dab4be966296cad7b896a382e5bc45",
-      "assetBytes": 3552560,
+      "asset": "powder-room-a4d3dc833c03.glb",
+      "assetHash": "a4d3dc833c030db2511ad9cd74946eca25dc9c87de91b7d5fae24dfdb0981dc7",
+      "assetBytes": 3552540,
       "objectCount": 147,
       "triangles": 17768,
       "cameras": [
@@ -7117,9 +7137,9 @@
         "Slab concrete slab.058",
         "Slab C01.003"
       ],
-      "asset": "pantry-756212b9710d.glb",
-      "assetHash": "756212b9710df7cd97ce810a392a63244079cee01e29a2f9a28d50b5f0ec5133",
-      "assetBytes": 3459976,
+      "asset": "pantry-b3641b13cb0c.glb",
+      "assetHash": "b3641b13cb0caeac46d8e2b3334f03eca8272a14b76d4c48a15a4031e6678286",
+      "assetBytes": 3459952,
       "objectCount": 111,
       "triangles": 14726,
       "cameras": [
@@ -7558,9 +7578,9 @@
       "cutawayKeepPrefixes": [
         "Fascia Fascia."
       ],
-      "asset": "wine-cellar-0b72bba05c3d.glb",
-      "assetHash": "0b72bba05c3dcd0ef2d765aed4f1e081aa81bd48da723709432e9a268834216d",
-      "assetBytes": 8802548,
+      "asset": "wine-cellar-f25620275f0d.glb",
+      "assetHash": "f25620275f0d1756f44e6adc83c15dcac4a43e64fb47c12ee8fc1655f6eaf8ae",
+      "assetBytes": 8802588,
       "objectCount": 88,
       "triangles": 71829,
       "cameras": [
@@ -8135,9 +8155,9 @@
           "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
         }
       ],
-      "asset": "loli-bedroom-7e80b9282fc9.glb",
-      "assetHash": "7e80b9282fc9a8c2de1e64eb04b5cc5d27c851698aa4a3a7eed538fb75bba73d",
-      "assetBytes": 6149772,
+      "asset": "loli-bedroom-66523e0169a1.glb",
+      "assetHash": "66523e0169a198b25b29da1f4cc94d440aecd7dc1121173031ce5e22382f37de",
+      "assetBytes": 6149748,
       "objectCount": 161,
       "triangles": 57237,
       "cameras": [
@@ -8769,9 +8789,9 @@
       "cutawayMillworkRooms": [
         "Loli Bathroom"
       ],
-      "asset": "loli-bathroom-70f12b0c2e3c.glb",
-      "assetHash": "70f12b0c2e3c501a7daeb90fc17ef42fcc4a19a40e3f66e8858081f14767c5a9",
-      "assetBytes": 4173208,
+      "asset": "loli-bathroom-7149993c08f7.glb",
+      "assetHash": "7149993c08f74d77934c2b0c9e48a9ea2751e2acca7c791fdaa6e9cbd6db24a7",
+      "assetBytes": 4173188,
       "objectCount": 116,
       "triangles": 21529,
       "cameras": [
@@ -9316,11 +9336,11 @@
       "excludeSourceNames": [
         "Slab concrete slab.135"
       ],
-      "asset": "laundry-b58f9706a4c1.glb",
-      "assetHash": "b58f9706a4c11f0a3dad2dfa4001a3411685565c90fbfc8c7eaa1add04273233",
-      "assetBytes": 1817076,
+      "asset": "laundry-540ed6dd9049.glb",
+      "assetHash": "540ed6dd90491ad243e01de313463ad87371070fedb814bd927b11d5a7622530",
+      "assetBytes": 1947840,
       "objectCount": 39,
-      "triangles": 4918,
+      "triangles": 6308,
       "cameras": [
         {
           "id": "room-view",
@@ -9368,7 +9388,7 @@
           "type": "rect",
           "position": [
             -7.04,
-            5.122,
+            5.3873,
             -1.432
           ],
           "width": 0.02299976348876953,
@@ -9554,6 +9574,16 @@
           "role": null,
           "color": "#d7d3d9",
           "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-32ba879e8863",
+          "name": "Fixture \u00b7 Brushed Nickel",
+          "roomId": "laundry",
+          "role": null,
+          "color": "#babab8",
+          "roughness": 0.25999999046325684,
           "metallic": 1.0,
           "translation": "constant source PBR values"
         },
@@ -9780,11 +9810,11 @@
       "excludeSourceNames": [
         "Obj Object-35.013"
       ],
-      "asset": "primary-bedroom-ec96c585d18c.glb",
-      "assetHash": "ec96c585d18ca0ab9460863da1a76665f14de28131a809973c1d04d83a960c2c",
-      "assetBytes": 10712848,
-      "objectCount": 188,
-      "triangles": 134876,
+      "asset": "primary-bedroom-d6519231f705.glb",
+      "assetHash": "d6519231f7053c87d9f83c770e16f69c0e01bcdd04a1ab7bcecde5c64d94b762",
+      "assetBytes": 9348288,
+      "objectCount": 187,
+      "triangles": 166854,
       "cameras": [
         {
           "id": "room-view",
@@ -10023,16 +10053,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-a15a1e1278ad",
-          "name": "09 | Color: 01 Ceiling White",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#f3f3f3",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-1b0d24226489",
           "name": "09 | Color: 08 Black*",
           "roomId": "primary-bedroom",
@@ -10051,6 +10071,16 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-c867382604bf",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-840ecdf03cd2",
@@ -10073,13 +10103,13 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-c867382604bf",
-          "name": "Metal \u00b7 Black Frame",
+          "id": "mat-a15a1e1278ad",
+          "name": "09 | Color: 01 Ceiling White",
           "roomId": "primary-bedroom",
           "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -10243,26 +10273,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-35a56de471b1",
-          "name": "Fabric \u00b7 Jardin Toile GREEN \u2014 discontinued colourway, PURCHASED; pattern INDEPENDENTLY AUTHORED at the measured colour and density (provisional)",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#cdc7b7",
-          "roughness": 0.8600000143051147,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space"
-        },
-        {
-          "id": "mat-353d96742a4b",
-          "name": "Fabric \u00b7 PLAIN bed linen STAND-IN, warm white - NOT a product colour, NOT measured, and NOT the purchased Jardin Toile (x169)",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#dddbd6",
-          "roughness": 0.8600000143051147,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-79723f6bf674",
           "name": "x173 \u00b7 JL chair \u00b7 upholstery \u00b7 fine slub LINEAR weave, cream-NEUTRAL ESTIMATE (colour from photo 03 daylight; ALBEDO and BRDF are judgements, NOT measured; weave authored PROCEDURALLY - no photograph sampled)",
           "roomId": "primary-bedroom",
@@ -10311,6 +10321,26 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-353d96742a4b",
+          "name": "Fabric \u00b7 PLAIN bed linen STAND-IN, warm white - NOT a product colour, NOT measured, and NOT the purchased Jardin Toile (x169)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#dddbd6",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-35a56de471b1",
+          "name": "Fabric \u00b7 Jardin Toile GREEN \u2014 discontinued colourway, PURCHASED; pattern INDEPENDENTLY AUTHORED at the measured colour and density (provisional)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#cdc7b7",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
         }
       ]
     },
@@ -10484,9 +10514,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "primary-bath-4c32a03267fc.glb",
-      "assetHash": "4c32a03267fc2de6607e4bcc7712add84748d85e99092efe3351aa941e9f1571",
-      "assetBytes": 4695404,
+      "asset": "primary-bath-a80f3d1869a7.glb",
+      "assetHash": "a80f3d1869a7ce56c3b335e5263f7fb73b4b235796db44deb7edda719ca87c56",
+      "assetBytes": 4695380,
       "objectCount": 207,
       "triangles": 27853,
       "cameras": [
@@ -11099,9 +11129,9 @@
         "Slab concrete slab.109",
         "Slab concrete slab.135"
       ],
-      "asset": "green-bedroom-ad84193e8d52.glb",
-      "assetHash": "ad84193e8d52c9d2e7cfd53c744f593e199d1f9d6037c0cf7a88de92d35c1d2e",
-      "assetBytes": 5046380,
+      "asset": "green-bedroom-640dba06e64c.glb",
+      "assetHash": "640dba06e64c41d6eb8c67d530c916a556658219583f6a3749a861cb5431d8fc",
+      "assetBytes": 5046356,
       "objectCount": 125,
       "triangles": 23250,
       "cameras": [
@@ -11607,9 +11637,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "green-bath-b49d0ac45077.glb",
-      "assetHash": "b49d0ac45077ecd031a6a5026e5e48797b51094a7346c78fcf1d48cb40d00986",
-      "assetBytes": 3351996,
+      "asset": "green-bath-e0dd79edc3ea.glb",
+      "assetHash": "e0dd79edc3ea7234c99028557af9b6ca16c9deb437f9e1a422ad4bdde5c7feb5",
+      "assetBytes": 3351980,
       "objectCount": 97,
       "triangles": 21446,
       "cameras": [
@@ -12058,9 +12088,9 @@
       "cutawayHiddenPrefixes": [
         "Slab Roof."
       ],
-      "asset": "blue-bedroom-9109a6785c33.glb",
-      "assetHash": "9109a6785c330449005177096e59650595fc85d1de3e5bdc24a6e3d2d8eb1193",
-      "assetBytes": 4605920,
+      "asset": "blue-bedroom-0022c0ae7be2.glb",
+      "assetHash": "0022c0ae7be2acb5a8b7a6c3a9a7b13b2f65e9147737d0b96ae97b04bddf5a4a",
+      "assetBytes": 4605896,
       "objectCount": 100,
       "triangles": 17135,
       "cameras": [
@@ -12576,9 +12606,9 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "blue-bath-769226db25d2.glb",
-      "assetHash": "769226db25d25181668717723e762d3f6d0122a655d481b40746dc9a6c1957d2",
-      "assetBytes": 3796276,
+      "asset": "blue-bath-0146360bb9b0.glb",
+      "assetHash": "0146360bb9b0f34704615e269df44d9857ffe6f2da4f9dab2d6fda93c53f6a86",
+      "assetBytes": 3796292,
       "objectCount": 127,
       "triangles": 22271,
       "cameras": [
@@ -13048,9 +13078,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-west-1ae13bc66e43.glb",
-      "assetHash": "1ae13bc66e4383dc8bf7e69233f637999b26224310388e0de2e3f8d8696dc8f6",
-      "assetBytes": 4116472,
+      "asset": "office-west-cb8dc67c0b25.glb",
+      "assetHash": "cb8dc67c0b25ea31448081d47d994a69057b19bf4c21d4c9ce8de2530a693e77",
+      "assetBytes": 4116448,
       "objectCount": 149,
       "triangles": 20092,
       "cameras": [
@@ -13446,9 +13476,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-east-47f6f9844aa3.glb",
-      "assetHash": "47f6f9844aa3002be6766314318d2dd86751c3660f5b32ca4382629850fcbcf7",
-      "assetBytes": 4125380,
+      "asset": "office-east-0f838d8dbd3d.glb",
+      "assetHash": "0f838d8dbd3d154cabcf91b112eee3008936c07665032d9bd353c02912c7bbe0",
+      "assetBytes": 4125356,
       "objectCount": 131,
       "triangles": 21872,
       "cameras": [
@@ -13808,9 +13838,9 @@
         "DET3650RID",
         "SO30PM"
       ],
-      "asset": "office-hall-8e53f002e9a8.glb",
-      "assetHash": "8e53f002e9a8f460fbe700f1600bc4105c0062159fdf7fda00e181a0fc4fc208",
-      "assetBytes": 3712284,
+      "asset": "office-hall-20fcc7c6b8e8.glb",
+      "assetHash": "20fcc7c6b8e802401c6a71d4f9a6b090f77609fc912813906376ab8219bea5e0",
+      "assetBytes": 3925008,
       "objectCount": 137,
       "triangles": 15524,
       "cameras": [
@@ -13933,6 +13963,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-2b40445485c4",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-a2f2f9d6b5c4",
@@ -14168,9 +14208,9 @@
       "cutawayMillworkRooms": [
         "Loli Closet"
       ],
-      "asset": "loli-closet-758352e6825b.glb",
-      "assetHash": "758352e6825bfc0f85e2be44c6cf4d79bfc17e3b1b80bb3d7069e96695b3791a",
-      "assetBytes": 1944160,
+      "asset": "loli-closet-a352c781c2ee.glb",
+      "assetHash": "a352c781c2ee3e609576df044ee2451064e29d396f7baf7740dd24a8b90ae88a",
+      "assetBytes": 1944128,
       "objectCount": 102,
       "triangles": 5742,
       "cameras": [
@@ -14524,9 +14564,9 @@
       "cutawayMillworkRooms": [
         "Primary Loli Closet"
       ],
-      "asset": "primary-loli-closet-c104d1146548.glb",
-      "assetHash": "c104d1146548f3c46dab663b685d73dc6985287bd915019f1c3d2941078ef003",
-      "assetBytes": 3204488,
+      "asset": "primary-loli-closet-6379cb48edcb.glb",
+      "assetHash": "6379cb48edcb674cfcdff5ac49ddb5ee660fdc04432b5cf610adbe2f07267afa",
+      "assetBytes": 3204452,
       "objectCount": 86,
       "triangles": 10878,
       "cameras": [
@@ -14961,9 +15001,9 @@
       "cutawayMillworkRooms": [
         "Primary Green Closet"
       ],
-      "asset": "primary-green-closet-1aa0176f0907.glb",
-      "assetHash": "1aa0176f09072b5e0b34f965c943f136d0970bb13f28cc976cb644e4ac41bc64",
-      "assetBytes": 3169200,
+      "asset": "primary-green-closet-a1849cd7f102.glb",
+      "assetHash": "a1849cd7f102e0f69de78fd0f7952f98d6b535792946ee849bf7a1b8a5a53a7b",
+      "assetBytes": 3169164,
       "objectCount": 74,
       "triangles": 10329,
       "cameras": [
@@ -15362,9 +15402,9 @@
       "cutawayMillworkRooms": [
         "Green Closet"
       ],
-      "asset": "upstairs-closet-west-e18778ec7951.glb",
-      "assetHash": "e18778ec79519f52fceb2698e48861f377bc8f8ab96a1e42be3d3a29cd86851e",
-      "assetBytes": 2135540,
+      "asset": "upstairs-closet-west-4096611cd9a8.glb",
+      "assetHash": "4096611cd9a8883147e1a09a45af164614d11c9ee47b882334b3326c75834df3",
+      "assetBytes": 2135508,
       "objectCount": 58,
       "triangles": 8616,
       "cameras": [
@@ -15994,9 +16034,9 @@
       "cutawayMillworkRooms": [
         "Dressing 3"
       ],
-      "asset": "upstairs-closet-east-4a3f5b60e0d4.glb",
-      "assetHash": "4a3f5b60e0d4275d3ea2bcef0424f34d3f2d10865d738ff06ffe59946c8264ca",
-      "assetBytes": 2010208,
+      "asset": "upstairs-closet-east-710af6a18780.glb",
+      "assetHash": "710af6a18780280a9fbcf08e4cfb551addf790c32eea100405d9b1f49738795e",
+      "assetBytes": 2010176,
       "objectCount": 66,
       "triangles": 7154,
       "cameras": [
@@ -16325,14 +16365,11 @@
         "Millwork"
       ],
       "architectureAttachmentDepth": 1.2,
-      "includeSourceNames": [
-        "Obj Object-38"
-      ],
-      "asset": "rear-deck-ffa278d18c2c.glb",
-      "assetHash": "ffa278d18c2c5ba541f2caaf935c1bd0f01eb616ba0287fcdde86aa5b2bd289c",
-      "assetBytes": 1733236,
-      "objectCount": 122,
-      "triangles": 6289,
+      "asset": "rear-deck-b22bd34fb210.glb",
+      "assetHash": "b22bd34fb2100eb84640272ecb0994bed2223f5a626d186feaa86a0843ed4085",
+      "assetBytes": 1947984,
+      "objectCount": 125,
+      "triangles": 8807,
       "cameras": [
         {
           "id": "room-view",
@@ -16415,16 +16452,6 @@
         "ceiling": "#d8ceb9"
       },
       "materials": [
-        {
-          "id": "mat-8fb0ba6333ec",
-          "name": "05 | Metal: Stainless Steel*",
-          "roomId": "rear-deck",
-          "role": null,
-          "color": "#d7d3d9",
-          "roughness": 0.30000001192092896,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
         {
           "id": "mat-ef9a96a4a4c6",
           "name": "09 | Color: 01 Ceiling White",
@@ -16644,6 +16671,26 @@
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8fb0ba6333ec",
+          "name": "05 | Metal: Stainless Steel*",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#d7d3d9",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-b0aca886513e",
+          "name": "Fixture \u00b7 Brushed Nickel",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#babab8",
+          "roughness": 0.25999999046325684,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -16774,9 +16821,9 @@
         }
       ],
       "menuDescription": "Covered balcony above the offices",
-      "asset": "front-balcony-a42434570c85.glb",
-      "assetHash": "a42434570c85eb50a65e8898c07d6a3667facdbceaf7e858e6a8197b38ed567c",
-      "assetBytes": 3830320,
+      "asset": "front-balcony-997c9e236c7c.glb",
+      "assetHash": "997c9e236c7cb292b3d813e600dd4ff8f48b4fba9579d5ae12e703e6651075d8",
+      "assetBytes": 3830676,
       "objectCount": 159,
       "triangles": 15500,
       "cameras": [
@@ -16982,6 +17029,16 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-68d33b499d60",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-f082104dabae",
@@ -17221,9 +17278,9 @@
         "Obj 34"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-front-fa1e96bc5813.glb",
-      "assetHash": "fa1e96bc5813d54225326149a2e2670f1777a74332c19a88ffbd59af8aad0979",
-      "assetBytes": 15478276,
+      "asset": "elevation-front-1bfaaae9ab93.glb",
+      "assetHash": "1bfaaae9ab93454eb129e2b6d958c1eb50f7d56cfed9f6e0182506fb8b59c4dd",
+      "assetBytes": 15487120,
       "objectCount": 919,
       "triangles": 127188,
       "cameras": [
@@ -17329,6 +17386,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-3f5776771110",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "elevation-front",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-353a01185ab5",
@@ -17699,16 +17766,6 @@
           "roughness": 0.15000000596046448,
           "metallic": 0.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-3f5776771110",
-          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
-          "roomId": "elevation-front",
-          "role": null,
-          "color": "#ecebe9",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-c29d3517dd94",
@@ -18107,11 +18164,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-east-eb802a3b9031.glb",
-      "assetHash": "eb802a3b90310c6bbfd71245fa5cef4d2dcb4284e24c1f3fd9f420f52c429f56",
-      "assetBytes": 19902924,
+      "asset": "elevation-east-c17401d7fd9b.glb",
+      "assetHash": "c17401d7fd9b7d14eb703d0d2e205a0fd253e1a75467c79c776bf4f5858b95d2",
+      "assetBytes": 19917908,
       "objectCount": 1173,
-      "triangles": 184718,
+      "triangles": 184772,
       "cameras": [
         {
           "id": "east-elevation",
@@ -18225,6 +18282,16 @@
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-cc3f8718d5b5",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "elevation-east",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-0d2b0f098e2e",
@@ -18657,16 +18724,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-cc3f8718d5b5",
-          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
-          "roomId": "elevation-east",
-          "role": null,
-          "color": "#ecebe9",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
-        },
-        {
           "id": "mat-0f6e6e6de9ab",
           "name": "Quartzite \u00b7 Titanium (Deck island)",
           "roomId": "elevation-east",
@@ -19093,11 +19150,11 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-north-484f5ad78e0c.glb",
-      "assetHash": "484f5ad78e0c726f1d8c16f2ec47cd0c02cf655329e435e2d4f2392347cfdc80",
-      "assetBytes": 22744860,
+      "asset": "elevation-north-7f062d2e1b30.glb",
+      "assetHash": "7f062d2e1b30c497cae4f7b0dea021f5438fa68751bcf641c1ef567598f65003",
+      "assetBytes": 22759820,
       "objectCount": 1288,
-      "triangles": 211160,
+      "triangles": 211214,
       "cameras": [
         {
           "id": "north-elevation",
@@ -19182,6 +19239,16 @@
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a4ac9992d82b",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "elevation-north",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-3bf74e64256f",
@@ -19602,16 +19669,6 @@
           "roughness": 0.17000000178813934,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space"
-        },
-        {
-          "id": "mat-a4ac9992d82b",
-          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
-          "roomId": "elevation-north",
-          "role": null,
-          "color": "#ecebe9",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-ee336e54319f",
@@ -20040,9 +20097,9 @@
         "Light \u00b7 RCP SconceExt 1F 02"
       ],
       "applyExclusionsToLights": true,
-      "asset": "elevation-west-14ed3235c79c.glb",
-      "assetHash": "14ed3235c79c73220e26487b24fe7c2adc59933f78ebb2298028d439538da6a0",
-      "assetBytes": 12733452,
+      "asset": "elevation-west-c9263cac64f2.glb",
+      "assetHash": "c9263cac64f242be97f63673391fc09d17764bb4887997ded7e5b1984d1fdecb",
+      "assetBytes": 12739768,
       "objectCount": 660,
       "triangles": 84604,
       "cameras": [
@@ -20134,6 +20191,16 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-ee34a6c7bed4",
+          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
+          "roomId": "elevation-west",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-3a509168d3a0",
@@ -20494,16 +20561,6 @@
           "roughness": 0.8600000143051147,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space"
-        },
-        {
-          "id": "mat-ee34a6c7bed4",
-          "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
-          "roomId": "elevation-west",
-          "role": null,
-          "color": "#ecebe9",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
           "id": "mat-4f3283c1346f",
