@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "1192a1a3c42d",
+  "sceneVersion": "7815d6434afe",
   "source": {
     "file": "Web.blend",
-    "sha256": "1192a1a3c42da56f4161b8580a5a1c2f42cfb3e35a52c8b1d0a173c80c5f2db3",
+    "sha256": "7815d6434afe9a7458422fcd8560d14191221eeb4d6b4e7f2c51c592a2da281e",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -59,7 +59,7 @@
         ]
       ],
       "boundaryStatus": "Room faces measured in candidate f by x97; export envelope includes wall thickness. Not a site survey.",
-      "defaultPaint": "#829cad",
+      "defaultPaint": "#7cabca",
       "ceilingHeight": 3.48615,
       "wallAttachments": [
         {
@@ -1284,9 +1284,10 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
-      "asset": "game-room-db3cb64f8ab6.glb",
-      "assetHash": "db3cb64f8ab6ebbbedd47ca5fc515d2a2b23af1a6d1df16b4a957ed6fa5b5d4f",
-      "assetBytes": 9717792,
+      "displayExposureStops": -0.85,
+      "asset": "game-room-1a7e68edd2cc.glb",
+      "assetHash": "1a7e68edd2cc9b0c0b812894e2f10ed51b46d4a4d0033e55b1860c02e8d00ce4",
+      "assetBytes": 9744140,
       "objectCount": 285,
       "triangles": 53220,
       "cameras": [
@@ -1570,12 +1571,12 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#67839d",
+      "sourcePaint": "#7cabca",
       "finishDefaults": {
-        "walls": "#67839d",
-        "trim": "#67839d",
+        "walls": "#7cabca",
+        "trim": "#7cabca",
         "cabinet": "#95856e",
-        "ceiling": "#67839d"
+        "ceiling": "#7cabca"
       },
       "materials": [
         {
@@ -1593,7 +1594,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "game-room",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -1603,7 +1604,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "game-room",
           "role": "walls",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -1613,7 +1614,7 @@
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "game-room",
           "role": "walls",
-          "color": "#67839d",
+          "color": "#7cabca",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -1733,7 +1734,7 @@
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "game-room",
           "role": "trim",
-          "color": "#67839d",
+          "color": "#7cabca",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -1743,7 +1744,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "game-room",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -1753,7 +1754,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "game-room",
           "role": "trim",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -1933,7 +1934,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "game-room",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2113,7 +2114,7 @@
           "name": "Paint \u00b7 Dusty Blue (Game Room ceiling, x97)",
           "roomId": "game-room",
           "role": "ceiling",
-          "color": "#67839d",
+          "color": "#7cabca",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2123,7 +2124,7 @@
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "game-room",
           "role": "ceiling",
-          "color": "#67839d",
+          "color": "#7cabca",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2221,7 +2222,7 @@
         ]
       ],
       "boundaryStatus": "Pilot export envelope follows modeled perimeter and room camera extents; walking is limited to this room. Shared boundary walls are clipped per export package.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "ceilingHeight": 3.48615,
       "wallAttachments": [
         {
@@ -2263,9 +2264,10 @@
         "Obj 84\" BASE CAB.004",
         "Obj M06"
       ],
-      "asset": "family-room-be8b5f6b197e.glb",
-      "assetHash": "be8b5f6b197ed8da3b4ce78fceeb41e29db87d8ee9c8e67c1dc7923a6655345b",
-      "assetBytes": 7441380,
+      "displayExposureStops": 0.05,
+      "asset": "family-room-4742515fbc25.glb",
+      "assetHash": "4742515fbc2583c619258cd1ec0980d371cfb85e645f02a3712ffbc4ea8b5ab2",
+      "assetBytes": 7454664,
       "objectCount": 229,
       "triangles": 40099,
       "cameras": [
@@ -2497,12 +2499,12 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
         "cabinet": "#95856e",
-        "ceiling": "#d8ceb9"
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -2520,7 +2522,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "family-room",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2530,7 +2532,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "family-room",
           "role": "walls",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2550,7 +2552,7 @@
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "family-room",
           "role": "walls",
-          "color": "#67839d",
+          "color": "#7cabca",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2700,7 +2702,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "family-room",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2710,7 +2712,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "family-room",
           "role": "trim",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2720,7 +2722,7 @@
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "family-room",
           "role": "trim",
-          "color": "#67839d",
+          "color": "#7cabca",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2880,7 +2882,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "family-room",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2960,7 +2962,7 @@
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "family-room",
           "role": "ceiling",
-          "color": "#67839d",
+          "color": "#7cabca",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -2998,7 +3000,7 @@
         ]
       ],
       "boundaryStatus": "Presentation envelope follows the Dining Room perimeter, including the east window partition at x=-5.039 m; excludes the adjoining Powder Room. Not a site survey.",
-      "defaultPaint": "#bac7ad",
+      "defaultPaint": "#bdc8b6",
       "ceilingHeight": 3,
       "menuDescription": "Dining & entertaining",
       "wallAttachments": [
@@ -3016,11 +3018,12 @@
         "PVanity",
         "PBath"
       ],
-      "asset": "dining-room-52e9f5fb88ce.glb",
-      "assetHash": "52e9f5fb88ce238c8ff7db1c2db98de9876c065b1c007ca22511284a33ea9913",
-      "assetBytes": 9570104,
+      "displayExposureStops": -3.6,
+      "asset": "dining-room-2828dbe3628e.glb",
+      "assetHash": "2828dbe3628ea73638dd5783095ee8554ddcbc6221e4e87664ca517d5486e21b",
+      "assetBytes": 9466224,
       "objectCount": 240,
-      "triangles": 89976,
+      "triangles": 58104,
       "cameras": [
         {
           "id": "room-view",
@@ -3278,11 +3281,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#9cbe9d",
+      "sourcePaint": "#bdc8b6",
       "finishDefaults": {
-        "walls": "#9cbe9d",
-        "ceiling": "#d8ceb9",
-        "trim": "#9cbe9d",
+        "walls": "#bdc8b6",
+        "ceiling": "#efe8d7",
+        "trim": "#bdc8b6",
         "cabinet": "#e7e7e7"
       },
       "materials": [
@@ -3301,7 +3304,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "dining-room",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -3311,7 +3314,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "dining-room",
           "role": "walls",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -3321,7 +3324,7 @@
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "dining-room",
           "role": "walls",
-          "color": "#67839d",
+          "color": "#7cabca",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -3441,7 +3444,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "dining-room",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -3531,7 +3534,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "dining-room",
           "role": "trim",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -3541,7 +3544,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "dining-room",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -3551,7 +3554,7 @@
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "dining-room",
           "role": "trim",
-          "color": "#67839d",
+          "color": "#7cabca",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -3657,33 +3660,33 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-cd8494f8e4b4",
-          "name": "Paint \u00b7 Sage (Pinterest baseline chair legs)",
+          "id": "mat-e52d5df27c85",
+          "name": "Wood \u00b7 Natural rubberwood (x198 Galway-style chair frame)",
           "roomId": "dining-room",
           "role": null,
-          "color": "#737c6d",
-          "roughness": 0.5199999809265137,
+          "color": "#d6b789",
+          "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-b33eb49e4468",
-          "name": "Fabric \u00b7 Sage (Pinterest baseline dining chair)",
+          "id": "mat-c72ac7ddcda7",
+          "name": "Cane \u00b7 Natural woven rattan (x198 Galway-style chair back)",
           "roomId": "dining-room",
           "role": null,
-          "color": "#838d7c",
-          "roughness": 0.9599999785423279,
+          "color": "#e0c48c",
+          "roughness": 0.550000011920929,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source UV opacity mask preserved"
         },
         {
-          "id": "mat-524cb7fd2c8e",
-          "name": "Metal \u00b7 Brass ferrule (Pinterest baseline chair feet)",
+          "id": "mat-7a53d8598add",
+          "name": "Fabric \u00b7 Ivory white (x198 Galway-style chair seat)",
           "roomId": "dining-room",
           "role": null,
-          "color": "#c5af79",
-          "roughness": 0.30000001192092896,
-          "metallic": 0.949999988079071,
+          "color": "#efece6",
+          "roughness": 0.8799999952316284,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         }
       ]
@@ -3719,7 +3722,7 @@
         ]
       ],
       "boundaryStatus": "Presentation envelope derived from source walls, cabinetry and camera positions; not a site survey. Walking remains inside the selected room.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "ceilingHeight": 3,
       "menuDescription": "Cooking & gathering",
       "wallAttachments": [
@@ -5605,9 +5608,10 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
-      "asset": "kitchen-9ce1b1dd2850.glb",
-      "assetHash": "9ce1b1dd2850e6ac7461073ceb4755da4742418b514e73abdda102af2b714390",
-      "assetBytes": 23577200,
+      "displayExposureStops": -1.25,
+      "asset": "kitchen-bdea47691ad2.glb",
+      "assetHash": "bdea47691ad20b10635082a25505ee47eafbcb20bf4dfdffea00b2b4b6415dea",
+      "assetBytes": 23614616,
       "objectCount": 570,
       "triangles": 325555,
       "cameras": [
@@ -5839,11 +5843,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "ceiling": "#d8ceb9",
-        "trim": "#d8ceb9",
+        "walls": "#efe8d7",
+        "ceiling": "#efe8d7",
+        "trim": "#efe8d7",
         "cabinet": "#f1eee5"
       },
       "materials": [
@@ -5872,7 +5876,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "kitchen",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -5992,7 +5996,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "kitchen",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -6122,7 +6126,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "kitchen",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -6500,7 +6504,7 @@
         ]
       ],
       "boundaryStatus": "Entry envelope includes both modeled stair flights; the Powder Room floor and contents are excluded. Curved stair walls and the Powder doorway remain only on the far side of a cutaway. Presentation boundary, not a survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "ceilingHeight": 6.319,
       "menuDescription": "Arrival & staircase",
       "cutawayHeight": 3.1,
@@ -8667,9 +8671,10 @@
         },
         "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py."
       },
-      "asset": "entry-3cc20118a767.glb",
-      "assetHash": "3cc20118a767d1049fa39db36367369ac619e5801ab93f4d835fc3262d1a5942",
-      "assetBytes": 15224744,
+      "displayExposureStops": -1.2,
+      "asset": "entry-d0af04951e39.glb",
+      "assetHash": "d0af04951e39e1b7aa2d1fc3ae017b266309a9be356684b1f9eb2b3984ba0d1b",
+      "assetBytes": 15262152,
       "objectCount": 639,
       "triangles": 172296,
       "cameras": [
@@ -8892,11 +8897,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "ceiling": "#d8ceb9",
-        "trim": "#d8ceb9"
+        "walls": "#efe8d7",
+        "ceiling": "#efe8d7",
+        "trim": "#efe8d7"
       },
       "materials": [
         {
@@ -8924,7 +8929,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "entry",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -8934,7 +8939,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "entry",
           "role": "walls",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -9094,7 +9099,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "entry",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -9104,7 +9109,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "entry",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -9114,7 +9119,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "entry",
           "role": "trim",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -9514,7 +9519,7 @@
       "floorElevation": 0,
       "ceilingHeight": 2.9972,
       "boundaryStatus": "Concave presentation outline follows the modeled perimeter wall faces and diagonal Door H wall; floor, finishes and geometry are clipped to that outline. Not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#bdc8b6",
       "menuDescription": "A small room with character",
       "cutawayCameraSide": [
         1,
@@ -9700,9 +9705,10 @@
       "cutawayMillworkRooms": [
         "Powder"
       ],
-      "asset": "powder-room-23630aa83fff.glb",
-      "assetHash": "23630aa83fff79bf0ca60d8f145fca5079dab4be966296cad7b896a382e5bc45",
-      "assetBytes": 3552560,
+      "displayExposureStops": -2.7,
+      "asset": "powder-room-0fafc16df55e.glb",
+      "assetHash": "0fafc16df55e2c57a786d110790f875fde39100da0d755e035d9326b1eb0b231",
+      "assetBytes": 3565848,
       "objectCount": 147,
       "triangles": 17768,
       "cameras": [
@@ -9780,11 +9786,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#9cbe9d",
+      "sourcePaint": "#bdc8b6",
       "finishDefaults": {
-        "walls": "#9cbe9d",
-        "trim": "#9cbe9d",
-        "ceiling": "#d8ceb9"
+        "walls": "#bdc8b6",
+        "trim": "#bdc8b6",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -9812,7 +9818,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "powder-room",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -9822,7 +9828,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "powder-room",
           "role": "walls",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -9882,7 +9888,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "powder-room",
           "role": "trim",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -9892,7 +9898,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "powder-room",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -9952,7 +9958,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "powder-room",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -10032,7 +10038,7 @@
       "floorElevation": 0,
       "ceilingHeight": 2.9972,
       "boundaryStatus": "Presentation envelope derived from modeled room wall faces and floor slab; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "menuDescription": "Storage beside the kitchen",
       "cutawayCameraSide": [
         1,
@@ -10079,9 +10085,10 @@
         "Slab concrete slab.058",
         "Slab C01.003"
       ],
-      "asset": "pantry-756212b9710d.glb",
-      "assetHash": "756212b9710df7cd97ce810a392a63244079cee01e29a2f9a28d50b5f0ec5133",
-      "assetBytes": 3459976,
+      "displayExposureStops": -2.0,
+      "asset": "pantry-afa7f5c362ae.glb",
+      "assetHash": "afa7f5c362ae0e25b612e84a834eb323875dd1853567758f99b18b1e4cd2d262",
+      "assetBytes": 3473272,
       "objectCount": 111,
       "triangles": 14726,
       "cameras": [
@@ -10149,11 +10156,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -10191,7 +10198,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "pantry",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -10271,7 +10278,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "pantry",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -10351,7 +10358,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "pantry",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -10401,7 +10408,7 @@
       "floorElevation": 0,
       "ceilingHeight": 2.9972,
       "boundaryStatus": "Presentation envelope follows source wall faces and room cameras; not a measured survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         -1,
         1
@@ -10520,9 +10527,10 @@
       "cutawayKeepPrefixes": [
         "Fascia Fascia."
       ],
-      "asset": "wine-cellar-0b72bba05c3d.glb",
-      "assetHash": "0b72bba05c3dcd0ef2d765aed4f1e081aa81bd48da723709432e9a268834216d",
-      "assetBytes": 8802548,
+      "displayExposureStops": -1.8,
+      "asset": "wine-cellar-24cdb2a632f2.glb",
+      "assetHash": "24cdb2a632f26a5e184e2cf0c545a6610975d764839fb1de7ae2a12a58419868",
+      "assetBytes": 8826892,
       "objectCount": 88,
       "triangles": 71829,
       "cameras": [
@@ -10702,11 +10710,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9",
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7",
         "cabinet": "#e7e7e7"
       },
       "materials": [
@@ -10745,7 +10753,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "wine-cellar",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -10825,7 +10833,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "wine-cellar",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -10855,7 +10863,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "wine-cellar",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -10995,7 +11003,7 @@
       "floorElevation": 0,
       "ceilingHeight": 2.9972,
       "boundaryStatus": "Presentation envelope follows source wall faces and room cameras; not a measured survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         -1,
         -1
@@ -11097,9 +11105,10 @@
           "reason": "The bay walls, angled windows, casings and seat form a single south-wall assembly."
         }
       ],
-      "asset": "loli-bedroom-b217af814b93.glb",
-      "assetHash": "b217af814b93ebca3d3b04e587e7be011a136d1f44f521426b5ccc19a575a675",
-      "assetBytes": 7692416,
+      "displayExposureStops": -2.45,
+      "asset": "loli-bedroom-42941e637427.glb",
+      "assetHash": "42941e6374274a81d01ad829522ac0bded30f7f038dd917a4076b9c23782660b",
+      "assetBytes": 7705708,
       "objectCount": 191,
       "triangles": 119857,
       "cameras": [
@@ -11242,11 +11251,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -11274,7 +11283,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "loli-bedroom",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -11394,7 +11403,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "loli-bedroom",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -11534,7 +11543,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "loli-bedroom",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -11674,7 +11683,7 @@
       "floorElevation": 0,
       "ceilingHeight": 2.9972,
       "boundaryStatus": "Presentation envelope derived from modeled room wall faces and floor slab; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "menuDescription": "Stone, brass & quiet color",
       "cutawayCameraSide": [
         -1,
@@ -11761,9 +11770,10 @@
       "cutawayMillworkRooms": [
         "Loli Bathroom"
       ],
-      "asset": "loli-bathroom-70f12b0c2e3c.glb",
-      "assetHash": "70f12b0c2e3c501a7daeb90fc17ef42fcc4a19a40e3f66e8858081f14767c5a9",
-      "assetBytes": 4173208,
+      "displayExposureStops": -0.85,
+      "asset": "loli-bathroom-c9ef17ac784c.glb",
+      "assetHash": "c9ef17ac784c4ea68c6c7b0629411de614ef4dc51c850076fbfea9645d130423",
+      "assetBytes": 4186500,
       "objectCount": 116,
       "triangles": 21529,
       "cameras": [
@@ -11869,12 +11879,12 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
         "cabinet": "#eeece6",
-        "ceiling": "#d8ceb9"
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -11902,7 +11912,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "loli-bathroom",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -12042,7 +12052,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "loli-bathroom",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -12192,7 +12202,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "loli-bathroom",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -12272,7 +12282,7 @@
       "floorElevation": 3.8666000366,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope derived from modeled room wall faces and floor slab; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "menuDescription": "The upstairs utility room",
       "cutawayCameraSide": [
         1,
@@ -12674,9 +12684,10 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
-      "asset": "laundry-6741e893a5af.glb",
-      "assetHash": "6741e893a5af2550627c53d2ba0cbb408938da24a1100697ca520250724522bc",
-      "assetBytes": 2639948,
+      "displayExposureStops": -3.15,
+      "asset": "laundry-24e46e9b57b8.glb",
+      "assetHash": "24e46e9b57b85b6aff2b630acc1686338d7ab809e54b26d75f31168a79793565",
+      "assetBytes": 2653260,
       "objectCount": 61,
       "triangles": 8217,
       "cameras": [
@@ -12778,10 +12789,10 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
         "ceiling": "#f3f3f3"
       },
       "materials": [
@@ -12800,7 +12811,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "laundry",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -12870,7 +12881,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "laundry",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -12970,7 +12981,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "laundry",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -13120,7 +13131,7 @@
       "floorElevation": 3.4036,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope follows modeled wall faces, includes wall thickness, and separates the neighboring bedroom/bathroom. Not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "menuDescription": "Rest & retreat",
       "cutawayCameraSide": [
         -1,
@@ -13554,9 +13565,10 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
-      "asset": "primary-bedroom-3299eae2500e.glb",
-      "assetHash": "3299eae2500eb938edc22b57f1345a0ac6741577e94ce0fb20c7b41f6a3116af",
-      "assetBytes": 9555060,
+      "displayExposureStops": -0.6,
+      "asset": "primary-bedroom-30c8b79be293.glb",
+      "assetHash": "30c8b79be2931e141f34e2857a648d4a3ad303cb92f183ca127d89cb7a34a396",
+      "assetBytes": 9568356,
       "objectCount": 212,
       "triangles": 171608,
       "cameras": [
@@ -13709,11 +13721,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -13741,7 +13753,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-bedroom",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -13861,7 +13873,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-bedroom",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -13951,7 +13963,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-bedroom",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -14131,7 +14143,7 @@
       "floorElevation": 3.4036,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope follows modeled wall faces, includes wall thickness, and separates the neighboring bedroom/bathroom. Not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "menuDescription": "The primary bathroom",
       "cutawayCameraSide": [
         -1,
@@ -14304,9 +14316,10 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
-      "asset": "primary-bath-ec5ba777994e.glb",
-      "assetHash": "ec5ba777994e1a86b3db92e4d077482ae5706e0872a5a652ee032502d39327df",
-      "assetBytes": 4698076,
+      "displayExposureStops": -3.45,
+      "asset": "primary-bath-732624e86d0d.glb",
+      "assetHash": "732624e86d0d1b241c3b3ee31bda495677b3a2bd2585d323a7450ae516ed8f50",
+      "assetBytes": 4711372,
       "objectCount": 208,
       "triangles": 27873,
       "cameras": [
@@ -14515,11 +14528,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "trim": "#d8ceb9",
-        "walls": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "trim": "#efe8d7",
+        "walls": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -14527,7 +14540,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-bath",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -14567,7 +14580,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-bath",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -14797,7 +14810,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-bath",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -14877,7 +14890,7 @@
       "floorElevation": 3.4036,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope follows modeled wall faces, includes wall thickness, and separates the neighboring bedroom/bathroom. Not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "menuDescription": "A calm upstairs bedroom",
       "cutawayCameraSide": [
         1,
@@ -14919,9 +14932,10 @@
         "Slab concrete slab.109",
         "Slab concrete slab.135"
       ],
-      "asset": "green-bedroom-ad84193e8d52.glb",
-      "assetHash": "ad84193e8d52c9d2e7cfd53c744f593e199d1f9d6037c0cf7a88de92d35c1d2e",
-      "assetBytes": 5046380,
+      "displayExposureStops": -1.15,
+      "asset": "green-bedroom-fd7ea1db5eb7.glb",
+      "assetHash": "fd7ea1db5eb7994ae42f55f1586ade730a7b1760aa787c241a1d45a36b0963ff",
+      "assetBytes": 5059684,
       "objectCount": 125,
       "triangles": 23250,
       "cameras": [
@@ -15036,11 +15050,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -15078,7 +15092,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "green-bedroom",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -15158,7 +15172,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "green-bedroom",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -15298,7 +15312,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "green-bedroom",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -15338,7 +15352,7 @@
       "floorElevation": 3.4036,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope follows modeled wall faces, includes wall thickness, and separates the neighboring bedroom/bathroom. Not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "menuDescription": "Green tile & warm wood",
       "cutawayCameraSide": [
         -1,
@@ -15427,9 +15441,10 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "green-bath-b49d0ac45077.glb",
-      "assetHash": "b49d0ac45077ecd031a6a5026e5e48797b51094a7346c78fcf1d48cb40d00986",
-      "assetBytes": 3351996,
+      "displayExposureStops": -1.0,
+      "asset": "green-bath-53225159639b.glb",
+      "assetHash": "53225159639bdc5f828581c099944a7c086f8d9dff94c6887a77ac18a62d0b31",
+      "assetBytes": 3365292,
       "objectCount": 97,
       "triangles": 21446,
       "cameras": [
@@ -15535,11 +15550,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -15577,7 +15592,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "green-bath",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -15697,7 +15712,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "green-bath",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -15767,7 +15782,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "green-bath",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -15847,7 +15862,7 @@
       "floorElevation": 3.4036,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope follows source wall faces and room cameras; not a measured survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         1,
         -1
@@ -16154,9 +16169,10 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
-      "asset": "blue-bedroom-ded95253f152.glb",
-      "assetHash": "ded95253f15299a711c1bc0017aa9dd15884d3bf345a7ab51d502e58c1865ba7",
-      "assetBytes": 4717376,
+      "displayExposureStops": -1.2,
+      "asset": "blue-bedroom-5c4d6a0a7be4.glb",
+      "assetHash": "5c4d6a0a7be47f24a31aa56a383885b90a04aeece3c8b2af97bfe7ce3ef557dc",
+      "assetBytes": 4730668,
       "objectCount": 117,
       "triangles": 18596,
       "cameras": [
@@ -16271,11 +16287,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "trim": "#d8ceb9",
-        "walls": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "trim": "#efe8d7",
+        "walls": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -16283,7 +16299,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "blue-bedroom",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -16313,7 +16329,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "blue-bedroom",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -16533,7 +16549,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "blue-bedroom",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -16593,7 +16609,7 @@
       "floorElevation": 3.4036,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope follows source wall faces and room cameras; not a measured survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         1,
         1
@@ -16682,9 +16698,10 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "asset": "blue-bath-769226db25d2.glb",
-      "assetHash": "769226db25d25181668717723e762d3f6d0122a655d481b40746dc9a6c1957d2",
-      "assetBytes": 3796276,
+      "displayExposureStops": -0.35,
+      "asset": "blue-bath-0d2cba5ee787.glb",
+      "assetHash": "0d2cba5ee787cdaebfbbaf7db363b34187b3acfd49ca4ca931c37641d85da3d8",
+      "assetBytes": 3809568,
       "objectCount": 127,
       "triangles": 22271,
       "cameras": [
@@ -16790,11 +16807,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -16832,7 +16849,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "blue-bath",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -16962,7 +16979,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "blue-bath",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -17042,7 +17059,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "blue-bath",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -17122,7 +17139,7 @@
       "floorElevation": 0,
       "ceilingHeight": 2.9972,
       "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         1,
         -1
@@ -17550,9 +17567,10 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10]"
       },
-      "asset": "office-west-d17d8100ec4b.glb",
-      "assetHash": "d17d8100ec4b183114b5bf033cfe994b1e335886af9313e9e5af26e1901d3533",
-      "assetBytes": 4287836,
+      "displayExposureStops": -0.75,
+      "asset": "office-west-832b902023b7.glb",
+      "assetHash": "832b902023b76d7d29daf26e8ca9beae8cb63c0d3f467f462da4c28af88d8885",
+      "assetBytes": 4301128,
       "objectCount": 174,
       "triangles": 22514,
       "cameras": [
@@ -17634,11 +17652,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "ceiling": "#d8ceb9",
-        "trim": "#d8ceb9"
+        "walls": "#efe8d7",
+        "ceiling": "#efe8d7",
+        "trim": "#efe8d7"
       },
       "materials": [
         {
@@ -17666,7 +17684,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-west",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -17716,7 +17734,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-west",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -17786,7 +17804,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-west",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -17946,7 +17964,7 @@
       "floorElevation": 0,
       "ceilingHeight": 2.9972,
       "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         -1,
         -1
@@ -18464,9 +18482,10 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]"
       },
-      "asset": "office-east-3b1849d76250.glb",
-      "assetHash": "3b1849d76250d2a56faa85ac78e25307c9ee2a18745303454c379e15394aedd6",
-      "assetBytes": 4355440,
+      "displayExposureStops": -1.1,
+      "asset": "office-east-04eefb9c7bda.glb",
+      "assetHash": "04eefb9c7bda77564d639a3e1c5a0aa54ee6d12005daeadd3d985d21d4f9eda3",
+      "assetBytes": 4368732,
       "objectCount": 162,
       "triangles": 25276,
       "cameras": [
@@ -18548,11 +18567,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "ceiling": "#d8ceb9",
-        "trim": "#d8ceb9"
+        "walls": "#efe8d7",
+        "ceiling": "#efe8d7",
+        "trim": "#efe8d7"
       },
       "materials": [
         {
@@ -18570,7 +18589,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-east",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -18630,7 +18649,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-east",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -18660,7 +18679,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-east",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -18810,7 +18829,7 @@
       "floorElevation": 0,
       "ceilingHeight": 2.9972,
       "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         1,
         1
@@ -19687,9 +19706,10 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
-      "asset": "office-hall-343a44114943.glb",
-      "assetHash": "343a44114943e925661225bf7492cdc08b81a27c76af1df1c8ef5cdc8d2c69cf",
-      "assetBytes": 4801316,
+      "displayExposureStops": -2.5,
+      "asset": "office-hall-e9a74b1cc87d.glb",
+      "assetHash": "e9a74b1cc87d222424302f115d85b4d565a4c65862d429c964edaa4bf39fbb70",
+      "assetBytes": 4814608,
       "objectCount": 191,
       "triangles": 23978,
       "cameras": [
@@ -19776,11 +19796,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -19808,7 +19828,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-hall",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -19928,7 +19948,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-hall",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -19968,7 +19988,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-hall",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -20088,7 +20108,7 @@
       "floorElevation": 0,
       "ceilingHeight": 2.9972,
       "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         -1,
         1
@@ -20127,9 +20147,10 @@
       "cutawayMillworkRooms": [
         "Loli Closet"
       ],
-      "asset": "loli-closet-758352e6825b.glb",
-      "assetHash": "758352e6825bfc0f85e2be44c6cf4d79bfc17e3b1b80bb3d7069e96695b3791a",
-      "assetBytes": 1944160,
+      "displayExposureStops": -0.15,
+      "asset": "loli-closet-e187efd431c7.glb",
+      "assetHash": "e187efd431c79901942386a4984c3e187d9b9c0fe5874d665b4234ebab7c1256",
+      "assetBytes": 1957452,
       "objectCount": 102,
       "triangles": 5742,
       "cameras": [
@@ -20183,11 +20204,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -20215,7 +20236,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "loli-closet",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -20295,7 +20316,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "loli-closet",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -20355,7 +20376,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "loli-closet",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -20395,7 +20416,7 @@
       "floorElevation": 3.4036,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         1,
         1
@@ -20483,9 +20504,10 @@
       "cutawayMillworkRooms": [
         "Primary Loli Closet"
       ],
-      "asset": "primary-loli-closet-c104d1146548.glb",
-      "assetHash": "c104d1146548f3c46dab663b685d73dc6985287bd915019f1c3d2941078ef003",
-      "assetBytes": 3204488,
+      "displayExposureStops": -0.25,
+      "asset": "primary-loli-closet-2cdf15d99255.glb",
+      "assetHash": "2cdf15d99255505b7012517ce5e95aed421e7e6db1b1d136357d758317f92a23",
+      "assetBytes": 3217780,
       "objectCount": 86,
       "triangles": 10878,
       "cameras": [
@@ -20569,12 +20591,12 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
         "cabinet": "#f0ece3",
-        "ceiling": "#d8ceb9"
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -20612,7 +20634,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-loli-closet",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -20692,7 +20714,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-loli-closet",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -20792,7 +20814,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-loli-closet",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -20832,7 +20854,7 @@
       "floorElevation": 3.4036,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         -1,
         1
@@ -20920,9 +20942,10 @@
       "cutawayMillworkRooms": [
         "Primary Green Closet"
       ],
-      "asset": "primary-green-closet-1aa0176f0907.glb",
-      "assetHash": "1aa0176f09072b5e0b34f965c943f136d0970bb13f28cc976cb644e4ac41bc64",
-      "assetBytes": 3169200,
+      "displayExposureStops": -0.2,
+      "asset": "primary-green-closet-966da18b311e.glb",
+      "assetHash": "966da18b311e6906f6105f47407b68355af5a7afb5baa3ba4564f35000871050",
+      "assetBytes": 3182492,
       "objectCount": 74,
       "triangles": 10329,
       "cameras": [
@@ -21006,12 +21029,12 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
         "cabinet": "#f0ece3",
-        "ceiling": "#d8ceb9"
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -21039,7 +21062,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-green-closet",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -21119,7 +21142,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-green-closet",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -21219,7 +21242,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "primary-green-closet",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -21269,7 +21292,7 @@
       "floorElevation": 3.4036,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         1,
         1
@@ -21321,9 +21344,10 @@
       "cutawayMillworkRooms": [
         "Green Closet"
       ],
-      "asset": "upstairs-closet-west-e18778ec7951.glb",
-      "assetHash": "e18778ec79519f52fceb2698e48861f377bc8f8ab96a1e42be3d3a29cd86851e",
-      "assetBytes": 2135540,
+      "displayExposureStops": -1.8,
+      "asset": "upstairs-closet-west-34a4dc6594d8.glb",
+      "assetHash": "34a4dc6594d8746628604cc31a4d91d6d637ead91f0d46f6d33528397fc94c71",
+      "assetBytes": 2148848,
       "objectCount": 58,
       "triangles": 8616,
       "cameras": [
@@ -21645,11 +21669,11 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -21687,7 +21711,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "upstairs-closet-west",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -21737,7 +21761,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "upstairs-closet-west",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -21797,7 +21821,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "upstairs-closet-west",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -21897,7 +21921,7 @@
       "floorElevation": 3.4036,
       "ceilingHeight": 6.2992,
       "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         1,
         1
@@ -21953,9 +21977,10 @@
       "cutawayMillworkRooms": [
         "Dressing 3"
       ],
-      "asset": "upstairs-closet-east-4a3f5b60e0d4.glb",
-      "assetHash": "4a3f5b60e0d4275d3ea2bcef0424f34d3f2d10865d738ff06ffe59946c8264ca",
-      "assetBytes": 2010208,
+      "displayExposureStops": -0.55,
+      "asset": "upstairs-closet-east-4853b6038a8c.glb",
+      "assetHash": "4853b6038a8cc280a6ff25bf7dce1ddee36f4314da0c9cef122259286a2a8ccf",
+      "assetBytes": 2023504,
       "objectCount": 66,
       "triangles": 7154,
       "cameras": [
@@ -22006,12 +22031,12 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "trim": "#d8ceb9",
+        "walls": "#efe8d7",
+        "trim": "#efe8d7",
         "cabinet": "#f0ece3",
-        "ceiling": "#d8ceb9"
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -22049,7 +22074,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "upstairs-closet-east",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -22089,7 +22114,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "upstairs-closet-east",
           "role": "trim",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -22169,7 +22194,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "upstairs-closet-east",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -22209,7 +22234,7 @@
       "floorElevation": 3.84175,
       "ceilingHeight": 7.65,
       "boundaryStatus": "Concave presentation envelope follows the deck floor notch at x -4.89652 / y 3.66304, with modeled wall thickness retained. Not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         -1,
         -1
@@ -22284,9 +22309,9 @@
         "Millwork"
       ],
       "architectureAttachmentDepth": 1.2,
-      "asset": "rear-deck-786550f6cf66.glb",
-      "assetHash": "786550f6cf66f2b8e34e001ae476faaad56d7f1941d2bffcda7779dc137fc88c",
-      "assetBytes": 1948028,
+      "asset": "rear-deck-98c69933b819.glb",
+      "assetHash": "98c69933b819252ba5e480b521a4edc544dac202e1dc9961a5962c50c755cd93",
+      "assetBytes": 1961320,
       "objectCount": 125,
       "triangles": 8807,
       "cameras": [
@@ -22365,10 +22390,10 @@
         }
       ],
       "lights": [],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -22396,7 +22421,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "rear-deck",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -22456,7 +22481,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "rear-deck",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -22646,7 +22671,7 @@
       "floorElevation": 3.3528,
       "ceilingHeight": 6.1018,
       "boundaryStatus": "Presentation envelope follows modeled wall faces; not a site survey.",
-      "defaultPaint": "#e9e4da",
+      "defaultPaint": "#efe8d7",
       "cutawayCameraSide": [
         1,
         1
@@ -22740,9 +22765,9 @@
         }
       ],
       "menuDescription": "Covered balcony above the offices",
-      "asset": "front-balcony-313b36304f5a.glb",
-      "assetHash": "313b36304f5a06e523581e7dbd3b0e604aa7a7bf4321f43571f636108f56f9ce",
-      "assetBytes": 3830704,
+      "asset": "front-balcony-222eb68cc25a.glb",
+      "assetHash": "222eb68cc25a0e4a53c49f68ee2f495844d8ce998f636f94a106f95a1dbc29c3",
+      "assetBytes": 3843996,
       "objectCount": 159,
       "triangles": 15500,
       "cameras": [
@@ -22823,10 +22848,10 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -22854,7 +22879,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "front-balcony",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -23024,7 +23049,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "front-balcony",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -23197,9 +23222,9 @@
         "Obj 34"
       ],
       "applyExclusionsToLights": true,
-      "asset": "exterior-house-ffc41c878c53.glb",
-      "assetHash": "ffc41c878c53cf8da69194197060344a2bd38b74822249afc02fc9a8e6637097",
-      "assetBytes": 23739740,
+      "asset": "exterior-house-602c99e80eb9.glb",
+      "assetHash": "602c99e80eb948076825fc6fd416f015923e76122106b5d3696d0841b6b8670c",
+      "assetBytes": 23753036,
       "objectCount": 1417,
       "triangles": 221861,
       "cameras": [
@@ -23250,10 +23275,10 @@
           "status": "browser preview intensity, not photometric conversion"
         }
       ],
-      "sourcePaint": "#d8ceb9",
+      "sourcePaint": "#efe8d7",
       "finishDefaults": {
-        "walls": "#d8ceb9",
-        "ceiling": "#d8ceb9"
+        "walls": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -23281,7 +23306,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "exterior-house",
           "role": "walls",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -23301,7 +23326,7 @@
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "exterior-house",
           "role": "walls",
-          "color": "#9cbe9d",
+          "color": "#bdc8b6",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -23341,7 +23366,7 @@
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "exterior-house",
           "role": "walls",
-          "color": "#67839d",
+          "color": "#7cabca",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -23761,7 +23786,7 @@
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "exterior-house",
           "role": "ceiling",
-          "color": "#d8ceb9",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
