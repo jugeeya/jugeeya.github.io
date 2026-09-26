@@ -1285,9 +1285,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.85,
-      "asset": "game-room-1a7e68edd2cc.glb",
-      "assetHash": "1a7e68edd2cc9b0c0b812894e2f10ed51b46d4a4d0033e55b1860c02e8d00ce4",
-      "assetBytes": 9744140,
+      "asset": "game-room-f0ef9c0e19ec.glb",
+      "assetHash": "f0ef9c0e19ec20c0185a7b91b0eb9b58b63bfa9fc0602da21a566024735e846a",
+      "assetBytes": 9744148,
       "objectCount": 285,
       "triangles": 53220,
       "cameras": [
@@ -1375,14 +1375,16 @@
           "type": "rect",
           "position": [
             -6.517491,
-            1.2455,
+            1.2485,
             -3.090579
           ],
-          "width": 3.241994857788086,
-          "height": 0.016000032424926758,
-          "intensity": 38,
+          "width": 3.241995,
+          "height": 0.016,
+          "intensity": 79.57731,
+          "runMetres": 3.241995,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "game-room-e8a288851244eb3c-light",
@@ -1390,14 +1392,16 @@
           "type": "rect",
           "position": [
             -6.517491,
-            1.6392,
+            1.6422,
             -3.090579
           ],
-          "width": 3.241994857788086,
-          "height": 0.016000032424926758,
-          "intensity": 38,
+          "width": 3.241995,
+          "height": 0.016,
+          "intensity": 79.57731,
+          "runMetres": 3.241995,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "game-room-ee221446bb9c387b-light",
@@ -1405,14 +1409,16 @@
           "type": "rect",
           "position": [
             -6.517491,
-            2.0329,
+            2.0359,
             -3.090579
           ],
-          "width": 3.241994857788086,
-          "height": 0.016000032424926758,
-          "intensity": 38,
+          "width": 3.241995,
+          "height": 0.016,
+          "intensity": 79.57731,
+          "runMetres": 3.241995,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "game-room-f5d54f216797ab0c-light",
@@ -1420,14 +1426,16 @@
           "type": "rect",
           "position": [
             -6.517491,
-            2.4266,
+            2.4296,
             -3.090579
           ],
-          "width": 3.241994857788086,
-          "height": 0.016000032424926758,
-          "intensity": 38,
+          "width": 3.241995,
+          "height": 0.016,
+          "intensity": 79.57731,
+          "runMetres": 3.241995,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "game-room-4942fdebca2f962e-light",
@@ -1435,14 +1443,16 @@
           "type": "rect",
           "position": [
             -6.517491,
-            2.8203,
+            2.8233,
             -3.090579
           ],
-          "width": 3.241994857788086,
-          "height": 0.016000032424926758,
-          "intensity": 38,
+          "width": 3.241995,
+          "height": 0.016,
+          "intensity": 79.57731,
+          "runMetres": 3.241995,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "game-room-e9e3e799c45e3026",
@@ -2265,9 +2275,9 @@
         "Obj M06"
       ],
       "displayExposureStops": 0.05,
-      "asset": "family-room-4742515fbc25.glb",
-      "assetHash": "4742515fbc2583c619258cd1ec0980d371cfb85e645f02a3712ffbc4ea8b5ab2",
-      "assetBytes": 7454664,
+      "asset": "family-room-fe02d28fe27e.glb",
+      "assetHash": "fe02d28fe27e9e0bf9f6bf2932e58fb823aaf6ea40e5431b1d9206f5c2d97845",
+      "assetBytes": 7454640,
       "objectCount": 229,
       "triangles": 40099,
       "cameras": [
@@ -3019,9 +3029,9 @@
         "PBath"
       ],
       "displayExposureStops": -3.6,
-      "asset": "dining-room-2828dbe3628e.glb",
-      "assetHash": "2828dbe3628ea73638dd5783095ee8554ddcbc6221e4e87664ca517d5486e21b",
-      "assetBytes": 9466224,
+      "asset": "dining-room-7e80cbc5c62d.glb",
+      "assetHash": "7e80cbc5c62d5e4985ebfdb28d4dbad8ab005af1bd2e87f1f0fbe1bb47aab073",
+      "assetBytes": 9466176,
       "objectCount": 240,
       "triangles": 58104,
       "cameras": [
@@ -5609,9 +5619,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.25,
-      "asset": "kitchen-bdea47691ad2.glb",
-      "assetHash": "bdea47691ad20b10635082a25505ee47eafbcb20bf4dfdffea00b2b4b6415dea",
-      "assetBytes": 23614616,
+      "asset": "kitchen-8b7ef10c2fa5.glb",
+      "assetHash": "8b7ef10c2fa5a6c377f53cf1995e69ac5ba95669f27caddc4493fe35e2b25055",
+      "assetBytes": 23614576,
       "objectCount": 570,
       "triangles": 325555,
       "cameras": [
@@ -8672,9 +8682,9 @@
         "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py."
       },
       "displayExposureStops": -1.2,
-      "asset": "entry-d0af04951e39.glb",
-      "assetHash": "d0af04951e39e1b7aa2d1fc3ae017b266309a9be356684b1f9eb2b3984ba0d1b",
-      "assetBytes": 15262152,
+      "asset": "entry-857f0020379b.glb",
+      "assetHash": "857f0020379bf782945db911640ea5cd32d5a8c8aee050006986bdccf80f7173",
+      "assetBytes": 15262124,
       "objectCount": 639,
       "triangles": 172296,
       "cameras": [
@@ -9706,9 +9716,9 @@
         "Powder"
       ],
       "displayExposureStops": -2.7,
-      "asset": "powder-room-0fafc16df55e.glb",
-      "assetHash": "0fafc16df55e2c57a786d110790f875fde39100da0d755e035d9326b1eb0b231",
-      "assetBytes": 3565848,
+      "asset": "powder-room-92dd476f67f3.glb",
+      "assetHash": "92dd476f67f31b020a1303768b7923f6c170b9d5ff86a569b7dd1b6bdf620b94",
+      "assetBytes": 3565828,
       "objectCount": 147,
       "triangles": 17768,
       "cameras": [
@@ -10086,9 +10096,9 @@
         "Slab C01.003"
       ],
       "displayExposureStops": -2.0,
-      "asset": "pantry-afa7f5c362ae.glb",
-      "assetHash": "afa7f5c362ae0e25b612e84a834eb323875dd1853567758f99b18b1e4cd2d262",
-      "assetBytes": 3473272,
+      "asset": "pantry-295c8e06a665.glb",
+      "assetHash": "295c8e06a665e66950c56ac372cd318f7e3678bc096ee0be3a5179c639f7e863",
+      "assetBytes": 3473248,
       "objectCount": 111,
       "triangles": 14726,
       "cameras": [
@@ -10528,9 +10538,9 @@
         "Fascia Fascia."
       ],
       "displayExposureStops": -1.8,
-      "asset": "wine-cellar-24cdb2a632f2.glb",
-      "assetHash": "24cdb2a632f26a5e184e2cf0c545a6610975d764839fb1de7ae2a12a58419868",
-      "assetBytes": 8826892,
+      "asset": "wine-cellar-fd4ab4e54b95.glb",
+      "assetHash": "fd4ab4e54b958ff8f125d50643893c3e4fa0f336d98f1d557c5b9f7dc67a2433",
+      "assetBytes": 8826864,
       "objectCount": 88,
       "triangles": 71829,
       "cameras": [
@@ -11106,9 +11116,9 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-42941e637427.glb",
-      "assetHash": "42941e6374274a81d01ad829522ac0bded30f7f038dd917a4076b9c23782660b",
-      "assetBytes": 7705708,
+      "asset": "loli-bedroom-33b1de5e7a5e.glb",
+      "assetHash": "33b1de5e7a5e9e3be16bab05aea2aa782ba351da9d7d94e2787052fc47ecce75",
+      "assetBytes": 7705684,
       "objectCount": 191,
       "triangles": 119857,
       "cameras": [
@@ -11771,9 +11781,9 @@
         "Loli Bathroom"
       ],
       "displayExposureStops": -0.85,
-      "asset": "loli-bathroom-c9ef17ac784c.glb",
-      "assetHash": "c9ef17ac784c4ea68c6c7b0629411de614ef4dc51c850076fbfea9645d130423",
-      "assetBytes": 4186500,
+      "asset": "loli-bathroom-c64d27010bab.glb",
+      "assetHash": "c64d27010babdf5e914c34a380b1e71457e623cacb915967b23358e38eeca298",
+      "assetBytes": 4186480,
       "objectCount": 116,
       "triangles": 21529,
       "cameras": [
@@ -12685,9 +12695,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-24e46e9b57b8.glb",
-      "assetHash": "24e46e9b57b85b6aff2b630acc1686338d7ab809e54b26d75f31168a79793565",
-      "assetBytes": 2653260,
+      "asset": "laundry-9a39c42c26f4.glb",
+      "assetHash": "9a39c42c26f41999809035769af938b45ac98c36e2b13afe77946c52c532117e",
+      "assetBytes": 2653236,
       "objectCount": 61,
       "triangles": 8217,
       "cameras": [
@@ -12736,15 +12746,17 @@
           "group": "laundry:shelves",
           "type": "rect",
           "position": [
-            -7.04,
-            5.3873,
+            -7.0385,
+            5.3893,
             -1.432
           ],
-          "width": 0.02299976348876953,
-          "height": 0.7690001726150513,
-          "intensity": 38,
+          "width": 0.02,
+          "height": 0.769,
+          "intensity": 63.661977,
+          "runMetres": 0.769,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "laundry-35d214a33796d7df",
@@ -13566,9 +13578,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-30c8b79be293.glb",
-      "assetHash": "30c8b79be2931e141f34e2857a648d4a3ad303cb92f183ca127d89cb7a34a396",
-      "assetBytes": 9568356,
+      "asset": "primary-bedroom-fd8456c42ad5.glb",
+      "assetHash": "fd8456c42ad5563e0fa80786f40492dfe7940a1df9c30ee6eb15953bf22b30a0",
+      "assetBytes": 9568328,
       "objectCount": 212,
       "triangles": 171608,
       "cameras": [
@@ -14317,9 +14329,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -3.45,
-      "asset": "primary-bath-732624e86d0d.glb",
-      "assetHash": "732624e86d0d1b241c3b3ee31bda495677b3a2bd2585d323a7450ae516ed8f50",
-      "assetBytes": 4711372,
+      "asset": "primary-bath-e1a60b95fe87.glb",
+      "assetHash": "e1a60b95fe8797679d3e238ef2ee1a89f7982965b7627b8c606dc75ca07d6439",
+      "assetBytes": 4711348,
       "objectCount": 208,
       "triangles": 27873,
       "cameras": [
@@ -14933,9 +14945,9 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-fd7ea1db5eb7.glb",
-      "assetHash": "fd7ea1db5eb7994ae42f55f1586ade730a7b1760aa787c241a1d45a36b0963ff",
-      "assetBytes": 5059684,
+      "asset": "green-bedroom-0bc53aef8c44.glb",
+      "assetHash": "0bc53aef8c4429b5c328ff22846e2fb57227e4fe0c2c2ca4c440b739e682cf4b",
+      "assetBytes": 5059660,
       "objectCount": 125,
       "triangles": 23250,
       "cameras": [
@@ -15442,9 +15454,9 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
       "displayExposureStops": -1.0,
-      "asset": "green-bath-53225159639b.glb",
-      "assetHash": "53225159639bdc5f828581c099944a7c086f8d9dff94c6887a77ac18a62d0b31",
-      "assetBytes": 3365292,
+      "asset": "green-bath-352fe0462ef0.glb",
+      "assetHash": "352fe0462ef0a40c77c962f2e9aac5bf75286ac9cc2c94076feb3e2de88b01a5",
+      "assetBytes": 3365276,
       "objectCount": 97,
       "triangles": 21446,
       "cameras": [
@@ -16170,9 +16182,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-5c4d6a0a7be4.glb",
-      "assetHash": "5c4d6a0a7be47f24a31aa56a383885b90a04aeece3c8b2af97bfe7ce3ef557dc",
-      "assetBytes": 4730668,
+      "asset": "blue-bedroom-38c16868fed4.glb",
+      "assetHash": "38c16868fed46de1024150a73e24381f4290b442038b327e71108cc4c5a295c0",
+      "assetBytes": 4730644,
       "objectCount": 117,
       "triangles": 18596,
       "cameras": [
@@ -16699,9 +16711,9 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
       "displayExposureStops": -0.35,
-      "asset": "blue-bath-0d2cba5ee787.glb",
-      "assetHash": "0d2cba5ee787cdaebfbbaf7db363b34187b3acfd49ca4ca931c37641d85da3d8",
-      "assetBytes": 3809568,
+      "asset": "blue-bath-624bed4c780c.glb",
+      "assetHash": "624bed4c780c2d871d76500a9e69b44e4b87c2868a80cfc6df5f7257932ad765",
+      "assetBytes": 3809584,
       "objectCount": 127,
       "triangles": 22271,
       "cameras": [
@@ -17568,9 +17580,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10]"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-832b902023b7.glb",
-      "assetHash": "832b902023b76d7d29daf26e8ca9beae8cb63c0d3f467f462da4c28af88d8885",
-      "assetBytes": 4301128,
+      "asset": "office-west-2c608897d7b9.glb",
+      "assetHash": "2c608897d7b91e94982bcbbf5f630afbb9c12eaf82e3c4a15f838ccb9bc96e19",
+      "assetBytes": 4301104,
       "objectCount": 174,
       "triangles": 22514,
       "cameras": [
@@ -18483,9 +18495,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-04eefb9c7bda.glb",
-      "assetHash": "04eefb9c7bda77564d639a3e1c5a0aa54ee6d12005daeadd3d985d21d4f9eda3",
-      "assetBytes": 4368732,
+      "asset": "office-east-990cbfdf2ae1.glb",
+      "assetHash": "990cbfdf2ae168002920264af825a2e18b022f495185d81fccd9e80d743475c2",
+      "assetBytes": 4368708,
       "objectCount": 162,
       "triangles": 25276,
       "cameras": [
@@ -19707,9 +19719,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -2.5,
-      "asset": "office-hall-e9a74b1cc87d.glb",
-      "assetHash": "e9a74b1cc87d222424302f115d85b4d565a4c65862d429c964edaa4bf39fbb70",
-      "assetBytes": 4814608,
+      "asset": "office-hall-40e52b5718f3.glb",
+      "assetHash": "40e52b5718f3db814456cb583f6d7226a8b3f1b8a9fb36711cc178873956053b",
+      "assetBytes": 4814584,
       "objectCount": 191,
       "triangles": 23978,
       "cameras": [
@@ -20148,9 +20160,9 @@
         "Loli Closet"
       ],
       "displayExposureStops": -0.15,
-      "asset": "loli-closet-e187efd431c7.glb",
-      "assetHash": "e187efd431c79901942386a4984c3e187d9b9c0fe5874d665b4234ebab7c1256",
-      "assetBytes": 1957452,
+      "asset": "loli-closet-42a6f6509ab9.glb",
+      "assetHash": "42a6f6509ab9dfbf2ff85faf3b66d2d155010352fd2fd8358037c370721eaff0",
+      "assetBytes": 1957420,
       "objectCount": 102,
       "triangles": 5742,
       "cameras": [
@@ -20505,9 +20517,9 @@
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-2cdf15d99255.glb",
-      "assetHash": "2cdf15d99255505b7012517ce5e95aed421e7e6db1b1d136357d758317f92a23",
-      "assetBytes": 3217780,
+      "asset": "primary-loli-closet-fe0f2898e710.glb",
+      "assetHash": "fe0f2898e710ba353044ba10a67038ff19322a22e8f046c4021ae7e0e658a5f8",
+      "assetBytes": 3217744,
       "objectCount": 86,
       "triangles": 10878,
       "cameras": [
@@ -20943,9 +20955,9 @@
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
-      "asset": "primary-green-closet-966da18b311e.glb",
-      "assetHash": "966da18b311e6906f6105f47407b68355af5a7afb5baa3ba4564f35000871050",
-      "assetBytes": 3182492,
+      "asset": "primary-green-closet-060be98086d7.glb",
+      "assetHash": "060be98086d7831c50b0d3029fc78f487fe448a40eecb362a182527d289a7af2",
+      "assetBytes": 3182456,
       "objectCount": 74,
       "triangles": 10329,
       "cameras": [
@@ -21345,9 +21357,9 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-34a4dc6594d8.glb",
-      "assetHash": "34a4dc6594d8746628604cc31a4d91d6d637ead91f0d46f6d33528397fc94c71",
-      "assetBytes": 2148848,
+      "asset": "upstairs-closet-west-48d6de74b634.glb",
+      "assetHash": "48d6de74b634b5e2d613614e9d09631c2bc21aa63a700376bb35b7814938f775",
+      "assetBytes": 2148816,
       "objectCount": 58,
       "triangles": 8616,
       "cameras": [
@@ -21451,14 +21463,16 @@
           "type": "rect",
           "position": [
             -9.01973,
-            4.6422,
-            3.92
+            5.85524,
+            3.7014
           ],
-          "width": 0.40386009216308594,
-          "height": 0.4572000503540039,
-          "intensity": 38,
+          "width": 0.360681,
+          "height": 0.02,
+          "intensity": 63.661977,
+          "runMetres": 0.360681,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "upstairs-closet-west-d93be089c420e2e8-light",
@@ -21466,14 +21480,16 @@
           "type": "rect",
           "position": [
             -9.65346,
-            4.6422,
-            3.902715
+            4.85829,
+            3.66683
           ],
-          "width": 0.8636007308959961,
-          "height": 0.49177002906799316,
-          "intensity": 38,
+          "width": 0.82042,
+          "height": 0.02,
+          "intensity": 63.661977,
+          "runMetres": 0.82042,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "upstairs-closet-west-532c71a4f393238d-light",
@@ -21481,89 +21497,67 @@
           "type": "rect",
           "position": [
             -10.46626,
-            4.6422,
-            3.92
+            4.02009,
+            3.7014
           ],
-          "width": 0.7620000839233398,
-          "height": 0.4572000503540039,
-          "intensity": 38,
+          "width": 0.66802,
+          "height": 0.02,
+          "intensity": 63.661977,
+          "runMetres": 0.66802,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
-          "id": "upstairs-closet-west-3b0358966d6ab829-light",
+          "id": "upstairs-closet-west-532c71a4f393238d-light-2",
           "group": "upstairs-closet-west:shelves",
           "type": "rect",
           "position": [
-            -9.83253,
-            6.0646,
-            3.92
+            -10.46626,
+            4.235616,
+            3.7014
           ],
-          "width": 2.029460906982422,
-          "height": 0.4572000503540039,
-          "intensity": 38,
+          "width": 0.66802,
+          "height": 0.02,
+          "intensity": 63.661977,
+          "runMetres": 0.66802,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
-          "id": "upstairs-closet-west-242740a07d2af182-light",
+          "id": "upstairs-closet-west-532c71a4f393238d-light-3",
           "group": "upstairs-closet-west:shelves",
           "type": "rect",
           "position": [
-            -9.83253,
-            6.2678,
-            3.92
+            -10.46626,
+            4.451142,
+            3.7014
           ],
-          "width": 2.029460906982422,
-          "height": 0.4572000503540039,
-          "intensity": 38,
+          "width": 0.66802,
+          "height": 0.02,
+          "intensity": 63.661977,
+          "runMetres": 0.66802,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "upstairs-closet-west-9806068215966fab-light",
           "group": "upstairs-closet-west:shelves",
           "type": "rect",
           "position": [
-            -8.5892,
-            4.6422,
+            -8.8078,
+            5.85524,
             3.3866
           ],
-          "width": 0.4571990966796875,
-          "height": 0.6096000671386719,
-          "intensity": 38,
+          "width": 0.02,
+          "height": 0.56642,
+          "intensity": 63.661977,
+          "runMetres": 0.56642,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
-        },
-        {
-          "id": "upstairs-closet-west-5f4f5c5f894b2df1-light",
-          "group": "upstairs-closet-west:shelves",
-          "type": "rect",
-          "position": [
-            -8.5892,
-            6.0646,
-            3.3866
-          ],
-          "width": 0.4571990966796875,
-          "height": 0.6096000671386719,
-          "intensity": 38,
-          "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
-        },
-        {
-          "id": "upstairs-closet-west-a977945125d6b08c-light",
-          "group": "upstairs-closet-west:shelves",
-          "type": "rect",
-          "position": [
-            -8.5892,
-            6.2678,
-            3.3866
-          ],
-          "width": 0.4571990966796875,
-          "height": 0.6096000671386719,
-          "intensity": 38,
-          "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "upstairs-closet-west-b7597e58001ae9cd-light",
@@ -21571,14 +21565,16 @@
           "type": "rect",
           "position": [
             -9.6914,
-            4.6422,
-            2.870485
+            5.85524,
+            3.10637
           ],
-          "width": 0.508000373840332,
-          "height": 0.49177002906799316,
-          "intensity": 38,
+          "width": 0.46482,
+          "height": 0.02,
+          "intensity": 63.661977,
+          "runMetres": 0.46482,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "upstairs-closet-west-7eb8be435795d165-light",
@@ -21586,59 +21582,16 @@
           "type": "rect",
           "position": [
             -9.127647,
-            4.6422,
-            2.8532
+            5.85524,
+            3.0718
           ],
-          "width": 0.6195058822631836,
-          "height": 0.4572000503540039,
-          "intensity": 38,
+          "width": 0.576325,
+          "height": 0.02,
+          "intensity": 63.661977,
+          "runMetres": 0.576325,
+          "fluxPerMetre": 4,
           "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
-        },
-        {
-          "id": "upstairs-closet-west-13317064382297d6-light",
-          "group": "upstairs-closet-west:shelves",
-          "type": "rect",
-          "position": [
-            -9.381647,
-            6.0646,
-            2.8532
-          ],
-          "width": 1.1275062561035156,
-          "height": 0.4572000503540039,
-          "intensity": 38,
-          "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
-        },
-        {
-          "id": "upstairs-closet-west-6a4a24524a86ae48-light",
-          "group": "upstairs-closet-west:shelves",
-          "type": "rect",
-          "position": [
-            -9.381647,
-            6.2678,
-            2.8532
-          ],
-          "width": 1.1275062561035156,
-          "height": 0.4572000503540039,
-          "intensity": 38,
-          "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
-        },
-        {
-          "id": "upstairs-closet-west-c2daece473437b61-light",
-          "group": "upstairs-closet-west:shelves",
-          "type": "rect",
-          "position": [
-            -9.65346,
-            4.245325,
-            3.9073
-          ],
-          "width": 0.8636007308959961,
-          "height": 0.48260021209716797,
-          "intensity": 38,
-          "color": "#ffcf91",
-          "status": "runtime approximation of modeled LED emission; unselected hardware"
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
         },
         {
           "id": "upstairs-closet-west-758ea5f8bbb8c93e",
@@ -21978,9 +21931,9 @@
         "Dressing 3"
       ],
       "displayExposureStops": -0.55,
-      "asset": "upstairs-closet-east-4853b6038a8c.glb",
-      "assetHash": "4853b6038a8cc280a6ff25bf7dce1ddee36f4314da0c9cef122259286a2a8ccf",
-      "assetBytes": 2023504,
+      "asset": "upstairs-closet-east-3fef086dd252.glb",
+      "assetHash": "3fef086dd252c86dac73d6d53104fe869f810d15f8d5cc6d98e9e2a0d44c5422",
+      "assetBytes": 2023472,
       "objectCount": 66,
       "triangles": 7154,
       "cameras": [
@@ -22309,9 +22262,9 @@
         "Millwork"
       ],
       "architectureAttachmentDepth": 1.2,
-      "asset": "rear-deck-98c69933b819.glb",
-      "assetHash": "98c69933b819252ba5e480b521a4edc544dac202e1dc9961a5962c50c755cd93",
-      "assetBytes": 1961320,
+      "asset": "rear-deck-256670dc4a93.glb",
+      "assetHash": "256670dc4a93c93e7f978b585457692f85e911bdc79f7b20c340413d30c55a35",
+      "assetBytes": 1961316,
       "objectCount": 125,
       "triangles": 8807,
       "cameras": [
@@ -22765,9 +22718,9 @@
         }
       ],
       "menuDescription": "Covered balcony above the offices",
-      "asset": "front-balcony-222eb68cc25a.glb",
-      "assetHash": "222eb68cc25a0e4a53c49f68ee2f495844d8ce998f636f94a106f95a1dbc29c3",
-      "assetBytes": 3843996,
+      "asset": "front-balcony-a1a854ffca4c.glb",
+      "assetHash": "a1a854ffca4c6bd2c2b911e04153840fde3beabe571527e23290205d0debc504",
+      "assetBytes": 3843968,
       "objectCount": 159,
       "triangles": 15500,
       "cameras": [
@@ -23222,9 +23175,9 @@
         "Obj 34"
       ],
       "applyExclusionsToLights": true,
-      "asset": "exterior-house-602c99e80eb9.glb",
-      "assetHash": "602c99e80eb948076825fc6fd416f015923e76122106b5d3696d0841b6b8670c",
-      "assetBytes": 23753036,
+      "asset": "exterior-house-a42ad7234e8b.glb",
+      "assetHash": "a42ad7234e8b0392aafdce0833cb754cc4eb14a1cd4f4fe2709ad6e8c9be464a",
+      "assetBytes": 23752960,
       "objectCount": 1417,
       "triangles": 221861,
       "cameras": [
