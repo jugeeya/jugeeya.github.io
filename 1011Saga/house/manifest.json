@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "7815d6434afe",
+  "sceneVersion": "ea675a2efb31",
   "source": {
     "file": "Web.blend",
-    "sha256": "7815d6434afe9a7458422fcd8560d14191221eeb4d6b4e7f2c51c592a2da281e",
+    "sha256": "ea675a2efb314887d1623373d2a1aee5e7e564c8f765bca32d733d45a68be264",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1285,9 +1285,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.85,
-      "asset": "game-room-1a7e68edd2cc.glb",
-      "assetHash": "1a7e68edd2cc9b0c0b812894e2f10ed51b46d4a4d0033e55b1860c02e8d00ce4",
-      "assetBytes": 9744140,
+      "asset": "game-room-f0ef9c0e19ec.glb",
+      "assetHash": "f0ef9c0e19ec20c0185a7b91b0eb9b58b63bfa9fc0602da21a566024735e846a",
+      "assetBytes": 9744148,
       "objectCount": 285,
       "triangles": 53220,
       "cameras": [
@@ -5671,9 +5671,10 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3"
       },
-      "asset": "family-room-be58a1848710.glb",
-      "assetHash": "be58a1848710cbf75455ee0811183004d0f955b4c6dd885d0fae23c67681c537",
-      "assetBytes": 10567716,
+      "lookDaylight": 3.5,
+      "asset": "family-room-df486029ef23.glb",
+      "assetHash": "df486029ef23755d060b08bf66a8ec1990ff6cfa459e029b4399fa8516ac1908",
+      "assetBytes": 10567676,
       "objectCount": 454,
       "triangles": 82750,
       "cameras": [
@@ -7686,11 +7687,11 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3"
       },
-      "asset": "dining-room-d6f41bfe0013.glb",
-      "assetHash": "d6f41bfe00136a06d480e065ba7ab1b450dba4f336af25a9525ee7d00452b42f",
-      "assetBytes": 11232892,
+      "asset": "dining-room-a0894c609e56.glb",
+      "assetHash": "a0894c609e56ca9a60caf64d8ac7cf6da7b2f43dc8f71c1e8f982eaab2668fc4",
+      "assetBytes": 12100804,
       "objectCount": 314,
-      "triangles": 77508,
+      "triangles": 112116,
       "cameras": [
         {
           "id": "room-view",
@@ -8354,7 +8355,7 @@
           "color": "#efece6",
           "roughness": 0.8799999952316284,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space"
         },
         {
           "id": "mat-c1a46b5992ad",
@@ -10346,9 +10347,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.25,
-      "asset": "kitchen-b11ae2127ba0.glb",
-      "assetHash": "b11ae2127ba022d36cd5afb9f466207db5836bb52df852bf6fe4868bcf0e913f",
-      "assetBytes": 23614780,
+      "asset": "kitchen-3bb2d68fcec9.glb",
+      "assetHash": "3bb2d68fcec9e11b8a924787899bc1e181517b0f7a0b467abbc957ccef436e0c",
+      "assetBytes": 23614740,
       "objectCount": 570,
       "triangles": 325555,
       "cameras": [
@@ -13409,9 +13410,9 @@
         "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py."
       },
       "displayExposureStops": -1.2,
-      "asset": "entry-b45c483d6cf0.glb",
-      "assetHash": "b45c483d6cf0da119bb72bd0ce6cbf201d7c945ea83a518b2d07e95a51628101",
-      "assetBytes": 15262208,
+      "asset": "entry-a1303b2ff740.glb",
+      "assetHash": "a1303b2ff7402dc561d1a603c9df00c98be7ed39ccc37451295924355e1add16",
+      "assetBytes": 15262180,
       "objectCount": 639,
       "triangles": 172296,
       "cameras": [
@@ -14443,9 +14444,9 @@
         "Powder"
       ],
       "displayExposureStops": -2.7,
-      "asset": "powder-room-0fafc16df55e.glb",
-      "assetHash": "0fafc16df55e2c57a786d110790f875fde39100da0d755e035d9326b1eb0b231",
-      "assetBytes": 3565848,
+      "asset": "powder-room-92dd476f67f3.glb",
+      "assetHash": "92dd476f67f31b020a1303768b7923f6c170b9d5ff86a569b7dd1b6bdf620b94",
+      "assetBytes": 3565828,
       "objectCount": 147,
       "triangles": 17768,
       "cameras": [
@@ -14823,9 +14824,9 @@
         "Slab C01.003"
       ],
       "displayExposureStops": -2.0,
-      "asset": "pantry-afa7f5c362ae.glb",
-      "assetHash": "afa7f5c362ae0e25b612e84a834eb323875dd1853567758f99b18b1e4cd2d262",
-      "assetBytes": 3473272,
+      "asset": "pantry-295c8e06a665.glb",
+      "assetHash": "295c8e06a665e66950c56ac372cd318f7e3678bc096ee0be3a5179c639f7e863",
+      "assetBytes": 3473248,
       "objectCount": 111,
       "triangles": 14726,
       "cameras": [
@@ -15265,9 +15266,9 @@
         "Fascia Fascia."
       ],
       "displayExposureStops": -1.8,
-      "asset": "wine-cellar-24cdb2a632f2.glb",
-      "assetHash": "24cdb2a632f26a5e184e2cf0c545a6610975d764839fb1de7ae2a12a58419868",
-      "assetBytes": 8826892,
+      "asset": "wine-cellar-fd4ab4e54b95.glb",
+      "assetHash": "fd4ab4e54b958ff8f125d50643893c3e4fa0f336d98f1d557c5b9f7dc67a2433",
+      "assetBytes": 8826864,
       "objectCount": 88,
       "triangles": 71829,
       "cameras": [
@@ -15843,9 +15844,9 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-42941e637427.glb",
-      "assetHash": "42941e6374274a81d01ad829522ac0bded30f7f038dd917a4076b9c23782660b",
-      "assetBytes": 7705708,
+      "asset": "loli-bedroom-33b1de5e7a5e.glb",
+      "assetHash": "33b1de5e7a5e9e3be16bab05aea2aa782ba351da9d7d94e2787052fc47ecce75",
+      "assetBytes": 7705684,
       "objectCount": 191,
       "triangles": 119857,
       "cameras": [
@@ -16508,9 +16509,9 @@
         "Loli Bathroom"
       ],
       "displayExposureStops": -0.85,
-      "asset": "loli-bathroom-c9ef17ac784c.glb",
-      "assetHash": "c9ef17ac784c4ea68c6c7b0629411de614ef4dc51c850076fbfea9645d130423",
-      "assetBytes": 4186500,
+      "asset": "loli-bathroom-c64d27010bab.glb",
+      "assetHash": "c64d27010babdf5e914c34a380b1e71457e623cacb915967b23358e38eeca298",
+      "assetBytes": 4186480,
       "objectCount": 116,
       "triangles": 21529,
       "cameras": [
@@ -17422,9 +17423,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-0475db1399e4.glb",
-      "assetHash": "0475db1399e4d45eb12844f0f0d540d15902e64e4d11b7a1e6ab14e2725545ea",
-      "assetBytes": 2653264,
+      "asset": "laundry-4cd63ffe7f49.glb",
+      "assetHash": "4cd63ffe7f491a7c446f2bb0d96386852ab6e42da0adb4a4efc7321a8237f814",
+      "assetBytes": 2653240,
       "objectCount": 61,
       "triangles": 8217,
       "cameras": [
@@ -18305,9 +18306,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-202d7cecf389.glb",
-      "assetHash": "202d7cecf3895eaa1231c5eadf9e19351b74672eac11daf761d594cbe9843e78",
-      "assetBytes": 9568356,
+      "asset": "primary-bedroom-0ae3956a9722.glb",
+      "assetHash": "0ae3956a97227a3feed5397e412075a83cd0d25d15005b5858c4c4a345e2509c",
+      "assetBytes": 9568328,
       "objectCount": 212,
       "triangles": 171608,
       "cameras": [
@@ -19056,9 +19057,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -3.45,
-      "asset": "primary-bath-440cddbf6c9f.glb",
-      "assetHash": "440cddbf6c9ff579dbd87e126c243491f9f3765022dc1a2093d655d1c8cb3529",
-      "assetBytes": 4711372,
+      "asset": "primary-bath-b2912b0e7c82.glb",
+      "assetHash": "b2912b0e7c827be3c54e9d77aa534eb19102d8ea506e96470b0a81eeeaf9f29a",
+      "assetBytes": 4711348,
       "objectCount": 208,
       "triangles": 27873,
       "cameras": [
@@ -19672,9 +19673,9 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-fd7ea1db5eb7.glb",
-      "assetHash": "fd7ea1db5eb7994ae42f55f1586ade730a7b1760aa787c241a1d45a36b0963ff",
-      "assetBytes": 5059684,
+      "asset": "green-bedroom-0bc53aef8c44.glb",
+      "assetHash": "0bc53aef8c4429b5c328ff22846e2fb57227e4fe0c2c2ca4c440b739e682cf4b",
+      "assetBytes": 5059660,
       "objectCount": 125,
       "triangles": 23250,
       "cameras": [
@@ -20181,9 +20182,9 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
       "displayExposureStops": -1.0,
-      "asset": "green-bath-53225159639b.glb",
-      "assetHash": "53225159639bdc5f828581c099944a7c086f8d9dff94c6887a77ac18a62d0b31",
-      "assetBytes": 3365292,
+      "asset": "green-bath-352fe0462ef0.glb",
+      "assetHash": "352fe0462ef0a40c77c962f2e9aac5bf75286ac9cc2c94076feb3e2de88b01a5",
+      "assetBytes": 3365276,
       "objectCount": 97,
       "triangles": 21446,
       "cameras": [
@@ -20909,9 +20910,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-9b0e60f750fa.glb",
-      "assetHash": "9b0e60f750fab2fe3e4e68058f6a44f249bf43390774e2789139f8ebd0c790bd",
-      "assetBytes": 4730672,
+      "asset": "blue-bedroom-2cc5f985b8f3.glb",
+      "assetHash": "2cc5f985b8f3d3d2291d9f8216449d5245a0b4bc9eb1addea2a185a267223437",
+      "assetBytes": 4730648,
       "objectCount": 117,
       "triangles": 18596,
       "cameras": [
@@ -21438,9 +21439,9 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
       "displayExposureStops": -0.35,
-      "asset": "blue-bath-0d2cba5ee787.glb",
-      "assetHash": "0d2cba5ee787cdaebfbbaf7db363b34187b3acfd49ca4ca931c37641d85da3d8",
-      "assetBytes": 3809568,
+      "asset": "blue-bath-624bed4c780c.glb",
+      "assetHash": "624bed4c780c2d871d76500a9e69b44e4b87c2868a80cfc6df5f7257932ad765",
+      "assetBytes": 3809584,
       "objectCount": 127,
       "triangles": 22271,
       "cameras": [
@@ -22307,9 +22308,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10]"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-38674784fa27.glb",
-      "assetHash": "38674784fa278f1f5bb784be6d3d4f57258fb938e150cae92b99201b766691f8",
-      "assetBytes": 4301128,
+      "asset": "office-west-daf5d081f017.glb",
+      "assetHash": "daf5d081f017dfbd3523b6119413b056aa443cfb593de8a8874120be02066bd8",
+      "assetBytes": 4301104,
       "objectCount": 174,
       "triangles": 22514,
       "cameras": [
@@ -23222,9 +23223,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-6a0c84e3f942.glb",
-      "assetHash": "6a0c84e3f94211fe98f0c00f8d42fab6a6a90e30916eb236c5b2011687c6d736",
-      "assetBytes": 4368732,
+      "asset": "office-east-8c18ee8ce028.glb",
+      "assetHash": "8c18ee8ce028eb0dfe78fde0d30f6872ec54f7089a599049f6e855f79c84efa4",
+      "assetBytes": 4368708,
       "objectCount": 162,
       "triangles": 25276,
       "cameras": [
@@ -24446,9 +24447,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -2.5,
-      "asset": "office-hall-4e1d73406c8d.glb",
-      "assetHash": "4e1d73406c8d92b2c3e1eca5efa986e9bd01c1d8317ca2d00b33194169e07d0e",
-      "assetBytes": 4814616,
+      "asset": "office-hall-4e460b4f7679.glb",
+      "assetHash": "4e460b4f767920e93e4f5dbb06498e430ccc299a8c006975f23b052ac05d86da",
+      "assetBytes": 4814592,
       "objectCount": 191,
       "triangles": 23978,
       "cameras": [
@@ -24887,9 +24888,9 @@
         "Loli Closet"
       ],
       "displayExposureStops": -0.15,
-      "asset": "loli-closet-e187efd431c7.glb",
-      "assetHash": "e187efd431c79901942386a4984c3e187d9b9c0fe5874d665b4234ebab7c1256",
-      "assetBytes": 1957452,
+      "asset": "loli-closet-42a6f6509ab9.glb",
+      "assetHash": "42a6f6509ab9dfbf2ff85faf3b66d2d155010352fd2fd8358037c370721eaff0",
+      "assetBytes": 1957420,
       "objectCount": 102,
       "triangles": 5742,
       "cameras": [
@@ -25244,9 +25245,9 @@
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-2cdf15d99255.glb",
-      "assetHash": "2cdf15d99255505b7012517ce5e95aed421e7e6db1b1d136357d758317f92a23",
-      "assetBytes": 3217780,
+      "asset": "primary-loli-closet-fe0f2898e710.glb",
+      "assetHash": "fe0f2898e710ba353044ba10a67038ff19322a22e8f046c4021ae7e0e658a5f8",
+      "assetBytes": 3217744,
       "objectCount": 86,
       "triangles": 10878,
       "cameras": [
@@ -25682,9 +25683,9 @@
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
-      "asset": "primary-green-closet-966da18b311e.glb",
-      "assetHash": "966da18b311e6906f6105f47407b68355af5a7afb5baa3ba4564f35000871050",
-      "assetBytes": 3182492,
+      "asset": "primary-green-closet-060be98086d7.glb",
+      "assetHash": "060be98086d7831c50b0d3029fc78f487fe448a40eecb362a182527d289a7af2",
+      "assetBytes": 3182456,
       "objectCount": 74,
       "triangles": 10329,
       "cameras": [
@@ -26084,9 +26085,9 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-34a4dc6594d8.glb",
-      "assetHash": "34a4dc6594d8746628604cc31a4d91d6d637ead91f0d46f6d33528397fc94c71",
-      "assetBytes": 2148848,
+      "asset": "upstairs-closet-west-48d6de74b634.glb",
+      "assetHash": "48d6de74b634b5e2d613614e9d09631c2bc21aa63a700376bb35b7814938f775",
+      "assetBytes": 2148816,
       "objectCount": 58,
       "triangles": 8616,
       "cameras": [
@@ -26658,9 +26659,9 @@
         "Dressing 3"
       ],
       "displayExposureStops": -0.55,
-      "asset": "upstairs-closet-east-4853b6038a8c.glb",
-      "assetHash": "4853b6038a8cc280a6ff25bf7dce1ddee36f4314da0c9cef122259286a2a8ccf",
-      "assetBytes": 2023504,
+      "asset": "upstairs-closet-east-3fef086dd252.glb",
+      "assetHash": "3fef086dd252c86dac73d6d53104fe869f810d15f8d5cc6d98e9e2a0d44c5422",
+      "assetBytes": 2023472,
       "objectCount": 66,
       "triangles": 7154,
       "cameras": [
@@ -26989,9 +26990,9 @@
         "Millwork"
       ],
       "architectureAttachmentDepth": 1.2,
-      "asset": "rear-deck-98c69933b819.glb",
-      "assetHash": "98c69933b819252ba5e480b521a4edc544dac202e1dc9961a5962c50c755cd93",
-      "assetBytes": 1961320,
+      "asset": "rear-deck-256670dc4a93.glb",
+      "assetHash": "256670dc4a93c93e7f978b585457692f85e911bdc79f7b20c340413d30c55a35",
+      "assetBytes": 1961316,
       "objectCount": 125,
       "triangles": 8807,
       "cameras": [
@@ -27445,9 +27446,9 @@
         }
       ],
       "menuDescription": "Covered balcony above the offices",
-      "asset": "front-balcony-222eb68cc25a.glb",
-      "assetHash": "222eb68cc25a0e4a53c49f68ee2f495844d8ce998f636f94a106f95a1dbc29c3",
-      "assetBytes": 3843996,
+      "asset": "front-balcony-a1a854ffca4c.glb",
+      "assetHash": "a1a854ffca4c6bd2c2b911e04153840fde3beabe571527e23290205d0debc504",
+      "assetBytes": 3843968,
       "objectCount": 159,
       "triangles": 15500,
       "cameras": [
@@ -27902,9 +27903,9 @@
         "Obj 34"
       ],
       "applyExclusionsToLights": true,
-      "asset": "exterior-house-602c99e80eb9.glb",
-      "assetHash": "602c99e80eb948076825fc6fd416f015923e76122106b5d3696d0841b6b8670c",
-      "assetBytes": 23753036,
+      "asset": "exterior-house-4a6216a2629c.glb",
+      "assetHash": "4a6216a2629cfdc36b12140fcae4b1986d02495b4964d02a24aeb29002d656ef",
+      "assetBytes": 23752960,
       "objectCount": 1417,
       "triangles": 221861,
       "cameras": [
