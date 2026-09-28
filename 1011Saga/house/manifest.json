@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "a59307fda045",
+  "sceneVersion": "3d1462d92e98",
   "source": {
     "file": "Web.blend",
-    "sha256": "a59307fda0452d6fdb5b3cdd0f062c7a546ef7ef6647f223922fc35686a3719b",
+    "sha256": "3d1462d92e98e8fef557969db22cebc70970611b71c891b631d0b376f0124412",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -16213,9 +16213,9 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-27dfbb7daf05.glb",
-      "assetHash": "27dfbb7daf052034444837a4caed2dc550b97375f69af723ec6f10b9e10953b9",
-      "assetBytes": 7266412,
+      "asset": "loli-bedroom-7651b21defa8.glb",
+      "assetHash": "7651b21defa8dd3a02da8570d90fbdcac12715b5a4190b2d1dceda8ba8c0694b",
+      "assetBytes": 7257172,
       "objectCount": 201,
       "triangles": 121257,
       "cameras": [
@@ -20072,11 +20072,11 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-ac7776c478d5.glb",
-      "assetHash": "ac7776c478d5948907956071515373eb08fa4fe1f768f6546815a9c34aa2815c",
-      "assetBytes": 4570412,
-      "objectCount": 125,
-      "triangles": 23250,
+      "asset": "green-bedroom-e7153cf68fed.glb",
+      "assetHash": "e7153cf68fedd3a51c03bb346ee6663b62c0ee9ba4152ac01657c3c0c7d11bd2",
+      "assetBytes": 5872892,
+      "objectCount": 153,
+      "triangles": 86766,
       "cameras": [
         {
           "id": "room-view",
@@ -20377,26 +20377,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-9548d3ffff59",
-          "name": "06 | Wood: Pine-Clear Horiz",
-          "roomId": "green-bedroom",
-          "role": null,
-          "color": "#edbb85",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-e1ecdae2c76e",
-          "name": "09 | Color: 02 Whitewash*",
-          "roomId": "green-bedroom",
-          "role": null,
-          "color": "#f3f3f3",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-667a453287ba",
           "name": "05 | Metal: Stainless Steel*",
           "roomId": "green-bedroom",
@@ -20412,6 +20392,16 @@
           "roomId": "green-bedroom",
           "role": null,
           "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e1ecdae2c76e",
+          "name": "09 | Color: 02 Whitewash*",
+          "roomId": "green-bedroom",
+          "role": null,
+          "color": "#f3f3f3",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -20455,6 +20445,76 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-110ee70bf1d7",
+          "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
+          "roomId": "green-bedroom",
+          "role": null,
+          "color": "#242528",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8bfcfee25f59",
+          "name": "Wood \u00b7 Scarlett Weathered Wheat (provisional)",
+          "roomId": "green-bedroom",
+          "role": null,
+          "color": "#c9a57f",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-89ab2853598b",
+          "name": "Upholstery \u00b7 Scarlett Basketweave Slub Ivory (provisional)",
+          "roomId": "green-bedroom",
+          "role": null,
+          "color": "#e9e5d8",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f3d4a82e50de",
+          "name": "Fabric \u00b7 mattress ticking - NOT a product colour (provisional)",
+          "roomId": "green-bedroom",
+          "role": null,
+          "color": "#eaeae7",
+          "roughness": 0.75,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-359c291f5348",
+          "name": "Stone \u00b7 Scarlett nightstand marble (provisional)",
+          "roomId": "green-bedroom",
+          "role": null,
+          "color": "#e8e7e3",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6f531a3724ac",
+          "name": "Fabric \u00b7 PLAIN bed linen STAND-IN, warm white - NOT a product colour, NOT measured, and NOT the purchased Jardin Toile (x169)",
+          "roomId": "green-bedroom",
+          "role": null,
+          "color": "#dddbd6",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7a90530bf264",
+          "name": "Fabric \u00b7 Green Bedroom comforter and shams \u00b7 plain oatmeal cream STAND-IN (provisional, x215 PROPOSAL)",
+          "roomId": "green-bedroom",
+          "role": null,
+          "color": "#c5b6a0",
+          "roughness": 0.8799999952316284,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -21309,9 +21369,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-d4cb47ba127b.glb",
-      "assetHash": "d4cb47ba127b57b590fed404d197c7091b9d47edd18fd4f4a2361579864e5a3d",
-      "assetBytes": 5557084,
+      "asset": "blue-bedroom-e70b169539f1.glb",
+      "assetHash": "e70b169539f157a4310cba26649db19a04c7ecb93a88a9e3bce50e8cef28065d",
+      "assetBytes": 5547844,
       "objectCount": 145,
       "triangles": 82104,
       "cameras": [
