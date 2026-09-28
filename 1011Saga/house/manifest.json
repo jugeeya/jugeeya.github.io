@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "5dd7a590854d",
+  "sceneVersion": "bbfca7c5e776",
   "source": {
     "file": "Web.blend",
-    "sha256": "5dd7a590854db68cc45df8f7d4453b4a546c7647ad26252f7b385d3a47a492ab",
+    "sha256": "bbfca7c5e776cab1d9f4310cb429f35a30278afcae8778dc0a1e1db42ab86600",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1315,8 +1315,8 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.85,
-      "asset": "game-room-03d7fe9950a4.glb",
-      "assetHash": "03d7fe9950a4060142e96122a75f538fbf16a739c3be69d41f59b8acb1318d6b",
+      "asset": "game-room-c330b6f04005.glb",
+      "assetHash": "c330b6f040051039f4fa24df187970bac22151e464d1677e3dcaa559aade19b4",
       "assetBytes": 8082968,
       "objectCount": 287,
       "triangles": 53370,
@@ -5711,9 +5711,8 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3"
       },
-      "lookDaylight": 3.5,
-      "asset": "family-room-23e9fde4978f.glb",
-      "assetHash": "23e9fde4978fff11f2f6e1626e55b3e4eb5f68bd38610b4c5d98d218d6aba66b",
+      "asset": "family-room-e1cf51418ebe.glb",
+      "assetHash": "e1cf51418ebe09a4703b7a5e8cb0101325c575b2a913406d72a80fb5f654aaac",
       "assetBytes": 9302000,
       "objectCount": 454,
       "triangles": 82836,
@@ -10707,8 +10706,8 @@
         ]
       },
       "displayExposureStops": -1.25,
-      "asset": "kitchen-4857d859c56f.glb",
-      "assetHash": "4857d859c56f268c4a4f77aced7889179e39947e08d054e55109b663c9f19300",
+      "asset": "kitchen-f020889800a0.glb",
+      "assetHash": "f020889800a0afbfc017d96fd3257823f0d176f17bb570976d7f97b6e14a8f45",
       "assetBytes": 19002988,
       "objectCount": 590,
       "triangles": 332623,
@@ -28574,8 +28573,8 @@
         "Obj 34"
       ],
       "applyExclusionsToLights": true,
-      "asset": "exterior-house-2dd60ca6fdc4.glb",
-      "assetHash": "2dd60ca6fdc462dcfcadedbdcf715ea61cadf8999a81e1d8883fce1ee1289afd",
+      "asset": "exterior-house-4c134c946a4f.glb",
+      "assetHash": "4c134c946a4f6b1e89b7f77621f72fc18a7f26868b2fd8d24ba4ba488877217d",
       "assetBytes": 17229132,
       "objectCount": 1417,
       "triangles": 226359,
