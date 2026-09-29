@@ -5711,6 +5711,7 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3"
       },
+      "indirectGain": 0.6,
       "asset": "family-room-53928064ffc5.glb",
       "assetHash": "53928064ffc5aff71449f7209558a4f7aefea520b06a27081e0e1ec7f76374f4",
       "assetBytes": 9301868,
@@ -10706,6 +10707,7 @@
         ]
       },
       "displayExposureStops": -1.25,
+      "indirectGain": 0.7,
       "asset": "kitchen-d045d5367d25.glb",
       "assetHash": "d045d5367d25053beb63021c1756548013498e11359e5d39673fca9262ae3fa2",
       "assetBytes": 19001948,
