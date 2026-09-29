@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "3d1462d92e98",
+  "sceneVersion": "3c9c982549f6",
   "source": {
     "file": "Web.blend",
-    "sha256": "3d1462d92e98e8fef557969db22cebc70970611b71c891b631d0b376f0124412",
+    "sha256": "3c9c982549f623ef90036bc4d25b18a20628bf3bfadbb558d5905c9661c12fe7",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1315,9 +1315,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.85,
-      "asset": "game-room-e32512383e2a.glb",
-      "assetHash": "e32512383e2a6d87f41c3081546771f7883cb638a107db5af45c82070a9ad9ad",
-      "assetBytes": 8082588,
+      "asset": "game-room-8cb8c15e9ee4.glb",
+      "assetHash": "8cb8c15e9ee46b7f36d1282394d88a585576db88311a7f3d04de1a68972060c8",
+      "assetBytes": 8133468,
       "objectCount": 287,
       "triangles": 53370,
       "cameras": [
@@ -1694,10 +1694,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "game-room",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-85ae409c58e9",
@@ -5712,9 +5712,13 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3"
       },
       "indirectGain": 0.6,
-      "asset": "family-room-53928064ffc5.glb",
-      "assetHash": "53928064ffc5aff71449f7209558a4f7aefea520b06a27081e0e1ec7f76374f4",
-      "assetBytes": 9301868,
+      "roleOverrides": {
+        "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
+        "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
+      },
+      "asset": "family-room-1798c558797d.glb",
+      "assetHash": "1798c558797d513aea8dcfef2d220a3a6cfa76de1241d45a76c597e70f37beb9",
+      "assetBytes": 9352160,
       "objectCount": 454,
       "triangles": 82836,
       "cameras": [
@@ -6059,10 +6063,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "family-room",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-185fae2f8f72",
@@ -6403,16 +6407,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-7878fd7c93b9",
-          "name": "Paint \u00b7 Dusty Blue (Game Room)",
-          "roomId": "family-room",
-          "role": "ceiling",
-          "color": "#7cabca",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-a271f53f4194",
@@ -7727,9 +7721,9 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3"
       },
-      "asset": "dining-room-0373d951546e.glb",
-      "assetHash": "0373d951546e32ee639e2b724ca0397d9fd66feedab4e99a3487486a0ea519db",
-      "assetBytes": 8522052,
+      "asset": "dining-room-262d27f5f7b2.glb",
+      "assetHash": "262d27f5f7b208a2030956c61d69d7e575aa9020fdb10110e7b0b49a0796a408",
+      "assetBytes": 9047032,
       "objectCount": 314,
       "triangles": 112116,
       "cameras": [
@@ -8122,10 +8116,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "dining-room",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-a5dde9abe86d",
@@ -8352,20 +8346,20 @@
           "name": "Wood \u00b7 RH Antiqued Natural (Dining table top)",
           "roomId": "dining-room",
           "role": null,
-          "color": "#946c4e",
-          "roughness": 0.7200000286102295,
+          "color": "#88715a",
+          "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-70731567b08f",
           "name": "Wood \u00b7 RH Antiqued Natural (Dining table base)",
           "roomId": "dining-room",
           "role": null,
-          "color": "#946c4e",
-          "roughness": 0.7200000286102295,
+          "color": "#88715a",
+          "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-e52d5df27c85",
@@ -8452,10 +8446,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "dining-room",
           "role": "ceiling",
-          "color": "#af9475",
+          "color": "#c7b399",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; source paint mean from unlit texture bake; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-d66739b36d43",
@@ -10708,9 +10702,9 @@
       },
       "displayExposureStops": -1.25,
       "indirectGain": 0.7,
-      "asset": "kitchen-d045d5367d25.glb",
-      "assetHash": "d045d5367d25053beb63021c1756548013498e11359e5d39673fca9262ae3fa2",
-      "assetBytes": 19001948,
+      "asset": "kitchen-a968a5b0db17.glb",
+      "assetHash": "a968a5b0db17825ee2e4b241f8e2180a7235a7f25d7ea1aab2745bf2bf6df021",
+      "assetBytes": 19052788,
       "objectCount": 590,
       "triangles": 332623,
       "cameras": [
@@ -11075,10 +11069,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "kitchen",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-0c52e7da2761",
@@ -11565,10 +11559,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "kitchen",
           "role": "ceiling",
-          "color": "#af9475",
+          "color": "#c7b399",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; source paint mean from unlit texture bake; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-106aa8e9fb88",
@@ -13781,9 +13775,9 @@
         "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py."
       },
       "displayExposureStops": -1.2,
-      "asset": "entry-0fd09a738d82.glb",
-      "assetHash": "0fd09a738d825bb739dbce7d64cf8d9efa1a6f71d410e5f252421449f1ff2341",
-      "assetBytes": 10925752,
+      "asset": "entry-89d731aff412.glb",
+      "assetHash": "89d731aff412d2431fbd8afbe359799fdd4a3cd288985f20ac7a7a27a6cc6366",
+      "assetBytes": 10976612,
       "objectCount": 639,
       "triangles": 172296,
       "cameras": [
@@ -14378,10 +14372,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "entry",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-84394471edab",
@@ -14815,9 +14809,9 @@
         "Powder"
       ],
       "displayExposureStops": -2.7,
-      "asset": "powder-room-ee773acc1af3.glb",
-      "assetHash": "ee773acc1af327d5f9146313c29856ae65ac87f4e191b164a103a2c751d1c268",
-      "assetBytes": 3058372,
+      "asset": "powder-room-e2682984c3b8.glb",
+      "assetHash": "e2682984c3b83d2ec5cb14202870e377ad372499380bcfaef247658bbe2d7403",
+      "assetBytes": 3058352,
       "objectCount": 147,
       "triangles": 17768,
       "cameras": [
@@ -15195,9 +15189,9 @@
         "Slab C01.003"
       ],
       "displayExposureStops": -2.0,
-      "asset": "pantry-c81cd7bbc360.glb",
-      "assetHash": "c81cd7bbc3603a26fdeda5b27b0daa2e25083dd2e5522d1c97552eec74178185",
-      "assetBytes": 3367188,
+      "asset": "pantry-8d2ece97d530.glb",
+      "assetHash": "8d2ece97d530939faf90a0c4b44cf0f39966dd1e2d0e1a28420016097227a27d",
+      "assetBytes": 3418040,
       "objectCount": 111,
       "triangles": 14726,
       "cameras": [
@@ -15347,10 +15341,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "pantry",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-63a0ccdf539f",
@@ -15636,10 +15630,11 @@
       "cutawayKeepPrefixes": [
         "Fascia Fascia."
       ],
-      "displayExposureStops": -1.8,
-      "asset": "wine-cellar-9c2e2372858a.glb",
-      "assetHash": "9c2e2372858a2d0505ca2fb0ce2b0a9d400fe9c5e0e96a344f05a3c84e918247",
-      "assetBytes": 7327912,
+      "displayExposureStops": -2.4,
+      "displayExposureJudged": "d1 2026-09-28: by eye at Room view (backlit racks no longer wash the room; cabinets read oak)",
+      "asset": "wine-cellar-2e4c3931d8b9.glb",
+      "assetHash": "2e4c3931d8b9a61cb563f53cd32d0850635c63131f10076a2154363c266867c1",
+      "assetBytes": 7378756,
       "objectCount": 88,
       "triangles": 71829,
       "cameras": [
@@ -15912,10 +15907,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "wine-cellar",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-48e70c93a4c1",
@@ -16215,9 +16210,9 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-7651b21defa8.glb",
-      "assetHash": "7651b21defa8dd3a02da8570d90fbdcac12715b5a4190b2d1dceda8ba8c0694b",
-      "assetBytes": 7257172,
+      "asset": "loli-bedroom-fa1fc8176a81.glb",
+      "assetHash": "fa1fc8176a81aecc12db3a86b9ced8a207f85561e65fed7efbe694378397bc91",
+      "assetBytes": 7308024,
       "objectCount": 201,
       "triangles": 121257,
       "cameras": [
@@ -16442,10 +16437,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "loli-bedroom",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-87ee25c41b7a",
@@ -16909,10 +16904,11 @@
       "cutawayMillworkRooms": [
         "Loli Bathroom"
       ],
-      "displayExposureStops": -0.85,
-      "asset": "loli-bathroom-d94be5d23cfa.glb",
-      "assetHash": "d94be5d23cfa22b2d3d557ad451ec77e51f98030a61a63d580a08327a68e7163",
-      "assetBytes": 3878848,
+      "displayExposureStops": -1.5,
+      "displayExposureJudged": "d1 2026-09-28: by eye at Room view and Shower (shower tile reads its marble, not white)",
+      "asset": "loli-bathroom-272b7604839f.glb",
+      "assetHash": "272b7604839f3aa79425de0ef60563a354f06636d16486a7d59ee405a48ff817",
+      "assetBytes": 3878828,
       "objectCount": 116,
       "triangles": 21529,
       "cameras": [
@@ -17824,9 +17820,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-c77e1aa2c7fc.glb",
-      "assetHash": "c77e1aa2c7fce28bd6958ffe6d8a8c164c8f8c42ff5dfe021428e8f9859343e0",
-      "assetBytes": 2360972,
+      "asset": "laundry-05260b985da0.glb",
+      "assetHash": "05260b985da091ea6bff91969967513265952a754a83183db58a846fc4c36bf9",
+      "assetBytes": 2411824,
       "objectCount": 61,
       "triangles": 8217,
       "cameras": [
@@ -18232,10 +18228,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "laundry",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         }
       ]
     },
@@ -18707,9 +18703,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-c7bfa35d5f6c.glb",
-      "assetHash": "c7bfa35d5f6c3367a09f29b04feefac9ce7fdb0b33c1ee040f3a666ad48fba60",
-      "assetBytes": 8978952,
+      "asset": "primary-bedroom-44275221ed11.glb",
+      "assetHash": "44275221ed1124c20c475066b288325b1a09dbb39dfcd80c2b78eaedd1c2b516",
+      "assetBytes": 9029796,
       "objectCount": 212,
       "triangles": 171608,
       "cameras": [
@@ -18914,10 +18910,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "primary-bedroom",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-5fb83732b1d3",
@@ -19393,7 +19389,7 @@
         {
           "bounds": [
             [
-              3.62,
+              3.59,
               3.78
             ],
             [
@@ -19413,7 +19409,7 @@
           "side": [
             "xMin"
           ],
-          "reason": "Internal WC/shower divider follows the west cutaway."
+          "reason": "Internal WC/shower divider follows the west cutaway. f1: x from 3.59 so the divider's own west-face chair rail (Millwork \u00b7 2F \u00b7 Chair Rail \u00b7 Primary Bath \u00b7 W-02, x 3.596-3.630, centre 3.613) leaves with Wall P2.003 instead of floating across the room."
         }
       ],
       "floorFinish": {
@@ -19457,10 +19453,11 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
-      "displayExposureStops": -3.45,
-      "asset": "primary-bath-d8a1b63bca42.glb",
-      "assetHash": "d8a1b63bca42ea898bb8b242cf5dd20fd3972bb7d197fb21a01086f407a57741",
-      "assetBytes": 4184684,
+      "displayExposureStops": -2.8,
+      "displayExposureJudged": "d1 2026-09-28: by eye at Room view, Vanity, Shower (walls on the #efe8d7 chip, oak honey)",
+      "asset": "primary-bath-fcf6653c0908.glb",
+      "assetHash": "fcf6653c0908a45f9ce9e4a5641aed6e06f85df95fba3b3e424547d4151f7971",
+      "assetBytes": 4184660,
       "objectCount": 208,
       "triangles": 27873,
       "cameras": [
@@ -20074,9 +20071,9 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-e7153cf68fed.glb",
-      "assetHash": "e7153cf68fedd3a51c03bb346ee6663b62c0ee9ba4152ac01657c3c0c7d11bd2",
-      "assetBytes": 5872892,
+      "asset": "green-bedroom-fe07c8cd8c1f.glb",
+      "assetHash": "fe07c8cd8c1fcaf786f9caac3536344c0f76a816862be6255edd9aa56dbce58f",
+      "assetBytes": 5923744,
       "objectCount": 153,
       "triangles": 86766,
       "cameras": [
@@ -20263,10 +20260,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "green-bedroom",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-07bf4e45e8bd",
@@ -20643,9 +20640,9 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
       "displayExposureStops": -1.0,
-      "asset": "green-bath-84a1a2596910.glb",
-      "assetHash": "84a1a25969103eb992178e7dc7b92ae6f702b87e3c72e216ee0a9ac72ed0646e",
-      "assetBytes": 3010224,
+      "asset": "green-bath-9c77ea5afad2.glb",
+      "assetHash": "9c77ea5afad24ae94663477e734c707673c975722b88369c3f4b86a95f5c12c0",
+      "assetBytes": 3010208,
       "objectCount": 97,
       "triangles": 21446,
       "cameras": [
@@ -21371,9 +21368,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-e70b169539f1.glb",
-      "assetHash": "e70b169539f157a4310cba26649db19a04c7ecb93a88a9e3bce50e8cef28065d",
-      "assetBytes": 5547844,
+      "asset": "blue-bedroom-3a7822552eca.glb",
+      "assetHash": "3a7822552eca0e9431059695accc30e0665cf4ab2a3b88578ed38bebf69f9f9c",
+      "assetBytes": 5598692,
       "objectCount": 145,
       "triangles": 82104,
       "cameras": [
@@ -21570,10 +21567,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "blue-bedroom",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-b1038487e98c",
@@ -21960,9 +21957,9 @@
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
       "displayExposureStops": -0.35,
-      "asset": "blue-bath-c84799f758bd.glb",
-      "assetHash": "c84799f758bda2a41d6bdb3c3cfa734b130ee57f656210e6b8c9b48e32875c3a",
-      "assetBytes": 3452400,
+      "asset": "blue-bath-2b82aee41022.glb",
+      "assetHash": "2b82aee41022ae85fc26fbff7283df99d29df2480c7bc93cfea84c4d837340f0",
+      "assetBytes": 3452416,
       "objectCount": 127,
       "triangles": 22271,
       "cameras": [
@@ -22959,9 +22956,9 @@
         ]
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-63657b9ee5c2.glb",
-      "assetHash": "63657b9ee5c2698b7a102a658e33bd950b9c8927ff4e3a1f5c6248fbbc648a5f",
-      "assetBytes": 4195608,
+      "asset": "office-west-b5ee9233a055.glb",
+      "assetHash": "b5ee9233a055e1801058365e803d0d0bbfc87b0b219ed9a665e8e6946de3393b",
+      "assetBytes": 4246460,
       "objectCount": 182,
       "triangles": 22660,
       "cameras": [
@@ -23105,10 +23102,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "office-west",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-4d271a3378e2",
@@ -23894,9 +23891,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-c11107d758ff.glb",
-      "assetHash": "c11107d758ff7f44eb898c8ee45385a4a527c37cbc2b7e829f4729e36aaaa54d",
-      "assetBytes": 4093124,
+      "asset": "office-east-103e1601cfc5.glb",
+      "assetHash": "103e1601cfc5c544d92821f5bda2bebd586d3d714a20fe907e3c33e9444db477",
+      "assetBytes": 4143976,
       "objectCount": 162,
       "triangles": 25276,
       "cameras": [
@@ -24040,10 +24037,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "office-east",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-303a12b259e4",
@@ -25229,9 +25226,9 @@
         ]
       },
       "displayExposureStops": -2.5,
-      "asset": "office-hall-843966024eb7.glb",
-      "assetHash": "843966024eb7855b767a2ae57ee07c6da636eb3446877d15e2ea7658d45740bf",
-      "assetBytes": 4245872,
+      "asset": "office-hall-5dc25290c3bc.glb",
+      "assetHash": "5dc25290c3bc693c306f79a995ee4871b91fdd9e778ae0e166bbf26e5ab39656",
+      "assetBytes": 4296700,
       "objectCount": 198,
       "triangles": 24272,
       "cameras": [
@@ -25400,10 +25397,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "office-hall",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-23d45e2360ca",
@@ -25600,10 +25597,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "office-hall",
           "role": "ceiling",
-          "color": "#af9475",
+          "color": "#c7b399",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; source paint mean from unlit texture bake; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         }
       ]
     },
@@ -25680,9 +25677,9 @@
         "Loli Closet"
       ],
       "displayExposureStops": -0.15,
-      "asset": "loli-closet-3eb1a81e0167.glb",
-      "assetHash": "3eb1a81e0167e40840320053ea9e30a076827bc40013393e8f51a5ae7d6908a4",
-      "assetBytes": 1924516,
+      "asset": "loli-closet-1f8619e45b76.glb",
+      "assetHash": "1f8619e45b763e27d67ee0d70581d199c6d2f20a80de1696f36189b83400c7de",
+      "assetBytes": 1975356,
       "objectCount": 102,
       "triangles": 5742,
       "cameras": [
@@ -25818,10 +25815,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "loli-closet",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-22142c879d88",
@@ -26031,15 +26028,29 @@
             4.7
           ],
           "fov": 65
+        },
+        {
+          "label": "Dresser",
+          "position": [
+            3.25,
+            0.55,
+            4.95
+          ],
+          "target": [
+            2.85,
+            1.66,
+            4.3
+          ],
+          "fov": 75
         }
       ],
       "cutawayMillworkRooms": [
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-570da5e8a951.glb",
-      "assetHash": "570da5e8a9517a27e653889181279c4852ff9052a6e362c9875cbb10b1cfb9aa",
-      "assetBytes": 3125416,
+      "asset": "primary-loli-closet-2df8041b804f.glb",
+      "assetHash": "2df8041b804fb2622ad7989bdc74c588051553b7fb3834b87615fbfdeb697bb7",
+      "assetBytes": 3176256,
       "objectCount": 86,
       "triangles": 10878,
       "cameras": [
@@ -26063,20 +26074,17 @@
           "id": "dresser",
           "label": "Dresser",
           "position": [
-            2.9123,
-            4.650094,
-            -0.4458
+            3.25,
+            4.95,
+            -0.55
           ],
           "target": [
-            2.9123,
-            4.650094,
-            -3.4458
+            2.85,
+            4.3,
+            -1.66
           ],
-          "fov": 28.51614672855795,
-          "lensMm": 50.0,
-          "sensorWidthMm": 36.0,
-          "sourceAspect": 1.4166666666666667,
-          "sourceCamera": "Room \u00b7 Primary Loli Closet \u00b7 dresser elevation"
+          "fov": 75,
+          "sourceCamera": "Web presentation view"
         }
       ],
       "lights": [
@@ -26196,10 +26204,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "primary-loli-closet",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-775c880f8214",
@@ -26469,15 +26477,29 @@
             4.7
           ],
           "fov": 65
+        },
+        {
+          "label": "Dresser",
+          "position": [
+            8.235,
+            0.55,
+            4.95
+          ],
+          "target": [
+            8.635,
+            1.66,
+            4.3
+          ],
+          "fov": 75
         }
       ],
       "cutawayMillworkRooms": [
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
-      "asset": "primary-green-closet-3f922f6e1cc8.glb",
-      "assetHash": "3f922f6e1cc88703fd978d972e6fedba6065c9f64ab9f3b759bcd89d4e182da3",
-      "assetBytes": 3091072,
+      "asset": "primary-green-closet-21aab0611657.glb",
+      "assetHash": "21aab061165755801a507d1495a69cabfc452944d554143cbd6959d79973943d",
+      "assetBytes": 3141908,
       "objectCount": 74,
       "triangles": 10329,
       "cameras": [
@@ -26501,20 +26523,17 @@
           "id": "dresser",
           "label": "Dresser",
           "position": [
-            8.5746,
-            4.650094,
-            -0.4458
+            8.235,
+            4.95,
+            -0.55
           ],
           "target": [
-            8.5746,
-            4.650094,
-            -3.4458
+            8.635,
+            4.3,
+            -1.66
           ],
-          "fov": 28.51614672855795,
-          "lensMm": 50.0,
-          "sensorWidthMm": 36.0,
-          "sourceAspect": 1.4166666666666667,
-          "sourceCamera": "Room \u00b7 Primary Green Closet \u00b7 dresser elevation"
+          "fov": 75,
+          "sourceCamera": "Web presentation view"
         }
       ],
       "lights": [
@@ -26624,10 +26643,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "primary-green-closet",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-30b550c33a45",
@@ -26877,9 +26896,9 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-90ac9a199635.glb",
-      "assetHash": "90ac9a1996352058e92e632338630ab3e1ce0a52deebf26d33e86f1cf492aa64",
-      "assetBytes": 1971156,
+      "asset": "upstairs-closet-west-ecbf4c8ff5ea.glb",
+      "assetHash": "ecbf4c8ff5ead807baa0b07558bbb1161ef94caf17c91c70ce3bd40e1ebfda6a",
+      "assetBytes": 2022000,
       "objectCount": 58,
       "triangles": 8616,
       "cameras": [
@@ -27214,10 +27233,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "upstairs-closet-west",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-34577d4600ef",
@@ -27451,9 +27470,9 @@
         "Dressing 3"
       ],
       "displayExposureStops": -0.55,
-      "asset": "upstairs-closet-east-e32b55a9d166.glb",
-      "assetHash": "e32b55a9d16647c0aa53aa3438d71506985da3679c412764d708f7696e7488d0",
-      "assetBytes": 1984412,
+      "asset": "upstairs-closet-east-d48134fb837c.glb",
+      "assetHash": "d48134fb837ce9e5af64a02adf0ad7b035faa0c491d5c28e77bcac0f6395f17e",
+      "assetBytes": 2035256,
       "objectCount": 66,
       "triangles": 7154,
       "cameras": [
@@ -27557,10 +27576,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "upstairs-closet-east",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-360ecc87e99e",
@@ -27782,9 +27801,11 @@
         "Millwork"
       ],
       "architectureAttachmentDepth": 1.2,
-      "asset": "rear-deck-499069000c50.glb",
-      "assetHash": "499069000c503ca26e7b47068e6cd662abf5f9dfd71a4046fc7d530da852e156",
-      "assetBytes": 1830268,
+      "displayExposureStops": 0,
+      "displayExposureJudged": "d1 2026-09-28: the Exterior orbit's exposure (EXTERIOR_EXPOSURE_STOPS), so deck stucco matches the facades",
+      "asset": "rear-deck-a23a503fc29f.glb",
+      "assetHash": "a23a503fc29fcd01461cd429f850a8c54c7f87a3a3e560a5ebe382d7b40d51a9",
+      "assetBytes": 1830264,
       "objectCount": 125,
       "triangles": 8807,
       "cameras": [
@@ -28194,7 +28215,8 @@
         "Primary bath",
         "PB ",
         "Fixture P",
-        "Millwork"
+        "Millwork",
+        "PBath"
       ],
       "cutawayClipPrefixes": [
         "Column C06",
@@ -28238,11 +28260,11 @@
         }
       ],
       "menuDescription": "Covered balcony above the offices",
-      "asset": "front-balcony-78cb6542a8a7.glb",
-      "assetHash": "78cb6542a8a70b66eacea835dfee4cba345274b3bae5681afa66e249340680d1",
-      "assetBytes": 3448448,
-      "objectCount": 159,
-      "triangles": 15500,
+      "asset": "front-balcony-773192a5cd9e.glb",
+      "assetHash": "773192a5cd9e6ad18b1e66a4d0bdb431ec4d0e5d6ea181430aa43de3786671ba",
+      "assetBytes": 3260068,
+      "objectCount": 151,
+      "triangles": 15420,
       "cameras": [
         {
           "id": "room-view",
@@ -28382,10 +28404,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "front-balcony",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-e48bf444ba74",
@@ -28466,26 +28488,6 @@
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-ee893d178b7f",
-          "name": "Tile \u00b7 Calacatta Oro 12x24 Polished (Primary shower walls)",
-          "roomId": "front-balcony",
-          "role": null,
-          "color": "#f3f1ed",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
-        },
-        {
-          "id": "mat-7afac34aedb0",
-          "name": "Tile \u00b7 Calacatta Oro 2x6 Mosaic Polished (Primary accent)",
-          "roomId": "front-balcony",
-          "role": null,
-          "color": "#f3f1ed",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
           "id": "mat-27177d56db64",
@@ -28695,9 +28697,9 @@
         "Obj 34"
       ],
       "applyExclusionsToLights": true,
-      "asset": "exterior-house-f950a9a6d9f7.glb",
-      "assetHash": "f950a9a6d9f7d8ae62d75d52c322d6c63329185d4fbf7f9176a5fa46bb81f6ad",
-      "assetBytes": 17234768,
+      "asset": "exterior-house-fe70e4203909.glb",
+      "assetHash": "fe70e4203909198f05aa716b70c16ddf16a7d40aacbba594266da5c13a3a7a2e",
+      "assetBytes": 17285572,
       "objectCount": 1417,
       "triangles": 226359,
       "cameras": [
@@ -29009,10 +29011,10 @@
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "exterior-house",
           "role": null,
-          "color": "#d4ba98",
+          "color": "#c8b49a",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-ac3f35be0490",
