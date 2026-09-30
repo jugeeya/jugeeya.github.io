@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "3c9c982549f6",
+  "sceneVersion": "1cb990690be3",
   "source": {
     "file": "Web.blend",
-    "sha256": "3c9c982549f623ef90036bc4d25b18a20628bf3bfadbb558d5905c9661c12fe7",
+    "sha256": "1cb990690be32006f4029eeae85eb93023de66840ac94d6bb257273952c59647",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -92,7 +92,8 @@
         "family-room"
       ],
       "excludeSourcePrefixes": [
-        "Column C09."
+        "Column C09.",
+        "Lantern \u00b7 "
       ],
       "excludeSourceNames": [
         "Obj table.013"
@@ -1314,12 +1315,13 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
-      "displayExposureStops": -0.85,
-      "asset": "game-room-8cb8c15e9ee4.glb",
-      "assetHash": "8cb8c15e9ee46b7f36d1282394d88a585576db88311a7f3d04de1a68972060c8",
-      "assetBytes": 8133468,
-      "objectCount": 287,
-      "triangles": 53370,
+      "displayExposureStops": -0.5,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Coffered ceiling: L17 Julia 16.6 cd (was a 35 cd J-box stand-in) (R11 metered -0.85); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "game-room-cea6931e44c4.glb",
+      "assetHash": "cea6931e44c41aee5eeb43a60be2e46e7cbd0c641becbf73d3ff6e16b5f4d498",
+      "assetBytes": 8129164,
+      "objectCount": 290,
+      "triangles": 57036,
       "cameras": [
         {
           "id": "room-view",
@@ -1602,13 +1604,13 @@
           "type": "point",
           "position": [
             -7.867091,
-            2.765555,
+            2.538641,
             -5.836782
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 16.594,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 16.594 cd (180 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#7cabca",
@@ -1825,16 +1827,6 @@
           "roomId": "game-room",
           "role": null,
           "color": "#bfbfbf",
-          "roughness": 0.30000001192092896,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-9136401c2f31",
-          "name": "05 | Metal: Brass*",
-          "roomId": "game-room",
-          "role": null,
-          "color": "#f3a93c",
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
           "translation": "constant source PBR values"
@@ -2170,6 +2162,46 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-00faf024f703",
+          "name": "LC \u00b7 Matte Brass (Capital Julia MA)",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#dabf8e",
+          "roughness": 0.41999998688697815,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6fe374a1f3c1",
+          "name": "LC \u00b7 Soft white fabric shade (Julia SH452761)",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#efece6",
+          "roughness": 0.9200000166893005,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-bb7f0c838e66",
+          "name": "LC \u00b7 Lamp glass, clear B11/A19 envelope (2400 K glow)",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#ffffff",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-e8a4f1dfaa29",
+          "name": "LC \u00b7 LED filament, 2400 K",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#f3c489",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-473ef87a2dcb",
           "name": "09 | Color: 01 Ceiling White",
           "roomId": "game-room",
@@ -2292,7 +2324,8 @@
         "game-room"
       ],
       "excludeSourcePrefixes": [
-        "Column C09."
+        "Column C09.",
+        "Lantern \u00b7 "
       ],
       "excludeSourceNames": [
         "Furniture table.003",
@@ -5716,11 +5749,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-1798c558797d.glb",
-      "assetHash": "1798c558797d513aea8dcfef2d220a3a6cfa76de1241d45a76c597e70f37beb9",
-      "assetBytes": 9352160,
-      "objectCount": 454,
-      "triangles": 82836,
+      "asset": "family-room-14c0f5d8632e.glb",
+      "assetHash": "14c0f5d8632ec74e705ee50bde75b8afb4ab5c9906836c02abe3f050f62ab061",
+      "assetBytes": 9831520,
+      "objectCount": 484,
+      "triangles": 149496,
       "cameras": [
         {
           "id": "room-view",
@@ -6537,7 +6570,30 @@
           "roughness": 0.8999999761581421,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-68a60527de4b",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-1abf074d277f",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -6589,7 +6645,6 @@
         "PVanity",
         "PBath"
       ],
-      "displayExposureStops": -3.6,
       "lookContext": {
         "bounds": [
           [
@@ -7721,11 +7776,13 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3"
       },
-      "asset": "dining-room-262d27f5f7b2.glb",
-      "assetHash": "262d27f5f7b208a2030956c61d69d7e575aa9020fdb10110e7b0b49a0796a408",
-      "assetBytes": 9047032,
-      "objectCount": 314,
-      "triangles": 112116,
+      "displayExposureStops": -1.45,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "dining-room-bcecaaf410e5.glb",
+      "assetHash": "bcecaaf410e515d8c5a4ecd07eef43619349131902c0b64fa68062dffb1674bc",
+      "assetBytes": 9570304,
+      "objectCount": 335,
+      "triangles": 153562,
       "cameras": [
         {
           "id": "room-view",
@@ -7932,13 +7989,13 @@
           "type": "point",
           "position": [
             -8.615596,
-            2.358599,
+            1.991404,
             -0.801755
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 13.828,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 13.828 cd (150 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         },
         {
           "id": "dining-room-a88563167ac88152",
@@ -7946,13 +8003,13 @@
           "type": "point",
           "position": [
             -6.878964,
-            2.358599,
+            1.991404,
             -0.801755
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 13.828,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 13.828 cd (150 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         },
         {
           "id": "dining-room-15ba572ed225c8d8",
@@ -8392,6 +8449,46 @@
           "translation": "Base Color source graph baked in UV space"
         },
         {
+          "id": "mat-c946e6d3db76",
+          "name": "LC \u00b7 Modern Gold (Z-Lite Gabriella)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#e7cb97",
+          "roughness": 0.25999999046325684,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e526dd83b013",
+          "name": "LC \u00b7 Crystal glass buds (Gabriella)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#ffffff",
+          "roughness": 0.0,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-104e5ac37d38",
+          "name": "LC \u00b7 Lamp glass, clear B11/A19 envelope (2400 K glow)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#ffffff",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-8d6f01fdc18e",
+          "name": "LC \u00b7 LED filament, 2400 K",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#f3c489",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-c1a46b5992ad",
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "dining-room",
@@ -8460,7 +8557,30 @@
           "roughness": 0.44999998807907104,
           "metallic": 0.6000000238418579,
           "translation": "source UV opacity mask preserved"
+        },
+        {
+          "id": "mat-742556abfeca",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-f45bacdeaf2f",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -8799,7 +8919,6 @@
           "Door E",
           "Door G leaf",
           "Door H",
-          "Door H knob",
           "Door H leaf",
           "Door ZH",
           "Door ZI",
@@ -9107,20 +9226,6 @@
             [
               -0.03,
               2.38
-            ]
-          ],
-          "Door H knob": [
-            [
-              -3.87,
-              -3.27
-            ],
-            [
-              -2.17,
-              -1.57
-            ],
-            [
-              0.6,
-              1.2
             ]
           ],
           "Door H leaf": [
@@ -10700,13 +10805,14 @@
           "x168 \u00b7 Enclosure \u00b7 Entry B"
         ]
       },
-      "displayExposureStops": -1.25,
       "indirectGain": 0.7,
-      "asset": "kitchen-a968a5b0db17.glb",
-      "assetHash": "a968a5b0db17825ee2e4b241f8e2180a7235a7f25d7ea1aab2745bf2bf6df021",
-      "assetBytes": 19052788,
-      "objectCount": 590,
-      "triangles": 332623,
+      "displayExposureStops": -0.75,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Island & range: 2 x L14 Gannet 8.3 cd (were 35 cd stand-ins) (R11 metered -1.25); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "kitchen-bbec4cf571b4.glb",
+      "assetHash": "bbec4cf571b401ece6f2979f1444c218741a5e436c90e7b17110fc4b7aa0a71d",
+      "assetBytes": 19507964,
+      "objectCount": 625,
+      "triangles": 400159,
       "cameras": [
         {
           "id": "room-view",
@@ -10913,13 +11019,13 @@
           "type": "point",
           "position": [
             5.165285,
-            2.50148,
+            1.90363,
             -1.166855
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 8.297,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 8.297 cd (90 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         },
         {
           "id": "kitchen-a3f4be80dadf99a8",
@@ -10927,13 +11033,13 @@
           "type": "point",
           "position": [
             5.165285,
-            2.50148,
+            1.90363,
             0.285179
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 8.297,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 8.297 cd (90 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#efe8d7",
@@ -11345,16 +11451,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-02108160a4fb",
-          "name": "09 | Glass: Simple Gray - Existing",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#969696",
-          "roughness": 0.019999999552965164,
-          "metallic": 0.0,
-          "translation": "source dielectric/opaque glass parameters"
-        },
-        {
           "id": "mat-41f035b25bf4",
           "name": "09 | Glass: Frosted",
           "roomId": "kitchen",
@@ -11485,6 +11581,46 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-e2c6c8d41954",
+          "name": "LC \u00b7 Antique Forged Iron (Gannet)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#2f2c29",
+          "roughness": 0.550000011920929,
+          "metallic": 0.6000000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-79c9a6574b84",
+          "name": "LC \u00b7 Weathered Oak Wood (Gannet)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#817465",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-758d12aa78fc",
+          "name": "LC \u00b7 Lamp glass, clear B11/A19 envelope (2400 K glow)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#ffffff",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-5dd9ed8c1b0b",
+          "name": "LC \u00b7 LED filament, 2400 K",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#f3c489",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-6da6ff70dd7b",
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "kitchen",
@@ -11545,16 +11681,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-7488b719c163",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-22f3a34a34e4",
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "kitchen",
@@ -11573,7 +11699,30 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-427f89554e32",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-14cd64ae38d6",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -13775,11 +13924,12 @@
         "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py."
       },
       "displayExposureStops": -1.2,
-      "asset": "entry-89d731aff412.glb",
-      "assetHash": "89d731aff412d2431fbd8afbe359799fdd4a3cd288985f20ac7a7a27a6cc6366",
-      "assetBytes": 10976612,
-      "objectCount": 639,
-      "triangles": 172296,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "entry-3b64275dc7ae.glb",
+      "assetHash": "3b64275dc7ae29054a4cf18773c7cf47459a508893a21ac69b5dde970675c31c",
+      "assetBytes": 14609012,
+      "objectCount": 697,
+      "triangles": 395084,
       "cameras": [
         {
           "id": "room-view",
@@ -13962,42 +14112,84 @@
           "group": "entry:ceiling",
           "type": "point",
           "position": [
-            -0.771151,
-            5.730092,
-            4.786516
+            -1.217287,
+            3.59544,
+            4.786481
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 23.646,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 23.646 cd (256.5 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         },
         {
           "id": "entry-75a1017dafa77231",
           "group": "entry:ceiling",
           "type": "point",
           "position": [
-            -4.323176,
-            5.2328,
-            2.092795
+            -4.290783,
+            5.67944,
+            2.092766
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 7.006,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 7.006 cd (76 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         },
         {
           "id": "entry-d0306a0dfa85b6a0",
           "group": "entry:ceiling",
           "type": "point",
           "position": [
-            1.736018,
-            5.2328,
-            2.092795
+            1.703626,
+            5.67944,
+            2.092766
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 7.006,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 7.006 cd (76 W on the 350 W can = 65 cd convention); browser preview, not photometric"
+        },
+        {
+          "id": "entry-08113f8ab9d1e945",
+          "group": "entry:ceiling",
+          "type": "point",
+          "position": [
+            -3.679088,
+            2.21888,
+            7.420091
+          ],
+          "color": "#ffda97",
+          "intensity": 5.255,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 5.255 cd (57 W on the 350 W can = 65 cd convention); browser preview, not photometric"
+        },
+        {
+          "id": "entry-e4bf643a4be04cfc",
+          "group": "entry:ceiling",
+          "type": "point",
+          "position": [
+            1.089088,
+            2.21888,
+            7.420091
+          ],
+          "color": "#ffda97",
+          "intensity": 5.255,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 5.255 cd (57 W on the 350 W can = 65 cd convention); browser preview, not photometric"
+        },
+        {
+          "id": "entry-919e848b7797d8ac",
+          "group": "entry:ceiling",
+          "type": "point",
+          "position": [
+            -1.217287,
+            3.96628,
+            4.786481
+          ],
+          "color": "#ffda97",
+          "intensity": 7.882,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 7.882 cd (85.5 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#efe8d7",
@@ -14186,16 +14378,6 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
-        },
-        {
-          "id": "mat-95aa067c4f9f",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "entry",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-98026e1620cd",
@@ -14398,16 +14580,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-699da7d96079",
-          "name": "builtInMatLampBulb",
-          "roomId": "entry",
-          "role": null,
-          "color": "#f0f3f3",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-e1eda9e72ebd",
           "name": "blattwerk",
           "roomId": "entry",
@@ -14508,6 +14680,116 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-7a2a60e77f99",
+          "name": "Fixture \u00b7 LA Glass clear (panes, B11 envelopes)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#959797",
+          "roughness": 0.0,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-76d82a97b981",
+          "name": "Fixture \u00b7 LA Glass clear crystal leaves",
+          "roomId": "entry",
+          "role": null,
+          "color": "#fcfdff",
+          "roughness": 0.0,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-d34ee60e981d",
+          "name": "Fixture \u00b7 LA Lamp filament 2400K",
+          "roomId": "entry",
+          "role": null,
+          "color": "#ffda97",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3c8a4f407418",
+          "name": "Fixture \u00b7 LA French Gold (Varaluz)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#e7cb9b",
+          "roughness": 0.3799999952316284,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3f088add3149",
+          "name": "Fixture \u00b7 LA Lamp glow 2400K",
+          "roomId": "entry",
+          "role": null,
+          "color": "#c4a773",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-16f1337e90b7",
+          "name": "Fixture \u00b7 LA Glass white opal petals",
+          "roomId": "entry",
+          "role": null,
+          "color": "#f7f6f2",
+          "roughness": 0.1599999964237213,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-315d936bd425",
+          "name": "Fixture \u00b7 LA Lamp A19 frosted 2400K",
+          "roomId": "entry",
+          "role": null,
+          "color": "#ffda97",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-84d243bd69d4",
+          "name": "Fixture \u00b7 LA Noble Brass (Savoy House)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#e5cb9b",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-da217feff1a2",
+          "name": "Fixture \u00b7 LA Shade white string (Rosa)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#f0ebdf",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8f016576a7f8",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-f7e197cb9414",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
           "id": "mat-aa5feb60b508",
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "entry",
@@ -14587,6 +14869,9 @@
           "metallic": 0.0,
           "translation": "constant source PBR values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -14808,12 +15093,13 @@
       "cutawayMillworkRooms": [
         "Powder"
       ],
-      "displayExposureStops": -2.7,
-      "asset": "powder-room-e2682984c3b8.glb",
-      "assetHash": "e2682984c3b83d2ec5cb14202870e377ad372499380bcfaef247658bbe2d7403",
-      "assetBytes": 3058352,
-      "objectCount": 147,
-      "triangles": 17768,
+      "displayExposureStops": -3.0,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, From doorway: L05 Andree 31.83 cd vanity point; -3.0 is the judged-band floor (R11 displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "powder-room-06113c57214e.glb",
+      "assetHash": "06113c57214eef413c6758d4756da6a4a6a3a11968429d0af5ca6c88f14ba28e",
+      "assetBytes": 3846340,
+      "objectCount": 164,
+      "triangles": 54106,
       "cameras": [
         {
           "id": "room-view",
@@ -14887,6 +15173,20 @@
           "intensity": 35,
           "angle": 0.72,
           "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "powder-room-92f989df9c454e41",
+          "group": "powder-room:vanity",
+          "type": "point",
+          "position": [
+            -4.73894,
+            1.98501,
+            2.015
+          ],
+          "color": "#ffda97",
+          "intensity": 31.83,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 31.83 cd (explicit web_intensity_cd); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#bdc8b6",
@@ -14975,16 +15275,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-76a22c71689a",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "powder-room",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-f273d0c9d0c3",
@@ -15097,6 +15387,66 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-1bb85c698bca",
+          "name": "LB \u00b7 Modern Gold (Z-Lite)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#e7cb97",
+          "roughness": 0.23999999463558197,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-376a389ee013",
+          "name": "LB \u00b7 Lamp base and socket (nickel)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#cececb",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-973abf75b32c",
+          "name": "LB \u00b7 Clear diamond-cut glass (Z-Lite Andree)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#ffffff",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-6a1e193ac9de",
+          "name": "LB \u00b7 Lamp A19 2400 K emitter (800 lm ~ 90 W on this file's scale)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#ffa042",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5d834164a984",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-53e63dc338d0",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
           "id": "mat-bc5665aaebdd",
           "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
           "roomId": "powder-room",
@@ -15106,6 +15456,9 @@
           "metallic": 0.0,
           "translation": "constant source PBR values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -15188,12 +15541,13 @@
         "Slab concrete slab.058",
         "Slab C01.003"
       ],
-      "displayExposureStops": -2.0,
-      "asset": "pantry-8d2ece97d530.glb",
-      "assetHash": "8d2ece97d530939faf90a0c4b44cf0f39966dd1e2d0e1a28420016097227a27d",
-      "assetBytes": 3418040,
-      "objectCount": 111,
-      "triangles": 14726,
+      "displayExposureStops": -1.5,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view: L13 Bundt 1800 K 23.87 cd replaces a 35 cd J-box (R11 metered -2.0, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "pantry-fb4b352c12a2.glb",
+      "assetHash": "fb4b352c12a24dbe9d6d5fcb21a83c47f7f53e853ae481f6b66e399262f2ff47",
+      "assetBytes": 3336012,
+      "objectCount": 113,
+      "triangles": 17214,
       "cameras": [
         {
           "id": "room-view",
@@ -15245,18 +15599,18 @@
           "status": "browser preview intensity, not photometric conversion"
         },
         {
-          "id": "pantry-5c35e807b5708ada",
+          "id": "pantry-3c7df4bf684660e5",
           "group": "pantry:ceiling",
           "type": "point",
           "position": [
             9.264269,
-            2.74223,
+            2.6972,
             0.529662
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffaf00",
+          "intensity": 23.87,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 1800 K, 23.87 cd (explicit web_intensity_cd); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#efe8d7",
@@ -15447,16 +15801,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-4d38d36de6e4",
-          "name": "09 | Glass: Tinted Dark",
-          "roomId": "pantry",
-          "role": null,
-          "color": "#3a3941",
-          "roughness": 0.05000000074505806,
-          "metallic": 0.0,
-          "translation": "source dielectric/opaque glass parameters"
-        },
-        {
           "id": "mat-e92c6faf1e6d",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "pantry",
@@ -15475,6 +15819,46 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-576e33b6db47",
+          "name": "LB \u00b7 Natural Aged Brass (Maxim)",
+          "roomId": "pantry",
+          "role": null,
+          "color": "#b39b73",
+          "roughness": 0.41999998688697815,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-575f7561a112",
+          "name": "LB \u00b7 Lamp base and socket (nickel)",
+          "roomId": "pantry",
+          "role": null,
+          "color": "#cececb",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2f4de53dbbed",
+          "name": "LB \u00b7 Glossy opal white glass (Maxim Bundt)",
+          "roomId": "pantry",
+          "role": null,
+          "color": "#f6f6f3",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-25088772a89b",
+          "name": "LB \u00b7 Lamp A19 1800 K emitter (800 lm ~ 90 W on this file's scale)",
+          "roomId": "pantry",
+          "role": null,
+          "color": "#ff7e00",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         }
       ]
     },
@@ -15632,9 +16016,9 @@
       ],
       "displayExposureStops": -2.4,
       "displayExposureJudged": "d1 2026-09-28: by eye at Room view (backlit racks no longer wash the room; cabinets read oak)",
-      "asset": "wine-cellar-2e4c3931d8b9.glb",
-      "assetHash": "2e4c3931d8b9a61cb563f53cd32d0850635c63131f10076a2154363c266867c1",
-      "assetBytes": 7378756,
+      "asset": "wine-cellar-036c8c40be95.glb",
+      "assetHash": "036c8c40be95692021971e43e815729976ea36aa12e19a88861c830e90f5ec21",
+      "assetBytes": 7378752,
       "objectCount": 88,
       "triangles": 71829,
       "cameras": [
@@ -16210,11 +16594,11 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-fa1fc8176a81.glb",
-      "assetHash": "fa1fc8176a81aecc12db3a86b9ced8a207f85561e65fed7efbe694378397bc91",
-      "assetBytes": 7308024,
-      "objectCount": 201,
-      "triangles": 121257,
+      "asset": "loli-bedroom-054fe267c6f0.glb",
+      "assetHash": "054fe267c6f0249ec714bff0eaf97933b8ae0b211ab3d7f9906528613d2da7a4",
+      "assetBytes": 7879988,
+      "objectCount": 240,
+      "triangles": 202985,
       "cameras": [
         {
           "id": "room-view",
@@ -16470,16 +16854,6 @@
           "color": "#272727",
           "roughness": 0.5,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-54b0814d5131",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "loli-bedroom",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
           "translation": "constant source PBR values"
         },
         {
@@ -16781,7 +17155,30 @@
           "roughness": 0.550000011920929,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0cb0ca9a31de",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-3df2e644b717",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -16904,13 +17301,13 @@
       "cutawayMillworkRooms": [
         "Loli Bathroom"
       ],
-      "displayExposureStops": -1.5,
-      "displayExposureJudged": "d1 2026-09-28: by eye at Room view and Shower (shower tile reads its marble, not white)",
-      "asset": "loli-bathroom-272b7604839f.glb",
-      "assetHash": "272b7604839f3aa79425de0ef60563a354f06636d16486a7d59ee405a48ff817",
-      "assetBytes": 3878828,
-      "objectCount": 116,
-      "triangles": 21529,
+      "displayExposureStops": -2.1,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: L04 Florena 13.43 cd vanity point; shower marble still reads (R11 d1 -1.5); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "loli-bathroom-85720d588420.glb",
+      "assetHash": "85720d5884204e91b8ee7d2e17540f46ae4fd92666da282d0718283049629848",
+      "assetBytes": 4583848,
+      "objectCount": 133,
+      "triangles": 57767,
       "cameras": [
         {
           "id": "room-view",
@@ -17012,6 +17409,20 @@
           "intensity": 35,
           "angle": 0.72,
           "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "loli-bathroom-02ffeeb6d798e16b",
+          "group": "loli-bathroom:vanity",
+          "type": "point",
+          "position": [
+            10.547178,
+            2.083414,
+            3.74662
+          ],
+          "color": "#ffda97",
+          "intensity": 13.43,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 13.43 cd (explicit web_intensity_cd); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#efe8d7",
@@ -17150,16 +17561,6 @@
           "color": "#cdc6ba",
           "roughness": 0.15000000596046448,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-9bb465b5d665",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "loli-bathroom",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
           "translation": "constant source PBR values"
         },
         {
@@ -17381,7 +17782,70 @@
           "roughness": 0.3400000035762787,
           "metallic": 1.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e6385bfd7b7f",
+          "name": "LB \u00b7 Noble Brass (Savoy House)",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#bca479",
+          "roughness": 0.3400000035762787,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1a602461fcff",
+          "name": "LB \u00b7 Lamp base and socket (nickel)",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#cececb",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0d020dae6f20",
+          "name": "LB \u00b7 Pearlescent white glass flower (Savoy House Florena)",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#f3f1ed",
+          "roughness": 0.1599999964237213,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-d050053609a4",
+          "name": "LB \u00b7 Lamp G9 2400 K emitter (450 lm ~ 51 W on this file's scale)",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#ffa042",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-cf33bdab90d3",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-5ee1bf67cd9a",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -17820,11 +18284,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-05260b985da0.glb",
-      "assetHash": "05260b985da091ea6bff91969967513265952a754a83183db58a846fc4c36bf9",
-      "assetBytes": 2411824,
-      "objectCount": 61,
-      "triangles": 8217,
+      "asset": "laundry-bde818248553.glb",
+      "assetHash": "bde81824855307eae7e5a3b08bc738b83b79d99f2b55c9aa6410ec28e46a29b4",
+      "assetBytes": 2890264,
+      "objectCount": 91,
+      "triangles": 74877,
       "cameras": [
         {
           "id": "room-view",
@@ -18232,7 +18696,30 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
+        },
+        {
+          "id": "mat-7db86b2e2af6",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "laundry",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-b28f82f7add6",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "laundry",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -18324,7 +18811,6 @@
         "names": [
           "Door X",
           "Door Y",
-          "Door Y knob",
           "Door Y leaf",
           "Door ZA",
           "Door ZA leaf",
@@ -18375,20 +18861,6 @@
             [
               3.37,
               6.19
-            ]
-          ],
-          "Door Y knob": [
-            [
-              4.91,
-              5.52
-            ],
-            [
-              -0.52,
-              0.08
-            ],
-            [
-              4.03,
-              4.64
             ]
           ],
           "Door Y leaf": [
@@ -18703,11 +19175,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-44275221ed11.glb",
-      "assetHash": "44275221ed1124c20c475066b288325b1a09dbb39dfcd80c2b78eaedd1c2b516",
-      "assetBytes": 9029796,
-      "objectCount": 212,
-      "triangles": 171608,
+      "asset": "primary-bedroom-c1df5fc3ef42.glb",
+      "assetHash": "c1df5fc3ef42e8af41f96cffe563c56f390ba3622de60264d190be005c862b76",
+      "assetBytes": 9614368,
+      "objectCount": 264,
+      "triangles": 297744,
       "cameras": [
         {
           "id": "room-view",
@@ -18986,16 +19458,6 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
-          "id": "mat-cfbd308ea61b",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-a15a1e1278ad",
           "name": "09 | Color: 01 Ceiling White",
           "roomId": "primary-bedroom",
@@ -19236,6 +19698,26 @@
           "translation": "Base Color source graph baked in UV space"
         },
         {
+          "id": "mat-68634832b1b7",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-276bc1efa653",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
           "id": "mat-46dfaa09a601",
           "name": "09 | Color: 03 Gray-Light",
           "roomId": "primary-bedroom",
@@ -19245,6 +19727,9 @@
           "metallic": 0.0,
           "translation": "constant source PBR values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -19453,13 +19938,13 @@
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
-      "displayExposureStops": -2.8,
-      "displayExposureJudged": "d1 2026-09-28: by eye at Room view, Vanity, Shower (walls on the #efe8d7 chip, oak honey)",
-      "asset": "primary-bath-fcf6653c0908.glb",
-      "assetHash": "fcf6653c0908a45f9ce9e4a5641aed6e06f85df95fba3b3e424547d4151f7971",
-      "assetBytes": 4184660,
-      "objectCount": 208,
-      "triangles": 27873,
+      "displayExposureStops": -2.5,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "primary-bath-6c6cbe62c63e.glb",
+      "assetHash": "6c6cbe62c63ecd1735619b949d6a4a4c9cc2fc53beed7687cf9808309a08d14b",
+      "assetBytes": 5391472,
+      "objectCount": 242,
+      "triangles": 116409,
       "cameras": [
         {
           "id": "room-view",
@@ -19624,46 +20109,32 @@
           "status": "browser preview intensity, not photometric conversion"
         },
         {
-          "id": "primary-bath-73c51b99cfaa44fa",
-          "group": "primary-bath:ceiling",
+          "id": "primary-bath-6a2f3f8cd2ec284b",
+          "group": "primary-bath:vanity",
           "type": "point",
           "position": [
-            2.22068,
-            5.2328,
-            1.885425
+            2.6628,
+            5.409819,
+            2.065425
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 24.87,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 24.87 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
-          "id": "primary-bath-382c34ca4c63f7f9",
-          "group": "primary-bath:ceiling",
+          "id": "primary-bath-d86c2ea81aa9db34",
+          "group": "primary-bath:vanity",
           "type": "point",
           "position": [
-            3.597563,
-            5.2328,
-            1.9027
+            4.3392,
+            5.409819,
+            2.065425
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 24.87,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
-        },
-        {
-          "id": "primary-bath-ba32c2677aeeae41",
-          "group": "primary-bath:ceiling",
-          "type": "point",
-          "position": [
-            4.749368,
-            5.2328,
-            1.885425
-          ],
-          "color": "#fff1db",
-          "intensity": 35,
-          "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 24.87 cd (explicit web_intensity_cd); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#efe8d7",
@@ -19800,16 +20271,6 @@
           "role": null,
           "color": "#bfbfbf",
           "roughness": 0.30000001192092896,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-2224c3f60437",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "primary-bath",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
           "metallic": 1.0,
           "translation": "constant source PBR values"
         },
@@ -19992,7 +20453,70 @@
           "roughness": 0.3400000035762787,
           "metallic": 1.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3729d602ea4d",
+          "name": "LB \u00b7 Brushed Brass (Artcraft)",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#dabf8e",
+          "roughness": 0.4000000059604645,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-caf56420f96d",
+          "name": "LB \u00b7 Lamp base and socket (nickel)",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#cececb",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c433fbfb6552",
+          "name": "LB \u00b7 Wispy white Murano-style glass (Artcraft Lily)",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#f9f8f6",
+          "roughness": 0.30000001192092896,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-fa1ba0a477f8",
+          "name": "LB \u00b7 Lamp B11 2400 K emitter (500 lm ~ 56 W on this file's scale)",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#ffa042",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a461ddc4e626",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-e02c0d9c64c6",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -20071,11 +20595,11 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-fe07c8cd8c1f.glb",
-      "assetHash": "fe07c8cd8c1fcaf786f9caac3536344c0f76a816862be6255edd9aa56dbce58f",
-      "assetBytes": 5923744,
-      "objectCount": 153,
-      "triangles": 86766,
+      "asset": "green-bedroom-0f060e187291.glb",
+      "assetHash": "0f060e18729121e52d47ee2f7b1e5a8d1d7eddfeadf70ada5ae55812c64bd8e7",
+      "assetBytes": 6498600,
+      "objectCount": 192,
+      "triangles": 168590,
       "cameras": [
         {
           "id": "room-view",
@@ -20274,16 +20798,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-8f2eb8edfc95",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "green-bedroom",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-0739d3636e34",
@@ -20514,7 +21028,30 @@
           "roughness": 0.8799999952316284,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1abc1464a873",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "green-bedroom",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-90f5494bff87",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "green-bedroom",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -20639,12 +21176,13 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "displayExposureStops": -1.0,
-      "asset": "green-bath-9c77ea5afad2.glb",
-      "assetHash": "9c77ea5afad24ae94663477e734c707673c975722b88369c3f4b86a95f5c12c0",
-      "assetBytes": 3010208,
-      "objectCount": 97,
-      "triangles": 21446,
+      "displayExposureStops": -2.5,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Basin detail: L06 Rosa 31.83 cd vanity point; walls on R11 cream, counter not blown (R11 -1.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "green-bath-7e9b6fc102b3.glb",
+      "assetHash": "7e9b6fc102b3ae4d4f25ff36d9f7c331258d1121655ade3546efb77cd9dc5a2e",
+      "assetBytes": 4133632,
+      "objectCount": 114,
+      "triangles": 75772,
       "cameras": [
         {
           "id": "room-view",
@@ -20746,6 +21284,20 @@
           "intensity": 35,
           "angle": 0.72,
           "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "green-bath-75f128bfda2b320e",
+          "group": "green-bath:vanity",
+          "type": "point",
+          "position": [
+            -10.003716,
+            5.457752,
+            -2.245879
+          ],
+          "color": "#ffda97",
+          "intensity": 31.83,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 31.83 cd (explicit web_intensity_cd); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#efe8d7",
@@ -20872,16 +21424,6 @@
           "role": null,
           "color": "#bfbfbf",
           "roughness": 0.30000001192092896,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-9159515d711f",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "green-bath",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
           "metallic": 1.0,
           "translation": "constant source PBR values"
         },
@@ -21024,7 +21566,70 @@
           "roughness": 0.3400000035762787,
           "metallic": 1.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c98ba4bebf1f",
+          "name": "LB \u00b7 Noble Brass (Savoy House)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#bca479",
+          "roughness": 0.3400000035762787,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-751d0bb6c0d0",
+          "name": "LB \u00b7 Lamp base and socket (nickel)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#cececb",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3413c30269d4",
+          "name": "LB \u00b7 White cotton string shade (Savoy House Rosa)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#e7dfce",
+          "roughness": 0.949999988079071,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a23dc95df130",
+          "name": "LB \u00b7 Lamp A19 2400 K emitter (800 lm ~ 90 W on this file's scale)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#ffa042",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-23cd6fdb5f4d",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-9be89f98d184",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -21368,11 +21973,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-3a7822552eca.glb",
-      "assetHash": "3a7822552eca0e9431059695accc30e0665cf4ab2a3b88578ed38bebf69f9f9c",
-      "assetBytes": 5598692,
-      "objectCount": 145,
-      "triangles": 82104,
+      "asset": "blue-bedroom-6c7fe7175e8a.glb",
+      "assetHash": "6c7fe7175e8a6deacdc64f9fa701c521d10e2f4165d73534bc59fe0bfc762a94",
+      "assetBytes": 6198584,
+      "objectCount": 174,
+      "triangles": 142960,
       "cameras": [
         {
           "id": "room-view",
@@ -21590,16 +22195,6 @@
           "color": "#45423f",
           "roughness": 0.3499999940395355,
           "metallic": 0.699999988079071,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-1e3252e2f60f",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "blue-bedroom",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
           "translation": "constant source PBR values"
         },
         {
@@ -21823,6 +22418,26 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-1577f919da7b",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "blue-bedroom",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-4a1310dfe7e1",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "blue-bedroom",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
           "id": "mat-6fe08b352d84",
           "name": "Metal \u00b7 Black Frame",
           "roomId": "blue-bedroom",
@@ -21832,6 +22447,9 @@
           "metallic": 0.30000001192092896,
           "translation": "constant source PBR values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -21956,12 +22574,13 @@
         "offset": 0.002,
         "coverage": "Continuous finish backing across this room cutaway; source shower pans and entry borders remain above it."
       },
-      "displayExposureStops": -0.35,
-      "asset": "blue-bath-2b82aee41022.glb",
-      "assetHash": "2b82aee41022ae85fc26fbff7283df99d29df2480c7bc93cfea84c4d837340f0",
-      "assetBytes": 3452416,
-      "objectCount": 127,
-      "triangles": 22271,
+      "displayExposureStops": -2.3,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity detail: L07 Rosa 31.83 cd vanity point (R11 -0.35); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "blue-bath-1ff1f6bf7010.glb",
+      "assetHash": "1ff1f6bf701045e62d84c667e80983c957fc478092d6a38b9005140f2e18cf12",
+      "assetBytes": 4578456,
+      "objectCount": 144,
+      "triangles": 76597,
       "cameras": [
         {
           "id": "room-view",
@@ -22063,6 +22682,20 @@
           "intensity": 35,
           "angle": 0.72,
           "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "blue-bath-9fad1b6d17ed0db5",
+          "group": "blue-bath:vanity",
+          "type": "point",
+          "position": [
+            -10.547178,
+            5.457752,
+            7.107782
+          ],
+          "color": "#ffda97",
+          "intensity": 31.83,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 31.83 cd (explicit web_intensity_cd); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#efe8d7",
@@ -22189,16 +22822,6 @@
           "role": null,
           "color": "#bfbfbf",
           "roughness": 0.30000001192092896,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-e0e170563d53",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "blue-bath",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
           "metallic": 1.0,
           "translation": "constant source PBR values"
         },
@@ -22361,7 +22984,70 @@
           "roughness": 0.3400000035762787,
           "metallic": 1.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-da4384246034",
+          "name": "LB \u00b7 Noble Brass (Savoy House)",
+          "roomId": "blue-bath",
+          "role": null,
+          "color": "#bca479",
+          "roughness": 0.3400000035762787,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0a54643a0908",
+          "name": "LB \u00b7 Lamp base and socket (nickel)",
+          "roomId": "blue-bath",
+          "role": null,
+          "color": "#cececb",
+          "roughness": 0.30000001192092896,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3b5000fa6603",
+          "name": "LB \u00b7 White cotton string shade (Savoy House Rosa)",
+          "roomId": "blue-bath",
+          "role": null,
+          "color": "#e7dfce",
+          "roughness": 0.949999988079071,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-90257b427614",
+          "name": "LB \u00b7 Lamp A19 2400 K emitter (800 lm ~ 90 W on this file's scale)",
+          "roomId": "blue-bath",
+          "role": null,
+          "color": "#ffa042",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-660c720b9a1d",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "blue-bath",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-45fe4fc3db09",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "blue-bath",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -22956,11 +23642,11 @@
         ]
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-b5ee9233a055.glb",
-      "assetHash": "b5ee9233a055e1801058365e803d0d0bbfc87b0b219ed9a665e8e6946de3393b",
-      "assetBytes": 4246460,
-      "objectCount": 182,
-      "triangles": 22660,
+      "asset": "office-west-625c40e6f80d.glb",
+      "assetHash": "625c40e6f80dc2cb1f108b6a21b2de496e1a55a2923c79920c4f876e96f632cb",
+      "assetBytes": 4705968,
+      "objectCount": 193,
+      "triangles": 49528,
       "cameras": [
         {
           "id": "room-view",
@@ -23178,16 +23864,6 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-d3f62d35a869",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "office-west",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-153fc1993bc9",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-west",
@@ -23288,6 +23964,26 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
+          "id": "mat-e89079c116c9",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-c3b4d07c73ae",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
           "id": "mat-dc800e493ab2",
           "name": "05 | Metal: Bronze*",
           "roomId": "office-west",
@@ -23337,6 +24033,9 @@
           "metallic": 0.0,
           "translation": "constant source PBR values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -23891,11 +24590,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-103e1601cfc5.glb",
-      "assetHash": "103e1601cfc5c544d92821f5bda2bebd586d3d714a20fe907e3c33e9444db477",
-      "assetBytes": 4143976,
-      "objectCount": 162,
-      "triangles": 25276,
+      "asset": "office-east-0cd4ef5ed49c.glb",
+      "assetHash": "0cd4ef5ed49cee94614e981b57c59af35ed65a44ba836e003f66d37414a8c1d0",
+      "assetBytes": 4597660,
+      "objectCount": 174,
+      "triangles": 41426,
       "cameras": [
         {
           "id": "room-view",
@@ -24201,7 +24900,30 @@
           "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-107a7a46d5d6",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-599fd5fbbd7e",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -24301,7 +25023,6 @@
         "names": [
           "Door A",
           "Door G",
-          "Door G knob",
           "Door G leaf",
           "Door K",
           "Floor Overlay \u00b7 Foyer Black Border 3in",
@@ -24388,20 +25109,6 @@
             [
               -0.03,
               2.55
-            ]
-          ],
-          "Door G knob": [
-            [
-              -4.76,
-              -4.16
-            ],
-            [
-              -6.95,
-              -6.35
-            ],
-            [
-              0.6,
-              1.2
             ]
           ],
           "Door G leaf": [
@@ -25225,12 +25932,13 @@
           "Wall P1.007"
         ]
       },
-      "displayExposureStops": -2.5,
-      "asset": "office-hall-5dc25290c3bc.glb",
-      "assetHash": "5dc25290c3bc693c306f79a995ee4871b91fdd9e778ae0e166bbf26e5ab39656",
-      "assetBytes": 4296700,
-      "objectCount": 198,
-      "triangles": 24272,
+      "displayExposureStops": -1.45,
+      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "asset": "office-hall-bfad6cbd5941.glb",
+      "assetHash": "bfad6cbd594151c9633d03dde84944f0a916cb28052e5ad77ef6d17296c28d5c",
+      "assetBytes": 5261736,
+      "objectCount": 226,
+      "triangles": 97838,
       "cameras": [
         {
           "id": "room-view",
@@ -25277,42 +25985,42 @@
           "group": "office-hall:ceiling",
           "type": "point",
           "position": [
-            2.931761,
-            2.895,
-            6.864642
+            2.93171,
+            2.76937,
+            6.864604
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffaf00",
+          "intensity": 21.019,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 1800 K, 21.019 cd (228 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         },
         {
           "id": "office-hall-ab74068f787153e3",
           "group": "office-hall:ceiling",
           "type": "point",
           "position": [
-            4.525543,
-            2.895,
-            6.864642
+            4.525489,
+            2.76937,
+            6.864604
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffaf00",
+          "intensity": 21.019,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 1800 K, 21.019 cd (228 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         },
         {
           "id": "office-hall-df2c10236106b9b4",
           "group": "office-hall:ceiling",
           "type": "point",
           "position": [
-            6.119224,
-            2.895,
-            6.864642
+            6.119167,
+            2.76937,
+            6.864604
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffaf00",
+          "intensity": 21.019,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 1800 K, 21.019 cd (228 W on the 350 W can = 65 cd convention); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#efe8d7",
@@ -25433,16 +26141,6 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-2352268893e1",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "office-hall",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-5e4f83f46577",
           "name": "09 | Glass: Clear, Fast*",
           "roomId": "office-hall",
@@ -25471,16 +26169,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-ad9dd47484a9",
-          "name": "05 | Metal: Steel",
-          "roomId": "office-hall",
-          "role": null,
-          "color": "#c4c8c9",
-          "roughness": 0.30000001192092896,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-6966cd630384",
@@ -25521,6 +26209,56 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-3d1bb6dc017e",
+          "name": "Fixture \u00b7 LA Lamp A19 frosted 1800K",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#ffaf24",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4de5ea6f97b5",
+          "name": "Fixture \u00b7 LA Glass etched opal (Hathaway)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#f8f7f5",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-997d02fc2c1f",
+          "name": "Fixture \u00b7 LA Heritage Brass (Hinkley)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#d4b686",
+          "roughness": 0.36000001430511475,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-754d0eaef537",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-8fb84f639416",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         },
         {
           "id": "mat-37be3901d252",
@@ -25602,6 +26340,9 @@
           "metallic": 0.0,
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; source paint mean from unlit texture bake; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -25677,11 +26418,11 @@
         "Loli Closet"
       ],
       "displayExposureStops": -0.15,
-      "asset": "loli-closet-1f8619e45b76.glb",
-      "assetHash": "1f8619e45b763e27d67ee0d70581d199c6d2f20a80de1696f36189b83400c7de",
-      "assetBytes": 1975356,
-      "objectCount": 102,
-      "triangles": 5742,
+      "asset": "loli-closet-272e847da5d1.glb",
+      "assetHash": "272e847da5d105f8a06c2373c1be510a8e6d96f28c0ab2142c553670c60241ef",
+      "assetBytes": 2435328,
+      "objectCount": 113,
+      "triangles": 32610,
       "cameras": [
         {
           "id": "room-view",
@@ -25831,16 +26572,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-c2d6a3a90adb",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "loli-closet",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-59d408a3de15",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "loli-closet",
@@ -25909,7 +26640,30 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-0e84527a834f",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-d40fd894b5aa",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "loli-closet",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -26048,11 +26802,11 @@
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-2df8041b804f.glb",
-      "assetHash": "2df8041b804fb2622ad7989bdc74c588051553b7fb3834b87615fbfdeb697bb7",
-      "assetBytes": 3176256,
-      "objectCount": 86,
-      "triangles": 10878,
+      "asset": "primary-loli-closet-761166896a50.glb",
+      "assetHash": "761166896a50244dcf25957e94971c5f5b59a2495d8d9dbc0ce2d03fb19af846",
+      "assetBytes": 3637752,
+      "objectCount": 97,
+      "triangles": 37746,
       "cameras": [
         {
           "id": "room-view",
@@ -26210,16 +26964,6 @@
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
-          "id": "mat-775c880f8214",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "primary-loli-closet",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-ea9ef2495fa6",
           "name": "Metal \u00b7 Black Frame",
           "roomId": "primary-loli-closet",
@@ -26358,7 +27102,30 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-f59a6104a30a",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-c33e8b19934e",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "primary-loli-closet",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -26497,11 +27264,11 @@
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
-      "asset": "primary-green-closet-21aab0611657.glb",
-      "assetHash": "21aab061165755801a507d1495a69cabfc452944d554143cbd6959d79973943d",
-      "assetBytes": 3141908,
-      "objectCount": 74,
-      "triangles": 10329,
+      "asset": "primary-green-closet-f4b39e0222df.glb",
+      "assetHash": "f4b39e0222dfb15d025be0c1102cccf3657d88ba5ae1994fe71a381b4d411295",
+      "assetBytes": 3603492,
+      "objectCount": 85,
+      "triangles": 37197,
       "cameras": [
         {
           "id": "room-view",
@@ -26647,16 +27414,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
-        },
-        {
-          "id": "mat-30b550c33a45",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "primary-green-closet",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-06f08e87f46e",
@@ -26807,7 +27564,30 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-c7bcd48e3594",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-64b6b2833638",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "primary-green-closet",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -26896,11 +27676,11 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-ecbf4c8ff5ea.glb",
-      "assetHash": "ecbf4c8ff5ead807baa0b07558bbb1161ef94caf17c91c70ce3bd40e1ebfda6a",
-      "assetBytes": 2022000,
-      "objectCount": 58,
-      "triangles": 8616,
+      "asset": "upstairs-closet-west-8fe4f3827a35.glb",
+      "assetHash": "8fe4f3827a35dc90d098902054fd38516e0aa552c0562ef97ee37b674f33be6e",
+      "assetBytes": 2483812,
+      "objectCount": 69,
+      "triangles": 35484,
       "cameras": [
         {
           "id": "room-view",
@@ -27239,16 +28019,6 @@
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
-          "id": "mat-34577d4600ef",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "upstairs-closet-west",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-7860447d0f6c",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "upstairs-closet-west",
@@ -27377,7 +28147,30 @@
           "roughness": 0.550000011920929,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-81f31234f36c",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-cc5838a1f8f8",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "upstairs-closet-west",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -27470,11 +28263,11 @@
         "Dressing 3"
       ],
       "displayExposureStops": -0.55,
-      "asset": "upstairs-closet-east-d48134fb837c.glb",
-      "assetHash": "d48134fb837ce9e5af64a02adf0ad7b035faa0c491d5c28e77bcac0f6395f17e",
-      "assetBytes": 2035256,
-      "objectCount": 66,
-      "triangles": 7154,
+      "asset": "upstairs-closet-east-4062a6bbdb71.glb",
+      "assetHash": "4062a6bbdb71398317be0c0864ff2f0b89cf37ef132b50035cb3531d014b528a",
+      "assetBytes": 2497156,
+      "objectCount": 77,
+      "triangles": 34022,
       "cameras": [
         {
           "id": "room-view",
@@ -27592,16 +28385,6 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-16823ee3fd76",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "upstairs-closet-east",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-7539a639472c",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "upstairs-closet-east",
@@ -27690,7 +28473,30 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-a59c5797bf57",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-a686090a4d23",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "upstairs-closet-east",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
+      ],
+      "variants": [
+        "door-hardware"
       ]
     },
     {
@@ -27803,11 +28609,17 @@
       "architectureAttachmentDepth": 1.2,
       "displayExposureStops": 0,
       "displayExposureJudged": "d1 2026-09-28: the Exterior orbit's exposure (EXTERIOR_EXPOSURE_STOPS), so deck stucco matches the facades",
-      "asset": "rear-deck-a23a503fc29f.glb",
-      "assetHash": "a23a503fc29fcd01461cd429f850a8c54c7f87a3a3e560a5ebe382d7b40d51a9",
-      "assetBytes": 1830264,
-      "objectCount": 125,
-      "triangles": 8807,
+      "wallAttachments": [
+        {
+          "prefix": "Lantern \u00b7 L09 Capital 9721BK \u00b7 Deck",
+          "side": "zMax"
+        }
+      ],
+      "asset": "rear-deck-a4c5cec53ed3.glb",
+      "assetHash": "a4c5cec53ed3f92b1bfaf7f4bd6aebe655f7efad303dc0f1a3339e2ff2fc91d9",
+      "assetBytes": 2139432,
+      "objectCount": 107,
+      "triangles": 18551,
       "cameras": [
         {
           "id": "room-view",
@@ -27883,7 +28695,98 @@
           "sourceCamera": "Cam 26 Deck Island"
         }
       ],
-      "lights": [],
+      "lights": [
+        {
+          "id": "rear-deck-2343f5e241fe7b0a",
+          "group": "rear-deck:lanterns",
+          "type": "point",
+          "position": [
+            -9.6,
+            5.625935,
+            -2.834804
+          ],
+          "color": "#ffda97",
+          "intensity": 3.319,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 3.319 cd (36 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
+        },
+        {
+          "id": "rear-deck-833e02172ae1c9d8",
+          "group": "rear-deck:lanterns",
+          "type": "point",
+          "position": [
+            -4.348,
+            5.643935,
+            -3.815456
+          ],
+          "color": "#ffda97",
+          "intensity": 3.319,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 3.319 cd (36 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
+        },
+        {
+          "id": "rear-deck-dda4ffbc69dc1349",
+          "group": "rear-deck:lanterns",
+          "type": "point",
+          "position": [
+            0.605,
+            5.643935,
+            -3.815455
+          ],
+          "color": "#ffda97",
+          "intensity": 3.319,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 3.319 cd (36 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
+        },
+        {
+          "id": "rear-deck-9a6a77e35dd4b642",
+          "group": "rear-deck:lanterns",
+          "type": "point",
+          "position": [
+            -9.2,
+            6.22477,
+            -7.897518
+          ],
+          "color": "#ffda97",
+          "intensity": 3.687,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
+        },
+        {
+          "id": "rear-deck-76b20eca7099fd38",
+          "group": "rear-deck:lanterns",
+          "type": "point",
+          "position": [
+            -5.6,
+            6.22477,
+            -7.897517
+          ],
+          "color": "#ffda97",
+          "intensity": 3.687,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
+        },
+        {
+          "id": "rear-deck-1b7c561e420b2ea1",
+          "group": "rear-deck:lanterns",
+          "type": "point",
+          "position": [
+            -2.0,
+            6.22477,
+            -7.897516
+          ],
+          "color": "#ffda97",
+          "intensity": 3.687,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
+        }
+      ],
       "sourcePaint": "#efe8d7",
       "finishDefaults": {
         "walls": "#efe8d7",
@@ -28021,26 +28924,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-7ac3a47e2ba9",
-          "name": "09 | Color: 08 Black*",
-          "roomId": "rear-deck",
-          "role": null,
-          "color": "#272727",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-aeee012ff269",
-          "name": "09 | Glass: Clear, Fast*",
-          "roomId": "rear-deck",
-          "role": null,
-          "color": "#f0f3f3",
-          "roughness": 0.019999999552965164,
-          "metallic": 0.0,
-          "translation": "source dielectric/opaque glass parameters"
-        },
-        {
           "id": "mat-1d367635283d",
           "name": "09 | Color: 07 Gray-Dark*",
           "roomId": "rear-deck",
@@ -28059,6 +28942,26 @@
           "roughness": 0.4000000059604645,
           "metallic": 0.30000001192092896,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7ac3a47e2ba9",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-aeee012ff269",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
         },
         {
           "id": "mat-a53ad4c5d140",
@@ -28128,6 +29031,56 @@
           "color": "#babab8",
           "roughness": 0.25999999046325684,
           "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f1897b9ae01f",
+          "name": "LC \u00b7 Capital Black (BK), slightly coarse textured",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#222223",
+          "roughness": 0.6200000047683716,
+          "metallic": 0.3499999940395355,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ee3b6e77e330",
+          "name": "LC \u00b7 Clear beveled glass (Carriage House panes)",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#ffffff",
+          "roughness": 0.0,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-fb295767e0dd",
+          "name": "LC \u00b7 Lamp glass, clear B11/A19 envelope (2400 K glow)",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#ffffff",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-ae4a6f3cb11a",
+          "name": "LC \u00b7 LED filament, 2400 K",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#f3c489",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8507f4a9ec01",
+          "name": "LC \u00b7 Candle sleeve, ivory resin",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#e7e2d4",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         }
       ]
@@ -28260,9 +29213,9 @@
         }
       ],
       "menuDescription": "Covered balcony above the offices",
-      "asset": "front-balcony-773192a5cd9e.glb",
-      "assetHash": "773192a5cd9e6ad18b1e66a4d0bdb431ec4d0e5d6ea181430aa43de3786671ba",
-      "assetBytes": 3260068,
+      "asset": "front-balcony-b795aa288fb2.glb",
+      "assetHash": "b795aa288fb2bdff24b9061a7c8fc13eb769e69b1b7d290a1fa6a61a64bdf518",
+      "assetBytes": 3260060,
       "objectCount": 151,
       "triangles": 15420,
       "cameras": [
@@ -28655,7 +29608,8 @@
         "Obj chair",
         "Obj table",
         "Obj ottoman",
-        "Obj A6"
+        "Obj A6",
+        "Light \u00b7 LC exterior \u00b7 "
       ],
       "excludeSourceNames": [
         "Wall W0.007",
@@ -28694,14 +29648,17 @@
       "includeSourceNames": [
         "Light \u00b7 RCP SconceExt 1F 01",
         "Light \u00b7 RCP SconceExt 1F 02",
-        "Obj 34"
+        "Obj 34",
+        "Light \u00b7 LA L18 lantern \u00b7 Porch W",
+        "Light \u00b7 LA L18 lantern \u00b7 Porch E",
+        "Light \u00b7 RCP JBox 2F 04"
       ],
       "applyExclusionsToLights": true,
-      "asset": "exterior-house-fe70e4203909.glb",
-      "assetHash": "fe70e4203909198f05aa716b70c16ddf16a7d40aacbba594266da5c13a3a7a2e",
-      "assetBytes": 17285572,
-      "objectCount": 1417,
-      "triangles": 226359,
+      "asset": "exterior-house-971fbddc0627.glb",
+      "assetHash": "971fbddc06279e8a2963687eb059329b15a5fcbe2a91af2c1f576d177127a115",
+      "assetBytes": 18831376,
+      "objectCount": 1481,
+      "triangles": 856787,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -28723,31 +29680,78 @@
       "lights": [
         {
           "id": "exterior-house-3a37ce5c6871b166",
-          "group": "exterior-house:ceiling",
+          "group": "exterior-house:lanterns",
           "type": "point",
           "position": [
-            -4.113098,
-            4.084014,
-            9.276947
+            -4.113,
+            4.120987,
+            9.327744
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 3.687,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
         },
         {
           "id": "exterior-house-925c707550d18dd7",
-          "group": "exterior-house:ceiling",
+          "group": "exterior-house:lanterns",
           "type": "point",
           "position": [
-            1.356689,
-            4.084014,
-            9.276947
+            1.357,
+            4.120987,
+            9.327744
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffda97",
+          "intensity": 3.687,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
+        },
+        {
+          "id": "exterior-house-c6fad4d83a199c39",
+          "group": "exterior-house:lanterns",
+          "type": "point",
+          "position": [
+            -3.5861,
+            2.16764,
+            7.909025
+          ],
+          "color": "#ffda97",
+          "intensity": 3.941,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 3.941 cd (42.75 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
+        },
+        {
+          "id": "exterior-house-7d46870e371b0c4e",
+          "group": "exterior-house:lanterns",
+          "type": "point",
+          "position": [
+            0.9987,
+            2.16764,
+            7.909025
+          ],
+          "color": "#ffda97",
+          "intensity": 3.941,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 3.941 cd (42.75 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
+        },
+        {
+          "id": "exterior-house-18227e74fc7801ae",
+          "group": "exterior-house:lanterns",
+          "type": "point",
+          "position": [
+            -1.293622,
+            4.30212,
+            7.988195
+          ],
+          "color": "#ffda97",
+          "intensity": 17.515,
+          "angle": 0.72,
+          "status": "lamp 2400 K, 17.515 cd (190 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "daylight": false
         }
       ],
       "sourcePaint": "#efe8d7",
@@ -29157,16 +30161,6 @@
           "translation": "Base Color source graph baked in UV space"
         },
         {
-          "id": "mat-88311b4d91a0",
-          "name": "09 | Glass: Clear, Fast*",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#f0f3f3",
-          "roughness": 0.019999999552965164,
-          "metallic": 0.0,
-          "translation": "source dielectric/opaque glass parameters"
-        },
-        {
           "id": "mat-d78136f4509e",
           "name": "09 | Color: 08 Black*",
           "roomId": "exterior-house",
@@ -29175,6 +30169,16 @@
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-88311b4d91a0",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
         },
         {
           "id": "mat-73d8665181a8",
@@ -29244,16 +30248,6 @@
           "color": "#1d1d1d",
           "roughness": 0.5,
           "metallic": 0.699999988079071,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-9cf9ebced97c",
-          "name": "Fixture \u00b7 Oil-Rubbed Bronze",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#4a3a2e",
-          "roughness": 0.3199999928474426,
-          "metallic": 1.0,
           "translation": "constant source PBR values"
         },
         {
@@ -29567,34 +30561,168 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-bc7d1abae610",
-          "name": "Fixture \u00b7 Lantern bulb (provisional) \u00b7 E",
+          "id": "mat-eaa3ea618bf0",
+          "name": "Fixture \u00b7 LA Lamp A19 frosted 2400K",
           "roomId": "exterior-house",
           "role": null,
-          "color": "#e7e7e7",
+          "color": "#ffda97",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-b117f81b023f",
-          "name": "Fixture \u00b7 Lantern stem (non-emitting, provisional)",
+          "id": "mat-98b908b0e7e9",
+          "name": "Fixture \u00b7 LA Glass clear (panes, B11 envelopes)",
           "roomId": "exterior-house",
           "role": null,
-          "color": "#3f3f3f",
+          "color": "#959797",
+          "roughness": 0.0,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-38e26e40d069",
+          "name": "Fixture \u00b7 LA Candle sleeve ivory",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#efeadd",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4c2d9f1fd9fb",
+          "name": "Fixture \u00b7 LA Black cast aluminium (Tuscany)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.47999998927116394,
+          "metallic": 0.3499999940395355,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f5cf9765636b",
+          "name": "Fixture \u00b7 LA Lamp filament 2400K",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#ffda97",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-df762101abb6",
+          "name": "Fixture \u00b7 LA Lamp glow 2400K",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#c4a773",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3adc87ff9949",
+          "name": "Fixture \u00b7 LA Marcado Black (Quoizel)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#353230",
+          "roughness": 0.550000011920929,
+          "metallic": 0.550000011920929,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-dffc8f95e838",
+          "name": "LC \u00b7 Capital Black (BK), slightly coarse textured",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#222223",
+          "roughness": 0.6200000047683716,
+          "metallic": 0.3499999940395355,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c03bc74129ea",
+          "name": "LC \u00b7 Clear beveled glass (Carriage House panes)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#ffffff",
+          "roughness": 0.0,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-f0495065ba4b",
+          "name": "LC \u00b7 Lamp glass, clear B11/A19 envelope (2400 K glow)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#ffffff",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-4a7422acdbb6",
+          "name": "LC \u00b7 LED filament, 2400 K",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#f3c489",
           "roughness": 0.4000000059604645,
-          "metallic": 1.0,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-876f45b94230",
-          "name": "Fixture \u00b7 Lantern bulb (provisional) \u00b7 W",
+          "id": "mat-8deb5e5bbfee",
+          "name": "LC \u00b7 Candle sleeve, ivory resin",
           "roomId": "exterior-house",
           "role": null,
-          "color": "#e7e7e7",
-          "roughness": 0.6499999761581421,
+          "color": "#e7e2d4",
+          "roughness": 0.44999998807907104,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-90dd369c4592",
+          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#8b7359",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-dc4c327bc9f4",
+          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#796350",
+          "roughness": 0.4399999976158142,
+          "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        }
+      ],
+      "variants": [
+        "door-hardware"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "door-hardware",
+      "label": "Door hardware",
+      "default": "meadows",
+      "options": [
+        {
+          "id": "meadows",
+          "label": "Meadows long plate"
+        },
+        {
+          "id": "rope-swan",
+          "label": "Rope rosette + Swan"
+        },
+        {
+          "id": "budget",
+          "label": "Budget plate (<$75)"
         }
       ]
     }
