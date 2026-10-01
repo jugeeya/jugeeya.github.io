@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "eb1d3a171906",
+  "sceneVersion": "c3d7982145e0",
   "source": {
     "file": "Web.blend",
-    "sha256": "eb1d3a17190638813983e6ffc0611a2506cce353127e02bd3d164fedebffb26a",
+    "sha256": "c3d7982145e0c9696ecdc22677ef8febb540357c7489e05557a3e2420bdef1e8",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1317,11 +1317,42 @@
       },
       "displayExposureStops": -0.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Coffered ceiling: L17 Julia 16.6 cd (was a 35 cd J-box stand-in) (R11 metered -0.85); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "game-room-cea6931e44c4.glb",
-      "assetHash": "cea6931e44c41aee5eeb43a60be2e46e7cbd0c641becbf73d3ff6e16b5f4d498",
-      "assetBytes": 8129164,
+      "finishVolumes": [
+        {
+          "bounds": [
+            [
+              -5.31,
+              -4.83
+            ],
+            [
+              7.85,
+              9.0
+            ],
+            [
+              -0.05,
+              3.6
+            ]
+          ],
+          "finishRoom": "family-room",
+          "reason": "k2 2026-09-30: the Game Room box (x <= -4.835) reaches past its real east edge into the Family Room's passage to it: the north wall face from Door E's casing (x -5.30) to the Family box, with its boiserie, chair rail and baseboard (source paint White Veil), exported in the Game Room's uniform Dusty Blue and seen from the Family Room (Garden doors) as a blue return seamed to the Family cream at x -4.835; skipFacing -x keeps the Game Room's own east wall/header face (x -4.897, facing into the Game Room) in the Game Room's paint (first export painted it cream: plates/after-first-export)",
+          "skipFacing": [
+            [
+              -1,
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "roleOverrides": {
+        "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
+        "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
+      },
+      "asset": "game-room-f232934ea9d7.glb",
+      "assetHash": "f232934ea9d746f71575135500f87004a04d5927fea4a523b644977e774d4205",
+      "assetBytes": 8162600,
       "objectCount": 290,
-      "triangles": 57036,
+      "triangles": 57450,
       "cameras": [
         {
           "id": "room-view",
@@ -1607,7 +1638,7 @@
             2.538641,
             -5.836782
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 16.594,
           "angle": 0.72,
           "status": "lamp 2400 K, 16.594 cd (180 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -1680,6 +1711,39 @@
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7330a245e9d6",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "game-room",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values",
+          "finishRoom": "family-room"
+        },
+        {
+          "id": "mat-af060163acf5",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "game-room",
+          "role": "walls",
+          "color": "#efe8d7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
+          "finishRoom": "family-room"
+        },
+        {
+          "id": "mat-2dcbc009851c",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "game-room",
+          "role": "walls",
+          "color": "#7cabca",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
+          "finishRoom": "family-room"
         },
         {
           "id": "mat-d66f7ec6aed1",
@@ -1782,6 +1846,17 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-b2b468425df7",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "game-room",
+          "role": "trim",
+          "color": "#7cabca",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
+          "finishRoom": "family-room"
+        },
+        {
           "id": "mat-b8dd481cb7ab",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "game-room",
@@ -1790,6 +1865,17 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-fc81e93ff762",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "game-room",
+          "role": "trim",
+          "color": "#efe8d7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
+          "finishRoom": "family-room"
         },
         {
           "id": "mat-7e79fbfedbaf",
@@ -2144,16 +2230,6 @@
         {
           "id": "mat-9617f9c76334",
           "name": "Paint \u00b7 Dusty Blue (Game Room ceiling, x97)",
-          "roomId": "game-room",
-          "role": "ceiling",
-          "color": "#7cabca",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-eefc850ae7dd",
-          "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "game-room",
           "role": "ceiling",
           "color": "#7cabca",
@@ -7778,8 +7854,8 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-bcecaaf410e5.glb",
-      "assetHash": "bcecaaf410e515d8c5a4ecd07eef43619349131902c0b64fa68062dffb1674bc",
+      "asset": "dining-room-24676a3a3277.glb",
+      "assetHash": "24676a3a3277380c1299428eaec6cf444ae61630d3446570c34101aff19ea2f6",
       "assetBytes": 9570304,
       "objectCount": 335,
       "triangles": 153562,
@@ -7992,7 +8068,7 @@
             1.991404,
             -0.801755
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 13.828,
           "angle": 0.72,
           "status": "lamp 2400 K, 13.828 cd (150 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -8006,7 +8082,7 @@
             1.991404,
             -0.801755
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 13.828,
           "angle": 0.72,
           "status": "lamp 2400 K, 13.828 cd (150 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -8829,7 +8905,9 @@
         "Kitchen island",
         "Slab concrete slab.057"
       ],
-      "contextRoomIds": [],
+      "contextRoomIds": [
+        "wine-cellar"
+      ],
       "cutawayHiddenPrefixes": [
         "Arabesque railing",
         "Slab concrete slab.093",
@@ -10806,13 +10884,20 @@
         ]
       },
       "indirectGain": 0.7,
-      "displayExposureStops": -0.75,
-      "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Island & range: 2 x L14 Gannet 8.3 cd (were 35 cd stand-ins) (R11 metered -1.25); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "kitchen-bbec4cf571b4.glb",
-      "assetHash": "bbec4cf571b401ece6f2979f1444c218741a5e436c90e7b17110fc4b7aa0a71d",
-      "assetBytes": 19507964,
-      "objectCount": 625,
-      "triangles": 400159,
+      "contextRoomLights": {
+        "wine-cellar": {
+          "maxLights": 2,
+          "gain": 3,
+          "reason": "k1 2026-09-30: three.js lights are global, so the cellar's 11 unshadowed points shaded every Kitchen fragment and doubled its frame time (Reviews/2026-09-29/m1f1-review); its two ceiling lights at 3x keep the racks lit through W3.028's glass (review option D1)"
+        }
+      },
+      "displayExposureStops": -1.75,
+      "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
+      "asset": "kitchen-789b17c60de6.glb",
+      "assetHash": "789b17c60de6fade5770e97a95f7d7e5ccdd0f8ff17e8818a3093a3ba971b3d7",
+      "assetBytes": 19549664,
+      "objectCount": 612,
+      "triangles": 402039,
       "cameras": [
         {
           "id": "room-view",
@@ -11022,7 +11107,7 @@
             1.90363,
             -1.166855
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 8.297,
           "angle": 0.72,
           "status": "lamp 2400 K, 8.297 cd (90 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -11036,7 +11121,7 @@
             1.90363,
             0.285179
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 8.297,
           "angle": 0.72,
           "status": "lamp 2400 K, 8.297 cd (90 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -11659,16 +11744,6 @@
           "roughness": 0.550000011920929,
           "metallic": 0.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-3fd893e878c2",
-          "name": "09 | Glass: Tinted Dark",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#3a3941",
-          "roughness": 0.05000000074505806,
-          "metallic": 0.0,
-          "translation": "source dielectric/opaque glass parameters"
         },
         {
           "id": "mat-7c67cded8a3b",
@@ -14116,7 +14191,7 @@
             3.59544,
             4.786481
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 23.646,
           "angle": 0.72,
           "status": "lamp 2400 K, 23.646 cd (256.5 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -14130,7 +14205,7 @@
             5.67944,
             2.092766
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 7.006,
           "angle": 0.72,
           "status": "lamp 2400 K, 7.006 cd (76 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -14144,7 +14219,7 @@
             5.67944,
             2.092766
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 7.006,
           "angle": 0.72,
           "status": "lamp 2400 K, 7.006 cd (76 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -14158,7 +14233,7 @@
             2.21888,
             7.420091
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 5.255,
           "angle": 0.72,
           "status": "lamp 2400 K, 5.255 cd (57 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -14172,7 +14247,7 @@
             2.21888,
             7.420091
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 5.255,
           "angle": 0.72,
           "status": "lamp 2400 K, 5.255 cd (57 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -14186,7 +14261,7 @@
             3.96628,
             4.786481
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 7.882,
           "angle": 0.72,
           "status": "lamp 2400 K, 7.882 cd (85.5 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -15095,11 +15170,11 @@
       ],
       "displayExposureStops": -3.0,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, From doorway: L05 Andree 31.83 cd vanity point; -3.0 is the judged-band floor (R11 displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "powder-room-06113c57214e.glb",
-      "assetHash": "06113c57214eef413c6758d4756da6a4a6a3a11968429d0af5ca6c88f14ba28e",
-      "assetBytes": 3846340,
-      "objectCount": 164,
-      "triangles": 54106,
+      "asset": "powder-room-483c6bc23ece.glb",
+      "assetHash": "483c6bc23ece1d0f72944ad4b58574b7b4fac9afb91f3dd26987463a76d38e0b",
+      "assetBytes": 3969712,
+      "objectCount": 160,
+      "triangles": 60078,
       "cameras": [
         {
           "id": "room-view",
@@ -15183,7 +15258,7 @@
             1.98501,
             2.015
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 31.83,
           "angle": 0.72,
           "status": "lamp 2400 K, 31.83 cd (explicit web_intensity_cd); browser preview, not photometric"
@@ -15344,6 +15419,16 @@
           "color": "#f6f6f4",
           "roughness": 0.18000000715255737,
           "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ec7251a67fad",
+          "name": "Fixture \u00b7 Kohler Vibrant Brushed Bronze",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#7a604a",
+          "roughness": 0.3199999928474426,
+          "metallic": 1.0,
           "translation": "constant source PBR values"
         },
         {
@@ -15607,7 +15692,7 @@
             2.6972,
             0.529662
           ],
-          "color": "#ffaf00",
+          "color": "#ffc673",
           "intensity": 23.87,
           "angle": 0.72,
           "status": "lamp 1800 K, 23.87 cd (explicit web_intensity_cd); browser preview, not photometric"
@@ -17419,7 +17504,7 @@
             2.083414,
             3.74662
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 13.43,
           "angle": 0.72,
           "status": "lamp 2400 K, 13.43 cd (explicit web_intensity_cd); browser preview, not photometric"
@@ -19940,11 +20025,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-6c6cbe62c63e.glb",
-      "assetHash": "6c6cbe62c63ecd1735619b949d6a4a4c9cc2fc53beed7687cf9808309a08d14b",
-      "assetBytes": 5391472,
+      "asset": "primary-bath-a97d1422a1a0.glb",
+      "assetHash": "a97d1422a1a053d412ba1db9662d5e2ffcf5fe5e67d9c27255325e8a6a5ceaf9",
+      "assetBytes": 5515056,
       "objectCount": 242,
-      "triangles": 116409,
+      "triangles": 121937,
       "cameras": [
         {
           "id": "room-view",
@@ -20117,7 +20202,7 @@
             5.409819,
             2.065425
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 24.87,
           "angle": 0.72,
           "status": "lamp 2400 K, 24.87 cd (explicit web_intensity_cd); browser preview, not photometric"
@@ -20131,7 +20216,7 @@
             5.409819,
             2.065425
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 24.87,
           "angle": 0.72,
           "status": "lamp 2400 K, 24.87 cd (explicit web_intensity_cd); browser preview, not photometric"
@@ -21294,7 +21379,7 @@
             5.457752,
             -2.245879
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 31.83,
           "angle": 0.72,
           "status": "lamp 2400 K, 31.83 cd (explicit web_intensity_cd); browser preview, not photometric"
@@ -22692,7 +22777,7 @@
             5.457752,
             7.107782
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 31.83,
           "angle": 0.72,
           "status": "lamp 2400 K, 31.83 cd (explicit web_intensity_cd); browser preview, not photometric"
@@ -25989,7 +26074,7 @@
             2.76937,
             6.864604
           ],
-          "color": "#ffaf00",
+          "color": "#ffc673",
           "intensity": 21.019,
           "angle": 0.72,
           "status": "lamp 1800 K, 21.019 cd (228 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -26003,7 +26088,7 @@
             2.76937,
             6.864604
           ],
-          "color": "#ffaf00",
+          "color": "#ffc673",
           "intensity": 21.019,
           "angle": 0.72,
           "status": "lamp 1800 K, 21.019 cd (228 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -26017,7 +26102,7 @@
             2.76937,
             6.864604
           ],
-          "color": "#ffaf00",
+          "color": "#ffc673",
           "intensity": 21.019,
           "angle": 0.72,
           "status": "lamp 1800 K, 21.019 cd (228 W on the 350 W can = 65 cd convention); browser preview, not photometric"
@@ -28615,9 +28700,9 @@
           "side": "zMax"
         }
       ],
-      "asset": "rear-deck-a4c5cec53ed3.glb",
-      "assetHash": "a4c5cec53ed3f92b1bfaf7f4bd6aebe655f7efad303dc0f1a3339e2ff2fc91d9",
-      "assetBytes": 2139432,
+      "asset": "rear-deck-2f96c492fa87.glb",
+      "assetHash": "2f96c492fa87f33c90030ef9cb41e35262c420b89209dcd9b1f0dddd597f1b0f",
+      "assetBytes": 2140500,
       "objectCount": 107,
       "triangles": 18551,
       "cameras": [
@@ -28703,9 +28788,9 @@
           "position": [
             -9.6,
             5.625935,
-            -2.834804
+            -2.848415
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 3.319,
           "angle": 0.72,
           "status": "lamp 2400 K, 3.319 cd (36 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -28718,9 +28803,9 @@
           "position": [
             -4.348,
             5.643935,
-            -3.815456
+            -3.829068
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 3.319,
           "angle": 0.72,
           "status": "lamp 2400 K, 3.319 cd (36 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -28733,9 +28818,9 @@
           "position": [
             0.605,
             5.643935,
-            -3.815455
+            -3.829067
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 3.319,
           "angle": 0.72,
           "status": "lamp 2400 K, 3.319 cd (36 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -28747,10 +28832,10 @@
           "type": "point",
           "position": [
             -9.2,
-            6.22477,
+            6.241925,
             -7.897518
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 3.687,
           "angle": 0.72,
           "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -28762,10 +28847,10 @@
           "type": "point",
           "position": [
             -5.6,
-            6.22477,
+            6.241925,
             -7.897517
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 3.687,
           "angle": 0.72,
           "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -28777,10 +28862,10 @@
           "type": "point",
           "position": [
             -2.0,
-            6.22477,
+            6.241925,
             -7.897516
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 3.687,
           "angle": 0.72,
           "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -29509,33 +29594,7 @@
       "name": "Exterior",
       "floor": "Exterior",
       "subtitle": "The whole house, all the way around",
-      "description": "The complete house exterior in one continuous model: roof, facade assemblies, windows, doors, balconies, the roof deck and the front lanterns.",
       "menuDescription": "Exterior orbit",
-      "boundaryStatus": "Model exterior of the RELEASED house, not a drawing and not a survey. The provisional backyard reconstruction is published separately in the Backyard section.",
-      "bounds": [
-        [
-          -15.5,
-          12.5
-        ],
-        [
-          -11,
-          11
-        ],
-        [
-          -0.68,
-          9
-        ]
-      ],
-      "walkBounds": [
-        [
-          -15.5,
-          12.5
-        ],
-        [
-          -11,
-          11
-        ]
-      ],
       "ceilingHeight": 9,
       "floorElevation": 0,
       "defaultPaint": "#e9e4da",
@@ -29611,9 +29670,57 @@
         "Obj A6",
         "Light \u00b7 LC exterior \u00b7 "
       ],
+      "includeSourceNames": [
+        "Light \u00b7 RCP SconceExt 1F 01",
+        "Light \u00b7 RCP SconceExt 1F 02",
+        "Obj 34",
+        "Light \u00b7 LA L18 lantern \u00b7 Porch W",
+        "Light \u00b7 LA L18 lantern \u00b7 Porch E",
+        "Light \u00b7 RCP JBox 2F 04",
+        "Obj Object-40",
+        "Obj Object-41",
+        "Obj Object-41.001",
+        "Obj Object-35",
+        "Obj Object-35.003",
+        "Obj Object-35.004",
+        "Obj Object-35.005",
+        "Obj Object-35.006",
+        "Obj Object-35.007",
+        "Obj Object-35.008",
+        "Obj Object-35.012",
+        "Obj Object-35.001",
+        "Obj Object-35.002",
+        "Obj Object-35.009",
+        "Obj Object-35.010",
+        "Obj Object-35.011",
+        "Slab concrete slab.033"
+      ],
+      "applyExclusionsToLights": true,
+      "bounds": [
+        [
+          -17.4,
+          14.5
+        ],
+        [
+          -19.5,
+          11
+        ],
+        [
+          -0.9,
+          9
+        ]
+      ],
+      "walkBounds": [
+        [
+          -17.4,
+          14.5
+        ],
+        [
+          -19.5,
+          11
+        ]
+      ],
       "excludeSourceNames": [
-        "Wall W0.007",
-        "Wall W1.022",
         "Wall W3",
         "Wall W3.001",
         "Wall W3.019",
@@ -29621,21 +29728,16 @@
         "Wall W3.021",
         "Wall W3.022",
         "Wall W3.023",
-        "Wall W3.024",
         "Wall W3.025",
         "Wall W3.026",
-        "Wall W3.032",
         "Wall W4.006",
         "Wall W4.007",
-        "Wall W4.008",
         "Wall W5.009",
         "Wall W5.010",
         "Wall W6.005",
         "Wall W6.007",
         "Wall W7.010",
         "Wall W7.011",
-        "Wall W8.016",
-        "Wall W9.010",
         "Wall exterior wall.029",
         "Wall exterior wall.030",
         "Wall exterior wall.031",
@@ -29645,20 +29747,13 @@
         "Wall exterior wall.035",
         "Wall exterior wall.036"
       ],
-      "includeSourceNames": [
-        "Light \u00b7 RCP SconceExt 1F 01",
-        "Light \u00b7 RCP SconceExt 1F 02",
-        "Obj 34",
-        "Light \u00b7 LA L18 lantern \u00b7 Porch W",
-        "Light \u00b7 LA L18 lantern \u00b7 Porch E",
-        "Light \u00b7 RCP JBox 2F 04"
-      ],
-      "applyExclusionsToLights": true,
-      "asset": "exterior-house-971fbddc0627.glb",
-      "assetHash": "971fbddc06279e8a2963687eb059329b15a5fcbe2a91af2c1f576d177127a115",
-      "assetBytes": 18831376,
-      "objectCount": 1481,
-      "triangles": 856787,
+      "boundaryStatus": "Model exterior of the RELEASED house and its front yard to the curb, not a drawing and not a survey. The backyard shown with it is the provisional approximate reconstruction from the Backyard section, labelled as such.",
+      "description": "The complete house exterior in one continuous model: roof, facade assemblies, windows, doors, balconies, the roof deck, the front lanterns and the whole front yard to the street.",
+      "asset": "exterior-house-c4fd55d35f7d.glb",
+      "assetHash": "c4fd55d35f7dd74acfd661f09d0fa5514a4cd27920dfe2075559831c845dd73b",
+      "assetBytes": 21248840,
+      "objectCount": 1528,
+      "triangles": 890601,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -29684,10 +29779,10 @@
           "type": "point",
           "position": [
             -4.113,
-            4.120987,
-            9.327744
+            4.087967,
+            9.34646
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 3.687,
           "angle": 0.72,
           "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -29699,10 +29794,10 @@
           "type": "point",
           "position": [
             1.357,
-            4.120987,
-            9.327744
+            4.087967,
+            9.34646
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 3.687,
           "angle": 0.72,
           "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -29717,7 +29812,7 @@
             2.16764,
             7.909025
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 3.941,
           "angle": 0.72,
           "status": "lamp 2400 K, 3.941 cd (42.75 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -29732,7 +29827,7 @@
             2.16764,
             7.909025
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 3.941,
           "angle": 0.72,
           "status": "lamp 2400 K, 3.941 cd (42.75 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -29747,7 +29842,7 @@
             4.30212,
             7.988195
           ],
-          "color": "#ffda97",
+          "color": "#ffdfaf",
           "intensity": 17.515,
           "angle": 0.72,
           "status": "lamp 2400 K, 17.515 cd (190 W on the 350 W can = 65 cd convention); browser preview, not photometric",
@@ -29921,6 +30016,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-48a1fddad6be",
+          "name": "04 | Stonework: Ledgerstone copy",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#c4bfb8",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-233e692913c4",
           "name": "09 | Tile: 6\" x 6\" White Tile Staggered",
           "roomId": "exterior-house",
@@ -30051,6 +30156,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-54117031d702",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-35daa970254b",
           "name": "32 | Landscape: Leaves, Tree*",
           "roomId": "exterior-house",
@@ -30071,6 +30186,16 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-e87102406760",
+          "name": "09 | Tile: 9\" Tan Terracotta",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#cdc6ba",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-7dd36b017306",
           "name": "09 | Color: 01 Ceiling White",
           "roomId": "exterior-house",
@@ -30089,26 +30214,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
-        },
-        {
-          "id": "mat-e87102406760",
-          "name": "09 | Tile: 9\" Tan Terracotta",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#cdc6ba",
-          "roughness": 0.15000000596046448,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-54117031d702",
-          "name": "09 | Color: 07 Gray-Dark*",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#2f2f2f",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-163592949a30",
@@ -30259,6 +30364,26 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-7aca2c29d916",
+          "name": "blattwerk",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#54a854",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-08fa2d4a5197",
+          "name": "Stamm_Bush3_GWL.gsm",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#998066",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-3c52153d511e",
@@ -30531,11 +30656,41 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-9f0098366558",
+          "name": "03 | Concrete: Dark*",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#cacaca",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4a4c40565e16",
+          "name": "32 | Landscape: Water Moving",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#273c4f",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-efdfeea941bf",
           "name": "32 | Landscape: Earth*",
           "roomId": "exterior-house",
           "role": null,
           "color": "#94684b",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1c6b4f30b758",
+          "name": "32 | Landscape: Grass 3D*",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#275827",
           "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "constant source PBR values"
