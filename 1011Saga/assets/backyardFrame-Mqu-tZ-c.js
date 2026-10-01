@@ -1,1 +1,0 @@
-var e=[[1,0,0,0],[0,0,1,0],[0,-1,0,0],[0,0,0,1]],t=[[1,0,0,0],[0,0,-1,0],[0,1,0,0],[0,0,0,1]];function n(e,t){return e.map(e=>t[0].map((n,r)=>e.reduce((e,n,i)=>e+n*t[i][r],0)))}function r(r){return n(n(e,r),t)}export{r as t};
