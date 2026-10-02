@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "a8b46fdc552a",
+  "sceneVersion": "64a69f49589f",
   "source": {
     "file": "Web.blend",
-    "sha256": "a8b46fdc552ab6144b63ac6bb157371f0b33ba4435564266c679b30e1974421c",
+    "sha256": "64a69f49589f496e585b5fffec389e5191e494fe477622023074b5a62b4b53d0",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -139,7 +139,10 @@
           "Column C06.019",
           "Column C06.020",
           "Column C06.021",
-          "Door B",
+          "Door B \u00b7 x226 RO infill",
+          "Door B \u00b7 x226 frame",
+          "Door B \u00b7 x226 leaf E (inactive)",
+          "Door B \u00b7 x226 leaf W (active)",
           "Fascia Fascia.011",
           "Fascia Fascia.012",
           "Floor Overlay \u00b7 Atrium White Marble",
@@ -402,7 +405,49 @@
               3.18
             ]
           ],
-          "Door B": [
+          "Door B \u00b7 x226 RO infill": [
+            [
+              8.39,
+              9.2
+            ],
+            [
+              3.13,
+              3.84
+            ],
+            [
+              -0.03,
+              2.7
+            ]
+          ],
+          "Door B \u00b7 x226 frame": [
+            [
+              8.39,
+              9.2
+            ],
+            [
+              3.13,
+              3.84
+            ],
+            [
+              -0.03,
+              2.7
+            ]
+          ],
+          "Door B \u00b7 x226 leaf E (inactive)": [
+            [
+              8.39,
+              9.2
+            ],
+            [
+              3.13,
+              3.84
+            ],
+            [
+              -0.03,
+              2.7
+            ]
+          ],
+          "Door B \u00b7 x226 leaf W (active)": [
             [
               8.39,
               9.2
@@ -1348,11 +1393,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-d19daa521c7c.glb",
-      "assetHash": "d19daa521c7cc33ff70a6268fa33afdfacb21ad343c539b4ce405617c6020d4e",
-      "assetBytes": 8162968,
-      "objectCount": 290,
-      "triangles": 57444,
+      "asset": "game-room-bf5f83edf334.glb",
+      "assetHash": "bf5f83edf33402751011ab9691ddc881aa6672e24e629bc1ab1305eda71f0d2a",
+      "assetBytes": 8115676,
+      "objectCount": 302,
+      "triangles": 60559,
       "cameras": [
         {
           "id": "room-view",
@@ -1746,6 +1791,16 @@
           "finishRoom": "family-room"
         },
         {
+          "id": "mat-5d4ea5e8db81",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#aabed4",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-d66f7ec6aed1",
           "name": "03 | Concrete: Light",
           "roomId": "game-room",
@@ -1806,13 +1861,13 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-451d74d981d5",
-          "name": "Metal \u00b7 Black Frame",
+          "id": "mat-e586cb93a182",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "game-room",
           "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
+          "color": "#1d1d1e",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -1826,16 +1881,6 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
-          "id": "mat-fce053b8dfc6",
-          "name": "09 | Color: 08 Black*",
-          "roomId": "game-room",
-          "role": null,
-          "color": "#272727",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-8ce167fb18ac",
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "game-room",
@@ -1844,17 +1889,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-b2b468425df7",
-          "name": "Paint \u00b7 Dusty Blue (Game Room)",
-          "roomId": "game-room",
-          "role": "trim",
-          "color": "#7cabca",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
-          "finishRoom": "family-room"
         },
         {
           "id": "mat-b8dd481cb7ab",
@@ -1888,6 +1922,17 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-b2b468425df7",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "game-room",
+          "role": "trim",
+          "color": "#7cabca",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
+          "finishRoom": "family-room"
+        },
+        {
           "id": "mat-049564acbc27",
           "name": "Stone \u00b7 Split-face Travertine",
           "roomId": "game-room",
@@ -1915,6 +1960,16 @@
           "color": "#bfbfbf",
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-fce053b8dfc6",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -2096,16 +2151,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
-        },
-        {
-          "id": "mat-5d4ea5e8db81",
-          "name": "Paint \u00b7 Dusty Blue (Game Room)",
-          "roomId": "game-room",
-          "role": null,
-          "color": "#aabed4",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-c709a7a72d78",
@@ -2472,22 +2517,30 @@
           "Column C06.019",
           "Column C06.020",
           "Column C06.021",
-          "Door A \u00b7 x225 frame",
-          "Door A \u00b7 x225 glazing",
-          "Door A \u00b7 x225 grille \u00b7 leaf E",
-          "Door A \u00b7 x225 grille \u00b7 leaf W",
-          "Door A \u00b7 x225 grille \u00b7 side transom E",
-          "Door A \u00b7 x225 grille \u00b7 side transom W",
-          "Door A \u00b7 x225 grille \u00b7 sidelight E",
-          "Door A \u00b7 x225 grille \u00b7 sidelight W",
-          "Door A \u00b7 x225 grille \u00b7 transom",
-          "Door A \u00b7 x225 leaf E (active)",
-          "Door A \u00b7 x225 leaf W (inactive)",
-          "Door B",
+          "Door A \u00b7 x226 RO infill",
+          "Door A \u00b7 x226 frame",
+          "Door A \u00b7 x226 glazing",
+          "Door A \u00b7 x226 grille \u00b7 leaf E",
+          "Door A \u00b7 x226 grille \u00b7 leaf W",
+          "Door A \u00b7 x226 grille \u00b7 side transom E",
+          "Door A \u00b7 x226 grille \u00b7 side transom W",
+          "Door A \u00b7 x226 grille \u00b7 sidelight E",
+          "Door A \u00b7 x226 grille \u00b7 sidelight W",
+          "Door A \u00b7 x226 grille \u00b7 transom",
+          "Door A \u00b7 x226 leaf E (active)",
+          "Door A \u00b7 x226 leaf W (inactive)",
+          "Door B \u00b7 x226 RO infill",
+          "Door B \u00b7 x226 frame",
+          "Door B \u00b7 x226 leaf E (inactive)",
+          "Door B \u00b7 x226 leaf W (active)",
           "Door G leaf",
           "Door H",
           "Door H leaf",
-          "Door ZI",
+          "Door ZI \u00b7 x226 RO infill",
+          "Door ZI \u00b7 x226 frame",
+          "Door ZI \u00b7 x226 glazing",
+          "Door ZI \u00b7 x226 leaf N (inactive)",
+          "Door ZI \u00b7 x226 leaf S (active)",
           "Fascia Fascia.009",
           "Fascia Fascia.012",
           "Floor Overlay \u00b7 Atrium White Marble",
@@ -3111,7 +3164,7 @@
               3.17
             ]
           ],
-          "Door A \u00b7 x225 frame": [
+          "Door A \u00b7 x226 RO infill": [
             [
               -3.21,
               0.63
@@ -3125,7 +3178,7 @@
               4.87
             ]
           ],
-          "Door A \u00b7 x225 glazing": [
+          "Door A \u00b7 x226 frame": [
             [
               -3.21,
               0.63
@@ -3139,7 +3192,7 @@
               4.87
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 leaf E": [
+          "Door A \u00b7 x226 glazing": [
             [
               -3.21,
               0.63
@@ -3153,7 +3206,7 @@
               4.87
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 leaf W": [
+          "Door A \u00b7 x226 grille \u00b7 leaf E": [
             [
               -3.21,
               0.63
@@ -3167,7 +3220,7 @@
               4.87
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 side transom E": [
+          "Door A \u00b7 x226 grille \u00b7 leaf W": [
             [
               -3.21,
               0.63
@@ -3181,7 +3234,7 @@
               4.87
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 side transom W": [
+          "Door A \u00b7 x226 grille \u00b7 side transom E": [
             [
               -3.21,
               0.63
@@ -3195,7 +3248,7 @@
               4.87
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 sidelight E": [
+          "Door A \u00b7 x226 grille \u00b7 side transom W": [
             [
               -3.21,
               0.63
@@ -3209,7 +3262,7 @@
               4.87
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 sidelight W": [
+          "Door A \u00b7 x226 grille \u00b7 sidelight E": [
             [
               -3.21,
               0.63
@@ -3223,7 +3276,7 @@
               4.87
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 transom": [
+          "Door A \u00b7 x226 grille \u00b7 sidelight W": [
             [
               -3.21,
               0.63
@@ -3237,7 +3290,7 @@
               4.87
             ]
           ],
-          "Door A \u00b7 x225 leaf E (active)": [
+          "Door A \u00b7 x226 grille \u00b7 transom": [
             [
               -3.21,
               0.63
@@ -3251,7 +3304,7 @@
               4.87
             ]
           ],
-          "Door A \u00b7 x225 leaf W (inactive)": [
+          "Door A \u00b7 x226 leaf E (active)": [
             [
               -3.21,
               0.63
@@ -3265,7 +3318,63 @@
               4.87
             ]
           ],
-          "Door B": [
+          "Door A \u00b7 x226 leaf W (inactive)": [
+            [
+              -3.21,
+              0.63
+            ],
+            [
+              -7.85,
+              -7.2
+            ],
+            [
+              -0.03,
+              4.87
+            ]
+          ],
+          "Door B \u00b7 x226 RO infill": [
+            [
+              6.62,
+              9.16
+            ],
+            [
+              3.21,
+              3.95
+            ],
+            [
+              -0.03,
+              2.78
+            ]
+          ],
+          "Door B \u00b7 x226 frame": [
+            [
+              6.62,
+              9.16
+            ],
+            [
+              3.21,
+              3.95
+            ],
+            [
+              -0.03,
+              2.78
+            ]
+          ],
+          "Door B \u00b7 x226 leaf E (inactive)": [
+            [
+              6.62,
+              9.16
+            ],
+            [
+              3.21,
+              3.95
+            ],
+            [
+              -0.03,
+              2.78
+            ]
+          ],
+          "Door B \u00b7 x226 leaf W (active)": [
             [
               6.62,
               9.16
@@ -3321,7 +3430,63 @@
               2.33
             ]
           ],
-          "Door ZI": [
+          "Door ZI \u00b7 x226 RO infill": [
+            [
+              -11.26,
+              -10.54
+            ],
+            [
+              -1.41,
+              2.84
+            ],
+            [
+              -0.03,
+              3.19
+            ]
+          ],
+          "Door ZI \u00b7 x226 frame": [
+            [
+              -11.26,
+              -10.54
+            ],
+            [
+              -1.41,
+              2.84
+            ],
+            [
+              -0.03,
+              3.19
+            ]
+          ],
+          "Door ZI \u00b7 x226 glazing": [
+            [
+              -11.26,
+              -10.54
+            ],
+            [
+              -1.41,
+              2.84
+            ],
+            [
+              -0.03,
+              3.19
+            ]
+          ],
+          "Door ZI \u00b7 x226 leaf N (inactive)": [
+            [
+              -11.26,
+              -10.54
+            ],
+            [
+              -1.41,
+              2.84
+            ],
+            [
+              -0.03,
+              3.19
+            ]
+          ],
+          "Door ZI \u00b7 x226 leaf S (active)": [
             [
               -11.26,
               -10.54
@@ -5961,11 +6126,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-b1893d009b7f.glb",
-      "assetHash": "b1893d009b7f7aac79035bff44eba1428407dad569c1e7bbfee3d55d89083e1d",
-      "assetBytes": 10584184,
-      "objectCount": 497,
-      "triangles": 192296,
+      "asset": "family-room-4024f32d4d5b.glb",
+      "assetHash": "4024f32d4d5b1e42a22428803b6830be15a07ec6913cf85d4b404a753399b6ba",
+      "assetBytes": 10648368,
+      "objectCount": 515,
+      "triangles": 179688,
       "cameras": [
         {
           "id": "room-view",
@@ -6294,6 +6459,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-185fae2f8f72",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-792ca04bc28d",
           "name": "03 | Concrete: Light",
           "roomId": "family-room",
@@ -6312,16 +6487,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
-        },
-        {
-          "id": "mat-185fae2f8f72",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "family-room",
-          "role": null,
-          "color": "#ebe8e0",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-1f459b726926",
@@ -6354,13 +6519,13 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-c2cde02c7b60",
-          "name": "Metal \u00b7 Black Frame",
+          "id": "mat-3c73fe711bd8",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "family-room",
           "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
+          "color": "#1d1d1e",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -6372,26 +6537,6 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
-        },
-        {
-          "id": "mat-0c39c537d61a",
-          "name": "09 | Color: 07 Gray-Dark*",
-          "roomId": "family-room",
-          "role": null,
-          "color": "#2f2f2f",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-7875d9559e31",
-          "name": "09 | Color: 08 Black*",
-          "roomId": "family-room",
-          "role": null,
-          "color": "#272727",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-ef453dd7039a",
@@ -6470,6 +6615,26 @@
           "role": null,
           "color": "#edd9b8",
           "roughness": 0.44999998807907104,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-0c39c537d61a",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-7875d9559e31",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -6754,13 +6919,13 @@
           "translation": "Base Color source graph baked in UV space"
         },
         {
-          "id": "mat-3c73fe711bd8",
-          "name": "Iron \u00b7 Black wrought satin (x225)",
+          "id": "mat-c2cde02c7b60",
+          "name": "Metal \u00b7 Black Frame",
           "roomId": "family-room",
           "role": null,
-          "color": "#1d1d1e",
-          "roughness": 0.5,
-          "metallic": 0.0,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
           "translation": "constant source PBR values"
         },
         {
@@ -6794,14 +6959,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-68a60527de4b",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-0fe8f99eabed",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "family-room",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-c557e99ee712",
@@ -6899,11 +7064,21 @@
           "Arch glass 01",
           "Column C06.020",
           "Column C06.021",
-          "Door B",
-          "Door C",
+          "Door B \u00b7 x226 RO infill",
+          "Door B \u00b7 x226 frame",
+          "Door B \u00b7 x226 leaf E (inactive)",
+          "Door B \u00b7 x226 leaf W (active)",
+          "Door C \u00b7 x226 RO infill",
+          "Door C \u00b7 x226 frame",
+          "Door C \u00b7 x226 leaf E (inactive)",
+          "Door C \u00b7 x226 leaf W (active)",
           "Door H",
           "Door H leaf",
-          "Door ZG",
+          "Door ZG \u00b7 x226 RO infill",
+          "Door ZG \u00b7 x226 frame",
+          "Door ZG \u00b7 x226 glazing",
+          "Door ZG \u00b7 x226 leaf N (active)",
+          "Door ZG \u00b7 x226 leaf S (inactive)",
           "Fascia Fascia.012",
           "Floor Overlay \u00b7 Atrium White Marble",
           "Floor Overlay \u00b7 Foyer Checkerboard 45deg",
@@ -7053,7 +7228,7 @@
               3.12
             ]
           ],
-          "Door B": [
+          "Door B \u00b7 x226 RO infill": [
             [
               7.34,
               9.09
@@ -7067,7 +7242,91 @@
               2.8
             ]
           ],
-          "Door C": [
+          "Door B \u00b7 x226 frame": [
+            [
+              7.34,
+              9.09
+            ],
+            [
+              3.21,
+              3.95
+            ],
+            [
+              0.48,
+              2.8
+            ]
+          ],
+          "Door B \u00b7 x226 leaf E (inactive)": [
+            [
+              7.34,
+              9.09
+            ],
+            [
+              3.21,
+              3.95
+            ],
+            [
+              0.48,
+              2.8
+            ]
+          ],
+          "Door B \u00b7 x226 leaf W (active)": [
+            [
+              7.34,
+              9.09
+            ],
+            [
+              3.21,
+              3.95
+            ],
+            [
+              0.48,
+              2.8
+            ]
+          ],
+          "Door C \u00b7 x226 RO infill": [
+            [
+              -1.39,
+              0.91
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.16,
+              3.02
+            ]
+          ],
+          "Door C \u00b7 x226 frame": [
+            [
+              -1.39,
+              0.91
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.16,
+              3.02
+            ]
+          ],
+          "Door C \u00b7 x226 leaf E (inactive)": [
+            [
+              -1.39,
+              0.91
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.16,
+              3.02
+            ]
+          ],
+          "Door C \u00b7 x226 leaf W (active)": [
             [
               -1.39,
               0.91
@@ -7109,7 +7368,63 @@
               2.28
             ]
           ],
-          "Door ZG": [
+          "Door ZG \u00b7 x226 RO infill": [
+            [
+              0.84,
+              1.59
+            ],
+            [
+              4.78,
+              8.65
+            ],
+            [
+              0.14,
+              2.77
+            ]
+          ],
+          "Door ZG \u00b7 x226 frame": [
+            [
+              0.84,
+              1.59
+            ],
+            [
+              4.78,
+              8.65
+            ],
+            [
+              0.14,
+              2.77
+            ]
+          ],
+          "Door ZG \u00b7 x226 glazing": [
+            [
+              0.84,
+              1.59
+            ],
+            [
+              4.78,
+              8.65
+            ],
+            [
+              0.14,
+              2.77
+            ]
+          ],
+          "Door ZG \u00b7 x226 leaf N (active)": [
+            [
+              0.84,
+              1.59
+            ],
+            [
+              4.78,
+              8.65
+            ],
+            [
+              0.14,
+              2.77
+            ]
+          ],
+          "Door ZG \u00b7 x226 leaf S (inactive)": [
             [
               0.84,
               1.59
@@ -8010,11 +8325,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-cbecb037f0ca.glb",
-      "assetHash": "cbecb037f0cad37bb1e733a2aeacb2876279c26899a6c041eeb88cb34051dde5",
-      "assetBytes": 9570316,
-      "objectCount": 335,
-      "triangles": 153564,
+      "asset": "dining-room-9b4891345a5f.glb",
+      "assetHash": "9b4891345a5fd7550d0e392139bc72b7b19b74fc5f9393f1c6969a2b288e65dd",
+      "assetBytes": 9033264,
+      "objectCount": 348,
+      "triangles": 133065,
       "cameras": [
         {
           "id": "room-view",
@@ -8351,16 +8666,6 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
-          "id": "mat-863c5fa94b10",
-          "name": "04 | B Running Bond WHITE",
-          "roomId": "dining-room",
-          "role": null,
-          "color": "#939492",
-          "roughness": 0.8500000238418579,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-6b035c0aa3d9",
           "name": "09 | Color: 03 Gray-Light",
           "roomId": "dining-room",
@@ -8389,6 +8694,16 @@
           "roughness": 0.550000011920929,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-d5e029d1691d",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#c8d1bc",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-bbdd268e7a3b",
@@ -8491,11 +8806,11 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-cbce435d04ad",
-          "name": "09 | Color: 08 Black*",
+          "id": "mat-d3c077b61937",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "dining-room",
           "role": null,
-          "color": "#272727",
+          "color": "#1d1d1e",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -8509,16 +8824,6 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
-        },
-        {
-          "id": "mat-a75d98f400c6",
-          "name": "Metal \u00b7 Black Frame",
-          "roomId": "dining-room",
-          "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-9eddb4b74888",
@@ -8601,16 +8906,6 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
-          "id": "mat-d5e029d1691d",
-          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
-          "roomId": "dining-room",
-          "role": null,
-          "color": "#c8d1bc",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
           "id": "mat-d8ec7bf0a9fc",
           "name": "Cabinet \u00b7 Whitewashed Oak (Dining timber pilot)",
           "roomId": "dining-room",
@@ -8619,6 +8914,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-cbce435d04ad",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#272727",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-645102f38c8e",
@@ -8791,14 +9096,14 @@
           "translation": "source UV opacity mask preserved"
         },
         {
-          "id": "mat-742556abfeca",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-b0abb1ba281b",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "dining-room",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-f45bacdeaf2f",
@@ -9150,29 +9455,50 @@
           "Column C06.012",
           "Column C06.013",
           "Column C06.022",
-          "Door A \u00b7 x225 frame",
-          "Door A \u00b7 x225 glazing",
-          "Door A \u00b7 x225 grille \u00b7 leaf E",
-          "Door A \u00b7 x225 grille \u00b7 leaf W",
-          "Door A \u00b7 x225 grille \u00b7 side transom E",
-          "Door A \u00b7 x225 grille \u00b7 side transom W",
-          "Door A \u00b7 x225 grille \u00b7 sidelight E",
-          "Door A \u00b7 x225 grille \u00b7 sidelight W",
-          "Door A \u00b7 x225 grille \u00b7 transom",
-          "Door A \u00b7 x225 leaf E (active)",
-          "Door A \u00b7 x225 leaf W (inactive)",
-          "Door B",
-          "Door C",
-          "Door D",
-          "Door E",
+          "Door A \u00b7 x226 RO infill",
+          "Door A \u00b7 x226 frame",
+          "Door A \u00b7 x226 glazing",
+          "Door A \u00b7 x226 grille \u00b7 leaf E",
+          "Door A \u00b7 x226 grille \u00b7 leaf W",
+          "Door A \u00b7 x226 grille \u00b7 side transom E",
+          "Door A \u00b7 x226 grille \u00b7 side transom W",
+          "Door A \u00b7 x226 grille \u00b7 sidelight E",
+          "Door A \u00b7 x226 grille \u00b7 sidelight W",
+          "Door A \u00b7 x226 grille \u00b7 transom",
+          "Door A \u00b7 x226 leaf E (active)",
+          "Door A \u00b7 x226 leaf W (inactive)",
+          "Door B \u00b7 x226 RO infill",
+          "Door B \u00b7 x226 frame",
+          "Door B \u00b7 x226 leaf E (inactive)",
+          "Door B \u00b7 x226 leaf W (active)",
+          "Door C \u00b7 x226 RO infill",
+          "Door C \u00b7 x226 frame",
+          "Door C \u00b7 x226 leaf E (inactive)",
+          "Door C \u00b7 x226 leaf W (active)",
+          "Door D \u00b7 x226 RO infill",
+          "Door D \u00b7 x226 frame",
+          "Door D \u00b7 x226 leaf E (inactive)",
+          "Door D \u00b7 x226 leaf W (active)",
+          "Door E \u00b7 x226 RO infill",
+          "Door E \u00b7 x226 frame",
+          "Door E \u00b7 x226 leaf E (inactive)",
+          "Door E \u00b7 x226 leaf W (active)",
           "Door G leaf",
           "Door H",
           "Door H leaf",
           "Door O RO infill",
           "Door O frame",
           "Door O leaf",
-          "Door ZH",
-          "Door ZI",
+          "Door ZH \u00b7 x226 RO infill",
+          "Door ZH \u00b7 x226 frame",
+          "Door ZH \u00b7 x226 glazing",
+          "Door ZH \u00b7 x226 leaf N (inactive)",
+          "Door ZH \u00b7 x226 leaf S (active)",
+          "Door ZI \u00b7 x226 RO infill",
+          "Door ZI \u00b7 x226 frame",
+          "Door ZI \u00b7 x226 glazing",
+          "Door ZI \u00b7 x226 leaf N (inactive)",
+          "Door ZI \u00b7 x226 leaf S (active)",
           "Fascia Fascia.009",
           "Fascia Fascia.010",
           "Fascia Fascia.011",
@@ -9381,7 +9707,7 @@
               3.1
             ]
           ],
-          "Door A \u00b7 x225 frame": [
+          "Door A \u00b7 x226 RO infill": [
             [
               -3.16,
               -0.53
@@ -9395,7 +9721,7 @@
               3.27
             ]
           ],
-          "Door A \u00b7 x225 glazing": [
+          "Door A \u00b7 x226 frame": [
             [
               -3.16,
               -0.53
@@ -9409,7 +9735,7 @@
               3.27
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 leaf E": [
+          "Door A \u00b7 x226 glazing": [
             [
               -3.16,
               -0.53
@@ -9423,7 +9749,7 @@
               3.27
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 leaf W": [
+          "Door A \u00b7 x226 grille \u00b7 leaf E": [
             [
               -3.16,
               -0.53
@@ -9437,7 +9763,7 @@
               3.27
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 side transom E": [
+          "Door A \u00b7 x226 grille \u00b7 leaf W": [
             [
               -3.16,
               -0.53
@@ -9451,7 +9777,7 @@
               3.27
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 side transom W": [
+          "Door A \u00b7 x226 grille \u00b7 side transom E": [
             [
               -3.16,
               -0.53
@@ -9465,7 +9791,7 @@
               3.27
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 sidelight E": [
+          "Door A \u00b7 x226 grille \u00b7 side transom W": [
             [
               -3.16,
               -0.53
@@ -9479,7 +9805,7 @@
               3.27
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 sidelight W": [
+          "Door A \u00b7 x226 grille \u00b7 sidelight E": [
             [
               -3.16,
               -0.53
@@ -9493,7 +9819,7 @@
               3.27
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 transom": [
+          "Door A \u00b7 x226 grille \u00b7 sidelight W": [
             [
               -3.16,
               -0.53
@@ -9507,7 +9833,7 @@
               3.27
             ]
           ],
-          "Door A \u00b7 x225 leaf E (active)": [
+          "Door A \u00b7 x226 grille \u00b7 transom": [
             [
               -3.16,
               -0.53
@@ -9521,7 +9847,7 @@
               3.27
             ]
           ],
-          "Door A \u00b7 x225 leaf W (inactive)": [
+          "Door A \u00b7 x226 leaf E (active)": [
             [
               -3.16,
               -0.53
@@ -9535,7 +9861,21 @@
               3.27
             ]
           ],
-          "Door B": [
+          "Door A \u00b7 x226 leaf W (inactive)": [
+            [
+              -3.16,
+              -0.53
+            ],
+            [
+              -7.82,
+              -7.2
+            ],
+            [
+              -0.03,
+              3.27
+            ]
+          ],
+          "Door B \u00b7 x226 RO infill": [
             [
               7.19,
               9.16
@@ -9549,7 +9889,49 @@
               2.81
             ]
           ],
-          "Door C": [
+          "Door B \u00b7 x226 frame": [
+            [
+              7.19,
+              9.16
+            ],
+            [
+              3.21,
+              3.95
+            ],
+            [
+              -0.03,
+              2.81
+            ]
+          ],
+          "Door B \u00b7 x226 leaf E (inactive)": [
+            [
+              7.19,
+              9.16
+            ],
+            [
+              3.21,
+              3.95
+            ],
+            [
+              -0.03,
+              2.81
+            ]
+          ],
+          "Door B \u00b7 x226 leaf W (active)": [
+            [
+              7.19,
+              9.16
+            ],
+            [
+              3.21,
+              3.95
+            ],
+            [
+              -0.03,
+              2.81
+            ]
+          ],
+          "Door C \u00b7 x226 RO infill": [
             [
               -1.57,
               0.81
@@ -9563,7 +9945,49 @@
               2.97
             ]
           ],
-          "Door D": [
+          "Door C \u00b7 x226 frame": [
+            [
+              -1.57,
+              0.81
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.08,
+              2.97
+            ]
+          ],
+          "Door C \u00b7 x226 leaf E (inactive)": [
+            [
+              -1.57,
+              0.81
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.08,
+              2.97
+            ]
+          ],
+          "Door C \u00b7 x226 leaf W (active)": [
+            [
+              -1.57,
+              0.81
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.08,
+              2.97
+            ]
+          ],
+          "Door D \u00b7 x226 RO infill": [
             [
               -4.6,
               -2.2
@@ -9577,7 +10001,91 @@
               3.07
             ]
           ],
-          "Door E": [
+          "Door D \u00b7 x226 frame": [
+            [
+              -4.6,
+              -2.2
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.35,
+              3.07
+            ]
+          ],
+          "Door D \u00b7 x226 leaf E (inactive)": [
+            [
+              -4.6,
+              -2.2
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.35,
+              3.07
+            ]
+          ],
+          "Door D \u00b7 x226 leaf W (active)": [
+            [
+              -4.6,
+              -2.2
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              0.35,
+              3.07
+            ]
+          ],
+          "Door E \u00b7 x226 RO infill": [
+            [
+              -6.61,
+              -5.05
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              -0.03,
+              3.08
+            ]
+          ],
+          "Door E \u00b7 x226 frame": [
+            [
+              -6.61,
+              -5.05
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              -0.03,
+              3.08
+            ]
+          ],
+          "Door E \u00b7 x226 leaf E (inactive)": [
+            [
+              -6.61,
+              -5.05
+            ],
+            [
+              8.65,
+              9.4
+            ],
+            [
+              -0.03,
+              3.08
+            ]
+          ],
+          "Door E \u00b7 x226 leaf W (active)": [
             [
               -6.61,
               -5.05
@@ -9675,7 +10183,7 @@
               3.19
             ]
           ],
-          "Door ZH": [
+          "Door ZH \u00b7 x226 RO infill": [
             [
               -11.27,
               -10.49
@@ -9689,7 +10197,119 @@
               2.8
             ]
           ],
-          "Door ZI": [
+          "Door ZH \u00b7 x226 frame": [
+            [
+              -11.27,
+              -10.49
+            ],
+            [
+              4.94,
+              8.59
+            ],
+            [
+              -0.03,
+              2.8
+            ]
+          ],
+          "Door ZH \u00b7 x226 glazing": [
+            [
+              -11.27,
+              -10.49
+            ],
+            [
+              4.94,
+              8.59
+            ],
+            [
+              -0.03,
+              2.8
+            ]
+          ],
+          "Door ZH \u00b7 x226 leaf N (inactive)": [
+            [
+              -11.27,
+              -10.49
+            ],
+            [
+              4.94,
+              8.59
+            ],
+            [
+              -0.03,
+              2.8
+            ]
+          ],
+          "Door ZH \u00b7 x226 leaf S (active)": [
+            [
+              -11.27,
+              -10.49
+            ],
+            [
+              4.94,
+              8.59
+            ],
+            [
+              -0.03,
+              2.8
+            ]
+          ],
+          "Door ZI \u00b7 x226 RO infill": [
+            [
+              -11.26,
+              -10.58
+            ],
+            [
+              -1.18,
+              2.81
+            ],
+            [
+              -0.03,
+              2.66
+            ]
+          ],
+          "Door ZI \u00b7 x226 frame": [
+            [
+              -11.26,
+              -10.58
+            ],
+            [
+              -1.18,
+              2.81
+            ],
+            [
+              -0.03,
+              2.66
+            ]
+          ],
+          "Door ZI \u00b7 x226 glazing": [
+            [
+              -11.26,
+              -10.58
+            ],
+            [
+              -1.18,
+              2.81
+            ],
+            [
+              -0.03,
+              2.66
+            ]
+          ],
+          "Door ZI \u00b7 x226 leaf N (inactive)": [
+            [
+              -11.26,
+              -10.58
+            ],
+            [
+              -1.18,
+              2.81
+            ],
+            [
+              -0.03,
+              2.66
+            ]
+          ],
+          "Door ZI \u00b7 x226 leaf S (active)": [
             [
               -11.26,
               -10.58
@@ -11248,11 +11868,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-3874468be418.glb",
-      "assetHash": "3874468be41899f25902a38a95c80a084d1a092fb1c2521b7532c9c2740a3673",
-      "assetBytes": 20475500,
-      "objectCount": 649,
-      "triangles": 508617,
+      "asset": "kitchen-c4cff4a20f51.glb",
+      "assetHash": "c4cff4a20f51de9ca9d5c365cd1bb9fdfa2153ce8b15cecf207b73c7dac889d6",
+      "assetBytes": 19957676,
+      "objectCount": 672,
+      "triangles": 461384,
       "cameras": [
         {
           "id": "room-view",
@@ -11601,6 +12221,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-7c26bb306bbf",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-83ece73853ce",
           "name": "03 | Concrete: Light",
           "roomId": "kitchen",
@@ -11721,13 +12351,13 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-08f3a473dda4",
-          "name": "Metal \u00b7 Black Frame",
+          "id": "mat-a40f5c93a092",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "kitchen",
           "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
+          "color": "#1d1d1e",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -11769,16 +12399,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-7c26bb306bbf",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#ebe8e0",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-731b888110a0",
@@ -11858,6 +12478,16 @@
           "color": "#d7d3d9",
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-08f3a473dda4",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
           "translation": "constant source PBR values"
         },
         {
@@ -12141,26 +12771,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-7c67cded8a3b",
-          "name": "09 | Color: 08 Black*",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#272727",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-a40f5c93a092",
-          "name": "Iron \u00b7 Black wrought satin (x225)",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#1d1d1e",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-22f3a34a34e4",
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "kitchen",
@@ -12181,14 +12791,14 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
-          "id": "mat-427f89554e32",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-885b9bf45516",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "kitchen",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-1097929daa4e",
@@ -12264,7 +12874,8 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Powder \u00b7 ",
         "PVanity",
         "PBath",
-        "DEC3650FI"
+        "DEC3650FI",
+        "Door A \u00b7 x226 fly screens (Cycles only)"
       ],
       "cutawayCameraSide": [
         -1,
@@ -12305,7 +12916,7 @@
           "side": "xMin"
         },
         {
-          "prefix": "Door A \u00b7 x225 ",
+          "prefix": "Door A \u00b7 x226 ",
           "side": "zMax"
         },
         {
@@ -12453,10 +13064,17 @@
           "Arch reveal 02",
           "Arch reveal 03",
           "Column C06.021",
-          "Door B",
+          "Door B \u00b7 x226 RO infill",
+          "Door B \u00b7 x226 frame",
+          "Door B \u00b7 x226 leaf E (inactive)",
+          "Door B \u00b7 x226 leaf W (active)",
           "Door L",
           "Door L leaf",
-          "Door ZI",
+          "Door ZI \u00b7 x226 RO infill",
+          "Door ZI \u00b7 x226 frame",
+          "Door ZI \u00b7 x226 glazing",
+          "Door ZI \u00b7 x226 leaf N (inactive)",
+          "Door ZI \u00b7 x226 leaf S (active)",
           "Floor Overlay \u00b7 Atrium White Marble",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-03",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-04",
@@ -12716,7 +13334,49 @@
               3.49
             ]
           ],
-          "Door B": [
+          "Door B \u00b7 x226 RO infill": [
+            [
+              6.56,
+              9.44
+            ],
+            [
+              2.91,
+              4.25
+            ],
+            [
+              -0.03,
+              3.08
+            ]
+          ],
+          "Door B \u00b7 x226 frame": [
+            [
+              6.56,
+              9.44
+            ],
+            [
+              2.91,
+              4.25
+            ],
+            [
+              -0.03,
+              3.08
+            ]
+          ],
+          "Door B \u00b7 x226 leaf E (inactive)": [
+            [
+              6.56,
+              9.44
+            ],
+            [
+              2.91,
+              4.25
+            ],
+            [
+              -0.03,
+              3.08
+            ]
+          ],
+          "Door B \u00b7 x226 leaf W (active)": [
             [
               6.56,
               9.44
@@ -12758,7 +13418,63 @@
               3.03
             ]
           ],
-          "Door ZI": [
+          "Door ZI \u00b7 x226 RO infill": [
+            [
+              -11.56,
+              -10.24
+            ],
+            [
+              0.82,
+              3.12
+            ],
+            [
+              0.27,
+              3.08
+            ]
+          ],
+          "Door ZI \u00b7 x226 frame": [
+            [
+              -11.56,
+              -10.24
+            ],
+            [
+              0.82,
+              3.12
+            ],
+            [
+              0.27,
+              3.08
+            ]
+          ],
+          "Door ZI \u00b7 x226 glazing": [
+            [
+              -11.56,
+              -10.24
+            ],
+            [
+              0.82,
+              3.12
+            ],
+            [
+              0.27,
+              3.08
+            ]
+          ],
+          "Door ZI \u00b7 x226 leaf N (inactive)": [
+            [
+              -11.56,
+              -10.24
+            ],
+            [
+              0.82,
+              3.12
+            ],
+            [
+              0.27,
+              3.08
+            ]
+          ],
+          "Door ZI \u00b7 x226 leaf S (active)": [
             [
               -11.56,
               -10.24
@@ -14415,11 +15131,11 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-1c54953a360c.glb",
-      "assetHash": "1c54953a360c6363a3b7a9f697321cdeecd5e0f85c2d5642ee531833b82d137f",
-      "assetBytes": 15456532,
-      "objectCount": 715,
-      "triangles": 437872,
+      "asset": "entry-e55848bb3967.glb",
+      "assetHash": "e55848bb396725e8f3381ecc265af6a3041e6f60f63fc57f4fd3991d7c94551a",
+      "assetBytes": 15766636,
+      "objectCount": 722,
+      "triangles": 395566,
       "cameras": [
         {
           "id": "room-view",
@@ -14623,7 +15339,7 @@
           "color": "#ffdfaf",
           "intensity": 7.006,
           "angle": 0.72,
-          "status": "lamp 2400 K, 7.006 cd (76 W on the 350 W can = 65 cd convention); browser preview, not photometric"
+          "status": "lamp 2400 K, 7.006 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "entry-d0306a0dfa85b6a0",
@@ -14637,7 +15353,7 @@
           "color": "#ffdfaf",
           "intensity": 7.006,
           "angle": 0.72,
-          "status": "lamp 2400 K, 7.006 cd (76 W on the 350 W can = 65 cd convention); browser preview, not photometric"
+          "status": "lamp 2400 K, 7.006 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "entry-08113f8ab9d1e945",
@@ -14651,7 +15367,7 @@
           "color": "#ffdfaf",
           "intensity": 5.255,
           "angle": 0.72,
-          "status": "lamp 2400 K, 5.255 cd (57 W on the 350 W can = 65 cd convention); browser preview, not photometric"
+          "status": "lamp 2400 K, 5.255 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "entry-e4bf643a4be04cfc",
@@ -14665,7 +15381,7 @@
           "color": "#ffdfaf",
           "intensity": 5.255,
           "angle": 0.72,
-          "status": "lamp 2400 K, 5.255 cd (57 W on the 350 W can = 65 cd convention); browser preview, not photometric"
+          "status": "lamp 2400 K, 5.255 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "entry-919e848b7797d8ac",
@@ -15270,14 +15986,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-8f016576a7f8",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-c7a5f216134b",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "entry",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-6a65093b7bfb",
@@ -15605,11 +16321,11 @@
       ],
       "displayExposureStops": -3.0,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, From doorway: L05 Andree 31.83 cd vanity point; -3.0 is the judged-band floor (R11 displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "powder-room-483c6bc23ece.glb",
-      "assetHash": "483c6bc23ece1d0f72944ad4b58574b7b4fac9afb91f3dd26987463a76d38e0b",
-      "assetBytes": 3969712,
+      "asset": "powder-room-eeae693f08bf.glb",
+      "assetHash": "eeae693f08bf1fcf8d409d2d728bf31ba74ea261feb1ecf6169a95fac8e33318",
+      "assetBytes": 3828408,
       "objectCount": 160,
-      "triangles": 60078,
+      "triangles": 46562,
       "cameras": [
         {
           "id": "room-view",
@@ -15947,14 +16663,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-5d834164a984",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-01cfb250af49",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "powder-room",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-53e63dc338d0",
@@ -16063,11 +16779,11 @@
       ],
       "displayExposureStops": -1.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view: L13 Bundt 1800 K 23.87 cd replaces a 35 cd J-box (R11 metered -2.0, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "pantry-7c332eb88edf.glb",
-      "assetHash": "7c332eb88edfff6206235202605e370fb558155983be79cf48f14337dbb669ad",
-      "assetBytes": 3798928,
+      "asset": "pantry-79906b2f6ab8.glb",
+      "assetHash": "79906b2f6ab8570dcea3a9079ce089cbdddaa913ca2b18a2cca16c01ce1b9fbb",
+      "assetBytes": 3654972,
       "objectCount": 115,
-      "triangles": 44170,
+      "triangles": 30830,
       "cameras": [
         {
           "id": "room-view",
@@ -16361,14 +17077,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-ee506b9f17ae",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-f30277610391",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "pantry",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-b9ca2b65947e",
@@ -17113,11 +17829,11 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-6e8afb4d401a.glb",
-      "assetHash": "6e8afb4d401a8580fbaa9d32fd084bfdb1dd8d7f34303e64b293dae1e09d48c7",
-      "assetBytes": 7877332,
+      "asset": "loli-bedroom-7f87771e323f.glb",
+      "assetHash": "7f87771e323fe0de7003bf007654c64ba4cb2526afebdc92c64a114ba8199450",
+      "assetBytes": 7769676,
       "objectCount": 238,
-      "triangles": 202963,
+      "triangles": 162315,
       "cameras": [
         {
           "id": "room-view",
@@ -17676,14 +18392,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-0cb0ca9a31de",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-55221bfb3360",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "loli-bedroom",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-3df2e644b717",
@@ -17822,11 +18538,11 @@
       ],
       "displayExposureStops": -2.1,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: L04 Florena 13.43 cd vanity point; shower marble still reads (R11 d1 -1.5); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "loli-bathroom-85720d588420.glb",
-      "assetHash": "85720d5884204e91b8ee7d2e17540f46ae4fd92666da282d0718283049629848",
-      "assetBytes": 4583848,
+      "asset": "loli-bathroom-6a36c5026c7f.glb",
+      "assetHash": "6a36c5026c7fd4e09c6589dfa05bdd5f66d541ccec9257680d75640b6df65273",
+      "assetBytes": 4434644,
       "objectCount": 133,
-      "triangles": 57767,
+      "triangles": 44159,
       "cameras": [
         {
           "id": "room-view",
@@ -18343,14 +19059,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-cf33bdab90d3",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-73f18f06aa36",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "loli-bathroom",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-5ee1bf67cd9a",
@@ -18452,17 +19168,18 @@
           ]
         ],
         "names": [
-          "Door A \u00b7 x225 frame",
-          "Door A \u00b7 x225 glazing",
-          "Door A \u00b7 x225 grille \u00b7 leaf E",
-          "Door A \u00b7 x225 grille \u00b7 leaf W",
-          "Door A \u00b7 x225 grille \u00b7 side transom E",
-          "Door A \u00b7 x225 grille \u00b7 side transom W",
-          "Door A \u00b7 x225 grille \u00b7 sidelight E",
-          "Door A \u00b7 x225 grille \u00b7 sidelight W",
-          "Door A \u00b7 x225 grille \u00b7 transom",
-          "Door A \u00b7 x225 leaf E (active)",
-          "Door A \u00b7 x225 leaf W (inactive)",
+          "Door A \u00b7 x226 RO infill",
+          "Door A \u00b7 x226 frame",
+          "Door A \u00b7 x226 glazing",
+          "Door A \u00b7 x226 grille \u00b7 leaf E",
+          "Door A \u00b7 x226 grille \u00b7 leaf W",
+          "Door A \u00b7 x226 grille \u00b7 side transom E",
+          "Door A \u00b7 x226 grille \u00b7 side transom W",
+          "Door A \u00b7 x226 grille \u00b7 sidelight E",
+          "Door A \u00b7 x226 grille \u00b7 sidelight W",
+          "Door A \u00b7 x226 grille \u00b7 transom",
+          "Door A \u00b7 x226 leaf E (active)",
+          "Door A \u00b7 x226 leaf W (inactive)",
           "Door Q",
           "Door Q leaf",
           "Door T leaf",
@@ -18486,7 +19203,7 @@
           "Wall W9.012"
         ],
         "clip": {
-          "Door A \u00b7 x225 frame": [
+          "Door A \u00b7 x226 RO infill": [
             [
               -1.75,
               -0.59
@@ -18500,7 +19217,7 @@
               4.69
             ]
           ],
-          "Door A \u00b7 x225 glazing": [
+          "Door A \u00b7 x226 frame": [
             [
               -1.75,
               -0.59
@@ -18514,7 +19231,7 @@
               4.69
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 leaf E": [
+          "Door A \u00b7 x226 glazing": [
             [
               -1.75,
               -0.59
@@ -18528,7 +19245,7 @@
               4.69
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 leaf W": [
+          "Door A \u00b7 x226 grille \u00b7 leaf E": [
             [
               -1.75,
               -0.59
@@ -18542,7 +19259,7 @@
               4.69
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 side transom E": [
+          "Door A \u00b7 x226 grille \u00b7 leaf W": [
             [
               -1.75,
               -0.59
@@ -18556,7 +19273,7 @@
               4.69
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 side transom W": [
+          "Door A \u00b7 x226 grille \u00b7 side transom E": [
             [
               -1.75,
               -0.59
@@ -18570,7 +19287,7 @@
               4.69
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 sidelight E": [
+          "Door A \u00b7 x226 grille \u00b7 side transom W": [
             [
               -1.75,
               -0.59
@@ -18584,7 +19301,7 @@
               4.69
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 sidelight W": [
+          "Door A \u00b7 x226 grille \u00b7 sidelight E": [
             [
               -1.75,
               -0.59
@@ -18598,7 +19315,7 @@
               4.69
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 transom": [
+          "Door A \u00b7 x226 grille \u00b7 sidelight W": [
             [
               -1.75,
               -0.59
@@ -18612,7 +19329,7 @@
               4.69
             ]
           ],
-          "Door A \u00b7 x225 leaf E (active)": [
+          "Door A \u00b7 x226 grille \u00b7 transom": [
             [
               -1.75,
               -0.59
@@ -18626,7 +19343,21 @@
               4.69
             ]
           ],
-          "Door A \u00b7 x225 leaf W (inactive)": [
+          "Door A \u00b7 x226 leaf E (active)": [
+            [
+              -1.75,
+              -0.59
+            ],
+            [
+              -7.85,
+              -7.25
+            ],
+            [
+              3.37,
+              4.69
+            ]
+          ],
+          "Door A \u00b7 x226 leaf W (inactive)": [
             [
               -1.75,
               -0.59
@@ -18938,11 +19669,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-c631fbbb0f15.glb",
-      "assetHash": "c631fbbb0f1525592c59cc0ba55c73bc42aef03cea9e1a9f57e20d4a5804c8d8",
-      "assetBytes": 2949668,
-      "objectCount": 93,
-      "triangles": 78526,
+      "asset": "laundry-b22ec7fa9e9c.glb",
+      "assetHash": "b22ec7fa9e9c10ef49254ff8f47fbbbc04f8d098e14cc3c8749b608f523406ec",
+      "assetBytes": 3652908,
+      "objectCount": 94,
+      "triangles": 46488,
       "cameras": [
         {
           "id": "room-view",
@@ -19342,6 +20073,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-874dca190472",
+          "name": "Stone \u00b7 Split-face Travertine",
+          "roomId": "laundry",
+          "role": null,
+          "color": "#f6efdf",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-fcae4f5f6398",
           "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "laundry",
@@ -19362,14 +20103,14 @@
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
-          "id": "mat-7db86b2e2af6",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-939301ce1e09",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "laundry",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-b28f82f7add6",
@@ -19839,11 +20580,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-c1df5fc3ef42.glb",
-      "assetHash": "c1df5fc3ef42e8af41f96cffe563c56f390ba3622de60264d190be005c862b76",
-      "assetBytes": 9614368,
+      "asset": "primary-bedroom-ff225cad955f.glb",
+      "assetHash": "ff225cad955f2cdd7723932c66b1e010ffa102f400a53085e82c7f64cb4cf751",
+      "assetBytes": 9529176,
       "objectCount": 264,
-      "triangles": 297744,
+      "triangles": 233380,
       "cameras": [
         {
           "id": "room-view",
@@ -20362,14 +21103,14 @@
           "translation": "Base Color source graph baked in UV space"
         },
         {
-          "id": "mat-68634832b1b7",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-597d5b3adbd2",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "primary-bedroom",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-276bc1efa653",
@@ -20604,11 +21345,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-a97d1422a1a0.glb",
-      "assetHash": "a97d1422a1a053d412ba1db9662d5e2ffcf5fe5e67d9c27255325e8a6a5ceaf9",
-      "assetBytes": 5515056,
+      "asset": "primary-bath-4873a0c0feb4.glb",
+      "assetHash": "4873a0c0feb4126835393eef6f092065ec4ac35a75915e6ef6e697b0eeee1e4c",
+      "assetBytes": 5383116,
       "objectCount": 242,
-      "triangles": 121937,
+      "triangles": 91309,
       "cameras": [
         {
           "id": "room-view",
@@ -21159,14 +21900,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-a461ddc4e626",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-8a9afc3f69cc",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "primary-bath",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-e02c0d9c64c6",
@@ -21259,11 +22000,11 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-0f060e187291.glb",
-      "assetHash": "0f060e18729121e52d47ee2f7b1e5a8d1d7eddfeadf70ada5ae55812c64bd8e7",
-      "assetBytes": 6498600,
+      "asset": "green-bedroom-eab9bf1f2dce.glb",
+      "assetHash": "eab9bf1f2dceb45add02709ba2f70e1af3690c70465a4680cbcb24efc1f7cb73",
+      "assetBytes": 6398524,
       "objectCount": 192,
-      "triangles": 168590,
+      "triangles": 128058,
       "cameras": [
         {
           "id": "room-view",
@@ -21694,14 +22435,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-1abc1464a873",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-fe5367148b87",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "green-bedroom",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-90f5494bff87",
@@ -21842,11 +22583,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Basin detail: L06 Rosa 31.83 cd vanity point; walls on R11 cream, counter not blown (R11 -1.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "green-bath-7e9b6fc102b3.glb",
-      "assetHash": "7e9b6fc102b3ae4d4f25ff36d9f7c331258d1121655ade3546efb77cd9dc5a2e",
-      "assetBytes": 4133632,
-      "objectCount": 114,
-      "triangles": 75772,
+      "asset": "green-bath-0ad8085e243b.glb",
+      "assetHash": "0ad8085e243b60836eea9e5284654de53787e7bc4a36a6384589c821d207e954",
+      "assetBytes": 4019264,
+      "objectCount": 116,
+      "triangles": 62592,
       "cameras": [
         {
           "id": "room-view",
@@ -22032,6 +22773,16 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
+          "id": "mat-08852c82659c",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-76d427a3a362",
           "name": "Stone \u00b7 Sao Paolo (Green Bath)",
           "roomId": "green-bath",
@@ -22072,16 +22823,6 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
         },
         {
-          "id": "mat-08852c82659c",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "green-bath",
-          "role": null,
-          "color": "#ebe8e0",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
           "id": "mat-decacabced17",
           "name": "05 | Metal: Chrome*",
           "roomId": "green-bath",
@@ -22089,6 +22830,16 @@
           "color": "#bfbfbf",
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-4df435239f73",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#1d1d1e",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -22100,16 +22851,6 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
-        },
-        {
-          "id": "mat-f7218975ca80",
-          "name": "Metal \u00b7 Black Frame",
-          "roomId": "green-bath",
-          "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-c1d787eaed5f",
@@ -22272,14 +23013,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-23cd6fdb5f4d",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-522fdb2b45e3",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "green-bath",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-9be89f98d184",
@@ -22637,11 +23378,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-6c7fe7175e8a.glb",
-      "assetHash": "6c7fe7175e8a6deacdc64f9fa701c521d10e2f4165d73534bc59fe0bfc762a94",
-      "assetBytes": 6198584,
+      "asset": "blue-bedroom-a0906f818d1e.glb",
+      "assetHash": "a0906f818d1e1018ba0b2b96c950575906e1a805151395aa1437b1aedcf6751c",
+      "assetBytes": 6115512,
       "objectCount": 174,
-      "triangles": 142960,
+      "triangles": 112380,
       "cameras": [
         {
           "id": "room-view",
@@ -23082,14 +23823,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-1577f919da7b",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-527abe5444f6",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "blue-bedroom",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-4a1310dfe7e1",
@@ -23240,11 +23981,11 @@
       },
       "displayExposureStops": -2.3,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity detail: L07 Rosa 31.83 cd vanity point (R11 -0.35); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "blue-bath-1ff1f6bf7010.glb",
-      "assetHash": "1ff1f6bf701045e62d84c667e80983c957fc478092d6a38b9005140f2e18cf12",
-      "assetBytes": 4578456,
-      "objectCount": 144,
-      "triangles": 76597,
+      "asset": "blue-bath-b81f40ed0872.glb",
+      "assetHash": "b81f40ed08728f5636a4660f2784f97a4fa460fcb2e2af3c23e94cedf3f8cced",
+      "assetBytes": 4474152,
+      "objectCount": 146,
+      "triangles": 63669,
       "cameras": [
         {
           "id": "room-view",
@@ -23490,21 +24231,11 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-4be7542c93ca",
-          "name": "Metal \u00b7 Black Frame",
+          "id": "mat-2e73998f7cb1",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "blue-bath",
           "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-bab6661ac84f",
-          "name": "09 | Color: 07 Gray-Dark*",
-          "roomId": "blue-bath",
-          "role": null,
-          "color": "#2f2f2f",
+          "color": "#1d1d1e",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -23690,14 +24421,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-660c720b9a1d",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-5b4385dc08c5",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "blue-bath",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-45fe4fc3db09",
@@ -24306,11 +25037,11 @@
         ]
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-625c40e6f80d.glb",
-      "assetHash": "625c40e6f80dc2cb1f108b6a21b2de496e1a55a2923c79920c4f876e96f632cb",
-      "assetBytes": 4705968,
+      "asset": "office-west-3f3d2f189603.glb",
+      "assetHash": "3f3d2f1896038c2ae900cd5e01839abdd3d5a903ef488c03c0e58018542dde8f",
+      "assetBytes": 4421356,
       "objectCount": 193,
-      "triangles": 49528,
+      "triangles": 34544,
       "cameras": [
         {
           "id": "room-view",
@@ -24628,14 +25359,14 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
-          "id": "mat-e89079c116c9",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-7845e8415ca5",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "office-west",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-c3b4d07c73ae",
@@ -25254,11 +25985,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-58b27c12dfe3.glb",
-      "assetHash": "58b27c12dfe309145acd3863e36f110970366a3c7e1eec2e84dbc6456fde994b",
-      "assetBytes": 4592348,
+      "asset": "office-east-2887c76278f6.glb",
+      "assetHash": "2887c76278f68a83cfecc37661e8b206db56d4d3e10e98e230395e9e19164ce9",
+      "assetBytes": 4317732,
       "objectCount": 172,
-      "triangles": 41370,
+      "triangles": 30258,
       "cameras": [
         {
           "id": "room-view",
@@ -25566,14 +26297,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-107a7a46d5d6",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-3629c9a2fafb",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "office-east",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-599fd5fbbd7e",
@@ -25685,17 +26416,18 @@
           ]
         ],
         "names": [
-          "Door A \u00b7 x225 frame",
-          "Door A \u00b7 x225 glazing",
-          "Door A \u00b7 x225 grille \u00b7 leaf E",
-          "Door A \u00b7 x225 grille \u00b7 leaf W",
-          "Door A \u00b7 x225 grille \u00b7 side transom E",
-          "Door A \u00b7 x225 grille \u00b7 side transom W",
-          "Door A \u00b7 x225 grille \u00b7 sidelight E",
-          "Door A \u00b7 x225 grille \u00b7 sidelight W",
-          "Door A \u00b7 x225 grille \u00b7 transom",
-          "Door A \u00b7 x225 leaf E (active)",
-          "Door A \u00b7 x225 leaf W (inactive)",
+          "Door A \u00b7 x226 RO infill",
+          "Door A \u00b7 x226 frame",
+          "Door A \u00b7 x226 glazing",
+          "Door A \u00b7 x226 grille \u00b7 leaf E",
+          "Door A \u00b7 x226 grille \u00b7 leaf W",
+          "Door A \u00b7 x226 grille \u00b7 side transom E",
+          "Door A \u00b7 x226 grille \u00b7 side transom W",
+          "Door A \u00b7 x226 grille \u00b7 sidelight E",
+          "Door A \u00b7 x226 grille \u00b7 sidelight W",
+          "Door A \u00b7 x226 grille \u00b7 transom",
+          "Door A \u00b7 x226 leaf E (active)",
+          "Door A \u00b7 x226 leaf W (inactive)",
           "Door G",
           "Door G leaf",
           "Door K",
@@ -25757,7 +26489,7 @@
           "Wall W8.017"
         ],
         "clip": {
-          "Door A \u00b7 x225 frame": [
+          "Door A \u00b7 x226 RO infill": [
             [
               -3.16,
               0.63
@@ -25771,7 +26503,7 @@
               3.38
             ]
           ],
-          "Door A \u00b7 x225 glazing": [
+          "Door A \u00b7 x226 frame": [
             [
               -3.16,
               0.63
@@ -25785,7 +26517,7 @@
               3.38
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 leaf E": [
+          "Door A \u00b7 x226 glazing": [
             [
               -3.16,
               0.63
@@ -25799,7 +26531,7 @@
               3.38
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 leaf W": [
+          "Door A \u00b7 x226 grille \u00b7 leaf E": [
             [
               -3.16,
               0.63
@@ -25813,7 +26545,7 @@
               3.38
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 side transom E": [
+          "Door A \u00b7 x226 grille \u00b7 leaf W": [
             [
               -3.16,
               0.63
@@ -25827,7 +26559,7 @@
               3.38
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 side transom W": [
+          "Door A \u00b7 x226 grille \u00b7 side transom E": [
             [
               -3.16,
               0.63
@@ -25841,7 +26573,7 @@
               3.38
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 sidelight E": [
+          "Door A \u00b7 x226 grille \u00b7 side transom W": [
             [
               -3.16,
               0.63
@@ -25855,7 +26587,7 @@
               3.38
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 sidelight W": [
+          "Door A \u00b7 x226 grille \u00b7 sidelight E": [
             [
               -3.16,
               0.63
@@ -25869,7 +26601,7 @@
               3.38
             ]
           ],
-          "Door A \u00b7 x225 grille \u00b7 transom": [
+          "Door A \u00b7 x226 grille \u00b7 sidelight W": [
             [
               -3.16,
               0.63
@@ -25883,7 +26615,7 @@
               3.38
             ]
           ],
-          "Door A \u00b7 x225 leaf E (active)": [
+          "Door A \u00b7 x226 grille \u00b7 transom": [
             [
               -3.16,
               0.63
@@ -25897,7 +26629,21 @@
               3.38
             ]
           ],
-          "Door A \u00b7 x225 leaf W (inactive)": [
+          "Door A \u00b7 x226 leaf E (active)": [
+            [
+              -3.16,
+              0.63
+            ],
+            [
+              -7.82,
+              -7.2
+            ],
+            [
+              -0.03,
+              3.38
+            ]
+          ],
+          "Door A \u00b7 x226 leaf W (inactive)": [
             [
               -3.16,
               0.63
@@ -26748,11 +27494,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-9ca04266faa6.glb",
-      "assetHash": "9ca04266faa6fc5ce9906ca6d6b1602e860a3a0a1656a3cbe1720317e203e612",
-      "assetBytes": 5967948,
-      "objectCount": 245,
-      "triangles": 136330,
+      "asset": "office-hall-340ccf75d3b0.glb",
+      "assetHash": "340ccf75d3b0f779b11dd9f0bb3654abde449a84ddb49336061f040565072906",
+      "assetBytes": 6185896,
+      "objectCount": 246,
+      "triangles": 118686,
       "cameras": [
         {
           "id": "room-view",
@@ -27055,14 +27801,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-754d0eaef537",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-bddd51d03bdb",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "office-hall",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-8fb84f639416",
@@ -27252,11 +27998,11 @@
         "Loli Closet"
       ],
       "displayExposureStops": -0.15,
-      "asset": "loli-closet-272e847da5d1.glb",
-      "assetHash": "272e847da5d105f8a06c2373c1be510a8e6d96f28c0ab2142c553670c60241ef",
-      "assetBytes": 2435328,
+      "asset": "loli-closet-ad1ff1bf9d1d.glb",
+      "assetHash": "ad1ff1bf9d1de54c243b5f12d7c95d1fb9ce05630fb7fcc694a9443c8aa678c5",
+      "assetBytes": 2287356,
       "objectCount": 113,
-      "triangles": 32610,
+      "triangles": 19178,
       "cameras": [
         {
           "id": "room-view",
@@ -27476,14 +28222,14 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-0e84527a834f",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-4d38ce1c072d",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "loli-closet",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-d40fd894b5aa",
@@ -27636,11 +28382,11 @@
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-761166896a50.glb",
-      "assetHash": "761166896a50244dcf25957e94971c5f5b59a2495d8d9dbc0ce2d03fb19af846",
-      "assetBytes": 3637752,
-      "objectCount": 97,
-      "triangles": 37746,
+      "asset": "primary-loli-closet-cb0d3cc5e25b.glb",
+      "assetHash": "cb0d3cc5e25b8db5175329386b68aa72367d6e5c9f4cd0f63395df2d653a0799",
+      "assetBytes": 3508612,
+      "objectCount": 99,
+      "triangles": 24710,
       "cameras": [
         {
           "id": "room-view",
@@ -27798,21 +28544,11 @@
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
-          "id": "mat-ea9ef2495fa6",
-          "name": "Metal \u00b7 Black Frame",
+          "id": "mat-4b8c27e5a9d5",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "primary-loli-closet",
           "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-f57f4c83d9e6",
-          "name": "09 | Color: 07 Gray-Dark*",
-          "roomId": "primary-loli-closet",
-          "role": null,
-          "color": "#2f2f2f",
+          "color": "#1d1d1e",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -27938,14 +28674,14 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-f59a6104a30a",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-0b7dc65446f7",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "primary-loli-closet",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-c33e8b19934e",
@@ -28098,11 +28834,11 @@
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
-      "asset": "primary-green-closet-f4b39e0222df.glb",
-      "assetHash": "f4b39e0222dfb15d025be0c1102cccf3657d88ba5ae1994fe71a381b4d411295",
-      "assetBytes": 3603492,
-      "objectCount": 85,
-      "triangles": 37197,
+      "asset": "primary-green-closet-7339ae3b62ad.glb",
+      "assetHash": "7339ae3b62ad4878d1ad9d4aef5b729cd6546905524e5a758610c860befe71b1",
+      "assetBytes": 3474376,
+      "objectCount": 87,
+      "triangles": 24161,
       "cameras": [
         {
           "id": "room-view",
@@ -28250,21 +28986,11 @@
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
-          "id": "mat-06f08e87f46e",
-          "name": "Metal \u00b7 Black Frame",
+          "id": "mat-f93e1230df8a",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "primary-green-closet",
           "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-69a84d6ee3d8",
-          "name": "09 | Color: 07 Gray-Dark*",
-          "roomId": "primary-green-closet",
-          "role": null,
-          "color": "#2f2f2f",
+          "color": "#1d1d1e",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -28400,14 +29126,14 @@
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
         },
         {
-          "id": "mat-c7bcd48e3594",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-38afe6c15b55",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "primary-green-closet",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-64b6b2833638",
@@ -28510,11 +29236,11 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-8fe4f3827a35.glb",
-      "assetHash": "8fe4f3827a35dc90d098902054fd38516e0aa552c0562ef97ee37b674f33be6e",
-      "assetBytes": 2483812,
+      "asset": "upstairs-closet-west-0ac49180756e.glb",
+      "assetHash": "0ac49180756e07786b9b97668ef6c250b89fc7012c8fa706b6f8401b9b0dc8ca",
+      "assetBytes": 2337108,
       "objectCount": 69,
-      "triangles": 35484,
+      "triangles": 22052,
       "cameras": [
         {
           "id": "room-view",
@@ -28983,14 +29709,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-81f31234f36c",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-33a10190f4c5",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "upstairs-closet-west",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-cc5838a1f8f8",
@@ -29097,11 +29823,11 @@
         "Dressing 3"
       ],
       "displayExposureStops": -0.55,
-      "asset": "upstairs-closet-east-4062a6bbdb71.glb",
-      "assetHash": "4062a6bbdb71398317be0c0864ff2f0b89cf37ef132b50035cb3531d014b528a",
-      "assetBytes": 2497156,
+      "asset": "upstairs-closet-east-e59b35df4e85.glb",
+      "assetHash": "e59b35df4e8584b85ac25809e37d52d7b0451fe85b8ade37aa5c6f4b8cfe5c86",
+      "assetBytes": 2350228,
       "objectCount": 77,
-      "triangles": 34022,
+      "triangles": 20590,
       "cameras": [
         {
           "id": "room-view",
@@ -29309,14 +30035,14 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-a59c5797bf57",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-b3a54361ffee",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "upstairs-closet-east",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-a686090a4d23",
@@ -29543,7 +30269,7 @@
           "color": "#ffdfaf",
           "intensity": 3.319,
           "angle": 0.72,
-          "status": "lamp 2400 K, 3.319 cd (36 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "status": "lamp 2400 K, 3.319 cd (explicit web_intensity_cd); browser preview, not photometric",
           "daylight": false
         },
         {
@@ -29558,7 +30284,7 @@
           "color": "#ffdfaf",
           "intensity": 3.319,
           "angle": 0.72,
-          "status": "lamp 2400 K, 3.319 cd (36 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "status": "lamp 2400 K, 3.319 cd (explicit web_intensity_cd); browser preview, not photometric",
           "daylight": false
         },
         {
@@ -29573,7 +30299,7 @@
           "color": "#ffdfaf",
           "intensity": 3.319,
           "angle": 0.72,
-          "status": "lamp 2400 K, 3.319 cd (36 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "status": "lamp 2400 K, 3.319 cd (explicit web_intensity_cd); browser preview, not photometric",
           "daylight": false
         },
         {
@@ -30419,7 +31145,8 @@
         "Obj table",
         "Obj ottoman",
         "Obj A6",
-        "Light \u00b7 LC exterior \u00b7 "
+        "Light \u00b7 LC exterior \u00b7 ",
+        "Door A \u00b7 x226 fly screens (Cycles only)"
       ],
       "includeSourceNames": [
         "Light \u00b7 RCP SconceExt 1F 01",
@@ -30502,11 +31229,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-537ca65ee615.glb",
-      "assetHash": "537ca65ee615a182f139b1c9260e18f399f7ed5929ef2c857e49587cbb5e0320",
-      "assetBytes": 21519184,
-      "objectCount": 1363,
-      "triangles": 634637,
+      "asset": "exterior-house-1aaa485c43cf.glb",
+      "assetHash": "1aaa485c43cff16ec6100d719e8f479b28fa4b7032509b771e7929614a185b41",
+      "assetBytes": 21941608,
+      "objectCount": 1399,
+      "triangles": 507724,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -30538,7 +31265,7 @@
           "color": "#ffdfaf",
           "intensity": 3.687,
           "angle": 0.72,
-          "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "status": "lamp 2400 K, 3.687 cd (explicit web_intensity_cd); browser preview, not photometric",
           "daylight": false
         },
         {
@@ -30553,7 +31280,7 @@
           "color": "#ffdfaf",
           "intensity": 3.687,
           "angle": 0.72,
-          "status": "lamp 2400 K, 3.687 cd (40 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "status": "lamp 2400 K, 3.687 cd (explicit web_intensity_cd); browser preview, not photometric",
           "daylight": false
         },
         {
@@ -30568,7 +31295,7 @@
           "color": "#ffdfaf",
           "intensity": 3.941,
           "angle": 0.72,
-          "status": "lamp 2400 K, 3.941 cd (42.75 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "status": "lamp 2400 K, 3.941 cd (explicit web_intensity_cd); browser preview, not photometric",
           "daylight": false
         },
         {
@@ -30583,7 +31310,7 @@
           "color": "#ffdfaf",
           "intensity": 3.941,
           "angle": 0.72,
-          "status": "lamp 2400 K, 3.941 cd (42.75 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "status": "lamp 2400 K, 3.941 cd (explicit web_intensity_cd); browser preview, not photometric",
           "daylight": false
         },
         {
@@ -30598,7 +31325,7 @@
           "color": "#ffdfaf",
           "intensity": 17.515,
           "angle": 0.72,
-          "status": "lamp 2400 K, 17.515 cd (190 W on the 350 W can = 65 cd convention); browser preview, not photometric",
+          "status": "lamp 2400 K, 17.515 cd (explicit web_intensity_cd); browser preview, not photometric",
           "daylight": false
         }
       ],
@@ -30849,6 +31576,26 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-4f419258ab65",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#aabed4",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-74d8a2b96f67",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#c8d1bc",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-4cc93a7c032b",
           "name": "03 | Concrete: Light",
           "roomId": "exterior-house",
@@ -31019,26 +31766,6 @@
           "translation": "Base Color source graph baked in UV space"
         },
         {
-          "id": "mat-73d8665181a8",
-          "name": "Metal \u00b7 Black Frame",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-88311b4d91a0",
-          "name": "09 | Glass: Clear, Fast*",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#f0f3f3",
-          "roughness": 0.019999999552965164,
-          "metallic": 0.0,
-          "translation": "source dielectric/opaque glass parameters"
-        },
-        {
           "id": "mat-d78136f4509e",
           "name": "09 | Color: 08 Black*",
           "roomId": "exterior-house",
@@ -31066,6 +31793,16 @@
           "color": "#2f2f30",
           "roughness": 0.41999998688697815,
           "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-73d8665181a8",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
           "translation": "constant source PBR values"
         },
         {
@@ -31117,6 +31854,16 @@
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-88311b4d91a0",
+          "name": "09 | Glass: Clear, Fast*",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#f0f3f3",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
         },
         {
           "id": "mat-2c2158fbf514",
@@ -31599,14 +32346,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-90dd369c4592",
-          "name": "Fixture \u00b7 Nostalgic Timeless Bronze (h1)",
+          "id": "mat-3129c5814ad4",
+          "name": "Fixture \u00b7 Nostalgic Antique Brass (x228)",
           "roomId": "exterior-house",
           "role": null,
-          "color": "#8b7359",
-          "roughness": 0.41999998688697815,
+          "color": "#b29d84",
+          "roughness": 0.3799999952316284,
           "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-90599f2a76be",
