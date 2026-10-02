@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "64a69f49589f",
+  "sceneVersion": "9cd8ebf22d49",
   "source": {
     "file": "Web.blend",
-    "sha256": "64a69f49589f496e585b5fffec389e5191e494fe477622023074b5a62b4b53d0",
+    "sha256": "9cd8ebf22d49cf1a4db494143c81f6e5cd7de404f5f10f8b5838a97cd5b88a64",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1393,11 +1393,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-bf5f83edf334.glb",
-      "assetHash": "bf5f83edf33402751011ab9691ddc881aa6672e24e629bc1ab1305eda71f0d2a",
-      "assetBytes": 8115676,
+      "asset": "game-room-724e5579cb54.glb",
+      "assetHash": "724e5579cb546740a1ac0ef6fe9963b401167687395310ff1ad8fb985f87ee0e",
+      "assetBytes": 8115988,
       "objectCount": 302,
-      "triangles": 60559,
+      "triangles": 60567,
       "cameras": [
         {
           "id": "room-view",
@@ -6126,11 +6126,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-4024f32d4d5b.glb",
-      "assetHash": "4024f32d4d5b1e42a22428803b6830be15a07ec6913cf85d4b404a753399b6ba",
-      "assetBytes": 10648368,
+      "asset": "family-room-e2c019fb950d.glb",
+      "assetHash": "e2c019fb950d2c6889c163748bff09753699230242172b9a72d7ccff5e94847b",
+      "assetBytes": 10649684,
       "objectCount": 515,
-      "triangles": 179688,
+      "triangles": 179715,
       "cameras": [
         {
           "id": "room-view",
@@ -8325,9 +8325,9 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-9b4891345a5f.glb",
-      "assetHash": "9b4891345a5fd7550d0e392139bc72b7b19b74fc5f9393f1c6969a2b288e65dd",
-      "assetBytes": 9033264,
+      "asset": "dining-room-840a320da432.glb",
+      "assetHash": "840a320da432301ec9ccd1d31b52fc68435e4bfe3eeae872697af40348731603",
+      "assetBytes": 9033256,
       "objectCount": 348,
       "triangles": 133065,
       "cameras": [
@@ -11868,9 +11868,9 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-c4cff4a20f51.glb",
-      "assetHash": "c4cff4a20f51de9ca9d5c365cd1bb9fdfa2153ce8b15cecf207b73c7dac889d6",
-      "assetBytes": 19957676,
+      "asset": "kitchen-a1361ec640d7.glb",
+      "assetHash": "a1361ec640d7b3df0a9b6eb35068c80b1af67aa0b7f2cb69a9a1b4eacecb34ac",
+      "assetBytes": 19957652,
       "objectCount": 672,
       "triangles": 461384,
       "cameras": [
@@ -12874,8 +12874,7 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Powder \u00b7 ",
         "PVanity",
         "PBath",
-        "DEC3650FI",
-        "Door A \u00b7 x226 fly screens (Cycles only)"
+        "DEC3650FI"
       ],
       "cutawayCameraSide": [
         -1,
@@ -15131,11 +15130,11 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-e55848bb3967.glb",
-      "assetHash": "e55848bb396725e8f3381ecc265af6a3041e6f60f63fc57f4fd3991d7c94551a",
-      "assetBytes": 15766636,
-      "objectCount": 722,
-      "triangles": 395566,
+      "asset": "entry-36e1d11b8deb.glb",
+      "assetHash": "36e1d11b8deb10b1ddbd79e2bacf0f8342845a9453a8e2a98f4d10b6add04743",
+      "assetBytes": 15762888,
+      "objectCount": 720,
+      "triangles": 395538,
       "cameras": [
         {
           "id": "room-view",
@@ -16321,9 +16320,9 @@
       ],
       "displayExposureStops": -3.0,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, From doorway: L05 Andree 31.83 cd vanity point; -3.0 is the judged-band floor (R11 displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "powder-room-eeae693f08bf.glb",
-      "assetHash": "eeae693f08bf1fcf8d409d2d728bf31ba74ea261feb1ecf6169a95fac8e33318",
-      "assetBytes": 3828408,
+      "asset": "powder-room-4f1335aa44f9.glb",
+      "assetHash": "4f1335aa44f97c974fc5cbb317ba8faa35044751b31cfa5ac97b0b1210fdc9ad",
+      "assetBytes": 3828388,
       "objectCount": 160,
       "triangles": 46562,
       "cameras": [
@@ -16779,9 +16778,9 @@
       ],
       "displayExposureStops": -1.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view: L13 Bundt 1800 K 23.87 cd replaces a 35 cd J-box (R11 metered -2.0, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "pantry-79906b2f6ab8.glb",
-      "assetHash": "79906b2f6ab8570dcea3a9079ce089cbdddaa913ca2b18a2cca16c01ce1b9fbb",
-      "assetBytes": 3654972,
+      "asset": "pantry-2c01e2542a91.glb",
+      "assetHash": "2c01e2542a91b4872b739450a2ff8b08481f839607488ee799c4859be50d5c03",
+      "assetBytes": 3654980,
       "objectCount": 115,
       "triangles": 30830,
       "cameras": [
@@ -17255,9 +17254,9 @@
       ],
       "displayExposureStops": -2.4,
       "displayExposureJudged": "d1 2026-09-28: by eye at Room view (backlit racks no longer wash the room; cabinets read oak)",
-      "asset": "wine-cellar-036c8c40be95.glb",
-      "assetHash": "036c8c40be95692021971e43e815729976ea36aa12e19a88861c830e90f5ec21",
-      "assetBytes": 7378752,
+      "asset": "wine-cellar-2e4c3931d8b9.glb",
+      "assetHash": "2e4c3931d8b9a61cb563f53cd32d0850635c63131f10076a2154363c266867c1",
+      "assetBytes": 7378756,
       "objectCount": 88,
       "triangles": 71829,
       "cameras": [
@@ -17829,9 +17828,9 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-7f87771e323f.glb",
-      "assetHash": "7f87771e323fe0de7003bf007654c64ba4cb2526afebdc92c64a114ba8199450",
-      "assetBytes": 7769676,
+      "asset": "loli-bedroom-b867ec6c2b73.glb",
+      "assetHash": "b867ec6c2b73a4f6dd04fc0efc33f50e915554ba7ab685b1392a9baa4f362d8c",
+      "assetBytes": 7769684,
       "objectCount": 238,
       "triangles": 162315,
       "cameras": [
@@ -18538,9 +18537,9 @@
       ],
       "displayExposureStops": -2.1,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: L04 Florena 13.43 cd vanity point; shower marble still reads (R11 d1 -1.5); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "loli-bathroom-6a36c5026c7f.glb",
-      "assetHash": "6a36c5026c7fd4e09c6589dfa05bdd5f66d541ccec9257680d75640b6df65273",
-      "assetBytes": 4434644,
+      "asset": "loli-bathroom-f1c56b43f1e7.glb",
+      "assetHash": "f1c56b43f1e7b1597ca9f732fdb0137bd5a458a11eddd7e64ffcffd660bc03ea",
+      "assetBytes": 4434624,
       "objectCount": 133,
       "triangles": 44159,
       "cameras": [
@@ -19669,11 +19668,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-b22ec7fa9e9c.glb",
-      "assetHash": "b22ec7fa9e9c10ef49254ff8f47fbbbc04f8d098e14cc3c8749b608f523406ec",
-      "assetBytes": 3652908,
-      "objectCount": 94,
-      "triangles": 46488,
+      "asset": "laundry-21f4d9235489.glb",
+      "assetHash": "21f4d92354896d97044ad3d427a1cc76664aed9982a40f77378550c8a6246c41",
+      "assetBytes": 3593520,
+      "objectCount": 96,
+      "triangles": 45718,
       "cameras": [
         {
           "id": "room-view",
@@ -19813,6 +19812,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-665954b1db46",
+          "name": "Stucco \u00b7 Eggshell",
+          "roomId": "laundry",
+          "role": null,
+          "color": "#ece2cc",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-c95dd7beed56",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "laundry",
@@ -19823,31 +19832,11 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-722b64eb2aaf",
-          "name": "09 | Color: 07 Gray-Dark*",
+          "id": "mat-fcae4f5f6398",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "laundry",
           "role": null,
-          "color": "#2f2f2f",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-7b4ab413ff47",
-          "name": "Metal \u00b7 Black Frame",
-          "roomId": "laundry",
-          "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-dbd95347f2df",
-          "name": "09 | Color: 08 Black*",
-          "roomId": "laundry",
-          "role": null,
-          "color": "#272727",
+          "color": "#1d1d1e",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -19923,6 +19912,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-7b4ab413ff47",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "laundry",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-0ab196953130",
           "name": "09 | Color: 01 Ceiling White",
           "roomId": "laundry",
@@ -19941,16 +19940,6 @@
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-665954b1db46",
-          "name": "Stucco \u00b7 Eggshell",
-          "roomId": "laundry",
-          "role": null,
-          "color": "#ece2cc",
-          "roughness": 0.800000011920929,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-46dd816d17a6",
@@ -20081,16 +20070,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-fcae4f5f6398",
-          "name": "Iron \u00b7 Black wrought satin (x225)",
-          "roomId": "laundry",
-          "role": null,
-          "color": "#1d1d1e",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-db41f4f520fc",
@@ -20580,11 +20559,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-ff225cad955f.glb",
-      "assetHash": "ff225cad955f2cdd7723932c66b1e010ffa102f400a53085e82c7f64cb4cf751",
-      "assetBytes": 9529176,
-      "objectCount": 264,
-      "triangles": 233380,
+      "asset": "primary-bedroom-d4c042ad1584.glb",
+      "assetHash": "d4c042ad1584e15efac3bd3f3d688e67002cd368345df4ae41434490684dae89",
+      "assetBytes": 9464864,
+      "objectCount": 267,
+      "triangles": 232502,
       "cameras": [
         {
           "id": "room-view",
@@ -20783,6 +20762,16 @@
           "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-855930f3a8e1",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-560148f52fde",
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "primary-bedroom",
@@ -20803,31 +20792,21 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-855930f3a8e1",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "id": "mat-840ecdf03cd2",
+          "name": "09 | Glass-Blue/Ice",
           "roomId": "primary-bedroom",
           "role": null,
-          "color": "#ebe8e0",
-          "roughness": 0.6499999761581421,
+          "color": "#f8fbfa",
+          "roughness": 0.029999999329447746,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+          "translation": "source dielectric/opaque glass parameters"
         },
         {
-          "id": "mat-e4164edaae09",
-          "name": "09 | Color: 07 Gray-Dark*",
+          "id": "mat-c977b040fb19",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "primary-bedroom",
           "role": null,
-          "color": "#2f2f2f",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-1b0d24226489",
-          "name": "09 | Color: 08 Black*",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#272727",
+          "color": "#1d1d1e",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -20843,26 +20822,6 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
-          "id": "mat-c867382604bf",
-          "name": "Metal \u00b7 Black Frame",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-840ecdf03cd2",
-          "name": "09 | Glass-Blue/Ice",
-          "roomId": "primary-bedroom",
-          "role": null,
-          "color": "#f8fbfa",
-          "roughness": 0.029999999329447746,
-          "metallic": 0.0,
-          "translation": "source dielectric/opaque glass parameters"
-        },
-        {
           "id": "mat-a15a1e1278ad",
           "name": "09 | Color: 01 Ceiling White",
           "roomId": "primary-bedroom",
@@ -20870,6 +20829,26 @@
           "color": "#f3f3f3",
           "roughness": 0.5,
           "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e4164edaae09",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-c867382604bf",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
           "translation": "constant source PBR values"
         },
         {
@@ -20938,6 +20917,16 @@
           "roomId": "primary-bedroom",
           "role": null,
           "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1b0d24226489",
+          "name": "09 | Color: 08 Black*",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#272727",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -21345,11 +21334,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-4873a0c0feb4.glb",
-      "assetHash": "4873a0c0feb4126835393eef6f092065ec4ac35a75915e6ef6e697b0eeee1e4c",
-      "assetBytes": 5383116,
+      "asset": "primary-bath-876f8ca7249c.glb",
+      "assetHash": "876f8ca7249c4e3a0f3d3e6fd01651dda96a8f76eb5b20b85e1835b279847567",
+      "assetBytes": 5384760,
       "objectCount": 242,
-      "triangles": 91309,
+      "triangles": 91358,
       "cameras": [
         {
           "id": "room-view",
@@ -22000,9 +21989,9 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-eab9bf1f2dce.glb",
-      "assetHash": "eab9bf1f2dceb45add02709ba2f70e1af3690c70465a4680cbcb24efc1f7cb73",
-      "assetBytes": 6398524,
+      "asset": "green-bedroom-5485bed25ab1.glb",
+      "assetHash": "5485bed25ab118a0b1d39bf77c3ab7a520307670705481a7488682fffd93bea4",
+      "assetBytes": 6398532,
       "objectCount": 192,
       "triangles": 128058,
       "cameras": [
@@ -22583,11 +22572,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Basin detail: L06 Rosa 31.83 cd vanity point; walls on R11 cream, counter not blown (R11 -1.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "green-bath-0ad8085e243b.glb",
-      "assetHash": "0ad8085e243b60836eea9e5284654de53787e7bc4a36a6384589c821d207e954",
-      "assetBytes": 4019264,
+      "asset": "green-bath-838545168084.glb",
+      "assetHash": "838545168084e5555b138b5e5d4e6392be7c03c5f2bdb59d8bb6981b38689bd8",
+      "assetBytes": 4019696,
       "objectCount": 116,
-      "triangles": 62592,
+      "triangles": 62612,
       "cameras": [
         {
           "id": "room-view",
@@ -23378,9 +23367,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-a0906f818d1e.glb",
-      "assetHash": "a0906f818d1e1018ba0b2b96c950575906e1a805151395aa1437b1aedcf6751c",
-      "assetBytes": 6115512,
+      "asset": "blue-bedroom-bb3511032eab.glb",
+      "assetHash": "bb3511032eabef751bd9d101d32631f401708636a89d31bf9507c2f777f015ce",
+      "assetBytes": 6115520,
       "objectCount": 174,
       "triangles": 112380,
       "cameras": [
@@ -23981,9 +23970,9 @@
       },
       "displayExposureStops": -2.3,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity detail: L07 Rosa 31.83 cd vanity point (R11 -0.35); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "blue-bath-b81f40ed0872.glb",
-      "assetHash": "b81f40ed08728f5636a4660f2784f97a4fa460fcb2e2af3c23e94cedf3f8cced",
-      "assetBytes": 4474152,
+      "asset": "blue-bath-498e1d8b94af.glb",
+      "assetHash": "498e1d8b94af01ea3fef7b237024c85914a22529280567fd64f1998eeac21007",
+      "assetBytes": 4474168,
       "objectCount": 146,
       "triangles": 63669,
       "cameras": [
@@ -25037,9 +25026,9 @@
         ]
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-3f3d2f189603.glb",
-      "assetHash": "3f3d2f1896038c2ae900cd5e01839abdd3d5a903ef488c03c0e58018542dde8f",
-      "assetBytes": 4421356,
+      "asset": "office-west-51eae04412e8.glb",
+      "assetHash": "51eae04412e831cda1a8b107acdfa329ff6b7115ed41e04e980c8c45f4a92228",
+      "assetBytes": 4421364,
       "objectCount": 193,
       "triangles": 34544,
       "cameras": [
@@ -25985,9 +25974,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-2887c76278f6.glb",
-      "assetHash": "2887c76278f68a83cfecc37661e8b206db56d4d3e10e98e230395e9e19164ce9",
-      "assetBytes": 4317732,
+      "asset": "office-east-9eb1306ca45a.glb",
+      "assetHash": "9eb1306ca45ae85945a4f7b2d662e246c5100cce1ace2eff75c988a38a80c934",
+      "assetBytes": 4317740,
       "objectCount": 172,
       "triangles": 30258,
       "cameras": [
@@ -27494,9 +27483,9 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-340ccf75d3b0.glb",
-      "assetHash": "340ccf75d3b0f779b11dd9f0bb3654abde449a84ddb49336061f040565072906",
-      "assetBytes": 6185896,
+      "asset": "office-hall-0a0709ee8a01.glb",
+      "assetHash": "0a0709ee8a0102ac16899d0979658ad6c7ecda28095d5a89d4fd5df08ee8a9c8",
+      "assetBytes": 6185904,
       "objectCount": 246,
       "triangles": 118686,
       "cameras": [
@@ -27998,8 +27987,8 @@
         "Loli Closet"
       ],
       "displayExposureStops": -0.15,
-      "asset": "loli-closet-ad1ff1bf9d1d.glb",
-      "assetHash": "ad1ff1bf9d1de54c243b5f12d7c95d1fb9ce05630fb7fcc694a9443c8aa678c5",
+      "asset": "loli-closet-e19e0e161a09.glb",
+      "assetHash": "e19e0e161a099f326bdd5a6dd4730e3b7fdda6fd80a15d5337a83bb91cd7473f",
       "assetBytes": 2287356,
       "objectCount": 113,
       "triangles": 19178,
@@ -28382,9 +28371,9 @@
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-cb0d3cc5e25b.glb",
-      "assetHash": "cb0d3cc5e25b8db5175329386b68aa72367d6e5c9f4cd0f63395df2d653a0799",
-      "assetBytes": 3508612,
+      "asset": "primary-loli-closet-b00531338a0e.glb",
+      "assetHash": "b00531338a0e8603bd62d7f2c07063279201fce53bb1a5770c700943cf39e2ac",
+      "assetBytes": 3508608,
       "objectCount": 99,
       "triangles": 24710,
       "cameras": [
@@ -28834,9 +28823,9 @@
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
-      "asset": "primary-green-closet-7339ae3b62ad.glb",
-      "assetHash": "7339ae3b62ad4878d1ad9d4aef5b729cd6546905524e5a758610c860befe71b1",
-      "assetBytes": 3474376,
+      "asset": "primary-green-closet-81d0770b8743.glb",
+      "assetHash": "81d0770b87437b5e3a595faad9b06f14a3596b0b6cdf90946fcdb0e25e6b6dcc",
+      "assetBytes": 3474372,
       "objectCount": 87,
       "triangles": 24161,
       "cameras": [
@@ -29236,8 +29225,8 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-0ac49180756e.glb",
-      "assetHash": "0ac49180756e07786b9b97668ef6c250b89fc7012c8fa706b6f8401b9b0dc8ca",
+      "asset": "upstairs-closet-west-4851568432d7.glb",
+      "assetHash": "4851568432d7a8f4010b4e348488155f685761d678b76b8ff56555773cf368d9",
       "assetBytes": 2337108,
       "objectCount": 69,
       "triangles": 22052,
@@ -29823,8 +29812,8 @@
         "Dressing 3"
       ],
       "displayExposureStops": -0.55,
-      "asset": "upstairs-closet-east-e59b35df4e85.glb",
-      "assetHash": "e59b35df4e8584b85ac25809e37d52d7b0451fe85b8ade37aa5c6f4b8cfe5c86",
+      "asset": "upstairs-closet-east-037a027f5441.glb",
+      "assetHash": "037a027f54411f429a17822310bc6784e42bd059e2fb0fc0d8d5cfa74adea0cf",
       "assetBytes": 2350228,
       "objectCount": 77,
       "triangles": 20590,
@@ -30176,11 +30165,11 @@
         }
       ],
       "cutawayKeepBelow": 1.3,
-      "asset": "rear-deck-2f96c492fa87.glb",
-      "assetHash": "2f96c492fa87f33c90030ef9cb41e35262c420b89209dcd9b1f0dddd597f1b0f",
-      "assetBytes": 2140500,
-      "objectCount": 107,
-      "triangles": 18551,
+      "asset": "rear-deck-63edfb447704.glb",
+      "assetHash": "63edfb4477049840e152ad03d937afa9a8acaeee112a193e58832479676afd0c",
+      "assetBytes": 2077528,
+      "objectCount": 109,
+      "triangles": 17673,
       "cameras": [
         {
           "id": "room-view",
@@ -30485,31 +30474,31 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-1d367635283d",
-          "name": "09 | Color: 07 Gray-Dark*",
+          "id": "mat-b2691095dee6",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "rear-deck",
           "role": null,
-          "color": "#2f2f2f",
+          "color": "#1d1d1e",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-6ce04c1f4609",
-          "name": "Metal \u00b7 Black Frame",
+          "id": "mat-a53ad4c5d140",
+          "name": "09 | Color: 01 Ceiling White",
           "roomId": "rear-deck",
           "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-7ac3a47e2ba9",
-          "name": "09 | Color: 08 Black*",
+          "id": "mat-1d367635283d",
+          "name": "09 | Color: 07 Gray-Dark*",
           "roomId": "rear-deck",
           "role": null,
-          "color": "#272727",
+          "color": "#2f2f2f",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -30523,16 +30512,6 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
-        },
-        {
-          "id": "mat-a53ad4c5d140",
-          "name": "09 | Color: 01 Ceiling White",
-          "roomId": "rear-deck",
-          "role": null,
-          "color": "#f3f3f3",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-aa287e2dbccd",
@@ -30582,6 +30561,16 @@
           "color": "#d7d3d9",
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6ce04c1f4609",
+          "name": "Metal \u00b7 Black Frame",
+          "roomId": "rear-deck",
+          "role": null,
+          "color": "#212122",
+          "roughness": 0.4000000059604645,
+          "metallic": 0.30000001192092896,
           "translation": "constant source PBR values"
         },
         {
@@ -30775,11 +30764,11 @@
       ],
       "menuDescription": "Covered balcony above the offices",
       "cutawayOff": true,
-      "asset": "front-balcony-b795aa288fb2.glb",
-      "assetHash": "b795aa288fb2bdff24b9061a7c8fc13eb769e69b1b7d290a1fa6a61a64bdf518",
-      "assetBytes": 3260060,
-      "objectCount": 151,
-      "triangles": 15420,
+      "asset": "front-balcony-a9b98e16d244.glb",
+      "assetHash": "a9b98e16d24436b54121554893ccbe0e6ab435b874fd876c3c56b4ed0cdbd2d2",
+      "assetBytes": 3150976,
+      "objectCount": 154,
+      "triangles": 14107,
       "cameras": [
         {
           "id": "room-view",
@@ -30915,16 +30904,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-a7a6c01bf2f1",
-          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
-          "roomId": "front-balcony",
-          "role": null,
-          "color": "#c8b49a",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
-        },
-        {
           "id": "mat-e48bf444ba74",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "front-balcony",
@@ -30933,6 +30912,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-a7a6c01bf2f1",
+          "name": "Floor \u00b7 AquaProof Spring Hills LVP",
+          "roomId": "front-balcony",
+          "role": null,
+          "color": "#c8b49a",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
           "id": "mat-019d6beaf0ed",
@@ -30955,21 +30944,11 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-cf9a56cb50ac",
-          "name": "09 | Color: 07 Gray-Dark*",
+          "id": "mat-b654ded63f31",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "front-balcony",
           "role": null,
-          "color": "#2f2f2f",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-78a8c2165da5",
-          "name": "09 | Color: 08 Black*",
-          "roomId": "front-balcony",
-          "role": null,
-          "color": "#272727",
+          "color": "#1d1d1e",
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -30985,13 +30964,13 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
-          "id": "mat-68d33b499d60",
-          "name": "Metal \u00b7 Black Frame",
+          "id": "mat-cf9a56cb50ac",
+          "name": "09 | Color: 07 Gray-Dark*",
           "roomId": "front-balcony",
           "role": null,
-          "color": "#212122",
-          "roughness": 0.4000000059604645,
-          "metallic": 0.30000001192092896,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -31145,8 +31124,7 @@
         "Obj table",
         "Obj ottoman",
         "Obj A6",
-        "Light \u00b7 LC exterior \u00b7 ",
-        "Door A \u00b7 x226 fly screens (Cycles only)"
+        "Light \u00b7 LC exterior \u00b7 "
       ],
       "includeSourceNames": [
         "Light \u00b7 RCP SconceExt 1F 01",
@@ -31229,11 +31207,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-1aaa485c43cf.glb",
-      "assetHash": "1aaa485c43cff16ec6100d719e8f479b28fa4b7032509b771e7929614a185b41",
-      "assetBytes": 21941608,
-      "objectCount": 1399,
-      "triangles": 507724,
+      "asset": "exterior-house-8278ba463644.glb",
+      "assetHash": "8278ba4636443f5749773bdd51c183ff6fd4c0accfdd872374527282d318acfb",
+      "assetBytes": 21719468,
+      "objectCount": 1403,
+      "triangles": 504991,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -31772,16 +31750,6 @@
           "role": null,
           "color": "#272727",
           "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-b943e42d08e0",
-          "name": "04 | B Running Bond WHITE vertical",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#939492",
-          "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
