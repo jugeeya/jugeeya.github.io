@@ -30499,11 +30499,14 @@
       ],
       "boundaryStatus": "Model exterior of the RELEASED house and its front yard to the curb, not a drawing and not a survey. The backyard shown with it is the provisional approximate reconstruction from the Backyard section, labelled as such.",
       "description": "The complete house exterior in one continuous model: roof, facade assemblies, windows, doors, balconies, the roof deck, the front lanterns and the whole front yard to the street.",
-      "asset": "exterior-house-69367c274d27.glb",
-      "assetHash": "69367c274d277aac94ad73f41a13106f5c44ec2db88651d5abf10de9e2fc1325",
-      "assetBytes": 22073692,
-      "objectCount": 1535,
-      "triangles": 966237,
+      "variantDefaultOnly": [
+        "door-hardware"
+      ],
+      "asset": "exterior-house-537ca65ee615.glb",
+      "assetHash": "537ca65ee615a182f139b1c9260e18f399f7ed5929ef2c857e49587cbb5e0320",
+      "assetBytes": 21519184,
+      "objectCount": 1363,
+      "triangles": 634637,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -31614,20 +31617,7 @@
           "roughness": 0.6000000238418579,
           "metallic": 0.30000001192092896,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
-        },
-        {
-          "id": "mat-dc4c327bc9f4",
-          "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#796350",
-          "roughness": 0.4399999976158142,
-          "metallic": 0.75,
-          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
-      ],
-      "variants": [
-        "door-hardware"
       ]
     }
   ],
