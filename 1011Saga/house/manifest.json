@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "9cd8ebf22d49",
+  "sceneVersion": "db46b0eeb66d",
   "source": {
     "file": "Web.blend",
-    "sha256": "9cd8ebf22d49cf1a4db494143c81f6e5cd7de404f5f10f8b5838a97cd5b88a64",
+    "sha256": "db46b0eeb66dab5b7390339278aa26b25a0730a411dd17a90757986534ad9079",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1366,7 +1366,7 @@
         {
           "bounds": [
             [
-              -5.31,
+              -5.326,
               -4.83
             ],
             [
@@ -1379,7 +1379,7 @@
             ]
           ],
           "finishRoom": "family-room",
-          "reason": "k2 2026-09-30: the Game Room box (x <= -4.835) reaches past its real east edge into the Family Room's passage to it: the north wall face from Door E's casing (x -5.30) to the Family box, with its boiserie, chair rail and baseboard (source paint White Veil), exported in the Game Room's uniform Dusty Blue and seen from the Family Room (Garden doors) as a blue return seamed to the Family cream at x -4.835; skipFacing -x keeps the Game Room's own east wall/header face (x -4.897, facing into the Game Room) in the Game Room's paint (first export painted it cream: plates/after-first-export)",
+          "reason": "k2 2026-09-30: the Game Room box (x <= -4.835) reaches past its real east edge into the Family Room's passage to it: the north wall face from Door E's casing (x -5.30) to the Family box, with its boiserie, chair rail and baseboard (source paint White Veil), exported in the Game Room's uniform Dusty Blue and seen from the Family Room (Garden doors) as a blue return seamed to the Family cream at x -4.835; skipFacing -x keeps the Game Room's own east wall/header face (x -4.897, facing into the Game Room) in the Game Room's paint (first export painted it cream: plates/after-first-export); p1 2026-10-02: west edge -5.31 -> -5.326, Door E's casing's own east edge in Release 19 (x226 rebuilt it to x -7.362..-5.32633; rv13's -5.303 was Release 13's): the whole casing stays Game trim and the wall from the casing to the Family box is the Family's cream, so the Family Room Garden doors view sees only the casing's real edge, not the 16 mm Game-blue wall strip the old -5.31 edge left beside it (-5.30 would have widened it to 26 mm; Reviews/2026-10-02/polish/family-sliver)",
           "skipFacing": [
             [
               -1,
@@ -1393,9 +1393,9 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-724e5579cb54.glb",
-      "assetHash": "724e5579cb546740a1ac0ef6fe9963b401167687395310ff1ad8fb985f87ee0e",
-      "assetBytes": 8115988,
+      "asset": "game-room-1dea38458514.glb",
+      "assetHash": "1dea3845851467461446b5c7bb86effe43e4656051de1ce5761aa4392b38f7a0",
+      "assetBytes": 8116132,
       "objectCount": 302,
       "triangles": 60567,
       "cameras": [
@@ -1491,8 +1491,8 @@
           "intensity": 79.57731,
           "runMetres": 3.241995,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "game-room-e8a288851244eb3c-light",
@@ -1508,8 +1508,8 @@
           "intensity": 79.57731,
           "runMetres": 3.241995,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "game-room-ee221446bb9c387b-light",
@@ -1525,8 +1525,8 @@
           "intensity": 79.57731,
           "runMetres": 3.241995,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "game-room-f5d54f216797ab0c-light",
@@ -1542,8 +1542,8 @@
           "intensity": 79.57731,
           "runMetres": 3.241995,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "game-room-4942fdebca2f962e-light",
@@ -1559,8 +1559,8 @@
           "intensity": 79.57731,
           "runMetres": 3.241995,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "game-room-e9e3e799c45e3026",
@@ -6126,11 +6126,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-e2c019fb950d.glb",
-      "assetHash": "e2c019fb950d2c6889c163748bff09753699230242172b9a72d7ccff5e94847b",
-      "assetBytes": 10649684,
-      "objectCount": 515,
-      "triangles": 179715,
+      "asset": "family-room-2a15d9ecb7fd.glb",
+      "assetHash": "2a15d9ecb7fd3b8a175e57fff82440d351353619ff0609d8f06b88fe30a84ed4",
+      "assetBytes": 10624028,
+      "objectCount": 506,
+      "triangles": 179451,
       "cameras": [
         {
           "id": "room-view",
@@ -11861,18 +11861,18 @@
       "indirectGain": 0.7,
       "contextRoomLights": {
         "wine-cellar": {
-          "maxLights": 2,
-          "gain": 3,
-          "reason": "k1 2026-09-30: three.js lights are global, so the cellar's 11 unshadowed points shaded every Kitchen fragment and doubled its frame time (Reviews/2026-09-29/m1f1-review); its two ceiling lights at 3x keep the racks lit through W3.028's glass (review option D1)"
+          "maxLights": 4,
+          "gain": 2.5,
+          "reason": "k1 2026-09-30: three.js lights are global, so the cellar's 11 unshadowed points shaded every Kitchen fragment and doubled its frame time (Reviews/2026-09-29/m1f1-review); its two ceiling lights at 3x keep the racks lit through W3.028's glass (review option D1). p1 2026-10-02: 4 at 2.5x (adds the north counter's two rack lights, z 1.93 / 1.48): the lower racks read lit from the Kitchen's Reverse view in Evening (lower cellar mean luminance +0.65 stop, upper +0.25 stop, clipped pixels 2.0% -> 2.6%) for two more neighbour lights; swept 2x5, 3x3, 4x2.5, 4x3, 5x2, 6x2 (Reviews/2026-10-02/polish/kitchen-cellar)"
         }
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-a1361ec640d7.glb",
-      "assetHash": "a1361ec640d7b3df0a9b6eb35068c80b1af67aa0b7f2cb69a9a1b4eacecb34ac",
-      "assetBytes": 19957652,
-      "objectCount": 672,
-      "triangles": 461384,
+      "asset": "kitchen-bc8e9b8f531c.glb",
+      "assetHash": "bc8e9b8f531c9773895c08b280f7e3777b8acce57147740583c1fee3e4c01827",
+      "assetBytes": 19953256,
+      "objectCount": 670,
+      "triangles": 461348,
       "cameras": [
         {
           "id": "room-view",
@@ -15130,11 +15130,11 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-36e1d11b8deb.glb",
-      "assetHash": "36e1d11b8deb10b1ddbd79e2bacf0f8342845a9453a8e2a98f4d10b6add04743",
-      "assetBytes": 15762888,
-      "objectCount": 720,
-      "triangles": 395538,
+      "asset": "entry-7fd22f106a2a.glb",
+      "assetHash": "7fd22f106a2a4a8d936199ec2c3e2514ac5ce42c4546bb2c17c790eccbfac38a",
+      "assetBytes": 15758132,
+      "objectCount": 718,
+      "triangles": 395498,
       "cameras": [
         {
           "id": "room-view",
@@ -17254,11 +17254,11 @@
       ],
       "displayExposureStops": -2.4,
       "displayExposureJudged": "d1 2026-09-28: by eye at Room view (backlit racks no longer wash the room; cabinets read oak)",
-      "asset": "wine-cellar-2e4c3931d8b9.glb",
-      "assetHash": "2e4c3931d8b9a61cb563f53cd32d0850635c63131f10076a2154363c266867c1",
-      "assetBytes": 7378756,
-      "objectCount": 88,
-      "triangles": 71829,
+      "asset": "wine-cellar-0802d3dc30ce.glb",
+      "assetHash": "0802d3dc30ce57997f029ff60e1a22aa5b4491e11ac8897abc05c5642f12ae39",
+      "assetBytes": 7370732,
+      "objectCount": 85,
+      "triangles": 71757,
       "cameras": [
         {
           "id": "room-view",
@@ -19668,11 +19668,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-21f4d9235489.glb",
-      "assetHash": "21f4d92354896d97044ad3d427a1cc76664aed9982a40f77378550c8a6246c41",
-      "assetBytes": 3593520,
-      "objectCount": 96,
-      "triangles": 45718,
+      "asset": "laundry-f7f4c5c5a3fb.glb",
+      "assetHash": "f7f4c5c5a3fbd7d45d76c7a5a1a1d5df972a0ee3c7e47eeb3f940d2d733691e8",
+      "assetBytes": 3596544,
+      "objectCount": 98,
+      "triangles": 45740,
       "cameras": [
         {
           "id": "room-view",
@@ -19728,8 +19728,8 @@
           "intensity": 63.661977,
           "runMetres": 0.769,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "laundry-35d214a33796d7df",
@@ -19778,7 +19778,7 @@
       "finishDefaults": {
         "walls": "#efe8d7",
         "trim": "#efe8d7",
-        "ceiling": "#f3f3f3"
+        "ceiling": "#edbb85"
       },
       "materials": [
         {
@@ -19978,16 +19978,6 @@
           "role": "ceiling",
           "color": "#edbb85",
           "roughness": 0.44999998807907104,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-b330371ee0c7",
-          "name": "09 | Color: 01 Ceiling White",
-          "roomId": "laundry",
-          "role": "ceiling",
-          "color": "#f3f3f3",
-          "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -20559,11 +20549,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-d4c042ad1584.glb",
-      "assetHash": "d4c042ad1584e15efac3bd3f3d688e67002cd368345df4ae41434490684dae89",
-      "assetBytes": 9464864,
-      "objectCount": 267,
-      "triangles": 232502,
+      "asset": "primary-bedroom-55954e21c19a.glb",
+      "assetHash": "55954e21c19a2c2839fdbcb6c06c760e284945866a37cfc61e981fa4cefd5f6d",
+      "assetBytes": 9443908,
+      "objectCount": 258,
+      "triangles": 232312,
       "cameras": [
         {
           "id": "room-view",
@@ -21334,11 +21324,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-876f8ca7249c.glb",
-      "assetHash": "876f8ca7249c4e3a0f3d3e6fd01651dda96a8f76eb5b20b85e1835b279847567",
-      "assetBytes": 5384760,
-      "objectCount": 242,
-      "triangles": 91358,
+      "asset": "primary-bath-41be0e01788c.glb",
+      "assetHash": "41be0e01788c324fb4243d0e8b3125a922134a4f6d3f8b49111314ae6127f248",
+      "assetBytes": 5376148,
+      "objectCount": 238,
+      "triangles": 91290,
       "cameras": [
         {
           "id": "room-view",
@@ -28823,11 +28813,11 @@
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
-      "asset": "primary-green-closet-81d0770b8743.glb",
-      "assetHash": "81d0770b87437b5e3a595faad9b06f14a3596b0b6cdf90946fcdb0e25e6b6dcc",
-      "assetBytes": 3474372,
-      "objectCount": 87,
-      "triangles": 24161,
+      "asset": "primary-green-closet-43440d3f55c3.glb",
+      "assetHash": "43440d3f55c39329a32ed26cd7e1655fe289a430f918706908c02aa011f4cc42",
+      "assetBytes": 3467116,
+      "objectCount": 86,
+      "triangles": 24069,
       "cameras": [
         {
           "id": "room-view",
@@ -29225,8 +29215,8 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-4851568432d7.glb",
-      "assetHash": "4851568432d7a8f4010b4e348488155f685761d678b76b8ff56555773cf368d9",
+      "asset": "upstairs-closet-west-45bc5b2f4f5d.glb",
+      "assetHash": "45bc5b2f4f5d6b10ffe007b6657c5d35fac0551bba6969a1cb9a6b354c40b364",
       "assetBytes": 2337108,
       "objectCount": 69,
       "triangles": 22052,
@@ -29339,8 +29329,8 @@
           "intensity": 63.661977,
           "runMetres": 0.360681,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "upstairs-closet-west-d93be089c420e2e8-light",
@@ -29356,8 +29346,8 @@
           "intensity": 63.661977,
           "runMetres": 0.82042,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "upstairs-closet-west-532c71a4f393238d-light",
@@ -29373,8 +29363,8 @@
           "intensity": 63.661977,
           "runMetres": 0.66802,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "upstairs-closet-west-532c71a4f393238d-light-2",
@@ -29390,8 +29380,8 @@
           "intensity": 63.661977,
           "runMetres": 0.66802,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "upstairs-closet-west-532c71a4f393238d-light-3",
@@ -29407,8 +29397,8 @@
           "intensity": 63.661977,
           "runMetres": 0.66802,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "upstairs-closet-west-9806068215966fab-light",
@@ -29424,8 +29414,8 @@
           "intensity": 63.661977,
           "runMetres": 0.56642,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "upstairs-closet-west-b7597e58001ae9cd-light",
@@ -29441,8 +29431,8 @@
           "intensity": 63.661977,
           "runMetres": 0.46482,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "upstairs-closet-west-7eb8be435795d165-light",
@@ -29458,8 +29448,8 @@
           "intensity": 63.661977,
           "runMetres": 0.576325,
           "fluxPerMetre": 4,
-          "color": "#ffcf91",
-          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware"
+          "color": "#ffe8c6",
+          "status": "x200 thin LED strip at the shelf front, constant output per metre (viewer units); unselected hardware, rated 2700 K (p1)"
         },
         {
           "id": "upstairs-closet-west-758ea5f8bbb8c93e",
@@ -30165,11 +30155,11 @@
         }
       ],
       "cutawayKeepBelow": 1.3,
-      "asset": "rear-deck-63edfb447704.glb",
-      "assetHash": "63edfb4477049840e152ad03d937afa9a8acaeee112a193e58832479676afd0c",
-      "assetBytes": 2077528,
-      "objectCount": 109,
-      "triangles": 17673,
+      "asset": "rear-deck-f518f721cfca.glb",
+      "assetHash": "f518f721cfca0a6c7b99e60b9f689c4e394e8eaa0c760247ae205d64309fb645",
+      "assetBytes": 2081820,
+      "objectCount": 111,
+      "triangles": 17705,
       "cameras": [
         {
           "id": "room-view",
@@ -31148,8 +31138,32 @@
         "Obj Object-35.009",
         "Obj Object-35.010",
         "Obj Object-35.011",
-        "Slab concrete slab.033"
+        "Slab concrete slab.033",
+        "Obj table.013"
       ],
+      "yardLayerSources": {
+        "prefixes": [
+          "Lantern \u00b7 L12 Capital 9725BK \u00b7 Barbecue stair pier ",
+          "Lantern \u00b7 L12 Capital 9725BK \u00b7 Middle stair pier ",
+          "Pier mount \u00b7 L12 acc 1008160 \u00b7 Barbecue stair pier ",
+          "Pier mount \u00b7 L12 acc 1008160 \u00b7 Middle stair pier "
+        ],
+        "bounds": [
+          [
+            -17.4,
+            14.5
+          ],
+          [
+            11,
+            23
+          ],
+          [
+            -0.9,
+            9
+          ]
+        ],
+        "reason": "p1 2026-10-02: the four backyard L12 pier lanterns (barbecue stair E1 east/west, middle stair M1 east/west) and their pier mounts stand on the backyard reconstruction's piers, north of this box (y 13.7-15.8 > 11), so the Exterior orbit showed the yard's piers bare. Exported whole in this asset with node extra yardLayer; the Exterior shows them only with House and yard and leaves them out of the house fit. The yard GLB carries BY3 meshes only, so nothing is exported twice."
+      },
       "applyExclusionsToLights": true,
       "bounds": [
         [
@@ -31207,11 +31221,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-8278ba463644.glb",
-      "assetHash": "8278ba4636443f5749773bdd51c183ff6fd4c0accfdd872374527282d318acfb",
-      "assetBytes": 21719468,
-      "objectCount": 1403,
-      "triangles": 504991,
+      "asset": "exterior-house-906c5e723b28.glb",
+      "assetHash": "906c5e723b28f800ff23d9c6efbde8a52ea45270188caf6dc0870290785520e5",
+      "assetBytes": 22073612,
+      "objectCount": 1426,
+      "triangles": 510647,
       "cameras": [
         {
           "id": "exterior-overview",
