@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "d1e402ae9c9d",
+  "sceneVersion": "2865254db0dc",
   "source": {
     "file": "Web.blend",
-    "sha256": "d1e402ae9c9d607403d1d49ba82cd8faa4b246e97eaa565b170d0a9144b55fcb",
+    "sha256": "2865254db0dcd2e09bcaa9fa632eef0f0388ca05ac398fdf815f2251f6defc4b",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -15200,8 +15200,8 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-198997fe6eac.glb",
-      "assetHash": "198997fe6eac76da99b1231fa8776c25a54da86388b91af0d2a404cd1423ab0a",
+      "asset": "entry-77eaaffb82da.glb",
+      "assetHash": "77eaaffb82daec478aaaa26f55a07e04cfe17ea03a1e2d118643fa2dff5a1e5f",
       "assetBytes": 16799660,
       "objectCount": 718,
       "triangles": 395713,
@@ -17898,11 +17898,11 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-b2ef938313cd.glb",
-      "assetHash": "b2ef938313cdea434971fe3aa76081e22433d77f01a0ec38fde7170c600277d3",
-      "assetBytes": 8067796,
-      "objectCount": 238,
-      "triangles": 162315,
+      "asset": "loli-bedroom-382c684182ec.glb",
+      "assetHash": "382c684182ec0f32cdb81b6674cd72e40cdf6e2cf97b854877cae449a2e55780",
+      "assetBytes": 7768488,
+      "objectCount": 237,
+      "triangles": 162312,
       "cameras": [
         {
           "id": "room-view",
@@ -18239,16 +18239,6 @@
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-7d7a9f24d33d",
-          "name": "x246 \u00b7 Planting \u00b7 ground cover leaf cards",
-          "roomId": "loli-bedroom",
-          "role": null,
-          "color": "#425f32",
-          "roughness": 0.6200000047683716,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; source UV opacity mask preserved"
         },
         {
           "id": "mat-909bbe9978a8",
@@ -19748,9 +19738,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-a6eae9bd2f66.glb",
-      "assetHash": "a6eae9bd2f66c43d88c918366e707f7912af17a71413c3d6d99ee07804594338",
-      "assetBytes": 3594992,
+      "asset": "laundry-3398ed36cbda.glb",
+      "assetHash": "3398ed36cbdab11f540b3ea493761415cd530fe1d23f3bcc20366c8eafcad8f4",
+      "assetBytes": 3595076,
       "objectCount": 97,
       "triangles": 45728,
       "cameras": [
@@ -24610,7 +24600,7 @@
             -2.55
           ],
           [
-            -0.1,
+            -0.16,
             3.76
           ]
         ],
@@ -24647,7 +24637,9 @@
           "Window surround 02 [Window 02]",
           "x134 \u00b7 Riser \u00b7 Entry A \u00b7 U02",
           "x134 \u00b7 Riser \u00b7 Entry A \u00b7 U03",
-          "x134 \u00b7 Tread \u00b7 Entry A \u00b7 U02"
+          "x134 \u00b7 Tread \u00b7 Entry A \u00b7 U02",
+          "x247 \u00b7 Front \u00b7 Court plinth (hall wall base course)",
+          "x247 \u00b7 Front \u00b7 Pavers \u00b7 fountain court"
         ],
         "clip": {
           "Arabesque railing panel Obj Object-36.003": [
@@ -25111,6 +25103,34 @@
               1.45,
               2.27
             ]
+          ],
+          "x247 \u00b7 Front \u00b7 Pavers \u00b7 fountain court": [
+            [
+              2.83,
+              4.83
+            ],
+            [
+              -8.76,
+              -7.646
+            ],
+            [
+              -0.16,
+              0.23
+            ]
+          ],
+          "x247 \u00b7 Front \u00b7 Court plinth (hall wall base course)": [
+            [
+              2.83,
+              4.83
+            ],
+            [
+              -8.76,
+              -7.64
+            ],
+            [
+              -0.16,
+              0.23
+            ]
           ]
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10]",
@@ -25123,14 +25143,15 @@
           "x134 \u00b7 Riser \u00b7 Entry A \u00b7 U02",
           "x134 \u00b7 Riser \u00b7 Entry A \u00b7 U03",
           "x134 \u00b7 Tread \u00b7 Entry A \u00b7 U02"
-        ]
+        ],
+        "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-51eae04412e8.glb",
-      "assetHash": "51eae04412e831cda1a8b107acdfa329ff6b7115ed41e04e980c8c45f4a92228",
-      "assetBytes": 4421364,
-      "objectCount": 193,
-      "triangles": 34544,
+      "asset": "office-west-cfc9de999974.glb",
+      "assetHash": "cfc9de9999742e99ca3a951e851335ae613907c0996490c66dae316d99f05332",
+      "assetBytes": 5334816,
+      "objectCount": 194,
+      "triangles": 34546,
       "cameras": [
         {
           "id": "room-view",
@@ -25508,14 +25529,34 @@
           "translation": "source UV opacity mask preserved"
         },
         {
-          "id": "mat-9380db0f9f6a",
-          "name": "32 | Landscape: Earth*",
+          "id": "mat-30f534f56145",
+          "name": "Paver \u00b7 Grey Field",
           "roomId": "office-west",
           "role": null,
-          "color": "#94684b",
-          "roughness": 0.8500000238418579,
+          "color": "#a09784",
+          "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-635bec1c643e",
+          "name": "Paver \u00b7 Buff Soldier",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#c4b599",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-013ce484cad9",
+          "name": "x247 \u00b7 Front \u00b7 Cast stone",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.7799999713897705,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         }
       ],
       "variants": [
@@ -25598,7 +25639,7 @@
             -2.55
           ],
           [
-            -0.1,
+            -0.16,
             3.3
           ]
         ],
@@ -25633,7 +25674,9 @@
           "Wall W1.008",
           "Wall W1.033",
           "Window surround 02 [Window 02]",
-          "Window surround 03 [Window 03]"
+          "Window surround 03 [Window 03]",
+          "x247 \u00b7 Front \u00b7 Court plinth (hall wall base course)",
+          "x247 \u00b7 Front \u00b7 Pavers \u00b7 fountain court"
         ],
         "clip": {
           "Arch frame 02": [
@@ -26069,16 +26112,45 @@
               -0.1,
               0.44
             ]
+          ],
+          "x247 \u00b7 Front \u00b7 Pavers \u00b7 fountain court": [
+            [
+              3.68,
+              6.47
+            ],
+            [
+              -8.77,
+              -7.646
+            ],
+            [
+              -0.16,
+              0.23
+            ]
+          ],
+          "x247 \u00b7 Front \u00b7 Court plinth (hall wall base course)": [
+            [
+              3.68,
+              6.47
+            ],
+            [
+              -8.77,
+              -7.64
+            ],
+            [
+              -0.16,
+              0.23
+            ]
           ]
         },
-        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]"
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]",
+        "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-a1b38682670c.glb",
-      "assetHash": "a1b38682670cbbbf77556a4e7e17e9a5af1d49eebcd72199a237d7fd81419c91",
-      "assetBytes": 4317640,
-      "objectCount": 172,
-      "triangles": 30258,
+      "asset": "office-east-c396a9689af7.glb",
+      "assetHash": "c396a9689af7091cacb2a9dc064bb29d050eec78ad14ac04bf65be66ac7f24f6",
+      "assetBytes": 5231120,
+      "objectCount": 173,
+      "triangles": 30262,
       "cameras": [
         {
           "id": "room-view",
@@ -26376,14 +26448,34 @@
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
         },
         {
-          "id": "mat-09db392b44c0",
-          "name": "32 | Landscape: Earth*",
+          "id": "mat-0d2a4a609e82",
+          "name": "Paver \u00b7 Grey Field",
           "roomId": "office-east",
           "role": null,
-          "color": "#94684b",
-          "roughness": 0.8500000238418579,
+          "color": "#a09784",
+          "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-4ae3a4e1c8fb",
+          "name": "Paver \u00b7 Buff Soldier",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#c4b599",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-cd8cab3f0847",
+          "name": "x247 \u00b7 Front \u00b7 Cast stone",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.7799999713897705,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-3629c9a2fafb",
@@ -31341,11 +31433,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-693f7e13bee1.glb",
-      "assetHash": "693f7e13bee140baed612ea7eac9a010392ff7d02486a1582daa315416842ede",
-      "assetBytes": 22784092,
-      "objectCount": 1444,
-      "triangles": 517905,
+      "asset": "exterior-house-c20f54159828.glb",
+      "assetHash": "c20f54159828363bf6134620ffaf4498ff65c932f1326aa4bc736a8217a32ad1",
+      "assetBytes": 22377056,
+      "objectCount": 1426,
+      "triangles": 521351,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -31608,16 +31700,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-48a1fddad6be",
-          "name": "04 | Stonework: Ledgerstone copy",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#c4bfb8",
-          "roughness": 0.8500000238418579,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-233e692913c4",
           "name": "09 | Tile: 6\" x 6\" White Tile Staggered",
           "roomId": "exterior-house",
@@ -31666,6 +31748,16 @@
           "roughness": 0.05000000074505806,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-48a1fddad6be",
+          "name": "04 | Stonework: Ledgerstone copy",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#c4bfb8",
+          "roughness": 0.8500000238418579,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-62f9e58eda3f",
@@ -31768,26 +31860,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-54117031d702",
-          "name": "09 | Color: 07 Gray-Dark*",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#2f2f2f",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-35daa970254b",
-          "name": "32 | Landscape: Leaves, Tree*",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#274f27",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-1fd6c694dc00",
           "name": "Rug \u00b7 Natural Woven",
           "roomId": "exterior-house",
@@ -31796,16 +31868,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-e87102406760",
-          "name": "09 | Tile: 9\" Tan Terracotta",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#cdc6ba",
-          "roughness": 0.15000000596046448,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-7dd36b017306",
@@ -31834,6 +31896,36 @@
           "role": null,
           "color": "#f1eee5",
           "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-35daa970254b",
+          "name": "32 | Landscape: Leaves, Tree*",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#274f27",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e87102406760",
+          "name": "09 | Tile: 9\" Tan Terracotta",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#cdc6ba",
+          "roughness": 0.15000000596046448,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-54117031d702",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -31986,26 +32078,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-7725cf1f8415",
-          "name": "x246 \u00b7 Planting \u00b7 ground cover leaf cards",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#425f32",
-          "roughness": 0.6200000047683716,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; source UV opacity mask preserved"
-        },
-        {
-          "id": "mat-08fa2d4a5197",
-          "name": "Stamm_Bush3_GWL.gsm",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#998066",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-3c52153d511e",
@@ -32308,16 +32380,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-4a4c40565e16",
-          "name": "32 | Landscape: Water Moving",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#273c4f",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-efdfeea941bf",
           "name": "32 | Landscape: Earth*",
           "roomId": "exterior-house",
@@ -32536,6 +32598,66 @@
           "roughness": 0.23999999463558197,
           "metallic": 1.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-8c78a937d1d3",
+          "name": "x247 \u00b7 Front \u00b7 Cast stone",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.7799999713897705,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-324601d21e6f",
+          "name": "x247 \u00b7 Front \u00b7 Fountain water",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#243435",
+          "roughness": 0.029999999329447746,
+          "metallic": 0.0,
+          "translation": "source tangent normal and strength"
+        },
+        {
+          "id": "mat-14a2ff4ebf33",
+          "name": "x247 \u00b7 Front \u00b7 Boxwood clipped",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.6200000047683716,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-6c4196900469",
+          "name": "x247 \u00b7 Front \u00b7 Italian cypress",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.699999988079071,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-6cf5f107e7d4",
+          "name": "BY3 . Bark . Trunk",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#403931",
+          "roughness": 0.9200000166893005,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-58f52c08e822",
+          "name": "x247 \u00b7 Front \u00b7 Hydrangea and magnolia cards",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source UV opacity mask preserved"
         }
       ]
     }
