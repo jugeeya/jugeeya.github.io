@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "3e6e6bf8072b",
+  "sceneVersion": "d1e402ae9c9d",
   "source": {
     "file": "Web.blend",
-    "sha256": "3e6e6bf8072b318d34bf353fbd33bcee63d8c593e3b7b06523ff8042f7dba231",
+    "sha256": "d1e402ae9c9d607403d1d49ba82cd8faa4b246e97eaa565b170d0a9144b55fcb",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -15200,11 +15200,11 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-4e84f25aa2b4.glb",
-      "assetHash": "4e84f25aa2b44105b64c754c73fb5bac8d507c4e6a6dbda90c0ff38d72c82f1b",
-      "assetBytes": 16518308,
+      "asset": "entry-198997fe6eac.glb",
+      "assetHash": "198997fe6eac76da99b1231fa8776c25a54da86388b91af0d2a404cd1423ab0a",
+      "assetBytes": 16799660,
       "objectCount": 718,
-      "triangles": 395716,
+      "triangles": 395713,
       "cameras": [
         {
           "id": "room-view",
@@ -15865,14 +15865,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-e1eda9e72ebd",
-          "name": "blattwerk",
+          "id": "mat-22a7bfb6912c",
+          "name": "x246 \u00b7 Planting \u00b7 balcony ivy leaf cards",
           "roomId": "entry",
           "role": null,
-          "color": "#54a854",
-          "roughness": 0.550000011920929,
+          "color": "#38522d",
+          "roughness": 0.44999998807907104,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source UV opacity mask preserved"
         },
         {
           "id": "mat-72c1adc39bc0",
@@ -17898,9 +17898,9 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-2bb6bd410b0d.glb",
-      "assetHash": "2bb6bd410b0da4b45b26f6e7a2fc83c1b48051e7c1d02336eac10022dbc96f72",
-      "assetBytes": 7769792,
+      "asset": "loli-bedroom-b2ef938313cd.glb",
+      "assetHash": "b2ef938313cdea434971fe3aa76081e22433d77f01a0ec38fde7170c600277d3",
+      "assetBytes": 8067796,
       "objectCount": 238,
       "triangles": 162315,
       "cameras": [
@@ -18241,14 +18241,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-b312c83f5ecd",
-          "name": "blattwerk",
+          "id": "mat-7d7a9f24d33d",
+          "name": "x246 \u00b7 Planting \u00b7 ground cover leaf cards",
           "roomId": "loli-bedroom",
           "role": null,
-          "color": "#54a854",
-          "roughness": 0.550000011920929,
+          "color": "#425f32",
+          "roughness": 0.6200000047683716,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source UV opacity mask preserved"
         },
         {
           "id": "mat-909bbe9978a8",
@@ -31341,9 +31341,9 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-a9dff69fcccd.glb",
-      "assetHash": "a9dff69fcccda54176b5d9d53deb9f3c92bdc7e7c58c6354e068a1a24d121caf",
-      "assetBytes": 22358068,
+      "asset": "exterior-house-693f7e13bee1.glb",
+      "assetHash": "693f7e13bee140baed612ea7eac9a010392ff7d02486a1582daa315416842ede",
+      "assetBytes": 22784092,
       "objectCount": 1444,
       "triangles": 517905,
       "cameras": [
@@ -31988,14 +31988,14 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-7aca2c29d916",
-          "name": "blattwerk",
+          "id": "mat-7725cf1f8415",
+          "name": "x246 \u00b7 Planting \u00b7 ground cover leaf cards",
           "roomId": "exterior-house",
           "role": null,
-          "color": "#54a854",
-          "roughness": 0.550000011920929,
+          "color": "#425f32",
+          "roughness": 0.6200000047683716,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source UV opacity mask preserved"
         },
         {
           "id": "mat-08fa2d4a5197",
