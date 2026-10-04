@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "6daef2ffdeaf",
+  "sceneVersion": "74813935a10e",
   "source": {
     "file": "Web.blend",
-    "sha256": "6daef2ffdeaf2abb4273c0c205e743c44d335e5f24f240bf16f5f056390f3ae6",
+    "sha256": "74813935a10ec5685f01e89d9c940f54881522e282eb1259c9f9e995041e61e1",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -6151,9 +6151,9 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-71ef81b24676.glb",
-      "assetHash": "71ef81b24676aedf4bd415560756fb315a941196ba483588a2a63899a379d359",
-      "assetBytes": 10519808,
+      "asset": "family-room-01f80464bf34.glb",
+      "assetHash": "01f80464bf34c57b76d6bff9d40efee439fcf122b38e336d89880cafc997ac2e",
+      "assetBytes": 10520804,
       "objectCount": 507,
       "triangles": 179667,
       "cameras": [
@@ -6990,6 +6990,16 @@
           "role": null,
           "color": "#555555",
           "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-e17ab9a9db4f",
+          "name": "Roofing \u00b7 RF 4 Black membrane (A1.05)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#2e2e30",
+          "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -15190,8 +15200,8 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-31adcd2062e7.glb",
-      "assetHash": "31adcd2062e7fb54d9b38bae713b2f46d3c6a0e01e575fc9477541a4397db80b",
+      "asset": "entry-efa0d96f808c.glb",
+      "assetHash": "efa0d96f808c62a76e4a496ccc8780e98c9a23ebeb52a109bee27784d3a1aabb",
       "assetBytes": 15775796,
       "objectCount": 718,
       "triangles": 395716,
@@ -19718,9 +19728,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-b06fe6ca0420.glb",
-      "assetHash": "b06fe6ca042027c4306d6e4a124270d14580fd44d40764a633443aa1b363589b",
-      "assetBytes": 3594972,
+      "asset": "laundry-c1572cb7c8a6.glb",
+      "assetHash": "c1572cb7c8a6966c025306dcc1867c77e0f72a354792a0e21ea308e97e4c4a7f",
+      "assetBytes": 3594976,
       "objectCount": 97,
       "triangles": 45728,
       "cameras": [
@@ -30205,11 +30215,11 @@
         }
       ],
       "cutawayKeepBelow": 1.3,
-      "asset": "rear-deck-5357882406b3.glb",
-      "assetHash": "5357882406b340157a0f7a06f686b639133902ebc9039e85dd9ec961f7b24939",
-      "assetBytes": 2218500,
+      "asset": "rear-deck-784d4c582652.glb",
+      "assetHash": "784d4c582652feae9ed59275c31ca7ec95a13d1cea9fe54a3c032c812b433440",
+      "assetBytes": 2222096,
       "objectCount": 113,
-      "triangles": 19881,
+      "triangles": 20023,
       "cameras": [
         {
           "id": "room-view",
@@ -30336,7 +30346,7 @@
           "group": "rear-deck:lanterns",
           "type": "point",
           "position": [
-            -9.2,
+            -9.760036,
             6.241925,
             -7.897518
           ],
@@ -30351,7 +30361,7 @@
           "group": "rear-deck:lanterns",
           "type": "point",
           "position": [
-            -5.6,
+            -4.829591,
             6.241925,
             -7.897517
           ],
@@ -30366,7 +30376,7 @@
           "group": "rear-deck:lanterns",
           "type": "point",
           "position": [
-            -2.0,
+            0.100855,
             6.241925,
             -7.897516
           ],
@@ -31281,11 +31291,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-20a630863220.glb",
-      "assetHash": "20a6308632206b6507b88a9f9c02c28781e5cba1a19516657fc17cfa666c3e1f",
-      "assetBytes": 22231484,
-      "objectCount": 1422,
-      "triangles": 515523,
+      "asset": "exterior-house-5c2be19c4daa.glb",
+      "assetHash": "5c2be19c4daa2fe6b8d26bbd0b324d43f81e9d9c6c1087ac90cec21d3869258a",
+      "assetBytes": 22332992,
+      "objectCount": 1432,
+      "triangles": 517641,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -32108,6 +32118,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-2c05796ecba4",
+          "name": "Metal \u00b7 Kynar Medium Dark Bronze",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#4b3e32",
+          "roughness": 0.550000011920929,
+          "metallic": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-62a29447350c",
           "name": "Railing \u00b7 Black Iron",
           "roomId": "exterior-house",
@@ -32148,16 +32168,6 @@
           "translation": "source UV opacity mask preserved"
         },
         {
-          "id": "mat-2c05796ecba4",
-          "name": "Metal \u00b7 Kynar Medium Dark Bronze",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#4b3e32",
-          "roughness": 0.550000011920929,
-          "metallic": 0.30000001192092896,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-24886af56247",
           "name": "Metal \u00b7 Gutter, stucco match (A1.05)",
           "roomId": "exterior-house",
@@ -32194,6 +32204,16 @@
           "role": null,
           "color": "#555555",
           "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3a648f9eb93c",
+          "name": "Roofing \u00b7 RF 4 Black membrane (A1.05)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#2e2e30",
+          "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
