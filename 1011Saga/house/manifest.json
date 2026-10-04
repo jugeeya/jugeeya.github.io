@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "63e64a1b989c",
+  "sceneVersion": "6daef2ffdeaf",
   "source": {
     "file": "Web.blend",
-    "sha256": "63e64a1b989c2537f69a4446b83876148baf4c13058e275dfedb7b3661de2765",
+    "sha256": "6daef2ffdeaf2abb4273c0c205e743c44d335e5f24f240bf16f5f056390f3ae6",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1393,9 +1393,9 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-b500b99ba7bf.glb",
-      "assetHash": "b500b99ba7bfc8d58e37f819cb83e82ff18ec0a22e17c144d2cc648671d276a2",
-      "assetBytes": 8097772,
+      "asset": "game-room-07cb7bbfe501.glb",
+      "assetHash": "07cb7bbfe501dd28270f47d95e69994cf725dbe0b89ef5ff762980478e696b06",
+      "assetBytes": 8098012,
       "objectCount": 302,
       "triangles": 60567,
       "cameras": [
@@ -2492,7 +2492,7 @@
           ],
           [
             -0.03,
-            7.26
+            8.0
           ]
         ],
         "names": [
@@ -2663,6 +2663,7 @@
           "Part Plywood Sheathing (W7).002",
           "Part Rubber (C02).001",
           "Part Siding (W7).002",
+          "Part Skylight Well Liner (C02) \u00b7 x242",
           "Part Wood Flooring (concrete slab)",
           "Part Wood Framing (Roof).016",
           "Part Wood Framing (Roof).018",
@@ -5032,8 +5033,8 @@
               -2.82
             ],
             [
-              6.26,
-              6.87
+              7.187,
+              7.797
             ]
           ],
           "Part Plywood Sheathing (W7).002": [
@@ -5060,8 +5061,8 @@
               -4.92
             ],
             [
-              6.28,
-              6.88
+              7.207,
+              7.807
             ]
           ],
           "Part Siding (W7).002": [
@@ -5200,8 +5201,8 @@
               -5.28
             ],
             [
-              6.31,
-              6.92
+              7.237,
+              7.847
             ]
           ],
           "Slab concrete slab.008": [
@@ -6041,7 +6042,7 @@
             ],
             [
               6.31,
-              7.26
+              8.0
             ]
           ],
           "Window surround 10 [Window 10]": [
@@ -6127,20 +6128,34 @@
               -0.03,
               3.55
             ]
+          ],
+          "Part Skylight Well Liner (C02) \u00b7 x242": [
+            [
+              -2.1,
+              -0.33
+            ],
+            [
+              -5.67,
+              -3.9
+            ],
+            [
+              6.5,
+              7.55
+            ]
           ]
         },
-        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3"
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3; x242 2026-10-03: the oculus rose 0.927 m with the roof deck - the raised deck rims' clips +0.927, the skylight's and the bounds' top to z 8.00, the new well liner added"
       },
       "indirectGain": 0.6,
       "roleOverrides": {
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-d0fa608a50b2.glb",
-      "assetHash": "d0fa608a50b2c56a0aebca3d56bf741a81fcbadf90b8003f5a9a173839882338",
-      "assetBytes": 10508068,
-      "objectCount": 506,
-      "triangles": 179451,
+      "asset": "family-room-71ef81b24676.glb",
+      "assetHash": "71ef81b24676aedf4bd415560756fb315a941196ba483588a2a63899a379d359",
+      "assetBytes": 10519808,
+      "objectCount": 507,
+      "triangles": 179667,
       "cameras": [
         {
           "id": "room-view",
@@ -6816,6 +6831,16 @@
           "color": "#272729",
           "roughness": 0.44999998807907104,
           "metallic": 0.6000000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-9aef0011f437",
+          "name": "Metal \u00b7 Gutter, stucco match (A1.05)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#e4dbc5",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -8335,9 +8360,9 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-4aa586bd731b.glb",
-      "assetHash": "4aa586bd731b395b2654317c97c67ab1b549dff775da3d8a60c407f13e5b5c52",
-      "assetBytes": 9015416,
+      "asset": "dining-room-80c2347452a2.glb",
+      "assetHash": "80c2347452a249f098192183a464ee699f6695d1072efa59414e01a6351e0b8d",
+      "assetBytes": 9015900,
       "objectCount": 348,
       "triangles": 133065,
       "cameras": [
@@ -13069,7 +13094,7 @@
           ],
           [
             -0.03,
-            7.57
+            8.0
           ]
         ],
         "names": [
@@ -13160,6 +13185,7 @@
           "Part Gypsum Board (concrete slab).003",
           "Part Plywood Sheathing (C02).001",
           "Part Rubber (C02).001",
+          "Part Skylight Well Liner (C02) \u00b7 x242",
           "Part Wood Flooring (concrete slab)",
           "Part Wood Framing (Roof).018",
           "Part Wood Framing + Insulation (C02).001",
@@ -14413,8 +14439,8 @@
               -3.44
             ],
             [
-              5.96,
-              7.17
+              6.887,
+              8.097
             ]
           ],
           "Part Rubber (C02).001": [
@@ -14427,8 +14453,8 @@
               -3.42
             ],
             [
-              5.98,
-              7.18
+              6.907,
+              8.107
             ]
           ],
           "Part Wood Flooring (concrete slab)": [
@@ -15142,19 +15168,33 @@
             ],
             [
               6.05,
-              7.57
+              8.0
+            ]
+          ],
+          "Part Skylight Well Liner (C02) \u00b7 x242": [
+            [
+              -2.1,
+              -0.33
+            ],
+            [
+              -5.67,
+              -3.9
+            ],
+            [
+              6.5,
+              7.55
             ]
           ]
         },
-        "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py."
+        "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py.; x242 2026-10-03: the oculus rose 0.927 m with the roof deck - the raised deck rims' clips +0.927, the skylight's and the bounds' top to z 8.00, the new well liner added"
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-5d8864693d4b.glb",
-      "assetHash": "5d8864693d4b4dc7fd27a5f63bb94b4899536fd6532c3c29a061292f7be76882",
-      "assetBytes": 15765724,
+      "asset": "entry-31adcd2062e7.glb",
+      "assetHash": "31adcd2062e7fb54d9b38bae713b2f46d3c6a0e01e575fc9477541a4397db80b",
+      "assetBytes": 15775796,
       "objectCount": 718,
-      "triangles": 395498,
+      "triangles": 395716,
       "cameras": [
         {
           "id": "room-view",
@@ -15873,16 +15913,6 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
-        },
-        {
-          "id": "mat-239caf5f56d1",
-          "name": "07 | Stucco: White*",
-          "roomId": "entry",
-          "role": "ceiling",
-          "color": "#d4d3d0",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-d3728a7fb1c9",
@@ -19688,11 +19718,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-14833f3440d9.glb",
-      "assetHash": "14833f3440d96f00766c1ce110eda2175b3dbe87ff06f3f9dbdf3571c43d0fbe",
-      "assetBytes": 3598076,
-      "objectCount": 98,
-      "triangles": 45740,
+      "asset": "laundry-b06fe6ca0420.glb",
+      "assetHash": "b06fe6ca042027c4306d6e4a124270d14580fd44d40764a633443aa1b363589b",
+      "assetBytes": 3594972,
+      "objectCount": 97,
+      "triangles": 45728,
       "cameras": [
         {
           "id": "room-view",
@@ -19977,16 +20007,6 @@
           "roomId": "laundry",
           "role": "ceiling",
           "color": "#efe8d7",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-fe6a464c0b00",
-          "name": "07 | Stucco: White*",
-          "roomId": "laundry",
-          "role": "ceiling",
-          "color": "#d4d3d0",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -30185,9 +30205,9 @@
         }
       ],
       "cutawayKeepBelow": 1.3,
-      "asset": "rear-deck-e1c1b58ea63d.glb",
-      "assetHash": "e1c1b58ea63db480db0e414c392b6c9d16c2da56e7c97774fcb0fe4fd0e32a30",
-      "assetBytes": 2220452,
+      "asset": "rear-deck-5357882406b3.glb",
+      "assetHash": "5357882406b340157a0f7a06f686b639133902ebc9039e85dd9ec961f7b24939",
+      "assetBytes": 2218500,
       "objectCount": 113,
       "triangles": 19881,
       "cameras": [
@@ -30574,13 +30594,13 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-1192f6c6156f",
-          "name": "09 | Paint-07 Gray",
+          "id": "mat-b9bf915880d6",
+          "name": "Metal \u00b7 Kynar Medium Dark Bronze",
           "roomId": "rear-deck",
           "role": null,
-          "color": "#5b5b5b",
-          "roughness": 0.5,
-          "metallic": 0.0,
+          "color": "#4b3e32",
+          "roughness": 0.550000011920929,
+          "metallic": 0.30000001192092896,
           "translation": "constant source PBR values"
         },
         {
@@ -30794,9 +30814,9 @@
       ],
       "menuDescription": "Covered balcony above the offices",
       "cutawayOff": true,
-      "asset": "front-balcony-fb188d73ae3b.glb",
-      "assetHash": "fb188d73ae3b505f8cbfe49df15a6d09622aea3e1e363300cfb76351795f4feb",
-      "assetBytes": 3036400,
+      "asset": "front-balcony-c4dfa42fc206.glb",
+      "assetHash": "c4dfa42fc20632f0cf5ccca00fa2e62a293b6b1dbf2577c21ed1aa7b131167b8",
+      "assetBytes": 3036196,
       "objectCount": 153,
       "triangles": 13019,
       "cameras": [
@@ -31261,11 +31281,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-bd79cf749dba.glb",
-      "assetHash": "bd79cf749dba8a837914b2964080ea360a6665538587cb30a8c87083275eaf98",
-      "assetBytes": 22117272,
-      "objectCount": 1426,
-      "triangles": 510799,
+      "asset": "exterior-house-20a630863220.glb",
+      "assetHash": "20a6308632206b6507b88a9f9c02c28781e5cba1a19516657fc17cfa666c3e1f",
+      "assetBytes": 22231484,
+      "objectCount": 1422,
+      "triangles": 515523,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -32128,33 +32148,33 @@
           "translation": "source UV opacity mask preserved"
         },
         {
-          "id": "mat-c01f47e1d295",
-          "name": "09 | Color: 06 Gray-Medium Dark",
+          "id": "mat-2c05796ecba4",
+          "name": "Metal \u00b7 Kynar Medium Dark Bronze",
           "roomId": "exterior-house",
           "role": null,
-          "color": "#6c6c6c",
-          "roughness": 0.5,
+          "color": "#4b3e32",
+          "roughness": 0.550000011920929,
+          "metallic": 0.30000001192092896,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-24886af56247",
+          "name": "Metal \u00b7 Gutter, stucco match (A1.05)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#e4dbc5",
+          "roughness": 0.44999998807907104,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-b8e0b7cf289c",
-          "name": "09 | Color: 07 Gray-Dark*",
+          "id": "mat-3b2454945c34",
+          "name": "Metal \u00b7 Kynar Medium Dark Bronze",
           "roomId": "exterior-house",
           "role": "ceiling",
-          "color": "#2f2f2f",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-c6977daa2bdb",
-          "name": "09 | Color: 06 Gray-Medium Dark",
-          "roomId": "exterior-house",
-          "role": "ceiling",
-          "color": "#6c6c6c",
-          "roughness": 0.5,
-          "metallic": 0.0,
+          "color": "#4b3e32",
+          "roughness": 0.550000011920929,
+          "metallic": 0.30000001192092896,
           "translation": "constant source PBR values"
         },
         {
@@ -32166,16 +32186,6 @@
           "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-b6712d5e23bf",
-          "name": "07 | Stucco: White*",
-          "roomId": "exterior-house",
-          "role": "ceiling",
-          "color": "#d4d3d0",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-eb7c12e5049d",
