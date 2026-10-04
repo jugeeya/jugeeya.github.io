@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "74813935a10e",
+  "sceneVersion": "3e6e6bf8072b",
   "source": {
     "file": "Web.blend",
-    "sha256": "74813935a10ec5685f01e89d9c940f54881522e282eb1259c9f9e995041e61e1",
+    "sha256": "3e6e6bf8072b318d34bf353fbd33bcee63d8c593e3b7b06523ff8042f7dba231",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1393,9 +1393,9 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-07cb7bbfe501.glb",
-      "assetHash": "07cb7bbfe501dd28270f47d95e69994cf725dbe0b89ef5ff762980478e696b06",
-      "assetBytes": 8098012,
+      "asset": "game-room-8a4c312d3874.glb",
+      "assetHash": "8a4c312d38745da7cdba24e0540e7285e6d0a6bed012e034ab09db023595c30f",
+      "assetBytes": 8031768,
       "objectCount": 302,
       "triangles": 60567,
       "cameras": [
@@ -1422,14 +1422,14 @@
           "id": "fireplace",
           "label": "Fireplace",
           "position": [
-            -7.66,
-            1.5,
-            -6.03321
+            -7.0,
+            1.65,
+            -6.9
           ],
           "target": [
-            -4.66,
-            1.5,
-            -6.03321
+            -4.492274,
+            0.535456,
+            -5.687933
           ],
           "fov": 71.04454491563716,
           "lensMm": 17.798351287841797,
@@ -2047,7 +2047,7 @@
           "name": "Wood \u00b7 Rustic Cherry (Wyrmwood hex table)",
           "roomId": "game-room",
           "role": null,
-          "color": "#d4ad8e",
+          "color": "#78523e",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
@@ -2177,8 +2177,8 @@
           "name": "Fireplace \u00b7 Linear firebox glass (Game Room, provisional)",
           "roomId": "game-room",
           "role": null,
-          "color": "#29292b",
-          "roughness": 0.07000000029802322,
+          "color": "#cbc7c0",
+          "roughness": 0.029999999329447746,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
         },
@@ -2187,8 +2187,8 @@
           "name": "Fireplace \u00b7 Ember bed (Game Room, provisional)",
           "roomId": "game-room",
           "role": null,
-          "color": "#bcb9b4",
-          "roughness": 0.6499999761581421,
+          "color": "#382c24",
+          "roughness": 0.8999999761581421,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -2277,7 +2277,7 @@
           "name": "Wood \u00b7 Cherry (Wyrmwood chair)",
           "roomId": "game-room",
           "role": null,
-          "color": "#d4ad8e",
+          "color": "#78523e",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
@@ -6151,9 +6151,9 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-01f80464bf34.glb",
-      "assetHash": "01f80464bf34c57b76d6bff9d40efee439fcf122b38e336d89880cafc997ac2e",
-      "assetBytes": 10520804,
+      "asset": "family-room-117b795c8419.glb",
+      "assetHash": "117b795c8419b12e1df694388b4639c85a30ac349bc079dad472c03813887d54",
+      "assetBytes": 10520796,
       "objectCount": 507,
       "triangles": 179667,
       "cameras": [
@@ -8370,9 +8370,9 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-80c2347452a2.glb",
-      "assetHash": "80c2347452a249f098192183a464ee699f6695d1072efa59414e01a6351e0b8d",
-      "assetBytes": 9015900,
+      "asset": "dining-room-b6c8c9f72dd7.glb",
+      "assetHash": "b6c8c9f72dd79a35c6330c26778856fd10cc8b3c1e57c128dde121beee5c8368",
+      "assetBytes": 9015892,
       "objectCount": 348,
       "triangles": 133065,
       "cameras": [
@@ -11923,9 +11923,9 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-9bd3832f9e3e.glb",
-      "assetHash": "9bd3832f9e3ede4faee81608bb5b37631941da01dd95b159718a84e044b7ee9d",
-      "assetBytes": 19953188,
+      "asset": "kitchen-3c085dc8e9ca.glb",
+      "assetHash": "3c085dc8e9ca6090d512fde1c0a6537b6d27265961d3ad9491337f9576063d90",
+      "assetBytes": 19953824,
       "objectCount": 670,
       "triangles": 461348,
       "cameras": [
@@ -12356,6 +12356,16 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-50699c6f26a6",
+          "name": "Plaster \u00b7 Kitchen hood, matte (Kitchen cabinet cream, x222)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#f1eee5",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-8c8ff7f3ff72",
           "name": "Floor \u00b7 White Marble 18in (atrium)",
           "roomId": "kitchen",
@@ -12732,16 +12742,6 @@
           "role": null,
           "color": "#f3c489",
           "roughness": 0.4000000059604645,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-50699c6f26a6",
-          "name": "Plaster \u00b7 Kitchen hood, matte (Kitchen cabinet cream, x222)",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#f1eee5",
-          "roughness": 0.8600000143051147,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -15200,9 +15200,9 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-efa0d96f808c.glb",
-      "assetHash": "efa0d96f808c62a76e4a496ccc8780e98c9a23ebeb52a109bee27784d3a1aabb",
-      "assetBytes": 15775796,
+      "asset": "entry-4e84f25aa2b4.glb",
+      "assetHash": "4e84f25aa2b44105b64c754c73fb5bac8d507c4e6a6dbda90c0ff38d72c82f1b",
+      "assetBytes": 16518308,
       "objectCount": 718,
       "triangles": 395716,
       "cameras": [
@@ -15715,14 +15715,14 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-acc086931b0e",
-          "name": "09 | W Fascia Board Fauvre",
+          "id": "mat-f61b1a014b35",
+          "name": "Wood \u00b7 Entry light natural oak (x245 default, provisional)",
           "roomId": "entry",
           "role": null,
-          "color": "#ab7737",
-          "roughness": 0.550000011920929,
+          "color": "#ba9e7c",
+          "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-40ab9ea101c7",
@@ -16380,11 +16380,11 @@
       ],
       "displayExposureStops": -3.0,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, From doorway: L05 Andree 31.83 cd vanity point; -3.0 is the judged-band floor (R11 displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "powder-room-eeae693f08bf.glb",
-      "assetHash": "eeae693f08bf1fcf8d409d2d728bf31ba74ea261feb1ecf6169a95fac8e33318",
-      "assetBytes": 3828408,
-      "objectCount": 160,
-      "triangles": 46562,
+      "asset": "powder-room-8a8d2680f1ed.glb",
+      "assetHash": "8a8d2680f1ed1d602bac1d5074d522b7207dbccdee2ce2b29edcfe8e10c64fca",
+      "assetBytes": 3832640,
+      "objectCount": 162,
+      "triangles": 46606,
       "cameras": [
         {
           "id": "room-view",
@@ -16742,6 +16742,16 @@
           "translation": "browser-only look (saga_web_*) over the Cycles values"
         },
         {
+          "id": "mat-c231fef732af",
+          "name": "Mirror \u00b7 PROPOSAL x245 silvered (provisional)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#f6f6f6",
+          "roughness": 0.019999999552965164,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-bc5665aaebdd",
           "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
           "roomId": "powder-room",
@@ -16838,9 +16848,9 @@
       ],
       "displayExposureStops": -1.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view: L13 Bundt 1800 K 23.87 cd replaces a 35 cd J-box (R11 metered -2.0, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "pantry-79906b2f6ab8.glb",
-      "assetHash": "79906b2f6ab8570dcea3a9079ce089cbdddaa913ca2b18a2cca16c01ce1b9fbb",
-      "assetBytes": 3654972,
+      "asset": "pantry-2c01e2542a91.glb",
+      "assetHash": "2c01e2542a91b4872b739450a2ff8b08481f839607488ee799c4859be50d5c03",
+      "assetBytes": 3654980,
       "objectCount": 115,
       "triangles": 30830,
       "cameras": [
@@ -17314,9 +17324,9 @@
       ],
       "displayExposureStops": -2.4,
       "displayExposureJudged": "d1 2026-09-28: by eye at Room view (backlit racks no longer wash the room; cabinets read oak)",
-      "asset": "wine-cellar-ba68b36a0f5d.glb",
-      "assetHash": "ba68b36a0f5d5018c4e525ce7f1f753bc7048184301a5af9a204715d95fb8369",
-      "assetBytes": 7370704,
+      "asset": "wine-cellar-2c252bf4b458.glb",
+      "assetHash": "2c252bf4b4589524d68a97f5fc79ffd8e2c5abf9b377ecbb28d07c952af6f29f",
+      "assetBytes": 7370708,
       "objectCount": 85,
       "triangles": 71757,
       "cameras": [
@@ -17378,10 +17388,10 @@
             1.41268,
             -1.056517
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffe8c6",
+          "intensity": 17.5,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2700 K, 17.5 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "wine-cellar-ce38edf42a2f7b28",
@@ -17392,10 +17402,10 @@
             1.47218,
             -1.056517
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffe8c6",
+          "intensity": 17.5,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2700 K, 17.5 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "wine-cellar-a8adb88318ec40fd",
@@ -17406,10 +17416,10 @@
             1.41268,
             -2.0403
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffe8c6",
+          "intensity": 17.5,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2700 K, 17.5 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "wine-cellar-105055cf1c646607",
@@ -17420,10 +17430,10 @@
             1.47218,
             -2.0403
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffe8c6",
+          "intensity": 17.5,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2700 K, 17.5 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "wine-cellar-fb5cf932d780c524",
@@ -17434,10 +17444,10 @@
             1.41268,
             -3.024083
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffe8c6",
+          "intensity": 17.5,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2700 K, 17.5 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "wine-cellar-2a5b708589fbd747",
@@ -17448,10 +17458,10 @@
             1.47218,
             -3.024083
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffe8c6",
+          "intensity": 17.5,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2700 K, 17.5 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "wine-cellar-a3ee73b2d385bc42",
@@ -17462,10 +17472,10 @@
             1.476,
             -3.34955
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffe8c6",
+          "intensity": 17.5,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2700 K, 17.5 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "wine-cellar-bb06d220a3cffeac",
@@ -17476,10 +17486,10 @@
             1.926,
             -3.34955
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffe8c6",
+          "intensity": 17.5,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2700 K, 17.5 cd (explicit web_intensity_cd); browser preview, not photometric"
         },
         {
           "id": "wine-cellar-d48cfff86a3efd30",
@@ -17490,10 +17500,10 @@
             1.036,
             -3.34955
           ],
-          "color": "#fff1db",
-          "intensity": 35,
+          "color": "#ffe8c6",
+          "intensity": 17.5,
           "angle": 0.72,
-          "status": "browser preview intensity, not photometric conversion"
+          "status": "lamp 2700 K, 17.5 cd (explicit web_intensity_cd); browser preview, not photometric"
         }
       ],
       "sourcePaint": "#efe8d7",
@@ -17888,9 +17898,9 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-7f87771e323f.glb",
-      "assetHash": "7f87771e323fe0de7003bf007654c64ba4cb2526afebdc92c64a114ba8199450",
-      "assetBytes": 7769676,
+      "asset": "loli-bedroom-2bb6bd410b0d.glb",
+      "assetHash": "2bb6bd410b0da4b45b26f6e7a2fc83c1b48051e7c1d02336eac10022dbc96f72",
+      "assetBytes": 7769792,
       "objectCount": 238,
       "triangles": 162315,
       "cameras": [
@@ -18355,8 +18365,8 @@
           "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
           "roomId": "loli-bedroom",
           "role": null,
-          "color": "#242528",
-          "roughness": 0.75,
+          "color": "#2c2f36",
+          "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -18597,11 +18607,11 @@
       ],
       "displayExposureStops": -2.1,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: L04 Florena 13.43 cd vanity point; shower marble still reads (R11 d1 -1.5); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "loli-bathroom-6a36c5026c7f.glb",
-      "assetHash": "6a36c5026c7fd4e09c6589dfa05bdd5f66d541ccec9257680d75640b6df65273",
-      "assetBytes": 4434644,
-      "objectCount": 133,
-      "triangles": 44159,
+      "asset": "loli-bathroom-507ae424c143.glb",
+      "assetHash": "507ae424c1439645b0c71d599a23a9bd474f54120e825b3eb0d032e34ae4e4ee",
+      "assetBytes": 4438900,
+      "objectCount": 135,
+      "triangles": 44203,
       "cameras": [
         {
           "id": "room-view",
@@ -19136,6 +19146,16 @@
           "roughness": 0.4399999976158142,
           "metallic": 0.75,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-5d7c8806137a",
+          "name": "Mirror \u00b7 PROPOSAL x245 silvered (provisional)",
+          "roomId": "loli-bathroom",
+          "role": null,
+          "color": "#f6f6f6",
+          "roughness": 0.019999999552965164,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         }
       ],
       "variants": [
@@ -19728,9 +19748,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-c1572cb7c8a6.glb",
-      "assetHash": "c1572cb7c8a6966c025306dcc1867c77e0f72a354792a0e21ea308e97e4c4a7f",
-      "assetBytes": 3594976,
+      "asset": "laundry-a6eae9bd2f66.glb",
+      "assetHash": "a6eae9bd2f66c43d88c918366e707f7912af17a71413c3d6d99ee07804594338",
+      "assetBytes": 3594992,
       "objectCount": 97,
       "triangles": 45728,
       "cameras": [
@@ -20609,9 +20629,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-14c0985c3ba8.glb",
-      "assetHash": "14c0985c3ba87f47598a96753656f0f59f43a93536340924debc06c20e82be6d",
-      "assetBytes": 9445592,
+      "asset": "primary-bedroom-618d16688e1b.glb",
+      "assetHash": "618d16688e1b7a50ed2e6d2b01b887cb930e77719165bfad343e7c1dd3ae5706",
+      "assetBytes": 9445708,
       "objectCount": 258,
       "triangles": 232312,
       "cameras": [
@@ -21026,8 +21046,8 @@
           "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
           "roomId": "primary-bedroom",
           "role": null,
-          "color": "#242528",
-          "roughness": 0.75,
+          "color": "#2c2f36",
+          "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -21384,11 +21404,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-56dc2b988d5b.glb",
-      "assetHash": "56dc2b988d5b76bb345d43aab26f7a3159d932fefb00fd15f9c30a9472505121",
-      "assetBytes": 5376172,
-      "objectCount": 238,
-      "triangles": 91290,
+      "asset": "primary-bath-259a95e1d095.glb",
+      "assetHash": "259a95e1d0958333bbff20eae4870f3849ea714f9e58f4e1411deaad6c6b43e2",
+      "assetBytes": 5384172,
+      "objectCount": 242,
+      "triangles": 91378,
       "cameras": [
         {
           "id": "room-view",
@@ -21957,6 +21977,16 @@
           "roughness": 0.4399999976158142,
           "metallic": 0.75,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-db3e409146f4",
+          "name": "Mirror \u00b7 PROPOSAL x245 silvered (provisional)",
+          "roomId": "primary-bath",
+          "role": null,
+          "color": "#f6f6f6",
+          "roughness": 0.019999999552965164,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         }
       ],
       "variants": [
@@ -22039,9 +22069,9 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-a281a04a236b.glb",
-      "assetHash": "a281a04a236b92ce20384c6014f2a55a1b968971cea756927993b9246e39eb7e",
-      "assetBytes": 6399316,
+      "asset": "green-bedroom-4015d5571617.glb",
+      "assetHash": "4015d5571617863236dfb19c79d2013a6b943e756ca0886fda1d30a7cb6500c0",
+      "assetBytes": 6399432,
       "objectCount": 192,
       "triangles": 128058,
       "cameras": [
@@ -22408,8 +22438,8 @@
           "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
           "roomId": "green-bedroom",
           "role": null,
-          "color": "#242528",
-          "roughness": 0.75,
+          "color": "#2c2f36",
+          "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -22622,11 +22652,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Basin detail: L06 Rosa 31.83 cd vanity point; walls on R11 cream, counter not blown (R11 -1.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "green-bath-9b81bbebb2c7.glb",
-      "assetHash": "9b81bbebb2c7692dad1b89fbf2f7c65890c658a981528b489d3b95fd172536e3",
-      "assetBytes": 4021272,
-      "objectCount": 116,
-      "triangles": 62612,
+      "asset": "green-bath-c3fb1f67fe7f.glb",
+      "assetHash": "c3fb1f67fe7f5c0c08a1088ee338cef86353489e5aacbc46f7a56d287620d7ef",
+      "assetBytes": 4025500,
+      "objectCount": 118,
+      "triangles": 62656,
       "cameras": [
         {
           "id": "room-view",
@@ -23070,6 +23100,16 @@
           "roughness": 0.4399999976158142,
           "metallic": 0.75,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-009eed3dd699",
+          "name": "Mirror \u00b7 PROPOSAL x245 silvered (provisional)",
+          "roomId": "green-bath",
+          "role": null,
+          "color": "#f6f6f6",
+          "roughness": 0.019999999552965164,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         }
       ],
       "variants": [
@@ -23417,9 +23457,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-a0906f818d1e.glb",
-      "assetHash": "a0906f818d1e1018ba0b2b96c950575906e1a805151395aa1437b1aedcf6751c",
-      "assetBytes": 6115512,
+      "asset": "blue-bedroom-0127e4ba6ea6.glb",
+      "assetHash": "0127e4ba6ea6bb165c710628180af0684ed1c28bdbdbfc93d5c8a6d050807a74",
+      "assetBytes": 6115628,
       "objectCount": 174,
       "triangles": 112380,
       "cameras": [
@@ -23796,8 +23836,8 @@
           "name": "Fabric \u00b7 Scarlett headboard back black denim (provisional)",
           "roomId": "blue-bedroom",
           "role": null,
-          "color": "#242528",
-          "roughness": 0.75,
+          "color": "#2c2f36",
+          "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "constant source PBR values"
         },
@@ -24020,11 +24060,11 @@
       },
       "displayExposureStops": -2.3,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity detail: L07 Rosa 31.83 cd vanity point (R11 -0.35); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "blue-bath-831ca37c6416.glb",
-      "assetHash": "831ca37c6416874b45230237def54d15424e8bcfb226b0e4130944e4222f0eaf",
-      "assetBytes": 4475020,
-      "objectCount": 146,
-      "triangles": 63669,
+      "asset": "blue-bath-ccf5bad1fa44.glb",
+      "assetHash": "ccf5bad1fa44ef7f3aed809547409708512d23b6b6d2b019f0f16644af3ba20b",
+      "assetBytes": 4479260,
+      "objectCount": 148,
+      "triangles": 63713,
       "cameras": [
         {
           "id": "room-view",
@@ -24478,6 +24518,16 @@
           "roughness": 0.4399999976158142,
           "metallic": 0.75,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-34eb51e8bf15",
+          "name": "Mirror \u00b7 PROPOSAL x245 silvered (provisional)",
+          "roomId": "blue-bath",
+          "role": null,
+          "color": "#f6f6f6",
+          "roughness": 0.019999999552965164,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         }
       ],
       "variants": [
@@ -25076,9 +25126,9 @@
         ]
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-3f3d2f189603.glb",
-      "assetHash": "3f3d2f1896038c2ae900cd5e01839abdd3d5a903ef488c03c0e58018542dde8f",
-      "assetBytes": 4421356,
+      "asset": "office-west-51eae04412e8.glb",
+      "assetHash": "51eae04412e831cda1a8b107acdfa329ff6b7115ed41e04e980c8c45f4a92228",
+      "assetBytes": 4421364,
       "objectCount": 193,
       "triangles": 34544,
       "cameras": [
@@ -26024,9 +26074,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-8219ed898e21.glb",
-      "assetHash": "8219ed898e21ded264d1409b2ce3076248c5862810e7534c171f39b8e7141ed6",
-      "assetBytes": 4317632,
+      "asset": "office-east-a1b38682670c.glb",
+      "assetHash": "a1b38682670cbbbf77556a4e7e17e9a5af1d49eebcd72199a237d7fd81419c91",
+      "assetBytes": 4317640,
       "objectCount": 172,
       "triangles": 30258,
       "cameras": [
@@ -27533,9 +27583,9 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-3a86470dac2f.glb",
-      "assetHash": "3a86470dac2f98cdeeba5beeb2c645e49270e3fd68e837ab3be6a2b1f5adde12",
-      "assetBytes": 6186720,
+      "asset": "office-hall-0672c8ca90c4.glb",
+      "assetHash": "0672c8ca90c4d63e6bdd8806eb8bbd4226865213cc86e47b5a57c3613b0cc961",
+      "assetBytes": 6186728,
       "objectCount": 246,
       "triangles": 118686,
       "cameras": [
@@ -28037,8 +28087,8 @@
         "Loli Closet"
       ],
       "displayExposureStops": -0.15,
-      "asset": "loli-closet-ad1ff1bf9d1d.glb",
-      "assetHash": "ad1ff1bf9d1de54c243b5f12d7c95d1fb9ce05630fb7fcc694a9443c8aa678c5",
+      "asset": "loli-closet-e19e0e161a09.glb",
+      "assetHash": "e19e0e161a099f326bdd5a6dd4730e3b7fdda6fd80a15d5337a83bb91cd7473f",
       "assetBytes": 2287356,
       "objectCount": 113,
       "triangles": 19178,
@@ -28421,9 +28471,9 @@
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-f5975503d346.glb",
-      "assetHash": "f5975503d346516c771a9b9550b276ed38da3c069c91a7eb0dc23e6cce4e7bd0",
-      "assetBytes": 3508612,
+      "asset": "primary-loli-closet-e3b17acf377f.glb",
+      "assetHash": "e3b17acf377ffe88366d301ccf7daf087268a69c95efcfeaf70eb5ead0237c71",
+      "assetBytes": 3508608,
       "objectCount": 99,
       "triangles": 24710,
       "cameras": [
@@ -28873,9 +28923,9 @@
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
-      "asset": "primary-green-closet-a0bfe7a0425c.glb",
-      "assetHash": "a0bfe7a0425c3b9922771b4c6b94a45c38eab9bd136d4f770e1adef28bf6a864",
-      "assetBytes": 3467960,
+      "asset": "primary-green-closet-8fd42d8bd1d3.glb",
+      "assetHash": "8fd42d8bd1d3661987dffc0178ab19c2dc43aaf559b20a4c1c7f85eb0cdb7911",
+      "assetBytes": 3467956,
       "objectCount": 86,
       "triangles": 24069,
       "cameras": [
@@ -29275,9 +29325,9 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-a8de95bbc7c0.glb",
-      "assetHash": "a8de95bbc7c0bee63e6984580aa6ffecc9e4726dce76fd51df94d65912222f15",
-      "assetBytes": 2337908,
+      "asset": "upstairs-closet-west-b60f5249d143.glb",
+      "assetHash": "b60f5249d143c65678518d68cd6718202a0a13ea792ff2f57e7cd0e4c0094951",
+      "assetBytes": 2337888,
       "objectCount": 69,
       "triangles": 22052,
       "cameras": [
@@ -29722,9 +29772,9 @@
           "name": "Metal \u00b7 Green Closet pull-down lift (provisional envelope)",
           "roomId": "upstairs-closet-west",
           "role": null,
-          "color": "#69696a",
-          "roughness": 0.3499999940395355,
-          "metallic": 0.8999999761581421,
+          "color": "#ceccc8",
+          "roughness": 0.699999988079071,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -29862,8 +29912,8 @@
         "Dressing 3"
       ],
       "displayExposureStops": -0.55,
-      "asset": "upstairs-closet-east-e59b35df4e85.glb",
-      "assetHash": "e59b35df4e8584b85ac25809e37d52d7b0451fe85b8ade37aa5c6f4b8cfe5c86",
+      "asset": "upstairs-closet-east-037a027f5441.glb",
+      "assetHash": "037a027f54411f429a17822310bc6784e42bd059e2fb0fc0d8d5cfa74adea0cf",
       "assetBytes": 2350228,
       "objectCount": 77,
       "triangles": 20590,
@@ -30215,9 +30265,9 @@
         }
       ],
       "cutawayKeepBelow": 1.3,
-      "asset": "rear-deck-784d4c582652.glb",
-      "assetHash": "784d4c582652feae9ed59275c31ca7ec95a13d1cea9fe54a3c032c812b433440",
-      "assetBytes": 2222096,
+      "asset": "rear-deck-508ad987e7bc.glb",
+      "assetHash": "508ad987e7bc6601452f82a40a7cd47a60e2cb2d405940519a71a54f0a12ff25",
+      "assetBytes": 2222092,
       "objectCount": 113,
       "triangles": 20023,
       "cameras": [
@@ -30824,9 +30874,9 @@
       ],
       "menuDescription": "Covered balcony above the offices",
       "cutawayOff": true,
-      "asset": "front-balcony-c4dfa42fc206.glb",
-      "assetHash": "c4dfa42fc20632f0cf5ccca00fa2e62a293b6b1dbf2577c21ed1aa7b131167b8",
-      "assetBytes": 3036196,
+      "asset": "front-balcony-fedcafbd5b4b.glb",
+      "assetHash": "fedcafbd5b4b60d8af43db108b881ab435d68b2fdb6322ec5596a6fe0353e9d1",
+      "assetBytes": 3036204,
       "objectCount": 153,
       "triangles": 13019,
       "cameras": [
@@ -31291,11 +31341,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-5c2be19c4daa.glb",
-      "assetHash": "5c2be19c4daa2fe6b8d26bbd0b324d43f81e9d9c6c1087ac90cec21d3869258a",
-      "assetBytes": 22332992,
-      "objectCount": 1432,
-      "triangles": 517641,
+      "asset": "exterior-house-a9dff69fcccd.glb",
+      "assetHash": "a9dff69fcccda54176b5d9d53deb9f3c92bdc7e7c58c6354e068a1a24d121caf",
+      "assetBytes": 22358068,
+      "objectCount": 1444,
+      "triangles": 517905,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -31776,6 +31826,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-fc3705f2490a",
+          "name": "Plaster \u00b7 Kitchen hood, matte (Kitchen cabinet cream, x222)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#f1eee5",
+          "roughness": 0.8600000143051147,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-163592949a30",
@@ -32436,6 +32496,46 @@
           "roughness": 0.6000000238418579,
           "metallic": 0.30000001192092896,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-af6b199cd8c3",
+          "name": "LB \u00b7 Brushed Brass (Artcraft)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#dabf8e",
+          "roughness": 0.4000000059604645,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3e98c42fc9a2",
+          "name": "Mirror \u00b7 PROPOSAL x245 silvered (provisional)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#f6f6f6",
+          "roughness": 0.019999999552965164,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2df908276afb",
+          "name": "LB \u00b7 Noble Brass (Savoy House)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#bca479",
+          "roughness": 0.3400000035762787,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a7f8c980da59",
+          "name": "LB \u00b7 Modern Gold (Z-Lite)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#e7cb97",
+          "roughness": 0.23999999463558197,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         }
       ]
     }
