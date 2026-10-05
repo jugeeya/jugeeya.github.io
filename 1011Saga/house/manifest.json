@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "2865254db0dc",
+  "sceneVersion": "ac489baf255f",
   "source": {
     "file": "Web.blend",
-    "sha256": "2865254db0dcd2e09bcaa9fa632eef0f0388ca05ac398fdf815f2251f6defc4b",
+    "sha256": "ac489baf255fe9acf17c226d08ba926ae13441fed377dfaa701f6add1484758b",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -18597,9 +18597,9 @@
       ],
       "displayExposureStops": -2.1,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: L04 Florena 13.43 cd vanity point; shower marble still reads (R11 d1 -1.5); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "loli-bathroom-507ae424c143.glb",
-      "assetHash": "507ae424c1439645b0c71d599a23a9bd474f54120e825b3eb0d032e34ae4e4ee",
-      "assetBytes": 4438900,
+      "asset": "loli-bathroom-ebdc3b8f076a.glb",
+      "assetHash": "ebdc3b8f076a9e240864e9ffef5236e832fb61860179d7406dc1c3c18ffc0c6c",
+      "assetBytes": 4384432,
       "objectCount": 135,
       "triangles": 44203,
       "cameras": [
@@ -19022,10 +19022,10 @@
           "name": "Tile \u00b7 Hex 3in Sand (shower pans)",
           "roomId": "loli-bathroom",
           "role": null,
-          "color": "#dbccb5",
-          "roughness": 0.6499999761581421,
+          "color": "#cdc3b5",
+          "roughness": 0.550000011920929,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-b0c9c59fde2d",
@@ -21394,9 +21394,9 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-259a95e1d095.glb",
-      "assetHash": "259a95e1d0958333bbff20eae4870f3849ea714f9e58f4e1411deaad6c6b43e2",
-      "assetBytes": 5384172,
+      "asset": "primary-bath-c72f77d625f5.glb",
+      "assetHash": "c72f77d625f5c350b0a68da08a9e1d1416372d9255329742f8511ed6fe51df5c",
+      "assetBytes": 5329704,
       "objectCount": 242,
       "triangles": 91378,
       "cameras": [
@@ -21843,10 +21843,10 @@
           "name": "Tile \u00b7 Hex 3in Sand (shower pans)",
           "roomId": "primary-bath",
           "role": null,
-          "color": "#dbccb5",
-          "roughness": 0.6499999761581421,
+          "color": "#cdc3b5",
+          "roughness": 0.550000011920929,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-2d5ac4db4ca5",
@@ -22642,9 +22642,9 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Basin detail: L06 Rosa 31.83 cd vanity point; walls on R11 cream, counter not blown (R11 -1.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "green-bath-c3fb1f67fe7f.glb",
-      "assetHash": "c3fb1f67fe7f5c0c08a1088ee338cef86353489e5aacbc46f7a56d287620d7ef",
-      "assetBytes": 4025500,
+      "asset": "green-bath-61ecdfa2ce53.glb",
+      "assetHash": "61ecdfa2ce53cf3eea546f982f02ba28cfbc61c8aebf6e0e704fa42bba9d370e",
+      "assetBytes": 3963708,
       "objectCount": 118,
       "triangles": 62656,
       "cameras": [
@@ -22876,10 +22876,10 @@
           "name": "Tile \u00b7 Penny Mosaic Sand Dollar",
           "roomId": "green-bath",
           "role": null,
-          "color": "#d8d1c2",
-          "roughness": 0.6499999761581421,
+          "color": "#d8cebc",
+          "roughness": 0.5,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-decacabced17",
@@ -24050,9 +24050,9 @@
       },
       "displayExposureStops": -2.3,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity detail: L07 Rosa 31.83 cd vanity point (R11 -0.35); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "blue-bath-ccf5bad1fa44.glb",
-      "assetHash": "ccf5bad1fa44ef7f3aed809547409708512d23b6b6d2b019f0f16644af3ba20b",
-      "assetBytes": 4479260,
+      "asset": "blue-bath-edce6fd61a23.glb",
+      "assetHash": "edce6fd61a23ddcc87f89a6a6539791734d04080a57114998d6bc33edd26eafd",
+      "assetBytes": 4417472,
       "objectCount": 148,
       "triangles": 63713,
       "cameras": [
@@ -24264,10 +24264,10 @@
           "name": "Tile \u00b7 Penny Mosaic Sand Dollar",
           "roomId": "blue-bath",
           "role": null,
-          "color": "#d8d1c2",
-          "roughness": 0.6499999761581421,
+          "color": "#d8cebc",
+          "roughness": 0.5,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-4ecdcd0e74b9",
@@ -31433,9 +31433,9 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-c20f54159828.glb",
-      "assetHash": "c20f54159828363bf6134620ffaf4498ff65c932f1326aa4bc736a8217a32ad1",
-      "assetBytes": 22377056,
+      "asset": "exterior-house-4d6c290ed8f7.glb",
+      "assetHash": "4d6c290ed8f79ab3834aea6dae3a4d70f301097979881a5a85785382380d9ce4",
+      "assetBytes": 22315260,
       "objectCount": 1426,
       "triangles": 521351,
       "cameras": [
@@ -32124,10 +32124,10 @@
           "name": "Tile \u00b7 Penny Mosaic Sand Dollar",
           "roomId": "exterior-house",
           "role": null,
-          "color": "#d8d1c2",
-          "roughness": 0.6499999761581421,
+          "color": "#d8cebc",
+          "roughness": 0.5,
           "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source bump baked to tangent normals on UV tile"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-3f23a0a0097c",
