@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "821481adeaac",
+  "sceneVersion": "e35a92f49b8f",
   "source": {
     "file": "Web.blend",
-    "sha256": "821481adeaac5852f3bb2373673db77be4666d2b57ba2bdca9d76976dc85b459",
+    "sha256": "e35a92f49b8f98bc248afe91f8b5d3b2c7e21fd8de3926726ca585d1dc9ce367",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1393,11 +1393,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-8a4c312d3874.glb",
-      "assetHash": "8a4c312d38745da7cdba24e0540e7285e6d0a6bed012e034ab09db023595c30f",
-      "assetBytes": 8031768,
+      "asset": "game-room-22f94e2d4d90.glb",
+      "assetHash": "22f94e2d4d9081b71af9993f3a6be7ad94d33b3ac1b98adb975c565e4368c781",
+      "assetBytes": 8033060,
       "objectCount": 302,
-      "triangles": 60567,
+      "triangles": 60619,
       "cameras": [
         {
           "id": "room-view",
@@ -6151,9 +6151,9 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-117b795c8419.glb",
-      "assetHash": "117b795c8419b12e1df694388b4639c85a30ac349bc079dad472c03813887d54",
-      "assetBytes": 10520796,
+      "asset": "family-room-a26d11b0b933.glb",
+      "assetHash": "a26d11b0b933b315632c6bbbd7a63ac448c3eb88df2ffd4beb493390fba459ae",
+      "assetBytes": 10519792,
       "objectCount": 507,
       "triangles": 179667,
       "cameras": [
@@ -6432,16 +6432,6 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-14b5b9cc5fdc",
-          "name": "Paint \u00b7 Dusty Blue (Game Room)",
-          "roomId": "family-room",
-          "role": "walls",
-          "color": "#7cabca",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-6c514b9c9585",
@@ -6762,6 +6752,16 @@
           "roughness": 0.550000011920929,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-14b5b9cc5fdc",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "family-room",
+          "role": "walls",
+          "color": "#7cabca",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-5a8a2d118255",
@@ -8370,9 +8370,9 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-4e6e12e0caf3.glb",
-      "assetHash": "4e6e12e0caf3da29ba6aadce70a9e78393399bc416831c545995bd23c4ff6aa3",
-      "assetBytes": 9039408,
+      "asset": "dining-room-bc35847b1101.glb",
+      "assetHash": "bc35847b1101f13ee20da027d8fdc365eb144bfcde430b96220162d24edb532d",
+      "assetBytes": 8937052,
       "objectCount": 349,
       "triangles": 133629,
       "cameras": [
@@ -9079,16 +9079,6 @@
           "roughness": 0.4000000059604645,
           "metallic": 0.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-c1a46b5992ad",
-          "name": "Paint \u00b7 Dusty Blue (Game Room)",
-          "roomId": "dining-room",
-          "role": null,
-          "color": "#aabed4",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-938281244f08",
@@ -11923,11 +11913,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-3c085dc8e9ca.glb",
-      "assetHash": "3c085dc8e9ca6090d512fde1c0a6537b6d27265961d3ad9491337f9576063d90",
-      "assetBytes": 19953824,
+      "asset": "kitchen-dd4edbcf0309.glb",
+      "assetHash": "dd4edbcf030970be07bd1d9a639536d0173d84e36b085f37f4a4898e71aec372",
+      "assetBytes": 19955144,
       "objectCount": 670,
-      "triangles": 461348,
+      "triangles": 461400,
       "cameras": [
         {
           "id": "room-view",
@@ -15200,11 +15190,11 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-a1a037856856.glb",
-      "assetHash": "a1a03785685649eefc98c2cdd68e84d3242aaa8fe1a01dc17ac7863e09853a61",
-      "assetBytes": 16799700,
+      "asset": "entry-c98eadb041e6.glb",
+      "assetHash": "c98eadb041e6e0100d37ce84c6a6de516d6a81422c9723ad893b78169bb9dbf5",
+      "assetBytes": 16800776,
       "objectCount": 718,
-      "triangles": 395713,
+      "triangles": 395757,
       "cameras": [
         {
           "id": "room-view",
@@ -31463,11 +31453,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-c8d2eafa3b4a.glb",
-      "assetHash": "c8d2eafa3b4a41ae01e797997bb6e57829e196652c262b8598a8ed30fb6c4e47",
-      "assetBytes": 22373784,
+      "asset": "exterior-house-f0a7eab4951d.glb",
+      "assetHash": "f0a7eab4951dc20d3ce32de95cc89c7c1b92ce242c663f823575736e89d9fd5a",
+      "assetBytes": 22375012,
       "objectCount": 1427,
-      "triangles": 523623,
+      "triangles": 523671,
       "cameras": [
         {
           "id": "exterior-overview",
