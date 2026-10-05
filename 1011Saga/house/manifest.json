@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "ac489baf255f",
+  "sceneVersion": "f3f77f4f8823",
   "source": {
     "file": "Web.blend",
-    "sha256": "ac489baf255fe9acf17c226d08ba926ae13441fed377dfaa701f6add1484758b",
+    "sha256": "f3f77f4f88233982bf847ed02f91e6eacd67da73e5b2181ca094cfa6d7d5e9a7",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -8370,9 +8370,9 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-b6c8c9f72dd7.glb",
-      "assetHash": "b6c8c9f72dd79a35c6330c26778856fd10cc8b3c1e57c128dde121beee5c8368",
-      "assetBytes": 9015892,
+      "asset": "dining-room-5fe659e840f0.glb",
+      "assetHash": "5fe659e840f0f7db6f303e9a09f0db181dfaa61b538cf181f86e47297cf42e82",
+      "assetBytes": 9016468,
       "objectCount": 348,
       "triangles": 133065,
       "cameras": [
@@ -17898,11 +17898,11 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-382c684182ec.glb",
-      "assetHash": "382c684182ec0f32cdb81b6674cd72e40cdf6e2cf97b854877cae449a2e55780",
-      "assetBytes": 7768488,
-      "objectCount": 237,
-      "triangles": 162312,
+      "asset": "loli-bedroom-9b8a41239be0.glb",
+      "assetHash": "9b8a41239be00a8fbc43a2f05657b9c5759719313517342e5e02a5d869e7e642",
+      "assetBytes": 10225072,
+      "objectCount": 239,
+      "triangles": 171816,
       "cameras": [
         {
           "id": "room-view",
@@ -18366,9 +18366,9 @@
           "roomId": "loli-bedroom",
           "role": null,
           "color": "#c9a57f",
-          "roughness": 0.44999998807907104,
+          "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-502b9b2553f3",
@@ -18376,9 +18376,9 @@
           "roomId": "loli-bedroom",
           "role": null,
           "color": "#e9e5d8",
-          "roughness": 0.75,
+          "roughness": 0.800000011920929,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-383b797f9bc4",
@@ -18398,7 +18398,7 @@
           "color": "#dddbd6",
           "roughness": 0.8600000143051147,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-1529d7495c07",
@@ -18408,7 +18408,7 @@
           "color": "#c5b6a0",
           "roughness": 0.8799999952316284,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-0809a29418f6",
@@ -18469,6 +18469,16 @@
           "roughness": 0.4399999976158142,
           "metallic": 0.75,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-32f9f5bbe379",
+          "name": "Metal \u00b7 Scarlett brass ring pull (provisional)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#bb956b",
+          "roughness": 0.3499999940395355,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         }
       ],
       "variants": [
@@ -20619,11 +20629,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-618d16688e1b.glb",
-      "assetHash": "618d16688e1b7a50ed2e6d2b01b887cb930e77719165bfad343e7c1dd3ae5706",
-      "assetBytes": 9445708,
-      "objectCount": 258,
-      "triangles": 232312,
+      "asset": "primary-bedroom-4da6a2a85206.glb",
+      "assetHash": "4da6a2a85206f703500e5b2f0128f7d9e83ada27eeb74b399d429f1b1e5beb26",
+      "assetBytes": 11215576,
+      "objectCount": 260,
+      "triangles": 241816,
       "cameras": [
         {
           "id": "room-view",
@@ -21047,9 +21057,9 @@
           "roomId": "primary-bedroom",
           "role": null,
           "color": "#c9a57f",
-          "roughness": 0.44999998807907104,
+          "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-cffa74782e3f",
@@ -21057,9 +21067,9 @@
           "roomId": "primary-bedroom",
           "role": null,
           "color": "#e9e5d8",
-          "roughness": 0.75,
+          "roughness": 0.800000011920929,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-84aa41b55eca",
@@ -21139,7 +21149,7 @@
           "color": "#dddbd6",
           "roughness": 0.8600000143051147,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-35a56de471b1",
@@ -21170,6 +21180,16 @@
           "roughness": 0.4399999976158142,
           "metallic": 0.75,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-a43a8d7f7222",
+          "name": "Metal \u00b7 Scarlett brass ring pull (provisional)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#bb956b",
+          "roughness": 0.3499999940395355,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-46dfaa09a601",
@@ -22059,9 +22079,9 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-4015d5571617.glb",
-      "assetHash": "4015d5571617863236dfb19c79d2013a6b943e756ca0886fda1d30a7cb6500c0",
-      "assetBytes": 6399432,
+      "asset": "green-bedroom-ab259147aa17.glb",
+      "assetHash": "ab259147aa17ace2bd1b2fc35bae34c006960c7616083ff96aa77277884222ba",
+      "assetBytes": 7947760,
       "objectCount": 192,
       "triangles": 128058,
       "cameras": [
@@ -22439,9 +22459,9 @@
           "roomId": "green-bedroom",
           "role": null,
           "color": "#c9a57f",
-          "roughness": 0.44999998807907104,
+          "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-89ab2853598b",
@@ -22449,9 +22469,9 @@
           "roomId": "green-bedroom",
           "role": null,
           "color": "#e9e5d8",
-          "roughness": 0.75,
+          "roughness": 0.800000011920929,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-f3d4a82e50de",
@@ -22481,7 +22501,7 @@
           "color": "#dddbd6",
           "roughness": 0.8600000143051147,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-7a90530bf264",
@@ -23447,11 +23467,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-0127e4ba6ea6.glb",
-      "assetHash": "0127e4ba6ea6bb165c710628180af0684ed1c28bdbdbfc93d5c8a6d050807a74",
-      "assetBytes": 6115628,
-      "objectCount": 174,
-      "triangles": 112380,
+      "asset": "blue-bedroom-dcb409ba1715.glb",
+      "assetHash": "dcb409ba171594d677368763d2d10f393dcbb0f9f1c23be34a0f18f0bd363186",
+      "assetBytes": 8572396,
+      "objectCount": 176,
+      "triangles": 121884,
       "cameras": [
         {
           "id": "room-view",
@@ -23837,9 +23857,9 @@
           "roomId": "blue-bedroom",
           "role": null,
           "color": "#c9a57f",
-          "roughness": 0.44999998807907104,
+          "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-6137ea305b98",
@@ -23847,9 +23867,9 @@
           "roomId": "blue-bedroom",
           "role": null,
           "color": "#e9e5d8",
-          "roughness": 0.75,
+          "roughness": 0.800000011920929,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-588acc66f476",
@@ -23879,7 +23899,7 @@
           "color": "#dddbd6",
           "roughness": 0.8600000143051147,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-7700477b57a0",
@@ -23889,7 +23909,7 @@
           "color": "#c5b6a0",
           "roughness": 0.8799999952316284,
           "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-527abe5444f6",
@@ -23910,6 +23930,16 @@
           "roughness": 0.4399999976158142,
           "metallic": 0.75,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-f7e9fbfd3f7c",
+          "name": "Metal \u00b7 Scarlett brass ring pull (provisional)",
+          "roomId": "blue-bedroom",
+          "role": null,
+          "color": "#bb956b",
+          "roughness": 0.3499999940395355,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-6fe08b352d84",
@@ -27675,11 +27705,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-0672c8ca90c4.glb",
-      "assetHash": "0672c8ca90c4d63e6bdd8806eb8bbd4226865213cc86e47b5a57c3613b0cc961",
-      "assetBytes": 6186728,
-      "objectCount": 246,
-      "triangles": 118686,
+      "asset": "office-hall-dec88783c19d.glb",
+      "assetHash": "dec88783c19d8fcc301b6e68532f320cf37a826555bb50f9a0647559ad9f0360",
+      "assetBytes": 6193756,
+      "objectCount": 249,
+      "triangles": 118766,
       "cameras": [
         {
           "id": "room-view",
@@ -31433,11 +31463,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-4d6c290ed8f7.glb",
-      "assetHash": "4d6c290ed8f79ab3834aea6dae3a4d70f301097979881a5a85785382380d9ce4",
-      "assetBytes": 22315260,
-      "objectCount": 1426,
-      "triangles": 521351,
+      "asset": "exterior-house-c29ea72315dd.glb",
+      "assetHash": "c29ea72315dd08ccedf93a6b0eeda348429caeb49f7745b3c3590b1480e53e5b",
+      "assetBytes": 22365156,
+      "objectCount": 1424,
+      "triangles": 523547,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -31492,7 +31522,7 @@
           "group": "exterior-house:lanterns",
           "type": "point",
           "position": [
-            -3.5861,
+            -3.136698,
             2.16764,
             7.909025
           ],
@@ -31507,7 +31537,7 @@
           "group": "exterior-house:lanterns",
           "type": "point",
           "position": [
-            0.9987,
+            0.549598,
             2.16764,
             7.909025
           ],
@@ -31523,7 +31553,7 @@
           "type": "point",
           "position": [
             -1.293622,
-            4.30212,
+            4.60692,
             7.988195
           ],
           "color": "#ffdfaf",
