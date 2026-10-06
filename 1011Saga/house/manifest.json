@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "4df806fcaee9",
+  "sceneVersion": "db46e07a8860",
   "source": {
     "file": "Web.blend",
-    "sha256": "4df806fcaee952d170570a254834235accea9dbebe57e0001269cf64489af58c",
+    "sha256": "db46e07a8860b7d5a7bc4abb3bf66038866d79699b336087ab839f0edcbb4b5d",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1453,11 +1453,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-27a9193cfb92.glb",
-      "assetHash": "27a9193cfb9214174e19a47a9901d2aaf39150dbf117c777384818634cb48a14",
-      "assetBytes": 8153224,
-      "objectCount": 303,
-      "triangles": 60634,
+      "asset": "game-room-e562f01d2848.glb",
+      "assetHash": "e562f01d28484abc51ca61dcd2ad175c6afff7d6a21e77c1c2a10c495a203a07",
+      "assetBytes": 8254644,
+      "objectCount": 305,
+      "triangles": 62194,
       "cameras": [
         {
           "id": "room-view",
@@ -6236,11 +6236,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-60fdc1f87bf1.glb",
-      "assetHash": "60fdc1f87bf1b306ed9ea064419ea79b30cf06942a191f657210c232c1c9fa5e",
-      "assetBytes": 10544824,
-      "objectCount": 508,
-      "triangles": 180150,
+      "asset": "family-room-b9c5d72ceed9.glb",
+      "assetHash": "b9c5d72ceed9495df11d75059b5d6452cc9ab24858c93ae287aca8dc76128ecf",
+      "assetBytes": 10640688,
+      "objectCount": 510,
+      "triangles": 181702,
       "cameras": [
         {
           "id": "room-view",
@@ -15375,11 +15375,11 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-4f0d166de206.glb",
-      "assetHash": "4f0d166de206676eccd5083f169a828695db8caaf923d9fef668b4ffb57b6467",
-      "assetBytes": 16607408,
-      "objectCount": 687,
-      "triangles": 400449,
+      "asset": "entry-f7382dae6270.glb",
+      "assetHash": "f7382dae6270c73ecb58d156ead8701bac30a974082f1e8d0538e81cc6637741",
+      "assetBytes": 17184076,
+      "objectCount": 691,
+      "triangles": 406705,
       "cameras": [
         {
           "id": "room-view",
@@ -28026,11 +28026,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-ba535eacdc24.glb",
-      "assetHash": "ba535eacdc24d84ccb5b245051b7c5de7580031e3ec2f70f2f8bb0f79c82b587",
-      "assetBytes": 6208372,
-      "objectCount": 249,
-      "triangles": 119047,
+      "asset": "office-hall-c888e51ad3d4.glb",
+      "assetHash": "c888e51ad3d4f3c816f3efdff5a056b0b0a0705ae3878d9621b33c9d032502f6",
+      "assetBytes": 6360004,
+      "objectCount": 258,
+      "triangles": 121435,
       "cameras": [
         {
           "id": "room-view",
