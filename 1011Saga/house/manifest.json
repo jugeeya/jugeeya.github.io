@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "e35a92f49b8f",
+  "sceneVersion": "97ce35e4e065",
   "source": {
     "file": "Web.blend",
-    "sha256": "e35a92f49b8f98bc248afe91f8b5d3b2c7e21fd8de3926726ca585d1dc9ce367",
+    "sha256": "97ce35e4e065aab96b3f1002e872f1d8a46a3d8314ff5308bc32e09c95491b4b",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1393,9 +1393,9 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-6f65dc1a6d88.glb",
-      "assetHash": "6f65dc1a6d8809d5752eaa65262a23692e3d435e48f6d96260fe00f7e8c9e145",
-      "assetBytes": 8033028,
+      "asset": "game-room-22f94e2d4d90.glb",
+      "assetHash": "22f94e2d4d9081b71af9993f3a6be7ad94d33b3ac1b98adb975c565e4368c781",
+      "assetBytes": 8033060,
       "objectCount": 302,
       "triangles": 60619,
       "cameras": [
@@ -6151,9 +6151,9 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-5e320195ef19.glb",
-      "assetHash": "5e320195ef19b05457ea714aad0afb44a8ea205c6aa3c26ab9f93b3d60a7fe63",
-      "assetBytes": 10519800,
+      "asset": "family-room-a26d11b0b933.glb",
+      "assetHash": "a26d11b0b933b315632c6bbbd7a63ac448c3eb88df2ffd4beb493390fba459ae",
+      "assetBytes": 10519792,
       "objectCount": 507,
       "triangles": 179667,
       "cameras": [
@@ -8370,9 +8370,9 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-9cfd11449e3c.glb",
-      "assetHash": "9cfd11449e3ca3b6ef74c9e3591698d7db80e02535b38d12c8f43adc70a933a2",
-      "assetBytes": 8937060,
+      "asset": "dining-room-bc35847b1101.glb",
+      "assetHash": "bc35847b1101f13ee20da027d8fdc365eb144bfcde430b96220162d24edb532d",
+      "assetBytes": 8937052,
       "objectCount": 349,
       "triangles": 133629,
       "cameras": [
@@ -11913,9 +11913,9 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-dce672784ad7.glb",
-      "assetHash": "dce672784ad78257c63da2b42f422112e81d1c4418f7d87367ef2c8687a1ec0d",
-      "assetBytes": 19955168,
+      "asset": "kitchen-dd4edbcf0309.glb",
+      "assetHash": "dd4edbcf030970be07bd1d9a639536d0173d84e36b085f37f4a4898e71aec372",
+      "assetBytes": 19955144,
       "objectCount": 670,
       "triangles": 461400,
       "cameras": [
@@ -15190,9 +15190,9 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-3cfa962113ec.glb",
-      "assetHash": "3cfa962113eccff1d63475ce0dc0781223786adde1883996a495f1092af84037",
-      "assetBytes": 16800748,
+      "asset": "entry-c98eadb041e6.glb",
+      "assetHash": "c98eadb041e6e0100d37ce84c6a6de516d6a81422c9723ad893b78169bb9dbf5",
+      "assetBytes": 16800776,
       "objectCount": 718,
       "triangles": 395757,
       "cameras": [
@@ -16370,9 +16370,9 @@
       ],
       "displayExposureStops": -3.0,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, From doorway: L05 Andree 31.83 cd vanity point; -3.0 is the judged-band floor (R11 displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "powder-room-2b52e2739ec5.glb",
-      "assetHash": "2b52e2739ec52217c90d36fe2e882ecdfbe40d44469ab397c1fefdfc9a0e1bf2",
-      "assetBytes": 3832704,
+      "asset": "powder-room-3d867eae3fa3.glb",
+      "assetHash": "3d867eae3fa3de159378603865479b02596b1d7aa45aefc7b3e7c8a416b46cba",
+      "assetBytes": 3832684,
       "objectCount": 162,
       "triangles": 46606,
       "cameras": [
@@ -16838,9 +16838,9 @@
       ],
       "displayExposureStops": -1.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view: L13 Bundt 1800 K 23.87 cd replaces a 35 cd J-box (R11 metered -2.0, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "pantry-79906b2f6ab8.glb",
-      "assetHash": "79906b2f6ab8570dcea3a9079ce089cbdddaa913ca2b18a2cca16c01ce1b9fbb",
-      "assetBytes": 3654972,
+      "asset": "pantry-2c01e2542a91.glb",
+      "assetHash": "2c01e2542a91b4872b739450a2ff8b08481f839607488ee799c4859be50d5c03",
+      "assetBytes": 3654980,
       "objectCount": 115,
       "triangles": 30830,
       "cameras": [
@@ -17314,9 +17314,9 @@
       ],
       "displayExposureStops": -2.4,
       "displayExposureJudged": "d1 2026-09-28: by eye at Room view (backlit racks no longer wash the room; cabinets read oak)",
-      "asset": "wine-cellar-ba68b36a0f5d.glb",
-      "assetHash": "ba68b36a0f5d5018c4e525ce7f1f753bc7048184301a5af9a204715d95fb8369",
-      "assetBytes": 7370704,
+      "asset": "wine-cellar-2c252bf4b458.glb",
+      "assetHash": "2c252bf4b4589524d68a97f5fc79ffd8e2c5abf9b377ecbb28d07c952af6f29f",
+      "assetBytes": 7370708,
       "objectCount": 85,
       "triangles": 71757,
       "cameras": [
@@ -17888,11 +17888,11 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-4e409333a6f1.glb",
-      "assetHash": "4e409333a6f1843ce8a88815ba8e0c0abb64de0f7686120ae36113de0c688c99",
-      "assetBytes": 10228744,
-      "objectCount": 242,
-      "triangles": 171824,
+      "asset": "loli-bedroom-849da89ff2e1.glb",
+      "assetHash": "849da89ff2e19b71c223ace3f06ab178ca5449bef0d2b9db1138c99542b97f8e",
+      "assetBytes": 12619356,
+      "objectCount": 266,
+      "triangles": 239430,
       "cameras": [
         {
           "id": "room-view",
@@ -18469,10 +18469,41 @@
           "roughness": 0.3499999940395355,
           "metallic": 1.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-bf4d3df2db04",
+          "name": "Wood \u00b7 Aspen Provence Patine acacia (x258 PROPOSAL)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#96846c",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-52e63524ccde",
+          "name": "Upholstery \u00b7 Aspen Provence cream panel (x258 PROPOSAL)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#dcd6c6",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-1e556096ceb2",
+          "name": "Metal \u00b7 Aspen Provence floral knob, aged bronze (x258 PROPOSAL, APPROXIMATE)",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#604a34",
+          "roughness": 0.41999998688697815,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
         }
       ],
       "variants": [
-        "door-hardware"
+        "door-hardware",
+        "loli-bed"
       ]
     },
     {
@@ -18597,9 +18628,9 @@
       ],
       "displayExposureStops": -2.1,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: L04 Florena 13.43 cd vanity point; shower marble still reads (R11 d1 -1.5); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "loli-bathroom-4b307f9072b5.glb",
-      "assetHash": "4b307f9072b5ebba1462cce4ba620ff01b625d5d11819a74bca4aaed89eeb303",
-      "assetBytes": 4384452,
+      "asset": "loli-bathroom-ebdc3b8f076a.glb",
+      "assetHash": "ebdc3b8f076a9e240864e9ffef5236e832fb61860179d7406dc1c3c18ffc0c6c",
+      "assetBytes": 4384432,
       "objectCount": 135,
       "triangles": 44203,
       "cameras": [
@@ -19738,9 +19769,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-737236484a50.glb",
-      "assetHash": "737236484a500c9b12aaf43fa218d2f592c561fe7914c35d023d601fe440bf6d",
-      "assetBytes": 3595060,
+      "asset": "laundry-3398ed36cbda.glb",
+      "assetHash": "3398ed36cbdab11f540b3ea493761415cd530fe1d23f3bcc20366c8eafcad8f4",
+      "assetBytes": 3595076,
       "objectCount": 97,
       "triangles": 45728,
       "cameras": [
@@ -20619,11 +20650,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-a2fc6c5829db.glb",
-      "assetHash": "a2fc6c5829dbea0ef43f4589c3be386a064ee4752eefcec600b26c4d1f58a3a8",
-      "assetBytes": 11215584,
-      "objectCount": 260,
-      "triangles": 241816,
+      "asset": "primary-bedroom-fea55539f3cb.glb",
+      "assetHash": "fea55539f3cb9aabb2a3d2928dea250bb2ab36808854659ebddcf925cfc2fef0",
+      "assetBytes": 12875424,
+      "objectCount": 284,
+      "triangles": 318110,
       "cameras": [
         {
           "id": "room-view",
@@ -21182,6 +21213,36 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-ace5290a4f2b",
+          "name": "Wood \u00b7 Aspen Provence Patine acacia (x258 PROPOSAL)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#96846c",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-f9fd191e8530",
+          "name": "Upholstery \u00b7 Aspen Provence cream panel (x258 PROPOSAL)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#dcd6c6",
+          "roughness": 0.800000011920929,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-0370ef9918d2",
+          "name": "Metal \u00b7 Aspen Provence floral knob, aged bronze (x258 PROPOSAL, APPROXIMATE)",
+          "roomId": "primary-bedroom",
+          "role": null,
+          "color": "#604a34",
+          "roughness": 0.41999998688697815,
+          "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-46dfaa09a601",
           "name": "09 | Color: 03 Gray-Light",
           "roomId": "primary-bedroom",
@@ -21193,7 +21254,8 @@
         }
       ],
       "variants": [
-        "door-hardware"
+        "door-hardware",
+        "primary-bed"
       ]
     },
     {
@@ -21404,9 +21466,9 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-d8101f6cacec.glb",
-      "assetHash": "d8101f6cacec976da998323d069b6241ebcdd26b63f377ef1e0651203c10f45c",
-      "assetBytes": 5329728,
+      "asset": "primary-bath-c72f77d625f5.glb",
+      "assetHash": "c72f77d625f5c350b0a68da08a9e1d1416372d9255329742f8511ed6fe51df5c",
+      "assetBytes": 5329704,
       "objectCount": 242,
       "triangles": 91378,
       "cameras": [
@@ -22069,9 +22131,9 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-754157af8f72.glb",
-      "assetHash": "754157af8f72f1f5b2fdd9f6388507c86090e5a7ed92b127a4b3f29acd37a2c8",
-      "assetBytes": 7947764,
+      "asset": "green-bedroom-ab259147aa17.glb",
+      "assetHash": "ab259147aa17ace2bd1b2fc35bae34c006960c7616083ff96aa77277884222ba",
+      "assetBytes": 7947760,
       "objectCount": 192,
       "triangles": 128058,
       "cameras": [
@@ -22652,9 +22714,9 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Basin detail: L06 Rosa 31.83 cd vanity point; walls on R11 cream, counter not blown (R11 -1.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "green-bath-e53caec17fc9.glb",
-      "assetHash": "e53caec17fc9527eef9d74ab164669409025ac7e298f6ecf042bffd31a488252",
-      "assetBytes": 3963724,
+      "asset": "green-bath-61ecdfa2ce53.glb",
+      "assetHash": "61ecdfa2ce53cf3eea546f982f02ba28cfbc61c8aebf6e0e704fa42bba9d370e",
+      "assetBytes": 3963708,
       "objectCount": 118,
       "triangles": 62656,
       "cameras": [
@@ -23457,9 +23519,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-71928c2ccaf2.glb",
-      "assetHash": "71928c2ccaf2c825a50f19c7c5810dc9669c12bcf8d859e68822eab9a768d48e",
-      "assetBytes": 8572344,
+      "asset": "blue-bedroom-dcb409ba1715.glb",
+      "assetHash": "dcb409ba171594d677368763d2d10f393dcbb0f9f1c23be34a0f18f0bd363186",
+      "assetBytes": 8572396,
       "objectCount": 176,
       "triangles": 121884,
       "cameras": [
@@ -24070,9 +24132,9 @@
       },
       "displayExposureStops": -2.3,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity detail: L07 Rosa 31.83 cd vanity point (R11 -0.35); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "blue-bath-506df0f570f7.glb",
-      "assetHash": "506df0f570f7da8a6d25681d12651c509a89f3eb747875255c5feaa78dc83036",
-      "assetBytes": 4417456,
+      "asset": "blue-bath-edce6fd61a23.glb",
+      "assetHash": "edce6fd61a23ddcc87f89a6a6539791734d04080a57114998d6bc33edd26eafd",
+      "assetBytes": 4417472,
       "objectCount": 148,
       "triangles": 63713,
       "cameras": [
@@ -25167,9 +25229,9 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-41d970741485.glb",
-      "assetHash": "41d970741485cc95ca780ea9506e1185838aeb2e64293f3bc8715677b0104baa",
-      "assetBytes": 5336148,
+      "asset": "office-west-dae68f516aa2.glb",
+      "assetHash": "dae68f516aa2877452ee3a58ab3a856bf426f35c316ffcb95174a0897b9738ac",
+      "assetBytes": 5336172,
       "objectCount": 194,
       "triangles": 34564,
       "cameras": [
@@ -26166,9 +26228,9 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-79b54c47b4a3.glb",
-      "assetHash": "79b54c47b4a33f1242090b70b1f6548c8c2b54d632ba8782694c9dce3ca0a5af",
-      "assetBytes": 5231240,
+      "asset": "office-east-28a80ced9e4e.glb",
+      "assetHash": "28a80ced9e4efca592e4997d673507f9540736eb5e5daeab3b3b1b793a09be46",
+      "assetBytes": 5231264,
       "objectCount": 173,
       "triangles": 30264,
       "cameras": [
@@ -27695,9 +27757,9 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-c45643d134ae.glb",
-      "assetHash": "c45643d134ae1ae55970940864f8aea73a6f863bec458a650d77004608b7924f",
-      "assetBytes": 6197920,
+      "asset": "office-hall-74447c3e7cfe.glb",
+      "assetHash": "74447c3e7cfeabc5b4b20895f5786e80d9cf9c96b73a2763e13d86dea4f74f04",
+      "assetBytes": 6197928,
       "objectCount": 249,
       "triangles": 118826,
       "cameras": [
@@ -28199,8 +28261,8 @@
         "Loli Closet"
       ],
       "displayExposureStops": -0.15,
-      "asset": "loli-closet-ad1ff1bf9d1d.glb",
-      "assetHash": "ad1ff1bf9d1de54c243b5f12d7c95d1fb9ce05630fb7fcc694a9443c8aa678c5",
+      "asset": "loli-closet-e19e0e161a09.glb",
+      "assetHash": "e19e0e161a099f326bdd5a6dd4730e3b7fdda6fd80a15d5337a83bb91cd7473f",
       "assetBytes": 2287356,
       "objectCount": 113,
       "triangles": 19178,
@@ -28583,9 +28645,9 @@
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-f5975503d346.glb",
-      "assetHash": "f5975503d346516c771a9b9550b276ed38da3c069c91a7eb0dc23e6cce4e7bd0",
-      "assetBytes": 3508612,
+      "asset": "primary-loli-closet-e3b17acf377f.glb",
+      "assetHash": "e3b17acf377ffe88366d301ccf7daf087268a69c95efcfeaf70eb5ead0237c71",
+      "assetBytes": 3508608,
       "objectCount": 99,
       "triangles": 24710,
       "cameras": [
@@ -29035,9 +29097,9 @@
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
-      "asset": "primary-green-closet-a0bfe7a0425c.glb",
-      "assetHash": "a0bfe7a0425c3b9922771b4c6b94a45c38eab9bd136d4f770e1adef28bf6a864",
-      "assetBytes": 3467960,
+      "asset": "primary-green-closet-8fd42d8bd1d3.glb",
+      "assetHash": "8fd42d8bd1d3661987dffc0178ab19c2dc43aaf559b20a4c1c7f85eb0cdb7911",
+      "assetBytes": 3467956,
       "objectCount": 86,
       "triangles": 24069,
       "cameras": [
@@ -29437,8 +29499,8 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-68a388ef9bff.glb",
-      "assetHash": "68a388ef9bff575aec5e364a0b4ebf9916c238499593c3abc7a83b2a091b38d2",
+      "asset": "upstairs-closet-west-b60f5249d143.glb",
+      "assetHash": "b60f5249d143c65678518d68cd6718202a0a13ea792ff2f57e7cd0e4c0094951",
       "assetBytes": 2337888,
       "objectCount": 69,
       "triangles": 22052,
@@ -30024,8 +30086,8 @@
         "Dressing 3"
       ],
       "displayExposureStops": -0.55,
-      "asset": "upstairs-closet-east-e59b35df4e85.glb",
-      "assetHash": "e59b35df4e8584b85ac25809e37d52d7b0451fe85b8ade37aa5c6f4b8cfe5c86",
+      "asset": "upstairs-closet-east-037a027f5441.glb",
+      "assetHash": "037a027f54411f429a17822310bc6784e42bd059e2fb0fc0d8d5cfa74adea0cf",
       "assetBytes": 2350228,
       "objectCount": 77,
       "triangles": 20590,
@@ -30377,9 +30439,9 @@
         }
       ],
       "cutawayKeepBelow": 1.3,
-      "asset": "rear-deck-784d4c582652.glb",
-      "assetHash": "784d4c582652feae9ed59275c31ca7ec95a13d1cea9fe54a3c032c812b433440",
-      "assetBytes": 2222096,
+      "asset": "rear-deck-508ad987e7bc.glb",
+      "assetHash": "508ad987e7bc6601452f82a40a7cd47a60e2cb2d405940519a71a54f0a12ff25",
+      "assetBytes": 2222092,
       "objectCount": 113,
       "triangles": 20023,
       "cameras": [
@@ -30986,9 +31048,9 @@
       ],
       "menuDescription": "Covered balcony above the offices",
       "cutawayOff": true,
-      "asset": "front-balcony-c4dfa42fc206.glb",
-      "assetHash": "c4dfa42fc20632f0cf5ccca00fa2e62a293b6b1dbf2577c21ed1aa7b131167b8",
-      "assetBytes": 3036196,
+      "asset": "front-balcony-fedcafbd5b4b.glb",
+      "assetHash": "fedcafbd5b4b60d8af43db108b881ab435d68b2fdb6322ec5596a6fe0353e9d1",
+      "assetBytes": 3036204,
       "objectCount": 153,
       "triangles": 13019,
       "cameras": [
@@ -31453,9 +31515,9 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-70a38d9f6711.glb",
-      "assetHash": "70a38d9f67110dc91f9306623026a7ae8c39407127e7c5d70ff4801f1191f264",
-      "assetBytes": 22375060,
+      "asset": "exterior-house-f0a7eab4951d.glb",
+      "assetHash": "f0a7eab4951dc20d3ce32de95cc89c7c1b92ce242c663f823575736e89d9fd5a",
+      "assetBytes": 22375012,
       "objectCount": 1427,
       "triangles": 523671,
       "cameras": [
@@ -32689,6 +32751,36 @@
         {
           "id": "budget",
           "label": "Budget plate (<$75)"
+        }
+      ]
+    },
+    {
+      "id": "primary-bed",
+      "label": "Primary bed",
+      "default": "provence",
+      "options": [
+        {
+          "id": "provence",
+          "label": "Aspen Provence (Cal King)"
+        },
+        {
+          "id": "scarlett",
+          "label": "Pottery Barn Scarlett"
+        }
+      ]
+    },
+    {
+      "id": "loli-bed",
+      "label": "Loli bed",
+      "default": "provence-full",
+      "options": [
+        {
+          "id": "provence-full",
+          "label": "Aspen Provence (Full)"
+        },
+        {
+          "id": "scarlett-queen",
+          "label": "Pottery Barn Scarlett (Queen)"
         }
       ]
     }
