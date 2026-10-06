@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "97ce35e4e065",
+  "sceneVersion": "99e70fbe69bf",
   "source": {
     "file": "Web.blend",
-    "sha256": "97ce35e4e065aab96b3f1002e872f1d8a46a3d8314ff5308bc32e09c95491b4b",
+    "sha256": "99e70fbe69bf6f49cbeb537aa3f4dde45ac6bdabb49addd7da3f4e72ed351fad",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -145,7 +145,11 @@
           "Door B \u00b7 x226 leaf W (active)",
           "Fascia Fascia.011",
           "Fascia Fascia.012",
-          "Floor Overlay \u00b7 Atrium White Marble",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260",
           "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-01",
           "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-02",
           "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-03",
@@ -489,7 +493,63 @@
               1.05
             ]
           ],
-          "Floor Overlay \u00b7 Atrium White Marble": [
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260": [
+            [
+              -1.97,
+              1.77
+            ],
+            [
+              -2.09,
+              -0.9
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260": [
+            [
+              -1.97,
+              1.77
+            ],
+            [
+              -2.09,
+              -0.9
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260": [
+            [
+              -1.97,
+              1.77
+            ],
+            [
+              -2.09,
+              -0.9
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260": [
+            [
+              -1.97,
+              1.77
+            ],
+            [
+              -2.09,
+              -0.9
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260": [
             [
               -1.97,
               1.77
@@ -1393,11 +1453,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-22f94e2d4d90.glb",
-      "assetHash": "22f94e2d4d9081b71af9993f3a6be7ad94d33b3ac1b98adb975c565e4368c781",
-      "assetBytes": 8033060,
-      "objectCount": 302,
-      "triangles": 60619,
+      "asset": "game-room-c101d9063ead.glb",
+      "assetHash": "c101d9063ead328335c806c1726c8f359a9f2564ccc7d7bd1fd0beb6b9931dd3",
+      "assetBytes": 8152920,
+      "objectCount": 303,
+      "triangles": 60634,
       "cameras": [
         {
           "id": "room-view",
@@ -1839,26 +1899,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-781bc3122d2a",
-          "name": "Floor \u00b7 White Marble 18in (atrium)",
-          "roomId": "game-room",
-          "role": null,
-          "color": "#ecebe9",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
-        },
-        {
-          "id": "mat-1301ec19d4a5",
-          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
-          "roomId": "game-room",
-          "role": null,
-          "color": "#a0a09e",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-e586cb93a182",
@@ -2373,6 +2413,36 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
+          "id": "mat-781bc3122d2a",
+          "name": "Floor \u00b7 White Marble 18in (atrium)",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-eeb297f2c3e8",
+          "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-1301ec19d4a5",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-4e62e82a2bbc",
           "name": "Stone \u00b7 Namib Bianco Dolomite (stairs, prefab)",
           "roomId": "game-room",
@@ -2553,10 +2623,11 @@
           "Door ZI \u00b7 x226 leaf S (active)",
           "Fascia Fascia.009",
           "Fascia Fascia.012",
-          "Floor Overlay \u00b7 Atrium White Marble",
-          "Floor Overlay \u00b7 Foyer Black Border 3in",
-          "Floor Overlay \u00b7 Foyer Checkerboard 45deg",
-          "Floor Overlay \u00b7 Foyer White Border 6in",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-03",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-04",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 N-02",
@@ -3539,13 +3610,13 @@
               1.05
             ]
           ],
-          "Floor Overlay \u00b7 Atrium White Marble": [
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260": [
             [
               -5.35,
               2.15
             ],
             [
-              -2.79,
+              -7.79,
               2.83
             ],
             [
@@ -3553,42 +3624,56 @@
               0.3
             ]
           ],
-          "Floor Overlay \u00b7 Foyer Black Border 3in": [
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260": [
             [
-              -3.41,
-              1.86
-            ],
-            [
-              -7.64,
-              -2.34
-            ],
-            [
-              -0.03,
-              0.3
-            ]
-          ],
-          "Floor Overlay \u00b7 Foyer Checkerboard 45deg": [
-            [
-              -3.55,
-              1.63
-            ],
-            [
-              -7.58,
-              -2.42
-            ],
-            [
-              -0.03,
-              0.3
-            ]
-          ],
-          "Floor Overlay \u00b7 Foyer White Border 6in": [
-            [
-              -3.49,
-              2.14
+              -5.35,
+              2.15
             ],
             [
               -7.79,
-              -2.19
+              2.83
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260": [
+            [
+              -5.35,
+              2.15
+            ],
+            [
+              -7.79,
+              2.83
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260": [
+            [
+              -5.35,
+              2.15
+            ],
+            [
+              -7.79,
+              2.83
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260": [
+            [
+              -5.35,
+              2.15
+            ],
+            [
+              -7.79,
+              2.83
             ],
             [
               -0.03,
@@ -6033,12 +6118,12 @@
           ],
           "Window skylight": [
             [
-              -2.29,
-              -0.06
+              -2.383,
+              -0.153
             ],
             [
-              -5.92,
-              -4.14
+              -5.691,
+              -3.911
             ],
             [
               6.31,
@@ -6131,12 +6216,12 @@
           ],
           "Part Skylight Well Liner (C02) \u00b7 x242": [
             [
-              -2.1,
-              -0.33
+              -2.193,
+              -0.423
             ],
             [
-              -5.67,
-              -3.9
+              -5.441,
+              -3.671
             ],
             [
               6.5,
@@ -6144,18 +6229,18 @@
             ]
           ]
         },
-        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3; x242 2026-10-03: the oculus rose 0.927 m with the roof deck - the raised deck rims' clips +0.927, the skylight's and the bounds' top to z 8.00, the new well liner added"
+        "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3; x242 2026-10-03: the oculus rose 0.927 m with the roof deck - the raised deck rims' clips +0.927, the skylight's and the bounds' top to z 8.00, the new well liner added; x262 2026-10-06: the oculus moved (-0.093, +0.229) to the scan position - the skylight and well liner clips moved with it"
       },
       "indirectGain": 0.6,
       "roleOverrides": {
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-a26d11b0b933.glb",
-      "assetHash": "a26d11b0b933b315632c6bbbd7a63ac448c3eb88df2ffd4beb493390fba459ae",
-      "assetBytes": 10519792,
-      "objectCount": 507,
-      "triangles": 179667,
+      "asset": "family-room-7345ef5f6502.glb",
+      "assetHash": "7345ef5f6502520975e671f63ff623694264fca4fad013b9935c344b28fe9bc5",
+      "assetBytes": 10542168,
+      "objectCount": 508,
+      "triangles": 180114,
       "cameras": [
         {
           "id": "room-view",
@@ -6522,6 +6607,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-0d5a248c4ea8",
+          "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
         },
         {
           "id": "mat-788a26f12887",
@@ -6944,26 +7039,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-363c7308c9ef",
-          "name": "Floor \u00b7 Black Marble Border",
-          "roomId": "family-room",
-          "role": null,
-          "color": "#1a1a1b",
-          "roughness": 0.11999999731779099,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-0d5a248c4ea8",
-          "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
-          "roomId": "family-room",
-          "role": null,
-          "color": "#1a1a1b",
-          "roughness": 0.11999999731779099,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space"
-        },
-        {
           "id": "mat-cc18edb31466",
           "name": "Railing \u00b7 Arabesque Panel",
           "roomId": "family-room",
@@ -7125,8 +7200,11 @@
           "Door ZG \u00b7 x226 leaf N (active)",
           "Door ZG \u00b7 x226 leaf S (inactive)",
           "Fascia Fascia.012",
-          "Floor Overlay \u00b7 Atrium White Marble",
-          "Floor Overlay \u00b7 Foyer Checkerboard 45deg",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Family Room \u00b7 W-02",
           "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-01",
           "Millwork \u00b7 1F \u00b7 Beam \u00b7 Kitchen \u00b7 KB-02",
@@ -7497,13 +7575,13 @@
               0.97
             ]
           ],
-          "Floor Overlay \u00b7 Atrium White Marble": [
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260": [
             [
               -5.34,
               2.13
             ],
             [
-              -2.74,
+              -6.05,
               3.95
             ],
             [
@@ -7511,14 +7589,56 @@
               0.3
             ]
           ],
-          "Floor Overlay \u00b7 Foyer Checkerboard 45deg": [
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260": [
             [
-              -2.86,
-              0.84
+              -5.34,
+              2.13
             ],
             [
               -6.05,
-              -2.43
+              3.95
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260": [
+            [
+              -5.34,
+              2.13
+            ],
+            [
+              -6.05,
+              3.95
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260": [
+            [
+              -5.34,
+              2.13
+            ],
+            [
+              -6.05,
+              3.95
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260": [
+            [
+              -5.34,
+              2.13
+            ],
+            [
+              -6.05,
+              3.95
             ],
             [
               -0.03,
@@ -8370,11 +8490,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-bc35847b1101.glb",
-      "assetHash": "bc35847b1101f13ee20da027d8fdc365eb144bfcde430b96220162d24edb532d",
-      "assetBytes": 8937052,
-      "objectCount": 349,
-      "triangles": 133629,
+      "asset": "dining-room-0cc8f9f44ad1.glb",
+      "assetHash": "0cc8f9f44ad1f5ee69198ecf4c6b0831eaee3fd4ac024de2164ad51f41e93ee1",
+      "assetBytes": 8957004,
+      "objectCount": 351,
+      "triangles": 133966,
       "cameras": [
         {
           "id": "room-view",
@@ -8831,26 +8951,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-f12ee4fca110",
-          "name": "Floor \u00b7 White Marble 18in (atrium)",
-          "roomId": "dining-room",
-          "role": null,
-          "color": "#ecebe9",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
-        },
-        {
-          "id": "mat-8b2820ef351a",
-          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
-          "roomId": "dining-room",
-          "role": null,
-          "color": "#a0a09e",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-d3c077b61937",
           "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "dining-room",
@@ -9101,6 +9201,16 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
+          "id": "mat-f12ee4fca110",
+          "name": "Floor \u00b7 White Marble 18in (atrium)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#ecebe9",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
           "id": "mat-e8aef49ecde3",
           "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
           "roomId": "dining-room",
@@ -9109,6 +9219,16 @@
           "roughness": 0.11999999731779099,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-8b2820ef351a",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-f18e51b97dc4",
@@ -9548,10 +9668,11 @@
           "Fascia Fascia.010",
           "Fascia Fascia.011",
           "Fascia Fascia.012",
-          "Floor Overlay \u00b7 Atrium White Marble",
-          "Floor Overlay \u00b7 Foyer Black Border 3in",
-          "Floor Overlay \u00b7 Foyer Checkerboard 45deg",
-          "Floor Overlay \u00b7 Foyer White Border 6in",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-03",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-04",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 S-03",
@@ -10424,13 +10545,13 @@
               1.06
             ]
           ],
-          "Floor Overlay \u00b7 Atrium White Marble": [
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260": [
             [
               -5.33,
               0.92
             ],
             [
-              -2.75,
+              -7.66,
               3.98
             ],
             [
@@ -10438,42 +10559,56 @@
               0.3
             ]
           ],
-          "Floor Overlay \u00b7 Foyer Black Border 3in": [
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260": [
             [
-              -3.11,
-              -0.61
+              -5.33,
+              0.92
             ],
             [
               -7.66,
-              -2.35
+              3.98
             ],
             [
               -0.03,
               0.3
             ]
           ],
-          "Floor Overlay \u00b7 Foyer Checkerboard 45deg": [
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260": [
             [
-              -3.67,
-              -0.58
+              -5.33,
+              0.92
             ],
             [
-              -7.5,
-              -2.48
+              -7.66,
+              3.98
             ],
             [
               -0.03,
               0.3
             ]
           ],
-          "Floor Overlay \u00b7 Foyer White Border 6in": [
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260": [
             [
-              -3.4,
-              -0.67
+              -5.33,
+              0.92
             ],
             [
-              -2.94,
-              -2.22
+              -7.66,
+              3.98
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260": [
+            [
+              -5.33,
+              0.92
+            ],
+            [
+              -7.66,
+              3.98
             ],
             [
               -0.03,
@@ -11913,11 +12048,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-dd4edbcf0309.glb",
-      "assetHash": "dd4edbcf030970be07bd1d9a639536d0173d84e36b085f37f4a4898e71aec372",
-      "assetBytes": 19955144,
-      "objectCount": 670,
-      "triangles": 461400,
+      "asset": "kitchen-28dc48d28873.glb",
+      "assetHash": "28dc48d288739e8f84accb1b7e0f720c84759f59e05d0129232ed8e152cfd756",
+      "assetBytes": 19981844,
+      "objectCount": 668,
+      "triangles": 462003,
       "cameras": [
         {
           "id": "room-view",
@@ -12366,36 +12501,6 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
-          "id": "mat-0698dc4745c0",
-          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#a0a09e",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-2d224a5e4a57",
-          "name": "Floor \u00b7 Black Marble Border",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#1a1a1b",
-          "roughness": 0.11999999731779099,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-324b302c59eb",
-          "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
-          "roomId": "kitchen",
-          "role": null,
-          "color": "#1a1a1b",
-          "roughness": 0.11999999731779099,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space"
-        },
-        {
           "id": "mat-d8da3ab5fcd6",
           "name": "09 | Color: Blue Cobalt",
           "roomId": "kitchen",
@@ -12816,6 +12921,26 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-324b302c59eb",
+          "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#1a1a1b",
+          "roughness": 0.11999999731779099,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-0698dc4745c0",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "kitchen",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-22f3a34a34e4",
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "kitchen",
@@ -13119,7 +13244,11 @@
           "Door ZI \u00b7 x226 glazing",
           "Door ZI \u00b7 x226 leaf N (inactive)",
           "Door ZI \u00b7 x226 leaf S (active)",
-          "Floor Overlay \u00b7 Atrium White Marble",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-03",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 E-04",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Dining Room \u00b7 S-02",
@@ -13533,7 +13662,63 @@
               3.08
             ]
           ],
-          "Floor Overlay \u00b7 Atrium White Marble": [
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260": [
+            [
+              -5.64,
+              -2.81
+            ],
+            [
+              -2.49,
+              2.95
+            ],
+            [
+              -0.03,
+              0.6
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260": [
+            [
+              -5.64,
+              -2.81
+            ],
+            [
+              -2.49,
+              2.95
+            ],
+            [
+              -0.03,
+              0.6
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260": [
+            [
+              -5.64,
+              -2.81
+            ],
+            [
+              -2.49,
+              2.95
+            ],
+            [
+              -0.03,
+              0.6
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260": [
+            [
+              -5.64,
+              -2.81
+            ],
+            [
+              -2.49,
+              2.95
+            ],
+            [
+              -0.03,
+              0.6
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260": [
             [
               -5.64,
               -2.81
@@ -15159,12 +15344,12 @@
           ],
           "Window skylight": [
             [
-              -2.67,
-              0.21
+              -2.763,
+              0.117
             ],
             [
-              -6.19,
-              -3.3
+              -5.961,
+              -3.071
             ],
             [
               6.05,
@@ -15173,12 +15358,12 @@
           ],
           "Part Skylight Well Liner (C02) \u00b7 x242": [
             [
-              -2.1,
-              -0.33
+              -2.193,
+              -0.423
             ],
             [
-              -5.67,
-              -3.9
+              -5.441,
+              -3.671
             ],
             [
               6.5,
@@ -15186,15 +15371,15 @@
             ]
           ]
         },
-        "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py.; x242 2026-10-03: the oculus rose 0.927 m with the roof deck - the raised deck rims' clips +0.927, the skylight's and the bounds' top to z 8.00, the new well liner added"
+        "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py.; x242 2026-10-03: the oculus rose 0.927 m with the roof deck - the raised deck rims' clips +0.927, the skylight's and the bounds' top to z 8.00, the new well liner added; x262 2026-10-06: the oculus moved (-0.093, +0.229) to the scan position - the skylight and well liner clips moved with it"
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-c98eadb041e6.glb",
-      "assetHash": "c98eadb041e6e0100d37ce84c6a6de516d6a81422c9723ad893b78169bb9dbf5",
-      "assetBytes": 16800776,
-      "objectCount": 718,
-      "triangles": 395757,
+      "asset": "entry-6f9e97e22b5a.glb",
+      "assetHash": "6f9e97e22b5a088c15000eb726a0cc9c12c0fc0e2e5d44c2071520abbf38bd9e",
+      "assetBytes": 16602260,
+      "objectCount": 687,
+      "triangles": 400413,
       "cameras": [
         {
           "id": "room-view",
@@ -15275,13 +15460,13 @@
       ],
       "lights": [
         {
-          "id": "entry-d8f2a8916646ec10",
+          "id": "entry-35cbc2f8c4673387",
           "group": "entry:ceiling",
           "type": "spot",
           "position": [
-            -3.594295,
+            -3.597898,
             6.2886,
-            3.836166
+            6.727803
           ],
           "color": "#fff1db",
           "intensity": 65,
@@ -15289,13 +15474,13 @@
           "status": "browser preview intensity, not photometric conversion"
         },
         {
-          "id": "entry-d8a35427489440ea",
+          "id": "entry-b66d39d0f61fdb3f",
           "group": "entry:ceiling",
           "type": "spot",
           "position": [
-            -3.594295,
+            -3.597898,
             6.2886,
-            6.741096
+            5.245803
           ],
           "color": "#fff1db",
           "intensity": 65,
@@ -15303,13 +15488,13 @@
           "status": "browser preview intensity, not photometric conversion"
         },
         {
-          "id": "entry-beb79742005a4967",
+          "id": "entry-7108a2b376746fd2",
           "group": "entry:ceiling",
           "type": "spot",
           "position": [
-            -1.217244,
+            -1.999898,
             6.2886,
-            3.836166
+            6.727803
           ],
           "color": "#fff1db",
           "intensity": 65,
@@ -15317,13 +15502,13 @@
           "status": "browser preview intensity, not photometric conversion"
         },
         {
-          "id": "entry-64c49382ea1bf56a",
+          "id": "entry-66e59d38e8f9b8a6",
           "group": "entry:ceiling",
           "type": "spot",
           "position": [
-            -1.217244,
+            -0.619898,
             6.2886,
-            6.741096
+            6.727803
           ],
           "color": "#fff1db",
           "intensity": 65,
@@ -15331,13 +15516,13 @@
           "status": "browser preview intensity, not photometric conversion"
         },
         {
-          "id": "entry-070664550abf1045",
+          "id": "entry-ff4a997782dded43",
           "group": "entry:ceiling",
           "type": "spot",
           "position": [
-            1.139859,
+            1.011102,
             6.2886,
-            3.836166
+            6.727803
           ],
           "color": "#fff1db",
           "intensity": 65,
@@ -15345,13 +15530,97 @@
           "status": "browser preview intensity, not photometric conversion"
         },
         {
-          "id": "entry-b3fa6249a77c6a82",
+          "id": "entry-4ee5c2a046796343",
           "group": "entry:ceiling",
           "type": "spot",
           "position": [
-            1.139859,
+            1.011102,
             6.2886,
-            6.741096
+            5.245803
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "entry-22b4418a88eab09a",
+          "group": "entry:ceiling",
+          "type": "spot",
+          "position": [
+            -3.597898,
+            6.2886,
+            3.865803
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "entry-a3ca90ccafab4937",
+          "group": "entry:ceiling",
+          "type": "spot",
+          "position": [
+            -3.597898,
+            6.2886,
+            2.614803
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "entry-c450b7f7aebe1443",
+          "group": "entry:ceiling",
+          "type": "spot",
+          "position": [
+            -1.999898,
+            6.2886,
+            2.614803
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "entry-ecefc4fc18722b06",
+          "group": "entry:ceiling",
+          "type": "spot",
+          "position": [
+            -0.619898,
+            6.2886,
+            2.614803
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "entry-a7b50837cfe702ca",
+          "group": "entry:ceiling",
+          "type": "spot",
+          "position": [
+            1.011102,
+            6.2886,
+            3.865803
+          ],
+          "color": "#fff1db",
+          "intensity": 65,
+          "angle": 0.72,
+          "status": "browser preview intensity, not photometric conversion"
+        },
+        {
+          "id": "entry-a576730f0a08e350",
+          "group": "entry:ceiling",
+          "type": "spot",
+          "position": [
+            1.011102,
+            6.2886,
+            2.614803
           ],
           "color": "#fff1db",
           "intensity": 65,
@@ -15377,9 +15646,9 @@
           "group": "entry:ceiling",
           "type": "point",
           "position": [
-            -1.217287,
+            -1.310287,
             3.59544,
-            4.786481
+            4.557481
           ],
           "color": "#ffdfaf",
           "intensity": 23.646,
@@ -15447,9 +15716,9 @@
           "group": "entry:ceiling",
           "type": "point",
           "position": [
-            -1.217287,
+            -1.310287,
             3.96628,
-            4.786481
+            4.557481
           ],
           "color": "#ffdfaf",
           "intensity": 7.882,
@@ -15460,8 +15729,8 @@
       "sourcePaint": "#efe8d7",
       "finishDefaults": {
         "walls": "#efe8d7",
-        "ceiling": "#efe8d7",
-        "trim": "#efe8d7"
+        "trim": "#efe8d7",
+        "ceiling": "#efe8d7"
       },
       "materials": [
         {
@@ -15585,26 +15854,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-8c19a23282ba",
-          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
-          "roomId": "entry",
-          "role": null,
-          "color": "#a0a09e",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-e2a474a23802",
-          "name": "Floor \u00b7 Black Marble Border",
-          "roomId": "entry",
-          "role": null,
-          "color": "#1a1a1b",
-          "roughness": 0.11999999731779099,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-fe4e61f9e67a",
           "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
           "roomId": "entry",
@@ -15613,6 +15862,16 @@
           "roughness": 0.11999999731779099,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-8c19a23282ba",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-224c7b7ad21a",
@@ -15633,16 +15892,6 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
-        },
-        {
-          "id": "mat-98026e1620cd",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "entry",
-          "role": "ceiling",
-          "color": "#efe8d7",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-635c8fa33538",
@@ -15913,6 +16162,16 @@
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
+        },
+        {
+          "id": "mat-98026e1620cd",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "entry",
+          "role": "ceiling",
+          "color": "#efe8d7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-d3728a7fb1c9",
@@ -16370,8 +16629,8 @@
       ],
       "displayExposureStops": -3.0,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, From doorway: L05 Andree 31.83 cd vanity point; -3.0 is the judged-band floor (R11 displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "powder-room-3d867eae3fa3.glb",
-      "assetHash": "3d867eae3fa3de159378603865479b02596b1d7aa45aefc7b3e7c8a416b46cba",
+      "asset": "powder-room-621d96d0500b.glb",
+      "assetHash": "621d96d0500b5f6877330912019611f0afe8a909db69e3620195633b77ad14e1",
       "assetBytes": 3832684,
       "objectCount": 162,
       "triangles": 46606,
@@ -19769,9 +20028,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-3398ed36cbda.glb",
-      "assetHash": "3398ed36cbdab11f540b3ea493761415cd530fe1d23f3bcc20366c8eafcad8f4",
-      "assetBytes": 3595076,
+      "asset": "laundry-68473744f566.glb",
+      "assetHash": "68473744f566c05214e3371dc65c1b28174743aa49b1d74b0b801d0f1ad6f381",
+      "assetBytes": 3595212,
       "objectCount": 97,
       "triangles": 45728,
       "cameras": [
@@ -21466,11 +21725,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-c72f77d625f5.glb",
-      "assetHash": "c72f77d625f5c350b0a68da08a9e1d1416372d9255329742f8511ed6fe51df5c",
-      "assetBytes": 5329704,
-      "objectCount": 242,
-      "triangles": 91378,
+      "asset": "primary-bath-343c7106952d.glb",
+      "assetHash": "343c7106952d5a9982a9e9a8738681b17106d6d17d91854b5394f8a6690c213b",
+      "assetBytes": 5330492,
+      "objectCount": 243,
+      "triangles": 91379,
       "cameras": [
         {
           "id": "room-view",
@@ -22160,14 +22419,14 @@
           "id": "reverse-view",
           "label": "Reverse view",
           "position": [
-            -10.4,
+            -10.35,
             5.0036,
-            -0.58
+            -0.0
           ],
           "target": [
-            -8.028133,
+            -8.428398,
             4.752609,
-            1.239686
+            2.290076
           ],
           "fov": 76.90741843341193,
           "lensMm": 16.0,
@@ -23519,11 +23778,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-dcb409ba1715.glb",
-      "assetHash": "dcb409ba171594d677368763d2d10f393dcbb0f9f1c23be34a0f18f0bd363186",
-      "assetBytes": 8572396,
-      "objectCount": 176,
-      "triangles": 121884,
+      "asset": "blue-bedroom-b78d692757cf.glb",
+      "assetHash": "b78d692757cf8c92823e0772e22d52a432eace47f52208bc517c9e860d498daa",
+      "assetBytes": 8576064,
+      "objectCount": 178,
+      "triangles": 121912,
       "cameras": [
         {
           "id": "room-view",
@@ -23548,14 +23807,14 @@
           "id": "reverse-view",
           "label": "Reverse view",
           "position": [
-            -8.95,
+            -8.8,
             5.0036,
-            7.3
+            6.6
           ],
           "target": [
-            -6.439116,
+            -6.685271,
             4.767283,
-            5.675311
+            4.485271
           ],
           "fov": 76.90741843341193,
           "lensMm": 16.0,
@@ -25229,11 +25488,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-dae68f516aa2.glb",
-      "assetHash": "dae68f516aa2877452ee3a58ab3a856bf426f35c316ffcb95174a0897b9738ac",
-      "assetBytes": 5336172,
-      "objectCount": 194,
-      "triangles": 34564,
+      "asset": "office-west-86c24674428c.glb",
+      "assetHash": "86c24674428cbe7928e8467b9a77053fefb398779d05dd4be42bb9902c600c2d",
+      "assetBytes": 5332644,
+      "objectCount": 193,
+      "triangles": 34548,
       "cameras": [
         {
           "id": "room-view",
@@ -25399,26 +25658,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-19d4f555e511",
-          "name": "Floor \u00b7 White Marble 18in (atrium)",
-          "roomId": "office-west",
-          "role": null,
-          "color": "#ecebe9",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
-        },
-        {
-          "id": "mat-265c6776c0de",
-          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
-          "roomId": "office-west",
-          "role": null,
-          "color": "#a0a09e",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-08630a1704e1",
@@ -26694,9 +26933,11 @@
           "Door G",
           "Door G leaf",
           "Door K",
-          "Floor Overlay \u00b7 Foyer Black Border 3in",
-          "Floor Overlay \u00b7 Foyer Checkerboard 45deg",
-          "Floor Overlay \u00b7 Foyer White Border 6in",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260",
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Entry \u00b7 E-03",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Closet \u00b7 W-03",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Offices \u00b7 E-05",
@@ -26962,27 +27203,13 @@
               2.73
             ]
           ],
-          "Floor Overlay \u00b7 Foyer Black Border 3in": [
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 Checkerboard \u00b7 x260": [
             [
-              -4.57,
-              2.0
+              -4.67,
+              2.14
             ],
             [
-              -7.66,
-              -6.16
-            ],
-            [
-              -0.03,
-              0.3
-            ]
-          ],
-          "Floor Overlay \u00b7 Foyer Checkerboard 45deg": [
-            [
-              -4.5,
-              1.93
-            ],
-            [
-              -7.58,
+              -7.81,
               -5.59
             ],
             [
@@ -26990,14 +27217,56 @@
               0.3
             ]
           ],
-          "Floor Overlay \u00b7 Foyer White Border 6in": [
+          "Floor Overlay \u00b7 Foyer Marble Black Band \u00b7 White Field \u00b7 x260": [
             [
               -4.67,
               2.14
             ],
             [
               -7.81,
-              -6.01
+              -5.59
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble Checkerboard 45deg (vase) \u00b7 x260": [
+            [
+              -4.67,
+              2.14
+            ],
+            [
+              -7.81,
+              -5.59
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Band (outer + divider) \u00b7 x260": [
+            [
+              -4.67,
+              2.14
+            ],
+            [
+              -7.81,
+              -5.59
+            ],
+            [
+              -0.03,
+              0.3
+            ]
+          ],
+          "Floor Overlay \u00b7 Foyer Marble White Field 45deg \u00b7 x260": [
+            [
+              -4.67,
+              2.14
+            ],
+            [
+              -7.81,
+              -5.59
             ],
             [
               -0.03,
@@ -27757,11 +28026,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-74447c3e7cfe.glb",
-      "assetHash": "74447c3e7cfeabc5b4b20895f5786e80d9cf9c96b73a2763e13d86dea4f74f04",
-      "assetBytes": 6197928,
+      "asset": "office-hall-0230f21504f9.glb",
+      "assetHash": "0230f21504f9a25e08890e66e8585ad830256a9827bfccd808aa13282fc8ac20",
+      "assetBytes": 6208380,
       "objectCount": 249,
-      "triangles": 118826,
+      "triangles": 119047,
       "cameras": [
         {
           "id": "room-view",
@@ -27944,16 +28213,6 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
-          "id": "mat-bc9166ebc810",
-          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
-          "roomId": "office-hall",
-          "role": null,
-          "color": "#a0a09e",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-0f7eac7719ae",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-hall",
@@ -28104,16 +28363,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-a5af25249b5b",
-          "name": "Floor \u00b7 Black Marble Border",
-          "roomId": "office-hall",
-          "role": null,
-          "color": "#1a1a1b",
-          "roughness": 0.11999999731779099,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-75fdee0ef69d",
           "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
           "roomId": "office-hall",
@@ -28122,6 +28371,16 @@
           "roughness": 0.11999999731779099,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-bc9166ebc810",
+          "name": "Floor \u00b7 Marble Grout 4mm (entry, atrium, powder)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#a0a09e",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-d1e3e0513cd5",
@@ -28645,11 +28904,11 @@
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-e3b17acf377f.glb",
-      "assetHash": "e3b17acf377ffe88366d301ccf7daf087268a69c95efcfeaf70eb5ead0237c71",
-      "assetBytes": 3508608,
-      "objectCount": 99,
-      "triangles": 24710,
+      "asset": "primary-loli-closet-aa949e7b1fa2.glb",
+      "assetHash": "aa949e7b1fa254f817a8f8dd32fe0521d26bbb0345bc04fc2a113aa16b5b88d9",
+      "assetBytes": 3511668,
+      "objectCount": 101,
+      "triangles": 24725,
       "cameras": [
         {
           "id": "room-view",
@@ -31048,11 +31307,11 @@
       ],
       "menuDescription": "Covered balcony above the offices",
       "cutawayOff": true,
-      "asset": "front-balcony-fedcafbd5b4b.glb",
-      "assetHash": "fedcafbd5b4b60d8af43db108b881ab435d68b2fdb6322ec5596a6fe0353e9d1",
-      "assetBytes": 3036204,
-      "objectCount": 153,
-      "triangles": 13019,
+      "asset": "front-balcony-54dfe916970c.glb",
+      "assetHash": "54dfe916970c5e0dfa602fa2411510ad10292203d1e23cf7293e215d24c9757c",
+      "assetBytes": 3040564,
+      "objectCount": 155,
+      "triangles": 13048,
       "cameras": [
         {
           "id": "room-view",
@@ -31134,7 +31393,8 @@
       "sourcePaint": "#efe8d7",
       "finishDefaults": {
         "walls": "#efe8d7",
-        "ceiling": "#efe8d7"
+        "ceiling": "#efe8d7",
+        "trim": "#efe8d7"
       },
       "materials": [
         {
@@ -31326,6 +31586,16 @@
           "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-8f51e15414e5",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "front-balcony",
+          "role": "trim",
+          "color": "#efe8d7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         }
       ]
     },
@@ -31515,11 +31785,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-f0a7eab4951d.glb",
-      "assetHash": "f0a7eab4951dc20d3ce32de95cc89c7c1b92ce242c663f823575736e89d9fd5a",
-      "assetBytes": 22375012,
-      "objectCount": 1427,
-      "triangles": 523671,
+      "asset": "exterior-house-6569d15ad20e.glb",
+      "assetHash": "6569d15ad20e1a89ce3ac7a20db993baea0bc97e04540724c8136c0c0f6a3e2f",
+      "assetBytes": 21966336,
+      "objectCount": 1384,
+      "triangles": 517620,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -32042,16 +32312,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-1955fa54c115",
-          "name": "Floor \u00b7 Black Marble Border",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#1a1a1b",
-          "roughness": 0.11999999731779099,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-794c28a322c0",
           "name": "Floor \u00b7 Black Marble Tile 18in (entry)",
           "roomId": "exterior-house",
@@ -32152,16 +32412,6 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
-          "id": "mat-2c2158fbf514",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "exterior-house",
-          "role": "ceiling",
-          "color": "#efe8d7",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
           "id": "mat-3c52153d511e",
           "name": "09 | Tile: 6\" x 6\" Blue Mist Tile Staggered",
           "roomId": "exterior-house",
@@ -32250,6 +32500,16 @@
           "roughness": 0.8999999761581421,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-2c2158fbf514",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "exterior-house",
+          "role": "ceiling",
+          "color": "#efe8d7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-43d63bdaec36",
