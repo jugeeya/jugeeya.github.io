@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "90abe7f92d6d",
+  "sceneVersion": "2d83036e54f4",
   "source": {
     "file": "Web.blend",
-    "sha256": "90abe7f92d6da3ba46665fd545929deb8c8c84334ed02a2bc58d17ac3a09c9eb",
+    "sha256": "2d83036e54f40e369f39057cab1460ce0425d61f856d79c6cfeae503cde415d4",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1453,11 +1453,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-e562f01d2848.glb",
-      "assetHash": "e562f01d28484abc51ca61dcd2ad175c6afff7d6a21e77c1c2a10c495a203a07",
-      "assetBytes": 8254644,
-      "objectCount": 305,
-      "triangles": 62194,
+      "asset": "game-room-ebe14afe7548.glb",
+      "assetHash": "ebe14afe754866b2a4a90bca30430eedafef89374df1473e8ee8669c3209981d",
+      "assetBytes": 8228980,
+      "objectCount": 304,
+      "triangles": 61754,
       "cameras": [
         {
           "id": "room-view",
@@ -2073,16 +2073,6 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
-          "id": "mat-f07e48b50d61",
-          "name": "09 | Color: 07 Gray-Dark*",
-          "roomId": "game-room",
-          "role": null,
-          "color": "#2f2f2f",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-f5f704008f3d",
           "name": "Wood \u00b7 Rustic Cherry (Wyrmwood hex table)",
           "roomId": "game-room",
@@ -2098,6 +2088,16 @@
           "roomId": "game-room",
           "role": null,
           "color": "#424345",
+          "roughness": 0.9200000166893005,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-3345ac8a3bf8",
+          "name": "Felt \u00b7 Billiard Green (Game Room pool table, x270)",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#1f6b3a",
           "roughness": 0.9200000166893005,
           "metallic": 0.0,
           "translation": "constant source PBR values"
@@ -2120,6 +2120,16 @@
           "color": "#4c4e55",
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-f07e48b50d61",
+          "name": "09 | Color: 07 Gray-Dark*",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#2f2f2f",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -6221,11 +6231,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-fa9dd4429603.glb",
-      "assetHash": "fa9dd44296036b62c3af6653bb366c1ba3b4833357ea223f05ad762a92ee6221",
-      "assetBytes": 10698404,
+      "asset": "family-room-c085afd79cb3.glb",
+      "assetHash": "c085afd79cb31052a9215827658fb1da80d568b94b733ae7ad1804fd6526a851",
+      "assetBytes": 10691968,
       "objectCount": 509,
-      "triangles": 182630,
+      "triangles": 182547,
       "cameras": [
         {
           "id": "room-view",
@@ -8475,11 +8485,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-d3b423398e18.glb",
-      "assetHash": "d3b423398e18d0aeb07c7aa04d572009a1ea58c8ab14846a8c68fa4d78c76b47",
-      "assetBytes": 8958968,
+      "asset": "dining-room-bf42b3890b15.glb",
+      "assetHash": "bf42b3890b152cc7ee0e096e52b7b7770b8a3b72f2f52c3b8d74a2691221cf23",
+      "assetBytes": 8956680,
       "objectCount": 351,
-      "triangles": 134002,
+      "triangles": 133956,
       "cameras": [
         {
           "id": "room-view",
@@ -12033,11 +12043,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-12407a2111de.glb",
-      "assetHash": "12407a2111de79aa4d629add914f01d5160bc509d48fc59eb719b9b89cd09e20",
-      "assetBytes": 19983904,
+      "asset": "kitchen-0624df7e94b4.glb",
+      "assetHash": "0624df7e94b4638da7640447fbd8b8f787ae46698d0a075503ef0e4eb8518393",
+      "assetBytes": 19979532,
       "objectCount": 668,
-      "triangles": 462039,
+      "triangles": 461955,
       "cameras": [
         {
           "id": "room-view",
@@ -15345,11 +15355,11 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-2dd6f7132b1e.glb",
-      "assetHash": "2dd6f7132b1e64d3ae9bfd5332a68c82a93095d0ef8d558c8459484e04ebc63a",
-      "assetBytes": 17211868,
+      "asset": "entry-1187b9082c94.glb",
+      "assetHash": "1187b9082c947459297e164a5f4570247d62599b14452a3d85454b38299d01cd",
+      "assetBytes": 17205168,
       "objectCount": 688,
-      "triangles": 407223,
+      "triangles": 407099,
       "cameras": [
         {
           "id": "room-view",
@@ -18857,11 +18867,11 @@
       ],
       "displayExposureStops": -2.1,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: L04 Florena 13.43 cd vanity point; shower marble still reads (R11 d1 -1.5); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "loli-bathroom-4b307f9072b5.glb",
-      "assetHash": "4b307f9072b5ebba1462cce4ba620ff01b625d5d11819a74bca4aaed89eeb303",
-      "assetBytes": 4384452,
+      "asset": "loli-bathroom-22f9e88f0410.glb",
+      "assetHash": "22f9e88f04104d4e8dcda46a0188f5eeef39192c76c7ac25e87dfdbe79f43220",
+      "assetBytes": 4383888,
       "objectCount": 135,
-      "triangles": 44203,
+      "triangles": 44195,
       "cameras": [
         {
           "id": "room-view",
@@ -20879,11 +20889,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-1613920fbeb6.glb",
-      "assetHash": "1613920fbeb693ba2dd6f76796fa69a0528a36bdf3eece8a84e40dfa6df644af",
-      "assetBytes": 12888200,
-      "objectCount": 289,
-      "triangles": 318218,
+      "asset": "primary-bedroom-776b3e483a35.glb",
+      "assetHash": "776b3e483a359121ddb340920bd4f66162257031accf5beed807068f3bd570fa",
+      "assetBytes": 12882116,
+      "objectCount": 290,
+      "triangles": 318086,
       "cameras": [
         {
           "id": "room-view",
@@ -21695,11 +21705,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-81c1c017de4f.glb",
-      "assetHash": "81c1c017de4f4a23b37b343fe280dbcb831da93462ad7ecc5d8cfca4875fb6d5",
-      "assetBytes": 5330580,
-      "objectCount": 243,
-      "triangles": 91379,
+      "asset": "primary-bath-24e9d7a4bb1d.glb",
+      "assetHash": "24e9d7a4bb1d66af0528c0c4a8ae2ea79694d641be521cd3b53ffd04d1f106e8",
+      "assetBytes": 5321908,
+      "objectCount": 242,
+      "triangles": 91243,
       "cameras": [
         {
           "id": "room-view",
@@ -22360,11 +22370,11 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-39e4f9b5262f.glb",
-      "assetHash": "39e4f9b5262fb92f8c629004d754470836bdbc071aacef7f9b5cdda2e7f293fc",
-      "assetBytes": 7957828,
+      "asset": "green-bedroom-0ca90707c2eb.glb",
+      "assetHash": "0ca90707c2ebc3481f37711eb455403ca74b0c449793cfb8fad123e20fef52c5",
+      "assetBytes": 7957180,
       "objectCount": 196,
-      "triangles": 128144,
+      "triangles": 128128,
       "cameras": [
         {
           "id": "room-view",
@@ -23748,11 +23758,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-7e1fbf754c76.glb",
-      "assetHash": "7e1fbf754c76b37c656d97dccfa026c5d2d3468fd8d7f6d23e3ed5fc7ee793a1",
-      "assetBytes": 8595936,
+      "asset": "blue-bedroom-1d76f2e6e673.glb",
+      "assetHash": "1d76f2e6e673c2cfc0416868d0a958e91ba81e179ff1dab9f77c4b98aefa923d",
+      "assetBytes": 8595140,
       "objectCount": 186,
-      "triangles": 122098,
+      "triangles": 122074,
       "cameras": [
         {
           "id": "room-view",
@@ -31853,9 +31863,9 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-62b3b919eaa9.glb",
-      "assetHash": "62b3b919eaa9e3050f244f72eb48b7ad3c3bec9b3502686a13f974d77bd17ec7",
-      "assetBytes": 22145392,
+      "asset": "exterior-house-6b23350f09fb.glb",
+      "assetHash": "6b23350f09fb49d1ae0c7a4cae4079972474b97dbd840b533cdb3b7d4cb5d297",
+      "assetBytes": 22145388,
       "objectCount": 1369,
       "triangles": 520246,
       "cameras": [
