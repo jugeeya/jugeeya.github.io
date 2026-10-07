@@ -30645,17 +30645,17 @@
         {
           "label": "Roof access",
           "position": [
-            -10.8,
-            8.9,
-            7.5
+            -10.9,
+            3.2,
+            7.6
           ],
           "target": [
-            -6.0,
-            3.0,
-            6.2
+            -4.85,
+            2.9,
+            6.75
           ],
-          "fov": 55,
-          "note": "#69: overview of the roof-access assembly from high over the deck's NW corner - flight, cheek wall, and the landing over the door-P nook (complete in this export through footprintExceptions)."
+          "fov": 58,
+          "note": "#69 (Atlas R41 review: the first pose faced the cheek wall): from high over the foot of the flight, along it - the treads, the cheek walls, the head, landing guards and passage toward the roof read together. Verified with a live capture of this pose (Beacon, 7 Oct)."
         },
         {
           "label": "Door-P nook",
@@ -30779,16 +30779,16 @@
           "id": "roof-access",
           "label": "Roof access",
           "position": [
-            -10.8,
-            7.5,
-            -8.9
+            -10.9,
+            7.6,
+            -3.2
           ],
           "target": [
-            -6.0,
-            6.2,
-            -3.0
+            -4.85,
+            6.75,
+            -2.9
           ],
-          "fov": 55,
+          "fov": 58,
           "sourceCamera": "Web presentation view"
         },
         {
