@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "6cef32a86dc8",
+  "sceneVersion": "c78b3a58b5db",
   "source": {
     "file": "Web.blend",
-    "sha256": "6cef32a86dc8dea484a09e491ed6b7848a6584f7c7b83f249c0fd68e75bc9281",
+    "sha256": "c78b3a58b5dbc5aa291a5d52e9501ea7a1c881e118071c2f37bb072ea6ee4a12",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -162,16 +162,9 @@
           "Millwork \u00b7 1F \u00b7 Casing \u00b7 Pantry \u00b7 Door B (S-01)",
           "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Entry \u00b7 x179 flank A",
           "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Kitchen \u00b7 S-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 N-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278soffit-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278soffit-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Entry \u00b7 W-04",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 S-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 N-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 S-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 W-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 N-03",
           "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-02",
           "Millwork \u00b7 2F \u00b7 Boiserie \u00b7 Upper Hall & Bridge \u00b7 N-03-L1",
@@ -1422,48 +1415,35 @@
               0.27,
               2.93
             ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 N-x278-01": [
+            [
+              2.01,
+              2.89
+            ],
+            [
+              -7.53,
+              -7.43
+            ],
+            [
+              2.81,
+              2.92
+            ]
           ]
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Coffered ceiling: L17 Julia 16.6 cd (was a 35 cd J-box stand-in) (R11 metered -0.85); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "finishVolumes": [
-        {
-          "bounds": [
-            [
-              -5.326,
-              -4.83
-            ],
-            [
-              7.85,
-              9.0
-            ],
-            [
-              -0.05,
-              3.6
-            ]
-          ],
-          "finishRoom": "family-room",
-          "reason": "k2 2026-09-30: the Game Room box (x <= -4.835) reaches past its real east edge into the Family Room's passage to it: the north wall face from Door E's casing (x -5.30) to the Family box, with its boiserie, chair rail and baseboard (source paint White Veil), exported in the Game Room's uniform Dusty Blue and seen from the Family Room (Garden doors) as a blue return seamed to the Family cream at x -4.835; skipFacing -x keeps the Game Room's own east wall/header face (x -4.897, facing into the Game Room) in the Game Room's paint (first export painted it cream: plates/after-first-export); p1 2026-10-02: west edge -5.31 -> -5.326, Door E's casing's own east edge in Release 19 (x226 rebuilt it to x -7.362..-5.32633; rv13's -5.303 was Release 13's): the whole casing stays Game trim and the wall from the casing to the Family box is the Family's cream, so the Family Room Garden doors view sees only the casing's real edge, not the 16 mm Game-blue wall strip the old -5.31 edge left beside it (-5.30 would have widened it to 26 mm; Reviews/2026-10-02/polish/family-sliver)",
-          "skipFacing": [
-            [
-              -1,
-              0,
-              0
-            ]
-          ]
-        }
-      ],
       "roleOverrides": {
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-2e1b9c02e03a.glb",
-      "assetHash": "2e1b9c02e03a81d5392dafe440cea79acdd485201ccccec0b1f01038cc474301",
-      "assetBytes": 8238796,
-      "objectCount": 309,
-      "triangles": 61934,
+      "asset": "game-room-78f48360827a.glb",
+      "assetHash": "78f48360827af565da5e77efe263f9a4f305a3924a864885b2f7f77cff73a32c",
+      "assetBytes": 8168508,
+      "objectCount": 302,
+      "triangles": 61319,
       "cameras": [
         {
           "id": "room-view",
@@ -1824,39 +1804,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-7330a245e9d6",
-          "name": "09 | Color: 01 Ceiling White",
-          "roomId": "game-room",
-          "role": "walls",
-          "color": "#f3f3f3",
-          "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values",
-          "finishRoom": "family-room"
-        },
-        {
-          "id": "mat-af060163acf5",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "game-room",
-          "role": "walls",
-          "color": "#efe8d7",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
-          "finishRoom": "family-room"
-        },
-        {
-          "id": "mat-2dcbc009851c",
-          "name": "Paint \u00b7 Dusty Blue (Game Room)",
-          "roomId": "game-room",
-          "role": "walls",
-          "color": "#7cabca",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
-          "finishRoom": "family-room"
-        },
-        {
           "id": "mat-5d4ea5e8db81",
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "game-room",
@@ -1937,27 +1884,6 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-b8dd481cb7ab",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "game-room",
-          "role": "trim",
-          "color": "#efe8d7",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-fc81e93ff762",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "game-room",
-          "role": "trim",
-          "color": "#efe8d7",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
-          "finishRoom": "family-room"
-        },
-        {
           "id": "mat-7e79fbfedbaf",
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "game-room",
@@ -1968,15 +1894,14 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-b2b468425df7",
-          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "id": "mat-b8dd481cb7ab",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "game-room",
           "role": "trim",
-          "color": "#7cabca",
+          "color": "#efe8d7",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
-          "finishRoom": "family-room"
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-049564acbc27",
@@ -2349,6 +2274,16 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-eefc850ae7dd",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "game-room",
+          "role": "ceiling",
+          "color": "#7cabca",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-00faf024f703",
           "name": "LC \u00b7 Matte Brass (Capital Julia MA)",
           "roomId": "game-room",
@@ -2712,12 +2647,7 @@
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Dining Room \u00b7 S-02",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Dining Room \u00b7 S-03",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 E-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 E-x278soffit-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 N-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278soffit-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278soffit-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Entry \u00b7 E-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Entry \u00b7 W-03",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Entry \u00b7 W-04",
@@ -2726,11 +2656,8 @@
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 S-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Kitchen \u00b7 W-02",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 N-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 S-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 W-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Offices \u00b7 N-03",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Powder \u00b7 NE-02",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 West Office \u00b7 N-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 West Office \u00b7 S-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 West Office \u00b7 W-x278-01",
           "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-02",
@@ -6235,6 +6162,76 @@
               -0.03,
               3.55
             ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 E-x278-01": [
+            [
+              4.71,
+              4.81
+            ],
+            [
+              -3.34,
+              -3.19
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278-01": [
+            [
+              4.71,
+              4.87
+            ],
+            [
+              -3.29,
+              -3.19
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 N-x278-01": [
+            [
+              1.96,
+              3.13
+            ],
+            [
+              -7.53,
+              -7.43
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 West Office \u00b7 S-x278-01": [
+            [
+              4.22,
+              4.63
+            ],
+            [
+              -3.01,
+              -2.91
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 West Office \u00b7 W-x278-01": [
+            [
+              4.53,
+              4.63
+            ],
+            [
+              -3.34,
+              -2.91
+            ],
+            [
+              2.81,
+              2.92
+            ]
           ]
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws, including surfaces behind cabinets/furniture the context never ships; derived on Web.blend 7815d6434afe by Reviews/2026-09-25/x203-sky-leaks/evidence/tools/derive_x203.py --see-through 3; x242 2026-10-03: the oculus rose 0.927 m with the roof deck - the raised deck rims' clips +0.927, the skylight's and the bounds' top to z 8.00, the new well liner added; x262 2026-10-06: the oculus moved (-0.093, +0.229) to the scan position - the skylight and well liner clips moved with it; x266 2026-10-06: the tray came back down 0.927 m (the owner scan) - the three deck layers' clips -0.927, the retired well liner removed"
@@ -6244,11 +6241,49 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "family-room-970400516864.glb",
-      "assetHash": "970400516864bc3f6355b507981f74aa3e3ba12a5767f174da42ff319c262c9d",
-      "assetBytes": 10746692,
-      "objectCount": 519,
-      "triangles": 184403,
+      "finishVolumes": [
+        {
+          "bounds": [
+            [
+              -4.835,
+              -4.4947
+            ],
+            [
+              8.9,
+              9.0
+            ],
+            [
+              -0.05,
+              3.348
+            ]
+          ],
+          "finishRoom": "game-room",
+          "reason": "x282 2026-10-10: the pier between Door E and Door D (north wall, y 8.978) is the Game Room's: owner 10 Oct, \"white geometry bleeding into the game room\". It is one flat wall with no corner below the opening's header, so the break goes round Door D's surround - its casing's west edge (x -4.3524) to the arch moulding's foot (z 2.096), the moulding's west end (x -4.4947) to the Family crown's bottom (z 3.348) - and every trim piece is wholly one colour: the S-03 baseboard, chair rail, boiserie and the crown remnant under the header are Game Room trim; Door D's casing and arch moulding and the ceiling-band crown stay Family. These two boxes are the Family Room asset's part of the pier (x >= -4.835); the Game Room asset paints its own part (x <= -4.835) in its uniform paint, so its k2/p1 volume is removed. Source: x282 Blender/candidate-x282.blend, where the same faces carry Paint \u00b7 Dusty Blue (Game Room)."
+        },
+        {
+          "bounds": [
+            [
+              -4.4947,
+              -4.3524
+            ],
+            [
+              8.9,
+              9.0
+            ],
+            [
+              -0.05,
+              2.096
+            ]
+          ],
+          "finishRoom": "game-room",
+          "reason": "x282: the pier below Door D's arch moulding foot, to its casing's west edge (see the first volume)"
+        }
+      ],
+      "asset": "family-room-b9e57a07a64a.glb",
+      "assetHash": "b9e57a07a64a5e6f4e9fa6349bd4d55c42dd36b52ffbb3335df36536ae7adf08",
+      "assetBytes": 10762228,
+      "objectCount": 511,
+      "triangles": 185006,
       "cameras": [
         {
           "id": "room-view",
@@ -6527,6 +6562,28 @@
           "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-d23d2c58f6ef",
+          "name": "09 | Color: 01 Ceiling White",
+          "roomId": "family-room",
+          "role": "walls",
+          "color": "#f3f3f3",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "constant source PBR values",
+          "finishRoom": "game-room"
+        },
+        {
+          "id": "mat-e85dcc097e8d",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "family-room",
+          "role": "walls",
+          "color": "#7cabca",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
+          "finishRoom": "game-room"
+        },
+        {
           "id": "mat-6c514b9c9585",
           "name": "07 | Insulation: Fiberglass",
           "roomId": "family-room",
@@ -6545,6 +6602,17 @@
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-1b9af083be38",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "family-room",
+          "role": "walls",
+          "color": "#efe8d7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
+          "finishRoom": "game-room"
         },
         {
           "id": "mat-74bd0c831759",
@@ -6667,6 +6735,17 @@
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-189dd29e7097",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "family-room",
+          "role": "trim",
+          "color": "#efe8d7",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
+          "finishRoom": "game-room"
+        },
+        {
           "id": "mat-eacd8a8c23ec",
           "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
           "roomId": "family-room",
@@ -6685,6 +6764,17 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-9e16f6e16659",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "family-room",
+          "role": "trim",
+          "color": "#7cabca",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
+          "finishRoom": "game-room"
         },
         {
           "id": "mat-3c69cdd4ff6e",
@@ -6967,6 +7057,16 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-7878fd7c93b9",
+          "name": "Paint \u00b7 Dusty Blue (Game Room)",
+          "roomId": "family-room",
+          "role": "ceiling",
+          "color": "#7cabca",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-a271f53f4194",
           "name": "09 | Color: Blue Cobalt",
           "roomId": "family-room",
@@ -7229,16 +7329,8 @@
           "Millwork \u00b7 1F \u00b7 Casing \u00b7 Kitchen \u00b7 Window 11 (S-01)",
           "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Door H (NE-02)",
           "Millwork \u00b7 1F \u00b7 Casing \u00b7 Powder \u00b7 Window I-33 (E-02)",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 N-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278soffit-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278soffit-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-02",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 W-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 N-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 S-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 W-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Powder \u00b7 NE-02",
           "Millwork \u00b7 2F \u00b7 Baseboard \u00b7 Open to below 1 \u00b7 S-02",
           "Millwork \u00b7 2F \u00b7 Casing \u00b7 Open to below 1 \u00b7 Window 20 (S-02)",
@@ -8505,11 +8597,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-523cd8497503.glb",
-      "assetHash": "523cd84975036a920ce874f210ee6d66c9a553dbe09bb538b903c2224eb9beb1",
-      "assetBytes": 8963112,
-      "objectCount": 345,
-      "triangles": 134054,
+      "asset": "dining-room-3cd45c2ad251.glb",
+      "assetHash": "3cd45c2ad25149d92451889de626e29364a9a81941f9707ff1b107b8e8a026c8",
+      "assetBytes": 8927364,
+      "objectCount": 337,
+      "triangles": 133850,
       "cameras": [
         {
           "id": "room-view",
@@ -12071,11 +12163,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-23834d128711.glb",
-      "assetHash": "23834d128711a0d40100a1c489d8158eed889f3e7d92b204bf207d0223dbe521",
-      "assetBytes": 19901068,
+      "asset": "kitchen-becffad70d7c.glb",
+      "assetHash": "becffad70d7c830bf2d3a1d0f1dfe0723eb04b1166256a24d4467903b5ce7e03",
+      "assetBytes": 19899752,
       "objectCount": 665,
-      "triangles": 460354,
+      "triangles": 460447,
       "cameras": [
         {
           "id": "room-view",
@@ -15404,17 +15496,143 @@
               6.05,
               8.0
             ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 N-x278-01": [
+            [
+              6.68,
+              7.39
+            ],
+            [
+              -6.12,
+              -6.02
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278-01": [
+            [
+              6.68,
+              7.39
+            ],
+            [
+              -3.29,
+              -3.19
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278soffit-01": [
+            [
+              6.68,
+              7.39
+            ],
+            [
+              -2.91,
+              -2.83
+            ],
+            [
+              2.54,
+              2.64
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278-01": [
+            [
+              7.29,
+              7.39
+            ],
+            [
+              -6.12,
+              -3.19
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278soffit-01": [
+            [
+              7.3,
+              7.39
+            ],
+            [
+              -3.23,
+              -2.83
+            ],
+            [
+              2.54,
+              2.64
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 N-x278-01": [
+            [
+              1.96,
+              7.39
+            ],
+            [
+              -7.53,
+              -7.43
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 S-x278-01": [
+            [
+              6.68,
+              7.39
+            ],
+            [
+              -6.29,
+              -6.2
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 W-x278-01": [
+            [
+              7.29,
+              7.39
+            ],
+            [
+              -7.53,
+              -6.2
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Wall P1.001 \u00b7 x278 Door K opening (scan)": [
+            [
+              4.59,
+              4.75
+            ],
+            [
+              -6.24,
+              -5.28
+            ],
+            [
+              -0.02,
+              2.64
+            ]
           ]
         },
         "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py.; x242 2026-10-03: the oculus rose 0.927 m with the roof deck - the raised deck rims' clips +0.927, the skylight's and the bounds' top to z 8.00, the new well liner added; x262 2026-10-06: the oculus moved (-0.093, +0.229) to the scan position - the skylight and well liner clips moved with it; x266 2026-10-06: the tray came back down 0.927 m (the owner scan) - the three deck layers' clips -0.927, the retired well liner removed"
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-20f6a8e4c267.glb",
-      "assetHash": "20f6a8e4c2675fb6feda04dc9e10afa90837cad70fb04a51a8107e56249960f9",
-      "assetBytes": 17608288,
-      "objectCount": 691,
-      "triangles": 416015,
+      "asset": "entry-7dbb759236c9.glb",
+      "assetHash": "7dbb759236c93bd0ba10a950b6c22d8415226eea77bd8027ed75009ddf5ebcdf",
+      "assetBytes": 17598880,
+      "objectCount": 689,
+      "triangles": 415981,
       "cameras": [
         {
           "id": "room-view",
@@ -16139,6 +16357,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-c54b8917bfa3",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#c8d1bc",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-4176d958bd2b",
           "name": "09 | Color: Tan",
           "roomId": "entry",
@@ -16367,16 +16595,6 @@
           "roughness": 0.5,
           "metallic": 0.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-c54b8917bfa3",
-          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
-          "roomId": "entry",
-          "role": null,
-          "color": "#c8d1bc",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-5d9d0081a596",
@@ -16644,11 +16862,11 @@
       ],
       "displayExposureStops": -3.0,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, From doorway: L05 Andree 31.83 cd vanity point; -3.0 is the judged-band floor (R11 displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "powder-room-c42a569252e4.glb",
-      "assetHash": "c42a569252e4f083c87abd516ee4d4547a042746dfab5d45fc597ffae89e8f6a",
-      "assetBytes": 3877660,
-      "objectCount": 164,
-      "triangles": 47498,
+      "asset": "powder-room-fec7eadc4212.glb",
+      "assetHash": "fec7eadc42127609336beaeaf525faa2d87c4a85061f6b2626b3bbe35ef46e5b",
+      "assetBytes": 3992084,
+      "objectCount": 162,
+      "triangles": 47354,
       "cameras": [
         {
           "id": "room-view",
@@ -16926,6 +17144,16 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
+          "id": "mat-4c76feff0a09",
+          "name": "Paint \u00b7 Pale Sage (Dining, Powder)",
+          "roomId": "powder-room",
+          "role": null,
+          "color": "#c8d1bc",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-c39d84e8a5d1",
           "name": "09 | Glass: Tinted Dark",
           "roomId": "powder-room",
@@ -17112,9 +17340,9 @@
       ],
       "displayExposureStops": -1.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view: L13 Bundt 1800 K 23.87 cd replaces a 35 cd J-box (R11 metered -2.0, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "pantry-63d2eb8510cf.glb",
-      "assetHash": "63d2eb8510cfee9038b448e43b1a01512fd4161be0e1882e67f543994bf2b183",
-      "assetBytes": 3651984,
+      "asset": "pantry-f13ec4b37961.glb",
+      "assetHash": "f13ec4b379614288a271a6beb4c51b3a4e9a89991c9e05b664eaef2d8d96d13c",
+      "assetBytes": 3651492,
       "objectCount": 114,
       "triangles": 30786,
       "cameras": [
@@ -17588,9 +17816,9 @@
       ],
       "displayExposureStops": -2.4,
       "displayExposureJudged": "d1 2026-09-28: by eye at Room view (backlit racks no longer wash the room; cabinets read oak)",
-      "asset": "wine-cellar-ba68b36a0f5d.glb",
-      "assetHash": "ba68b36a0f5d5018c4e525ce7f1f753bc7048184301a5af9a204715d95fb8369",
-      "assetBytes": 7370704,
+      "asset": "wine-cellar-9b2203d346c6.glb",
+      "assetHash": "9b2203d346c60780ee9ca5184eb71672b18492849afc4f338f3d5810c6f94567",
+      "assetBytes": 7368316,
       "objectCount": 85,
       "triangles": 71757,
       "cameras": [
@@ -18162,9 +18390,9 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-178d05119157.glb",
-      "assetHash": "178d05119157426aeef8ea0bfd7ac8a25f5767ab6c3ee38858aa1d76c318694f",
-      "assetBytes": 12609868,
+      "asset": "loli-bedroom-c77cec767e07.glb",
+      "assetHash": "c77cec767e07f2757cb296bcb42ca03f2e85353f4bf063e64985a72786248ab2",
+      "assetBytes": 12609368,
       "objectCount": 264,
       "triangles": 239310,
       "cameras": [
@@ -18902,9 +19130,9 @@
       ],
       "displayExposureStops": -2.1,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: L04 Florena 13.43 cd vanity point; shower marble still reads (R11 d1 -1.5); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "loli-bathroom-22f9e88f0410.glb",
-      "assetHash": "22f9e88f04104d4e8dcda46a0188f5eeef39192c76c7ac25e87dfdbe79f43220",
-      "assetBytes": 4383888,
+      "asset": "loli-bathroom-0c143732f2b9.glb",
+      "assetHash": "0c143732f2b94ab923c8cff969a5bac633418c8588fd2fbc455b86f50e03d677",
+      "assetBytes": 4381976,
       "objectCount": 135,
       "triangles": 44195,
       "cameras": [
@@ -20043,9 +20271,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-7c084705094a.glb",
-      "assetHash": "7c084705094ab7c86023027f9b980fe6b8a25db4f15f4423e754d3e039d61f8e",
-      "assetBytes": 3595516,
+      "asset": "laundry-9fd6e8d1f4c8.glb",
+      "assetHash": "9fd6e8d1f4c814b9545f61e337f06cc1e1cc363775c118ab93451ecc655c0ff3",
+      "assetBytes": 3590832,
       "objectCount": 97,
       "triangles": 45740,
       "cameras": [
@@ -20943,9 +21171,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-501ad73c2504.glb",
-      "assetHash": "501ad73c250477b549a9e7cdf4e68f2701821edc5bf8ebd7d83afaf87a0d91d6",
-      "assetBytes": 13238648,
+      "asset": "primary-bedroom-c18fc8c8f723.glb",
+      "assetHash": "c18fc8c8f723e6487b235bc5d2372878b17e88ad42a0993cc28eed01515ae45c",
+      "assetBytes": 13238148,
       "objectCount": 359,
       "triangles": 316970,
       "cameras": [
@@ -21769,9 +21997,9 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-061a5332a0cf.glb",
-      "assetHash": "061a5332a0cf12e93d5c7bd3debd74ca605f65b6b538f1660711cf1d476a4a50",
-      "assetBytes": 5322184,
+      "asset": "primary-bath-07ddff0befa8.glb",
+      "assetHash": "07ddff0befa86b4771273e75a08ae56e012654d78d2fbf3d518eb71e5d650ccf",
+      "assetBytes": 5320352,
       "objectCount": 242,
       "triangles": 91253,
       "cameras": [
@@ -21845,7 +22073,7 @@
             3.079323,
             0.554672
           ],
-          "fov": 28.51614672855795,
+          "fov": 28.516146728557953,
           "lensMm": 50.0,
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.4166666666666667,
@@ -22434,9 +22662,9 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-d9bec3ec31db.glb",
-      "assetHash": "d9bec3ec31db3ab8d04a7e7155fed343cb5960133be596b5d571409625f3bb9c",
-      "assetBytes": 7958412,
+      "asset": "green-bedroom-206d7947eca7.glb",
+      "assetHash": "206d7947eca7c60fc99646c87d9ae00ea22eeda73d045ea0c67e6ffa3ae569f9",
+      "assetBytes": 7957912,
       "objectCount": 196,
       "triangles": 128174,
       "cameras": [
@@ -23017,9 +23245,9 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Basin detail: L06 Rosa 31.83 cd vanity point; walls on R11 cream, counter not blown (R11 -1.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "green-bath-a0acad1d4fb6.glb",
-      "assetHash": "a0acad1d4fb60f28bd0de0d6f5a9d60995b99efc06f9c7d716fbf257c1b59ad4",
-      "assetBytes": 3972304,
+      "asset": "green-bath-8375b1ad4d59.glb",
+      "assetHash": "8375b1ad4d59c80ed7a874f49352034b5fa7e1f174bc5c985f07a7dfdf6c5898",
+      "assetBytes": 3971708,
       "objectCount": 121,
       "triangles": 62746,
       "cameras": [
@@ -23841,9 +24069,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-8443014c7546.glb",
-      "assetHash": "8443014c75460561e0c6af46b09c51202c9467f2339e366c41a0993acb8445fa",
-      "assetBytes": 8785392,
+      "asset": "blue-bedroom-609e2c36d06f.glb",
+      "assetHash": "609e2c36d06f81c4d2a8b40f00786c56702ff174abfd66296cc83805d3ed5dc8",
+      "assetBytes": 8784892,
       "objectCount": 228,
       "triangles": 136903,
       "cameras": [
@@ -24464,9 +24692,9 @@
       },
       "displayExposureStops": -2.3,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity detail: L07 Rosa 31.83 cd vanity point (R11 -0.35); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "blue-bath-65c7ca6c1c4b.glb",
-      "assetHash": "65c7ca6c1c4b27a5d6b3ae64110821908272198ac0eefb4c9ac4989313ba8d5e",
-      "assetBytes": 4425504,
+      "asset": "blue-bath-585d5b6e1ba7.glb",
+      "assetHash": "585d5b6e1ba742b8d4bf39e6c3d2152fe4462a5565db08006c1fd932f97bfd7b",
+      "assetBytes": 4423756,
       "objectCount": 151,
       "triangles": 63783,
       "cameras": [
@@ -25031,14 +25259,11 @@
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Bedroom \u00b7 N-02",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Closet \u00b7 W-03",
           "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 N-03",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 N-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278soffit-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278soffit-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 N-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 S-x278-01",
-          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 W-x278-01",
           "Part Gypsum Board (W3).002",
           "Part Wood Flooring (concrete slab)",
           "Site Terrain Site",
@@ -25060,8 +25285,7 @@
           "x247 \u00b7 Front \u00b7 Pavers \u00b7 fountain court",
           "x278 \u00b7 East Office \u00b7 Ceiling coffer band",
           "x278 \u00b7 East Office \u00b7 Ceiling coffer soffit (north wall)",
-          "x278 \u00b7 East Office \u00b7 Coffer cove \u00b7 north",
-          "x278 \u00b7 West Office \u00b7 Ceiling coffer band"
+          "x278 \u00b7 East Office \u00b7 Coffer cove \u00b7 north"
         ],
         "clip": {
           "Arabesque railing panel Obj Object-36.003": [
@@ -25553,6 +25777,118 @@
               -0.16,
               0.23
             ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278-01": [
+            [
+              5.48,
+              7.39
+            ],
+            [
+              -3.29,
+              -3.19
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278soffit-01": [
+            [
+              5.48,
+              7.36
+            ],
+            [
+              -2.91,
+              -2.83
+            ],
+            [
+              2.54,
+              2.64
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278-01": [
+            [
+              7.29,
+              7.39
+            ],
+            [
+              -5.74,
+              -3.19
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278soffit-01": [
+            [
+              7.3,
+              7.39
+            ],
+            [
+              -3.23,
+              -2.83
+            ],
+            [
+              2.54,
+              2.64
+            ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 N-x278-01": [
+            [
+              3.42,
+              5.55
+            ],
+            [
+              -7.53,
+              -7.43
+            ],
+            [
+              2.81,
+              2.92
+            ]
+          ],
+          "x278 \u00b7 East Office \u00b7 Ceiling coffer band": [
+            [
+              5.48,
+              7.4
+            ],
+            [
+              -5.74,
+              -3.18
+            ],
+            [
+              2.88,
+              3.01
+            ]
+          ],
+          "x278 \u00b7 East Office \u00b7 Ceiling coffer soffit (north wall)": [
+            [
+              5.48,
+              7.4
+            ],
+            [
+              -3.23,
+              -2.82
+            ],
+            [
+              2.6,
+              3.01
+            ]
+          ],
+          "x278 \u00b7 East Office \u00b7 Coffer cove \u00b7 north": [
+            [
+              5.48,
+              7.14
+            ],
+            [
+              -5.12,
+              -3.46
+            ],
+            [
+              2.91,
+              3.02
+            ]
           ]
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10]",
@@ -25569,11 +25905,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-c4b58b0aec09.glb",
-      "assetHash": "c4b58b0aec09474d7492acc8121ddab02b98a5de19f9e1c588022d2d3340ac0f",
-      "assetBytes": 5032188,
-      "objectCount": 148,
-      "triangles": 30530,
+      "asset": "office-west-91208998ac00.glb",
+      "assetHash": "91208998ac003dd6f3e3f7371a9f78d57d0ef2114ac2595c8a48583bbad7c089",
+      "assetBytes": 5008928,
+      "objectCount": 145,
+      "triangles": 30374,
       "cameras": [
         {
           "id": "room-view",
@@ -26534,9 +26870,9 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-6fd41ec43382.glb",
-      "assetHash": "6fd41ec43382040a447f719f524cad35780e0085383085702a24d26231f5e36a",
-      "assetBytes": 5035252,
+      "asset": "office-east-88660812c7be.glb",
+      "assetHash": "88660812c7be84c15b4d2e7c1b02ee69e0bf2c18670ddbbb09d9592723c41f47",
+      "assetBytes": 5028336,
       "objectCount": 148,
       "triangles": 36988,
       "cameras": [
@@ -28095,9 +28431,9 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-7080de86b728.glb",
-      "assetHash": "7080de86b728247668806e0d18aa8bd8c2607c2f0618ccce350bff5eff20f7fe",
-      "assetBytes": 6365428,
+      "asset": "office-hall-4d9480ddfc15.glb",
+      "assetHash": "4d9480ddfc157d10b60862d3aa0b618e2e40a8abb55ecbf2b07f18d0ea1d3a6c",
+      "assetBytes": 6363268,
       "objectCount": 253,
       "triangles": 121561,
       "cameras": [
@@ -28559,9 +28895,9 @@
         "Loli Closet"
       ],
       "displayExposureStops": -0.15,
-      "asset": "loli-closet-7ec4b29aaa4b.glb",
-      "assetHash": "7ec4b29aaa4b76a08adc19d1ca155b0e332409a322b34cb79546737931d3235b",
-      "assetBytes": 2280556,
+      "asset": "loli-closet-c6496cbce95e.glb",
+      "assetHash": "c6496cbce95e53d9841448f8339de1f3d8bdf72788e58aec99838c8a163b646e",
+      "assetBytes": 2280076,
       "objectCount": 110,
       "triangles": 19116,
       "cameras": [
@@ -28943,9 +29279,9 @@
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-b0bd47dd0655.glb",
-      "assetHash": "b0bd47dd06554c168e5fc4f0ed790f3ed8983fec776ea1da1f05851d56dbb1b0",
-      "assetBytes": 3511672,
+      "asset": "primary-loli-closet-b47351b57cbb.glb",
+      "assetHash": "b47351b57cbbbc42be12fe0aaae0af671a935bee28e8ee0e8b6431c8b75dc14e",
+      "assetBytes": 3511180,
       "objectCount": 101,
       "triangles": 24725,
       "cameras": [
@@ -29395,9 +29731,9 @@
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
-      "asset": "primary-green-closet-a0bfe7a0425c.glb",
-      "assetHash": "a0bfe7a0425c3b9922771b4c6b94a45c38eab9bd136d4f770e1adef28bf6a864",
-      "assetBytes": 3467960,
+      "asset": "primary-green-closet-5bc0c701ce73.glb",
+      "assetHash": "5bc0c701ce73d33d4b990878a20c25edf42e1c000bde64afbde1a98dff51a4c4",
+      "assetBytes": 3467468,
       "objectCount": 86,
       "triangles": 24069,
       "cameras": [
@@ -29797,9 +30133,9 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-68a388ef9bff.glb",
-      "assetHash": "68a388ef9bff575aec5e364a0b4ebf9916c238499593c3abc7a83b2a091b38d2",
-      "assetBytes": 2337888,
+      "asset": "upstairs-closet-west-ed704e216516.glb",
+      "assetHash": "ed704e21651664a132cdd905b0a596c2849a42d3f8809c69041afb92b51dbd37",
+      "assetBytes": 2337408,
       "objectCount": 69,
       "triangles": 22052,
       "cameras": [
@@ -29889,7 +30225,7 @@
             3.760664,
             5.294801
           ],
-          "fov": 28.51614672855795,
+          "fov": 28.516146728557953,
           "lensMm": 50.0,
           "sensorWidthMm": 36.0,
           "sourceAspect": 1.4166666666666667,
@@ -30384,9 +30720,9 @@
         "Dressing 3"
       ],
       "displayExposureStops": -0.55,
-      "asset": "upstairs-closet-east-e59b35df4e85.glb",
-      "assetHash": "e59b35df4e8584b85ac25809e37d52d7b0451fe85b8ade37aa5c6f4b8cfe5c86",
-      "assetBytes": 2350228,
+      "asset": "upstairs-closet-east-626451d3eaa9.glb",
+      "assetHash": "626451d3eaa9ecace7c6af60fe143ae4bab2f614fc5239f6478beae2218632dc",
+      "assetBytes": 2349748,
       "objectCount": 77,
       "triangles": 20590,
       "cameras": [
@@ -30806,9 +31142,9 @@
         }
       ],
       "cutawayKeepBelow": 1.3,
-      "asset": "rear-deck-899b30ca2a48.glb",
-      "assetHash": "899b30ca2a488db5bd2fa64d02194e0835ba9e27d9ccebdaee78da1728cabd91",
-      "assetBytes": 2173608,
+      "asset": "rear-deck-72b3aa142885.glb",
+      "assetHash": "72b3aa1428853465c024aa4cb10e5ebc880260803f774ca6ca002bab1cc579b9",
+      "assetBytes": 2172972,
       "objectCount": 94,
       "triangles": 19423,
       "cameras": [
@@ -31444,9 +31780,9 @@
       ],
       "menuDescription": "Covered balcony above the offices",
       "cutawayOff": true,
-      "asset": "front-balcony-31bb33f564b4.glb",
-      "assetHash": "31bb33f564b4ec9403e2b7a12fdb96cda17054341dcb6a4ba627b7fc15518b2f",
-      "assetBytes": 4076804,
+      "asset": "front-balcony-43a379b1c8ec.glb",
+      "assetHash": "43a379b1c8ec8fd4c95373658125906e2c5b92a78817bd2fbe374b145fe6ad8d",
+      "assetBytes": 4073616,
       "objectCount": 156,
       "triangles": 21752,
       "cameras": [
@@ -31952,11 +32288,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-93f6d418a403.glb",
-      "assetHash": "93f6d418a403e26b324d2d79bf2b27b852a1cfa8470bfde4fac157153c3ea1e5",
-      "assetBytes": 23360404,
+      "asset": "exterior-house-08bc5eca57ad.glb",
+      "assetHash": "08bc5eca57ade334721f2f893580f2e775d342b9d5bdda8a57fd649f03514bcf",
+      "assetBytes": 23352212,
       "objectCount": 1369,
-      "triangles": 539298,
+      "triangles": 539496,
       "cameras": [
         {
           "id": "exterior-overview",
