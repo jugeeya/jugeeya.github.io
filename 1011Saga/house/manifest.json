@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "a8a546f462b4",
+  "sceneVersion": "5e7d1094899f",
   "source": {
     "file": "Web.blend",
-    "sha256": "a8a546f462b4459eee5c48c36efeb52b958d33833fe00d9fd1dfc30ee6e2ec3e",
+    "sha256": "5e7d1094899fd3c9555ed49c93b3440835f52fe872086ac500bca521ed35745c",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1424,11 +1424,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-cb7116b82a19.glb",
-      "assetHash": "cb7116b82a19de6468b2e618db047c532d594f06798de9ed9dc1bf44a2cb29e9",
-      "assetBytes": 8165716,
+      "asset": "game-room-cd5a88751450.glb",
+      "assetHash": "cd5a88751450b4012f73bb9a3b23ffb267dd7038afc8097f98b831fbf8d220cc",
+      "assetBytes": 9902408,
       "objectCount": 301,
-      "triangles": 61293,
+      "triangles": 85200,
       "cameras": [
         {
           "id": "room-view",
@@ -6219,11 +6219,11 @@
           "reason": "x282: the pier below Door D's arch moulding foot, to its casing's west edge (see the first volume)"
         }
       ],
-      "asset": "family-room-521cfc317282.glb",
-      "assetHash": "521cfc317282dbc17b44aa34c8cb860a583191c361f07450e4ea0b475121c42b",
-      "assetBytes": 10753524,
-      "objectCount": 508,
-      "triangles": 184934,
+      "asset": "family-room-f75eed9922be.glb",
+      "assetHash": "f75eed9922bee8bba484f89817252e8aa492741d8a871bb8e1f527254419dedf",
+      "assetBytes": 13964492,
+      "objectCount": 505,
+      "triangles": 251621,
       "cameras": [
         {
           "id": "room-view",
@@ -6673,17 +6673,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
-          "id": "mat-189dd29e7097",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "family-room",
-          "role": "trim",
-          "color": "#efe8d7",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength",
-          "finishRoom": "game-room"
         },
         {
           "id": "mat-eacd8a8c23ec",
@@ -8522,11 +8511,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-3f11e86f8939.glb",
-      "assetHash": "3f11e86f8939336f6792dfb54b157b10e78792a516c01eab85ffd595575882ab",
-      "assetBytes": 8924396,
+      "asset": "dining-room-15015c9df7d2.glb",
+      "assetHash": "15015c9df7d242dcbc436e10ae76284b3defc8d01ca877acfa701231c24da4dd",
+      "assetBytes": 9638480,
       "objectCount": 336,
-      "triangles": 133806,
+      "triangles": 154222,
       "cameras": [
         {
           "id": "room-view",
@@ -9291,6 +9280,16 @@
           "roughness": 0.44999998807907104,
           "metallic": 0.6000000238418579,
           "translation": "source UV opacity mask preserved"
+        },
+        {
+          "id": "mat-1d73f973f537",
+          "name": "Railing \u00b7 Black Iron",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#272729",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-b0abb1ba281b",
@@ -12084,11 +12083,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-209b80e05c6a.glb",
-      "assetHash": "209b80e05c6a64c212288124933095727173ae5f5d0132dac9c631c124dfc56e",
-      "assetBytes": 19883460,
+      "asset": "kitchen-3bad37a4ac00.glb",
+      "assetHash": "3bad37a4ac0096b76078f3c340e8a83875d3c8ed8b54fddb25395b75f6c80381",
+      "assetBytes": 20586932,
       "objectCount": 661,
-      "triangles": 460259,
+      "triangles": 467501,
       "cameras": [
         {
           "id": "room-view",
@@ -15489,11 +15488,11 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-1959bbb48a23.glb",
-      "assetHash": "1959bbb48a2395fb31e18f774684bfbd9f3cf6a08c42da0d88971798270327e1",
-      "assetBytes": 17526736,
-      "objectCount": 668,
-      "triangles": 415201,
+      "asset": "entry-e2a4f666340c.glb",
+      "assetHash": "e2a4f666340cc62c56c47464bbf12313d72764ad27e5fb14d20ead726b68bdfb",
+      "assetBytes": 20128760,
+      "objectCount": 658,
+      "triangles": 481301,
       "cameras": [
         {
           "id": "room-view",
@@ -16198,16 +16197,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-84394471edab",
-          "name": "Railing \u00b7 Arabesque Panel",
-          "roomId": "entry",
-          "role": null,
-          "color": "#1d1d1d",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.6000000238418579,
-          "translation": "source UV opacity mask preserved"
-        },
-        {
           "id": "mat-dc8b594e4306",
           "name": "Railing \u00b7 Black Iron",
           "roomId": "entry",
@@ -16216,6 +16205,16 @@
           "roughness": 0.44999998807907104,
           "metallic": 0.6000000238418579,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-84394471edab",
+          "name": "Railing \u00b7 Arabesque Panel",
+          "roomId": "entry",
+          "role": null,
+          "color": "#1d1d1d",
+          "roughness": 0.44999998807907104,
+          "metallic": 0.6000000238418579,
+          "translation": "source UV opacity mask preserved"
         },
         {
           "id": "mat-c54b8917bfa3",
@@ -25766,11 +25765,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-91208998ac00.glb",
-      "assetHash": "91208998ac003dd6f3e3f7371a9f78d57d0ef2114ac2595c8a48583bbad7c089",
-      "assetBytes": 5008928,
+      "asset": "office-west-9d825bd93de0.glb",
+      "assetHash": "9d825bd93de070b5d50251882b1c7dc674581dae6a89bb8846e6731b1a3b04c8",
+      "assetBytes": 5098148,
       "objectCount": 145,
-      "triangles": 30374,
+      "triangles": 35190,
       "cameras": [
         {
           "id": "room-view",
@@ -26078,14 +26077,14 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
-          "id": "mat-9a70ad120550",
-          "name": "Railing \u00b7 Arabesque Panel",
+          "id": "mat-d49b771034b4",
+          "name": "Railing \u00b7 Black Iron",
           "roomId": "office-west",
           "role": null,
-          "color": "#1d1d1d",
+          "color": "#272729",
           "roughness": 0.44999998807907104,
           "metallic": 0.6000000238418579,
-          "translation": "source UV opacity mask preserved"
+          "translation": "constant source PBR values"
         },
         {
           "id": "mat-30f534f56145",
@@ -32050,7 +32049,8 @@
         "Obj table",
         "Obj ottoman",
         "Obj A6",
-        "Light \u00b7 LC exterior \u00b7 "
+        "Light \u00b7 LC exterior \u00b7 ",
+        "Arabesque railing"
       ],
       "includeSourceNames": [
         "Light \u00b7 RCP SconceExt 1F 01",
@@ -32157,11 +32157,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-cb1b74ca6f73.glb",
-      "assetHash": "cb1b74ca6f7382fb465900ccc99a15f208ebac3a2411cb1589a66e54854484f1",
-      "assetBytes": 23352632,
-      "objectCount": 1369,
-      "triangles": 539496,
+      "asset": "exterior-house-10acbc707f97.glb",
+      "assetHash": "10acbc707f9766889e1db01c8809fb6e4b5632763a6aeb3a9671a37f9737efa8",
+      "assetBytes": 22927808,
+      "objectCount": 1333,
+      "triangles": 525070,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -32972,16 +32972,6 @@
           "roughness": 0.30000001192092896,
           "metallic": 1.0,
           "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-33e1d2a51102",
-          "name": "Railing \u00b7 Arabesque Panel",
-          "roomId": "exterior-house",
-          "role": null,
-          "color": "#1d1d1d",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.6000000238418579,
-          "translation": "source UV opacity mask preserved"
         },
         {
           "id": "mat-618e233dcda8",
