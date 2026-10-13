@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "4b6a692ebb99",
+  "sceneVersion": "2b62a07cbf44",
   "source": {
     "file": "Web.blend",
-    "sha256": "4b6a692ebb99b9e48bc5bbc3bb377d5eaea18250825588873aeb3b1bc645f712",
+    "sha256": "2b62a07cbf4481d83945918458fc2bda63cb13814a68c25a3e32ae9acecdcb67",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -93,7 +93,8 @@
       ],
       "excludeSourcePrefixes": [
         "Column C09.",
-        "Lantern \u00b7 "
+        "Lantern \u00b7 ",
+        "Fireplace \u00b7 x291"
       ],
       "excludeSourceNames": [
         "Obj table.013"
@@ -1424,11 +1425,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-f6d2b8504a14.glb",
-      "assetHash": "f6d2b8504a1401c3c79941afd47802fdf2ac82df4ae8524e8ea696d7f05dfaac",
-      "assetBytes": 10629672,
+      "asset": "game-room-b0d0de0b11cf.glb",
+      "assetHash": "b0d0de0b11cf52c09886da264788a0984646e7209aae18466b90e30dff290b97",
+      "assetBytes": 10625764,
       "objectCount": 300,
-      "triangles": 106471,
+      "triangles": 106410,
       "cameras": [
         {
           "id": "room-view",
@@ -2049,16 +2050,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-f4c1821b40d6",
-          "name": "04 | B Running Bond WHITE",
-          "roomId": "game-room",
-          "role": null,
-          "color": "#939492",
-          "roughness": 0.8500000238418579,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-f9520fec0b76",
           "name": "07 | Insulation: Fiberglass",
           "roomId": "game-room",
@@ -2440,6 +2431,10 @@
         },
         {
           "prefix": "Obj Object-38",
+          "side": "xMin"
+        },
+        {
+          "prefix": "Fireplace \u00b7 x291",
           "side": "xMin"
         }
       ],
@@ -6209,11 +6204,11 @@
           "reason": "x282: the pier below Door D's arch moulding foot, to its casing's west edge (see the first volume)"
         }
       ],
-      "asset": "family-room-30c8eeb54aa2.glb",
-      "assetHash": "30c8eeb54aa2dfe7dc05b878124d20331681adb2bd746d881385aa6eb40e7e51",
-      "assetBytes": 15260472,
-      "objectCount": 502,
-      "triangles": 287895,
+      "asset": "family-room-34b5f9e40ac7.glb",
+      "assetHash": "34b5f9e40ac79abde9ef41c14ffe8a5bc013df52312cceebbf96f703aa3fb302",
+      "assetBytes": 16163288,
+      "objectCount": 511,
+      "triangles": 295440,
       "cameras": [
         {
           "id": "room-view",
@@ -6846,26 +6841,6 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-3838375d8471",
-          "name": "04 | B Running Bond WHITE",
-          "roomId": "family-room",
-          "role": null,
-          "color": "#939492",
-          "roughness": 0.8500000238418579,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
-          "id": "mat-65d84278a7af",
-          "name": "pictmat.001",
-          "roomId": "family-room",
-          "role": null,
-          "color": "#f3f3f3",
-          "roughness": 0.550000011920929,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
-        },
-        {
           "id": "mat-14b5b9cc5fdc",
           "name": "Paint \u00b7 Dusty Blue (Game Room)",
           "roomId": "family-room",
@@ -6984,6 +6959,86 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "source paint mean from unlit texture bake; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-51e1edf59ae5",
+          "name": "Metal \u00b7 DaVinci 59 GSE black painted trim kit and heater strip (x291)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#101011",
+          "roughness": 0.41999998688697815,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-571772e48675",
+          "name": "Metal \u00b7 DaVinci 59 GSE steel housing (x291)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#343436",
+          "roughness": 0.550000011920929,
+          "metallic": 0.6000000238418579,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-6e762d9188a7",
+          "name": "Fireplace \u00b7 DaVinci 59 GSE black fluted fireback and panels (x291)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#09090a",
+          "roughness": 0.18000000715255737,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-ce399fd1bc47",
+          "name": "Glass \u00b7 DaVinci 59 GSE front glass (x291)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#fafafa",
+          "roughness": 0.019999999552965164,
+          "metallic": 0.0,
+          "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-89bc3ee895bc",
+          "name": "Fireplace \u00b7 DaVinci 59 GSE black ember media (x291)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#0a0a0b",
+          "roughness": 0.07999999821186066,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-a3ca8abe4fd2",
+          "name": "Fireplace \u00b7 DaVinci 59 GSE ember bed glow, patchy (x291)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#cb6124",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
+        },
+        {
+          "id": "mat-cdb3caec7fe4",
+          "name": "Fireplace \u00b7 DaVinci 59 GSE HD split log, soft underside glow (x291)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#605042",
+          "roughness": 0.8999999761581421,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-da043195e133",
+          "name": "Fireplace \u00b7 DaVinci 59 GSE holographic flame cards (x291)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#ffb359",
+          "roughness": 1.0,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source UV opacity mask preserved"
         },
         {
           "id": "mat-a271f53f4194",
@@ -12053,11 +12108,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-3bad37a4ac00.glb",
-      "assetHash": "3bad37a4ac0096b76078f3c340e8a83875d3c8ed8b54fddb25395b75f6c80381",
-      "assetBytes": 20586932,
-      "objectCount": 661,
-      "triangles": 467501,
+      "asset": "kitchen-b6fcae8e8af9.glb",
+      "assetHash": "b6fcae8e8af97a95b80a8768292df561ac56f229fc2b6e17911f1fa28d77a750",
+      "assetBytes": 20599004,
+      "objectCount": 665,
+      "triangles": 467673,
       "cameras": [
         {
           "id": "room-view",
@@ -15456,9 +15511,9 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-916c0029be0f.glb",
-      "assetHash": "916c0029be0f5db688e3e150e7d4676e68a8e2e9054ef4e4e5b0fd10589e535b",
-      "assetBytes": 21352544,
+      "asset": "entry-27cf1f7e6772.glb",
+      "assetHash": "27cf1f7e677229b671c73bd8b1d08959df8e76b2342f0bbde5cf96685f5d1d6e",
+      "assetBytes": 21350600,
       "objectCount": 657,
       "triangles": 516411,
       "cameras": [
@@ -15769,9 +15824,9 @@
           "group": "entry:sconces",
           "type": "point",
           "position": [
-            -3.679088,
-            2.21888,
-            7.420091
+            -4.354276,
+            3.782982,
+            4.377
           ],
           "color": "#ffdfaf",
           "intensity": 5.255,
@@ -15783,9 +15838,9 @@
           "group": "entry:sconces",
           "type": "point",
           "position": [
-            1.089088,
-            2.21888,
-            7.420091
+            1.767118,
+            3.782982,
+            4.377
           ],
           "color": "#ffdfaf",
           "intensity": 5.255,
@@ -18208,11 +18263,11 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-ae3fa2d09870.glb",
-      "assetHash": "ae3fa2d09870745ea917037d89044cb8dc3d057ebcd685761c89de83e8bb0f69",
-      "assetBytes": 12612272,
+      "asset": "loli-bedroom-1a29fcb768c7.glb",
+      "assetHash": "1a29fcb768c70e6a21a4990b0ff16d86e13f6ff4a75a2f4912e538066bab0f95",
+      "assetBytes": 13496452,
       "objectCount": 264,
-      "triangles": 239332,
+      "triangles": 270820,
       "cameras": [
         {
           "id": "room-view",
@@ -18791,21 +18846,21 @@
           "translation": "constant source PBR values"
         },
         {
-          "id": "mat-bf4d3df2db04",
-          "name": "Wood \u00b7 Aspen Provence Patine acacia (x258 PROPOSAL)",
+          "id": "mat-70c4056dd378",
+          "name": "Wood \u00b7 Living Spaces Deliah Patine acacia (x290)",
           "roomId": "loli-bedroom",
           "role": null,
-          "color": "#96846c",
+          "color": "#8e7d6e",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-52e63524ccde",
-          "name": "Upholstery \u00b7 Aspen Provence cream panel (x258 PROPOSAL)",
+          "id": "mat-83c23596106e",
+          "name": "Upholstery \u00b7 Living Spaces Deliah ivory linen (x290)",
           "roomId": "loli-bedroom",
           "role": null,
-          "color": "#dcd6c6",
+          "color": "#dcd8d1",
           "roughness": 0.800000011920929,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
@@ -20089,11 +20144,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
-      "asset": "laundry-0b425620bdcd.glb",
-      "assetHash": "0b425620bdcd77a9aa546aefaa48b2130bfbe7f9398d4538baf5e2f5af2ef401",
-      "assetBytes": 3590832,
-      "objectCount": 97,
-      "triangles": 45740,
+      "asset": "laundry-8cfbc2a691d2.glb",
+      "assetHash": "8cfbc2a691d282329f0417204784d9ec821f9d13639fe4d97a7986e2d4a8ed8d",
+      "assetBytes": 3592536,
+      "objectCount": 98,
+      "triangles": 45748,
       "cameras": [
         {
           "id": "room-view",
@@ -23063,11 +23118,11 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Basin detail: L06 Rosa 31.83 cd vanity point; walls on R11 cream, counter not blown (R11 -1.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "green-bath-8375b1ad4d59.glb",
-      "assetHash": "8375b1ad4d59c80ed7a874f49352034b5fa7e1f174bc5c985f07a7dfdf6c5898",
-      "assetBytes": 3971708,
-      "objectCount": 121,
-      "triangles": 62746,
+      "asset": "green-bath-c2bea2fdcd87.glb",
+      "assetHash": "c2bea2fdcd87c3a15bc89f03f1b98b68faa57ce7a8e67be345729b3ad911aa0e",
+      "assetBytes": 3973220,
+      "objectCount": 122,
+      "triangles": 62752,
       "cameras": [
         {
           "id": "room-view",
@@ -30968,11 +31023,11 @@
         }
       ],
       "cutawayKeepBelow": 1.3,
-      "asset": "rear-deck-72b3aa142885.glb",
-      "assetHash": "72b3aa1428853465c024aa4cb10e5ebc880260803f774ca6ca002bab1cc579b9",
-      "assetBytes": 2172972,
-      "objectCount": 94,
-      "triangles": 19423,
+      "asset": "rear-deck-be0a39ae5665.glb",
+      "assetHash": "be0a39ae56656ddf819bec456495f173cdf6fa6388318d26014e0b381b432793",
+      "assetBytes": 2174832,
+      "objectCount": 95,
+      "triangles": 19435,
       "cameras": [
         {
           "id": "room-view",
@@ -32115,11 +32170,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-10acbc707f97.glb",
-      "assetHash": "10acbc707f9766889e1db01c8809fb6e4b5632763a6aeb3a9671a37f9737efa8",
-      "assetBytes": 22927808,
-      "objectCount": 1333,
-      "triangles": 525070,
+      "asset": "exterior-house-7641a92ef0b3.glb",
+      "assetHash": "7641a92ef0b399a26d9db6515dd87507aef2caf965e6f293693d73b4289a0878",
+      "assetBytes": 22929700,
+      "objectCount": 1334,
+      "triangles": 525082,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -33342,11 +33397,11 @@
     {
       "id": "loli-bed",
       "label": "Loli bed",
-      "default": "provence-full",
+      "default": "deliah-full",
       "options": [
         {
-          "id": "provence-full",
-          "label": "Aspen Provence (Full)"
+          "id": "deliah-full",
+          "label": "Living Spaces Deliah (Full)"
         },
         {
           "id": "scarlett-queen",
