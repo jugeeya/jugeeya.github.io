@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "317b1b1a448d",
+  "sceneVersion": "243a9e1fb204",
   "source": {
     "file": "Web.blend",
-    "sha256": "317b1b1a448dc86694e719610f5a10fea01d7b3f85f656755e6b830c1da20629",
+    "sha256": "243a9e1fb204069c87eb333ebc16cb4abfb2995dad116b9ccba35d8f128541bf",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -15511,11 +15511,14 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-6b07d3aedddf.glb",
-      "assetHash": "6b07d3aedddf5da6bfdc8b85d8e32bceab979e0430d2ee19dec9693ee467ed09",
-      "assetBytes": 21387472,
-      "objectCount": 657,
-      "triangles": 517069,
+      "variantDefaultOnly": [
+        "boiserie-blue-bedroom"
+      ],
+      "asset": "entry-c02159702fc1.glb",
+      "assetHash": "c02159702fc1f633a3a39c21a14de1819bdf5c6df1f8b80b48eb75f4cf6d9318",
+      "assetBytes": 21394288,
+      "objectCount": 660,
+      "triangles": 517117,
       "cameras": [
         {
           "id": "room-view",
@@ -20144,6 +20147,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp 3.37 (the 2F hall floor 3.4036 - 0.03; the laundry's own raised floor 3.8666 would cut the hall floor out)]"
       },
       "displayExposureStops": -3.15,
+      "variantDefaultOnly": [
+        "boiserie-green-bedroom"
+      ],
       "asset": "laundry-8cfbc2a691d2.glb",
       "assetHash": "8cfbc2a691d282329f0417204784d9ec821f9d13639fe4d97a7986e2d4a8ed8d",
       "assetBytes": 3592536,
@@ -21044,11 +21050,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-c18fc8c8f723.glb",
-      "assetHash": "c18fc8c8f723e6487b235bc5d2372878b17e88ad42a0993cc28eed01515ae45c",
-      "assetBytes": 13238148,
-      "objectCount": 359,
-      "triangles": 316970,
+      "asset": "primary-bedroom-cd8753a1e358.glb",
+      "assetHash": "cd8753a1e35863e5a031121f935dac09b7c899d4adc0e3d471b49aab0ce61be6",
+      "assetBytes": 13350328,
+      "objectCount": 391,
+      "triangles": 318122,
       "cameras": [
         {
           "id": "room-view",
@@ -21658,6 +21664,7 @@
         }
       ],
       "variants": [
+        "boiserie-primary-bedroom",
         "door-hardware",
         "primary-bed"
       ]
@@ -21870,11 +21877,14 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity: 2 x L08 Lily 24.87 cd replace three 35 cd sconce points; less clipping than R11 (R11 d1 -2.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "primary-bath-07ddff0befa8.glb",
-      "assetHash": "07ddff0befa86b4771273e75a08ae56e012654d78d2fbf3d518eb71e5d650ccf",
-      "assetBytes": 5320352,
-      "objectCount": 242,
-      "triangles": 91253,
+      "variantDefaultOnly": [
+        "boiserie-primary-bedroom"
+      ],
+      "asset": "primary-bath-1fa908e4a5b7.glb",
+      "assetHash": "1fa908e4a5b78876355ddff606057f759c5eb5132d5f6605f89bda5ae67b204d",
+      "assetBytes": 5318044,
+      "objectCount": 240,
+      "triangles": 91241,
       "cameras": [
         {
           "id": "room-view",
@@ -22535,11 +22545,11 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-206d7947eca7.glb",
-      "assetHash": "206d7947eca7c60fc99646c87d9ae00ea22eeda73d045ea0c67e6ffa3ae569f9",
-      "assetBytes": 7957912,
-      "objectCount": 196,
-      "triangles": 128174,
+      "asset": "green-bedroom-08cf58c8d530.glb",
+      "assetHash": "08cf58c8d530f3cf9e55bfecefa733a3beb26ffe73ff9380b149c881c192b927",
+      "assetBytes": 8058056,
+      "objectCount": 225,
+      "triangles": 129190,
       "cameras": [
         {
           "id": "room-view",
@@ -22991,6 +23001,7 @@
         }
       ],
       "variants": [
+        "boiserie-green-bedroom",
         "door-hardware"
       ]
     },
@@ -23118,6 +23129,9 @@
       },
       "displayExposureStops": -2.5,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Basin detail: L06 Rosa 31.83 cd vanity point; walls on R11 cream, counter not blown (R11 -1.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
+      "variantDefaultOnly": [
+        "boiserie-green-bedroom"
+      ],
       "asset": "green-bath-c2bea2fdcd87.glb",
       "assetHash": "c2bea2fdcd87c3a15bc89f03f1b98b68faa57ce7a8e67be345729b3ad911aa0e",
       "assetBytes": 3973220,
@@ -23942,11 +23956,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-0cae0f70b949.glb",
-      "assetHash": "0cae0f70b949d4e5fc7049e66272436dba4eb29950dd999f3d87d07bbc9fef70",
-      "assetBytes": 8784876,
-      "objectCount": 228,
-      "triangles": 136903,
+      "asset": "blue-bedroom-ff1de9f96d07.glb",
+      "assetHash": "ff1de9f96d07d8c5a4431bdbb45db3caf15b639c025d03d3e12f4005f8b888d6",
+      "assetBytes": 8952832,
+      "objectCount": 275,
+      "triangles": 138797,
       "cameras": [
         {
           "id": "room-view",
@@ -24438,6 +24452,7 @@
         }
       ],
       "variants": [
+        "boiserie-blue-bedroom",
         "door-hardware"
       ]
     },
@@ -24565,11 +24580,14 @@
       },
       "displayExposureStops": -2.3,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Vanity detail: L07 Rosa 31.83 cd vanity point (R11 -0.35); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "blue-bath-65d6016eaee5.glb",
-      "assetHash": "65d6016eaee5d0f2ac3fca81b8751355a4d8ae6651f4980209a8e31903e6981d",
-      "assetBytes": 4423744,
-      "objectCount": 151,
-      "triangles": 63783,
+      "variantDefaultOnly": [
+        "boiserie-blue-bedroom"
+      ],
+      "asset": "blue-bath-d5b67d9eb3cf.glb",
+      "assetHash": "d5b67d9eb3cfc68eaf10f2aca3e34e9eb9bab3ab342451e76ce23c538bc71cec",
+      "assetBytes": 4402736,
+      "objectCount": 143,
+      "triangles": 63583,
       "cameras": [
         {
           "id": "room-view",
@@ -29596,6 +29614,9 @@
         "Primary Green Closet"
       ],
       "displayExposureStops": -0.2,
+      "variantDefaultOnly": [
+        "boiserie-primary-bedroom"
+      ],
       "asset": "primary-green-closet-5bc0c701ce73.glb",
       "assetHash": "5bc0c701ce73d33d4b990878a20c25edf42e1c000bde64afbde1a98dff51a4c4",
       "assetBytes": 3467468,
@@ -29998,11 +30019,15 @@
         "Green Closet"
       ],
       "displayExposureStops": -1.8,
-      "asset": "upstairs-closet-west-ed704e216516.glb",
-      "assetHash": "ed704e21651664a132cdd905b0a596c2849a42d3f8809c69041afb92b51dbd37",
-      "assetBytes": 2337408,
-      "objectCount": 69,
-      "triangles": 22052,
+      "variantDefaultOnly": [
+        "boiserie-blue-bedroom",
+        "boiserie-green-bedroom"
+      ],
+      "asset": "upstairs-closet-west-72d96f70611e.glb",
+      "assetHash": "72d96f70611ed6c8606a3580d0bdad9c3aa760e93f4375c043b9c9731af183e6",
+      "assetBytes": 2332904,
+      "objectCount": 67,
+      "triangles": 22012,
       "cameras": [
         {
           "id": "room-view",
@@ -30585,11 +30610,15 @@
         "Dressing 3"
       ],
       "displayExposureStops": -0.55,
-      "asset": "upstairs-closet-east-626451d3eaa9.glb",
-      "assetHash": "626451d3eaa9ecace7c6af60fe143ae4bab2f614fc5239f6478beae2218632dc",
-      "assetBytes": 2349748,
+      "variantDefaultOnly": [
+        "boiserie-blue-bedroom",
+        "boiserie-green-bedroom"
+      ],
+      "asset": "upstairs-closet-east-ad9185447575.glb",
+      "assetHash": "ad91854475754130c37d7246d1f1276e0675525ca6726fbecf1eb610e2b0ea82",
+      "assetBytes": 2351224,
       "objectCount": 77,
-      "triangles": 20590,
+      "triangles": 20622,
       "cameras": [
         {
           "id": "room-view",
@@ -31647,6 +31676,9 @@
       ],
       "menuDescription": "Covered balcony above the offices",
       "cutawayOff": true,
+      "variantDefaultOnly": [
+        "boiserie-primary-bedroom"
+      ],
       "asset": "front-balcony-43a379b1c8ec.glb",
       "assetHash": "43a379b1c8ec8fd4c95373658125906e2c5b92a78817bd2fbe374b145fe6ad8d",
       "assetBytes": 4073616,
@@ -32156,11 +32188,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-e3c6b6a5992a.glb",
-      "assetHash": "e3c6b6a5992a443d7b94cf4fc52744b9e117917ea007504bd6b5be481e261f77",
-      "assetBytes": 23004300,
-      "objectCount": 1335,
-      "triangles": 526476,
+      "asset": "exterior-house-a51dc256f5b1.glb",
+      "assetHash": "a51dc256f5b10e5b1ea1947da120d26ae36750150559c1e15fe3c6501022b012",
+      "assetBytes": 23006080,
+      "objectCount": 1336,
+      "triangles": 526488,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -33392,6 +33424,51 @@
         {
           "id": "scarlett-queen",
           "label": "Pottery Barn Scarlett (Queen)"
+        }
+      ]
+    },
+    {
+      "id": "boiserie-primary-bedroom",
+      "label": "Boiserie (Primary Bedroom)",
+      "default": "office-style",
+      "options": [
+        {
+          "id": "office-style",
+          "label": "Office-style panels (x294 proposal)"
+        },
+        {
+          "id": "current",
+          "label": "As modelled before x294"
+        }
+      ]
+    },
+    {
+      "id": "boiserie-green-bedroom",
+      "label": "Boiserie (Green Bedroom)",
+      "default": "office-style",
+      "options": [
+        {
+          "id": "office-style",
+          "label": "Office-style panels (x294 proposal)"
+        },
+        {
+          "id": "current",
+          "label": "As modelled before x294"
+        }
+      ]
+    },
+    {
+      "id": "boiserie-blue-bedroom",
+      "label": "Boiserie (Blue Bedroom)",
+      "default": "office-style",
+      "options": [
+        {
+          "id": "office-style",
+          "label": "Office-style panels (x294 proposal)"
+        },
+        {
+          "id": "current",
+          "label": "As modelled before x294"
         }
       ]
     }
