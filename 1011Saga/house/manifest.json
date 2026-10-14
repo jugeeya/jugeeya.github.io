@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "2b62a07cbf44",
+  "sceneVersion": "317b1b1a448d",
   "source": {
     "file": "Web.blend",
-    "sha256": "2b62a07cbf4481d83945918458fc2bda63cb13814a68c25a3e32ae9acecdcb67",
+    "sha256": "317b1b1a448dc86694e719610f5a10fea01d7b3f85f656755e6b830c1da20629",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1425,11 +1425,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-b0d0de0b11cf.glb",
-      "assetHash": "b0d0de0b11cf52c09886da264788a0984646e7209aae18466b90e30dff290b97",
-      "assetBytes": 10625764,
+      "asset": "game-room-be9974f5b0d1.glb",
+      "assetHash": "be9974f5b0d13a5821dda6b4d00c900551f65311c7c4983e52bf26dccf733190",
+      "assetBytes": 10634036,
       "objectCount": 300,
-      "triangles": 106410,
+      "triangles": 106556,
       "cameras": [
         {
           "id": "room-view",
@@ -6204,11 +6204,11 @@
           "reason": "x282: the pier below Door D's arch moulding foot, to its casing's west edge (see the first volume)"
         }
       ],
-      "asset": "family-room-34b5f9e40ac7.glb",
-      "assetHash": "34b5f9e40ac79abde9ef41c14ffe8a5bc013df52312cceebbf96f703aa3fb302",
-      "assetBytes": 16163288,
+      "asset": "family-room-42651b993c80.glb",
+      "assetHash": "42651b993c80fe1df1415c134362c9688897908e19f33e093eae217eb9d4506d",
+      "assetBytes": 16173208,
       "objectCount": 511,
-      "triangles": 295440,
+      "triangles": 295602,
       "cameras": [
         {
           "id": "room-view",
@@ -8546,11 +8546,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-0e91ece40b9a.glb",
-      "assetHash": "0e91ece40b9a6f597ed329a4bc9ffb3f4de720f9f234efea1a1a339fbc0d623a",
-      "assetBytes": 10434332,
+      "asset": "dining-room-8cb7fd5bb25e.glb",
+      "assetHash": "8cb7fd5bb25ee9a9fe5d417b128a720aeab62f50c1fa40ef0e61042b3c9fc9ef",
+      "assetBytes": 10438036,
       "objectCount": 336,
-      "triangles": 178822,
+      "triangles": 178890,
       "cameras": [
         {
           "id": "room-view",
@@ -11666,7 +11666,7 @@
             ],
             [
               0.02,
-              2.51
+              2.82
             ]
           ],
           "Wall P1.017": [
@@ -12108,8 +12108,8 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-b6fcae8e8af9.glb",
-      "assetHash": "b6fcae8e8af97a95b80a8768292df561ac56f229fc2b6e17911f1fa28d77a750",
+      "asset": "kitchen-c8cb51ba8185.glb",
+      "assetHash": "c8cb51ba818530ff38578c423bf008d73e5897bb2ef7024520585f9d7019ca46",
       "assetBytes": 20599004,
       "objectCount": 665,
       "triangles": 467673,
@@ -15511,11 +15511,11 @@
       },
       "displayExposureStops": -1.2,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Ceiling, Staircase, Toward front door: L01 pair, L02 chandelier (lower tier now 3.6 m, 23.6 cd), L03 Rosa pair at can-convention cd; R11 value kept, the four-view mean matches R11 (168.7 vs 168.0); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "entry-27cf1f7e6772.glb",
-      "assetHash": "27cf1f7e677229b671c73bd8b1d08959df8e76b2342f0bbde5cf96685f5d1d6e",
-      "assetBytes": 21350600,
+      "asset": "entry-6b07d3aedddf.glb",
+      "assetHash": "6b07d3aedddf5da6bfdc8b85d8e32bceab979e0430d2ee19dec9693ee467ed09",
+      "assetBytes": 21387472,
       "objectCount": 657,
-      "triangles": 516411,
+      "triangles": 517069,
       "cameras": [
         {
           "id": "room-view",
@@ -25131,7 +25131,6 @@
           "Arch reveal 03",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Bedroom \u00b7 N-02",
           "Millwork \u00b7 1F \u00b7 Baseboard \u00b7 Loli Closet \u00b7 W-03",
-          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 N-03",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278soffit-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 W-x278-01",
@@ -25313,20 +25312,6 @@
             [
               -0.1,
               0.43
-            ]
-          ],
-          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Offices \u00b7 N-03": [
-            [
-              3.46,
-              4.09
-            ],
-            [
-              -7.79,
-              -7.18
-            ],
-            [
-              0.63,
-              1.27
             ]
           ],
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02": [
@@ -25778,11 +25763,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-4a7771677fa7.glb",
-      "assetHash": "4a7771677fa7927998ffb9dbe14bd9e28da38cd37fb45a928f522eabee66617c",
-      "assetBytes": 5098148,
-      "objectCount": 145,
-      "triangles": 35190,
+      "asset": "office-west-269c2172053d.glb",
+      "assetHash": "269c2172053dfd000bc8291d83b7f6cb165599408d06bfd7d368b11e4b19f0eb",
+      "assetBytes": 5126524,
+      "objectCount": 144,
+      "triangles": 35738,
       "cameras": [
         {
           "id": "room-view",
@@ -26247,7 +26232,6 @@
           "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 West Office \u00b7 S-x278a-L2",
           "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 West Office \u00b7 S-x278a-U1",
           "Millwork \u00b7 1F \u00b7 Boiserie \u00b7 West Office \u00b7 S-x278a-U2",
-          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Loli Bedroom \u00b7 N-06",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 N-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278-01",
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 East Office \u00b7 S-x278soffit-01",
@@ -26455,20 +26439,6 @@
             [
               0.78,
               2.97
-            ]
-          ],
-          "Millwork \u00b7 1F \u00b7 Chair Rail \u00b7 Loli Bedroom \u00b7 N-06": [
-            [
-              4.89,
-              5.69
-            ],
-            [
-              -7.8,
-              -7.18
-            ],
-            [
-              0.62,
-              1.28
             ]
           ],
           "Millwork \u00b7 1F \u00b7 Crown \u00b7 Loli Bedroom \u00b7 N-02": [
@@ -26750,17 +26720,31 @@
               -0.16,
               3.3
             ]
+          ],
+          "Millwork \u00b7 1F \u00b7 Crown \u00b7 Office Hall \u00b7 S-x278-01": [
+            [
+              4.6,
+              7.4
+            ],
+            [
+              -6.29,
+              -6.2
+            ],
+            [
+              2.81,
+              2.92
+            ]
           ]
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]",
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-bc101aa9f22c.glb",
-      "assetHash": "bc101aa9f22c59c65ae06b54fce853b3d3416e7cca00d5d58d3eb2c8380a9c7d",
-      "assetBytes": 5024532,
-      "objectCount": 147,
-      "triangles": 36948,
+      "asset": "office-east-fc347f83d6b4.glb",
+      "assetHash": "fc347f83d6b49f73246fce6f6a56644f00df6c71cc3024ed7049c56be00b3881",
+      "assetBytes": 5064164,
+      "objectCount": 146,
+      "triangles": 37692,
       "cameras": [
         {
           "id": "room-view",
@@ -28312,11 +28296,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-296ab9b42c33.glb",
-      "assetHash": "296ab9b42c3381f161bbf35f381930631b247837573b0852565158e5a5341874",
-      "assetBytes": 6344220,
-      "objectCount": 248,
-      "triangles": 121348,
+      "asset": "office-hall-d42216932373.glb",
+      "assetHash": "d4221693237319ee6584987e3fd305d6851bdd0c1d7b6e0555b208a2973f7404",
+      "assetBytes": 6931144,
+      "objectCount": 240,
+      "triangles": 127462,
       "cameras": [
         {
           "id": "room-view",
@@ -31538,6 +31522,8 @@
       "floor": "Upper level",
       "subtitle": "Covered balcony above the offices",
       "description": "The front balcony with its modeled columns, parapet and iron railing. Its walking surface is 51 mm below the adjoining interior floor.",
+      "displayExposureStops": 0,
+      "displayExposureJudged": "refine-outdoor 2026-10-13: the Exterior orbit's exposure, as the Rear Deck. The balcony had no metered value and sat at the interior default (-1.1); with Interactive's fill now matching Refine and Cycles under the roof, -1.1 read the stucco at 58 of 255",
       "bounds": [
         [
           1.84,
@@ -31706,9 +31692,9 @@
           "group": "front-balcony:ceiling",
           "type": "point",
           "position": [
-            3.569386,
-            6.197,
-            6.155474
+            3.569275,
+            6.001078,
+            6.164642
           ],
           "color": "#fff1db",
           "intensity": 35,
@@ -31720,9 +31706,9 @@
           "group": "front-balcony:ceiling",
           "type": "point",
           "position": [
-            6.339815,
-            6.197,
-            6.155474
+            6.339722,
+            6.001078,
+            6.164642
           ],
           "color": "#fff1db",
           "intensity": 35,
@@ -31734,9 +31720,9 @@
           "group": "front-balcony:ceiling",
           "type": "point",
           "position": [
-            9.270568,
-            6.197,
-            6.155474
+            9.270447,
+            6.001078,
+            6.164642
           ],
           "color": "#fff1db",
           "intensity": 35,
@@ -32170,11 +32156,11 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-7641a92ef0b3.glb",
-      "assetHash": "7641a92ef0b399a26d9db6515dd87507aef2caf965e6f293693d73b4289a0878",
-      "assetBytes": 22929700,
-      "objectCount": 1334,
-      "triangles": 525082,
+      "asset": "exterior-house-e3c6b6a5992a.glb",
+      "assetHash": "e3c6b6a5992a443d7b94cf4fc52744b9e117917ea007504bd6b5be481e261f77",
+      "assetBytes": 23004300,
+      "objectCount": 1335,
+      "triangles": 526476,
       "cameras": [
         {
           "id": "exterior-overview",
