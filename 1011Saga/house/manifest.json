@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "243a9e1fb204",
+  "sceneVersion": "30246584dc7e",
   "source": {
     "file": "Web.blend",
-    "sha256": "243a9e1fb204069c87eb333ebc16cb4abfb2995dad116b9ccba35d8f128541bf",
+    "sha256": "30246584dc7e1ab977eb795cd11f18dad8d21ffca50ed547a55fb7c3bdcfb037",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -21050,9 +21050,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-cd8753a1e358.glb",
-      "assetHash": "cd8753a1e35863e5a031121f935dac09b7c899d4adc0e3d471b49aab0ce61be6",
-      "assetBytes": 13350328,
+      "asset": "primary-bedroom-4dc0adfb10ba.glb",
+      "assetHash": "4dc0adfb10ba50b64a618c1c3fdbb45aa31d1def76d7b7fe6a5aaa5ae8717026",
+      "assetBytes": 13349848,
       "objectCount": 391,
       "triangles": 318122,
       "cameras": [
@@ -22545,8 +22545,8 @@
         "Slab concrete slab.135"
       ],
       "displayExposureStops": -1.15,
-      "asset": "green-bedroom-08cf58c8d530.glb",
-      "assetHash": "08cf58c8d530f3cf9e55bfecefa733a3beb26ffe73ff9380b149c881c192b927",
+      "asset": "green-bedroom-b58bd97b9503.glb",
+      "assetHash": "b58bd97b950388b0faa3f24dedde7123f64a5c3819b5bd6ccabad9ce004b06cc",
       "assetBytes": 8058056,
       "objectCount": 225,
       "triangles": 129190,
@@ -23956,9 +23956,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-ff1de9f96d07.glb",
-      "assetHash": "ff1de9f96d07d8c5a4431bdbb45db3caf15b639c025d03d3e12f4005f8b888d6",
-      "assetBytes": 8952832,
+      "asset": "blue-bedroom-8a78cd62bc92.glb",
+      "assetHash": "8a78cd62bc9231b9015711b31287af7aa0357e8c6df7390873a916f7a7b74ca4",
+      "assetBytes": 8952592,
       "objectCount": 275,
       "triangles": 138797,
       "cameras": [
