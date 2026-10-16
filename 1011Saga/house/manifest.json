@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "30246584dc7e",
+  "sceneVersion": "4204e6e8220e",
   "source": {
     "file": "Web.blend",
-    "sha256": "30246584dc7e1ab977eb795cd11f18dad8d21ffca50ed547a55fb7c3bdcfb037",
+    "sha256": "4204e6e8220e7abb0157f6080370479580ed4e8ad2c351a14f59beab28e4262c",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -17724,9 +17724,9 @@
           "group": "wine-cellar:ceiling",
           "type": "point",
           "position": [
-            9.810589,
-            2.544016,
-            -2.757521
+            9.81073,
+            2.7631,
+            -2.74823
           ],
           "color": "#fff1db",
           "intensity": 35,
@@ -17738,9 +17738,9 @@
           "group": "wine-cellar:ceiling",
           "type": "point",
           "position": [
-            9.810589,
-            2.645615,
-            -1.320863
+            9.81073,
+            2.8647,
+            -1.311584
           ],
           "color": "#fff1db",
           "intensity": 35,
