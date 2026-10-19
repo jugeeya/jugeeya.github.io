@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "Saga — House Studio",
+  "short_name": "Saga",
+  "description": "Explore the Saga house and try finishes, lighting, and design alternatives.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "any",
+  "background_color": "#f5f3ed",
+  "theme_color": "#f6f4ee",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
