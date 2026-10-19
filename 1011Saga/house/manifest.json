@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "4204e6e8220e",
+  "sceneVersion": "94c515e5ce94",
   "source": {
     "file": "Web.blend",
-    "sha256": "4204e6e8220e7abb0157f6080370479580ed4e8ad2c351a14f59beab28e4262c",
+    "sha256": "94c515e5ce947ec891430d40b05d6f7b342a646352d587e53a956ce6d20168cd",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1425,11 +1425,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-be9974f5b0d1.glb",
-      "assetHash": "be9974f5b0d13a5821dda6b4d00c900551f65311c7c4983e52bf26dccf733190",
-      "assetBytes": 10634036,
+      "asset": "game-room-a4ec9b9144a5.glb",
+      "assetHash": "a4ec9b9144a5db34a03db33aa5267dba330f0efc1e1a863da16de429398d3238",
+      "assetBytes": 11069252,
       "objectCount": 300,
-      "triangles": 106556,
+      "triangles": 117002,
       "cameras": [
         {
           "id": "room-view",
@@ -2378,16 +2378,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
-        },
-        {
-          "id": "mat-ea08fa90885d",
-          "name": "Railing \u00b7 Black Iron",
-          "roomId": "game-room",
-          "role": null,
-          "color": "#272729",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.6000000238418579,
-          "translation": "constant source PBR values"
         }
       ]
     },
@@ -6204,11 +6194,11 @@
           "reason": "x282: the pier below Door D's arch moulding foot, to its casing's west edge (see the first volume)"
         }
       ],
-      "asset": "family-room-42651b993c80.glb",
-      "assetHash": "42651b993c80fe1df1415c134362c9688897908e19f33e093eae217eb9d4506d",
-      "assetBytes": 16173208,
+      "asset": "family-room-cf785f6adeb4.glb",
+      "assetHash": "cf785f6adeb4ea625d98982c4251f94ed5129c8b08c8101ad0be1719176fc54c",
+      "assetBytes": 16858560,
       "objectCount": 511,
-      "triangles": 295602,
+      "triangles": 309786,
       "cameras": [
         {
           "id": "room-view",
@@ -6909,16 +6899,6 @@
           "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
-        },
-        {
-          "id": "mat-fd2f5752dbaf",
-          "name": "Railing \u00b7 Black Iron",
-          "roomId": "family-room",
-          "role": null,
-          "color": "#272729",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.6000000238418579,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-9aef0011f437",
@@ -8546,11 +8526,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-8cb7fd5bb25e.glb",
-      "assetHash": "8cb7fd5bb25ee9a9fe5d417b128a720aeab62f50c1fa40ef0e61042b3c9fc9ef",
-      "assetBytes": 10438036,
+      "asset": "dining-room-78b5e71a4c93.glb",
+      "assetHash": "78b5e71a4c93c08e4c8fcbf6f6941c69aad3195d4a8e0bc691252592512030cc",
+      "assetBytes": 10922636,
       "objectCount": 336,
-      "triangles": 178890,
+      "triangles": 189588,
       "cameras": [
         {
           "id": "room-view",
@@ -9305,16 +9285,6 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; source paint mean from unlit texture bake; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
-        },
-        {
-          "id": "mat-1d73f973f537",
-          "name": "Railing \u00b7 Black Iron",
-          "roomId": "dining-room",
-          "role": null,
-          "color": "#272729",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.6000000238418579,
-          "translation": "constant source PBR values"
         },
         {
           "id": "mat-b0abb1ba281b",
@@ -12108,11 +12078,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-c8cb51ba8185.glb",
-      "assetHash": "c8cb51ba818530ff38578c423bf008d73e5897bb2ef7024520585f9d7019ca46",
-      "assetBytes": 20599004,
-      "objectCount": 665,
-      "triangles": 467673,
+      "asset": "kitchen-7c72959603f9.glb",
+      "assetHash": "7c72959603f9a36ad5389c30c0ee939d8946f09b865d70860f84a3b1a39b16c8",
+      "assetBytes": 20588092,
+      "objectCount": 661,
+      "triangles": 467567,
       "cameras": [
         {
           "id": "room-view",
@@ -13445,7 +13415,11 @@
           "Window I-32",
           "Window I-33",
           "Window I-34",
-          "Window skylight"
+          "Window skylight",
+          "Door ZK frame",
+          "Door ZK leaf",
+          "Door ZL frame",
+          "Door ZL leaf"
         ],
         "clip": {
           "Arabesque railing panel Obj Object-36.002": [
@@ -15505,6 +15479,62 @@
               -0.02,
               2.64
             ]
+          ],
+          "Door ZK frame": [
+            [
+              1.38,
+              5.15
+            ],
+            [
+              -6.82,
+              -5.5
+            ],
+            [
+              -0.03,
+              3.6
+            ]
+          ],
+          "Door ZK leaf": [
+            [
+              1.38,
+              5.15
+            ],
+            [
+              -6.82,
+              -5.5
+            ],
+            [
+              -0.03,
+              3.6
+            ]
+          ],
+          "Door ZL frame": [
+            [
+              4.15,
+              7.87
+            ],
+            [
+              -6.82,
+              -5.5
+            ],
+            [
+              -0.03,
+              3.56
+            ]
+          ],
+          "Door ZL leaf": [
+            [
+              4.15,
+              7.87
+            ],
+            [
+              -6.82,
+              -5.5
+            ],
+            [
+              -0.03,
+              3.56
+            ]
           ]
         },
         "reason": "Enclosing surfaces the Entry Look/Walk stations see that neither this export nor its contextRoomIds exports draw (131). Re-derived on the integrated release candidate x181 (x176-x180 + the x181 settings restore and Sitting-corner station): the same 131 names and the same clip boxes as x179's derivation on candidate-x179 4a7613847db7. Exported as Look/Walk-only nodes (role 'ceiling'): hidden in Cutaway and Plan. Regenerate with Reviews/2026-09-23/parallel-closures/x179-entry/evidence/partB/derive_look_context.py.; x242 2026-10-03: the oculus rose 0.927 m with the roof deck - the raised deck rims' clips +0.927, the skylight's and the bounds' top to z 8.00, the new well liner added; x262 2026-10-06: the oculus moved (-0.093, +0.229) to the scan position - the skylight and well liner clips moved with it; x266 2026-10-06: the tray came back down 0.927 m (the owner scan) - the three deck layers' clips -0.927, the retired well liner removed"
@@ -15514,11 +15544,11 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "entry-c02159702fc1.glb",
-      "assetHash": "c02159702fc1f633a3a39c21a14de1819bdf5c6df1f8b80b48eb75f4cf6d9318",
-      "assetBytes": 21394288,
-      "objectCount": 660,
-      "triangles": 517117,
+      "asset": "entry-3f73816919bc.glb",
+      "assetHash": "3f73816919bc0510bb776af81acfb5378168e8fc3bffdeee73814b54a2dfe6aa",
+      "assetBytes": 22795872,
+      "objectCount": 682,
+      "triangles": 574567,
       "cameras": [
         {
           "id": "room-view",
@@ -16483,6 +16513,16 @@
           "translation": "constant source PBR values"
         },
         {
+          "id": "mat-793f72319cd9",
+          "name": "Paint \u00b7 Black satin (x298 office doors, PROPOSED)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#1d1d1e",
+          "roughness": 0.3799999952316284,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-5702dc430041",
           "name": "09 | Color: 07 Gray-Dark*",
           "roomId": "entry",
@@ -16511,6 +16551,26 @@
           "roughness": 0.44999998807907104,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-32c8d1c8c520",
+          "name": "Fixture \u00b7 Nostalgic Oil-Rubbed Bronze (x298)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#524b42",
+          "roughness": 0.5,
+          "metallic": 0.6000000238418579,
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
+        },
+        {
+          "id": "mat-94df2f47dce6",
+          "name": "Fixture \u00b7 Schlage 622 Matte Black (x298)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#303032",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
       ],
       "variants": [
@@ -18266,8 +18326,8 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-1a29fcb768c7.glb",
-      "assetHash": "1a29fcb768c70e6a21a4990b0ff16d86e13f6ff4a75a2f4912e538066bab0f95",
+      "asset": "loli-bedroom-391695b0ea2b.glb",
+      "assetHash": "391695b0ea2bdbf1fd88ac535918203aaab169712e66154b3ea0a31f611a4f1d",
       "assetBytes": 13496452,
       "objectCount": 264,
       "triangles": 270820,
@@ -23956,8 +24016,8 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-8a78cd62bc92.glb",
-      "assetHash": "8a78cd62bc9231b9015711b31287af7aa0357e8c6df7390873a916f7a7b74ca4",
+      "asset": "blue-bedroom-479a783f22e0.glb",
+      "assetHash": "479a783f22e0707a04672d20f900f581e74a7a0fa3ecbd1894d7c4aef355d5d5",
       "assetBytes": 8952592,
       "objectCount": 275,
       "triangles": 138797,
@@ -24583,9 +24643,9 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "blue-bath-d5b67d9eb3cf.glb",
-      "assetHash": "d5b67d9eb3cfc68eaf10f2aca3e34e9eb9bab3ab342451e76ce23c538bc71cec",
-      "assetBytes": 4402736,
+      "asset": "blue-bath-d323f87a1f53.glb",
+      "assetHash": "d323f87a1f5324a21cf1926a7502d5a107dcf279841f5a84fc2e93a789f92918",
+      "assetBytes": 4402808,
       "objectCount": 143,
       "triangles": 63583,
       "cameras": [
@@ -25781,11 +25841,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-269c2172053d.glb",
-      "assetHash": "269c2172053dfd000bc8291d83b7f6cb165599408d06bfd7d368b11e4b19f0eb",
-      "assetBytes": 5126524,
-      "objectCount": 144,
-      "triangles": 35738,
+      "asset": "office-west-b38cc663b7bd.glb",
+      "assetHash": "b38cc663b7bd5fc6e47bde26991dda73483853379a9511908483c2a67da01bde",
+      "assetBytes": 5501204,
+      "objectCount": 156,
+      "triangles": 50912,
       "cameras": [
         {
           "id": "room-view",
@@ -25943,6 +26003,16 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-2c54dc4bc2cb",
+          "name": "Paint \u00b7 Black satin (x298 office doors, PROPOSED)",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#1d1d1e",
+          "roughness": 0.3799999952316284,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-153fc1993bc9",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-west",
@@ -26063,6 +26133,16 @@
           "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
+          "id": "mat-af4fd8ceb0f7",
+          "name": "Fixture \u00b7 Nostalgic Oil-Rubbed Bronze (x298)",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#524b42",
+          "roughness": 0.5,
+          "metallic": 0.6000000238418579,
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
+        },
+        {
           "id": "mat-c3b4d07c73ae",
           "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
           "roomId": "office-west",
@@ -26070,6 +26150,16 @@
           "color": "#796350",
           "roughness": 0.4399999976158142,
           "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-775e42fc7e05",
+          "name": "Fixture \u00b7 Schlage 622 Matte Black (x298)",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#303032",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
         },
         {
@@ -26093,13 +26183,13 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
-          "id": "mat-d49b771034b4",
-          "name": "Railing \u00b7 Black Iron",
+          "id": "mat-c8e7cc8753ba",
+          "name": "Iron \u00b7 Black wrought satin (x225)",
           "roomId": "office-west",
           "role": null,
-          "color": "#272729",
-          "roughness": 0.44999998807907104,
-          "metallic": 0.6000000238418579,
+          "color": "#1d1d1e",
+          "roughness": 0.5,
+          "metallic": 0.0,
           "translation": "constant source PBR values"
         },
         {
@@ -26758,11 +26848,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-fc347f83d6b4.glb",
-      "assetHash": "fc347f83d6b49f73246fce6f6a56644f00df6c71cc3024ed7049c56be00b3881",
-      "assetBytes": 5064164,
-      "objectCount": 146,
-      "triangles": 37692,
+      "asset": "office-east-e044f15323b5.glb",
+      "assetHash": "e044f15323b5f5d7af97c9a30fe7afc1ce25a22554a5dca7e6464ac388b0f0bb",
+      "assetBytes": 5483284,
+      "objectCount": 160,
+      "triangles": 53898,
       "cameras": [
         {
           "id": "room-view",
@@ -26910,6 +27000,16 @@
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
         },
         {
+          "id": "mat-7f90cc404bd7",
+          "name": "Paint \u00b7 Black satin (x298 office doors, PROPOSED)",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#1d1d1e",
+          "roughness": 0.3799999952316284,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-42ce7ed9d5e1",
           "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
           "roomId": "office-east",
@@ -27018,6 +27118,26 @@
           "roughness": 0.019999999552965164,
           "metallic": 0.0,
           "translation": "source dielectric/opaque glass parameters"
+        },
+        {
+          "id": "mat-c5ed0296313e",
+          "name": "Fixture \u00b7 Nostalgic Oil-Rubbed Bronze (x298)",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#524b42",
+          "roughness": 0.5,
+          "metallic": 0.6000000238418579,
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
+        },
+        {
+          "id": "mat-335b5af84608",
+          "name": "Fixture \u00b7 Schlage 622 Matte Black (x298)",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#303032",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         },
         {
           "id": "mat-6d57213e667b",
@@ -28314,11 +28434,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-d42216932373.glb",
-      "assetHash": "d4221693237319ee6584987e3fd305d6851bdd0c1d7b6e0555b208a2973f7404",
-      "assetBytes": 6931144,
-      "objectCount": 240,
-      "triangles": 127462,
+      "asset": "office-hall-ec216e2d4a14.glb",
+      "assetHash": "ec216e2d4a148e5286193503f9e7837662c2051ee47cfd30fcbc7890518e2c29",
+      "assetBytes": 7333776,
+      "objectCount": 256,
+      "triangles": 143890,
       "cameras": [
         {
           "id": "room-view",
@@ -28511,6 +28631,16 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-66ae8384c05b",
+          "name": "Paint \u00b7 Black satin (x298 office doors, PROPOSED)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#1d1d1e",
+          "roughness": 0.3799999952316284,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-5e4f83f46577",
           "name": "09 | Glass: Clear, Fast*",
           "roomId": "office-hall",
@@ -28621,6 +28751,16 @@
           "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
+          "id": "mat-af464d98e3d3",
+          "name": "Fixture \u00b7 Nostalgic Oil-Rubbed Bronze (x298)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#524b42",
+          "roughness": 0.5,
+          "metallic": 0.6000000238418579,
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
+        },
+        {
           "id": "mat-8fb84f639416",
           "name": "Fixture \u00b7 Schlage 716 Aged Bronze (h1)",
           "roomId": "office-hall",
@@ -28628,6 +28768,16 @@
           "color": "#796350",
           "roughness": 0.4399999976158142,
           "metallic": 0.75,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-4a82fcf62b04",
+          "name": "Fixture \u00b7 Schlage 622 Matte Black (x298)",
+          "roomId": "office-hall",
+          "role": null,
+          "color": "#303032",
+          "roughness": 0.550000011920929,
+          "metallic": 0.0,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
         },
         {
@@ -30614,8 +30764,8 @@
         "boiserie-blue-bedroom",
         "boiserie-green-bedroom"
       ],
-      "asset": "upstairs-closet-east-ad9185447575.glb",
-      "assetHash": "ad91854475754130c37d7246d1f1276e0675525ca6726fbecf1eb610e2b0ea82",
+      "asset": "upstairs-closet-east-52afc5fab270.glb",
+      "assetHash": "52afc5fab2700a4f3634dc8432e446d09cc5b1ba43eb8a2de18da4cd04a59360",
       "assetBytes": 2351224,
       "objectCount": 77,
       "triangles": 20622,
@@ -32188,11 +32338,31 @@
       "variantDefaultOnly": [
         "door-hardware"
       ],
-      "asset": "exterior-house-a51dc256f5b1.glb",
-      "assetHash": "a51dc256f5b10e5b1ea1947da120d26ae36750150559c1e15fe3c6501022b012",
-      "assetBytes": 23006080,
-      "objectCount": 1336,
-      "triangles": 526488,
+      "footprintExceptions": {
+        "names": [
+          "BY3 . Hardscape . Lower Yard Pavers (trimmed by x176)"
+        ],
+        "bounds": [
+          [
+            -17.4,
+            14.5
+          ],
+          [
+            -19.5,
+            14.0
+          ],
+          [
+            -0.9,
+            9
+          ]
+        ],
+        "reason": "Owner report, 18 Oct 2026 (a missing paver strip in the Exterior from above): the lower yard pavers run to y 13.91, past this room's y 11 edge, so the Exterior clipped them there while the yard reconstruction's ground (BY3 . Ground . Terraces T1-T5) starts at the pavers' own trim line, leaving a strip with no surface (a hole to the page background) behind the rear terrace, x -11 to 4.7, y 11 to 13. This one object is clipped to this wider box instead of the room box (the rear-deck footprintExceptions mechanism, #69); nothing else changes."
+      },
+      "asset": "exterior-house-2bca469c2f66.glb",
+      "assetHash": "2bca469c2f66b8248f8a79798fa4425834a72460116941bd396e8ff9eb814a26",
+      "assetBytes": 23488052,
+      "objectCount": 1348,
+      "triangles": 543618,
       "cameras": [
         {
           "id": "exterior-overview",
@@ -32795,6 +32965,16 @@
           "translation": "source dielectric/opaque glass parameters"
         },
         {
+          "id": "mat-e6dcddb15c8b",
+          "name": "Paint \u00b7 Black satin (x298 office doors, PROPOSED)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#1d1d1e",
+          "roughness": 0.3799999952316284,
+          "metallic": 0.0,
+          "translation": "constant source PBR values"
+        },
+        {
           "id": "mat-3c52153d511e",
           "name": "09 | Tile: 6\" x 6\" Blue Mist Tile Staggered",
           "roomId": "exterior-house",
@@ -33263,6 +33443,16 @@
           "roughness": 0.6000000238418579,
           "metallic": 0.30000001192092896,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-c2137cb9d217",
+          "name": "Fixture \u00b7 Nostalgic Oil-Rubbed Bronze (x298)",
+          "roomId": "exterior-house",
+          "role": null,
+          "color": "#524b42",
+          "roughness": 0.5,
+          "metallic": 0.6000000238418579,
+          "translation": "browser-only look (saga_web_*) over the Cycles values; vertex colour nw_ab (COLOR_0) x baseColorFactor"
         },
         {
           "id": "mat-af6b199cd8c3",
