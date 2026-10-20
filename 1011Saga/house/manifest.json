@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "f70f0a1c6fb3",
+  "sceneVersion": "c9cf531c0c4a",
   "source": {
     "file": "Web.blend",
-    "sha256": "f70f0a1c6fb3eebf52f01f10159836488ffa640541e24b00b2c8160e29731859",
+    "sha256": "c9cf531c0c4a13d70d25bac9c0ff040727dd4e3d43a9695b8616edbcc511c956",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1425,11 +1425,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-17f51978a722.glb",
-      "assetHash": "17f51978a7221b6357c318789b4ea198268659f7138bb9f398662590f681ef73",
-      "assetBytes": 10331632,
+      "asset": "game-room-0ddce0b58c99.glb",
+      "assetHash": "0ddce0b58c99179c5d238e500f1ce22d33f827deb9157d8b3f57e4ea084241bb",
+      "assetBytes": 10701276,
       "objectCount": 301,
-      "triangles": 96774,
+      "triangles": 109764,
       "cameras": [
         {
           "id": "room-view",
@@ -2378,6 +2378,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
+        },
+        {
+          "id": "mat-d4f496eef50a",
+          "name": "Iron \u00b7 Black wrought satin railing (x301)",
+          "roomId": "game-room",
+          "role": null,
+          "color": "#272728",
+          "roughness": 0.5,
+          "metallic": 0.44999998807907104,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         }
       ]
     },
@@ -6194,11 +6204,11 @@
           "reason": "x282: the pier below Door D's arch moulding foot, to its casing's west edge (see the first volume)"
         }
       ],
-      "asset": "family-room-9692a80a90b5.glb",
-      "assetHash": "9692a80a90b5b34d86ebd1c80ac47901f8fb08bef322bc956aea3fdc46ef967f",
-      "assetBytes": 15730084,
+      "asset": "family-room-ccec4dd5169b.glb",
+      "assetHash": "ccec4dd5169b488f4bdbf92d8bdc1f96f14072fa5908410aa5fbf8774cec924b",
+      "assetBytes": 16446388,
       "objectCount": 509,
-      "triangles": 279428,
+      "triangles": 311092,
       "cameras": [
         {
           "id": "room-view",
@@ -7099,6 +7109,16 @@
           "roughness": 0.8500000238418579,
           "metallic": 0.0,
           "translation": "constant source PBR values"
+        },
+        {
+          "id": "mat-5aee489e3f87",
+          "name": "Iron \u00b7 Black wrought satin railing (x301)",
+          "roomId": "family-room",
+          "role": null,
+          "color": "#272728",
+          "roughness": 0.5,
+          "metallic": 0.44999998807907104,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         },
         {
           "id": "mat-41a44a5acaad",
@@ -8526,11 +8546,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-4a74125de3c2.glb",
-      "assetHash": "4a74125de3c24b4a19ec4d3681377165185a7f9e413ecc468b908022d6390c53",
-      "assetBytes": 9968440,
+      "asset": "dining-room-03e5021f0fbe.glb",
+      "assetHash": "03e5021f0fbe0e8051831f6ffd57762cee7b0e6e32a7a670ff4b59e48705bf01",
+      "assetBytes": 10495120,
       "objectCount": 336,
-      "triangles": 163582,
+      "triangles": 183088,
       "cameras": [
         {
           "id": "room-view",
@@ -9285,6 +9305,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; source paint mean from unlit texture bake; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
+        },
+        {
+          "id": "mat-7d93c6110b21",
+          "name": "Iron \u00b7 Black wrought satin railing (x301)",
+          "roomId": "dining-room",
+          "role": null,
+          "color": "#272728",
+          "roughness": 0.5,
+          "metallic": 0.44999998807907104,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         },
         {
           "id": "mat-b0abb1ba281b",
@@ -15544,11 +15574,11 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "entry-2b1be3679dfa.glb",
-      "assetHash": "2b1be3679dfaa00251cfee941de12ba087bd97bc13c7f34fd4679929c29be3b4",
-      "assetBytes": 21570752,
+      "asset": "entry-2d2c14a0d060.glb",
+      "assetHash": "2d2c14a0d060398a5f2114b497e61785a837083296b21752d7bdb580f5c052d7",
+      "assetBytes": 22321156,
       "objectCount": 682,
-      "triangles": 542621,
+      "triangles": 575111,
       "cameras": [
         {
           "id": "room-view",
@@ -16251,6 +16281,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-e11fea09b778",
+          "name": "Iron \u00b7 Black wrought satin railing (x301)",
+          "roomId": "entry",
+          "role": null,
+          "color": "#272728",
+          "roughness": 0.5,
+          "metallic": 0.44999998807907104,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         },
         {
           "id": "mat-dc8b594e4306",
@@ -25841,11 +25881,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-12e27a438340.glb",
-      "assetHash": "12e27a438340bba524970bf65adccd554d5127044e6ea0b6085669455c281720",
-      "assetBytes": 5506096,
+      "asset": "office-west-efc04ab1be45.glb",
+      "assetHash": "efc04ab1be4584f458f074d18caec7bf5434b477c054c5d619f3b85e5eb4ce64",
+      "assetBytes": 5522004,
       "objectCount": 156,
-      "triangles": 51095,
+      "triangles": 52075,
       "cameras": [
         {
           "id": "room-view",
@@ -26183,14 +26223,14 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space"
         },
         {
-          "id": "mat-c8e7cc8753ba",
-          "name": "Iron \u00b7 Black wrought satin (x225)",
+          "id": "mat-b95c172570f0",
+          "name": "Iron \u00b7 Black wrought satin railing (x301)",
           "roomId": "office-west",
           "role": null,
-          "color": "#1d1d1e",
+          "color": "#272728",
           "roughness": 0.5,
-          "metallic": 0.0,
-          "translation": "constant source PBR values"
+          "metallic": 0.44999998807907104,
+          "translation": "browser-only look (saga_web_*) over the Cycles values"
         },
         {
           "id": "mat-30f534f56145",
