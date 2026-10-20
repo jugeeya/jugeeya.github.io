@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "c9cf531c0c4a",
+  "sceneVersion": "24462a6a6fec",
   "source": {
     "file": "Web.blend",
-    "sha256": "c9cf531c0c4a13d70d25bac9c0ff040727dd4e3d43a9695b8616edbcc511c956",
+    "sha256": "24462a6a6fecc52e90f607011a22163391e4272e4005314dafac41da0569ae76",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1425,11 +1425,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-0ddce0b58c99.glb",
-      "assetHash": "0ddce0b58c99179c5d238e500f1ce22d33f827deb9157d8b3f57e4ea084241bb",
-      "assetBytes": 10701276,
+      "asset": "game-room-425eaa79a913.glb",
+      "assetHash": "425eaa79a913af3ad64ff3706983a6a99e3e69f3df091a2bbbd11a8314bb5ea8",
+      "assetBytes": 10737416,
       "objectCount": 301,
-      "triangles": 109764,
+      "triangles": 110403,
       "cameras": [
         {
           "id": "room-view",
@@ -6204,11 +6204,11 @@
           "reason": "x282: the pier below Door D's arch moulding foot, to its casing's west edge (see the first volume)"
         }
       ],
-      "asset": "family-room-ccec4dd5169b.glb",
-      "assetHash": "ccec4dd5169b488f4bdbf92d8bdc1f96f14072fa5908410aa5fbf8774cec924b",
-      "assetBytes": 16446388,
+      "asset": "family-room-ba6a1d1f46b5.glb",
+      "assetHash": "ba6a1d1f46b5fe071f8dab126d3ec2973b1728cd919fb6d42ed0394917cf0b18",
+      "assetBytes": 16456856,
       "objectCount": 509,
-      "triangles": 311092,
+      "triangles": 311456,
       "cameras": [
         {
           "id": "room-view",
@@ -8546,11 +8546,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-03e5021f0fbe.glb",
-      "assetHash": "03e5021f0fbe0e8051831f6ffd57762cee7b0e6e32a7a670ff4b59e48705bf01",
-      "assetBytes": 10495120,
+      "asset": "dining-room-39fff9350aa0.glb",
+      "assetHash": "39fff9350aa08f1feb8a910a986b61157eeeb5bb8552030add2f1e32befe2a59",
+      "assetBytes": 10491504,
       "objectCount": 336,
-      "triangles": 183088,
+      "triangles": 183003,
       "cameras": [
         {
           "id": "room-view",
@@ -12108,11 +12108,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-7c72959603f9.glb",
-      "assetHash": "7c72959603f9a36ad5389c30c0ee939d8946f09b865d70860f84a3b1a39b16c8",
-      "assetBytes": 20588092,
+      "asset": "kitchen-391bb2116b6d.glb",
+      "assetHash": "391bb2116b6ded12c60de0272f8ba4cfdc2397ae0399cf1b9c77c0cd445d81b5",
+      "assetBytes": 20621584,
       "objectCount": 661,
-      "triangles": 467567,
+      "triangles": 468097,
       "cameras": [
         {
           "id": "room-view",
@@ -15574,11 +15574,11 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "entry-2d2c14a0d060.glb",
-      "assetHash": "2d2c14a0d060398a5f2114b497e61785a837083296b21752d7bdb580f5c052d7",
-      "assetBytes": 22321156,
+      "asset": "entry-cbbafce830ae.glb",
+      "assetHash": "cbbafce830ae40c0266c396edcb19b353bc541b81fee11f9fe7644a2869f0ae3",
+      "assetBytes": 22313596,
       "objectCount": 682,
-      "triangles": 575111,
+      "triangles": 575218,
       "cameras": [
         {
           "id": "room-view",
@@ -20250,11 +20250,11 @@
       "variantDefaultOnly": [
         "boiserie-green-bedroom"
       ],
-      "asset": "laundry-8cfbc2a691d2.glb",
-      "assetHash": "8cfbc2a691d282329f0417204784d9ec821f9d13639fe4d97a7986e2d4a8ed8d",
-      "assetBytes": 3592536,
+      "asset": "laundry-b7afb489ffec.glb",
+      "assetHash": "b7afb489ffec409ba1ef5a114ccd01deacac1fc67eb79d682e63113a1e538451",
+      "assetBytes": 3593072,
       "objectCount": 98,
-      "triangles": 45748,
+      "triangles": 45762,
       "cameras": [
         {
           "id": "room-view",
@@ -21150,11 +21150,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -0.6,
-      "asset": "primary-bedroom-4dc0adfb10ba.glb",
-      "assetHash": "4dc0adfb10ba50b64a618c1c3fdbb45aa31d1def76d7b7fe6a5aaa5ae8717026",
-      "assetBytes": 13349848,
+      "asset": "primary-bedroom-cddee2d76c0a.glb",
+      "assetHash": "cddee2d76c0a3d0503bdb736f1b93d0cb6035134eee2e2d03e1d9958aed74c69",
+      "assetBytes": 13350748,
       "objectCount": 391,
-      "triangles": 318122,
+      "triangles": 318141,
       "cameras": [
         {
           "id": "room-view",
@@ -21980,11 +21980,11 @@
       "variantDefaultOnly": [
         "boiserie-primary-bedroom"
       ],
-      "asset": "primary-bath-1fa908e4a5b7.glb",
-      "assetHash": "1fa908e4a5b78876355ddff606057f759c5eb5132d5f6605f89bda5ae67b204d",
-      "assetBytes": 5318044,
+      "asset": "primary-bath-14fcd955a1db.glb",
+      "assetHash": "14fcd955a1db8ca470315b3965c928284b18074849303e0522665bcaa418de73",
+      "assetBytes": 5318948,
       "objectCount": 240,
-      "triangles": 91241,
+      "triangles": 91260,
       "cameras": [
         {
           "id": "room-view",
@@ -24056,8 +24056,8 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-479a783f22e0.glb",
-      "assetHash": "479a783f22e0707a04672d20f900f581e74a7a0fa3ecbd1894d7c4aef355d5d5",
+      "asset": "blue-bedroom-4990b1ff3b3c.glb",
+      "assetHash": "4990b1ff3b3c1cfcbb6eadd916264e182a8168b857fc852ba0e30b0480a04a1d",
       "assetBytes": 8952592,
       "objectCount": 275,
       "triangles": 138797,
@@ -24683,8 +24683,8 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "blue-bath-d323f87a1f53.glb",
-      "assetHash": "d323f87a1f5324a21cf1926a7502d5a107dcf279841f5a84fc2e93a789f92918",
+      "asset": "blue-bath-5a0e3944dc18.glb",
+      "assetHash": "5a0e3944dc18fa68c3a26fd218d5bb4379b59f2d2188b4c82c20c26967d6943f",
       "assetBytes": 4402808,
       "objectCount": 143,
       "triangles": 63583,
@@ -25881,11 +25881,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-efc04ab1be45.glb",
-      "assetHash": "efc04ab1be4584f458f074d18caec7bf5434b477c054c5d619f3b85e5eb4ce64",
-      "assetBytes": 5522004,
+      "asset": "office-west-daa39cc4f472.glb",
+      "assetHash": "daa39cc4f472d3151fd0f37ee5b0fd0ca1ea3aa2638ee83dc062a2ca67e9c5dc",
+      "assetBytes": 5516932,
       "objectCount": 156,
-      "triangles": 52075,
+      "triangles": 51974,
       "cameras": [
         {
           "id": "room-view",
@@ -29352,11 +29352,11 @@
         "Primary Loli Closet"
       ],
       "displayExposureStops": -0.25,
-      "asset": "primary-loli-closet-b47351b57cbb.glb",
-      "assetHash": "b47351b57cbbbc42be12fe0aaae0af671a935bee28e8ee0e8b6431c8b75dc14e",
-      "assetBytes": 3511180,
+      "asset": "primary-loli-closet-2ff0ddfa8772.glb",
+      "assetHash": "2ff0ddfa8772f35d517e72b4c024b6bbae02a454b642b1bd5ebedd80fb217d12",
+      "assetBytes": 3522596,
       "objectCount": 101,
-      "triangles": 24725,
+      "triangles": 24888,
       "cameras": [
         {
           "id": "room-view",
@@ -29807,11 +29807,11 @@
       "variantDefaultOnly": [
         "boiserie-primary-bedroom"
       ],
-      "asset": "primary-green-closet-5bc0c701ce73.glb",
-      "assetHash": "5bc0c701ce73d33d4b990878a20c25edf42e1c000bde64afbde1a98dff51a4c4",
-      "assetBytes": 3467468,
+      "asset": "primary-green-closet-77c433f4eeeb.glb",
+      "assetHash": "77c433f4eeebfd05ea7e320721eae6d44c9ccbf1b81f8a8826a57bbe4d6c58b9",
+      "assetBytes": 3474448,
       "objectCount": 86,
-      "triangles": 24069,
+      "triangles": 24181,
       "cameras": [
         {
           "id": "room-view",
@@ -31226,11 +31226,11 @@
         }
       ],
       "cutawayKeepBelow": 1.3,
-      "asset": "rear-deck-be0a39ae5665.glb",
-      "assetHash": "be0a39ae56656ddf819bec456495f173cdf6fa6388318d26014e0b381b432793",
-      "assetBytes": 2174832,
+      "asset": "rear-deck-8b2f3fd09d46.glb",
+      "assetHash": "8b2f3fd09d469b48e06651e183ec5ecdf66b4bd87d8278ea5dbe10375f9d6e7d",
+      "assetBytes": 2179616,
       "objectCount": 95,
-      "triangles": 19435,
+      "triangles": 19512,
       "cameras": [
         {
           "id": "room-view",
@@ -31869,11 +31869,11 @@
       "variantDefaultOnly": [
         "boiserie-primary-bedroom"
       ],
-      "asset": "front-balcony-43a379b1c8ec.glb",
-      "assetHash": "43a379b1c8ec8fd4c95373658125906e2c5b92a78817bd2fbe374b145fe6ad8d",
-      "assetBytes": 4073616,
+      "asset": "front-balcony-ea8fc532ba0c.glb",
+      "assetHash": "ea8fc532ba0c08ada6d9e0a1bb55864bed18f6bf9abb620d1420ebcd0ef3ce6e",
+      "assetBytes": 4077048,
       "objectCount": 156,
-      "triangles": 21752,
+      "triangles": 21815,
       "cameras": [
         {
           "id": "room-view",
@@ -32398,11 +32398,11 @@
         ],
         "reason": "Owner report, 18 Oct 2026 (a missing paver strip in the Exterior from above): the lower yard pavers run to y 13.91, past this room's y 11 edge, so the Exterior clipped them there while the yard reconstruction's ground (BY3 . Ground . Terraces T1-T5) starts at the pavers' own trim line, leaving a strip with no surface (a hole to the page background) behind the rear terrace, x -11 to 4.7, y 11 to 13. This one object is clipped to this wider box instead of the room box (the rear-deck footprintExceptions mechanism, #69); nothing else changes."
       },
-      "asset": "exterior-house-b1f5add44809.glb",
-      "assetHash": "b1f5add448093773716759268e9ecc69ae20c159157f9013788488a89da80164",
-      "assetBytes": 23489460,
+      "asset": "exterior-house-5d36518b1799.glb",
+      "assetHash": "5d36518b17991ac49a566c04810f8ef30448dadbff361c2e117c1d4455dbe3d7",
+      "assetBytes": 23588068,
       "objectCount": 1349,
-      "triangles": 543630,
+      "triangles": 545143,
       "cameras": [
         {
           "id": "exterior-overview",
