@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "94c515e5ce94",
+  "sceneVersion": "f70f0a1c6fb3",
   "source": {
     "file": "Web.blend",
-    "sha256": "94c515e5ce947ec891430d40b05d6f7b342a646352d587e53a956ce6d20168cd",
+    "sha256": "f70f0a1c6fb3eebf52f01f10159836488ffa640541e24b00b2c8160e29731859",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1425,11 +1425,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-a4ec9b9144a5.glb",
-      "assetHash": "a4ec9b9144a5db34a03db33aa5267dba330f0efc1e1a863da16de429398d3238",
-      "assetBytes": 11069252,
-      "objectCount": 300,
-      "triangles": 117002,
+      "asset": "game-room-17f51978a722.glb",
+      "assetHash": "17f51978a7221b6357c318789b4ea198268659f7138bb9f398662590f681ef73",
+      "assetBytes": 10331632,
+      "objectCount": 301,
+      "triangles": 96774,
       "cameras": [
         {
           "id": "room-view",
@@ -6194,11 +6194,11 @@
           "reason": "x282: the pier below Door D's arch moulding foot, to its casing's west edge (see the first volume)"
         }
       ],
-      "asset": "family-room-cf785f6adeb4.glb",
-      "assetHash": "cf785f6adeb4ea625d98982c4251f94ed5129c8b08c8101ad0be1719176fc54c",
-      "assetBytes": 16858560,
-      "objectCount": 511,
-      "triangles": 309786,
+      "asset": "family-room-9692a80a90b5.glb",
+      "assetHash": "9692a80a90b5b34d86ebd1c80ac47901f8fb08bef322bc956aea3fdc46ef967f",
+      "assetBytes": 15730084,
+      "objectCount": 509,
+      "triangles": 279428,
       "cameras": [
         {
           "id": "room-view",
@@ -8526,11 +8526,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-78b5e71a4c93.glb",
-      "assetHash": "78b5e71a4c93c08e4c8fcbf6f6941c69aad3195d4a8e0bc691252592512030cc",
-      "assetBytes": 10922636,
+      "asset": "dining-room-4a74125de3c2.glb",
+      "assetHash": "4a74125de3c24b4a19ec4d3681377165185a7f9e413ecc468b908022d6390c53",
+      "assetBytes": 9968440,
       "objectCount": 336,
-      "triangles": 189588,
+      "triangles": 163582,
       "cameras": [
         {
           "id": "room-view",
@@ -15544,11 +15544,11 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "entry-3f73816919bc.glb",
-      "assetHash": "3f73816919bc0510bb776af81acfb5378168e8fc3bffdeee73814b54a2dfe6aa",
-      "assetBytes": 22795872,
+      "asset": "entry-2b1be3679dfa.glb",
+      "assetHash": "2b1be3679dfaa00251cfee941de12ba087bd97bc13c7f34fd4679929c29be3b4",
+      "assetBytes": 21570752,
       "objectCount": 682,
-      "triangles": 574567,
+      "triangles": 542621,
       "cameras": [
         {
           "id": "room-view",
@@ -25841,11 +25841,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-b38cc663b7bd.glb",
-      "assetHash": "b38cc663b7bd5fc6e47bde26991dda73483853379a9511908483c2a67da01bde",
-      "assetBytes": 5501204,
+      "asset": "office-west-12e27a438340.glb",
+      "assetHash": "12e27a438340bba524970bf65adccd554d5127044e6ea0b6085669455c281720",
+      "assetBytes": 5506096,
       "objectCount": 156,
-      "triangles": 50912,
+      "triangles": 51095,
       "cameras": [
         {
           "id": "room-view",
@@ -32358,11 +32358,11 @@
         ],
         "reason": "Owner report, 18 Oct 2026 (a missing paver strip in the Exterior from above): the lower yard pavers run to y 13.91, past this room's y 11 edge, so the Exterior clipped them there while the yard reconstruction's ground (BY3 . Ground . Terraces T1-T5) starts at the pavers' own trim line, leaving a strip with no surface (a hole to the page background) behind the rear terrace, x -11 to 4.7, y 11 to 13. This one object is clipped to this wider box instead of the room box (the rear-deck footprintExceptions mechanism, #69); nothing else changes."
       },
-      "asset": "exterior-house-2bca469c2f66.glb",
-      "assetHash": "2bca469c2f66b8248f8a79798fa4425834a72460116941bd396e8ff9eb814a26",
-      "assetBytes": 23488052,
-      "objectCount": 1348,
-      "triangles": 543618,
+      "asset": "exterior-house-b1f5add44809.glb",
+      "assetHash": "b1f5add448093773716759268e9ecc69ae20c159157f9013788488a89da80164",
+      "assetBytes": 23489460,
+      "objectCount": 1349,
+      "triangles": 543630,
       "cameras": [
         {
           "id": "exterior-overview",
