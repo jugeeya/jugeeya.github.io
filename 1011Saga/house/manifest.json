@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "3da527a3d1d7",
+  "sceneVersion": "70b61a7dafc0",
   "source": {
     "file": "Web.blend",
-    "sha256": "3da527a3d1d7ac130c5a7ed871b6503b61267979ee56107da51cab5dd107e10b",
+    "sha256": "70b61a7dafc0234ec35a9c72c2a607ba34502d1b62b48fdb53ea4d42328839d1",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -12108,11 +12108,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-3581a9af4f3a.glb",
-      "assetHash": "3581a9af4f3a4d16f664ac856e1964f41db08905976c5717e56c10f4ceacdf07",
-      "assetBytes": 20627284,
+      "asset": "kitchen-3391646c618e.glb",
+      "assetHash": "3391646c618efc3c46f182767262fe90f0203cd2863187b5b62bf67d54a217f7",
+      "assetBytes": 20626952,
       "objectCount": 663,
-      "triangles": 468148,
+      "triangles": 468146,
       "cameras": [
         {
           "id": "room-view",
@@ -15574,9 +15574,9 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "entry-197035c854c5.glb",
-      "assetHash": "197035c854c5ddcc52e2bf7742f83d4944bd403fa687522c6497b784d40b9973",
-      "assetBytes": 22320448,
+      "asset": "entry-137743e6e2fd.glb",
+      "assetHash": "137743e6e2fd4f95f9be6bf6d16a3fa858bd5a9e5e22aa5b613ba9572332e9e0",
+      "assetBytes": 22319712,
       "objectCount": 695,
       "triangles": 574426,
       "cameras": [
@@ -16838,11 +16838,11 @@
       ],
       "displayExposureStops": -3.0,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, From doorway: L05 Andree 31.83 cd vanity point; -3.0 is the judged-band floor (R11 displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "powder-room-7884167a421e.glb",
-      "assetHash": "7884167a421e9b13b1278a537de6b82494585b9120fb78ae8f147f403b1c3b12",
-      "assetBytes": 3959900,
+      "asset": "powder-room-bc80b4f028a7.glb",
+      "assetHash": "bc80b4f028a7b8ec6f01c5f0367d04b2aec45ae471cc6e4ccbfb0d7553fc122a",
+      "assetBytes": 3959312,
       "objectCount": 152,
-      "triangles": 47011,
+      "triangles": 47009,
       "cameras": [
         {
           "id": "room-view",
