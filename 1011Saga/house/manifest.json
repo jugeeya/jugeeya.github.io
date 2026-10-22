@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "24462a6a6fec",
+  "sceneVersion": "ea891b7e4095",
   "source": {
     "file": "Web.blend",
-    "sha256": "24462a6a6fecc52e90f607011a22163391e4272e4005314dafac41da0569ae76",
+    "sha256": "ea891b7e4095782c50e9667103d25df77092c557341aefbc9c49222d86f9258a",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -12108,11 +12108,11 @@
       },
       "displayExposureStops": -1.75,
       "displayExposureJudged": "k 2026-09-30: by eye at Room view, Island & range and a high floor view: at lx's -0.75 the AquaProof LVP sat in the display shoulder (V .98, planks barely read); at -1.75 the planks, the island marble and the cream cabinets read; the floor's bounce is not the cause (indirectGain 0 changed it by 1%). Sweep in Reviews/2026-09-30/k/plates/k3",
-      "asset": "kitchen-391bb2116b6d.glb",
-      "assetHash": "391bb2116b6ded12c60de0272f8ba4cfdc2397ae0399cf1b9c77c0cd445d81b5",
-      "assetBytes": 20621584,
-      "objectCount": 661,
-      "triangles": 468097,
+      "asset": "kitchen-3581a9af4f3a.glb",
+      "assetHash": "3581a9af4f3a4d16f664ac856e1964f41db08905976c5717e56c10f4ceacdf07",
+      "assetBytes": 20627284,
+      "objectCount": 663,
+      "triangles": 468148,
       "cameras": [
         {
           "id": "room-view",
@@ -15574,11 +15574,11 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "entry-cbbafce830ae.glb",
-      "assetHash": "cbbafce830ae40c0266c396edcb19b353bc541b81fee11f9fe7644a2869f0ae3",
-      "assetBytes": 22313596,
-      "objectCount": 682,
-      "triangles": 575218,
+      "asset": "entry-10d7e02b7ac4.glb",
+      "assetHash": "10d7e02b7ac4701ac858598c7efc47ceb8f17ea71122001102d7592970fe8e1f",
+      "assetBytes": 22384196,
+      "objectCount": 694,
+      "triangles": 576058,
       "cameras": [
         {
           "id": "room-view",
@@ -16838,11 +16838,11 @@
       ],
       "displayExposureStops": -3.0,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, From doorway: L05 Andree 31.83 cd vanity point; -3.0 is the judged-band floor (R11 displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "powder-room-4ef49dcb8b72.glb",
-      "assetHash": "4ef49dcb8b72c8d0c0d0e9abbb52dffa645068d247c31cebf7ffbd82208a37f9",
-      "assetBytes": 3946068,
-      "objectCount": 149,
-      "triangles": 46862,
+      "asset": "powder-room-7884167a421e.glb",
+      "assetHash": "7884167a421e9b13b1278a537de6b82494585b9120fb78ae8f147f403b1c3b12",
+      "assetBytes": 3959900,
+      "objectCount": 152,
+      "triangles": 47011,
       "cameras": [
         {
           "id": "room-view",
@@ -25881,11 +25881,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-daa39cc4f472.glb",
-      "assetHash": "daa39cc4f472d3151fd0f37ee5b0fd0ca1ea3aa2638ee83dc062a2ca67e9c5dc",
-      "assetBytes": 5516932,
-      "objectCount": 156,
-      "triangles": 51974,
+      "asset": "office-west-508adc9d246d.glb",
+      "assetHash": "508adc9d246db4d728845bffbfc0276f008d4c486e603f3190b7f979b11c4b1b",
+      "assetBytes": 5518600,
+      "objectCount": 157,
+      "triangles": 51982,
       "cameras": [
         {
           "id": "room-view",
@@ -28474,11 +28474,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Arched windows: 3 x L15 Hathaway 1800 K 21.0 cd (were 35 cd) (R11 metered -2.5, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "office-hall-ec216e2d4a14.glb",
-      "assetHash": "ec216e2d4a148e5286193503f9e7837662c2051ee47cfd30fcbc7890518e2c29",
-      "assetBytes": 7333776,
-      "objectCount": 256,
-      "triangles": 143890,
+      "asset": "office-hall-ec0e280738ea.glb",
+      "assetHash": "ec0e280738ea8db7ea056e050fbc41da9911b8567fae01063c91b11c72dd14bd",
+      "assetBytes": 7336000,
+      "objectCount": 257,
+      "triangles": 143906,
       "cameras": [
         {
           "id": "room-view",
