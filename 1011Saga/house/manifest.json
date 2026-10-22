@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "ea891b7e4095",
+  "sceneVersion": "3da527a3d1d7",
   "source": {
     "file": "Web.blend",
-    "sha256": "ea891b7e4095782c50e9667103d25df77092c557341aefbc9c49222d86f9258a",
+    "sha256": "3da527a3d1d7ac130c5a7ed871b6503b61267979ee56107da51cab5dd107e10b",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -1425,11 +1425,11 @@
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 S-01 (x97 split, east of the Game Room)": "trim",
         "Millwork \u00b7 1F \u00b7 Crown \u00b7 Family Room \u00b7 N-01 (x97 split, east of the Game Room)": "trim"
       },
-      "asset": "game-room-425eaa79a913.glb",
-      "assetHash": "425eaa79a913af3ad64ff3706983a6a99e3e69f3df091a2bbbd11a8314bb5ea8",
-      "assetBytes": 10737416,
+      "asset": "game-room-d6c3b4d3ea35.glb",
+      "assetHash": "d6c3b4d3ea354855c95e3ccc5ce21296deb26b41d0a480649549a300f7ffa684",
+      "assetBytes": 10737072,
       "objectCount": 301,
-      "triangles": 110403,
+      "triangles": 110509,
       "cameras": [
         {
           "id": "room-view",
@@ -6204,11 +6204,11 @@
           "reason": "x282: the pier below Door D's arch moulding foot, to its casing's west edge (see the first volume)"
         }
       ],
-      "asset": "family-room-ba6a1d1f46b5.glb",
-      "assetHash": "ba6a1d1f46b5fe071f8dab126d3ec2973b1728cd919fb6d42ed0394917cf0b18",
-      "assetBytes": 16456856,
+      "asset": "family-room-9aa1beb71ce0.glb",
+      "assetHash": "9aa1beb71ce0c05c4f184a3fae96743197857b6ce2d6f51f6351bd817181565a",
+      "assetBytes": 16386348,
       "objectCount": 509,
-      "triangles": 311456,
+      "triangles": 309604,
       "cameras": [
         {
           "id": "room-view",
@@ -8546,11 +8546,11 @@
       },
       "displayExposureStops": -1.45,
       "displayExposureJudged": "lx 2026-09-29: by eye at Room view, Cabinet wall: 2 x L16 Gabriella 13.8 cd (were 35 cd stand-ins) (R11 metered -3.6, displayed -1.8); daylight grey mean vs Release 11 in Reviews/2026-09-29/lx/evidence",
-      "asset": "dining-room-39fff9350aa0.glb",
-      "assetHash": "39fff9350aa08f1feb8a910a986b61157eeeb5bb8552030add2f1e32befe2a59",
-      "assetBytes": 10491504,
+      "asset": "dining-room-99ef4219ed4d.glb",
+      "assetHash": "99ef4219ed4d199950b63f2c99a07ba8bdfd139a7af76f740492ff7285b47bf1",
+      "assetBytes": 10531284,
       "objectCount": 336,
-      "triangles": 183003,
+      "triangles": 184225,
       "cameras": [
         {
           "id": "room-view",
@@ -15574,11 +15574,11 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "entry-10d7e02b7ac4.glb",
-      "assetHash": "10d7e02b7ac4701ac858598c7efc47ceb8f17ea71122001102d7592970fe8e1f",
-      "assetBytes": 22384196,
-      "objectCount": 694,
-      "triangles": 576058,
+      "asset": "entry-197035c854c5.glb",
+      "assetHash": "197035c854c5ddcc52e2bf7742f83d4944bd403fa687522c6497b784d40b9973",
+      "assetBytes": 22320448,
+      "objectCount": 695,
+      "triangles": 574426,
       "cameras": [
         {
           "id": "room-view",
@@ -24056,11 +24056,11 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-4990b1ff3b3c.glb",
-      "assetHash": "4990b1ff3b3c1cfcbb6eadd916264e182a8168b857fc852ba0e30b0480a04a1d",
-      "assetBytes": 8952592,
-      "objectCount": 275,
-      "triangles": 138797,
+      "asset": "blue-bedroom-75e063aafb5b.glb",
+      "assetHash": "75e063aafb5b4ff87f96aa4498e1ee39cb8876217f77f6ff9f287693fafbb057",
+      "assetBytes": 8934996,
+      "objectCount": 270,
+      "triangles": 138580,
       "cameras": [
         {
           "id": "room-view",
@@ -24241,16 +24241,6 @@
           "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
         },
         {
-          "id": "mat-6f7fbc640a0c",
-          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
-          "roomId": "blue-bedroom",
-          "role": null,
-          "color": "#ebe8e0",
-          "roughness": 0.6499999761581421,
-          "metallic": 0.0,
-          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
-        },
-        {
           "id": "mat-c01576dbc032",
           "name": "Floor \u00b7 AquaProof Spring Hills LVP",
           "roomId": "blue-bedroom",
@@ -24259,6 +24249,16 @@
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "object projection baked over a 3.1293 x 1.5646 m tile of whole texture periods; Base Color source graph baked in UV space; Roughness source graph baked in UV space; source normal baked to tangent normals on the tile"
+        },
+        {
+          "id": "mat-6f7fbc640a0c",
+          "name": "Paint \u00b7 Behr White Veil (semi-gloss)",
+          "roomId": "blue-bedroom",
+          "role": null,
+          "color": "#ebe8e0",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
           "id": "mat-b1038487e98c",
@@ -24683,11 +24683,11 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "blue-bath-5a0e3944dc18.glb",
-      "assetHash": "5a0e3944dc18fa68c3a26fd218d5bb4379b59f2d2188b4c82c20c26967d6943f",
-      "assetBytes": 4402808,
-      "objectCount": 143,
-      "triangles": 63583,
+      "asset": "blue-bath-0806b07e0c43.glb",
+      "assetHash": "0806b07e0c43faa95b76b9c18c13145c722b86cfa52bbc2514c8defccfab7551",
+      "assetBytes": 4370400,
+      "objectCount": 136,
+      "triangles": 63092,
       "cameras": [
         {
           "id": "room-view",
@@ -32398,11 +32398,11 @@
         ],
         "reason": "Owner report, 18 Oct 2026 (a missing paver strip in the Exterior from above): the lower yard pavers run to y 13.91, past this room's y 11 edge, so the Exterior clipped them there while the yard reconstruction's ground (BY3 . Ground . Terraces T1-T5) starts at the pavers' own trim line, leaving a strip with no surface (a hole to the page background) behind the rear terrace, x -11 to 4.7, y 11 to 13. This one object is clipped to this wider box instead of the room box (the rear-deck footprintExceptions mechanism, #69); nothing else changes."
       },
-      "asset": "exterior-house-5d36518b1799.glb",
-      "assetHash": "5d36518b17991ac49a566c04810f8ef30448dadbff361c2e117c1d4455dbe3d7",
-      "assetBytes": 23588068,
-      "objectCount": 1349,
-      "triangles": 545143,
+      "asset": "exterior-house-9a754d239e27.glb",
+      "assetHash": "9a754d239e27b14bc2afa9cf91d6cf2e26bde88b5f21ce893d3b417896cf8a4e",
+      "assetBytes": 23614556,
+      "objectCount": 1358,
+      "triangles": 545381,
       "cameras": [
         {
           "id": "exterior-overview",
