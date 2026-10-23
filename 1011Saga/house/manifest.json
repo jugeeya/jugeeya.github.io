@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "e6476245e071",
+  "sceneVersion": "ec1599f82ed7",
   "source": {
     "file": "Web.blend",
-    "sha256": "e6476245e0716b6c2d91a49558678d9fffe70dd0e715a5bb37ce23554cc4fce7",
+    "sha256": "ec1599f82ed7e59944b95f3101c16fb8c71a114d457d3739d88b8401eb7d0460",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -26908,8 +26908,8 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-5fcf161ff1e0.glb",
-      "assetHash": "5fcf161ff1e03627a7c3314fe5a638807c58b7bf3ba99199e042d04b72999391",
+      "asset": "office-east-84bb67ea25b2.glb",
+      "assetHash": "84bb67ea25b2ab1900a0c4fb6a688b5056cf717e638f1e5ba0fd3124aab8c4f0",
       "assetBytes": 5299348,
       "objectCount": 160,
       "triangles": 53904,
@@ -32408,11 +32408,11 @@
         ],
         "reason": "Owner report, 18 Oct 2026 (a missing paver strip in the Exterior from above): the lower yard pavers run to y 13.91, past this room's y 11 edge, so the Exterior clipped them there while the yard reconstruction's ground (BY3 . Ground . Terraces T1-T5) starts at the pavers' own trim line, leaving a strip with no surface (a hole to the page background) behind the rear terrace, x -11 to 4.7, y 11 to 13. This one object is clipped to this wider box instead of the room box (the rear-deck footprintExceptions mechanism, #69); nothing else changes."
       },
-      "asset": "exterior-house-9276350b8da9.glb",
-      "assetHash": "9276350b8da96a27a67a8ef65c2f86fdb86cb973fc192cb046e0da1ebe8273b5",
-      "assetBytes": 23836604,
+      "asset": "exterior-house-0d33cf45f7a2.glb",
+      "assetHash": "0d33cf45f7a2d1899d94d11be1ccef0fb34b076d341471ac5adbada7646bf5d4",
+      "assetBytes": 23838020,
       "objectCount": 1364,
-      "triangles": 551606,
+      "triangles": 551186,
       "cameras": [
         {
           "id": "exterior-overview",
