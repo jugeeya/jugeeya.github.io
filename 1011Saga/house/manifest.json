@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "ec1599f82ed7",
+  "sceneVersion": "aef5d9da963a",
   "source": {
     "file": "Web.blend",
-    "sha256": "ec1599f82ed7e59944b95f3101c16fb8c71a114d457d3739d88b8401eb7d0460",
+    "sha256": "aef5d9da963a370b33348c9d3cde4c31514db6258f46e46bbe3403fe57316361",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -18366,11 +18366,11 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-391695b0ea2b.glb",
-      "assetHash": "391695b0ea2bdbf1fd88ac535918203aaab169712e66154b3ea0a31f611a4f1d",
-      "assetBytes": 13496452,
-      "objectCount": 264,
-      "triangles": 270820,
+      "asset": "loli-bedroom-c1da98c77224.glb",
+      "assetHash": "c1da98c772244cdf47f75442426bb512a49cce7d39b475070ed34efea966969a",
+      "assetBytes": 13872588,
+      "objectCount": 265,
+      "triangles": 271049,
       "cameras": [
         {
           "id": "room-view",
@@ -18937,6 +18937,16 @@
           "roughness": 0.4399999976158142,
           "metallic": 0.75,
           "translation": "browser-only look (saga_web_*) over the Cycles values"
+        },
+        {
+          "id": "mat-e0e18d605f49",
+          "name": "x247 \u00b7 Front \u00b7 Hydrangea and magnolia cards",
+          "roomId": "loli-bedroom",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.5,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; source UV opacity mask preserved"
         },
         {
           "id": "mat-32f9f5bbe379",
@@ -25272,6 +25282,7 @@
           "x134 \u00b7 Riser \u00b7 Entry A \u00b7 U03",
           "x134 \u00b7 Tread \u00b7 Entry A \u00b7 U02",
           "x247 \u00b7 Front \u00b7 Bed soil \u00b7 new beds over the old paving (x316)",
+          "x247 \u00b7 Front \u00b7 Boxwood hedges (parterre borders, west and centre)",
           "x247 \u00b7 Front \u00b7 Court plinth (hall wall base course)",
           "x247 \u00b7 Front \u00b7 Pavers \u00b7 fountain court",
           "x278 \u00b7 East Office \u00b7 Ceiling coffer band",
@@ -25880,6 +25891,20 @@
               -0.16,
               0.23
             ]
+          ],
+          "x247 \u00b7 Front \u00b7 Boxwood hedges (parterre borders, west and centre)": [
+            [
+              2.83,
+              4.83
+            ],
+            [
+              -8.76,
+              -7.646
+            ],
+            [
+              -0.16,
+              0.5
+            ]
           ]
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10]",
@@ -25896,11 +25921,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-d874bc216c34.glb",
-      "assetHash": "d874bc216c34f206eb67492bc4e0371cd47285910f20df94c8f4e25a957f3472",
-      "assetBytes": 5334584,
-      "objectCount": 157,
-      "triangles": 51986,
+      "asset": "office-west-a9446700d73e.glb",
+      "assetHash": "a9446700d73e3ea820f16884331e6988e2b0554de0d6348c0ec5ad1911a97647",
+      "assetBytes": 5760928,
+      "objectCount": 158,
+      "triangles": 52516,
       "cameras": [
         {
           "id": "room-view",
@@ -26258,6 +26283,16 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-635bec1c643e",
+          "name": "Paver \u00b7 Buff Soldier",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#c4b599",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-013ce484cad9",
           "name": "x247 \u00b7 Front \u00b7 Cast stone",
           "roomId": "office-west",
@@ -26266,6 +26301,16 @@
           "roughness": 0.7799999713897705,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-6007bc84c903",
+          "name": "x247 \u00b7 Front \u00b7 Boxwood clipped",
+          "roomId": "office-west",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.6200000047683716,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
         }
       ],
       "variants": [
@@ -26405,6 +26450,7 @@
           "Window surround 02 [Window 02]",
           "Window surround 03 [Window 03]",
           "x247 \u00b7 Front \u00b7 Bed soil \u00b7 new beds over the old paving (x316)",
+          "x247 \u00b7 Front \u00b7 Boxwood hedges (parterre borders, west and centre)",
           "x247 \u00b7 Front \u00b7 Court plinth (hall wall base course)",
           "x247 \u00b7 Front \u00b7 Pavers \u00b7 fountain court",
           "x278 \u00b7 East Office \u00b7 Ceiling coffer band",
@@ -26902,17 +26948,31 @@
               -0.16,
               0.23
             ]
+          ],
+          "x247 \u00b7 Front \u00b7 Boxwood hedges (parterre borders, west and centre)": [
+            [
+              3.68,
+              6.47
+            ],
+            [
+              -8.77,
+              -7.646
+            ],
+            [
+              -0.16,
+              0.5
+            ]
           ]
         },
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [--floor-clamp -0.10 (the site terrain outside the window sits at -0.074)]",
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-84bb67ea25b2.glb",
-      "assetHash": "84bb67ea25b2ab1900a0c4fb6a688b5056cf717e638f1e5ba0fd3124aab8c4f0",
-      "assetBytes": 5299348,
-      "objectCount": 160,
-      "triangles": 53904,
+      "asset": "office-east-dfb946144657.glb",
+      "assetHash": "dfb946144657681b3fa437c15c906469f563084cb66aaab9bcc134e6e11279c9",
+      "assetBytes": 5729092,
+      "objectCount": 161,
+      "triangles": 54575,
       "cameras": [
         {
           "id": "room-view",
@@ -27220,6 +27280,16 @@
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
         },
         {
+          "id": "mat-4ae3a4e1c8fb",
+          "name": "Paver \u00b7 Buff Soldier",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#c4b599",
+          "roughness": 0.6499999761581421,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
+        },
+        {
           "id": "mat-cd8cab3f0847",
           "name": "x247 \u00b7 Front \u00b7 Cast stone",
           "roomId": "office-east",
@@ -27228,6 +27298,16 @@
           "roughness": 0.7799999713897705,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; source tangent normal and strength"
+        },
+        {
+          "id": "mat-1273fd43e2ae",
+          "name": "x247 \u00b7 Front \u00b7 Boxwood clipped",
+          "roomId": "office-east",
+          "role": null,
+          "color": "#e7e7e7",
+          "roughness": 0.6200000047683716,
+          "metallic": 0.0,
+          "translation": "Base Color source graph baked in UV space"
         },
         {
           "id": "mat-3629c9a2fafb",
@@ -32408,11 +32488,11 @@
         ],
         "reason": "Owner report, 18 Oct 2026 (a missing paver strip in the Exterior from above): the lower yard pavers run to y 13.91, past this room's y 11 edge, so the Exterior clipped them there while the yard reconstruction's ground (BY3 . Ground . Terraces T1-T5) starts at the pavers' own trim line, leaving a strip with no surface (a hole to the page background) behind the rear terrace, x -11 to 4.7, y 11 to 13. This one object is clipped to this wider box instead of the room box (the rear-deck footprintExceptions mechanism, #69); nothing else changes."
       },
-      "asset": "exterior-house-0d33cf45f7a2.glb",
-      "assetHash": "0d33cf45f7a2d1899d94d11be1ccef0fb34b076d341471ac5adbada7646bf5d4",
-      "assetBytes": 23838020,
-      "objectCount": 1364,
-      "triangles": 551186,
+      "asset": "exterior-house-40d329193e1c.glb",
+      "assetHash": "40d329193e1ca18de8bb5f74dde8b7f46adfb193e4a9311ab31e61d41f68e101",
+      "assetBytes": 23809864,
+      "objectCount": 1363,
+      "triangles": 550438,
       "cameras": [
         {
           "id": "exterior-overview",
