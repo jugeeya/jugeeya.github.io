@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "aef5d9da963a",
+  "sceneVersion": "40162de0ca2a",
   "source": {
     "file": "Web.blend",
-    "sha256": "aef5d9da963a370b33348c9d3cde4c31514db6258f46e46bbe3403fe57316361",
+    "sha256": "40162de0ca2a7534757494c804c1959b498b2ad19b00897e273f2f88f6730036",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -18366,8 +18366,8 @@
         }
       ],
       "displayExposureStops": -2.45,
-      "asset": "loli-bedroom-c1da98c77224.glb",
-      "assetHash": "c1da98c772244cdf47f75442426bb512a49cce7d39b475070ed34efea966969a",
+      "asset": "loli-bedroom-a119bd8f94aa.glb",
+      "assetHash": "a119bd8f94aada5f61e0c5a6e9ab6be4fca22bbb79ada9d549c7fae0de50fa4f",
       "assetBytes": 13872588,
       "objectCount": 265,
       "triangles": 271049,
@@ -25921,8 +25921,8 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-a9446700d73e.glb",
-      "assetHash": "a9446700d73e3ea820f16884331e6988e2b0554de0d6348c0ec5ad1911a97647",
+      "asset": "office-west-bb716aa53847.glb",
+      "assetHash": "bb716aa53847a4dc54a53feed3d40c77d3c931331c169679bc6fc537663ee02f",
       "assetBytes": 5760928,
       "objectCount": 158,
       "triangles": 52516,
@@ -26968,8 +26968,8 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-dfb946144657.glb",
-      "assetHash": "dfb946144657681b3fa437c15c906469f563084cb66aaab9bcc134e6e11279c9",
+      "asset": "office-east-6edd65947cd6.glb",
+      "assetHash": "6edd65947cd65d4bd8dc7642d8e3488c426030b962273de97ca5ae413b939c01",
       "assetBytes": 5729092,
       "objectCount": 161,
       "triangles": 54575,
@@ -32488,11 +32488,11 @@
         ],
         "reason": "Owner report, 18 Oct 2026 (a missing paver strip in the Exterior from above): the lower yard pavers run to y 13.91, past this room's y 11 edge, so the Exterior clipped them there while the yard reconstruction's ground (BY3 . Ground . Terraces T1-T5) starts at the pavers' own trim line, leaving a strip with no surface (a hole to the page background) behind the rear terrace, x -11 to 4.7, y 11 to 13. This one object is clipped to this wider box instead of the room box (the rear-deck footprintExceptions mechanism, #69); nothing else changes."
       },
-      "asset": "exterior-house-40d329193e1c.glb",
-      "assetHash": "40d329193e1ca18de8bb5f74dde8b7f46adfb193e4a9311ab31e61d41f68e101",
-      "assetBytes": 23809864,
+      "asset": "exterior-house-7585b0dccac4.glb",
+      "assetHash": "7585b0dccac43228e8b919a36832e0cafd630642ac43b0b796000130298b17f7",
+      "assetBytes": 23784552,
       "objectCount": 1363,
-      "triangles": 550438,
+      "triangles": 549942,
       "cameras": [
         {
           "id": "exterior-overview",
