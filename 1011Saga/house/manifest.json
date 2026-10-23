@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "e01e891a7b60",
+  "sceneVersion": "e6476245e071",
   "source": {
     "file": "Web.blend",
-    "sha256": "e01e891a7b601a96e7bd28cc7046d0e65c24bb6428024440137928262cd02582",
+    "sha256": "e6476245e0716b6c2d91a49558678d9fffe70dd0e715a5bb37ce23554cc4fce7",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -25896,11 +25896,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -0.75,
-      "asset": "office-west-6a838503b127.glb",
-      "assetHash": "6a838503b127b7731416a778be8330eb334d5279cd60014d01cd7ae851650102",
-      "assetBytes": 5141832,
+      "asset": "office-west-d874bc216c34.glb",
+      "assetHash": "d874bc216c34f206eb67492bc4e0371cd47285910f20df94c8f4e25a957f3472",
+      "assetBytes": 5334584,
       "objectCount": 157,
-      "triangles": 52012,
+      "triangles": 51986,
       "cameras": [
         {
           "id": "room-view",
@@ -26248,11 +26248,11 @@
           "translation": "browser-only look (saga_web_*) over the Cycles values"
         },
         {
-          "id": "mat-635bec1c643e",
-          "name": "Paver \u00b7 Buff Soldier",
+          "id": "mat-30f534f56145",
+          "name": "Paver \u00b7 Grey Field",
           "roomId": "office-west",
           "role": null,
-          "color": "#c4b599",
+          "color": "#a09784",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -26908,11 +26908,11 @@
         "x247": "x247 pressed 'Site Terrain Site' under the fountain court (to z -0.30): the ground outside the arched windows is now the court paving (top -0.135) and its plinth, named in with the terrain's own x/y clip; the look bounds go down to -0.16 for them (every other name keeps its own clip from -0.10)"
       },
       "displayExposureStops": -1.1,
-      "asset": "office-east-9d729b59bf2a.glb",
-      "assetHash": "9d729b59bf2a2c8c3e71b3b65f71e2c9f97440fb88ead452627a36cf3ec39e11",
-      "assetBytes": 5107044,
+      "asset": "office-east-5fcf161ff1e0.glb",
+      "assetHash": "5fcf161ff1e03627a7c3314fe5a638807c58b7bf3ba99199e042d04b72999391",
+      "assetBytes": 5299348,
       "objectCount": 160,
-      "triangles": 53935,
+      "triangles": 53904,
       "cameras": [
         {
           "id": "room-view",
@@ -27210,11 +27210,11 @@
           "translation": "source paint mean from unlit texture bake; source tangent normal and strength"
         },
         {
-          "id": "mat-4ae3a4e1c8fb",
-          "name": "Paver \u00b7 Buff Soldier",
+          "id": "mat-0d2a4a609e82",
+          "name": "Paver \u00b7 Grey Field",
           "roomId": "office-east",
           "role": null,
-          "color": "#c4b599",
+          "color": "#a09784",
           "roughness": 0.6499999761581421,
           "metallic": 0.0,
           "translation": "Base Color source graph baked in UV space; Roughness source graph baked in UV space; source tangent normal and strength"
@@ -32408,11 +32408,11 @@
         ],
         "reason": "Owner report, 18 Oct 2026 (a missing paver strip in the Exterior from above): the lower yard pavers run to y 13.91, past this room's y 11 edge, so the Exterior clipped them there while the yard reconstruction's ground (BY3 . Ground . Terraces T1-T5) starts at the pavers' own trim line, leaving a strip with no surface (a hole to the page background) behind the rear terrace, x -11 to 4.7, y 11 to 13. This one object is clipped to this wider box instead of the room box (the rear-deck footprintExceptions mechanism, #69); nothing else changes."
       },
-      "asset": "exterior-house-b1e896e2e456.glb",
-      "assetHash": "b1e896e2e45636764758c39a0d0c871ca22de6e00ee73b46ba0feda8e929bb3d",
-      "assetBytes": 23827720,
-      "objectCount": 1366,
-      "triangles": 552006,
+      "asset": "exterior-house-9276350b8da9.glb",
+      "assetHash": "9276350b8da96a27a67a8ef65c2f86fdb86cb973fc192cb046e0da1ebe8273b5",
+      "assetBytes": 23836604,
+      "objectCount": 1364,
+      "triangles": 551606,
       "cameras": [
         {
           "id": "exterior-overview",
