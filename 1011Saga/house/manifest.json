@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "f88d1da0192e",
+  "sceneVersion": "5eb4a70d4892",
   "source": {
     "file": "Web.blend",
-    "sha256": "f88d1da0192e7e80b8692db2e74ff03acaee60a9d1e523dfff99f86a7fdfa0db",
+    "sha256": "5eb4a70d4892e8bb3e24beecd51e1964e7c6cbc2139b02fc05bf93482b7f88e2",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -15574,8 +15574,8 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "entry-137743e6e2fd.glb",
-      "assetHash": "137743e6e2fd4f95f9be6bf6d16a3fa858bd5a9e5e22aa5b613ba9572332e9e0",
+      "asset": "entry-b65cff74c8eb.glb",
+      "assetHash": "b65cff74c8eb88e16b91d00b76cdfa09af21d110c281ba29a4fc24fe000f3287",
       "assetBytes": 22319712,
       "objectCount": 695,
       "triangles": 574426,
@@ -24056,9 +24056,9 @@
         "reason": "Enclosing surfaces the room's Look/Walk stations see that neither this export nor a contextRoomIds export draws; derived on candidate-x181 (3d77362dca13) by Reviews/2026-09-23/parallel-closures/verify-sky-sweep/evidence/tools/derive_v2.py [defaults]"
       },
       "displayExposureStops": -1.2,
-      "asset": "blue-bedroom-75e063aafb5b.glb",
-      "assetHash": "75e063aafb5b4ff87f96aa4498e1ee39cb8876217f77f6ff9f287693fafbb057",
-      "assetBytes": 8934996,
+      "asset": "blue-bedroom-db7d4cc9d947.glb",
+      "assetHash": "db7d4cc9d947911307ea90ec64183d2341b7404bcbb5db9ce11ca78f2e867679",
+      "assetBytes": 8937428,
       "objectCount": 270,
       "triangles": 138580,
       "cameras": [
@@ -24683,8 +24683,8 @@
       "variantDefaultOnly": [
         "boiserie-blue-bedroom"
       ],
-      "asset": "blue-bath-0806b07e0c43.glb",
-      "assetHash": "0806b07e0c43faa95b76b9c18c13145c722b86cfa52bbc2514c8defccfab7551",
+      "asset": "blue-bath-57ace6b4a91e.glb",
+      "assetHash": "57ace6b4a91e3e0025e3db9a8dc6688327af337b12ca21c943dd682d5dcbd9cd",
       "assetBytes": 4370400,
       "objectCount": 136,
       "triangles": 63092,
@@ -32398,9 +32398,9 @@
         ],
         "reason": "Owner report, 18 Oct 2026 (a missing paver strip in the Exterior from above): the lower yard pavers run to y 13.91, past this room's y 11 edge, so the Exterior clipped them there while the yard reconstruction's ground (BY3 . Ground . Terraces T1-T5) starts at the pavers' own trim line, leaving a strip with no surface (a hole to the page background) behind the rear terrace, x -11 to 4.7, y 11 to 13. This one object is clipped to this wider box instead of the room box (the rear-deck footprintExceptions mechanism, #69); nothing else changes."
       },
-      "asset": "exterior-house-df6d68c801d4.glb",
-      "assetHash": "df6d68c801d485a98094b123004f2761fd7cdf90eb6ac9fd6014ba834ba62841",
-      "assetBytes": 23764972,
+      "asset": "exterior-house-51e9e303f8cf.glb",
+      "assetHash": "51e9e303f8cf3e61437c137cdd6cdb12c39ca90c74c16a89d3d872706c35f59c",
+      "assetBytes": 23767128,
       "objectCount": 1362,
       "triangles": 548219,
       "cameras": [
