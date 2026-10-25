@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "exporterVersion": "0.2.0",
-  "sceneVersion": "40162de0ca2a",
+  "sceneVersion": "a5fede7a5a39",
   "source": {
     "file": "Web.blend",
-    "sha256": "40162de0ca2a7534757494c804c1959b498b2ad19b00897e273f2f88f6730036",
+    "sha256": "a5fede7a5a390a4d1e0f2804f27274c57cb8e692441952d172ed666d4e593dae",
     "blenderVersion": "5.2.1 LTS"
   },
   "environment": {
@@ -32488,11 +32488,11 @@
         ],
         "reason": "Owner report, 18 Oct 2026 (a missing paver strip in the Exterior from above): the lower yard pavers run to y 13.91, past this room's y 11 edge, so the Exterior clipped them there while the yard reconstruction's ground (BY3 . Ground . Terraces T1-T5) starts at the pavers' own trim line, leaving a strip with no surface (a hole to the page background) behind the rear terrace, x -11 to 4.7, y 11 to 13. This one object is clipped to this wider box instead of the room box (the rear-deck footprintExceptions mechanism, #69); nothing else changes."
       },
-      "asset": "exterior-house-7585b0dccac4.glb",
-      "assetHash": "7585b0dccac43228e8b919a36832e0cafd630642ac43b0b796000130298b17f7",
-      "assetBytes": 23784552,
+      "asset": "exterior-house-7af3af6a6a58.glb",
+      "assetHash": "7af3af6a6a5885994a10955e051ae5ad54c2dee43831a97d9cd6b64dd7b1ddce",
+      "assetBytes": 23784696,
       "objectCount": 1363,
-      "triangles": 549942,
+      "triangles": 549944,
       "cameras": [
         {
           "id": "exterior-overview",
