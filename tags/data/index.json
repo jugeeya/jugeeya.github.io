@@ -1,7 +1,17 @@
 {
   "version": 1,
-  "updated": "2026-09-12T22:20:17Z",
+  "updated": "2026-11-06T20:49:12Z",
   "tags": [
+    {
+      "name": "MAOR",
+      "author": "",
+      "file": "maor-6d4c361b.r2tag.zip",
+      "uploaded": "2026-11-06T20:47:41Z",
+      "startgg": {
+        "slug": "user/6d4c361b",
+        "tag": "mayorlemon"
+      }
+    },
     {
       "name": "***",
       "author": "",
